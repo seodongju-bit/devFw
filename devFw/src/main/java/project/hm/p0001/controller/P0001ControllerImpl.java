@@ -40,7 +40,7 @@ public class P0001ControllerImpl implements P0001Controller {
 	P0001VO p0001VO;
 	
 	@Override
-	@RequestMapping(value = "/hm/p0001/searchInit222.do", method = { RequestMethod.GET, RequestMethod.POST })
+	@RequestMapping(value = "/hm/p0001/searchInit.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView searchInit(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("utf-8");
 		ModelAndView mav = new ModelAndView("hm/p0001_init");

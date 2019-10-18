@@ -264,7 +264,7 @@ $(document).ready(function () {
 
 });
 
-/* 동한ㅇ  ㅇㅁㄴㅇㄹ
+/* 동한ㄴㄴ
  */
 </script>
 </html>
