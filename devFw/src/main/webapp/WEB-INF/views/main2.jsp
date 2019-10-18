@@ -264,7 +264,7 @@ $(document).ready(function () {
 
 });
 
-/* 동한ㅇ  ㅇddaasasfgggggggggggggggggggggggggggggggggsasasdfsdfss
+/* 동한ㅇ  ㅇddaasasfggggggggggggggggg
  */
 </script>
 </html>
