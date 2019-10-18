@@ -263,5 +263,8 @@ $(document).ready(function () {
     })
 
 });
+
+/* 동한
+ */
 </script>
 </html>
