@@ -11,7 +11,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<style>
+<style>   
 body {
   margin: 0;
   padding: 0;
@@ -159,7 +159,7 @@ body {
 </head>
 <body>
 
-<div id="topMenu">탑메뉴</div>
+<div id="topMenu">탑메뉴</div>     
 <div id="header">
 	<div id="headerBody">
 		<a href="${contextPath}/main.do"><img id="toplogo" src="${contextPath}/resources/image/logo.png"  /></a>
