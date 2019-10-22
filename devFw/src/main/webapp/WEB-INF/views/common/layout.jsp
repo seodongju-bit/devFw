@@ -22,7 +22,7 @@
          background-color: lightgreen;
       }
       #sidebar-left {
-        width: 15%;
+        width: 15%;  
         height:700px;
         padding: 5px;
         margin-right: 5px;
