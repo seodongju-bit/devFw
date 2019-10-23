@@ -23,7 +23,7 @@
       }
       #sidebar-left {
         width: 15%;  
-        height:700px;
+        min-height:700px;
         padding: 5px;
         margin-right: 5px;
         margin-bottom: 5px;

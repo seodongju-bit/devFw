@@ -142,17 +142,7 @@ body {
 }
 
 .menu2{color:black;}
-#xx{
-	position:absolute;
-	border:1px solid black;
-	box-sizing:border-box;
-	width:100%;
-	height:500px;
-	background-image:url('024.JPG');
-	background-repeat:no-repeat;
-    background-attachment:fixed;
-    background-size: 100% 100%;
-}
+
 
 </style>
 <title>Insert title here</title>
@@ -203,8 +193,6 @@ body {
 	
 </div>
 
-
-<div id="xx"></div>
 
 </body>
 </html>

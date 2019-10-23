@@ -19,10 +19,7 @@ body {
      
 }
 
-* {
-  box-sizing: border-box;
-    
-}
+
 
 /* Create a column layout with Flexbox */
 .row {
@@ -33,9 +30,8 @@ body {
 .left {
   flex: 35%;    
   padding: 15px 0;
-   margin-top:515px;
    font-size:20px;
-                       
+                      
                         
   }
 
@@ -45,10 +41,12 @@ body {
 
 
 /* 왼쪽 메뉴 스타일 */
-#myMenu {
+#myMenu {         
   list-style-type: none;
-  padding: 0;
+  padding: 0;          
   margin: 0;
+  width:200px; 
+ 
 }
 
 #myMenu li{
