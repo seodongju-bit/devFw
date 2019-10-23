@@ -99,14 +99,14 @@ body {
   background-color: black;
   min-width: 180px;
   z-index: 1;
-  opacity: 0.8;
+  opacity: 0.8;  
 }
 
 .dropdown-content .menu1{
   color:white;
   padding: 12px 8px;
   text-decoration: none;
-  display: block;
+  display: block;    
 }
 .dropdown-content2{
   display: none;

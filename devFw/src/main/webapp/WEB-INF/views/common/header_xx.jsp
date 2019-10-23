@@ -26,7 +26,7 @@
        <h1><font size=30>스프링실습 홈페이지!!</font></h1>
      </td>
      
-     <td>
+     <td> 
        <!-- <a href="#"><h3>로그인</h3></a> -->
        <c:choose>
           <c:when test="${isLogOn == true  && member!= null}">
