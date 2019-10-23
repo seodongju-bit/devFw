@@ -7,17 +7,21 @@
   request.setCharacterEncoding("UTF-8");
 %> 
 <c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
+
 <!DOCTYPE html>
 
 <html>
-<head>
+<head>                 
  <style>
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;    
+
+     
 }
 
 * {
   box-sizing: border-box;
+    
 }
 
 /* Create a column layout with Flexbox */
@@ -27,34 +31,29 @@ body {
 
 /* Left column (menu) */
 .left {
-  flex: 35%;
+  flex: 35%;    
   padding: 15px 0;
-}
+   margin-top:515px;
+   font-size:20px;
+                       
+                        
+  }
 
 .left h2 {
-  padding-left: 8px;
+  padding-left: 8px;      
 }
 
-/* Right column (page content) */
-.right {
-  flex: 65%;
-  padding: 15px;
-}
 
-/* Style the search box */
-#mySearch {
-  width: 100%;
-  font-size: 18px;
-  padding: 11px;
-  border: 1px solid #ddd;
-}
-
-/* Style the navigation menu inside the left column */
+/* 왼쪽 메뉴 스타일 */
 #myMenu {
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
+
+#myMenu li{
+font-size:25px;
+}                  
 
 #myMenu li a {
   padding: 12px;
@@ -68,8 +67,8 @@ body {
 }     
 
 .main {
-  margin-left: 160px; /* Same as the width of the sidenav */
-  font-size: 28px; /* Increased text to enable scrolling */
+  margin-left: 160px;
+  font-size: 28px; 
   padding: 0px 10px;
 }
 
@@ -153,9 +152,7 @@ body {
     </ul>
   </div>
   
-  <div class="right" style="background-color:#ddd;">
-    dddddd
-  </div>
+
 </div>
 
 
