@@ -86,7 +86,7 @@ font-size:25px;
 	    <a href="#"  class="no-underline">게시판관리</a><br>
 	    <a href="#"  class="no-underline">상품관리</a><br>
     </h1>
-     -->
+     --> 
     
 <div class="row">
   <div class="left" style="background-color:#bbb;">
