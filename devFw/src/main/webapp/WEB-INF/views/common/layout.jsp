@@ -25,7 +25,7 @@
         width: 15%;  
         min-height:700px;
         padding: 5px;
-        
+        margin-right:120px;
         margin-bottom: 5px;        
         float: left;
         border: 0px solid #bcbcbc;
