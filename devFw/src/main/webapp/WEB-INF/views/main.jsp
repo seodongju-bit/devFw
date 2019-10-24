@@ -9,6 +9,9 @@
 div.name{
 font-size:30px;
 margin-top:50px;
+font-style: italic;
+font-weight: bolder;
+
 
 }
 div.gallery{
@@ -33,7 +36,7 @@ div.desc {
   text-align: center;
 }
 
-
+      
 
 
 </style>
