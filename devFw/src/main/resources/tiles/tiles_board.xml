@@ -23,7 +23,7 @@
       <put-attribute name="mainBody" value="/WEB-INF/views/main2.jsp" />
       <put-attribute name="side" value="" />
    </definition>  
-   
+    
    <definition name="sellItems" extends="baseLayout">
       <put-attribute name="title" value="상품페이지" />
       <put-attribute name="fullBody" value="/WEB-INF/views/F/P002/D001.jsp" />
