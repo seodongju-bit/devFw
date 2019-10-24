@@ -25,12 +25,14 @@
         width: 15%;  
         min-height:700px;
         padding: 5px;
-        margin-right: 5px;
-        margin-bottom: 5px;
+        
+        margin-bottom: 5px;        
         float: left;
         border: 0px solid #bcbcbc;
         font-size:10px;
       }
+  
+      
       #content {
         width: 75%;
         padding: 5px;
@@ -52,6 +54,7 @@
          background-color: lightblue;
       }
       
+      
     </style>
     <title><tiles:insertAttribute name="title" /></title>
   </head>
@@ -62,7 +65,7 @@
       </div>
        <div id="sidebar-left">
           <tiles:insertAttribute name="side"/>
-      </div> 
+      </div>           
       <div id="mainContent">
           <tiles:insertAttribute name="mainBody"/>
       </div>

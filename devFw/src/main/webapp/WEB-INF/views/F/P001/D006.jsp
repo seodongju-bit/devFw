@@ -68,7 +68,7 @@ border:#555555 1px solid;
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>       
+<body>  
 <div class="name">
 new
 </div>

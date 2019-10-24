@@ -38,9 +38,9 @@ public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
-	@RequestMapping(value = "/main.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/cartegory.do", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
-		return "main";
+		return "cartegory";
 	}
 	
 	@RequestMapping(value = "/main2.do", method = RequestMethod.GET)
