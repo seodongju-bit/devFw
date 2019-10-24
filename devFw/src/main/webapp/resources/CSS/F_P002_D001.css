@@ -1,0 +1,114 @@
+@charset "UTF-8";
+
+#category{
+	width:1200px;
+	height:30px;	
+	/*background-color:orange;*/
+	margin:5px auto;
+	padding:0px;
+	text-align:left;
+}
+#categoryK{
+	position:relative;
+	top:4px;
+	left:-100px;
+	color:black;
+}
+div a{
+	color:gray;
+}
+#sellBox{
+	position:relative;
+	width:1200px;
+	height:750px;
+	margin:5px auto;
+	padding:10px;
+	/*background-color:#E2A9F3;*/
+	display:block;
+}
+#imgBox{
+	position:relative;
+	width:500px;
+	height:600px;
+	background-color:#F7F2E0;
+	padding:0px;
+	margin:0px;
+}
+
+#itemsImg{
+	position:absolute;
+	top:20px;
+	left:50px;
+}
+
+#imgList{
+	
+	position:relative;
+	bottom:0px;
+}
+/*상품 선택 박스*/
+
+#selectBox{
+	position:absolute;
+	left:550px;
+	top:10px;
+	width:600px;
+	min-height:600px;
+	/*background-color:pink;*/
+}
+
+.sellInfo{
+	box-sizing:content-box;
+	background-color:#F2F2F2;
+	border-bottom: 1px solid gray;
+	margin-bottom:5px;
+	min-height:60px;
+}
+#oprion1{
+	width:90%;
+	margin:0 auto;
+	
+}
+#sellButton{
+	position:relative;
+	top:10px;
+	height:95%;
+}
+#sellButton :first-child{
+	border:1px solid gray;
+}
+
+#sellButton > button{
+	width:140px;
+	height:45px;
+	margin:10px 20px;
+}
+.quantity{
+	width:60px;
+	height:30px;
+	text-align:center;
+}
+
+#itemsInfoSelect{
+	display:block;
+	width:1200px;
+	height:50px;	
+	/*background-color:#FA8258;*/
+	margin:5px auto;
+	
+}
+
+#itemsInfoSelect > button{
+	float:left;
+	margin:0 10px;
+	position:relative;
+	width:200px;
+	height:50px;
+	/*border-left:1px solid #F2F2F2;
+	border-right:1px solid #F2F2F2;*/
+	border-radius: 15px 15px 0 0;
+}
+#itemsInfoSelect :first-child {
+	margin-left:0px;
+}
+

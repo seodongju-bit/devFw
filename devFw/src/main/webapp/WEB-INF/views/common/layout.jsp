@@ -17,13 +17,14 @@
       }
       #header {
         padding: 0;
-        margin0: 0;
-        border: 0px solid #bcbcbc;
-         background-color: lightgreen;
+        margin: 0;
+        width:100%;
+        height:215px;
+        background-color: #F3F3F3;
       }
       #sidebar-left {
         width: 15%;
-        height:700px;
+        min-height:700px;
         padding: 5px;
         margin-right: 5px;
         margin-bottom: 5px;
@@ -41,9 +42,13 @@
       
       #mainContent {
         width: 100%;
-        padding: 0;
+        padding:0;
         margin:0;
-        background-color:#222222;
+      }
+      #mainContentDetail{
+        width: 100%;
+        padding:0;
+        margin:0;
       }
       #footer {
         clear: both;
@@ -63,11 +68,14 @@
        <div id="sidebar-left">
           <tiles:insertAttribute name="side"/>
       </div> 
-      <div id="mainContent">
-          <tiles:insertAttribute name="mainBody"/>
-      </div>
       <div id="content">
           <tiles:insertAttribute name="body"/>
+      </div>
+      <div id="mainContent">
+          <tiles:insertAttribute name="fullBody"/>
+      </div>
+      <div id="mainContentDetail">
+          <tiles:insertAttribute name="fullBodyDetail"/>
       </div>
       <div id="footer">
           <tiles:insertAttribute name="footer"/>

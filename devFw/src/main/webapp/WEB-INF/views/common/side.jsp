@@ -15,11 +15,16 @@
    .no-underline{
       text-decoration:none;
    }
+   #sideside{
+   	background-color:red;
+   }
+   
+   
  </style>
   <meta charset="UTF-8">
   <title>사이드 메뉴</title>
 </head>
-<body>
+<body><div id="sideside">
 	<h1>사이드 메뉴</h1>
 	<!-- 
 	<h1>
@@ -32,6 +37,40 @@
 		<a href="${contextPath}/member/listMembers.do"  class="no-underline">회원관리</a><br>
 		<a href="${contextPath}/board/listArticles.do"  class="no-underline">게시판관리</a><br>
 		<a href="#"  class="no-underline">상품관리</a><br>
+		<a href="${contextPath}/member/listMembers.do"  class="no-underline">회원관리</a><br>
+		<a href="${contextPath}/board/listArticles.do"  class="no-underline">게시판관리</a><br>
+		<a href="#"  class="no-underline">상품관리</a><br>
+		<a href="${contextPath}/member/listMembers.do"  class="no-underline">회원관리</a><br>
+		<a href="${contextPath}/board/listArticles.do"  class="no-underline">게시판관리</a><br>
+		<a href="#"  class="no-underline">상품관리</a><br>
+		<a href="${contextPath}/member/listMembers.do"  class="no-underline">회원관리</a><br>
+		<a href="${contextPath}/board/listArticles.do"  class="no-underline">게시판관리</a><br>
+		<a href="#"  class="no-underline">상품관리</a><br>
+		<a href="${contextPath}/member/listMembers.do"  class="no-underline">회원관리</a><br>
+		<a href="${contextPath}/board/listArticles.do"  class="no-underline">게시판관리</a><br>
+		<a href="#"  class="no-underline">상품관리</a><br>
+		<a href="${contextPath}/member/listMembers.do"  class="no-underline">회원관리</a><br>
+		<a href="${contextPath}/board/listArticles.do"  class="no-underline">게시판관리</a><br>
+		<a href="#"  class="no-underline">상품관리</a><br>
+		<a href="${contextPath}/member/listMembers.do"  class="no-underline">회원관리</a><br>
+		<a href="${contextPath}/board/listArticles.do"  class="no-underline">게시판관리</a><br>
+		<a href="#"  class="no-underline">상품관리</a><br>
+		<a href="${contextPath}/member/listMembers.do"  class="no-underline">회원관리</a><br>
+		<a href="${contextPath}/board/listArticles.do"  class="no-underline">게시판관리</a><br>
+		<a href="#"  class="no-underline">상품관리</a><br>
+		<a href="${contextPath}/member/listMembers.do"  class="no-underline">회원관리</a><br>
+		<a href="${contextPath}/board/listArticles.do"  class="no-underline">게시판관리</a><br>
+		<a href="#"  class="no-underline">상품관리</a><br>
+		<a href="${contextPath}/member/listMembers.do"  class="no-underline">회원관리</a><br>
+		<a href="${contextPath}/board/listArticles.do"  class="no-underline">게시판관리</a><br>
+		<a href="#"  class="no-underline">상품관리</a><br>
+		<a href="${contextPath}/member/listMembers.do"  class="no-underline">회원관리</a><br>
+		<a href="${contextPath}/board/listArticles.do"  class="no-underline">게시판관리</a><br>
+		<a href="#"  class="no-underline">상품관리</a><br>
+		<a href="${contextPath}/member/listMembers.do"  class="no-underline">회원관리</a><br>
+		<a href="${contextPath}/board/listArticles.do"  class="no-underline">게시판관리</a><br>
+		<a href="#"  class="no-underline">상품관리</a><br>
 	</h1>
+	</div>
 </body>
 </html>

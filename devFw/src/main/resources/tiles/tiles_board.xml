@@ -8,21 +8,29 @@
       <put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
       <put-attribute name="side" value="/WEB-INF/views/common/side.jsp" />
       <put-attribute name="body" value="" />
-      <put-attribute name="mainBody" value="" />
+      <put-attribute name="fullBody" value="" />
+      <put-attribute name="fullBodyDetail" value="" />
       <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
    </definition>
 
    <definition name="main" extends="baseLayout">
       <put-attribute name="title" value="메인페이지" />
-      <put-attribute name="body" value="/WEB-INF/views/A/P001/D001.jsp" />
+      <put-attribute name="body" value="/WEB-INF/views/main.jsp" />
    </definition>
 
    <definition name="main2" extends="baseLayout">
-      <put-attribute name="title" value="회원목록창" />
-      <put-attribute name="mainBody" value="/WEB-INF/views/B/P001/D001.jsp" />
+      <put-attribute name="title" value="메인페이지2" />
+      <put-attribute name="mainBody" value="/WEB-INF/views/main2.jsp" />
       <put-attribute name="side" value="" />
    </definition>  
-    
+   
+   <definition name="sellItems" extends="baseLayout">
+      <put-attribute name="title" value="상품페이지" />
+      <put-attribute name="fullBody" value="/WEB-INF/views/F/P002/D001.jsp" />
+      <put-attribute name="fullBodyDetail" value="/WEB-INF/views/F/P002/D002.jsp" />
+      <put-attribute name="side" value="" />
+   </definition> 
+  <!-- 
    <definition name="/member/loginForm" extends="baseLayout">
       <put-attribute name="title" value="로그인창" />
       <put-attribute name="body" value="/WEB-INF/views/member/loginForm.jsp" />
@@ -43,7 +51,7 @@
     <put-attribute name="body" value="/WEB-INF/views/board/viewArticle.jsp" />
   </definition>
      
-   
+    -->  
 <!-- 
    <definition name="/member/memberForm" extends="baseLayout">
       <put-attribute name="title" value="회원등록창" />
