@@ -146,7 +146,7 @@ new
 <div class="gallery">
   <a target="_blank" href="resources/image/14.JPG">
     <img src="resources/image/14.JPG" alt="14" width="600" height="400">
-  </a>
+  </a>      
   <div class="desc">(벨트증정) +5cm 감사제 데님팬츠(BLACK) 39,000</div>
 </div>
 
