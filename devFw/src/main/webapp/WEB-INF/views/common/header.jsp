@@ -11,7 +11,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<style>
+<style>   
 body {
 	margin: 0;
 	padding: 0;
@@ -89,18 +89,43 @@ body {
 }
 
 .dropdown-content {
-	display: none;
-	position: absolute;
-	background-color: black;
-	min-width: 180px;
-	z-index: 1;
-	opacity: 0.8;
+  display: none;
+  position: absolute;
+  background-color: black;
+  min-width: 180px;
+  z-index: 1;
+  opacity: 0.8;  
+
 }
 
 .dropdown-content .menu1 {
 	color: white;
 	padding: 12px 8px;
 	text-decoration: none;
+
+.dropdown-content2{
+  display: none;
+  position: absolute;
+  top:0px;
+  left:180px;
+  background-color: black;
+  width: 928px;
+  height:224px;
+  color:white;
+  z-index: 1;
+  text-align:left;
+  opacity: 2;
+}
+
+.dropdown-content .menu1:hover{
+	background-color: white;
+	color:black;
+}
+
+#dropMenu:hover .dropdown-content {
+  	display: block;
+}
+.menu1:hover  .dropdown-content2{
 	display: block;
 }
 
@@ -123,6 +148,7 @@ body {
 	color: black;
 }
 
+
 #dropMenu:hover .dropdown-content {
 	display: block;
 }
@@ -141,7 +167,8 @@ body {
 <title>Insert title here</title>
 </head>
 <body>
-	<div id="topMenu">탑메뉴</div>
+<div id="topMenu">탑메뉴</div>     
+<div id="header">
 	<div id="headerBody">
 		<a href="${contextPath}/main.do"><img id="toplogo"
 			src="${contextPath}/resources/image/logo.png" /></a> <input type="text"
@@ -195,5 +222,7 @@ body {
 			<button class="menubtn">이벤트/공지사항</button>
 		</div>
 	</div>
+</div>
+
 </body>
 </html>
