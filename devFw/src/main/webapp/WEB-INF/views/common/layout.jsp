@@ -12,7 +12,7 @@
       #container {
         width: 100%;
         margin: 0px auto;
-          text-align:center;
+        text-align:center;
         border: 0px solid #bcbcbc;
       }
       #header {
