@@ -36,16 +36,16 @@ body {
   }
 
 .left h2 {
-  padding-left: 8px;      
+  padding-left: 8px;                    
 }
 
-
+                             
 /* 왼쪽 메뉴 스타일 */
 #myMenu {         
   list-style-type: none;
   padding: 0;          
   margin: 0;
-  width:200px; 
+  width:200px;       
  
 }
 
