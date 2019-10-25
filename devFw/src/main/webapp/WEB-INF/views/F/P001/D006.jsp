@@ -11,10 +11,11 @@ font-size:30px;
 margin-top:50px;
 font-style: italic;
 font-weight: bolder;
-
+right:100px;
 
 }
 div.gallery{
+postion:fixed;
 background-color:#848484;
     margin: 5px;
     border: 1px solid #ccc;
@@ -32,15 +33,22 @@ div.gallery img {
 }
 
 div.desc {
+postion:fixed;
   padding: 15px;
   text-align: center;
-}
+}                                                                 
 
+#page{
+margin-right:150px;
+padding:15px;
+text-align:center;
+}
       
 #paging {
+postion:fixed;
 width:580px; 
 text-align:center; 
-float:left; 
+float:center; 
 line-height:15px;
 }
 #paging a.prev{
@@ -62,6 +70,11 @@ border:#AAAAAA 1px solid;
     }
 #paging a:hover.num{
 border:#555555 1px solid;
+}
+
+#page{
+position:relative;
+left:300px;
 }
 
 </style>
@@ -193,10 +206,10 @@ new
   <div class="desc">애즈클로 피어컷팅 데님자켓 65,000</div>
 </div>
 
-<s_paging> 
+<s_paging id="page"> 
 <div id="paging">
     <a href="#">Prev</a>
-    <strong>1</strong>
+    <strong>1</strong>   
      <a href="#">2</a>
     <a href="#">3</a>
     <a href="#">4</a>
