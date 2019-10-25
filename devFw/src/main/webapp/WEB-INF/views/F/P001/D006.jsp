@@ -9,9 +9,9 @@
 div.name{
 font-size:30px;
 margin-top:50px;
+margin-right:180px;
 font-style: italic;
 font-weight: bolder;
-right:100px;
 
 }
 div.gallery{
@@ -74,7 +74,7 @@ border:#555555 1px solid;
 
 #page{
 position:relative;
-left:300px;
+left:325px;
 }
 
 </style>
