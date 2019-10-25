@@ -69,6 +69,11 @@ border:#AAAAAA 1px solid;
 border:#555555 1px solid;
 }
 
+#page{                                        
+position:relative;
+left:335px;
+}
+
                                    
 
 </style>
@@ -199,9 +204,9 @@ new product
   </a>
   <div class="desc">애즈클로 피어컷팅 데님자켓 65,000</div>
 </div>
-
-<s_paging id="page"> 
 <div id="paging">
+<s_paging id="page"> 
+
     <a href="#">Prev</a>
     <strong>1</strong>   
      <a href="#">2</a>
@@ -209,8 +214,9 @@ new product
     <a href="#">4</a>
     <a href="#">5</a>
     <a href="#">Next</a>                              
-</div>
+
 </s_paging>
+</div>
 
 
 </body>
