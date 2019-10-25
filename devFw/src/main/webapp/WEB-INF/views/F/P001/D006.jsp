@@ -6,6 +6,9 @@
 <html>
 <head>
 <style>
+                                       
+
+
 div.name{
 font-size:30px;
 margin-top:50px;
@@ -37,12 +40,6 @@ postion:fixed;
   padding: 15px;
   text-align: center;
 }                                                                 
-
-#page{
-margin-right:150px;
-padding:15px;
-text-align:center;
-}
       
 #paging {
 postion:fixed;
@@ -72,10 +69,7 @@ border:#AAAAAA 1px solid;
 border:#555555 1px solid;
 }
 
-#page{
-position:relative;
-left:325px;
-}
+                                   
 
 </style>
 <meta charset="UTF-8">
@@ -83,7 +77,7 @@ left:325px;
 </head>
 <body>  
 <div class="name">
-new
+new product
 </div>
 <div class="gallery">
   <a target="_blank" href="resources/image/1.PNG">
