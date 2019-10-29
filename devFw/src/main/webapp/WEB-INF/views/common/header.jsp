@@ -23,7 +23,7 @@
 		background:#DDDDDD;
 		margin: 0 0px 0 0px;
 		padding: 0;
-		height:20px;
+		height:20px;     
 		position:relative;
 		width:100%;       
 		min-width:800px;                        
