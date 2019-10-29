@@ -41,10 +41,10 @@ public class HomeController {
 	@RequestMapping(value = "/cartegory.do", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		return "cartegory";
-	}
+	}     
 	
-	@RequestMapping(value = "/main2.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/mypage.do", method = RequestMethod.GET)
 	public String home2(Locale locale, Model model) {
-		return "main2";
+		return "mypage";
 	}
 }
