@@ -15,6 +15,7 @@ margin-top:50px;
 margin-right:180px;
 font-style: italic;
 font-weight: bolder;
+
 }
 div.gallery{
 postion:fixed;
@@ -81,7 +82,7 @@ left:335px;
 </head>
 <body>  
 <div class="name">
-new product
+best product
 </div>
 <div class="gallery">
   <a target="_blank" href="resources/image/1.PNG">
