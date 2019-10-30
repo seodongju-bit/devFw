@@ -47,7 +47,7 @@ text-align:left;
         <li><a href="#">할인 쿠폰</a></li>
         <li><a href="#">캐시/기프트카드</a></li>
         <li class="nav-header">My 활동</li>
-        <li><a href="cartegory.do">내가 작성한 리뷰</a></li>
+        <li><a href="myReview.do">내가 작성한 리뷰</a></li>
         <li><a href="#">문의 하기</a></li>
         <li><a href="#">문의내역 확인</a></li>
         <li><a href="#">구매 리뷰</a></li>

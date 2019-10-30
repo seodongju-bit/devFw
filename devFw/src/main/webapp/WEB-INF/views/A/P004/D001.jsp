@@ -12,13 +12,6 @@
 <head>
 
 <style>
-
-.orderlist {
-	margin-left:50px;
-	margin-top:-200px;
-}
-
-
 #f {
 	text-align: left;
 	margin: 0px;
@@ -103,11 +96,12 @@ check {
 <body>
 
 
-	<div class="orderlist">
+
 	<h1 align="center" >마이페이지</h1>
 
 	<table class="table table-hover" >
 		<tr>
+
 			<th id="My" >My</th>
 			<th>미사용 티켓<br> <a href="#" style="">0장</a></th>
 			<th>배송중<br> <a href="#" style="">0건</a></th>
@@ -154,11 +148,11 @@ check {
 
 
 			<td align="center">배송상태<br>
-			<br> <span style="color: green;">수요일 8/21 도착</span><br> <input
-				type="button" class="btn btn-link" value="배송조회"><br> <input
-				type="button" class="btn btn-link" value="교환신청"><br> <input
-				type="button" class="btn btn-link" value="반품신청"><br> <input
-				type="button" class="btn btn-link" value="리뷰작성"><br>
+			<br> <span style="color: green;">수요일 8/21 도착</span><br> 
+			<input type="button" class="btn btn-link" value="배송조회"><br> 
+		    <input type="button" class="btn btn-link" value="교환신청"><br> 
+		    <input type="button" class="btn btn-link" value="반품신청"><br> 
+			<p><a href="reviewwrite.do">리뷰 작성하기<br></a>
 			</td>
 		</tr>
 
@@ -194,18 +188,18 @@ check {
 			</td>
 		</tr>
 	</table>
-	</div>
+
 	<div class="container" align="center" style="max-width:92%;">
 		<ul class="pagination">
 			<li><a href="#"><</a></li>
 			<li><a href="#">></a></li>
 		</ul>
 	</div>
-	
+
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-	<script type="text/javascript" src="../devFw/resources/js/bootstrap.js"></script>
+	<script type="text/javascript" src="../pro27/resources/js/bootstrap.js"></script>
 	<script src="../devFw/resources/js/bootstrap.min.js"></script>
-	
+
 
 	<div id="caution-box">
 		<div id="all">

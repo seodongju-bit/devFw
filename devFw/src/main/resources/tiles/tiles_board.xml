@@ -55,6 +55,12 @@
       <put-attribute name="title" value="마이페이지" />
       <put-attribute name="body" value="/WEB-INF/views/A/P004/D001.jsp" />
    </definition>
+   
+   	<definition name="myReview" extends="baseLayout">
+      <put-attribute name="title" value="내 리뷰 확인" />
+      <put-attribute name="body" value="/WEB-INF/views/D/P001/D002.jsp" />
+   </definition>
+   
 
 	<definition name="reviewRanking" extends="baseLayout2">
       <put-attribute name="title" value="리뷰랭킹 페이지" />         
