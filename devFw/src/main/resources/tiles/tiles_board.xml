@@ -89,7 +89,7 @@
    </definition> 
            
    
-<!-- 
+<!--  하이헬로
    <definition name="/member/memberForm" extends="baseLayout">
       <put-attribute name="title" value="회원등록창" />
       <put-attribute name="body" value="/WEB-INF/views/member/memberForm.jsp" />
