@@ -82,7 +82,7 @@ height:150px;
 
 .pop-layer .pop-container {
   padding: 20px 25px;
-   position: fixed;
+       
 }
 
 .pop-layer p.ctxt {
