@@ -21,12 +21,12 @@
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
 		in the /WEB-INF/views directory -->
-<!-- 타일즈 사용위해 뺌
+<!-- 
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"> 
 		<beans:property name="prefix" value="/WEB-INF/views/" /> 
 		<beans:property name="suffix" value=".jsp" /> 
 	</beans:bean>
--->
+ -->
   <context:component-scan	base-package="project" />
   
   <beans:bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver" >

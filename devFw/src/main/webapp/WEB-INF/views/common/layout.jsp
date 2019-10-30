@@ -9,29 +9,34 @@
   <head>
     <meta charset="UTF-8">
     <style>
-      #container {
-        width: 100%;
-        margin: 0px auto;
-        text-align:center;
-        border: 0px solid #bcbcbc;
-      }
+    #container {
+	width: 100%;
+	margin: 0px auto;
+	/*   text-align:center; */
+	border: 0px solid #bcbcbc;
+}
+    
+    
       #header {
         padding: 0;
-        margin: 0;
+        margin-top:-1px;
         width:100%;
-        height:215px;
+        min-width:800px;
+        height:202px;
         background-color: #F3F3F3;
       }
-      #sidebar-left {
-        width: 15%;
+       #sidebar-left {
+        width: 15%;  
         min-height:700px;
         padding: 5px;
-        margin-right: 5px;
-        margin-bottom: 5px;
+        margin-right:120px;
+        margin-bottom: 5px;        
         float: left;
         border: 0px solid #bcbcbc;
         font-size:10px;
       }
+  
+      
       #content {
         width: 75%;
         padding: 5px;
@@ -42,13 +47,9 @@
       
       #mainContent {
         width: 100%;
-        padding:0;
+        padding: 0;
         margin:0;
-      }
-      #mainContentDetail{
-        width: 100%;
-        padding:0;
-        margin:0;
+        background-color:#222222;
       }
       #footer {
         clear: both;
@@ -57,6 +58,8 @@
          background-color: lightblue;
       }
       
+        
+    
     </style>
     <title><tiles:insertAttribute name="title" /></title>
   </head>
@@ -67,15 +70,12 @@
       </div>
        <div id="sidebar-left">
           <tiles:insertAttribute name="side"/>
-      </div> 
+      </div>           
+      <div id="mainContent">
+          <tiles:insertAttribute name="mainBody"/>
+      </div>
       <div id="content">
           <tiles:insertAttribute name="body"/>
-      </div>
-      <div id="mainContent">
-          <tiles:insertAttribute name="fullBody"/>
-      </div>
-      <div id="mainContentDetail">
-          <tiles:insertAttribute name="fullBodyDetail"/>
       </div>
       <div id="footer">
           <tiles:insertAttribute name="footer"/>

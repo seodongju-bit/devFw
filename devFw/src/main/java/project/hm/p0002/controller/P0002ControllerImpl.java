@@ -66,15 +66,15 @@ public class P0002ControllerImpl implements P0002Controller {
 				resultMap.put("error_yn", "N");				
 			}else {
 				resultMap.put("error_yn", "Y");
-				resultMap.put("error_text", "Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù");
+				resultMap.put("error_text", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê½ï¿½ï¿½Ï´ï¿½");
 			}
 		}catch(Exception e) {
 			resultMap.put("error_yn", "Y");
-			resultMap.put("error_text", "¿¡·¯¹ß»ý");
+			resultMap.put("error_text", "ï¿½ï¿½ï¿½ï¿½ï¿½ß»ï¿½");
 			e.printStackTrace();
 		}
 		
-		System.out.println("=======================>>"+resultMap.toString());
+		System.out.println("=======================>>"+resultMap);
 		return resultMap;
 	}
 	
@@ -105,7 +105,7 @@ public class P0002ControllerImpl implements P0002Controller {
 			resultMap.put("error_yn", "N");	
 		} catch (Exception e) {
 			resultMap.put("error_yn", "Y");
-			resultMap.put("error_text", "¿¡·¯¹ß»ý");
+			resultMap.put("error_text", "ï¿½ï¿½ï¿½ï¿½ï¿½ß»ï¿½");
 			e.printStackTrace();
 		}		
 		return resultMap;
@@ -116,7 +116,7 @@ public class P0002ControllerImpl implements P0002Controller {
 	public Map<String, Object> ajaxTest() {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("id", "hong");
-		map.put("name", "È«±æµ¿");
+		map.put("name", "È«ï¿½æµ¿");
 		return map;
 	}
 }

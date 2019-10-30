@@ -55,7 +55,7 @@ public class P0001ControllerImpl implements P0001Controller {
 		searchMap.put("p_id", p_id);	 
 		
 		List list = p0001Service.searchList(searchMap);
-		
+		System.out.println("____>"+list);
 		ModelAndView mav = new ModelAndView("hm/p0001_search");
 		mav.addObject("searchList", list);
 		return mav;

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="F.P002">
+	<resultMap id="F_P002Result01" type="F_P002VO">
+		<result property="sell_number" column="sell_number" />
+		<result property="pro_number" column="pro_number" />
+		<result property="sell_price" column="sell_price" />
+		<result property="sell_score" column="sell_score" />
+		<result property="sell_contents" column="sell_contents" />
+		<result property="sell_total" column="sell_total" />
+		<result property="sell_date" column="sell_date" />
+		<result property="sell_title" column="sell_title" />
+		<result property="sell_thumbnail" column="sell_thumbnail" />
+		<result property="sell_quantity" column="sell_quantity" />
+		<result property="mem_ID" column="mem_ID" />
+		<result property="option_yn" column="option_yn" />
+	</resultMap>
+	
+	<resultMap id="F_P002Result02" type="F_P002VO">
+		<result property="sell_number" column="sell_number" />
+		<result property="option_size" column="option_size" />
+		<result property="option_color" column="option_color" />
+		<result property="option_quantity" column="option_quantity" />
+	</resultMap>
+	
+	<select id="searchItem" resultMap="F_P002Result01" parameterType="java.util.Map"> 
+      <![CDATA[
+         select *
+         from productsell
+      ]]>
+		<where>
+			<if test=" p_id != ''  and  p_id != null">
+				sell_number = ${p_id}
+			</if>
+		</where>
+	</select>
+	
+	<select id="searchOption" resultMap="F_P002Result02" parameterType="java.util.Map"> 
+      <![CDATA[
+         select *
+         from selloption
+      ]]>
+		<where>
+			<if test=" p_id != ''  and  p_id != null">
+				sell_number = ${p_id}
+			</if>
+		</where>
+	</select>
+
+</mapper>

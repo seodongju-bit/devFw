@@ -1,20 +1,20 @@
 @charset "UTF-8";
 
-#category{
+#catCategory{
+	position:relative;
+	display:block;
 	width:1200px;
-	height:30px;	
-	/*background-color:orange;*/
+	height:30px;
 	margin:5px auto;
-	padding:0px;
+	
+}
+#catCategory > div{
+	position:absolute;
+	width:400px;
+	height:30px;
 	text-align:left;
 }
-#categoryK{
-	position:relative;
-	top:4px;
-	left:-100px;
-	color:black;
-}
-div a{
+#catCategory a{
 	color:gray;
 }
 #sellBox{
@@ -30,7 +30,7 @@ div a{
 	position:relative;
 	width:500px;
 	height:600px;
-	background-color:#F7F2E0;
+	background-color:lightblue;
 	padding:0px;
 	margin:0px;
 }
@@ -42,8 +42,7 @@ div a{
 }
 
 #imgList{
-	
-	position:relative;
+	position:absolute;
 	bottom:0px;
 }
 /*상품 선택 박스*/
@@ -97,7 +96,6 @@ div a{
 	margin:5px auto;
 	
 }
-
 #itemsInfoSelect > button{
 	float:left;
 	margin:0 10px;

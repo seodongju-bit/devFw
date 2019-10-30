@@ -5,21 +5,27 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <style>
+                                       
+
+
 div.name{
 font-size:30px;
 margin-top:50px;
+margin-right:180px;
 font-style: italic;
 font-weight: bolder;
 }
 div.gallery{
+postion:fixed;
 background-color:#848484;
     margin: 5px;
     border: 1px solid #ccc;
     float: left;
     width: 300px;
     height:450px;              
-}
+    }
   div.gallery:hover {         
   border: 1px solid #777;
 }   
@@ -30,17 +36,55 @@ div.gallery img {
 }
 
 div.desc {
+postion:fixed;
   padding: 15px;
   text-align: center;
+}                                                                 
+      
+#paging {
+postion:fixed;
+width:580px; 
+text-align:center; 
+float:center; 
+line-height:15px;
+}
+#paging a.prev{
+font:8pt verdana; 
+color:#555555;
+
+}
+#paging .selected {
+font-weight:bolder; 
+color:#555555;
+}
+#paging a.num{
+border:#AAAAAA 1px solid;
+ background-color:#FFFFFF; 
+ color:#555555;
+  padding:3px 6px;                               
+   margin:3px;
+    font:8pt verdana;
+    }
+#paging a:hover.num{
+border:#555555 1px solid;
 }
 
-      
+#page{                                        
+position:relative;
+left:335px;
+}
+
+                                   
+
 </style>
 <meta charset="UTF-8">
+<link href="../devFw/resources/css/bootstrap.min.css" rel="stylesheet">
+<meta name="viewport" content="width=divice-width, initial-scale=1.0">
 <title>Insert title here</title>
 </head>
-<body>       
+<body>  
 <div class="name">
+new product
 </div>
 <div class="gallery">
   <a target="_blank" href="resources/image/1.PNG">
@@ -163,6 +207,20 @@ div.desc {
   <div class="desc">애즈클로 피어컷팅 데님자켓 65,000</div>
 </div>
 
+
+<div id="paging">
+<s_paging id="page"> 
+
+    <a href="#">Prev</a>
+    <strong>1</strong>   
+     <a href="#">2</a>
+    <a href="#">3</a>
+    <a href="#">4</a>
+    <a href="#">5</a>
+    <a href="#">Next</a>                              
+
+</s_paging>
+</div>
 
 
 </body>

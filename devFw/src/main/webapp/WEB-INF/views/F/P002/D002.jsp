@@ -23,9 +23,9 @@
         player = new YT.Player('player', {
           height: '360',
           width: '640',
-          videoId: 'eXBu09fwe3I',
+          videoId: 'M7lc1UVf-VE',
           events: {
-            'onReady': onPlayerReady,
+            //'onReady': onPlayerReady,
             'onStateChange': onPlayerStateChange
           }
         });
@@ -42,8 +42,8 @@
       var done = false;
       function onPlayerStateChange(event) {
         if (event.data == YT.PlayerState.PLAYING && !done) {
-          setTimeout(stopVideo, 6000);
-          done = true;
+          //setTimeout(stopVideo, 6000);
+          done = false;
         }
       }
       function stopVideo() {
