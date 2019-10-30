@@ -25,7 +25,7 @@ text-align:center; */
 }
 
 #c { 
-         
+   
 	text-align: center;
 }
 
@@ -81,7 +81,8 @@ height:150px;
 }    
 
 .pop-layer .pop-container {
-  padding: 20px 25px;     
+  padding: 20px 25px;
+   position: fixed;
 }
 
 .pop-layer p.ctxt {
@@ -139,7 +140,7 @@ a.btn-layerClose:hover {
 <meta charset="UTF-8">
 <title>메인 페이지</title>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
-<link href="../devFw/resources/css/bootstrap.min.css" rel="stylesheet">
+<link href="../pro27/resources/css/bootstrap.min.css" rel="stylesheet">
 <meta name="viewport" content="width=divice-width, initial-scale=1.0">
 </head>
 <body>
@@ -167,7 +168,7 @@ a.btn-layerClose:hover {
 	</table>
 
 
-	<p id="f" style=" margin-right: 0px;">내가 작성한 리뷰 목록</p>
+	<p id="f" style=" margin-right: 0px;">리뷰 작성하기</p>
 
 	<table class="table table-hover">
 
@@ -176,7 +177,7 @@ a.btn-layerClose:hover {
 			<th colspan="3">
 				<div class="container">
 					<ul class="nav nav-tabs">
-						<li class="active"><a href="myReview.do">My</a></li>
+						<li class="active"><a href="review.do">My</a></li>
 
 					</ul>
 				</div>
@@ -184,78 +185,15 @@ a.btn-layerClose:hover {
 		</tr>
 
 		<tr>
-			<th colspan="1" align=left>주문상품</th>
+			<th colspan="1" align=left>리뷰 작성창</th>
 		
 			<th id="c"><a href="#"><span style="color: blue;">주문상세
 						보기></span></a>
 		</tr>
 
-		<tr>                    
-			<td align="left"><img src="http://placehold.it/120x166"></td>
-			
-            <td align="left"><p class="inset">An inset border.</p></td>
-
-			<td align="center">분류<br>
-			<a href="#layer1" class="btn-example">리뷰상세</a><br>
-			<input type="button" class="btn btn-link" value="리뷰내용조회"><br> 
-			<input type="button" class="btn btn-link" value="월별 추천수"><br> 
-			<input type="button" class="btn btn-link" value="total추천수"><br> 
-			<input type="button" class="btn btn-link" value="수익"><br> 
-
-			</td>
-			
- <div id="layer1" class="pop-layer">
-        <div class="pop-container">
-        <div class="pop-conts">
-            <!--content //-->
-            <p class="ctxt mb20">환장스런 핏<br>
-            <br>
-              옷 진짜 이뻐요
-            </p>
-
-            <div class="btn-r">
-                <a href="#" class="btn-layerClose">close</a>
-              <a href="#" class="btn-layerClose">review delete</a>
-              <a href="#" class="btn-layerClose">review update</a>
-            </div>
-            <!--// content-->
-        </div>
-    </div>
 	
-		</tr>
 
-		<tr>     
-			<td align="left"><img src="http://placehold.it/120x166"></td>
-			
-            <td align="left"><p class="inset">An inset border.</p></td>
-
-			<td align="center">분류<br>
-			<a href="#layer1" class="btn-example">리뷰상세</a><br>
-			<input type="button" class="btn btn-link" value="리뷰내용조회"><br>
-			<input type="button" class="btn btn-link" value="월별 추천수"><br> 
-			<input type="button" class="btn btn-link" value="total추천수"><br> 
-			<input type="button" class="btn btn-link" value="수익"><br> 
-
-			</td>
-	<div id="layer1" class="pop-layer">
-        <div class="pop-container">
-        <div class="pop-conts">
-            <!--content //-->
-            <p class="ctxt mb20">환장스런 핏<br>
-            <br>
-              옷 진짜 이뻐요
-            </p>
-
-            <div class="btn-r">
-                <a href="#" class="btn-layerClose">close</a>
-              <a href="#" class="btn-layerClose">review delete</a>
-              <a href="#" class="btn-layerClose">review update</a>
-            </div>
-            <!--// content-->
-        </div>
-    </div>		
-			
-		</tr>
+	
      
 		<tr>
 			<td align="left"><img src="http://placehold.it/120x166"></td>
@@ -300,7 +238,7 @@ a.btn-layerClose:hover {
                                                      
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script type="text/javascript" src="../pro27/resources/js/bootstrap.js"></script>
-	<script src="../devFw/resources/js/bootstrap.min.js"></script>
+	<script src="../pro27/resources/js/bootstrap.min.js"></script>
 
             
 	<div id="side">

@@ -31,6 +31,17 @@ public class D_P001ControllerImpl   implements D_P001Controller {
 		//mav.addObject("membersList", membersList);
 		return mav;
 	}
+	@Override
+	@RequestMapping(value="/reviewwrite.do" ,method = RequestMethod.GET)
+	public ModelAndView reviewwrite(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = getViewName(request);
+		viewName = "reviewwrite";
+		//List membersList = memberService.listMembers();
+		ModelAndView mav = new ModelAndView(viewName);
+		//mav.addObject("membersList", membersList);
+		return mav;
+	}
+
 	
 
 	

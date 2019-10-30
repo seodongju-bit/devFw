@@ -210,7 +210,7 @@ check {
 					<a href="#" id="r">자세한 내용 더보기 ></a>
 				</p>
 				<div id="z">
-					<img
+					<img     
 						src="resources/image/asdf.PNG">
 				</div>
 			</div>
