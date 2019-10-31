@@ -55,7 +55,7 @@
       <put-attribute name="body" value="/WEB-INF/views/A/P001/D002.jsp" />
       <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
    </definition> 
-
+ 
 
 	<definition name="myPage" extends="baseLayout">
       <put-attribute name="title" value="마이페이지" />
