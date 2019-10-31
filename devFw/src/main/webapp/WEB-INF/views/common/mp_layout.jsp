@@ -27,7 +27,7 @@
 
 #sidebar-left {
 	width: 500px;
-	height: 100px;
+	height: 0px;
 	padding: 5px;
 	margin-right: 5px;
 	margin-bottom: 5px;
@@ -40,7 +40,7 @@
 #content {
 	width: 75%;
 	padding: 5px;
-	margin-left: 250px;
+	margin-left: 290px;
 	border: 0px solid #bcbcbc;   
 }
 

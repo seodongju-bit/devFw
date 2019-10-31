@@ -246,7 +246,7 @@ check {
 				<td align="center">My</td>
 			</tr>
 			<tr>
-				<td style="background-color: #000000;"><a href="#"><strong
+				<td style="background-color: #000000;"><a href="basket.do"><strong
 						style="color: white;">장바구니 ▶ 0개</strong></a></td>
 			</tr>
 			<tr>
