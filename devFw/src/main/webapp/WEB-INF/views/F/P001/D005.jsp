@@ -2,6 +2,13 @@
     pageEncoding="UTF-8"   isELIgnored="false"
  %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
+ <c:forEach var="selectItem" items="${list}" />
+<%
+  request.setCharacterEncoding("UTF-8");
+%>    
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -87,7 +94,7 @@ new product
   <a target="_blank" href="resources/image/items/1.PNG">
     <img src="resources/image/items/1.PNG" alt="1" width="600" height="400">
   </a>
-  <div class="desc">리커 소매트임니트(4color) 32,000</div>
+  <div class="desc">${list.pro_name}</div>
   
 </div>
 
