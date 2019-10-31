@@ -27,20 +27,9 @@ $(document).ready(function(){
 	$('.miniImg').attr('src', 'resources/image/items/10.JPG' );
 	
 	
-	
-	//document.getElementById('test').innerHTML = 'p_id';
-	
 	if('${item.option_yn}'=='y'){
 	/////ajax
-	
-	  
-
-	}
-
-})
-function ajax(){
-	console.log("아작스");
-	var p_id = '${item.sell_number}'
+		 var p_id = '${item.sell_number}'
 	 $.ajax({
 	       type:"post",
 	       async:false,  
@@ -50,53 +39,33 @@ function ajax(){
 	       success:function (data,textStatus){
 	    	   //var jsonInfo = JSON.parse(data);
 	           var jsonInfo = data;
-	        
-	           
-		       $('#before_id').val(jsonInfo.before_id);
-		      
-		       var sizeOption ;
-		       var colorOption ;
-		       
-		       sizeOption.setAttribute("id", "sizeOption");
-		       sizeOption.setAttribute("class", "form-control");
-		       
-		       var selectOption1 = document.createElement('option');
-		       selectOption1.setAttribute("value", "123123");
-		       selectOption1.setAttribute("val", "123123");
-		       selectOption1.append("asdf");
-	    	   var selectOption2 = document.createElement('option');
-	    	   selectOption2.setAttribute("value", "123124");
-	    	 
-	    	   sizeOption.appendChild(selectOption1);
-	    	   sizeOption.appendChild(selectOption2);
-	    	   document.getElementById('orderOption').appendChild(sizeOption);
-	    	   
-	    	   var sizeCheck=0;
-	    	   var colorCheck=0;
-		       for(var i=0;i<jsonInfo.length;i++){
-		    	   jsonInfo[i].option_quantity
-		    	   if(jsonInfo[i].option_size!='0' && sizeCheck==0){ sizeOption = document.createElement('select'); sizeCheck++;}
-		    	   if(jsonInfo[i].option_color!='0' && colorCheck==0){ colorOption = document.createElement('select'); colorCheck++;}
-		    	   
-		    	   if(sizeCheck>0){
-		    		   var selectSize = document.createElement('option');
-		    		   selectSize.setAttribute("value", jsonInfo[i].option_size);
-		    		   selectSize.append(jsonInfo[i].option_size);
-		    		   sizeOption.appendChild(selectSize);
-		    	   }
-		    	   if(colorCheck>0){
-		    		   var selectColor = document.createElement('option');
-		    		   selectColor.setAttribute("value", jsonInfo[i].option_color);
-		    		   selectColor.append(jsonInfo[i].option_color);
-		    		   colorOption.appendChild(selectColor);
-		    	   }
-		    	   
-		    	   
-		    	  // document.getElementById('orderOption').innerHTML += jsonInfo[i].option_size;
-		    	   //document.getElementById('orderOption').innerHTML +=jsonInfo[i].option_color;
-		      
-		       }
-		       //document.getElementById('sizeOption').appendChild(selectOption);
+	           if(jsonInfo.length!=0){
+	        	   $('#orderOption').css('display', 'block');
+	           }
+	           const size = new Set();
+	           const color = new Set();
+
+	           for(var i=0;i<jsonInfo.length;i++){
+	        	   var size_op = jsonInfo[i].option_size;
+	        	   var color_op = jsonInfo[i].option_color;
+	         	   if(size_op!='0' && !size.has(size_op)){
+	        	   	 $('#sizeOption').css('display', 'block');
+	        	   	 size.add(size_op);
+	        	   	 var sizeOption = document.createElement('option');
+	        	     sizeOption.setAttribute("value", size_op);
+	        	   	 sizeOption.append(size_op);
+	        	   	 document.getElementById('sizeOption').appendChild(sizeOption);
+	          	  }
+	         	  if(jsonInfo[i].option_color!='0' && !color.has(color_op)){
+	         		 $('#colorOption').css('display', 'block');
+	         		 color.add(color_op);
+	        	   	 var colorOption = document.createElement('option');
+	        	   	 colorOption.setAttribute("value", color_op);
+	        	     colorOption.append(color_op);
+	        	   	 document.getElementById('colorOption').appendChild(colorOption);
+	          	  }
+	           }
+		
 		      
 	       },
 	       error:function(request,textStatus,error){
@@ -106,7 +75,57 @@ function ajax(){
 	          //alert("작업을완료 했습니다");
 	       }
 	    });  //end ajax
-}
+	}
+
+})
+var itemList = [];
+$(document).ready(function(){
+	 $('#sizeOption').on('change',function(){
+		 $('#colorOption').css('display', 'block');
+		 $('#colorOption').on('change',function(){
+			 var item={};
+			 if(document.getElementById('colorOption').value!=""){
+				 item.color = document.getElementById('colorOption').value;
+				 $('#colorOption').val("");
+			 }
+			 if(document.getElementById('sizeOption').value!=""){
+				 item.size = document.getElementById('sizeOption').value;
+				 $('#sizeOption').val("");
+			 }
+		
+			 if("color" in item || "size" in item){
+				 itemList.push(item);
+			 }
+
+			 console.log(itemList);
+			 //document.getElementById('sizeOption').value="";
+			 
+			 
+
+			 /*
+			 var form = document.createElement("item1");
+			 form.setAttribute("charset", "UTF-8");
+	         form.setAttribute("method", "get"); 
+	         form.setAttribute("action", "/test/test.html");
+			 
+			 //var size = document.getElementById('sizeOption');
+			 var item = document.createElement("input");
+			 item.setAttribute("type", "hidden");
+			 item.setAttribute("name", "color");
+			 item.setAttribute("value", document.getElementById('colorOption').value);
+
+	         form.appendChild(item);
+	         
+	         document.getElementById('selectItem').appendChild(form);
+			 form.submit();
+			 */
+			 
+		 });
+	 });
+});
+
+
+
 </script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -141,11 +160,11 @@ function ajax(){
 			<p id="itemDelivery">배송정보를 넣어주세요</p>
 		</div>
 		<div id="orderOption" class="sellInfo">옵션선택
-			<select id="sizeOption" class="form-control">
-				<option>사이즈옵션1</option>
+			<select id="sizeOption" name="option_size" class="form-control" >
+				<option value="">사이즈 선택</option>
 			</select>
-			<select id="colorOption" class="form-control">
-				<option>색상옵션1</option>
+			<select id="colorOption" name="option_color" class="form-control">
+				<option value="">색상 선택</option>
 			</select>
 		</div>
 		<div id="selectItem" class="sellInfo">선택상품
@@ -153,8 +172,9 @@ function ajax(){
 			<div id="item_2" name="item_2"> 상품2  수량<input type="number" class="quantity" value="1" min="0" max="99" ></div>
 		</div>
 		<div id="sellButton">
-			<button class="btn btn-light" onclick="ajax()">장바구니</button>
-			<button class="btn btn-primary">바로구매</button>
+			<button class="btn btn-light" onclick="">장바구니</button>
+			<button class="btn btn-primary" onclick="location.href='/test/test.html?asdf=12'">바로구매</button>
+			
 		</div>
 	</div>
 </div>
@@ -167,9 +187,7 @@ function ajax(){
 
 <div>
  <table border='1' width='800' align='center'>
- 
 
-  	
 
      <tr align=center>
        <td>${item.sell_number}</td>
@@ -184,10 +202,11 @@ function ajax(){
 ${info }
 <c:forEach var="option1" items="${info }" >
 	<p>${option1.option_size }</p>
-	<p>adsf</p>
 </c:forEach>
-<p id="test" >asdf</p>
- 
+<p id="test" ></p>
+
+
+ 	
 
 </body>
 </html>

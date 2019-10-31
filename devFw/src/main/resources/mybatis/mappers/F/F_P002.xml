@@ -28,7 +28,7 @@
 	
 	<select id="searchItem" resultMap="F_P002Result01" parameterType="java.util.Map"> 
       <![CDATA[
-         select *
+         select * 
          from productsell
       ]]>
 		<where>
@@ -40,14 +40,17 @@
 	
 	<select id="searchOption" resultMap="F_P002Result02" parameterType="java.util.Map"> 
       <![CDATA[
-         select *
+         select sell_number, option_size, option_color, option_quantity
          from selloption
+         order by to_number(option_size) 
       ]]>
 		<where>
 			<if test=" p_id != ''  and  p_id != null">
 				sell_number = ${p_id}
 			</if>
 		</where>
+
+		
 	</select>
 
 </mapper>
