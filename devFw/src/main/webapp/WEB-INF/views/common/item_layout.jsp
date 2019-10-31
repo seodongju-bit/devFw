@@ -16,38 +16,24 @@
       #container {
         width: 100%;
         margin: 0 auto;
-        text-align:center;
-        border: 0px solid #bcbcbc;
       }
       #header {
       	position:relative;
       	margin:0 auto;
         width:100%;
+        display:block;
       }
-      #sideLayout{
-      	position:relative;
-      	margin:0px auto;
-      	width:1200px;
-      	box-sizing:content-box;
-      	background-color:pink;
-      }
-      #sidebar-left {
-        width: 200px;
-        float: left;
-        border: 0px solid #bcbcbc;
-        font-size:10px;
-      }
+
       #content {
-     	width:980px;
-        float: right;
-        border: 0px solid #bcbcbc;
-      }   
-      #mainContent {
+        position:relative;
+        top:3px;
         width: 100%;
         padding:0;
         margin:0;
       }
-      #mainContentDetail{
+      #contentDetail{
+        position:relative;
+        margin:0 auto;
         width: 100%;
       }
       #footer {
@@ -63,19 +49,11 @@
       <div id="header">
          <tiles:insertAttribute name="header"/>
       </div>
-		<div id="sideLayout">
-			<div id="sidebar-left">
-				<tiles:insertAttribute name="side" />
-			</div>
-			<div id="content">
-				<tiles:insertAttribute name="body" />
-			</div>
-		</div>
-		<div id="mainContent">
-          <tiles:insertAttribute name="fullBody"/>
+	  <div id="content">
+          <tiles:insertAttribute name="body"/>
       </div>
-      <div id="mainContentDetail">
-          <tiles:insertAttribute name="fullBodyDetail"/>
+      <div id="contentDetail">
+          <tiles:insertAttribute name="bodyDetail"/>
       </div>
       <div id="footer">
           <tiles:insertAttribute name="footer"/>

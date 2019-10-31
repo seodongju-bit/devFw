@@ -19,12 +19,13 @@
 }
 #sellBox{
 	position:relative;
-	width:1200px;
-	height:750px;
+	width:1250px;
+	min-height:750px;
 	margin:5px auto;
 	padding:10px;
-	/*background-color:#E2A9F3;*/
+	background-color:#F8EFFB;
 	display:block;
+	font-size:18px;
 }
 #imgBox{
 	position:relative;
@@ -51,21 +52,27 @@
 	position:absolute;
 	left:550px;
 	top:10px;
-	width:600px;
+	width:680px;
 	min-height:600px;
 	/*background-color:pink;*/
 }
-
+#sellerInfo{
+	font-size:20px;
+	
+}
 .sellInfo{
 	box-sizing:content-box;
 	background-color:#F2F2F2;
 	border-bottom: 1px solid gray;
-	margin-bottom:5px;
+	margin-bottom:8px;
 	min-height:60px;
+	text-align:center;
 }
-#oprion1{
+#orderOption .form-control{
 	width:90%;
-	margin:0 auto;
+	margin:5px auto;
+	height:40px;
+	font-size:16px;
 	
 }
 #sellButton{
@@ -90,7 +97,7 @@
 
 #itemsInfoSelect{
 	display:block;
-	width:1200px;
+	width:1250px;
 	height:50px;	
 	/*background-color:#FA8258;*/
 	margin:5px auto;
@@ -105,6 +112,7 @@
 	/*border-left:1px solid #F2F2F2;
 	border-right:1px solid #F2F2F2;*/
 	border-radius: 15px 15px 0 0;
+	font-size:18px;
 }
 #itemsInfoSelect :first-child {
 	margin-left:0px;

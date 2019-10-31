@@ -12,7 +12,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="resources/css/F_P002_D001.css?ver=1">
+<link rel="stylesheet" type="text/css" href="resources/css/F_P002_D001.css?ver=1.1">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -142,11 +142,10 @@ function ajax(){
 		</div>
 		<div id="orderOption" class="sellInfo">옵션선택
 			<select id="sizeOption" class="form-control">
-				<option>옵션1</option>
-	 			
+				<option>사이즈옵션1</option>
 			</select>
-			<select id="option2" class="form-control">
-				
+			<select id="colorOption" class="form-control">
+				<option>색상옵션1</option>
 			</select>
 		</div>
 		<div id="selectItem" class="sellInfo">선택상품
