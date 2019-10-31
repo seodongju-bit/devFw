@@ -12,19 +12,22 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 import  project.F.P001.dao.F_P001DAO;
-import  project.F.P001.vo.F_P001VO;
+
+
              
-@Service("F_P001Service")
+@Service("productitem")
 @Transactional(propagation = Propagation.REQUIRED)
 public class F_P001ServiceImpl implements F_P001Service{
 	@Autowired
-	private F_P001DAO F_P001DAO ;
+	private F_P001DAO f_P001DAO ;
 	
 	@Override
-	public List listproduct() throws DataAccessException {
-		List productList = null;
-		productList = F_P001DAO.F_P001Result05();
-		return productList;
+	public List searchItem() throws DataAccessException {
+		List list = null; 
+         list=f_P001DAO.selectItem();
+		return list;
 	}
+	
+	
 
 }

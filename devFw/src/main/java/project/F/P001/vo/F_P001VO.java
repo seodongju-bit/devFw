@@ -6,18 +6,18 @@ import org.springframework.stereotype.Component;
 @Component("F_P001VO")
 public class F_P001VO {
 
-	private int pro_number;
-	private int mem_no;
+	private String pro_number;
+	private String mem_no;
 	private String pro_onedivision;
 	private String pro_twodivision;
 	private String pro_name;
-	private int pro_price;
-	private int pro_quantity;
+	private String pro_price;
+	private String pro_quantity;
 	
 	public F_P001VO() {
-		
+	 System.out.println("F_P001VO");
 	}
-	public F_P001VO(int pro_number, int mem_no, String pro_onedivision, String pro_name, int pro_price, int pro_quantity) {
+	public F_P001VO(String pro_number, String mem_no, String pro_onedivision,String pro_twodivision, String pro_name, String pro_price, String pro_quantity) {
 		this.pro_number = pro_number;
 		this.mem_no = mem_no;
 		this.pro_onedivision = pro_onedivision;
@@ -27,16 +27,16 @@ public class F_P001VO {
 		this.pro_quantity=pro_quantity;
 		
 	}
-	public int getPro_number() {
+	public String getPro_number() {
 		return pro_number;
 	}
-	public void setPro_number(int pro_number) {
+	public void setPro_number(String pro_number) {
 		this.pro_number = pro_number;
 	}
-	public int getMem_no() {
+	public String getMem_no() {
 		return mem_no;
 	}
-	public void setMem_no(int mem_no) {
+	public void setMem_no(String mem_no) {
 		this.mem_no = mem_no;
 	}
 	public String getPro_onedivision() {
@@ -57,16 +57,16 @@ public class F_P001VO {
 	public void setPro_name(String pro_name) {
 		this.pro_name = pro_name;
 	}
-	public int getPro_price() {
+	public String getPro_price() {
 		return pro_price;
 	}
-	public void setPro_price(int pro_price) {
+	public void setPro_price(String pro_price) {
 		this.pro_price = pro_price;
 	}
-	public int getPro_quantity() {
+	public String getPro_quantity() {
 		return pro_quantity;
 	}
-	public void setPro_quantity(int pro_quantity) {
+	public void setPro_quantity(String pro_quantity) {
 		this.pro_quantity = pro_quantity;
 	}
 	
