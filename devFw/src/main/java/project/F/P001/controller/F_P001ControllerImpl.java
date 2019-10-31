@@ -73,7 +73,7 @@ public class F_P001ControllerImpl implements F_P001Controller {
 		viewName = "category";
 		ModelAndView mav = new ModelAndView(viewName);
 		return mav;
-	}
+	}                  
 	
 	private String getViewName(HttpServletRequest request) throws Exception {
 		String contextPath = request.getContextPath();
