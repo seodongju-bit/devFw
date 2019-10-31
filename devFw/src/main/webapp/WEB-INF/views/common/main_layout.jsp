@@ -28,7 +28,7 @@
       
       #content {
         width: 100%;
-        margin: 0 0 0 0%;
+        margin: 0 100px 0 0;
         border: 0px solid #bcbcbc;
       } 
       
