@@ -6,17 +6,17 @@ import org.springframework.stereotype.Component;
 public class A_P005VO {
 	private String mem_no;
 	private String sell_number;
-	private String pro_nubmer;
+	private String pro_number;
 	private String ba_quantity;
 
 	public A_P005VO() {
 		
 	}
 
-	public A_P005VO(String mem_no, String sell_number, String pro_nubmer, String ba_quantity) {
+	public A_P005VO(String mem_no, String sell_number, String pro_number, String ba_quantity) {
 		this.mem_no=mem_no;
 		this.sell_number=sell_number;
-		this.pro_nubmer=pro_nubmer;
+		this.pro_number=pro_number;
 		this.ba_quantity=ba_quantity;
 		
 	}
@@ -37,12 +37,12 @@ public class A_P005VO {
 		this.sell_number = sell_number;
 	}
 
-	public String getPro_nubmer() {
-		return pro_nubmer;
+	public String getPro_number() {
+		return pro_number;
 	}
 
-	public void setPro_nubmer(String pro_nubmer) {
-		this.pro_nubmer = pro_nubmer;
+	public void setPro_number(String pro_number) {
+		this.pro_number = pro_number;
 	}
 
 	public String getBa_quantity() {

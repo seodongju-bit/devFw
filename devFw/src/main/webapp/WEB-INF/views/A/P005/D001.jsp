@@ -14,7 +14,7 @@
 <title>장바구니</title>
 
 <script src="http://code.jquery.com/jquery-latest.js"></script>
-<link href="../pro27/resources/css/bootstrap.min.css" rel="stylesheet">
+<link href="../devFw/resources/css/bootstrap.min.css" rel="stylesheet">
 <meta name="viewport" content="width=divice-width, initial-scale=1.0">
 
 </head>
@@ -115,7 +115,7 @@ aside {
  <td class="product-details">
  <strong><span class="item-quantity">${basket.ba_quantity}</span> x Eliza J</strong> Lace Sleeve Cuff Dress
  <p><strong>Navy, Size 18</strong></p>
- <p>Product Code - ${basket.prod_number}</p>
+ <p>Product Code - ${basket.pro_number}</p>
  </td>
  <td class="price">${basket.sell_number}</td>
  <td class="quantity"><input type="number" value="${basket.ba_quantity}" min="1" class="quantity-field"></td>
@@ -240,8 +240,8 @@ aside {
   
   
   <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-	<script type="text/javascript" src="../pro27/resources/js/bootstrap.js"></script>
-	<script src="../pro27/resources/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../devFw/resources/js/bootstrap.js"></script>
+	<script src="../devFw/resources/js/bootstrap.min.js"></script>
   
 </body>
 </html>

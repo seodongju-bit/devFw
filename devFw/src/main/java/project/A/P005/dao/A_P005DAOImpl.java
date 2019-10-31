@@ -12,7 +12,7 @@ import project.A.P005.vo.A_P005VO;
 
 
 @Repository("BasketDAO")
-public class A_P001DAOImpl implements A_P005DAO {
+public class A_P005DAOImpl implements A_P005DAO {
 	@Autowired
 	private SqlSession sqlSession;
 
@@ -20,6 +20,7 @@ public class A_P001DAOImpl implements A_P005DAO {
 	public List selectAllBasketList() throws DataAccessException {
 		List<A_P005VO> basketList = null;
 		basketList = sqlSession.selectList("mapper.basket.selectAllBasketList");
+		System.out.println(basketList);
 		return basketList;
 	}
 

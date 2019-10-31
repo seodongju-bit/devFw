@@ -5,7 +5,7 @@
    
    <mapper namespace="mapper.basket">
 	<resultMap id="basResult" type="basketVO">
-		<result property="memb_no" column="mem_no" />
+		<result property="mem_no" column="mem_no" />
         <result property="sell_number" column="sell_number" />
         <result property="pro_number" column="pro_number" />
         <result property="ba_quantity" column="ba_quantity" />
