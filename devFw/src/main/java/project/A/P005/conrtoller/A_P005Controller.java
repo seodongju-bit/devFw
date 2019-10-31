@@ -10,7 +10,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 
-public interface A_P001Controller {
+public interface A_P005Controller {
 	public ModelAndView listBasket(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	
 }

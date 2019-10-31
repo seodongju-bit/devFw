@@ -6,7 +6,7 @@ import org.springframework.dao.DataAccessException;
 
 
 
-public interface A_P001Service {
+public interface A_P005Service {
 	 public List listBasket() throws DataAccessException;
 	
 }

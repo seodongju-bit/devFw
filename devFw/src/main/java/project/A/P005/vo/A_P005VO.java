@@ -3,17 +3,17 @@ package project.A.P005.vo;
 import org.springframework.stereotype.Component;
 
 @Component("basketVO")
-public class A_P001VO {
+public class A_P005VO {
 	private String mem_no;
 	private String sell_number;
 	private String pro_nubmer;
 	private String ba_quantity;
 
-	public A_P001VO() {
+	public A_P005VO() {
 		
 	}
 
-	public A_P001VO(String mem_no, String sell_number, String pro_nubmer, String ba_quantity) {
+	public A_P005VO(String mem_no, String sell_number, String pro_nubmer, String ba_quantity) {
 		this.mem_no=mem_no;
 		this.sell_number=sell_number;
 		this.pro_nubmer=pro_nubmer;

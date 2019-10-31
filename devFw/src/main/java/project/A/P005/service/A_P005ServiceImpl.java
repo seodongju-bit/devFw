@@ -9,14 +9,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import project.A.P005.dao.A_P001DAO;
+import project.A.P005.dao.A_P005DAO;
 
 
 @Service("basketService")
 @Transactional(propagation = Propagation.REQUIRED)
-public class A_P001ServiceImpl implements A_P001Service {
+public class A_P005ServiceImpl implements A_P005Service {
 	@Autowired
-	private A_P001DAO basketDAO;
+	private A_P005DAO basketDAO;
 
 	@Override
 	public List listBasket() throws DataAccessException {

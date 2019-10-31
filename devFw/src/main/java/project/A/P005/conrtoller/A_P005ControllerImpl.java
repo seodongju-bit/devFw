@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import project.A.P005.service.A_P001Service;
-import project.A.P005.vo.A_P001VO;
+import project.A.P005.service.A_P005Service;
+import project.A.P005.vo.A_P005VO;
 
 
 
@@ -27,12 +27,12 @@ import project.A.P005.vo.A_P001VO;
 
 @Controller("basketController")
 @EnableAspectJAutoProxy
-public class A_P001ControllerImpl   implements A_P001Controller {
+public class A_P005ControllerImpl   implements A_P005Controller {
 //	private static final Logger logger = LoggerFactory.getLogger(MemberControllerImpl.class);
 	@Autowired
-	private A_P001Service basketService;
+	private A_P005Service basketService;
 	@Autowired
-	A_P001VO basketVO ;
+	A_P005VO basketVO ;
 	
 	@Override
 	@RequestMapping(value="/basket.do" ,method = RequestMethod.GET)
