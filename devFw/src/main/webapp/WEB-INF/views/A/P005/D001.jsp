@@ -118,7 +118,7 @@ aside {
  <p>Product Code - ${basket.pro_number}</p>
  </td>
  <td class="price">${basket.sell_number}</td>
- <td class="quantity"><input type="number" value="${basket.ba_quantity}" min="1" class="quantity-field"></td>
+ <td class="quantity"><input type="number" value=${basket.ba_quantity} min="1" class="quantity-field"></td>
  <td class="subtotal">${basket.sell_number}
  </td>
  <td class="remove"><button class="btn btn-default">삭제</button></td>
