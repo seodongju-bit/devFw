@@ -22,10 +22,10 @@ public class A_P002ControllerImpl   implements A_P002Controller {
 	
 	
 	@Override
-	@RequestMapping(value="/joinMember.do" ,method = RequestMethod.GET)
-	public ModelAndView productSellView(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	@RequestMapping(value="/addMember.do" ,method = RequestMethod.GET)
+	public ModelAndView addmember(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = getViewName(request);
-		viewName = "joinMember";
+		viewName = "addMember";
 		//List membersList = memberService.listMembers();
 		ModelAndView mav = new ModelAndView(viewName);
 		//mav.addObject("membersList", membersList);

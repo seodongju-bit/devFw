@@ -31,17 +31,7 @@ public class A_P001ControllerImpl   implements A_P001Controller {
 		//mav.addObject("membersList", membersList);
 		return mav;
 	}
-	
-	@Override
-	@RequestMapping(value="/addMember.do" ,method = RequestMethod.GET)
-	public ModelAndView addMember(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String viewName = getViewName(request);
-		viewName = "addMember";
-		//List membersList = memberService.listMembers();
-		ModelAndView mav = new ModelAndView(viewName);
-		//mav.addObject("membersList", membersList);
-		return mav;
-	}
+
 
 	private String getViewName(HttpServletRequest request) throws Exception {
 		String contextPath = request.getContextPath();
@@ -77,4 +67,3 @@ public class A_P001ControllerImpl   implements A_P001Controller {
 
 
 }
-
