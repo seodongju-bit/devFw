@@ -33,6 +33,15 @@
       <put-attribute name="bodyDetail" value="" />
       <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
    </definition>
+   
+   <definition name="baseLayout_cart"  template="/WEB-INF/views/common/basket_layout.jsp">
+      <put-attribute name="title" value="" />
+      <put-attribute name="header" value="/WEB-INF/views/common/mp_header.jsp" />
+      <put-attribute name="side" value="" />
+      <put-attribute name="body" value="" />
+      <put-attribute name="footer" value="/WEB-INF/views/common/mp_footer.jsp" />
+   </definition>
+   
    <!-- 레이아웃 페이지 구분 -->
    
    <definition name="login" extends="baseLayout3">
@@ -51,6 +60,11 @@
 	<definition name="myPage" extends="baseLayout">
       <put-attribute name="title" value="마이페이지" />
       <put-attribute name="body" value="/WEB-INF/views/A/P004/D001.jsp" />
+   </definition>
+   
+    <definition name="basket" extends="baseLayout_cart">
+      <put-attribute name="title" value="장바구니" />
+      <put-attribute name="body" value="/WEB-INF/views/A/P005/D001.jsp" />
    </definition>
    
    <definition name="reviewwrite" extends="baseLayout">
