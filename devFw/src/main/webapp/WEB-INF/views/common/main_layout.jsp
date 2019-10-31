@@ -3,38 +3,44 @@
  %>
  <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-            
+ 
 <!DOCTYPE html>
-<html>       
+<html>
   <head>
-    <meta charset="UTF-8">              
+    <meta charset="UTF-8">
     <style>
-    *{
-    	margin:0;
-    	padding:0;
-    }
-      #container {
-        width: 100%;
-        margin: 0 auto;
-        text-align:center;
-        border: 0px solid #bcbcbc;
-      }
+    #container {
+	width: 100%;
+	margin: 0px auto;
+	/*   text-align:center; */
+	border: 0px solid #bcbcbc;
+}
+    
+    
       #header {
-      	position:relative;
-      	margin:0 auto;
+        padding: 0;
+        margin-top:-1px;
         width:100%;
-      }
-      #mainContent {
-        width: 100%;
-        padding:0;
-        margin:0;
-      }
-      }
-      #footer {
-        clear: both;
-        border: 0px solid #bcbcbc;
+        min-width:800px;
+        height:202px;
+        background-color: #F3F3F3;
       }
       
+      #content {
+        width: 100%;
+        margin: 0 0 0 0%;
+        border: 0px solid #bcbcbc;
+      } 
+      
+      #footer {
+        clear: both;
+        padding: 5px;
+        border: 0px solid #bcbcbc;
+         background-color: lightblue;
+      }
+      
+        
+    
     </style>
     <title><tiles:insertAttribute name="title" /></title>
   </head>
@@ -42,17 +48,9 @@
     <div id="container">
       <div id="header">
          <tiles:insertAttribute name="header"/>
-      </div>
-		<div id="sideLayout">
-			<div id="sidebar-left">
-				<tiles:insertAttribute name="side" />
-			</div>
-			<div id="content">
-				<tiles:insertAttribute name="body" />
-			</div>
-		</div>
-		<div id="mainContent">
-          <tiles:insertAttribute name="mainBody"/>
+      </div>         
+      <div id="content">
+          <tiles:insertAttribute name="body"/>
       </div>
       <div id="footer">
           <tiles:insertAttribute name="footer"/>
