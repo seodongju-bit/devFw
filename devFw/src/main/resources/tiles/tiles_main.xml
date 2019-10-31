@@ -2,17 +2,20 @@
 <!DOCTYPE tiles-definitions PUBLIC
 "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
 "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
-<tiles-definitions>   
-   <definition name="main_layout"  template="/WEB-INF/views/common/main_layout.jsp">
+<tiles-definitions>
+     <definition name="mainlayout"  template="/WEB-INF/views/common/layout.jsp">
       <put-attribute name="title" value="" />
-      <put-attribute name="header" value="" />
-      <put-attribute name="body" value="" />
-      <put-attribute name="footer" value="" />
-   </definition>
-   <definition name="main2" extends="main_layout">
-      <put-attribute name="title" value="메인페이지" />
       <put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
-      <put-attribute name="body" value="/WEB-INF/views/main2.jsp" />
+      <put-attribute name="side" value="" />
+      <put-attribute name="body" value="" />
+      <put-attribute name="mainBody" value="" />
       <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
    </definition>
-</tiles-definitions> 
+   <!-- 레이아웃 페이지 구분 -->
+  
+   <definition name="main2" extends="mainlayout">
+      <put-attribute name="title" value="메인페이지" />
+      <put-attribute name="body" value="/WEB-INF/views/main2.jsp" />
+      <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
+   </definition> 
+</tiles-definitions>
