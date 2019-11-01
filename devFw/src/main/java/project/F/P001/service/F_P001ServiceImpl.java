@@ -24,6 +24,7 @@ public class F_P001ServiceImpl implements F_P001Service{
 	@Override
 	public List searchItem() throws DataAccessException {
 		List list = null; 
+		System.out.println("서비스실행");
          list=f_P001DAO.selectItem();
 		return list;
 	}

@@ -3,7 +3,6 @@
  %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
- <c:forEach var="selectItem" items="${list}" />
 <%
   request.setCharacterEncoding("UTF-8");
 %>    
@@ -90,13 +89,18 @@ left:335px;
 <div class="name">
 new product
 </div>
+
+ <c:forEach var="productlist" items="${List}" >   
 <div class="gallery">
   <a target="_blank" href="resources/image/items/1.PNG">
     <img src="resources/image/items/1.PNG" alt="1" width="600" height="400">
   </a>
-  <div class="desc">${list.pro_name}</div>
+  <div class="desc">${productlist.pro_name}<br>
+  ${productlist.pro_price}
+   </div>                   
   
-</div>
+</div>   
+</c:forEach>
 
 <div class="gallery">
   <a target="_blank" href="resources/image/items/2.PNG">
@@ -210,7 +214,6 @@ new product
   </a>
   <div class="desc">애즈클로 피어컷팅 데님자켓 65,000</div>
 </div>
-
 
 <div id="paging">
 <s_paging id="page"> 
