@@ -13,7 +13,7 @@ public class F_P001VO {
 	private String pro_name;
 	private String pro_price;
 	private String pro_quantity;
-	
+	               
 	public F_P001VO() {
 	 System.out.println("F_P001VO");
 	}
@@ -33,7 +33,7 @@ public class F_P001VO {
 	public void setPro_number(String pro_number) {
 		this.pro_number = pro_number;
 	}
-	public String getMem_no() {
+	public String getMem_no() {                         
 		return mem_no;
 	}
 	public void setMem_no(String mem_no) {

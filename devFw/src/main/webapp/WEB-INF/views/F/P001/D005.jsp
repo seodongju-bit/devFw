@@ -8,7 +8,7 @@
 %>    
 
 
-<!DOCTYPE html>
+<!DOCTYPE html>                     
 <html>
 <head>
 <style>
@@ -78,7 +78,7 @@ border:#555555 1px solid;
 position:relative;
 left:335px;
 }
-
+            
                                    
 
 </style>
@@ -98,23 +98,24 @@ new product
   <div class="desc">${productlist.pro_name}<br>
   ${productlist.pro_price}
    </div>                   
-  
+                                      
 </div>   
-</c:forEach>
 
 <div class="gallery">
   <a target="_blank" href="resources/image/items/2.PNG">
     <img src="resources/image/items/2.PNG" alt="2" width="600" height="400">
   </a>
-  <div class="desc">애즈클로 오리털100% 크롭패딩조끼 62,000</div>
-</div>
-
+ <div class="desc">${productlist.pro_name}<br>
+  ${productlist.pro_price}
+  </div>
+  </div>
+     
 <div class="gallery">
   <a target="_blank" href="resources/image/items/3.PNG">
     <img src="resources/image/items/3.PNG" alt="3" width="600" height="400">
   </a>
   <div class="desc">애즈클로 블랙 사첼백 44,000</div>
-</div>
+</div>           
 
 <div class="gallery">
   <a target="_blank" href="resources/image/items/4.PNG">
@@ -214,6 +215,7 @@ new product
   </a>
   <div class="desc">애즈클로 피어컷팅 데님자켓 65,000</div>
 </div>
+</c:forEach>
 
 <div id="paging">
 <s_paging id="page"> 
