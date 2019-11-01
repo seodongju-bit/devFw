@@ -32,9 +32,9 @@ public class F_P001VO {
 	}
 	public void setPro_number(String pro_number) {
 		this.pro_number = pro_number;
-	}
+	}        
 	public String getMem_no() {                         
-		return mem_no;
+		return mem_no;               
 	}
 	public void setMem_no(String mem_no) {
 		this.mem_no = mem_no;

@@ -106,7 +106,7 @@ new product
     <img src="resources/image/items/2.PNG" alt="2" width="600" height="400">
   </a>
  <div class="desc">${productlist.pro_name}<br>
-  ${productlist.pro_price}
+  ${productlist.pro_price}                    
   </div>
   </div>
      
