@@ -20,6 +20,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import project.F.P001.vo.F_P001VO;
+import project.F.P001.service.F_P001Service;
+
 
 
 
@@ -64,14 +67,20 @@ public class F_P001ControllerImpl implements F_P001Controller {
 		return mav;
 	}
 	
-	
+	@Autowired
+	private F_P001Service f_P001Service;
+	@Autowired
+	F_P001VO F_P001VO ;
 	
 	@Override
 	@RequestMapping(value="/category.do" ,method = RequestMethod.GET)
 	public ModelAndView category(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = getViewName(request);
 		viewName = "category";
+		List list = f_P001Service.searchItem();
+		System.out.println(list);
 		ModelAndView mav = new ModelAndView(viewName);
+		mav.addObject("List", list);
 		return mav;
 	}                  
 	
@@ -88,7 +97,7 @@ public class F_P001ControllerImpl implements F_P001Controller {
 		}
 
 		int end;
-		if (uri.indexOf(";") != -1) {
+		if (uri.indexOf(";") != -1) {                     
 			end = uri.indexOf(";");
 		} else if (uri.indexOf("?") != -1) {
 			end = uri.indexOf("?");

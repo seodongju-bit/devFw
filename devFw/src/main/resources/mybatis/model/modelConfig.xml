@@ -12,4 +12,4 @@
 		<typeAlias type="project.F.P002.vo.F_P002VO"  alias="F_P002VO" />
 		<typeAlias type="project.A.P005.vo.A_P005VO"  alias="basketVO" />
 	</typeAliases>
-</configuration>
+</configuration>                                  

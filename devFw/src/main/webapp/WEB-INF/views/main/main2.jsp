@@ -9,6 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="../devFw/resources/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> 
 <title>Insert title here</title>
 <script
    src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -34,18 +35,19 @@ body, hmtl {
    font-family: 'Anton', sans-serif;
 }
 
+
 #wrapper {
-   width: 800px;
-   margin: 50px auto;
-   height: 600px;
+   width: 1096px;
+   margin: 0px 0 0 388px;
+   height: 500px;
    position: relative;
    color: #fff;
    text-shadow: rgba(0, 0, 0, 0.1) 2px 2px 0px;
 }
 
 #slider-wrap {
-   width: 800px;
-   height: 600px;
+   width: 1096px;
+   height: 500px;
    position: relative;
    overflow: hidden;
 }
@@ -61,8 +63,8 @@ body, hmtl {
 #slider-wrap ul#slider li {
    float: left;
    position: relative;
-   width: 800px; /* 슬라이드 크기 조절 800 600 잇는건 다바궈야 함 */
-   height: 600px;
+   width: 1096px; /* 슬라이드 크기 조절 800 600 잇는건 다바궈야 함 */
+   height: 500px;
 }
 
 #slider-wrap ul#slider li>div {
@@ -201,6 +203,49 @@ h2 {
    -ms-transition: all 0.3s cubic-bezier(1, .01, .32, 1);
    transition: all 0.3s cubic-bezier(1, .01, .32, 1);
 }
+
+hr {
+	width:1096px;
+	border-color:#CCCCCC;
+	margin: 10px auto;
+}
+
+#sort {
+	width:100%;
+	margin: -40px 0 0 0;
+}
+
+#sort ul{
+}
+
+#sort li {
+	height:20px;
+	float:right;
+	margin: 0 10px 0 0px;
+	color:#DDDDDD;
+}
+
+.prod_list ul {
+	width:1096px;
+	margin: 0 0 0 21px;
+}
+
+.prod_list ul li {
+	display:inline;
+}
+
+.prod_list li {
+	float:left;
+	width:273px;
+	height:500px;
+	position:relative;
+} 
+
+.prod_list img{
+	width: 250px;
+	height: 350px;
+}
+
 </style>
 
 <link
@@ -213,22 +258,26 @@ h2 {
 
 </head>
 <body>
-  <div id="wrapper">
-    <div id="slider-wrap">
-       <ul id="slider">
-          <li data-color="#1abc9c">
-           <div><img src="${contextPath}/resources/image/banner/banner_1.jpg"></div>
-          </li>
-          <li data-color="#9b59b6">
-           <div><img src="${contextPath}/resources/image/banner/banner_2.jpg"></div>
-          </li>
-          <li data-color="#34495e">
-           <div><img src="${contextPath}/resources/image/banner/banner_3.jpg"></div> 
-          </li>
-     <!-- <li data-color="#e74c3c">
-             <div><img src="https://i.pinimg.com/originals/41/4e/5c/414e5ce19b47be889db24e1306e9a8be.jpg"></div>
-          </li>-->
-       </ul>
+   <div id="wrapper">
+      <div id="slider-wrap">
+         <ul id="slider">
+            <li data-color="#1abc9c">
+               <div>
+               </div><img src="${contextPath}/resources/image/banner/banner_1.jpg">
+            </li>
+            <li data-color="#9b59b6">
+               <div>
+               </div><img src="${contextPath}/resources/image/banner/banner_2.jpg">
+            </li>
+            <li data-color="#34495e">
+               <div>
+               </div><img src="${contextPath}/resources/image/banner/banner_3.jpg">
+            </li>
+            <li data-color="#e74c3c">
+               <div>
+               </div><img src="${contextPath}/resources/image/banner/banner_4.jpg">
+            </li>
+         </ul>
          <!--controls-->
          <div class="btns" id="next">
             <i class="fa fa-arrow-right"></i>
@@ -237,12 +286,50 @@ h2 {
             <i class="fa fa-arrow-left"></i>
          </div>
          <div id="counter"></div>
+
          <div id="pagination-wrap">
-           <ul>
-           </ul>
+            <ul>
+            </ul>
          </div>
          <!--controls-->
       </div>
+   </div>
+   <div class="main_focus" style="margin: 0 31px 0 0;">
+   <div class="container">
+   	<hr>
+   	<h1 align="center" style="margin: 0 0 30px 0;">상품전체</h1>
+
+    <div class="list_sort" style="font-size:0.8em;">
+		<ul id="sort">
+			<li><a href="#recommand">판매자 추천순</a></li>
+			<li><a href="#popular">인기도순</a></li>
+			<li><a href="#opinion">평점높은순</a></li>
+			<li><a href="#new">최신등록순</a></li>
+		</ul>
+    </div>
+   	<hr>
+   	<br><br><br>
+   	<div class="prod_list">
+   	  <ul id="productlist1" style="text-align:center">
+   	  	<li><a><img src="${contextPath}/resources/image/banner/banner_2.jpg"/></a><br><br><a id="title1">제목1</a></li>
+   	  	<li><a><img src="${contextPath}/resources/image/banner/banner_2.jpg}"/></a><br><br><a id="title2">제목2</a></li>
+   	  	<li><a><img src="${contextPath}/resources/image/banner/banner_2.jpg"/></a><br><br><a id="title3">제목3</a></li>
+   	  	<li><a><img src="${contextPath}/resources/image/banner/banner_2.jpg"/></a><br><br><a id="title4">제목4</a></li>
+   	  </ul>
+   	  <ul id="productlist2" style="text-align:center">
+   	  	<li><a><img src="${image_address5}"/></a><br><br><a>${pro_title5}제목5</a></li>
+   	  	<li><a><img src="${image_address6}"/></a><br><br><a>${pro_title6}제목6</a></li>
+   	  	<li><a><img src="${image_address7}"/></a><br><br><a>${pro_title7}제목7</a></li>
+   	  	<li><a><img src="${image_address8}"/></a><br><br><a>${pro_title8}제목8</a></li>
+   	  </ul>
+   	  <ul id="productlist3" style="text-align:center">
+   	  	<li><a><img src="${image_address9}"/></a><br><br><a>${pro_title9}제목9</a></li>
+   	  	<li><a><img src="${image_address10}"/></a><br><br><a>${pro_title10}제목10</a></li>
+   	  	<li><a><img src="${image_address11}"/></a><br><br><a>${pro_title11}제목11</a></li>
+   	  	<li><a><img src="${image_address12}"/></a><br><br><a>${pro_title12}제목12</a></li>
+   	  </ul>
+   	  </div>
+   	  </div>
    </div>
    <script>
       //current position
@@ -297,7 +384,7 @@ h2 {
             clearInterval(autoSlider);
          }, function() {
             $(this).removeClass('active');
-            autoSlider = setInterval(slideRight, 2000);
+            autoSlider = setInterval(slideRight, 3000);
          });
 
       });//DOCUMENT READY
