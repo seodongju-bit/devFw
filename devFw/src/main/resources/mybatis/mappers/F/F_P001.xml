@@ -12,16 +12,17 @@
 		<result property="pro_name" column="pro_name" />
 		<result property="pro_price" column="pro_price" />
 		<result property="pro_quantity" column="pro_quantity" />
+		<result property="pro_img" column="pro_img" />
 
 	</resultMap>
 	
-      
+                    
 	
 	<select id="selectItem" resultMap="F_P001Result01" parameterType="java.util.Map"> 
       <![CDATA[
          select *
-         from productlist
-      ]]>
+         from productlist        
+      ]]>      
      
 		
 	</select>
