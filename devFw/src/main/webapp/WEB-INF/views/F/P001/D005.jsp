@@ -84,7 +84,7 @@ left:335px;
 </style>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-</head>
+</head>            
 <body>  
 <div class="name">
 new product
@@ -92,7 +92,7 @@ new product
 
  <c:forEach var="productlist" items="${List}" >   
 <div class="gallery">
-  <a target="_blank" href="resources/image/items/${productlist.pro_img}">
+  <a target="_blank" href="myPage.do">
 
     <img src="resources/image/items/${productlist.pro_img}" alt="1" width="600" height="400">
   </a>
@@ -101,8 +101,8 @@ new product
    </div>                   
                                                             
 </div>                                                  
-
-</c:forEach>
+     
+</c:forEach>         
 
 <div id="paging">
 <s_paging id="page"> 
