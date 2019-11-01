@@ -43,10 +43,12 @@ h1 {
 
 
 
-.textbox,
+
 .pwdbox,
 .namebox,
 .addressbox,
+.nickbox,
+.telbox,
 .btn btn-default,
 #addr2,
 #addr3,
@@ -59,6 +61,21 @@ select{
   outline: 0;
   padding: 15px;
   width: 100%;
+  background-color: #e8eeef;
+  color: #8a97a0;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+  margin-bottom: 30px;
+}
+
+.idbox{
+background: rgba(255,255,255,0.1);
+  border: none;
+  font-size: 16px;
+  height: auto;
+  margin: 0;
+  outline: 0;
+  padding: 15px;
+  width: 65%;
   background-color: #e8eeef;
   color: #8a97a0;
   box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
@@ -145,6 +162,35 @@ select {
   font-style: normal;
   border-radius: 5px;
   width: 100%;
+  border: 1px solid #3ac162;
+  border-width: 1px 1px 3px;
+  box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;
+  margin-bottom: 10px;
+}
+
+.overlapped-btn{
+  padding: 10px 10px 10px 10px;
+  color: #FFF;
+  background-color: #4bc970;
+  font-size: 18px;
+  text-align: center;
+  font-style: normal;
+  border-radius: 5px;
+  width: 40%;
+  border: 1px solid #3ac162;
+  border-width: 1px 1px 3px;
+  box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;
+  margin-bottom: 10px;
+}
+.overlapped-btn2{
+  padding: 10px 10px 10px 10px;
+  color: #FFF;
+  background-color: #4bc970;
+  font-size: 18px;
+  text-align: center;
+  font-style: normal;
+  border-radius: 5px;
+  width: 30%;
   border: 1px solid #3ac162;
   border-width: 1px 1px 3px;
   box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;
@@ -239,10 +285,14 @@ label.light {
         <h1>회원 가입</h1>
         
         <fieldset>
-          <label for="name" class="w" >회원 ID:</label>
-          <input type="text" class="textbox" id="name" name="mem_name"maxlength="15" placeholder="ID"  >
+          <label for="id" class="w" >회원 ID:</label>
+          <input type="text" class="idbox" id="id" name="mem_id"maxlength="15" placeholder="ID" style="float:left;">
+          <button type="button" class="overlapped-btn2" onClick="fn_overlapped()">중복 검사</button>
+          <br></br>
           <label for="password" class="w">비밀번호:</label>
           <input type="password" class="pwdbox" id="password" name="mem_pw"maxlength="20" placeholder="PW">
+          <label for="nick" class="w">닉네임:</label>
+          <input type="text" class="nickbox" id="nick" name="mem_nick"maxlength="10" placeholder="NICK NAME">
           <label for="name" class="w">이름:</label>
           <input type="text" class="namebox" id="name" name="mem_name" maxlength="15" placeholder="NAME">
           <label for="mail" class="w">이메일:</label> 
@@ -256,7 +306,7 @@ label.light {
           <option value="gmail.com">gmail.com</option> 
           </select>
           <label for="nick" class="w" >연락처:</label>
-          <input type="text" class="textbox" id="tel" name="mem_tel" maxlength="13" placeholder="TEL" >
+          <input type="text" class="telbox" id="tel" name="mem_tel" maxlength="13" placeholder="TEL" >
           <label for="address" class="w" >주소:</label>
           <div class="form-group">                   
 		  <input class="form-control" style="width: 40%; display: inline; float:left; " placeholder="우편번호" name="addr1" id="addr1" type="text" readonly="readonly" >
