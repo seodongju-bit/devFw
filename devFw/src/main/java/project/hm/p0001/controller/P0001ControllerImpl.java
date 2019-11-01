@@ -109,7 +109,7 @@ public class P0001ControllerImpl implements P0001Controller {
 			dispatch.forward(request, response);
 		} catch (Exception e) {
 			message = " <script>";
-			message += " alert('������ �߻��߽��ϴ�. �ٽ� �õ��� �ּ���');";
+			message += " alert('占쏙옙占쏙옙占쏙옙 占쌩삼옙占쌩쏙옙占싹댐옙. 占쌕쏙옙 占시듸옙占쏙옙 占쌍쇽옙占쏙옙');";
 			message += " location.href='" + request.getContextPath() + "/hm/p0001/searchInit.do'; ";
 			message += " </script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
@@ -123,7 +123,7 @@ public class P0001ControllerImpl implements P0001Controller {
 	public Map<String, Object> ajaxTest() {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("id", "hong");
-		map.put("name", "ȫ�浿");
+		map.put("name", "홍占썸동");
 		return map;
 	}
 }

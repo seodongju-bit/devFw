@@ -95,73 +95,117 @@ font-size:20px;
     <h2>카테고리</h2>
     
     <ul id="myMenu">
-      <li><a href="#">브랜드패션</a>
+      <li><a href="#">패션의류</a>
       <ul>
-      <li><a href="#">브랜드여성의류</a></li>
-       <li><a href="#">브랜드남성의류</a></li>
-       <li><a href="#">브랜드진/캐쥬얼</a></li>
-       <li><a href="#">브랜드아동패션</a></li>
+      <li><a href="#">여성_상의</a></li>
+       <li><a href="#">여성_바지</a></li>
+       <li><a href="#">여성_스커트</a></li>
+       <li><a href="#">여성_원피스</a></li>
+       <li><a href="#">여성_아우터</a></li>
+       <li><a href="#">남성_상의</a></li>
+       <li><a href="#">남성_하의</a></li>
+        <li><a href="#">남성_아우터</a></li>
+        <li><a href="#">양말</a></li>
+         <li><a href="#">운동화</a></li>
+          <li><a href="#">남성구두</a></li>
+           <li><a href="#">여성구두</a></li>
+            <li><a href="#">가방</a></li>
+             <li><a href="#">악세사리</a></li>
+              <li><a href="#">아동의류</a></li>
+               <li><a href="#">아동신발</a></li>
+               <li><a href="#">내의/잠옷</a></li>
+               <li><a href="#">속옷</a></li>
+               <li><a href="#">명품관</a></li>
+               
       </ul>
       </li>
-        <li><a href="#">의류/잡화</a>
+        <li><a href="#">가구</a>
       <ul>
-      <li><a href="#">여성의류</a></li>
-       <li><a href="#">남성의류</a></li>
-        <li><a href="#">언더웨어</a></li>
-       <li><a href="#">유아동의류</a></li>
+      <li><a href="#">침대</a></li>
+       <li><a href="#">조명</a></li>
+        <li><a href="#">커튼</a></li>
+       <li><a href="#">책상</a></li>
+        <li><a href="#">의자</a></li>
+         <li><a href="#">쇼파</a></li>
+       <li><a href="#">수납장</a></li>
+       <li><a href="#">옷장/장롱</a></li>
+    
       </ul>
       </li>
-       <li><a href="#">식품/생필품</a>
+       <li><a href="#">식품</a>
       <ul>
       <li><a href="#">신선식품</a></li>
        <li><a href="#">가공식품</a></li>
        <li><a href="#">건강식품</a></li>
-       <li><a href="#">커피/음료</a></li>
+       <li><a href="#">음료</a></li>
       </ul>
       </li>
-       <li><a href="#">홈데코</a>
+       <li><a href="#">가전</a>
       <ul>
-      <li><a href="#">침구/커튼</a></li>
-       <li><a href="#">조명/인테리어</a></li>
-          <li><a href="#">생활용품</a></li>
-       <li><a href="#">주방용품</a></li>
-      </ul>
-      </li>
-       <li><a href="#">디지털/가전</a>
-      <ul>
-      <li><a href="#">노트북</a></li>
+      <li><a href="#">컴퓨터</a></li>
+       <li><a href="#">노트북</a></li>
+          <li><a href="#">프린터</a></li>
+       <li><a href="#">pc주변기기</a></li>
+       <li><a href="#">휴대폰</a></li>
+       <li><a href="#">카메라</a></li>
+       <li><a href="#">태블릿</a></li>
+       <li><a href="#">게임</a></li>
+       <li><a href="#">음향기기</a></li>
        <li><a href="#">대형가전</a></li>
-       <li><a href="#">계절가전</a></li>
-       <li><a href="#">음향가전</a></li>
+       <li><a href="#">주방가전</a></li>
+       <li><a href="#">생활가전</a></li>
       </ul>
       </li>
-       <li><a href="#">스포츠/건강</a>
+       <li><a href="#">도서</a>
+      <ul>
+      <li><a href="#">교육서적</a></li>
+       <li><a href="#">자기개발</a></li>
+       <li><a href="#">만화</a></li>
+       <li><a href="#">소설</a></li>
+       <li><a href="#">인물</a></li>
+       <li><a href="#">대학교재</a></li>
+       <li><a href="#">취미</a></li>
+       <li><a href="#">참고서</a></li>
+       <li><a href="#">예술</a></li>
+       <li><a href="#">자격증</a></li>
+       
+       
+      </ul>
+      </li>
+       <li><a href="#">생필품</a>
+      <ul>
+      <li><a href="#">생활용품</a></li>
+       <li><a href="#">주방용품</a></li>
+        <li><a href="#">문구</a></li>
+       <li><a href="#">공구</a></li>
+       <li><a href="#">자재</a></li>
+       <li><a href="#">반려동물</a></li>
+       <li><a href="#">장난감</a></li>
+       <li><a href="#">자동차</a></li>
+
+      </ul>
+      </li>
+       <li><a href="#">스포츠</a>
       <ul>
       <li><a href="#">스포츠의류</a></li>
-       <li><a href="#">건강/의료용품</a></li>
-        <li><a href="#">스포츠용품</a></li>
-       <li><a href="#">건강식품</a></li>
+       <li><a href="#">구기/라켓</a></li>
+       <li><a href="#">자전거</a></li>
+       <li><a href="#">골프</a></li>
+       <li><a href="#">캠핑</a></li>
+       <li><a href="#">등산</a></li>
+    
       </ul>
       </li>
-       <li><a href="#">자동차</a>
+       <li><a href="#">뷰티</a>
       <ul>
-      <li><a href="#">자동차용품</a></li>
-       <li><a href="#">타이어/부품</a></li>
+      <li><a href="#">스킨케어</a></li>
+       <li><a href="#">선케어/메이크업</a></li>
+         <li><a href="#">클렌징/마스크팩</a></li>
+            <li><a href="#">바디케어</a></li>
+               <li><a href="#">남성화장품</a></li>
       </ul>
       </li>
-       <li><a href="#">화장품</a>
-      <ul>
-      <li><a href="#">기초스킨케어</a></li>
-       <li><a href="#">남성용</a></li>
-         <li><a href="#">여성용</a></li>
-      </ul>
-      </li>
-       <li><a href="#">티켓</a>
-      <ul>
-      <li><a href="#">콘서트</a></li>    
-       <li><a href="#">방송</a></li>
-      </ul>
-      </li>
+    
     </ul>
   </div>
   

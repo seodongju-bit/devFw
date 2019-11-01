@@ -210,10 +210,6 @@ function order(){
        form.submit();
 
 	
-	
-
-	
-
 
 }
 
