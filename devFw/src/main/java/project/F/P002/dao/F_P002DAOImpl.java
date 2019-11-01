@@ -19,7 +19,6 @@ public class F_P002DAOImpl implements F_P002DAO {
 	@Override
 	public List<F_P002VO> selectItem(Map<String, Object> searchMap) throws DataAccessException {
 		List<F_P002VO> list = sqlSession.selectList("F.P002.searchItem", searchMap);
-		System.out.println(list);
 		return list;
 	}
 	

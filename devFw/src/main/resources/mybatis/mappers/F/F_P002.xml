@@ -33,22 +33,19 @@
       ]]>
 		<where>
 			<if test=" p_id != ''  and  p_id != null">
-				sell_number = ${p_id}
+		 sell_number = ${p_id}
 			</if>
 		</where>
 	</select>
-	
+	 
 	<select id="searchOption" resultMap="F_P002Result02" parameterType="java.util.Map"> 
       <![CDATA[
-         select sell_number, option_size, option_color, option_quantity
+         select *
          from selloption
-         order by to_number(option_size) 
+         where sell_number = ${p_id} 
+         order by to_number(option_size)
       ]]>
-		<where>
-			<if test=" p_id != ''  and  p_id != null">
-				sell_number = ${p_id}
-			</if>
-		</where>
+	
 
 		
 	</select>
