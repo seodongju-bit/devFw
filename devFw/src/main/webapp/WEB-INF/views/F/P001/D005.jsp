@@ -22,7 +22,7 @@ margin-right:180px;
 font-style: italic;
 font-weight: bolder;
 }
-div.gallery{
+div.gallery{ 
 postion:fixed;
 background-color:#848484;
     margin: 5px;
@@ -85,7 +85,7 @@ left:335px;
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>            
-<body>  
+<body>     
 <div class="name">
 new product
 </div>
