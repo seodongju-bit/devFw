@@ -85,7 +85,7 @@ left:335px;
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>            
-<body>     
+<body>  
 <div class="name">
 new product
 </div>
@@ -94,10 +94,10 @@ new product
 <div class="gallery">
   <a target="_blank" href="myPage.do">
 
-    <img src="resources/image/items/${productlist.pro_img}" alt="1" width="600" height="400">
+    <img src="${productlist.sell_thumbnail}" alt="1" width="600" height="400">
   </a>
-  <div class="desc">${productlist.pro_name}<br>
-  ${productlist.pro_price}                
+  <div class="desc">${productlist.sell_title}<br>
+  ${productlist.sell_price}                
    </div>                   
                                                             
 </div>                                                  
