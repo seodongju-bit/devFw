@@ -12,7 +12,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="resources/css/F_P002_D001.css?ver=1.0">
+<link rel="stylesheet" type="text/css" href="resources/css/F_P002_D001.css?ver=1.1">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -21,8 +21,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
-
-
 $(document).ready(function(){
 	
 	$('#itemsImg').attr('src','${item.sell_thumbnail}');
@@ -31,43 +29,35 @@ $(document).ready(function(){
 	
 	if('${item.option_yn}'=='y'){
 	/////ajax
-	 var p_id = '${item.sell_number}';
+		 var p_id = '${item.sell_number}'
 	 $.ajax({
 	       type:"post",
 	       async:false,  
 	       url:"${contextPath}/searchOption.do",
-	       data: {"p_id":p_id},
+	       data: [{"p_id":p_id}],
 	       dataType:"json",
 	       success:function (data,textStatus){
 	    	   //var jsonInfo = JSON.parse(data);
 	           var jsonInfo = data;
 	           if(jsonInfo.length!=0){
 	        	   $('#orderOption').css('display', 'block');
-	        	   if(jsonInfo[0].option_size != '-1'){
-	        		   option_kinds.push('size')
-	        		   $('#sizeOption').css('display', 'block');
-	        	   }
-	        	   if(jsonInfo[0].option_color != '-1'){
-	        		   option_kinds.push('color')
-	        		   $('#colorOption').css('display', 'block');
-	        	   }
 	           }
-	           console.log(option_kinds);
 	           const size = new Set();
 	           const color = new Set();
 
 	           for(var i=0;i<jsonInfo.length;i++){
 	        	   var size_op = jsonInfo[i].option_size;
 	        	   var color_op = jsonInfo[i].option_color;
-	        	   
-	         	   if(size_op!='-1' && !size.has(size_op)){
+	         	   if(size_op!='0' && !size.has(size_op)){
+	        	   	 $('#sizeOption').css('display', 'block');
 	        	   	 size.add(size_op);
 	        	   	 var sizeOption = document.createElement('option');
 	        	     sizeOption.setAttribute("value", size_op);
 	        	   	 sizeOption.append(size_op);
 	        	   	 document.getElementById('sizeOption').appendChild(sizeOption);
 	          	  }
-	         	  if(color_op!='-1' && !color.has(color_op)){
+	         	  if(jsonInfo[i].option_color!='0' && !color.has(color_op)){
+	         		 $('#colorOption').css('display', 'block');
 	         		 color.add(color_op);
 	        	   	 var colorOption = document.createElement('option');
 	        	   	 colorOption.setAttribute("value", color_op);
@@ -89,129 +79,52 @@ $(document).ready(function(){
 
 })
 var itemList = [];
-var option_kinds=[];
 $(document).ready(function(){
+	 $('#sizeOption').on('change',function(){
+		 $('#colorOption').css('display', 'block');
+		 $('#colorOption').on('change',function(){
+			 var item={};
+			 if(document.getElementById('colorOption').value!=""){
+				 item.color = document.getElementById('colorOption').value;
+				 $('#colorOption').val("");
+			 }
+			 if(document.getElementById('sizeOption').value!=""){
+				 item.size = document.getElementById('sizeOption').value;
+				 $('#sizeOption').val("");
+			 }
+		
+			 if("color" in item || "size" in item){
+				 itemList.push(item);
+			 }
 
-	if('${item.option_yn}'=='n'){  //옵션없음
-console.log("옵션없음");
-		var item={};
-		item.sell_number='${item.sell_number}';
-		itemList.push(item);
-console.log(itemList);		
-	}
-	 
-	if(!option_kinds.includes("size")  && option_kinds.includes("color")){ //색상옵션
-console.log("색상만 있음");
-		$('#colorOption').on('change',function(){
-			var item={};
-			if(document.getElementById('colorOption').value!=""){
-				item.color = document.getElementById('colorOption').value;
-				$('#colorOption').val("");
-				
-				var selectedBox = document.createElement('div');
-				
-				selectedBox.setAttribute('color','blue');
-				selectedBox.append(item.color);
-				
-				document.getElementById('selectItem').appendChild(selectedBox);
-			
-				
-				itemList.push(item);
-			}
+			 console.log(itemList);
+			 //document.getElementById('sizeOption').value="";
+			 
+			 
 
-		});
+			 /*
+			 var form = document.createElement("item1");
+			 form.setAttribute("charset", "UTF-8");
+	         form.setAttribute("method", "get"); 
+	         form.setAttribute("action", "/test/test.html");
+			 
+			 //var size = document.getElementById('sizeOption');
+			 var item = document.createElement("input");
+			 item.setAttribute("type", "hidden");
+			 item.setAttribute("name", "color");
+			 item.setAttribute("value", document.getElementById('colorOption').value);
 
-	}
-	
-	if(option_kinds.includes("size")  && !option_kinds.includes("color")){ //컬러옵션
-		console.log("사이즈만 있음");
-		$('#sizeOption').on('change',function(){
-			var item={};
-			if(document.getElementById('sizeOption').value!=""){
-				item.size = document.getElementById('sizeOption').value;
-				$('#sizeOption').val("");
-			}
-
-			if("size" in item){
-				itemList.push(item);
-			}
-console.log(itemList);
-		});
-	}
-	
-	if(option_kinds.includes("size")  && option_kinds.includes("color")){ //컬러&색상옵션
-		$('#sizeOption').on('change',function(){
-			 $('#colorOption').on('change',function(){
-				 var item={};
-				 if(document.getElementById('colorOption').value!=""){
-					 item.color = document.getElementById('colorOption').value;
-					 $('#colorOption').val("");
-				 }
-				 if(document.getElementById('sizeOption').value!=""){
-					 item.size = document.getElementById('sizeOption').value;
-					 $('#sizeOption').val("");
-				 }
-				 if("color" in item && "size" in item){
-					 itemList.push(item);
-				 }
-console.log(itemList);
-			 });
+	         form.appendChild(item);
+	         
+	         document.getElementById('selectItem').appendChild(form);
+			 form.submit();
+			 */
+			 
 		 });
-	}
+	 });
 });
 
-function order(){
-/*	
-	$.ajax({
-	       type:"post",
-	       async:false,  
-	       url:"/devFw/order.do",
-	       data: itemList,
-	       dataType:"json",
-	       success:function (data,textStatus){
-	    	 
-		
-		      
-	       },
-	       error:function(request,textStatus,error){
-	          alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-	       },
-	       complete:function(data,textStatus){
-	          //alert("작업을완료 했습니다");
-	       }
-	    });  //end ajax
-*/    
-	    
-	var form = document.createElement('form');
-	form.setAttribute("action", "/devFw/order.do"); 
-	form.setAttribute("charset", "UTF-8");
-	form.setAttribute("method", "get");  
 
-	
-	
-	   var hiddenField = document.createElement("input");
-
-       hiddenField.setAttribute("type", "hidden");
-       hiddenField.setAttribute("name", "mName");
-       hiddenField.setAttribute("value", "mName");
-       form.appendChild(hiddenField);
-
-
-
-       hiddenField = document.createElement("input");
-       hiddenField.setAttribute("type", "hidden");
-       hiddenField.setAttribute("name", "mEmail");
-       hiddenField.setAttribute("value", "mEmail");
-       form.appendChild(hiddenField);
-
-
-
-       document.body.appendChild(form);
-       form.submit();
-
-	
-
-}
 
 </script>
 <meta charset="UTF-8">
@@ -247,7 +160,7 @@ function order(){
 			<p id="itemDelivery">배송정보를 넣어주세요</p>
 		</div>
 		<div id="orderOption" class="sellInfo">옵션선택
-			<select id="sizeOption" name="option_size" class="form-control">
+			<select id="sizeOption" name="option_size" class="form-control" >
 				<option value="">사이즈 선택</option>
 			</select>
 			<select id="colorOption" name="option_color" class="form-control">
@@ -260,7 +173,7 @@ function order(){
 		</div>
 		<div id="sellButton">
 			<button class="btn btn-light" onclick="">장바구니</button>
-			<button class="btn btn-primary" onclick="order()">바로구매</button>
+			<button class="btn btn-primary" onclick="location.href='/test/test.html?asdf=12'">바로구매</button>
 			
 		</div>
 	</div>

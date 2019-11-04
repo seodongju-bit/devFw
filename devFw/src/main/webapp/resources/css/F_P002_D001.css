@@ -82,18 +82,16 @@
 #sellButton{
 	position:relative;
 	top:10px;
-	left:100px;
-	
+	height:95%;
 }
 #sellButton :first-child{
 	border:1px solid gray;
 }
 
 #sellButton > button{
-	width:180px;
-	height:50px;
+	width:140px;
+	height:45px;
 	margin:10px 20px;
-	font-size:15px;
 }
 .quantity{
 	width:60px;
@@ -113,12 +111,12 @@
 	float:left;
 	margin:0 10px;
 	position:relative;
-	width:165px;
-	height:40px;
+	width:200px;
+	height:50px;
 	/*border-left:1px solid #F2F2F2;
 	border-right:1px solid #F2F2F2;*/
 	border-radius: 15px 15px 0 0;
-	font-size:16px;
+	font-size:18px;
 }
 #itemsInfoSelect :first-child {
 	margin-left:0px;

@@ -1,24 +1,3 @@
-Skip to content
-Why GitHub? 
-Enterprise
-Explore 
-Marketplace
-Pricing 
-Search
-
-Sign in
-Sign up
-100seodongju-bit/devFw
- Code Issues 0 Pull requests 1 Projects 0 Security Insights
-Join GitHub today
-GitHub is home to over 40 million developers working together to host and review code, manage projects, and build software together.
-
-devFw/devFw/src/main/webapp/WEB-INF/views/F/P001/D005.jsp
-@jaehoww jaehoww ㅅㅄㅂㅄㅄㅄㅄㅄㅄㅄㅄㅂ
-1b53cc8 7 minutes ago
-@jaehoww@seodongju-bit
-123 lines (101 sloc)  2.5 KB
-  
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"   isELIgnored="false"
  %>
@@ -43,7 +22,7 @@ margin-right:180px;
 font-style: italic;
 font-weight: bolder;
 }
-div.gallery{
+div.gallery{ 
 postion:fixed;
 background-color:#848484;
     margin: 5px;
@@ -55,10 +34,12 @@ background-color:#848484;
   div.gallery:hover {         
   border: 1px solid #777;
 }   
+
 div.gallery img {
   width: 100%;
   height: auto;
 }
+
 div.desc {
 postion:fixed;
   padding: 15px;
@@ -75,6 +56,7 @@ line-height:15px;
 #paging a.prev{
 font:8pt verdana; 
 color:#555555;
+
 }
 #paging .selected {
 font-weight:bolder; 
@@ -91,12 +73,14 @@ border:#AAAAAA 1px solid;
 #paging a:hover.num{
 border:#555555 1px solid;
 }
+
 #page{                                        
 position:relative;
 left:335px;
 }
             
                                    
+
 </style>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -137,15 +121,3 @@ new product
 
 </body>                
 </html>        
-© 2019 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About

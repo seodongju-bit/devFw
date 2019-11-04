@@ -55,13 +55,14 @@ public class F_P002ControllerImpl   implements F_P002Controller {
 	@Override
 	@RequestMapping(value = "/searchOption.do", method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
-	public List<Map<String, Object>> searchOption(@RequestParam(value="p_id", required=false) String p_id, HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public List<Map<String, Object>> searchOption(@RequestParam(value="sell_no", required=false) String p_id, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("utf-8");
 		System.out.println("옵션찾기 실행");
 		Map<String, Object> searchMap = new HashMap<String, Object>();
 		Map<String, Object> resultMap = new HashMap<String, Object>();
 		List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
 		searchMap.put("p_id", p_id);	 
+		
 		List list = null;
 		try {
 			list = f_P002Service.searchOption(searchMap);
