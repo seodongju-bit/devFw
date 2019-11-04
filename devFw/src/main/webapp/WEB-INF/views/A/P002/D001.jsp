@@ -320,9 +320,8 @@ label.light {
 		  </div>
         
         </fieldset>
-        <button type="submit" class="sign-upbtn"> 회원 가입</button>
+        <button type="submit" class="sign-upbtn" href="membersuccess.do"> 회원 가입</button>
       </form>
-      
      	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 		<script type="text/javascript"> 
@@ -421,6 +420,87 @@ label.light {
 			}
 			
 			
+			
+			function ValidationCheck() {
+				var validate = true;
+				var regExp = /([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/; // email 유효성검사
+				var hanChecked = /^[가-힝a-zA-Z]{2,15}$/; // 한글 유효성검사(2자리 이상 15자리 이하)
+				var idChecked = /^[0-9a-zA-Z]{5,15}$/; // 아이디 유효성검사(5자리 이상 15자리 이하)
+				//var phoneChecked = /^[0-9-]{1,16}$/;
+				var phoneChecked = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})-([0-9]{3,4})-([0-9]{4})$/;
+				if($("#${commandName} #userEmail").val()) {
+				if(!regExp.test($("#${commandName} #userEmail").val())){
+				alert("이메일 주소가 유효하지 않습니다");
+				$("#${commandName} #userEmail").focus();
+				return false;
+				}
+				}
+				if($("#${commandName} #userPhone").val()) {
+				if(!phoneChecked.test($("#${commandName} #userPhone").val())) {
+				alert("전화번호가 잘못 되었습니다.");
+				$("#${commandName} #userPhone").focus();
+				return false;
+				}
+				}
+				if(!$("#${commandName} #userId").val()) {
+				alert("아이디를 입력 하세요.");
+				$("#${commandName} #userId").focus();
+				validate = false;
+				return false;
+				}else if(!idChecked.test($("#${commandName} #userId").val())){
+				alert("아이디는 5자 ~ 15자리 사이로 만들어주세요.");
+				return false;
+				}else
+				if(!$("#${commandName} #userNm").val()) {
+				alert("이름을 입력 하세요.");
+				$("#${commandName} #userNm").focus();
+				return false;
+				}else if(!hanChecked.test($("#${commandName} #userNm").val())){
+				alert("이름이 잘못 되었습니다.");
+				$("#${commandName} #userNm").focus();
+				return false;
+				}else if(!$("#${commandName} #userEmail").val()) {
+				alert("이메일을 입력하세요.");
+				$("#${commandName} #userEmail").focus();
+				return false;
+				}else if(!$("#emailAuth").val()){
+				alert("이메일 인증을 완료해주세요.");
+				$("#emailAuth").focus();
+				return false;
+				}else if($("#emailAuthBtn")[0].disabled == false){
+				console.log($("#emailAuthBtn")[0].disabled);
+				alert("이메일 인증을 완료해주세요.");
+				$("#emailAuth").focus();
+				return false;
+				}else if(!$("#${commandName} #userPw").val()) {
+				alert("비밀번호를 입력하세요.");
+				$("#${commandName} #userPw").focus();
+				return false;
+				}else if($("#${commandName} #userPw").val().length > 16 || $("#${commandName} #userPw").val().length < 8) {
+				alert("비밀번호는 8 ~ 16 자리로 입력해주세요.");
+				return false;
+				}else if(!$("#${commandName} #userPw2").val()) {
+				alert("비밀번호 확인을 입력하세요.");
+				$("#${commandName} #userPw2").focus();
+				return false;
+				}else if($("#${commandName} #userPw").val() != $("#${commandName} #userPw2").val()) {
+				alert("비밀번호가 일치 하지 않습니다.");
+				$("#${commandName} #userPw2").focus();
+				return false;
+				}else if(!$("#${commandName} #userFirstAddr").val()) {
+				alert("주소를 클릭하여 선택해 주세요");
+				$("#${commandName} #userZipCode").focus();
+				return false;
+				}else if(!$("#${commandName} #userSecondAddr").val()) {
+				alert("나머지 주소를 입력 해 주세요");
+				$("#${commandName} #userSecondAddr").focus();
+				return false;
+				}else{
+				return true;
+				}
+				}
+
+				
 		</script>
     </body>
 </html>
