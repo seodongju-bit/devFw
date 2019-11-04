@@ -110,7 +110,7 @@ font-size:20px;
           <li><a href="#">남성구두</a></li>
            <li><a href="#">여성구두</a></li>
             <li><a href="#">가방</a></li>
-             <li><a href="#">악세사리</a></li>
+             <li><a href="#">악세사리</a></li>            
               <li><a href="#">아동의류</a></li>
                <li><a href="#">아동신발</a></li>
                <li><a href="#">내의/잠옷</a></li>
