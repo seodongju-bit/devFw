@@ -2,6 +2,7 @@ package project.A.P002.controller;
 
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -16,23 +17,22 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
-
 @Controller("A_P002Controller")
 public class A_P002ControllerImpl   implements A_P002Controller {
 	
 	
 	@Override
-	@RequestMapping(value="/addMember.do" ,method = RequestMethod.GET)
-	public ModelAndView addmember(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	@RequestMapping(value="/signuppage.do" ,method = RequestMethod.GET)
+	public ModelAndView signupmain(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = getViewName(request);
-		viewName = "addMember";
+		viewName = "signuppage";
 		//List membersList = memberService.listMembers();
 		ModelAndView mav = new ModelAndView(viewName);
 		//mav.addObject("membersList", membersList);
 		return mav;
 	}
-	
-
+	   
+	 
 	private String getViewName(HttpServletRequest request) throws Exception {
 		String contextPath = request.getContextPath();
 		String uri = (String) request.getAttribute("javax.servlet.include.request_uri");

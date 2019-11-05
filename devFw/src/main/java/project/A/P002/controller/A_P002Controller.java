@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+
+
 public interface A_P002Controller {
-	public ModelAndView addmember(HttpServletRequest request, HttpServletResponse response) throws Exception;	
-	
+	public ModelAndView signupmain(HttpServletRequest request, HttpServletResponse response) throws Exception;
+
 }

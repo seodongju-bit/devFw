@@ -58,11 +58,15 @@ public class F_P001ControllerImpl implements F_P001Controller {
 		return mav;
 	}
 	
+
+
+	
 	@Override
 	@RequestMapping(value="/eventProduct.do" ,method = RequestMethod.GET)
 	public ModelAndView eventProduct(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = getViewName(request);
 		viewName = "eventProduct";
+		
 		ModelAndView mav = new ModelAndView(viewName);
 		return mav;
 	}
@@ -70,7 +74,7 @@ public class F_P001ControllerImpl implements F_P001Controller {
 	@Autowired
 	private F_P001Service f_P001Service;
 	@Autowired
-	F_P001VO F_P001VO ;
+	F_P001VO F_P001VO;
 	
 	@Override
 	@RequestMapping(value="/category.do" ,method = RequestMethod.GET)

@@ -4,32 +4,32 @@
    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="mapper.product">
-	<resultMap id="F_P001Result01" type="F_P001VO">
-		<result property="sell_number" column="sell_number" />
-		<result property="pro_number" column="pro_number" />
-		<result property="sell_price" column="sell_price" />
-		<result property="pro_price" column="pro_price" />
-		<result property="sell_score" column="sell_score" />
-		<result property="sell_title" column="sell_title" />
-		<result property="sell_thumbnail" column="sell_thumbnail" />
-		<result property="mem_id" column="mem_id" />
-		<result property="pro_vendor" column="pro_vendor" />
+   <resultMap id="F_P001Result01" type="F_P001VO">
+      <result property="sell_number" column="sell_number" />
+      <result property="pro_number" column="pro_number" />
+      <result property="sell_price" column="sell_price" />
+      <result property="pro_price" column="pro_price" />
+      <result property="sell_score" column="sell_score" />
+      <result property="sell_title" column="sell_title" />
+      <result property="sell_thumbnail" column="sell_thumbnail" />
+      <result property="mem_id" column="mem_id" />
+      <result property="pro_vendor" column="pro_vendor" />
 
-	</resultMap>
-	
+   </resultMap>
+   
                     
-	
-	<select id="selectItem" resultMap="F_P001Result01" parameterType="java.util.Map"> 
+   
+   <select id="selectItem" resultMap="F_P001Result01" parameterType="java.util.Map"> 
       <![CDATA[
          select *
          from product p, productsell ps
          where p.pro_number = ps.pro_number
       ]]>      
      
-		
-	</select>
+      
+   </select>
 
-	
+   
 
 
-</mapper>        
+</mapper>             

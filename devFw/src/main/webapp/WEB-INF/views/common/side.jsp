@@ -95,23 +95,23 @@ font-size:20px;
     <h2>카테고리</h2>
     
     <ul id="myMenu">
-      <li><a href="#">패션의류</a>
-      <ul>
-      <li><a href="#">여성_상의</a></li>
-       <li><a href="#">여성_바지</a></li>
-       <li><a href="#">여성_스커트</a></li>
-       <li><a href="#">여성_원피스</a></li>
-       <li><a href="#">여성_아우터</a></li>
+      <li><a href="category.do?c=H01&l=1">패션의류</a>
+      <ul>                         
+      <li><a href="category.do?c=H_01_0001&l=2">여성_상의</a></li>
+       <li><a href="category.do">여성_바지</a></li>
+       <li><a href="category.do">여성_스커트</a></li>
+       <li><a href="category.do">여성_원피스</a></li>
+       <li><a href="category.do">여성_아우터</a></li>
        <li><a href="#">남성_상의</a></li>
        <li><a href="#">남성_하의</a></li>
-        <li><a href="#">남성_아우터</a></li>
+        <li><a href="#">남성_아우터</a></li>   
         <li><a href="#">양말</a></li>
          <li><a href="#">운동화</a></li>
           <li><a href="#">남성구두</a></li>
            <li><a href="#">여성구두</a></li>
-            <li><a href="#">가방</a></li>
-             <li><a href="#">악세사리</a></li>
-              <li><a href="#">아동의류</a></li>
+            <li><a href="#">가방</a></li>     
+             <li><a href="#">악세사리</a></li>            
+              <li><a href="#">아동의류</a></li>                  
                <li><a href="#">아동신발</a></li>
                <li><a href="#">내의/잠옷</a></li>
                <li><a href="#">속옷</a></li>

@@ -74,13 +74,12 @@ check {
 	padding: 15px;
 }
 
-p.inset {
-border-style: inset;
-position:relative;
-height:300px;  
+input{
 width:1000px;
-                           
-}    
+height:300px;
+
+
+}   
 
 
 
@@ -153,7 +152,9 @@ width:1000px;
      
 		<tr>
 
-            <td align="left"><p class="inset">An inset border.</p></td>
+         <!--   <td align="left"><p class="inset">An inset border.</p></td>-->
+         
+         <td align="left"><input type="text"></td>
                        
 		</tr>
 	</table>
