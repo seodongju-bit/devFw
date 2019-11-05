@@ -93,20 +93,20 @@ font-size:20px;
 <div class="row">
   <div class="left" style="background-color:#bbb;">
     <h2>카테고리</h2>
-    
+         
     <ul id="myMenu">
       <li><a href="category.do?c=H01&l=1">패션의류</a>
       <ul>                         
-      <li><a href="category.do?c=H_01_0001&l=2">여성_상의</a></li>
+      <li><a href="category.do?c=H_01_0006&l=2">여성_상의</a></li>   
        <li><a href="category.do">여성_바지</a></li>
        <li><a href="category.do">여성_스커트</a></li>
        <li><a href="category.do">여성_원피스</a></li>
        <li><a href="category.do">여성_아우터</a></li>
-       <li><a href="#">남성_상의</a></li>
+       <li><a href="category.do">남성_상의</a></li>
        <li><a href="#">남성_하의</a></li>
-        <li><a href="#">남성_아우터</a></li>   
+        <li><a href="#">남성_아우터</a></li>       
         <li><a href="#">양말</a></li>
-         <li><a href="#">운동화</a></li>
+         <li><a href="#">운동화</a></li>                          
           <li><a href="#">남성구두</a></li>
            <li><a href="#">여성구두</a></li>
             <li><a href="#">가방</a></li>     
@@ -115,7 +115,7 @@ font-size:20px;
                <li><a href="#">아동신발</a></li>
                <li><a href="#">내의/잠옷</a></li>
                <li><a href="#">속옷</a></li>
-               <li><a href="#">명품관</a></li>
+               <li><a href="#">명품관</a></li>  
                
       </ul>
       </li>
@@ -144,7 +144,7 @@ font-size:20px;
       <ul>
       <li><a href="#">컴퓨터</a></li>
        <li><a href="#">노트북</a></li>
-          <li><a href="#">프린터</a></li>
+          <li><a href="#">프린터</a></li>                            
        <li><a href="#">pc주변기기</a></li>
        <li><a href="#">휴대폰</a></li>
        <li><a href="#">카메라</a></li>
@@ -207,11 +207,33 @@ font-size:20px;
       </li>
     
     </ul>
+
+    
   </div>
   
 
 </div>
+<script>
+function ajaxTest(){
+    $.ajax({
+      type : "GET",
+      url : "test.jsp",
+      dataType : "text",
+      error : function() {
+        alert('통신실패!!');
+      },
+      success : function(data) {
+        $('#Context').html(data);
+      }
 
+    });
+  }
+
+  ajaxTest();
+
+
+ 
+</script>
 
 
 
