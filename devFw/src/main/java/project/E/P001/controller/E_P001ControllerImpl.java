@@ -22,14 +22,17 @@ public class E_P001ControllerImpl   implements E_P001Controller {
 	
 	
 	@Override
-	@RequestMapping(value="/order.do" ,method = RequestMethod.GET)
+	@RequestMapping(value = "/order.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView order(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		//String viewName = getViewName(request);
 		String viewName = "order";
 		//List membersList = memberService.listMembers();
 		System.out.println(request);
-		System.out.println(request.getParameter("value"));
-		System.out.println(request.getParameter("name"));
+		System.out.println(request.getParameter("size0"));
+		System.out.println(request.getParameter("color0"));
+		System.out.println(request.getParameter("size1"));
+		System.out.println(request.getParameter("sell_number"));
+		
 		ModelAndView mav = new ModelAndView(viewName);
 		//mav.addObject("membersList", membersList);
 		return mav;

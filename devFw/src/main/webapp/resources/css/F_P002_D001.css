@@ -83,9 +83,7 @@
 	position:relative;
 	top:10px;
 	height:95%;
-}
-#sellButton :first-child{
-	border:1px solid gray;
+	background-color:blue;
 }
 
 #sellButton > button{

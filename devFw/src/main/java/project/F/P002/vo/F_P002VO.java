@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 public class F_P002VO {
 	private String sell_number="";
 	private String pro_number="";
+	private String pro_name="";
 	private String sell_price="";
 	private String sell_score="";
 	private String sell_contents="";
@@ -148,6 +149,14 @@ public class F_P002VO {
 
 	public void setOption_quantity(String option_quantity) {
 		this.option_quantity = option_quantity;
+	}
+
+	public String getPro_name() {
+		return pro_name;
+	}
+
+	public void setPro_name(String pro_name) {
+		this.pro_name = pro_name;
 	}
 
 	
