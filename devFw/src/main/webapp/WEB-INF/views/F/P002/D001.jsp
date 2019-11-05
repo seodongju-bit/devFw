@@ -24,7 +24,6 @@
 
 
 $(document).ready(function(){
-	
 	$('#itemsImg').attr('src','${item.sell_thumbnail}');
 	$('.miniImg').attr('src', 'resources/image/items/10.JPG' );
 	
@@ -90,51 +89,56 @@ $(document).ready(function(){
 })
 var itemList = [];
 var option_kinds=[];
+var color_stack=1;
+var option_stack=1;
 $(document).ready(function(){
-
-	if('${item.option_yn}'=='n'){  //옵션없음
-console.log("옵션없음");
-		var selectedBox = document.createElement('div');
-		var Field = document.createElement("input");
-		
-		//Field.setAttribute("type", 'hidden');
-		Field.setAttribute("name", 'sell_number');
-		Field.setAttribute("value", '${item.sell_number}');
-		document.getElementById('selectItem').prepend('${item.pro_name}');
-		selectedBox.appendChild(Field);
-		selectedBox.innerHTML+="<input type='number' name='quantity1' class='quantity' value='1' min='0' max='99' >";
-		document.getElementById('selectItem').appendChild(selectedBox);
-		
+	var input = document.createElement("input");
+	input.setAttribute("type", 'hidden');
+	input.setAttribute("name", 'sell_number');
+	input.setAttribute("value", '${item.sell_number}');
+	document.getElementById('selectItems').appendChild(input);
 	
+	if('${item.option_yn}'=='n'){  //옵션없음
+		var selectedBox = document.createElement('div');
+		input = document.createElement("input");
 		
+		//document.getElementById('selectItem').prepend('${item.pro_name}');
+		
+		selectedBox.innerHTML+="<input type='number' name='quantity1' class='quantity' value='1' min='0' max='99' >";
+		document.getElementById('selectItem').prepend(selectedBox);
+
 console.log(itemList);		
 	}
 	 
 	if(!option_kinds.includes("size")  && option_kinds.includes("color")){ //색상옵션
-console.log("색상만 있음");
 		$('#colorOption').on('change',function(){
-			var item={};
-			if(document.getElementById('colorOption').value!=""){
-				item.color = document.getElementById('colorOption').value;
-				$('#colorOption').val("");
-				
-				var selectedBox = document.createElement('div');
-				
-				selectedBox.setAttribute('color','blue');
-				selectedBox.append(item.color);
-				
-				document.getElementById('selectItem').appendChild(selectedBox);
 			
-				
-				itemList.push(item);
-			}
-
+			var selectedBox = document.createElement('div');
+			var deletebtn = document.createElement('button');
+			var input = document.createElement("input");
+			
+			input.setAttribute("type", 'hidden');
+			input.setAttribute("name", 'color'+option_stack);
+			input.setAttribute("value", document.getElementById('colorOption').value );
+			
+			deletebtn.append('삭제');
+			deletebtn.setAttribute('type', 'button');
+			deletebtn.setAttribute('onclick', "itemDelete('selectbox"+option_stack+"')");
+			
+			selectedBox.setAttribute('class', 'selectItem');
+			selectedBox.setAttribute('id', 'selectbox'+option_stack);
+			selectedBox.append(document.getElementById('colorOption').value);
+			selectedBox.appendChild(input);
+			selectedBox.innerHTML+="<input type='number' name='quantity"+option_stack+"' class='quantity' value='1' min='0' max='99' >";
+			selectedBox.appendChild(deletebtn);
+			document.getElementById('selectItems').prepend(selectedBox);
+			option_stack++;
+			
 		});
 
 	}
 	
 	if(option_kinds.includes("size")  && !option_kinds.includes("color")){ //컬러옵션
-		console.log("사이즈만 있음");
 		$('#sizeOption').on('change',function(){
 			var item={};
 			if(document.getElementById('sizeOption').value!=""){
@@ -170,6 +174,12 @@ console.log(itemList);
 	}
 });
 
+function itemDelete(id){
+	$('#'+id).remove();
+	option_stack--;
+	
+}
+/*
 function order(){
 	
 
@@ -211,7 +221,7 @@ function order(){
     form.submit();
 
 }
-
+*/
 </script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -253,24 +263,16 @@ function order(){
 				<option value="">색상 선택</option>
 			</select>
 		</div>
-		<form action="/devFw/order.do" method="get" name="selectPush" accept-charset="UTF-8" >
-			<div id="selectItem" class="sellInfo">
+		<form method="get" name="selectPush" accept-charset="UTF-8" >
+			<div id="selectItems" class="sellInfo">
 			
-			
+		
 				
-				<button type="submit" class="btn btn-light" formaction="/devFw/basket.do" >장바구니</button>
-				<button type="submit" class="btn btn-primary" formaction="/devFw/order.do">바로구매</button>
+				<button type="submit" class="btn btn-light" id="basketbtn" formaction="/devFw/basket.do" >장바구니</button>
+				<button type="submit" class="btn btn-primary" id="orderbtn" formaction="/devFw/order.do">바로구매</button>
 			
 			</div>
 		</form>
-		
-		<!-- 
-		<div id="sellButton">
-			<button class="btn btn-light" onclick="basket()">장바구니</button>
-			<button class="btn btn-primary" onclick="order()">바로구매</button>
-			
-		</div>
-		 -->
 	</div>
 </div>
 <div id="itemsInfoSelect">

@@ -11,5 +11,6 @@
 		<typeAlias type="project.F.P001.vo.F_P001VO"  alias="F_P001VO" />
 		<typeAlias type="project.F.P002.vo.F_P002VO"  alias="F_P002VO" />
 		<typeAlias type="project.A.P005.vo.A_P005VO"  alias="basketVO" />
+		<typeAlias type="project.controller.commonVO"  alias="commonVO" />
 	</typeAliases>
 </configuration>                                  

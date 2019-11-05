@@ -32,7 +32,8 @@ public class E_P001ControllerImpl   implements E_P001Controller {
 		System.out.println(request.getParameter("color0"));
 		System.out.println(request.getParameter("size1"));
 		System.out.println(request.getParameter("sell_number"));
-		
+		System.out.println(request.getParameter("quantity1[0]"));
+		System.out.println(request.getParameter("quantity1"));
 		ModelAndView mav = new ModelAndView(viewName);
 		//mav.addObject("membersList", membersList);
 		return mav;

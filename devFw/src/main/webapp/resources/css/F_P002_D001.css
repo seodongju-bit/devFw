@@ -79,24 +79,28 @@
 	font-size:16px;
 	display:none;
 }
-#sellButton{
-	position:relative;
-	top:10px;
-	height:95%;
-	background-color:blue;
-}
 
-#sellButton > button{
+
+#basketbtn , #orderbtn{
 	width:140px;
 	height:45px;
 	margin:10px 20px;
+	font-size:16px;
+	border:1px solid lightblue;
 }
 .quantity{
 	width:60px;
 	height:30px;
 	text-align:center;
 }
-
+.selectItem{
+	color:black;
+	width:95%;
+	height:40px;
+	background-color:white;
+	border-bottom:1px solid gray;
+	
+}
 #itemsInfoSelect{
 	display:block;
 	width:1250px;
