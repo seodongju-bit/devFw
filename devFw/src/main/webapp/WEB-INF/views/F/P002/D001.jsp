@@ -133,7 +133,7 @@ console.log(itemList);
 			selectedBox.appendChild(deletebtn);
 			document.getElementById('selectItems').prepend(selectedBox);
 			option_stack++;
-			
+			  
 		});
 
 	}
