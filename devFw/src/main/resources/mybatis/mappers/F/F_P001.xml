@@ -37,7 +37,7 @@
 
        <result property="common_code" column="common_code" />
        <result property="common_name" column="common_name" />   
-       
+                 
    </resultMap>
 
    
