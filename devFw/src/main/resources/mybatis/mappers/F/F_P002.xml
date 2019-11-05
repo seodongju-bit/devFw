@@ -7,6 +7,7 @@
 	<resultMap id="F_P002Result01" type="F_P002VO">
 		<result property="sell_number" column="sell_number" />
 		<result property="pro_number" column="pro_number" />
+		<result property="pro_name" column="pro_name" />
 		<result property="sell_price" column="sell_price" />
 		<result property="sell_score" column="sell_score" />
 		<result property="sell_contents" column="sell_contents" />
@@ -29,11 +30,12 @@
 	<select id="searchItem" resultMap="F_P002Result01" parameterType="java.util.Map"> 
       <![CDATA[
          select * 
-         from productsell
+         from productsell ps, product p
       ]]>
 		<where>
+			ps.pro_number = p.pro_number
 			<if test=" p_id != ''  and  p_id != null">
-				sell_number = ${p_id}
+				and sell_number = ${p_id}
 			</if>
 		</where>
 	</select>
@@ -42,13 +44,10 @@
       <![CDATA[
          select sell_number, option_size, option_color, option_quantity
          from selloption
+         where sell_number = ${p_id}
          order by to_number(option_size) 
       ]]>
-		<where>
-			<if test=" p_id != ''  and  p_id != null">
-				sell_number = ${p_id}
-			</if>
-		</where>
+		
 
 		
 	</select>

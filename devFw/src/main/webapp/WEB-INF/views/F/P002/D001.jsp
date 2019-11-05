@@ -12,7 +12,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="resources/css/F_P002_D001.css?ver=1.1">
+<link rel="stylesheet" type="text/css" href="resources/css/F_P002_D001.css?ver=1.0">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -21,6 +21,8 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
+
+
 $(document).ready(function(){
 	
 	$('#itemsImg').attr('src','${item.sell_thumbnail}');
@@ -29,35 +31,43 @@ $(document).ready(function(){
 	
 	if('${item.option_yn}'=='y'){
 	/////ajax
-		 var p_id = '${item.sell_number}'
+	 var p_id = '${item.sell_number}';
 	 $.ajax({
 	       type:"post",
 	       async:false,  
 	       url:"${contextPath}/searchOption.do",
-	       data: [{"p_id":p_id}],
+	       data: {"p_id":p_id},
 	       dataType:"json",
 	       success:function (data,textStatus){
 	    	   //var jsonInfo = JSON.parse(data);
 	           var jsonInfo = data;
 	           if(jsonInfo.length!=0){
 	        	   $('#orderOption').css('display', 'block');
+	        	   if(jsonInfo[0].option_size != '-1'){
+	        		   option_kinds.push('size')
+	        		   $('#sizeOption').css('display', 'block');
+	        	   }
+	        	   if(jsonInfo[0].option_color != '-1'){
+	        		   option_kinds.push('color')
+	        		   $('#colorOption').css('display', 'block');
+	        	   }
 	           }
+	           console.log(option_kinds);
 	           const size = new Set();
 	           const color = new Set();
 
 	           for(var i=0;i<jsonInfo.length;i++){
 	        	   var size_op = jsonInfo[i].option_size;
 	        	   var color_op = jsonInfo[i].option_color;
-	         	   if(size_op!='0' && !size.has(size_op)){
-	        	   	 $('#sizeOption').css('display', 'block');
+	        	   
+	         	   if(size_op!='-1' && !size.has(size_op)){
 	        	   	 size.add(size_op);
 	        	   	 var sizeOption = document.createElement('option');
 	        	     sizeOption.setAttribute("value", size_op);
 	        	   	 sizeOption.append(size_op);
 	        	   	 document.getElementById('sizeOption').appendChild(sizeOption);
 	          	  }
-	         	  if(jsonInfo[i].option_color!='0' && !color.has(color_op)){
-	         		 $('#colorOption').css('display', 'block');
+	         	  if(color_op!='-1' && !color.has(color_op)){
 	         		 color.add(color_op);
 	        	   	 var colorOption = document.createElement('option');
 	        	   	 colorOption.setAttribute("value", color_op);
@@ -79,52 +89,128 @@ $(document).ready(function(){
 
 })
 var itemList = [];
+var option_kinds=[];
 $(document).ready(function(){
-	 $('#sizeOption').on('change',function(){
-		 $('#colorOption').css('display', 'block');
-		 $('#colorOption').on('change',function(){
-			 var item={};
-			 if(document.getElementById('colorOption').value!=""){
-				 item.color = document.getElementById('colorOption').value;
-				 $('#colorOption').val("");
-			 }
-			 if(document.getElementById('sizeOption').value!=""){
-				 item.size = document.getElementById('sizeOption').value;
-				 $('#sizeOption').val("");
-			 }
+
+	if('${item.option_yn}'=='n'){  //옵션없음
+console.log("옵션없음");
+		var selectedBox = document.createElement('div');
+		var Field = document.createElement("input");
 		
-			 if("color" in item || "size" in item){
-				 itemList.push(item);
-			 }
+		//Field.setAttribute("type", 'hidden');
+		Field.setAttribute("name", 'sell_number');
+		Field.setAttribute("value", '${item.sell_number}');
+		document.getElementById('selectItem').prepend('${item.pro_name}');
+		selectedBox.appendChild(Field);
+		selectedBox.innerHTML+="<input type='number' name='quantity1' class='quantity' value='1' min='0' max='99' >";
+		document.getElementById('selectItem').appendChild(selectedBox);
+		
+	
+		
+console.log(itemList);		
+	}
+	 
+	if(!option_kinds.includes("size")  && option_kinds.includes("color")){ //색상옵션
+console.log("색상만 있음");
+		$('#colorOption').on('change',function(){
+			var item={};
+			if(document.getElementById('colorOption').value!=""){
+				item.color = document.getElementById('colorOption').value;
+				$('#colorOption').val("");
+				
+				var selectedBox = document.createElement('div');
+				
+				selectedBox.setAttribute('color','blue');
+				selectedBox.append(item.color);
+				
+				document.getElementById('selectItem').appendChild(selectedBox);
+			
+				
+				itemList.push(item);
+			}
 
-			 console.log(itemList);
-			 //document.getElementById('sizeOption').value="";
-			 
-			 
+		});
 
-			 /*
-			 var form = document.createElement("item1");
-			 form.setAttribute("charset", "UTF-8");
-	         form.setAttribute("method", "get"); 
-	         form.setAttribute("action", "/test/test.html");
-			 
-			 //var size = document.getElementById('sizeOption');
-			 var item = document.createElement("input");
-			 item.setAttribute("type", "hidden");
-			 item.setAttribute("name", "color");
-			 item.setAttribute("value", document.getElementById('colorOption').value);
+	}
+	
+	if(option_kinds.includes("size")  && !option_kinds.includes("color")){ //컬러옵션
+		console.log("사이즈만 있음");
+		$('#sizeOption').on('change',function(){
+			var item={};
+			if(document.getElementById('sizeOption').value!=""){
+				item.size = document.getElementById('sizeOption').value;
+				$('#sizeOption').val("");
+			}
 
-	         form.appendChild(item);
-	         
-	         document.getElementById('selectItem').appendChild(form);
-			 form.submit();
-			 */
-			 
+			if("size" in item){
+				itemList.push(item);
+			}
+console.log(itemList);
+		});
+	}
+	
+	if(option_kinds.includes("size")  && option_kinds.includes("color")){ //컬러&색상옵션
+		$('#sizeOption').on('change',function(){
+			 $('#colorOption').on('change',function(){
+				 var item={};
+				 if(document.getElementById('colorOption').value!=""){
+					 item.color = document.getElementById('colorOption').value;
+					 $('#colorOption').val("");
+				 }
+				 if(document.getElementById('sizeOption').value!=""){
+					 item.size = document.getElementById('sizeOption').value;
+					 $('#sizeOption').val("");
+				 }
+				 if("color" in item && "size" in item){
+					 itemList.push(item);
+				 }
+console.log(itemList);
+			 });
 		 });
-	 });
+	}
 });
 
+function order(){
+	
 
+	var form = document.createElement('form');
+	form.setAttribute("action", "/devFw/order.do"); 
+	form.setAttribute("charset", "UTF-8");
+	form.setAttribute("method", "get"); 
+	
+	for(var i in itemList){
+		 console.log(i + ':' +itemList[i].color + itemList[i].size);
+		 var hiddenField = document.createElement("input");
+
+	     hiddenField.setAttribute("type", "hidden");
+	     hiddenField.setAttribute("name", "color"+i);
+	     hiddenField.setAttribute("value", itemList[i].color);
+	     form.appendChild(hiddenField);
+	     
+	     hiddenField = document.createElement("input");
+	     hiddenField.setAttribute("type", "hidden");
+	     hiddenField.setAttribute("name", "size"+i);
+	     hiddenField.setAttribute("value", itemList[i].size);
+	     form.appendChild(hiddenField);
+	     
+	     hiddenField = document.createElement("input");
+	     hiddenField.setAttribute("type", "hidden");
+	     hiddenField.setAttribute("name", "quantity"+i);
+	     hiddenField.setAttribute("value", itemList[i].size);
+	     form.appendChild(hiddenField);
+		 
+	     hiddenField = document.createElement("input");
+	     hiddenField.setAttribute("type", "hidden");
+	     hiddenField.setAttribute("name", "sell_number");
+	     hiddenField.setAttribute("value", '${item.sell_number}');
+	     form.appendChild(hiddenField);
+	}
+    form.appendChild(hiddenField);
+
+    document.body.appendChild(form);
+    form.submit();
+
+}
 
 </script>
 <meta charset="UTF-8">
@@ -160,22 +246,31 @@ $(document).ready(function(){
 			<p id="itemDelivery">배송정보를 넣어주세요</p>
 		</div>
 		<div id="orderOption" class="sellInfo">옵션선택
-			<select id="sizeOption" name="option_size" class="form-control" >
+			<select id="sizeOption" name="option_size" class="form-control">
 				<option value="">사이즈 선택</option>
 			</select>
 			<select id="colorOption" name="option_color" class="form-control">
 				<option value="">색상 선택</option>
 			</select>
 		</div>
-		<div id="selectItem" class="sellInfo">선택상품
-			<div id="item_1" name="pro_number" >상품1  수량<input type="number" name="detail_quantity" class="quantity" value="1" min="0" max="99" ></div>
-			<div id="item_2" name="item_2"> 상품2  수량<input type="number" class="quantity" value="1" min="0" max="99" ></div>
-		</div>
+		<form action="/devFw/order.do" method="get" name="selectPush" accept-charset="UTF-8" >
+			<div id="selectItem" class="sellInfo">
+			
+			
+				
+				<button type="submit" class="btn btn-light" formaction="/devFw/basket.do" >장바구니</button>
+				<button type="submit" class="btn btn-primary" formaction="/devFw/order.do">바로구매</button>
+			
+			</div>
+		</form>
+		
+		<!-- 
 		<div id="sellButton">
-			<button class="btn btn-light" onclick="">장바구니</button>
-			<button class="btn btn-primary" onclick="location.href='/test/test.html?asdf=12'">바로구매</button>
+			<button class="btn btn-light" onclick="basket()">장바구니</button>
+			<button class="btn btn-primary" onclick="order()">바로구매</button>
 			
 		</div>
+		 -->
 	</div>
 </div>
 <div id="itemsInfoSelect">
