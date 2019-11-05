@@ -303,7 +303,7 @@ label.light {
           <option value="hanmail.net">hanmail.net</option> 
           <option value="hotmail.com">hotmail.com</option> 
           <option value="nate.com">nate.com</option> 
-          <option value="gmail.com">gmail.com</option> 
+          <option value="gmail.com">gmail.com123</option> 
           </select>
           <label for="nick" class="w" >연락처:</label>
           <input type="text" class="telbox" id="tel" name="mem_tel" maxlength="13" placeholder="TEL" >
