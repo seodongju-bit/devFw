@@ -9,6 +9,6 @@ public interface F_P001Service {
 
 	 public List searchItem() throws DataAccessException;
 
-		
-	
+	public List searchItem1() throws DataAccessException;
+     
 }

@@ -9,6 +9,7 @@
 		<typeAlias type="project.hm.p0003.vo.P0003VO"  alias="p0003VO" />
 		<typeAlias type="project.hm.p0004.vo.P0004VO"  alias="p0004VO" />
 		<typeAlias type="project.F.P001.vo.F_P001VO"  alias="F_P001VO" />
+		<typeAlias type="project.F.P001.vo.F_P001VO"  alias="F_P001_D04VO" />
 		<typeAlias type="project.F.P002.vo.F_P002VO"  alias="F_P002VO" />
 		<typeAlias type="project.A.P005.vo.A_P005VO"  alias="basketVO" />
 		<typeAlias type="project.controller.commonVO"  alias="commonVO" />

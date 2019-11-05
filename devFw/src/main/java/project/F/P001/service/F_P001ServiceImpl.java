@@ -28,7 +28,17 @@ public class F_P001ServiceImpl implements F_P001Service{
          list=f_P001DAO.selectItem();
 		return list;
 	}
-               
 	
+	@Autowired
+	private F_P001DAO f_P001_D04DAO ;           
+	
+	@Override
+	public List searchItem1() throws DataAccessException {
+		List list1 = null; 
+		System.out.println("서비스실행");
+         list1=f_P001_D04DAO.selectItem1();
+		return list1;
+	}
+          
 
 }

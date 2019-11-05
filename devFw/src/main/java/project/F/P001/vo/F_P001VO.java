@@ -5,9 +5,28 @@ import org.springframework.stereotype.Component;
 
 @Component("F_P001VO")
 public class F_P001VO {               
-
-
-             
+	  private String no_number;
+	   private String ev_discount;
+	   public String getNo_number() {
+		return no_number;
+	}
+	public void setNo_number(String no_number) {
+		this.no_number = no_number;
+	}
+	public String getEv_discount() {
+		return ev_discount;
+	}
+	public void setEv_discount(String ev_discount) {
+		this.ev_discount = ev_discount;
+	}
+	public String getEvent_explain() {
+		return event_explain;
+	}
+	public void setEvent_explain(String event_explain) {
+		this.event_explain = event_explain;
+	}
+	private String event_explain;
+       
    private String sell_number;
    private String pro_number;
    private String sell_price;
@@ -18,8 +37,22 @@ public class F_P001VO {
    private String mem_id;
    private String pro_vendor;
    
+   private String common_code;
+   private String common_name;  
    
-   public String getSell_number() {
+   public String getCommon_code() {
+	return common_code;
+}
+public void setCommon_code(String common_code) {
+	this.common_code = common_code;
+}
+public String getCommon_name() {
+	return common_name;
+}
+public void setCommon_name(String common_name) {
+	this.common_name = common_name;
+}
+public String getSell_number() {
       return sell_number;
    }
    public void setSell_number(String sell_number) {
@@ -32,7 +65,7 @@ public class F_P001VO {
       this.pro_number = pro_number;
    }
    public String getSell_price() {
-      return sell_price;
+      return sell_price;             
    }
    public void setSell_price(String sell_price) {
       this.sell_price = sell_price;
