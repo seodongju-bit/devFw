@@ -97,10 +97,11 @@ new product
     <img src="${productlist.sell_thumbnail}" alt="1" width="600" height="400">
   </a>
   <div class="desc">${productlist.sell_title}<br>
-  ${productlist.sell_price}                
+  ${productlist.sell_price}     
+         
    </div>                   
                                                             
-</div>                                                  
+</div>                                                        
      
 </c:forEach>         
 
