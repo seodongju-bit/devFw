@@ -14,6 +14,7 @@
       <result property="sell_thumbnail" column="sell_thumbnail" />
       <result property="mem_id" column="mem_id" />
       <result property="pro_vendor" column="pro_vendor" />
+      <result property="pro_explain" column="pro_explain" />
 
        <result property="common_code" column="common_code" />
        <result property="common_name" column="common_name" />   
@@ -34,6 +35,7 @@
       <result property="sell_thumbnail" column="sell_thumbnail" />
       <result property="mem_id" column="mem_id" />
       <result property="pro_vendor" column="pro_vendor" />
+            
 
        <result property="common_code" column="common_code" />
        <result property="common_name" column="common_name" />   

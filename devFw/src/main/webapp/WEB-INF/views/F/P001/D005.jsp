@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"   isELIgnored="false"
  %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
 <%
   request.setCharacterEncoding("UTF-8");
@@ -96,9 +98,9 @@ new product
 
     <img src="${productlist.sell_thumbnail}" alt="1" width="600" height="400">
   </a>
-  <div class="desc">${productlist.sell_title}<br>
-  ${productlist.sell_price}     
-         
+  <div class="desc">${productlist.sell_title}
+<fmt:formatNumber value="${productlist.sell_price}" pattern="#,###"/><br>
+        ${productlist.pro_explain} 
    </div>                   
                                                             
 </div>                                                        

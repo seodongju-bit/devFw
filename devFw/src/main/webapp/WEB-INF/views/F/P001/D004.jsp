@@ -112,7 +112,7 @@ new product
     <img src="${productlist1.sell_thumbnail}" alt="1" width="600" height="400">
   </a>
   <div class="desc">${productlist1.sell_title}<br>
-  ${productlist1.sell_price}   
+<fmt:formatNumber value="${productlist.sell_price}" pattern="#,###"/> 
    ${productlist1.event_explain}  
                
    </div>                   
