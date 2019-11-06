@@ -112,19 +112,19 @@ new product
     <img src="${productlist1.sell_thumbnail}" alt="1" width="600" height="400">
   </a>
   <div class="desc">${productlist1.sell_title}<br>
-  <fmt:formatNumber value="${productlist.sell_price}" pattern="#,###"/><br>
+  ${productlist1.sell_price}   
    ${productlist1.event_explain}  
                
    </div>                   
                                                             
 </div>                                                  
-               
+     
 </c:forEach> 
 
 
 <div id="paging">
 <s_paging id="page"> 
-
+                             
     <a href="#">Prev</a>
     <strong>1</strong>   
      <a href="#">2</a>

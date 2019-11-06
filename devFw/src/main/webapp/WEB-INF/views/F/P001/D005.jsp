@@ -2,9 +2,6 @@
     pageEncoding="UTF-8"   isELIgnored="false"
  %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
-
 <c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
 <%
   request.setCharacterEncoding("UTF-8");
@@ -47,9 +44,7 @@ div.desc {
 postion:fixed;
   padding: 15px;
   text-align: center;
-}     
-
-                                                         
+}                                                                 
       
 #paging {
 postion:fixed;
@@ -83,7 +78,7 @@ border:#555555 1px solid;
 position:relative;
 left:335px;
 }
-      
+            
                                    
 
 </style>
@@ -101,10 +96,10 @@ new product
 
     <img src="${productlist.sell_thumbnail}" alt="1" width="600" height="400">
   </a>
-  <div class="desc">${productlist.sell_title}
- <fmt:formatNumber value="${productlist.sell_price}" pattern="#,###"/><br>
-${productlist.pro_explain}
-   </div>                             
+  <div class="desc">${productlist.sell_title}<br>
+  ${productlist.sell_price}     
+         
+   </div>                   
                                                             
 </div>                                                        
      
@@ -113,13 +108,13 @@ ${productlist.pro_explain}
 <div id="paging">
 <s_paging id="page"> 
 
-    <a href="#">Prev</a>                             
+    <a href="#">Prev</a>
     <strong>1</strong>   
      <a href="#">2</a>
     <a href="#">3</a>
     <a href="#">4</a>
     <a href="#">5</a>
-    <a href="#">Next</a>                                               
+    <a href="#">Next</a>                              
 
 </s_paging>
 </div>
