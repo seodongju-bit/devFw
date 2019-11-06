@@ -51,7 +51,7 @@ public class HomeController {
 @Controller
 public class homeController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(homeController.class);
+	/*private static final Logger logger = LoggerFactory.getLogger(homeController.class);
 	
 	@RequestMapping(value = "/main.do", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
@@ -66,7 +66,7 @@ public class homeController {
 	@RequestMapping(value = "/test.do", method = RequestMethod.GET)
 	public String test(Locale locale, Model model) {
 		return "test";
-	}
+	}*/
 	
 	
 

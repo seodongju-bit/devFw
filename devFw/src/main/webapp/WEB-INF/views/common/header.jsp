@@ -146,6 +146,68 @@
 </style>
 <title>Insert title here</title>
 </head>
+<script type="text/javascript">
+	var loopSearch=true;			//제시된 키워드를 클릭하면 keywordSearch() 함수의 실행을 중지시킴
+	function keywordSearch(){
+		if(loopSearch==false)
+			return;
+	 var value=document.frmSearch.searchWord.value;
+		$.ajax({
+			type : "get",
+			async : true, //false인 경우 동기식으로 처리한다.
+			url : "${contextPath}/predictive.do",
+			data : {keyword:value},
+			success : function(data, textStatus) {
+			    var jsonInfo = JSON.parse(data);		//전송된 데이터를 JSON으로 파싱
+				displayResult(jsonInfo);		//전송된 JSON 데이터를 표시
+			},
+			error : function(data, textStatus) {
+				alert("에러가 발생했습니다."+data);
+			},
+			complete : function(data, textStatus) {
+				//alert("작업을완료 했습니다");
+				
+			}
+		}); //end ajax	
+	}
+	
+	function displayResult(jsonInfo){
+		var count = jsonInfo.keyword.length;		//JSON 데이터 개수를 구함
+		if(count > 0) {
+		    var html = '';
+		    for(var i in jsonInfo.keyword){			//JSON 데이터를 차례대로 <a> 태그를 이용해 키워드 목록을 만듬
+			   html += "<a href=\"javascript:select('"+jsonInfo.keyword[i]+"')\">"+jsonInfo.keyword[i]+"</a><br/>";
+		    }
+		    //<a>태그로 만든 키워드 목록을 <div> 태그에 차례대로 표시
+		    var listView = document.getElementById("suggestList");
+		    listView.innerHTML = html;
+		    show('suggest');
+		}else{
+		    hide('suggest');
+		} 
+	}
+	
+	function select(selectedKeyword) {
+		 document.frmSearch.searchWord.value=selectedKeyword;
+		 loopSearch = false;
+		 hide('suggest');
+	}
+		
+	function show(elementId) {
+		 var element = document.getElementById(elementId);
+		 if(element) {
+		  element.style.display = 'block';
+		 }
+		}
+	
+	function hide(elementId){
+	   var element = document.getElementById(elementId);
+	   if(element){
+		  element.style.display = 'none';
+	   }
+	}
+
+</script>
 <body>
 	<div class="header" id="header">
 		<nav class="navbar">
@@ -156,7 +218,7 @@
           <a class="nav-item nav-link" href="./blog.html">즐겨찾기</a>
         </div>
         <div class="navbar-nav mr-sm-2" id="navright" style="font-size:0.9em; float:right; margin: 6px 0 0 0;">
-          <a class="nav-item nav-link" href="${contextPath}/member/loginForm.do">로그인</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <a class="nav-item nav-link" href="${contextPath}/login.do">로그인</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <a class="nav-item nav-link" href="./userLogout.html">장바구니</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <a class="nav-item nav-link" href="./userEdit.html">고객센터</a>
         </div>
@@ -166,13 +228,16 @@
   	<div class="logo">
 	<a href="${contextPath}/main.do"><img id="toplogo" src="${contextPath}/resources/image/logo.png"/></a>
 	</div>
-      <form class="form-inline">
+      <form class="form-inline" name="frmSearch" action="${contextPath}/searchProd.do">
         <div class="search">
-          <input class="form-control" type="search"    
-          placeholder="상품을 검색해보세요"aria-label="Search" style=width:300px>
-          <button class="btn btn-outline-secondary" type="submit">검색</button>
+          <input class="form-control" type="text"    
+          placeholder="상품을 검색해보세요"aria-label="Search" style=width:300px name="searchWord" onKeyUp="keywordSearch()">
+          <button class="btn btn-outline-secondary" type="submit" name="search" >검색</button>
         </div>
       </form>
+    <div id="suggest">
+      <div id="suggestList"></div>
+    </div>
       <div id="menuBar">
 		<div id="dropMenu">
 			<button class="menubtn">전체 카테고리</button>
