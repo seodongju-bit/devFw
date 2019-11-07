@@ -48,9 +48,12 @@ position: initial;
 bottom:8px;                               
 left:16px;                              
 font-size:15px;
-  padding: 15px;
+  padding: 1px;
   text-align: center;
-}                                                                 
+}        
+div.desc1{
+color:white;
+}                                                         
 
     
       
@@ -93,7 +96,8 @@ left:335px;
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>  
+<body> 
+                              
 <div class="name">
 best product
 </div>
@@ -103,8 +107,8 @@ best product
 
     <img src="${productlist2.sell_thumbnail}" alt="1" width="600" height="400">
   </a>
-  <div class="desc">${productlist2.sell_title}
-<fmt:formatNumber value="${productlist2.sell_price}" pattern="#,###"/><br> 
+  <div class="desc"><div class="desc1">${productlist2.sell_title}</div>
+<fmt:formatNumber value="${productlist2.sell_price}" pattern="#,###"/>원<br> 
 판매 수:${productlist2.detail_quantity} 회
                
    </div>                   

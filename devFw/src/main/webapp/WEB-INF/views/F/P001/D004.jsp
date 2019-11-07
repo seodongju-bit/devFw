@@ -12,7 +12,6 @@
 <html>
 <head>
 <style>
-                                       
 
 
 div.name{
@@ -52,12 +51,7 @@ font-size:15px;
   text-align: center;
 }                                                                 
 div.desc1{
-position:absolute;
-bottom:8px;
-left:16px;
-font-size:15px;
-  padding:-50px;   
-  text-align: center;
+color:white; 
 }     
      
     
@@ -102,6 +96,8 @@ left:335px;
 <title>Insert title here</title>
 </head>
 <body>  
+
+
 <div class="name">
 event product
 </div>
@@ -111,8 +107,8 @@ event product
 
     <img src="${productlist1.sell_thumbnail}" alt="1" width="600" height="400">
   </a>
-  <div class="desc">${productlist1.sell_title}<br>
-<fmt:formatNumber value="${productlist1.sell_price}" pattern="#,###"/> 
+  <div class="desc"><div class="desc1">${productlist1.sell_title}<br></div>
+<fmt:formatNumber value="${productlist1.sell_price}" pattern="#,###"/>원 
    ${productlist1.event_explain}  
                
    </div>                   

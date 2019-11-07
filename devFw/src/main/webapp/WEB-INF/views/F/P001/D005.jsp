@@ -44,9 +44,12 @@ div.gallery img {
 
 div.desc {
 postion:fixed;
-  padding: 15px;
+  padding: 1px;
   text-align: center;
-}                                                                 
+}     
+div.desc1{
+color:white;
+}                                                            
       
 #paging {
 postion:fixed;
@@ -98,8 +101,8 @@ new product
 
     <img src="${productlist.sell_thumbnail}" alt="1" width="600" height="400">
   </a>
-  <div class="desc">${productlist.sell_title}
-<fmt:formatNumber value="${productlist.sell_price}" pattern="#,###"/><br>
+  <div class="desc"><div class="desc1">${productlist.sell_title}</div>
+<fmt:formatNumber value="${productlist.sell_price}" pattern="#,###"/>원<br>
         ${productlist.pro_explain} 
    </div>                   
                                                             
