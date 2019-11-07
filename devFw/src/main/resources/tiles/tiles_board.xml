@@ -26,6 +26,18 @@
       <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
    </definition>
 	
+	  <definition name="baseLayout4"  template="/WEB-INF/views/common/layout.jsp">
+      <put-attribute name="title" value="" />
+      <put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
+      <put-attribute name="side" value="/WEB-INF/views/common/mp_side.jsp" />
+      <put-attribute name="body" value="" />
+      <put-attribute name="mainBody" value="" />
+      <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
+   </definition>
+	
+	
+	
+	
 	 <definition name="itemLayout"  template="/WEB-INF/views/common/item_layout.jsp">
       <put-attribute name="title" value="" />
       <put-attribute name="header" value="/WEB-INF/views/common/item_header.jsp" />
@@ -93,9 +105,9 @@
       <put-attribute name="body" value="/WEB-INF/views/F/P001/D001.jsp" />
    </definition>
 
-	<definition name="memberReview" extends="baseLayout2">
+	<definition name="memberReview" extends="baseLayout4">
       <put-attribute name="title" value="회원별 리뷰 조회 페이지" />         
-      <put-attribute name="body" value="/WEB-INF/views/F/P001/D002.jsp" />
+      <put-attribute name="body" value="/WEB-INF/views/F/P001/D002.jsp" />                            
    </definition>
 
 	<definition name="bestProduct" extends="baseLayout2">

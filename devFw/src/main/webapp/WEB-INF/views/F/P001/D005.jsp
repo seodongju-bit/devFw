@@ -39,7 +39,7 @@ background-color:#848484;
 
 div.gallery img {
   width: 100%;
-  height: auto;
+  height: 378.39px;
 }
 
 div.desc {
