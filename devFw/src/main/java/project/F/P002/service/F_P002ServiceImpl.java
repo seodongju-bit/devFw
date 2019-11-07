@@ -1,5 +1,6 @@
 package project.F.P002.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -9,6 +10,8 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+
+//import com.bookshop01.goods.vo.ImageFileVO;
 
 import project.F.P002.dao.F_P002DAO;
 import project.F.P002.vo.F_P002VO;
@@ -32,10 +35,37 @@ public class F_P002ServiceImpl implements F_P002Service {
 		return list;
 	}
 	
+
 	@Override
 	public void addBasket(Map<String, Object> searchMap) throws DataAccessException {
 		f_P002DAO.searchOption(searchMap);
 
 	}
 	
+
+	public List<F_P002VO> mainList() throws Exception {
+		List<F_P002VO> mainlist=f_P002DAO.mainList();
+		return mainlist;
+	}
+	
+	/*public Map F_P002Detail(String sell_number) throws Exception {
+		Map F_P002Map=new HashMap();
+		F_P002VO F_P002VO = F_P002DAO.selectF_P002Detail(sell_number);
+		F_P002Map.put("F_P002VO", F_P002VO);
+		List<ImageFileVO> imageList =goodsDAO.selectGoodsDetailImage(sell_number);
+		goodsMap.put("imageList", imageList);
+		return goodsMap;
+	}*/
+	
+	public List<String> predictive(String keyword) throws Exception {
+		List<String> list=f_P002DAO.predictive(keyword);
+		return list;
+	}
+	
+	public List<F_P002VO> searchProd(String searchWord) throws Exception{
+		List searchList=f_P002DAO.searchProd(searchWord);
+		return searchList;
+	}
+
+
 }

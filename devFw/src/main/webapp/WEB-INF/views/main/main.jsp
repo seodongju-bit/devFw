@@ -1,10 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"	isELIgnored="false"
+	%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
+
 <%
   request.setCharacterEncoding("UTF-8");
-%> 
-<c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
+%>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -255,7 +258,6 @@ hr {
    rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Neucha'
    rel='stylesheet' type='text/css'>
-
 </head>
 <body>
    <div id="wrapper">
@@ -294,7 +296,29 @@ hr {
          <!--controls-->
       </div>
    </div>
-   <div class="main_focus" style="margin: 0 31px 0 0;">
+   
+   <div class="container">
+   <div class="main_list">
+   <h3 style="width:200px;">&nbsp;&nbsp;&nbsp;&nbsp;전체 상품</h3><a href="${contextPath}/category.do" >더보기</a>
+   <hr style="float:left;">
+   <c:set var="i" value="0"/>
+   <c:set var="j" value="4"/>
+	<table style="text-align:center;">
+     <c:forEach var="main" items="${mainList }" varStatus="list">
+     <c:if test="${i%j == 0}">
+     	<tr>
+     </c:if>
+      	<td><br><a href="${contextPath}/sellItems.do?sell_no=${main.sell_number}"><img id="#itemsImg" style="width:274px; height:400px; overflow:hidden;" src="${contextPath}/${main.sell_thumbnail}"></a>
+	   	  <br><a style="text-aling:center;" href="${contextPath}/sellItems.do?sell_no=${main.sell_number}">${main.sell_title}<br><fmt:formatNumber  value="${main.sell_price}" type="number" var="sell_price" />${main.sell_price}원</a></td>
+	 <c:if test="${i%j == j-1}">
+	 	</tr>
+	 </c:if>
+	 <c:set var="i" value="${i+1}"/>
+	 	</c:forEach>
+	</table>
+   </div>
+   </div>
+   <!-- <div class="main_focus" style="margin: 0 31px 0 0;">
    <div class="container">
    	<hr>
    	<h1 align="center" style="margin: 0 0 30px 0;">상품전체</h1>
@@ -330,7 +354,7 @@ hr {
    	  </ul>
    	  </div>
    	  </div>
-   </div>
+   </div>-->
    <script>
       //current position
       var pos = 0;

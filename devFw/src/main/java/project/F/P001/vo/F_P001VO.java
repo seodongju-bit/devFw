@@ -6,28 +6,14 @@ import org.springframework.stereotype.Component;
 @Component("F_P001VO")
 public class F_P001VO {               
 	  private String no_number;
-	   private String ev_discount;
-	   public String getNo_number() {
-		return no_number;
-	}
-	public void setNo_number(String no_number) {
-		this.no_number = no_number;
-	}
-	public String getEv_discount() {
-		return ev_discount;
-	}
-	public void setEv_discount(String ev_discount) {
-		this.ev_discount = ev_discount;
-	}
-	public String getEvent_explain() {
-		return event_explain;
-	}
-	public void setEvent_explain(String event_explain) {
-		this.event_explain = event_explain;
-	}
-	private String event_explain;
-       
-   private String sell_number;
+	   private String ev_discount;	
+	   private String event_explain;
+	   
+	   private String order_number;
+	   private int detail_quantity;
+	   
+
+private String sell_number;
    private String pro_number;
    private String sell_price;
    private String pro_price;
@@ -36,10 +22,12 @@ public class F_P001VO {
    private String sell_thumbnail;
    private String mem_id;
    private String pro_vendor;
+private String pro_explain;
    
    private String common_code;
    private String common_name;  
    
+  
    public String getCommon_code() {
 	return common_code;
 }
@@ -106,8 +94,44 @@ public String getSell_number() {
    public void setPro_vendor(String pro_vendor) {
       this.pro_vendor = pro_vendor;
    }
+   public String getNo_number() {
+		return no_number;
+	}
+   public void setNo_number(String no_number) {
+		this.no_number = no_number;
+	}
+	public String getEv_discount() {
+		return ev_discount;
+	}
+	public void setEv_discount(String ev_discount) {
+		this.ev_discount = ev_discount;
+	}
+	public String getEvent_explain() {
+		return event_explain;
+	}
+	
+	public void setEvent_explain(String event_explain) {
+		this.event_explain = event_explain;
+	}
    
-   
-   
-   
+	   public String getPro_explain() {
+			return pro_explain;
+		}
+		public void setPro_explain(String pro_explain) {
+			this.pro_explain = pro_explain;
+		}
+
+	       
+		   public String getOrder_number() {
+				return order_number;
+			}
+			public void setOrder_number(String order_number) {
+				this.order_number = order_number;
+			}
+			public int getDetail_quantity() {
+				return detail_quantity;
+			}
+			public void setDetail_quantity(int detail_quantity) {
+				this.detail_quantity = detail_quantity;
+			}
 }

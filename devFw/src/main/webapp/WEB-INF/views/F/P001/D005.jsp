@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"   isELIgnored="false"
  %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
 <%
   request.setCharacterEncoding("UTF-8");
@@ -37,14 +39,17 @@ background-color:#848484;
 
 div.gallery img {
   width: 100%;
-  height: auto;
+  height: 378.39px;
 }
 
 div.desc {
 postion:fixed;
-  padding: 15px;
+  padding: 1px;
   text-align: center;
-}                                                                 
+}     
+div.desc1{
+color:white;
+}                                                            
       
 #paging {
 postion:fixed;
@@ -96,9 +101,9 @@ new product
 
     <img src="${productlist.sell_thumbnail}" alt="1" width="600" height="400">
   </a>
-  <div class="desc">${productlist.sell_title}<br>
-  ${productlist.sell_price}     
-         
+  <div class="desc"><div class="desc1">${productlist.sell_title}</div>
+<fmt:formatNumber value="${productlist.sell_price}" pattern="#,###"/>원<br>
+        ${productlist.pro_explain} 
    </div>                   
                                                             
 </div>                                                        

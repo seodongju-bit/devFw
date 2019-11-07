@@ -74,11 +74,11 @@ font-size:20px;
 }
 
 
-
+                    
 
 
 #sideMenu{
-	text-align:cen	ter;
+	text-align:center;
 }
 
 .bigCtgr{

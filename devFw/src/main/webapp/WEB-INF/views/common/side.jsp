@@ -95,7 +95,7 @@ font-size:20px;
     <h2>카테고리</h2>
          
     <ul id="myMenu">
-      <li><a href="category.do?c=H01&l=1">패션의류</a>
+        <li><a href="category.do?c=H01&l=1">패션의류</a>
       <ul>                         
       <li><a href="category.do?c=H_01_0006&l=2">여성_상의</a></li>   
        <li><a href="category.do">여성_바지</a></li>

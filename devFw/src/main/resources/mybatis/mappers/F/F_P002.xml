@@ -56,10 +56,50 @@
 	<select id="searchOption" resultMap="F_P002Result02" parameterType="java.util.Map"> 
       <![CDATA[
          select sell_number, option_size, option_color, option_quantity
+
          from selloption
          where sell_number = ${p_id}
          order by to_number(option_size) 
       ]]>
-	</select>
+	
 
+
+	</select>
+	
+	
+	<select id="mainList" resultMap="F_P002Result01" parameterType="java.util.Map">
+	<!-- 각각의 상품을 등록일 순으로 16개까지 조회 -->
+	  <![CDATA[
+	  	select sell_number, sell_thumbnail, sell_title, sell_price
+	  	from(
+	  		select *
+	  		from productsell
+	  		)
+	  	where rowNum < 17
+	  	order by sell_date
+	  ]]>
+	</select>
+	
+	<!-- 검색어 자동완성 -->
+	<select id="searchKeyword"  resultType="String" parameterType="String">
+	  <![CDATA[
+	    select pro_name
+	    from product
+	    where pro_name like '%' || #{keyword} || '%'
+		order by pro_name
+	  ]]>
+	</select>
+	
+	<!-- 상품 검색 후 결과를 등록일 순으로 나열 -->
+	<select id="searchWord" resultMap="F_P002Result01" parameterType="String">
+	  <![CDATA[
+	    select p.sell_number, p.sell_thumbnail, p.sell_title, p.sell_price, p.sell_date, p.mem_ID, p2.pro_name
+	    from productsell p, product p2
+	    where p.pro_number = p2.pro_number and
+	    sell_title like '%' || #{searchWord} || '%' and
+	    pro_name like '%' || #{searchWord} || '%'
+	    order by sell_date  
+	  ]]>
+	</select>
+	
 </mapper>
