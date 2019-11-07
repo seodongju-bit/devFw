@@ -6,12 +6,14 @@ import org.springframework.stereotype.Component;
 @Component("F_P001VO")
 public class F_P001VO {               
 	  private String no_number;
-	   private String ev_discount;
-	
+	   private String ev_discount;	
+	   private String event_explain;
+	   
+	   private String order_number;
+	   private int detail_quantity;
+	   
 
-	private String event_explain;
-       
-   private String sell_number;
+private String sell_number;
    private String pro_number;
    private String sell_price;
    private String pro_price;
@@ -25,6 +27,7 @@ private String pro_explain;
    private String common_code;
    private String common_name;  
    
+  
    public String getCommon_code() {
 	return common_code;
 }
@@ -118,5 +121,17 @@ public String getSell_number() {
 			this.pro_explain = pro_explain;
 		}
 
-   
+	       
+		   public String getOrder_number() {
+				return order_number;
+			}
+			public void setOrder_number(String order_number) {
+				this.order_number = order_number;
+			}
+			public int getDetail_quantity() {
+				return detail_quantity;
+			}
+			public void setDetail_quantity(int detail_quantity) {
+				this.detail_quantity = detail_quantity;
+			}
 }

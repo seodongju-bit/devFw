@@ -39,12 +39,12 @@ background-color:#848484;
 
 div.gallery img {
   width: 100%;
-  height: auto;
+  height: 378.39px;
 
 }
 
 div.desc {
-position:absolute;
+position:initial;
 bottom:8px;                               
 left:16px;
 font-size:15px;
@@ -103,7 +103,7 @@ left:335px;
 </head>
 <body>  
 <div class="name">
-new product
+event product
 </div>
  <c:forEach var="productlist1" items="${List}" >   
 <div class="gallery">
@@ -112,7 +112,7 @@ new product
     <img src="${productlist1.sell_thumbnail}" alt="1" width="600" height="400">
   </a>
   <div class="desc">${productlist1.sell_title}<br>
-<fmt:formatNumber value="${productlist.sell_price}" pattern="#,###"/> 
+<fmt:formatNumber value="${productlist1.sell_price}" pattern="#,###"/> 
    ${productlist1.event_explain}  
                
    </div>                   

@@ -47,24 +47,24 @@ public class F_P001ControllerImpl implements F_P001Controller {
 		return mav;
 	}
 	
-
-	
-	@Override
-	@RequestMapping(value="/bestProduct.do" ,method = RequestMethod.GET)
-	public ModelAndView bestProduct(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String viewName = getViewName(request);
-		viewName = "bestProduct";
-		ModelAndView mav = new ModelAndView(viewName);
-		return mav;
-	}
-	
-
-	
 	@Autowired
 	private F_P001Service f_P001Service;
 	@Autowired
 	F_P001VO F_P001VO;
 	
+	@Override
+	@RequestMapping(value="/bestProduct.do" ,method = RequestMethod.GET)
+	public ModelAndView bestProduct(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName2 = getViewName(request);
+		viewName2 = "bestProduct";
+		List list2 = f_P001Service.searchItem2(); 
+		System.out.println(list2);
+		ModelAndView mav2 = new ModelAndView(viewName2);
+		mav2.addObject("List",list2);
+		return mav2;
+	}
+	
+
 	
 	@Override
 	@RequestMapping(value="/eventProduct.do" ,method = RequestMethod.GET)

@@ -278,7 +278,7 @@
   				</div>
   			</div>
 		</div>
-		<div class="mainMenu"><button class="menubtn">베스트상품</button></div>
+		<div class="mainMenu"><button class="menubtn"onclick="location.href='bestProduct.do'">베스트상품</button></div>
 		<div class="mainMenu"><button class="menubtn">기획전</button></div>
 		<div class="mainMenu"><button class="menubtn">리뷰랭킹</button></div>
 		<div class="mainMenu"><button class="menubtn">쿠폰</button></div>

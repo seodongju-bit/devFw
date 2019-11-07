@@ -34,5 +34,14 @@ public class F_P001DAOImpl implements F_P001DAO {
 		return productlist1;
 	}
 	
+	@Override
+	public List selectItem2() throws DataAccessException {
+		List<F_P001VO> productlist2 = null;
+		System.out.println("dao½ÇÇà");    
+		productlist2 = sqlSession.selectList("mapper.product.selectItem2");
+		System.out.println(productlist2);
+		return productlist2;
+	}
+	
 }
    
