@@ -16,4 +16,4 @@
 		<typeAlias type="project.E.P001.vo.E_P001VO"  alias="E_P001VO" />
 		<typeAlias type="project.controller.commonVO"  alias="commonVO" />
 	</typeAliases>
-</configuration>                                               
+</configuration>                                                                     
