@@ -142,7 +142,7 @@ $(document).ready(function(){
 	        		    //link.append(name);
 	        	   		smallCtgr = document.createElement('div');
 	        	  		smallCtgr.setAttribute("class", "smallCtgr");
-	        	  		smallCtgr.setAttribute("onclick", "location.href='/devFw/category?code="+code+"'");
+	        	  		smallCtgr.setAttribute("onclick", "location.href='/devFw/category.do?code="+code+"'");
 	        	  		smallCtgr.append(name);
 	        	  		//smallCtgr.appendChild(link);
 	        	  		bigCtgr.appendChild(smallCtgr);
