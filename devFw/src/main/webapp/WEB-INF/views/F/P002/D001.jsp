@@ -12,10 +12,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="resources/css/F_P002_D001.css?ver=1.0">
+<link rel="stylesheet" type="text/css" href="resources/css/F_P002_D001.css?ver=1.2">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script><!-- 팝업 관련 -->
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -86,10 +90,10 @@ $(document).ready(function(){
 	    });  //end ajax
 	}
 
-})
-var itemList = [];
+});
+
+//var itemList = [];
 var option_kinds=[];
-var color_stack=1;
 var option_stack=1;
 $(document).ready(function(){
 	var input = document.createElement("input");
@@ -101,21 +105,29 @@ $(document).ready(function(){
 	if('${item.option_yn}'=='n'){  //옵션없음
 		var selectedBox = document.createElement('div');
 		input = document.createElement("input");
-		
 		//document.getElementById('selectItem').prepend('${item.pro_name}');
 		
 		selectedBox.innerHTML+="<input type='number' name='quantity1' class='quantity' value='1' min='0' max='99' >";
-		document.getElementById('selectItem').prepend(selectedBox);
-
-console.log(itemList);		
+		document.getElementById('selectItem').prepend(selectedBox);	
 	}
 	 
-	if(!option_kinds.includes("size")  && option_kinds.includes("color")){ //색상옵션
+	if(!option_kinds.includes("size")  && option_kinds.includes("color")){ ///////색상옵션
 		$('#colorOption').on('change',function(){
-			
+			/*item={};
+			item.color=document.getElementById('colorOption').value;
+			if(item in itemList){
+				alert("이미 선택되어 있는 옵션입니다.");
+				return;
+			}
+			itemList.push(item);
+			*/
 			var selectedBox = document.createElement('div');
 			var deletebtn = document.createElement('button');
 			var input = document.createElement("input");
+			var infoBox = document.createElement('div');
+			
+			infoBox.append(document.getElementById('colorOption').value);
+			infoBox.setAttribute('class', 'infoBox');
 			
 			input.setAttribute("type", 'hidden');
 			input.setAttribute("name", 'color'+option_stack);
@@ -123,52 +135,110 @@ console.log(itemList);
 			
 			deletebtn.append('삭제');
 			deletebtn.setAttribute('type', 'button');
+			deletebtn.setAttribute('class', 'btn btn-info');
 			deletebtn.setAttribute('onclick', "itemDelete('selectbox"+option_stack+"')");
-			
+						
 			selectedBox.setAttribute('class', 'selectItem');
 			selectedBox.setAttribute('id', 'selectbox'+option_stack);
-			selectedBox.append(document.getElementById('colorOption').value);
+			//selectedBox.append(document.getElementById('colorOption').value);
+			selectedBox.appendChild(infoBox);
 			selectedBox.appendChild(input);
 			selectedBox.innerHTML+="<input type='number' name='quantity"+option_stack+"' class='quantity' value='1' min='0' max='99' >";
 			selectedBox.appendChild(deletebtn);
 			document.getElementById('selectItems').prepend(selectedBox);
 			option_stack++;
-			  
+			
+			$('#colorOption').val("");
+
 		});
 
 	}
 	
-	if(option_kinds.includes("size")  && !option_kinds.includes("color")){ //컬러옵션
+	if(option_kinds.includes("size")  && !option_kinds.includes("color")){ //////////사이즈옵션
 		$('#sizeOption').on('change',function(){
-			var item={};
-			if(document.getElementById('sizeOption').value!=""){
-				item.size = document.getElementById('sizeOption').value;
-				$('#sizeOption').val("");
-			}
-
-			if("size" in item){
-				itemList.push(item);
-			}
-console.log(itemList);
+			var selectedBox = document.createElement('div');
+			var deletebtn = document.createElement('button');
+			var input = document.createElement("input");
+			var infoBox = document.createElement('div');
+			
+			infoBox.append(document.getElementById('sizeOption').value);
+			infoBox.setAttribute('class', 'infoBox');
+			
+			input.setAttribute("type", 'hidden');
+			input.setAttribute("name", 'size'+option_stack);
+			input.setAttribute("value", document.getElementById('sizeOption').value );
+			
+			deletebtn.append('삭제');
+			deletebtn.setAttribute('type', 'button');
+			deletebtn.setAttribute('class', 'btn btn-info');
+			deletebtn.setAttribute('onclick', "itemDelete('selectbox"+option_stack+"')");
+			
+			selectedBox.setAttribute('class', 'selectItem');
+			selectedBox.setAttribute('id', 'selectbox'+option_stack);
+			//selectedBox.append(document.getElementById('sizeOption').value);
+			selectedBox.appendChild(infoBox);
+			selectedBox.appendChild(input);
+			selectedBox.innerHTML+="<input type='number' name='quantity"+option_stack+"' class='quantity' value='1' min='0' max='99' >";
+			selectedBox.appendChild(deletebtn);
+			document.getElementById('selectItems').prepend(selectedBox);
+			option_stack++;
+			
+			
+			$('#sizeOption').val("");
 		});
 	}
-	
+
 	if(option_kinds.includes("size")  && option_kinds.includes("color")){ //컬러&색상옵션
 		$('#sizeOption').on('change',function(){
 			 $('#colorOption').on('change',function(){
-				 var item={};
-				 if(document.getElementById('colorOption').value!=""){
-					 item.color = document.getElementById('colorOption').value;
-					 $('#colorOption').val("");
-				 }
-				 if(document.getElementById('sizeOption').value!=""){
-					 item.size = document.getElementById('sizeOption').value;
-					 $('#sizeOption').val("");
-				 }
-				 if("color" in item && "size" in item){
-					 itemList.push(item);
-				 }
-console.log(itemList);
+				if(document.getElementById('colorOption').value=='' || document.getElementById('sizeOption').value==''){
+					return;
+				}
+				 
+				 	var selectedBox = document.createElement('div');
+					var deletebtn = document.createElement('button');
+					var input = document.createElement("input");
+					var infoBox = document.createElement('div');
+					
+					infoBox.append(document.getElementById('sizeOption').value);
+					infoBox.setAttribute('class', 'infoBox');
+					selectedBox.appendChild(infoBox);
+					
+					infoBox = document.createElement('div');
+					infoBox.append(document.getElementById('colorOption').value);
+					infoBox.setAttribute('class', 'infoBox');
+					selectedBox.appendChild(infoBox);
+					
+					input.setAttribute("type", 'hidden');
+					input.setAttribute("name", 'color'+option_stack);
+					input.setAttribute("value", document.getElementById('colorOption').value );
+					selectedBox.appendChild(input);
+					
+					input = document.createElement("input");
+					input.setAttribute("type", 'hidden');
+					input.setAttribute("name", 'size'+option_stack);
+					input.setAttribute("value", document.getElementById('sizeOption').value );
+					selectedBox.appendChild(input);
+
+					
+					deletebtn.append('삭제');
+					deletebtn.setAttribute('type', 'button');
+					deletebtn.setAttribute('class', 'btn btn-info');
+					deletebtn.setAttribute('onclick', "itemDelete('selectbox"+option_stack+"')");
+					
+					selectedBox.setAttribute('class', 'selectItem');
+					selectedBox.setAttribute('id', 'selectbox'+option_stack);
+					//selectedBox.append(document.getElementById('sizeOption').value);
+					//selectedBox.append(document.getElementById('colorOption').value);
+					
+					selectedBox.innerHTML+="<input type='number' name='quantity"+option_stack+"' class='quantity' value='1' min='0' max='99' >";
+					selectedBox.appendChild(deletebtn);
+					document.getElementById('selectItems').prepend(selectedBox);
+					option_stack++;
+					
+					$('#colorOption').val("");
+					$('#sizeOption').val("");
+
 			 });
 		 });
 	}
@@ -177,61 +247,64 @@ console.log(itemList);
 function itemDelete(id){
 	$('#'+id).remove();
 	option_stack--;
-	
 }
-/*
-function order(){
+
+
+function basket(){
 	
+	  var queryString = $("form[name=selectPush]").serialize() ;
+	  
+      $.ajax({
+          type : 'post',
+          url : '/devFw/addBasket.do',
+          data : queryString,
+          dataType : 'json',
+          error: function(xhr, status, error){
+              alert(error);
+          },
+          success : function(json){
+              console.log(json);
+          },
+      });
 
-	var form = document.createElement('form');
-	form.setAttribute("action", "/devFw/order.do"); 
-	form.setAttribute("charset", "UTF-8");
-	form.setAttribute("method", "get"); 
+
+
 	
-	for(var i in itemList){
-		 console.log(i + ':' +itemList[i].color + itemList[i].size);
-		 var hiddenField = document.createElement("input");
-
-	     hiddenField.setAttribute("type", "hidden");
-	     hiddenField.setAttribute("name", "color"+i);
-	     hiddenField.setAttribute("value", itemList[i].color);
-	     form.appendChild(hiddenField);
-	     
-	     hiddenField = document.createElement("input");
-	     hiddenField.setAttribute("type", "hidden");
-	     hiddenField.setAttribute("name", "size"+i);
-	     hiddenField.setAttribute("value", itemList[i].size);
-	     form.appendChild(hiddenField);
-	     
-	     hiddenField = document.createElement("input");
-	     hiddenField.setAttribute("type", "hidden");
-	     hiddenField.setAttribute("name", "quantity"+i);
-	     hiddenField.setAttribute("value", itemList[i].size);
-	     form.appendChild(hiddenField);
-		 
-	     hiddenField = document.createElement("input");
-	     hiddenField.setAttribute("type", "hidden");
-	     hiddenField.setAttribute("name", "sell_number");
-	     hiddenField.setAttribute("value", '${item.sell_number}');
-	     form.appendChild(hiddenField);
-	}
-    form.appendChild(hiddenField);
-
-    document.body.appendChild(form);
-    form.submit();
-
+	///////////////////////////
+	
+	
+	
+	Swal.fire({
+		  title: '장바구니에 담겼습니다',
+		  text: "장바구니로 이동하시겠습니까?",
+		  showCancelButton: true,
+		  confirmButtonColor: '#3085d6',
+		  cancelButtonColor: '#d33',
+		  confirmButtonText: '장바구니로 이동',
+		  cancelButtonText: '아니요',
+		}).then((result) => {
+		  if (result.value) {
+			  location.href="/devFw/basket.do";
+		  }
+	})
 }
-*/
 </script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
+
+	대분류명:${item.bigCtgrName}<br>
+	소분류명:${item.smallCtgrName}<br>
+	대분류코드:${item.bigCtgrCode}<br>
+	소분류코드:${item.smallCtgrCode}<br>
 <div id="catCategory" >
 	<div>
-		<a href="#"> 분류 </a> > 
-		<a href="#"> 1차 분류 </a> > 
-		<a href="#"> 2차 분류 </a>
+	
+	
+		<a href="/devFw/category.do"> 카테고리 </a> > 
+		<a href="#"> ${item.bigCtgrName} </a> > 
+		<a href="#"> ${item.smallCtgrName} </a>
 	</div>
 </div>
 
@@ -266,11 +339,9 @@ function order(){
 		<form method="get" name="selectPush" accept-charset="UTF-8" >
 			<div id="selectItems" class="sellInfo">
 			
-		
-				
-				<button type="submit" class="btn btn-light" id="basketbtn" formaction="/devFw/basket.do" >장바구니</button>
+				<button type="button" class="btn btn-light" id="basketbtn" onclick="basket()" >장바구니</button>
 				<button type="submit" class="btn btn-primary" id="orderbtn" formaction="/devFw/order.do">바로구매</button>
-			
+				
 			</div>
 		</form>
 	</div>
@@ -282,6 +353,7 @@ function order(){
 	<button id="itemsSaller" class="btn btn-primary">판매자정보</button>
 </div>
 
+<!--
 <div>
  <table border='1' width='800' align='center'>
 
@@ -296,10 +368,12 @@ function order(){
  
 </table>
 </div>
+ 
 ${info }
 <c:forEach var="option1" items="${info }" >
 	<p>${option1.option_size }</p>
 </c:forEach>
+-->
 <p id="test" ></p>
 
 

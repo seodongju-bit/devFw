@@ -53,6 +53,7 @@ public class A_P002ControllerImpl   implements A_P002Controller {
 		String message = null;
 		ResponseEntity resEntity = null;
 		HttpHeaders responseHeaders = new HttpHeaders();
+		System.out.println("asdfasf"+_A_P002VO.getMem_id());
 		responseHeaders.add("Content-Type", "text/html; charset=utf-8");
 		try {
 			a_p002Service.addMember(_A_P002VO);

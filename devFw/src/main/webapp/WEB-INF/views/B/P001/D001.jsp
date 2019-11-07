@@ -4,9 +4,168 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<script type="text/javascript" src="/devFw/resources/maskedit/js/jquery-1.7.0.min.js"></script>
+
+<script type="text/javascript" src="/devFw/resources/sheet/js/common.js?ver=1"></script>
+<script language="javascript" src="/devFw/resources/sheet/sheet/ibsheetinfo.js"></script>
+<script language="javascript" src="/devFw/resources/sheet/sheet/ibsheet.js"></script>
+<script language="javascript" src="/devFw/resources/sheet/sheet/ibexcel.js"></script>
+<style>
+	.smart-form .searchInput input[type=text]:hover + i:after{content:'\f00d'}
+</style>
+<script language="javascript">
+	
+
+	//시트 초기 높이 결정
+	var pageheightoffset = 200;
+	/*Sheet 기본 설정 */
+	function LoadPage() {
+		mySheet.UseEditMask = 1;
+		//시트 초기화.
+		var initSheet = {};
+		initSheet.Cfg = {ToolTip:1,FrozenCol:0};
+		initSheet.HeaderMode = {Sort:1,ColMove:1,ColResize:1,HeaderCheck:1};
+
+		initSheet.Cols = [
+	   		{Header:"NO",Type:"Seq", Align:"Center" , SaveName:"seq", MinWidth:40},
+			{Header:"상태",Type:"Text", Align:"Center", SaveName:"sell_number", MinWidth:40},
+			{Header:"상태",Type:"Text", Align:"Center", SaveName:"pro_number", MinWidth:40},
+			{Header:"상태",Type:"Text", Align:"Center", SaveName:"sell_price", MinWidth:40},
+			{Header:"상태",Type:"Text", Align:"Center", SaveName:"sell_title", MinWidth:40},
+			{Header:"삭제",Type:"DelCheck",MinWidth:50},
+			{Header:"문자열",Type:"Text", SaveName:"TEXT_DATA",MultiLineText:1,KeyField:1,MinWidth:80}
+		];
+		IBS_InitSheet( mySheet , initSheet);
+		
+		//붙여넣기 모드 (0:한셀에붙여넣기(default) , 1:구분자 기준으로 붙여넣기 , 2:모자란 부분을 추가하면서 붙여넣기)
+		mySheet.SetClipPasteMode(2);
+
+		//시트에서 보여질 이미지 배열 구성
+		mySheet.SetImageList(0,"../../common/img/am.jpg");
+		mySheet.SetImageList(1,"../../common/img/ca.jpg");
+		mySheet.SetImageList(2,"../../common/img/ch.png");
+		mySheet.SetImageList(3,"../../common/img/fe.jpg");
+		mySheet.SetImageList(4,"../../common/img/ko.jpg");
+		mySheet.SetImageList(4,"../../common/img/ru.jpg");
+		mySheet.SetDataLinkMouse("AUTOSUM_DATA",1);
+		
+		//콤보 컬럼 클릭시 즉시 펼쳐짐.
+		mySheet.SetComboOpenMode(1);
+	}
+	
+	var toggle = 0;
+	/*Sheet 각종 처리*/
+	function doAction(sAction) {
+		switch(sAction) {
+			case "search":      //조회
+				var json = mySheet.GetSearchData("/devFw/itemManager/searchList.do");
+				mySheet.LoadSearchData(json);
+				break;
+			case "reload":  //조회 데이터 제거
+				mySheet.RemoveAll();
+				break;
+			case "save":  //수정된 데이터 추출 확인
+//				mySheet.DoSave("save.jsp");
+				var json = mySheet.GetSaveJson({ "AllTypeToText" : 1 });
+				alert(JSON.stringify(json));
+				break;
+			case "insert"://신규행 추가
+				var row = mySheet.DataInsert();
+				break;
+				
+		}
+	}
+	function mySheet_OnButtonClick(Row, Col) { 
+		alert(Row+"행의 버튼이 클릭되었습니다.");	
+	}
+
+	//Popup,PopupEdit 컬럼에 팝업 버튼 클릭시 호출 이벤트
+	function mySheet_OnPopupClick(Row,Col){
+		
+		var v = mySheet.GetCellText(Row,"ISO");
+		document.getElementById("popupFrame").src="./popup.jsp?searchCondition="+encodeURIComponent(v);
+		//DIV 형태의 팝업창을 띄운다.
+		showAndHide(1);
+	}
+	
+
+	//DIV 형태의 팝업창
+	function showAndHide(flag){
+		if(flag){
+			//block이 있는지 확인
+			if($j("#block").length==0){
+				//block 생성하기
+				$j("<div/>", {
+				    id: "block",
+				   css:{position:"absolute",top:0,left:0,width:"100%",height:"100%","background-color":"#777777", opacity: "0.4",    filter: "alpha(opacity=40)"}
+				}).appendTo(document.body);
+			}else{ $j("#block").show();}
+
+
+			//팝업이 나타날 위치 계산하기
+			//시트 안에서 해당 열의 left 값
+			var pleft =  ($j(window).width()/2)-200;
+			//시트 안에서 해당 행의 top 값
+			var ptop =  ($j(window).height()/2)-100;
+			$j("#popupDiv").css("top",ptop).css("left",pleft);
+			$j("#popupDiv").show();
+		}else{
+			//감춘다.
+			$j("#block").hide();
+			$j("#popupDiv").hide();
+		}
+	}
+	//DIV팝업으로 부터 받은 내용을 시트에 반영한다.
+	function setData(rowData){
+		mySheet.SetRowData(  mySheet.GetSelectRow(),  rowData);
+
+	}
+
+//	function mySheet_OnSearchEnd(code,msg){
+//		mySheet.InitCellProperty(3,"MULTICHECKBOX_DATA",{"Type":"CheckBox",ItemText:"가 나 다라 마바사 아자차 카타파하|나|다",ItemCode:"A|B|C"});
+//	}
+
+</script>
+
 <title>Insert title here</title>
 </head>
-<body>
-<h1>asdf22</h1>
+<body onload="LoadPage()">
+        <div class="page_title">
+            <span><a class="closeDepth" href="#">closeDepth</a></span>
+            <span class="title">기본기능 > <b>데이터타입/포맷</b></span>
+        </div>
+
+        <div class="main_content">
+            <div class="exp_product">
+                각 컬럼별  데이터 타입, 데이터 포멧을 확인한다.
+            </div>
+
+            <div class="ib_function float_right">
+                <a href="javascript:doAction('reload')" class="f1_btn_gray lightgray">초기화</a>
+                <a href="javascript:doAction('insert')" class="f1_btn_gray lightgray">추가</a>
+                <a href="javascript:doAction('search')" class="f1_btn_white gray">조회</a>
+
+                <a href="javascript:doAction('save')" class="f1_btn_white gray">저장</a>
+            </div>
+
+            <div class="clear hidden"></div>
+
+			<p class="subtit_sheet">조회리스트</p>
+            <div class="ib_product">
+							<script type="text/javascript"> createIBSheet("mySheet", "1200px", "500px"); </script>
+            </div>
+
+        </div>
+        <!--main_content-->
+
+
+	<!-- popup -->
+	<div id="popupDiv" style="position:absolute;z-index:300;top:100px;left:300px;width:400px;height:200px;background-color:#FFFFFF;display:none">
+		<iframe id="popupFrame" src="" style="width:100%;height:100%;padding:0px;margin:0px;border:0px"></iframe>
+	</div>
+
 </body>
 </html>

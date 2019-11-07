@@ -19,7 +19,7 @@ import project.F.P002.vo.F_P002VO;
 public class F_P002ServiceImpl implements F_P002Service {
 	@Autowired
 	private F_P002DAO f_P002DAO;
-
+	
 	@Override
 	public List<F_P002VO> selectItem(Map<String, Object> searchMap) throws DataAccessException {
 		List<F_P002VO> list =  f_P002DAO.selectItem(searchMap);
@@ -31,6 +31,11 @@ public class F_P002ServiceImpl implements F_P002Service {
 		List<F_P002VO> list =  f_P002DAO.searchOption(searchMap);
 		return list;
 	}
+	
+	@Override
+	public void addBasket(Map<String, Object> searchMap) throws DataAccessException {
+		f_P002DAO.searchOption(searchMap);
 
-
+	}
+	
 }

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="E.P001">
+
+	
+	<resultMap id="E_P001Result01" type="E_P001VO">
+		<result property="sell_number" column="sell_number" />
+		<result property="pro_number" column="pro_number" />
+		<result property="pro_name" column="pro_name" />
+		<result property="sell_price" column="sell_price" />
+		<result property="sell_title" column="sell_title" />
+		<result property="sell_thumbnail" column="sell_thumbnail" />
+		<result property="mem_ID" column="mem_ID" />
+		<result property="order_size" column="" />
+		<result property="order_color" column="" />
+		<result property="detail_quantity" column="" />
+	</resultMap>
+	
+
+	<select id="searchItem" resultMap="E_P001Result01" parameterType="java.util.Map"> 
+      <![CDATA[
+         select *
+         from productsell
+         where sell_number = ${p_id}
+      ]]>
+	</select>
+
+</mapper>

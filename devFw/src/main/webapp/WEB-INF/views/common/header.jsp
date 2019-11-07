@@ -141,7 +141,7 @@
 .container{
 	width:1120px;
 	max-width:none !important;
-	}
+}
 	
 </style>
 <title>Insert title here</title>

@@ -22,7 +22,10 @@ public class F_P002VO {
 	private String option_size="";
 	private String option_color="";
 	private String option_quantity="";
-	
+	private String bigCtgrCode="";
+	private String smallCtgrCode="";
+	private String bigCtgrName="";
+	private String smallCtgrName="";
 	
 	
 	public F_P002VO() {
@@ -159,7 +162,41 @@ public class F_P002VO {
 		this.pro_name = pro_name;
 	}
 
-	
-	
+	public String getBigCtgrCode() {
+		return bigCtgrCode;
+	}
+
+	public void setBigCtgrCode(String bigCtgrCode) {
+		this.bigCtgrCode = bigCtgrCode;
+	}
+
+	public String getSmallCtgrCode() {
+		return smallCtgrCode;
+	}
+
+	public void setSmallCtgrCode(String smallCtgrCode) {
+		this.smallCtgrCode = smallCtgrCode;
+	}
+
+	public String getBigCtgrName() {
+		return bigCtgrName;
+	}
+
+	public void setBigCtgrName(String bigCtgrName) {
+		this.bigCtgrName = bigCtgrName;
+	}
+
+	public String getSmallCtgrName() {
+		return smallCtgrName;
+	}
+
+	public void setSmallCtgrName(String smallCtgrName) {
+		this.smallCtgrName = smallCtgrName;
+	}
+
+
+
+
+
 	
 }

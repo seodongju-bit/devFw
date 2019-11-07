@@ -68,6 +68,13 @@
       <put-attribute name="body" value="/WEB-INF/views/A/P004/D001.jsp" />
    </definition>
    
+   
+   <definition name="itemManager" extends="itemLayout">
+      <put-attribute name="title" value="상품관리페이지" />
+      <put-attribute name="body" value="/WEB-INF/views/B/P001/D001.jsp" />
+      <put-attribute name="footer" value="" />
+   </definition> 
+   
     <definition name="basket" extends="baseLayout_cart">
       <put-attribute name="title" value="장바구니" />
       <put-attribute name="body" value="/WEB-INF/views/A/P005/D001.jsp" />
@@ -116,8 +123,7 @@
    <definition name="sellItems" extends="itemLayout">
       <put-attribute name="title" value="상품페이지" />
       <put-attribute name="body" value="/WEB-INF/views/F/P002/D001.jsp" />
-      <put-attribute name="bodyDetail" value="/WEB-INF/views/F/P002/D002.jsp" />
-      <put-attribute name="side" value="" />
+      <put-attribute name="bodyDetail" value="/WEB-INF/views/F/P002/test.jsp" />
    </definition> 
    
 <!--  웅건

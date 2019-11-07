@@ -37,16 +37,26 @@ public class F_P002ControllerImpl   implements F_P002Controller {
 	@RequestMapping(value="/sellItems.do" ,method = RequestMethod.GET)
 	public ModelAndView searchSell(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = getViewName(request);
+		
+		////////임시 세션
+		HttpSession session = request.getSession();
+		session.setAttribute("id", "seodongju");
+		////////
 		viewName = "sellItems";
 		String p_id= request.getParameter("sell_no");
-		
+		if(p_id==null || p_id=="") {
+			ModelAndView mav = new ModelAndView("redirect:category.do");
+			return mav;
+		}
 		//sell_no 검사: db에 해당 판매글 없으면 잘못된페이지 표시
 		Map<String, Object> searchMap = new HashMap<String, Object>();
 		searchMap.put("p_id", p_id);
 		List list = f_P002Service.selectItem(searchMap);
-		
 		if(!list.isEmpty()) {
 			f_P002VO = (F_P002VO)list.get(0);
+		}else {
+			ModelAndView mav = new ModelAndView("redirect:category.do");
+			return mav;
 		}
 		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("searchItem", f_P002VO);
@@ -83,6 +93,62 @@ public class F_P002ControllerImpl   implements F_P002Controller {
 		return result;
 	}
 
+	
+	@Override
+	@RequestMapping(value = "/addBasket.do", method = { RequestMethod.GET, RequestMethod.POST })
+	@ResponseBody
+	public List<Map<String, Object>> addBasket(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		request.setCharacterEncoding("utf-8");
+		System.out.println("장바구니추가 실행");
+		HttpSession session = request.getSession();
+		String p_id = (String)session.getAttribute("id");
+		List<Map<String, Object>> list = createModel(request);
+		
+		Map<String, Object> searchMap = new HashMap<String, Object>();
+		//Map<String, Object> resultMap = new HashMap<String, Object>();
+		List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
+		
+		
+		//판매번호, 색상, 사이즈, 수량
+		//현재 : 판매번호, 회원번호, 수량, 제품번호
+
+		System.out.println("list:"+list);
+		//System.out.println(BeanUtils.describe(e_P001VO));
+		
+	
+		
+		return result;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public List<Map<String, Object>> createModel(HttpServletRequest request){
+		List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
+		Map<String, Object> resultMap= new HashMap<String, Object>();
+		List size = new ArrayList();
+		List color = new ArrayList();
+		List quantity = new ArrayList();
+		int i=1;
+		while(true) {
+			if(request.getParameter("quantity"+i)==null || request.getParameter("quantity"+i)=="") { break; }
+			resultMap = new HashMap<String, Object>();
+			resultMap.put("sell_number", request.getParameter("sell_number"));
+			resultMap.put("quantity", request.getParameter("quantity"+i));
+			resultMap.put("size",request.getParameter("size"+i));
+			resultMap.put("color",request.getParameter("color"+i));
+			result.add(resultMap);
+			i++;
+		}
+		return result;
+	}
+	
 	
 	private String getViewName(HttpServletRequest request) throws Exception {
 		String contextPath = request.getContextPath();

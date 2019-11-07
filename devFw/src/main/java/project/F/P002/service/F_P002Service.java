@@ -15,6 +15,8 @@ public interface F_P002Service {
 	 public List<F_P002VO> selectItem(Map<String, Object> searchMap) throws DataAccessException;
 
 	List<F_P002VO> searchOption(Map<String, Object> searchMap) throws DataAccessException;
+
+	void addBasket(Map<String, Object> searchMap) throws DataAccessException;
 	 
 
 }
