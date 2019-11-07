@@ -18,12 +18,8 @@
 	
 	.navbar {
 		min-height:30px !important;
+		
 	}
-	
-	a {
-  color: #000000 !important;
-  text-decoration: none !important;
-}
 	
 	
 /*----------------------------------------------------------------------------------------------------*/
@@ -34,15 +30,12 @@
 	width: 250px;
 	height: 95px;
 	float:left;
-	margin:0 0 20px 0;
-	min-width:250px;
-	min-height:90px;
 }
 
 	.search {
-	width:100%;
+	width:5%;
 	height:40px;
-	margin: 30px 0 0 400px;
+	margin: 3% 35%;
 	position:relative;
 	min-width:600px;
 	max-width:1000px;
@@ -53,12 +46,16 @@
 
 /*-------------------------------------------------상품 카테고리 ------------------------------------------------*/
 
+
+
+
 	#menuBar{
-	margin:50px 0 0 auto;
-	width:1109px;
-	height:50px;
+	position:relative;
+	width:1200px;
+	margin:0 auto;
 	text-align:center;
-	position:absolute;
+	background-color:red;
+	
 }
 	#menuBar > .mainMenu{
 		display:inline-block;
@@ -127,7 +124,7 @@
 }
 	.dropdown-content2 a{
 		color:black;
-	 	 padding: 12px 8px;
+	 	padding: 12px 8px;
 	  	text-decoration: none;
 	  	display: block;
 }
@@ -138,16 +135,15 @@
 /*---------------------------------------------------------------------------------------------------------*/
 
 
-.container{
-	width:1120px;
-	max-width:none !important;
-}
+
 	
-	#suggest{
+#suggest{
 display:none; position: absolute; left: 830px; top:80px; border: 0.1px  solid #87cb42; z-index:3;font-weight: bold;background-color:#ffffff; 	
 	
 }
-	
+#test{
+	text-align:center;
+}
 </style>
 <title>Insert title here</title>
 </head>
@@ -292,5 +288,7 @@ display:none; position: absolute; left: 830px; top:80px; border: 0.1px  solid #8
 	</div>
 		
 	</div>  
+	
+	<div id="test">asfd</div>
 </body>
 </html>                    

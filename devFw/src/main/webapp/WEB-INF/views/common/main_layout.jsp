@@ -10,20 +10,13 @@
     <meta charset="UTF-8">
     <style>
     #container {
-	width: 100%;
-	margin: 0px auto;
-	/*   text-align:center; */
-	border: 0px solid #bcbcbc;
 }
     
     
       #header {
-        padding: 0;
-        margin-top:-1px;
-        width:100%;
-        min-width:800px;
-        height:202px;
-        background-color: #F3F3F3;
+      	width: 100%;
+        margin: 0 0 0 0px;
+        background-color:gray;
       }
       
       #content {

@@ -17,6 +17,7 @@
 <script
    src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <style>
+
 /*GLOBALS*/
 * {
    margin: 0;
@@ -38,11 +39,10 @@ body, hmtl {
    font-family: 'Anton', sans-serif;
 }
 
-
 #wrapper {
    width: 1096px;
-   margin: 0px 0 0 388px;
-   height: 500px;
+   margin: 50px auto;
+   height: 400px;
    position: relative;
    color: #fff;
    text-shadow: rgba(0, 0, 0, 0.1) 2px 2px 0px;
@@ -50,7 +50,7 @@ body, hmtl {
 
 #slider-wrap {
    width: 1096px;
-   height: 500px;
+   height: 400px;
    position: relative;
    overflow: hidden;
 }
@@ -67,7 +67,7 @@ body, hmtl {
    float: left;
    position: relative;
    width: 1096px; /* 슬라이드 크기 조절 800 600 잇는건 다바궈야 함 */
-   height: 500px;
+   height: 400px;
 }
 
 #slider-wrap ul#slider li>div {
@@ -207,12 +207,6 @@ h2 {
    transition: all 0.3s cubic-bezier(1, .01, .32, 1);
 }
 
-hr {
-	width:1096px;
-	border-color:#CCCCCC;
-	margin: 10px auto;
-}
-
 #sort {
 	width:100%;
 	margin: -40px 0 0 0;
@@ -300,7 +294,6 @@ hr {
    <div class="container">
    <div class="main_list">
    <h3 style="width:200px;">&nbsp;&nbsp;&nbsp;&nbsp;전체 상품</h3><a href="${contextPath}/category.do" >더보기</a>
-   <hr style="float:left;">
    <c:set var="i" value="0"/>
    <c:set var="j" value="4"/>
 	<table style="text-align:center;">
