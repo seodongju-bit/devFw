@@ -144,7 +144,7 @@ $(document).ready(function(){
 	        	  		smallCtgr.setAttribute("class", "smallCtgr");
 	        	  		smallCtgr.setAttribute("onclick", "location.href='/devFw/category.do?code="+code+"'");
 	        	  		smallCtgr.append(name);
-	        	  		//smallCtgr.appendChild(link);
+	        	  		//smallCtgr.appendChild(link);               
 	        	  		bigCtgr.appendChild(smallCtgr);
 	        	   }
 	        	   
