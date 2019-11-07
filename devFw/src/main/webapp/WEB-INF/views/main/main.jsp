@@ -299,7 +299,7 @@ hr {
    
    <div class="container">
    <div class="main_list">
-   <h3 style="width:200px;">&nbsp;&nbsp;&nbsp;&nbsp;전체 상품</h3><a href="#" >더보기</a>
+   <h3 style="width:200px;">&nbsp;&nbsp;&nbsp;&nbsp;전체 상품</h3><a href="${contextPath}/category.do" >더보기</a>
    <hr style="float:left;">
    <c:set var="i" value="0"/>
    <c:set var="j" value="4"/>
@@ -308,8 +308,8 @@ hr {
      <c:if test="${i%j == 0}">
      	<tr>
      </c:if>
-      	<td><br><a href="${contextPath}/sellItems.do&sell_number=${main.sell_number}"><img id="#itemsImg" style="width:274px; height:400px; overflow:hidden;" src="${contextPath}/${main.sell_thumbnail}"></a>
-	   	  <br><a style="text-aling:center;" href="${contextPath}/sellItems.do&sell_number=${main.sell_number}">${main.sell_title}<br><fmt:formatNumber  value="${main.sell_price}" type="number" var="sell_price" />${main.sell_price}원</a></td>
+      	<td><br><a href="${contextPath}/sellItems.do?sell_no=${main.sell_number}"><img id="#itemsImg" style="width:274px; height:400px; overflow:hidden;" src="${contextPath}/${main.sell_thumbnail}"></a>
+	   	  <br><a style="text-aling:center;" href="${contextPath}/sellItems.do?sell_no=${main.sell_number}">${main.sell_title}<br><fmt:formatNumber  value="${main.sell_price}" type="number" var="sell_price" />${main.sell_price}원</a></td>
 	 <c:if test="${i%j == j-1}">
 	 	</tr>
 	 </c:if>

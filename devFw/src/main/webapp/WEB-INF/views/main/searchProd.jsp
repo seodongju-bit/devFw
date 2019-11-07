@@ -16,6 +16,8 @@
 <html>
 <head>
 <style>
+
+
 #page_wrap {
 	margin: 10px auto 50px; padding: 0px; width: 400px;
 }
@@ -105,56 +107,51 @@
 </head>
 <body>
 <div class="container">
-	<hgroup>
-		<h1>총 XXX건의 상품이 검색되었습니다</h1>
-	</hgroup>
-	
-	
-	<div id="sorting">
-		<ul>
-			<li><a class="active" href="#">베스트 셀러</a></li>
-			<li><a href="#">최신 출간</a></li>
-			<li><a style="border: currentColor; border-image: none;" href="#">최근 등록</a></li>
-		</ul>
-	</div>
 	<table id="list_view">
-		<tbody>
-		  <c:forEach var="search" items="${searchList}"> 
-			<tr>
-				<td class="prod_image">
-					<a href="${contextPath}/sellItems.do&sell_number=${search.sell_number}">
-						   <img style="width:100px; height:100px; overflow:hidden; margin: 0; padding:0;" src="${contextPath}/${search.sell_thumbnail}">
-					</a>
-				</td>
-				<td>
-				${search.sell_title}
-				</td>
-				<td class="prod_description" style="margin:0; padding:0;">
-					<h2>
-						<a href="${contextPath}/sellItems.do&sell_number=${search.sell_number}"></a>
-					</h2>
+	  <tbody>
+		<c:set var = "sum" value="${0}"/>
+		<c:forEach var="search" items="${searchList}" varStatus="status"> 
+			<c:set var="sum" value="${sum + status.count}"/>
+	      <tr>
+		    <td class="prod_image">
+			   <a href="${contextPath}/sellItems.do?sell_no=${search.sell_number}">
+			   <img style="width:100px; height:100px; overflow:hidden; margin: 0; padding:0;" src="${contextPath}/${search.sell_thumbnail}">
+			   </a>
+			</td>
+			<td>
+				<a href="${contextPath}/sellItems.do?sell_no=${search.sell_number}">${search.sell_title}</a>
+			</td>
+			<td class="prod_description" style="margin:0; padding:0;">
 					<c:set var="prod_sell_date" value="${search.sell_date }" />
-				   <c:set var="arr" value="${fn:split(sell_date,' ')}" />
-					<div class="seller" style="margin:0; padding:0;"  >
+				    <c:set var="arr" value="${fn:split(sell_date,' ')}" />
+				<div class="seller" style="margin:0; padding:0;"  >
 						|${search.mem_ID }|<c:out value="${arr[0]}" />
-					</div>
-				</td>
-				<td class="price" style="margin:0; padding:0;"><span>${search.sell_price }원</span><br>
-					<strong>
-					 <fmt:formatNumber  value="${search.sell_price*0.9}" type="number" var="discounted_price" />
-			               ${sell_price}원
-					</strong>
-				</td>
-				<td><input type="checkbox" value="" style="margin:0; padding:0;"></td>
-				<td class="buy_btns" style="margin:0; padding:0;">
-					<UL>
-						<li><a href="#">장바구니</a></li>
-						<li><a href="#">구매하기</a></li>
-						<li><a href="#">비교하기</a></li>
-					</UL>
-				</td>
+				</div>
+			</td>
+			<td class="price" style="margin:0; padding:0;"><span>${search.sell_price }원</span><br>
+				<strong>
+					<fmt:formatNumber  value="${search.sell_price*0.9}" type="number" var="discounted_price" />
+			        ${discounted_price}원
+				</strong>
+			</td>
+			<td><input type="checkbox" value="" style="margin:0; padding:0;"></td>
+			<td class="buy_btns" style="margin:0; padding:0;">
+				<ul style="display:inline; margin:0; padding:0;">
+					<li><a href="#">장바구니로</a></li>
+					<li><a href="#">구매하기</a></li>
+				</ul>
+			</td>
 			</tr>
-			</c:forEach>
+		</c:forEach>
+		<br>
+		<div id="sorting">
+			<ul>
+				<li><a class="active" href="#">등록일 순</a></li>
+				<li><a href="#">인기 순</a></li>
+				<li><a style="border: currentColor; border-image: none;" href="#">상품평 순</a></li>
+			</ul>
+		</div>
+		<h4>총 ${sum}건의 상품이 검색되었습니다</h4>
 		</tbody>
 	</table>
 	<div class="clear"></div>

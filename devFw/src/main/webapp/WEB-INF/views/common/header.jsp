@@ -143,6 +143,11 @@
 	max-width:none !important;
 	}
 	
+	#suggest{
+display:none; position: absolute; left: 830px; top:80px; border: 0.1px  solid #87cb42; z-index:3;font-weight: bold;background-color:#ffffff; 	
+	
+}
+	
 </style>
 <title>Insert title here</title>
 </head>
