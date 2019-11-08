@@ -283,7 +283,7 @@ display:none; position: absolute; left: 830px; top:80px; border: 0.1px  solid #8
 		<div class="mainMenu"><button class="menubtn"onclick="location.href='eventProduct.do'">이벤트상품</button></div>                   
 		<div class="mainMenu"><button class="menubtn">리뷰랭킹</button></div>
 		<div class="mainMenu"><button class="menubtn">쿠폰</button></div>
-		<div class="mainMenu"><button class="menubtn">이벤트/공지사항</button></div>
+		<div class="mainMenu"><button class="menubtn" onclick="location.href='event.do'">이벤트/공지사항</button></div>
 	</div>
 	</div>
 		

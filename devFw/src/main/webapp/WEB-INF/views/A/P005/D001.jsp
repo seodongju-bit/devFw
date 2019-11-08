@@ -59,8 +59,7 @@ aside {
 .price:after,
 .subtotal:after,
 .subtotal-value:after,
-.total-value:after,
-.promo-value:after {
+.total-value:after,{
   content: '원';
 }
 
@@ -92,19 +91,42 @@ aside {
 
 <body>
 
+<form name="frm" method="post" encType="UTF-8">
+
+<aside>
+      <div class="summary">
+        <div class="summary-total-items">장바구니<span class="total-items"></span>개</div>
+        <div class="summary-subtotal">
+          <div class="subtotal-title">총 금액</div>
+          <div class="subtotal-value final-value" id="basket-subtotal"></div>
+        </div>
+        <div class="summary-total">
+          <div class="total-title">Total</div>.
+          <div class="total-value final-value" id="basket-total"></div>
+        </div>
+        <div class="summary-checkout">
+          <button class="checkout-cta">구매</button>
+        </div>
+      </div>
+</aside>
+
 <div class="basket">
  <table class="table table-hover" id="basket_tb">
  <tr class="basket-labels">
  <th class="checkbox">구분</th>
  <th class="item itme-heading">상품</th>
  <th class="product">이름</th>
- <th class="price">가격</th>
+ <th class="price-">가격</th>
  <th class="quantity">수량</th>
- <th class="subtotal">총금액</th>
+ <th class="subtotal-">총금액</th>
  <th class="remove_p">삭제</th>
+ <th class="change_p">수정</th>
  </tr>
  
- <c:forEach var="basket" items="${basketList}" >
+ 
+ <c:forEach var="basket" items="${basketList}" varStatus='index' >
+ <c:set var="ba_quantity" value="${basketList[index.count-1].ba_quantity}" />
+<c:set var="mem_no" value="${basketList[index.count-1].mem_no}" />
  <tr>
  <td class=check><input type="checkbox"></td>
  <td class="item">
@@ -113,130 +135,200 @@ aside {
  </div>
  </td>
  <td class="product-details">
- <strong><span class="item-quantity">${basket.ba_quantity}</span> x Eliza J</strong> Lace Sleeve Cuff Dress
+ <strong>Eliza J</strong> Lace Sleeve Cuff Dress
  <p><strong>Navy, Size 18</strong></p>
  <p>Product Code - ${basket.pro_number}</p>
  </td>
  <td class="price">${basket.sell_number}</td>
- <td class="quantity"><input type="number" value=${basket.ba_quantity} min="1" class="quantity-field"></td>
- <td class="subtotal">${basket.sell_number}
+ <td class="quantity"><input type="number" id="ba_quantity"  value="${basket.ba_quantity}" min="1" class="quantity-field"></td>
+ <td class="subtotal">${basket.sell_number*basket.ba_quantity}
  </td>
- <td class="remove"><button class="btn btn-default">삭제</button></td>
+ <td class="remove"><button class="btn btn-default" id="delete" onclick="deleteBasket(${basket.mem_no})" >삭제</button></td>
+ <td class="change"><button class="btn btn-default" id="modify" onclick="modifyBasket(${basket.mem_no}, ${index.count-1})" >수정</button></td>
  </tr>
+ <input type="hidden" id="mem_no" value="${basket.mem_no}">
  </c:forEach>
  
  </table>
-</div>
-
-<aside>
-      <div class="summary">
-        <div class="summary-total-items">장바구니<span class="total-items"></span>개</div>
-        <div class="summary-subtotal">
-          <div class="subtotal-title">총 금액</div>
-          <div class="subtotal-value final-value" id="basket-subtotal">100,000</div>
-        </div>
-        <div class="summary-total">
-          <div class="total-title">Total</div>
-          <div class="total-value final-value" id="basket-total">100,000</div>
-        </div>
-        <div class="summary-checkout">
-          <button class="checkout-cta">구매</button>
-        </div>
-      </div>
-    </aside>
-
+</div> 
+</form>
+    
   <script>
-  /* 설정 값 */
 
-  var fadeTime = 300;
+  	function deleteBasket(id){
+  		alert(id);
+  		$.ajax({
+			type : "POST",
+			url : "${contextPath}/basket/removeBasket.do",
+			data : {	
+				"mem_no" : id,
+				
+			},
+			success : function() {
+				alert('삭제 성공');
+				location.reload();
+			},
+			error : function() {
+				alert('삭제 실패');
+			}
+		});
 
-  /* 액션 */
-  $('.quantity input').change(function() {
-    updateQuantity(this);
-  });
+  	}
+  
+  	function modifyBasket(id, index){
+  		/* alert("id:"+id);
+  		alert("index:"+index); */
+  		
+  		var length=document.frm.ba_quantity.length;
+  		/* alert("length:"+length); */
+  	    var _ba_quantity=0;
+  	    
+  		if(length>1){ //카트에 제품이 한개인 경우와 여러개인 경우 나누어서 처리한다.
+  			_ba_quantity=document.frm.ba_quantity[index].value;		
+  		}else{
+  			_ba_quantity=document.frm.ba_quantity.value;
+  		}
+  		
+  		var ba_quantity=Number(_ba_quantity);
+  		
+  		/* alert("수량:"+ba_quantity); */
+  		
+  		
+  		$.ajax({
+			type : "POST",
+			url : "${contextPath}/basket/updateBasket.do",
+			data : {	
+				"mem_no" : id,
+				"ba_quantity" : ba_quantity
+			},
+			success : function() {
+			
+			},
+			error : function() {
+				alert(' 실패');
+			}
+		});
 
-  $('.remove button').click(function() {
-    removeItem(this);
-  });
+  	}
+  
 
-  $(document).ready(function() {
-    updateSumItems();
-  });
-
-  /* 카드 재계산 */
-  function recalculateCart(onlyTotal) {
-    var subtotal = 0;
-
-    /* 행 합계 */
-    $('.basket-product').each(function() {
-      subtotal += parseFloat($(this).children('.subtotal').text());
-    });
-
-    /* 총합 합계 */
-    var total = subtotal;
-
-    /*If switch for update only total, update only total display*/
-    if (onlyTotal) {
-      /* Update total display */
-      $('.total-value').fadeOut(fadeTime, function() {
-        $('#basket-total').html(total.toFixed(3));
-        $('.total-value').fadeIn(fadeTime);
-      });
-    } else {
-      /* Update summary display. */
-      $('.final-value').fadeOut(fadeTime, function() {
-        $('#basket-subtotal').html(subtotal.toFixed(3));
-        $('#basket-total').html(total.toFixed(3));
-        if (total == 0) {
-          $('.checkout-cta').fadeOut(fadeTime);
-        } else {
-          $('.checkout-cta').fadeIn(fadeTime);
-        }
-        $('.final-value').fadeIn(fadeTime);
-      });
-    }
-  }
-
-  /* 수량 업데이트 */
-  function updateQuantity(quantityInput) {
-    /* Calculate line price */
-    var productRow = $(quantityInput).parent().parent();
-    var price = parseFloat(productRow.children('.price').text());
-    var quantity = $(quantityInput).val();
-    var linePrice = price * quantity;
-
-    /* Update line price display and recalc cart totals */
-    productRow.children('.subtotal').each(function() {
-      $(this).fadeOut(fadeTime, function() {
-        $(this).text(linePrice.toFixed(3));
-        recalculateCart();
-        $(this).fadeIn(fadeTime);
-      });
-    });
-
-    productRow.find('.item-quantity').text(quantity);
-    updateSumItems();
-  }
-
-  function updateSumItems() {
-    var sumItems = 0;
-    $('.quantity input').each(function() {
-      sumItems += parseInt($(this).val());
-    });
-    $('.total-items').text(sumItems);
-  }
-
-  /* 카트 제거 */
-  function removeItem(removeButton) {
-    /* Remove row from DOM and recalc cart total */
-    var productRow = $(removeButton).parent().parent();
-    productRow.slideUp(fadeTime, function() {
-      productRow.remove();
-      recalculateCart();
-      updateSumItems();
-    });
-  }
-  </script>
+			/* $(document).ready(function() {
+				
+				$('.delete').click(function() {
+					$.ajax({
+						type : "POST",
+						url : "${contextPath}/basket/removeBasket.do",
+						data : {	
+							"mem_no" : $('#mem_no').val(),
+						},
+						success : function() {
+							alert('삭제 성공');
+							location.reload();
+						},
+						error : function() {
+							alert('삭제 실패');
+						}
+					});
+				});
+				
+				
+				$('.modify').click(function() {
+					$.ajax({
+						type : "POST",
+						url : "${contextPath}/basket/updateBasket.do",
+						data : {
+							"ba_quantity" : $('#ba_quantity').val(),
+							"mem_no" : $('#mem_no').val(),
+						}
+						/* success : function() {
+							alert('수정 성공');
+							location.reload();
+							
+						},
+						error : function() {
+							alert('수정 실패');
+							
+						} 
+					});
+				}); 
+			}); 
+*/
+			
+						var fadeTime = 300;
+						
+						$('.quantity input').change(function() {
+							updateQuantity(this);
+						});
+						
+						$(document).ready(function() {
+							updateSumItems();
+						});
+						
+						/* 카트 재계산 */
+						function recalculateCart(onlyTotal) {
+							var subtotal = 0;
+						
+							/* 행 합계 */
+							$('.basket-product').each(
+									function() {
+										subtotal += parseFloat($(this)
+												.children('.subtotal').text());
+									});
+						
+							/* 총합 합계 */
+							var total = subtotal;
+						
+							/*If switch for update only total, update only total display*/
+							if (onlyTotal) {
+								/* Update total display */
+								$('.total-value').fadeOut(fadeTime, function() {
+									$('#basket-total').html(total);
+									$('.total-value').fadeIn(fadeTime);
+								});
+							} else {
+								/* Update summary display. */
+								$('.final-value').fadeOut(fadeTime, function() {
+									$('#basket-subtotal').html(subtotal);
+									$('#basket-total').html(total);
+									if (total == 0) {
+										$('.checkout-cta').fadeOut(fadeTime);
+									} else {
+										$('.checkout-cta').fadeIn(fadeTime);
+									}
+									$('.final-value').fadeIn(fadeTime);
+								});
+							}
+						}
+						
+						/* 수량 업데이트 */
+						function updateQuantity(quantityInput) {
+							/* Calculate line price */
+							var productRow = $(quantityInput).parent().parent();
+							var price = parseFloat(productRow.children('.price').text());
+							var quantity = $(quantityInput).val();
+							var linePrice = price * quantity;
+						
+							/* Update line price display and recalc cart totals */
+							productRow.children('.subtotal').each(function() {
+								$(this).fadeOut(fadeTime, function() {
+									$(this).text(linePrice);
+									recalculateCart();
+									$(this).fadeIn(fadeTime);
+								});
+							});
+						
+							productRow.find('.item-quantity').text(quantity);
+							updateSumItems();
+						}
+						
+						function updateSumItems() {
+							var sumItems = 0;
+							$('.quantity input').each(function() {
+								sumItems += parseInt($(this).val());
+							});
+							$('.total-items').text(sumItems);
+						}
+		</script>
   
   
   <script src="http://code.jquery.com/jquery-latest.min.js"></script>

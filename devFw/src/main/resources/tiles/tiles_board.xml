@@ -46,12 +46,20 @@
       <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
    </definition>
    
-   <definition name="baseLayout_cart"  template="/WEB-INF/views/common/basket_layout.jsp">
+   <definition name="baseLayout_cart"  template="/WEB-INF/views/common/main_layout.jsp">
       <put-attribute name="title" value="" />
       <put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
       <put-attribute name="side" value="" />
       <put-attribute name="body" value="" />
       <put-attribute name="footer" value="/WEB-INF/views/common/mp_footer.jsp" />
+   </definition>
+   
+    <definition name="eventLayout"  template="/WEB-INF/views/common/main_layout.jsp">
+      <put-attribute name="title" value="" />
+      <put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
+      <put-attribute name="body" value="" />
+      <put-attribute name="bodyDetail" value="" />
+      <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
    </definition>
    
    <!-- 레이아웃 페이지 구분 -->
@@ -80,6 +88,10 @@
       <put-attribute name="body" value="/WEB-INF/views/A/P004/D001.jsp" />
    </definition>
    
+   <definition name="event" extends="eventLayout">
+      <put-attribute name="title" value="이벤트/공지사항" />
+      <put-attribute name="body" value="/WEB-INF/views/C/P001/D001.jsp" />
+   </definition>
    
    <definition name="itemManager" extends="itemLayout">
       <put-attribute name="title" value="상품관리페이지" />
