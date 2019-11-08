@@ -97,18 +97,24 @@ public class F_P002ControllerImpl   implements F_P002Controller {
 	@Override
 	@RequestMapping(value = "/addBasket.do", method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
-	public List<Map<String, Object>> addBasket(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public ModelAndView addBasket(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("utf-8");
 		System.out.println("장바구니추가 실행");
+		ModelAndView mav = new ModelAndView("");
 		HttpSession session = request.getSession();
 		String p_id = (String)session.getAttribute("id");
 		List<Map<String, Object>> list = createModel(request);
 		
-		Map<String, Object> searchMap = new HashMap<String, Object>();
+		//Map<String, Object> addMap = new HashMap<String, Object>();
 		//Map<String, Object> resultMap = new HashMap<String, Object>();
-		List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
+
 		
-		
+		//addBasket(Map<String, Object> searchMap)
+		for(int i=0;i<list.size();i++) {
+			list.get(i).put("p_id", p_id);
+			System.out.println(list.get(i));
+			f_P002Service.addBasket(list.get(i));
+		}
 		//판매번호, 색상, 사이즈, 수량
 		//현재 : 판매번호, 회원번호, 수량, 제품번호
 
@@ -117,7 +123,7 @@ public class F_P002ControllerImpl   implements F_P002Controller {
 		
 	
 		
-		return result;
+		return mav;
 	}
 	
 	

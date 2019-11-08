@@ -38,8 +38,8 @@ public class F_P002ServiceImpl implements F_P002Service {
 
 	@Override
 	public void addBasket(Map<String, Object> searchMap) throws DataAccessException {
-		f_P002DAO.searchOption(searchMap);
-
+		System.out.println("add서비스실행");
+		f_P002DAO.addBasket(searchMap);
 	}
 	
 
