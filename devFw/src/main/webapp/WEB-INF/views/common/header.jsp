@@ -207,7 +207,7 @@ display:none; position: absolute; left: 830px; top:80px; border: 0.1px  solid #8
 		  element.style.display = 'none';
 	   }
 	}
- 
+  
 </script>
 <body>
 	<div class="header" id="header">
