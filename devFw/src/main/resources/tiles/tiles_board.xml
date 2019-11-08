@@ -40,7 +40,7 @@
 	
 	 <definition name="itemLayout"  template="/WEB-INF/views/common/item_layout.jsp">
       <put-attribute name="title" value="" />
-      <put-attribute name="header" value="/WEB-INF/views/common/item_header.jsp" />
+      <put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
       <put-attribute name="body" value="" />
       <put-attribute name="bodyDetail" value="" />
       <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
@@ -147,7 +147,7 @@
    <definition name="sellItems" extends="itemLayout">
       <put-attribute name="title" value="상품페이지" />
       <put-attribute name="body" value="/WEB-INF/views/F/P002/D001.jsp" />
-      <put-attribute name="bodyDetail" value="/WEB-INF/views/F/P002/test.jsp" />
+      <put-attribute name="bodyDetail" value="/WEB-INF/views/F/P002/D002.jsp" />
    </definition> 
    
 <!--  웅건

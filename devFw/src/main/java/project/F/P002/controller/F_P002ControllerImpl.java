@@ -97,18 +97,18 @@ public class F_P002ControllerImpl   implements F_P002Controller {
 	@Override
 	@RequestMapping(value = "/addBasket.do", method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
-	public ModelAndView addBasket(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public Map<String, Object> addBasket(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("utf-8");
 		System.out.println("장바구니추가 실행");
-		ModelAndView mav = new ModelAndView("");
+		
 		HttpSession session = request.getSession();
 		String p_id = (String)session.getAttribute("id");
+		System.out.println(p_id);
 		List<Map<String, Object>> list = createModel(request);
 		
-		//Map<String, Object> addMap = new HashMap<String, Object>();
+		Map<String, Object> Map = new HashMap<String, Object>();
 		//Map<String, Object> resultMap = new HashMap<String, Object>();
-
-		
+	
 		//addBasket(Map<String, Object> searchMap)
 		for(int i=0;i<list.size();i++) {
 			list.get(i).put("p_id", p_id);
@@ -120,10 +120,7 @@ public class F_P002ControllerImpl   implements F_P002Controller {
 
 		System.out.println("list:"+list);
 		//System.out.println(BeanUtils.describe(e_P001VO));
-		
-	
-		
-		return mav;
+		return Map;
 	}
 	
 	

@@ -53,8 +53,8 @@ public class F_P002DAOImpl implements F_P002DAO {
 
 	@Override
 	public void addBasket(Map<String, Object> searchMap) throws DataAccessException { //상품 옵션검색
-		System.out.println("adddao실행"+searchMap);
-		//sqlSession.selectList("F.P002.addBasket", searchMap);
+		System.out.println("addDao실행"+searchMap);
+		sqlSession.insert("F.P002.addBasket", searchMap);
 	}
 
 }

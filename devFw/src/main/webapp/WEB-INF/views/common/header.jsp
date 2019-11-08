@@ -264,7 +264,7 @@
     </div>
       <div id="menuBar">
 		<div id="dropMenu">
-			<button class="menubtn">전체 카테고리</button>
+			<button class="menubtn" onclick="location.href='category.do'">전체 카테고리</button>
   			<div class="dropdown-content">
   				<div class="menu1">브랜드패션
   					<div class="dropdown-content2">

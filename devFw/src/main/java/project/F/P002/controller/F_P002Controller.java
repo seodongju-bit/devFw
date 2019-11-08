@@ -19,7 +19,6 @@ public interface F_P002Controller {
 	List<Map<String, Object>> searchOption(String p_id, HttpServletRequest request, HttpServletResponse response)
 			throws Exception;
 
-	ModelAndView addBasket(HttpServletRequest request, HttpServletResponse response) throws Exception;	
-	 
-	
+	Map<String, Object> addBasket(HttpServletRequest request, HttpServletResponse response) throws Exception;	
+	 	
 }

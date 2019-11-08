@@ -61,12 +61,21 @@
          where sell_number = ${p_id}
          order by to_number(option_size) 
       ]]>
-	
-
 
 	</select>
-	
-	
+ 
+	<insert id="addBasket" parameterType="java.util.Map">
+		<![CDATA[
+			insert into basket2 (ba_no, mem_id, sell_number, ba_size, ba_color, ba_quantity)
+			values(NVL((select max(ba_no)+1 
+        				from basket2 
+        				where mem_id='${p_id}'),0),
+        			'${p_id}','${sell_number}','${size}','${color}', '${quantity}')
+		]]>
+	</insert>
+ 
+
+
 	<select id="mainList" resultMap="F_P002Result01" parameterType="java.util.Map">
 	<!-- 각각의 상품을 등록일 순으로 16개까지 조회 -->
 	  <![CDATA[
