@@ -286,7 +286,7 @@ display:none; position: absolute; left: 830px; top:80px; border: 0.1px  solid #8
 		<div class="mainMenu"><button class="menubtn" onclick="location.href='event.do'">이벤트/공지사항</button></div>
 	</div>
 	</div>
-		
+		 
 	</div>  
 	
 	<div id="test">asfd</div>
