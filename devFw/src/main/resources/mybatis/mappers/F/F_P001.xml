@@ -66,22 +66,18 @@
    
    <select id="selectItem" resultMap="F_P001Result01" parameterType="java.util.Map"> 
       <![CDATA[
-         select * 
-         from commonlist cl, product p, productsell s
-      ]]>   
-      <where>
-			cl.common_code=p.pro_division AND
-         p.pro_number = s.pro_number
-			<if test=" p_id != ''  and  p_id != null">
-				and cl.common_code = ${common_code}
-			</if>
-		</where>   
-      
-      
-   </select>                                    
+      select *    
+         from commonlist c,product p, productsell s
+         where c.common_code = p.pro_division AND
+            p.pro_number = s.pro_number              
+            AND c.common_code LIKE ${#p_id,jdbcType=VARCHAR}'%'
+      ]]>                   
+       
+	
+   </select>                                               
    <select id="selectItem1" resultMap="F_P001_D04Result01" parameterType="java.util.Map"> 
       <![CDATA[
-         select *
+         select *              
         from eventitems i, commonlist cl , product p, productsell s
         where
         i.sell_number = s.sell_number AND
@@ -90,7 +86,7 @@
       ]]>          
      
       
-   </select>           
+   </select>                                      
    
    
       <select id="selectItem2" resultMap="F_P001_D03Result01" parameterType="java.util.Map"> 
