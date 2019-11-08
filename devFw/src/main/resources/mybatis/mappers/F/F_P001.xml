@@ -82,7 +82,7 @@
         where
         i.sell_number = s.sell_number AND
          cl.common_code =  p.pro_division AND
-         p.pro_number = s.pro_number    
+         p.pro_number = s.pro_number 
       ]]>          
      
       
@@ -98,7 +98,7 @@
           
 
       ]]>          
-     
+                               
       
    </select>   
 
