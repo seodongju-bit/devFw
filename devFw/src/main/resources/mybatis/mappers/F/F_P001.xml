@@ -61,17 +61,19 @@
        <result property="common_code" column="common_code" />
        <result property="common_name" column="common_name" />   
                  
-   </resultMap>
+   </resultMap>    
 
    
    <select id="selectItem" resultMap="F_P001Result01" parameterType="java.util.Map"> 
       <![CDATA[
-         select *
+        select *
         from commonlist cl , product p, productsell s
         where cl.common_code =  p.pro_division AND
-         p.pro_number = s.pro_number    
-      ]]>          
-
+         p.pro_number = s.pro_number       
+       
+       
+      ]]>                     
+    
          
       
    </select>                                    
