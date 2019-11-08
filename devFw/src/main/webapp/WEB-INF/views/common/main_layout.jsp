@@ -29,7 +29,7 @@
          background-color: lightblue;
       }
       
-        
+         
     
     </style>
     <title><tiles:insertAttribute name="title" /></title>
