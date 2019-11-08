@@ -273,7 +273,7 @@ display:none; position: absolute; left: 830px; top:80px; border: 0.1px  solid #8
   				</div>
   				<div class="menu1">자동차·공구
   					<div class="dropdown-content2"></div>
-  				</div>
+  				</div>     
   				<div class="menu1">여행·도서·티켓·e쿠폰
   					<div class="dropdown-content2"></div>
   				</div>

@@ -61,20 +61,22 @@
        <result property="common_code" column="common_code" />
        <result property="common_name" column="common_name" />   
                  
-   </resultMap>    
-      
+   </resultMap>
+
    
    <select id="selectItem" resultMap="F_P001Result01" parameterType="java.util.Map"> 
       <![CDATA[
-        select *
-        from commonlist cl , product p, productsell s
-        where cl.common_code =  p.pro_division AND
-         p.pro_number = s.pro_number       
-       
-       
-      ]]>                     
-    
-         
+         select * 
+         from commonlist cl, product p, productsell s
+      ]]>   
+      <where>
+			cl.common_code=p.pro_division AND
+         p.pro_number = s.pro_number
+			<if test=" p_id != ''  and  p_id != null">
+				and cl.common_code = ${common_code}
+			</if>
+		</where>   
+      
       
    </select>                                    
    <select id="selectItem1" resultMap="F_P001_D04Result01" parameterType="java.util.Map"> 
@@ -93,7 +95,7 @@
    
       <select id="selectItem2" resultMap="F_P001_D03Result01" parameterType="java.util.Map"> 
       <![CDATA[
-      SELECT *
+      SELECT *               
       FROM orderdetail od, productsell ps
        WHERE od.sell_number = ps.sell_number 
       ORDER BY od.detail_quantity desc
