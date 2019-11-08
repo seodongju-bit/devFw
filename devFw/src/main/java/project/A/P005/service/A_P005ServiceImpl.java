@@ -1,6 +1,7 @@
 package project.A.P005.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
@@ -25,4 +26,17 @@ public class A_P005ServiceImpl implements A_P005Service {
 		return basketList;
 	}
 
+	@Override
+	public void removeBasket(Map<String, Object> dataMap) throws DataAccessException {
+		System.out.println("회원번호2:"+dataMap);
+		basketDAO.deleteBasket(dataMap);
+	}
+	
+	@Override
+	public void updateBasket(Map<String, Object> dataMap) throws Exception {
+		System.out.println("22222222222222222222222222222222222222222222 = "+ dataMap);
+		basketDAO.updateBasket(dataMap);
+	}
+
+		
 }

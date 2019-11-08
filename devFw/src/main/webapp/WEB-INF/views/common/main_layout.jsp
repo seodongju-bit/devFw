@@ -14,6 +14,9 @@
     
     
       #header {
+      	width: 100%;
+        margin: 0 0 0 0px;
+        background-color:gray;
       }
       
       #content {

@@ -18,24 +18,19 @@
    src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <style>
 
-
+/*GLOBALS*/
 * {
    margin: 0;
    padding: 0;
    list-style: none;
 }
 
-#main_list .container {
-	width:1120px;
-	max-width:none !important;	
-}
-
-#more a {
+a {
    text-decoration: none;
    color: #666;
 }
 
-#more a:hover {
+a:hover {
    color: #1bc1a3;
 }
 
@@ -46,12 +41,11 @@ body, hmtl {
 
 #wrapper {
    width: 1096px;
-   margin: 0 0 0 2px;
+   margin: 50px auto;
    height: 400px;
    position: relative;
    color: #fff;
    text-shadow: rgba(0, 0, 0, 0.1) 2px 2px 0px;
-   
 }
 
 #slider-wrap {
@@ -186,7 +180,23 @@ body, hmtl {
 }
 
 /*Header*/
+h1, h2 {
+   text-shadow: none;
+   text-align: center;
+}
 
+h1 {
+   color: #666;
+   text-transform: uppercase;
+   font-size: 36px;
+}
+
+h2 {
+   color: #7f8c8d;
+   font-family: Neucha, Arial, sans serif;
+   font-size: 18px;
+   margin-bottom: 30px;
+}
 
 /*ANIMATION*/
 #slider-wrap ul, #pagination-wrap ul li {
@@ -196,7 +206,6 @@ body, hmtl {
    -ms-transition: all 0.3s cubic-bezier(1, .01, .32, 1);
    transition: all 0.3s cubic-bezier(1, .01, .32, 1);
 }
-
 
 #sort {
 	width:100%;
@@ -245,25 +254,24 @@ body, hmtl {
    rel='stylesheet' type='text/css'>
 </head>
 <body>
-<div class="container" >
    <div id="wrapper">
       <div id="slider-wrap">
          <ul id="slider">
             <li data-color="#1abc9c">
                <div>
-               </div><img src="${contextPath}/resources/image/banner/1.jpg">
+               </div><img src="${contextPath}/resources/image/banner/banner_1.jpg">
             </li>
             <li data-color="#9b59b6">
                <div>
-               </div><img src="${contextPath}/resources/image/banner/1.png">
+               </div><img src="${contextPath}/resources/image/banner/banner_2.jpg">
             </li>
             <li data-color="#34495e">
                <div>
-               </div><img src="${contextPath}/resources/image/banner/3.jpg">
+               </div><img src="${contextPath}/resources/image/banner/banner_3.jpg">
             </li>
             <li data-color="#e74c3c">
                <div>
-               </div><img src="${contextPath}/resources/image/banner/4.jpg">
+               </div><img src="${contextPath}/resources/image/banner/banner_4.jpg">
             </li>
          </ul>
          <!--controls-->
@@ -282,9 +290,10 @@ body, hmtl {
          <!--controls-->
       </div>
    </div>
-   <div id="main_list">
-   <h3 style="width:200px;">&nbsp;&nbsp;&nbsp;&nbsp;전체 상품</h3><a id="more" href="${contextPath}/category.do" >더보기</a>
-   <hr>
+   
+   <div class="container">
+   <div class="main_list">
+   <h3 style="width:200px;">&nbsp;&nbsp;&nbsp;&nbsp;전체 상품</h3><a href="${contextPath}/category.do" >더보기</a>
    <c:set var="i" value="0"/>
    <c:set var="j" value="4"/>
 	<table style="text-align:center;">

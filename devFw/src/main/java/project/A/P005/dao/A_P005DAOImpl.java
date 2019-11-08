@@ -1,6 +1,7 @@
 package project.A.P005.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,4 +25,16 @@ public class A_P005DAOImpl implements A_P005DAO {
 		return basketList;
 	}
 
+	@Override
+	public int deleteBasket(Map<String, Object> dataMap) throws DataAccessException {
+		int result = sqlSession.delete("mapper.basket.deleteBasket", dataMap);
+		return result;
+	}
+	
+	@Override
+	public int updateBasket(Map<String, Object> dataMap) throws DataAccessException {
+		int result = sqlSession.update("mapper.basket.updateBasket", dataMap);
+		return result;
+	}
+	
 }

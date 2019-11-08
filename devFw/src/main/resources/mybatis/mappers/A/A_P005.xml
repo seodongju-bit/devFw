@@ -15,8 +15,23 @@
       <![CDATA[
          select * from basket 	 	
       ]]>
-      
-      
 	</select>
+	
+	<delete id="deleteBasket"  parameterType="java.util.Map">
+	<![CDATA[
+	   DELETE FROM basket
+           WHERE mem_no = #{mem_no}
+	]]>      
+  </delete>
+  
+	<update id="updateBasket" parameterType="java.util.Map">
+	<![CDATA[
+		update basket
+		set 
+		    ba_quantity = #{ba_quantity}
+		where mem_no = #{mem_no}
+		]]> 
+	</update>
+	
 	
 	</mapper>
