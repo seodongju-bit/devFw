@@ -62,7 +62,7 @@
        <result property="common_name" column="common_name" />   
                  
    </resultMap>    
-
+      
    
    <select id="selectItem" resultMap="F_P001Result01" parameterType="java.util.Map"> 
       <![CDATA[
