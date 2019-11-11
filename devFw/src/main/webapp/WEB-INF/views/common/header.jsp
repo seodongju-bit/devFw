@@ -52,7 +52,8 @@
 	/*네비게이션 바*/
 	#navbar {
 		background-color:#DDDDDD; 
-		width:1910px;
+		width:100%;
+		min-width:1000px;
 	}
 	#navleft a {
 	   text-decoration: none;
