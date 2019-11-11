@@ -12,18 +12,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="resources/css/F_P002_D001.css?ver=1.2">
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
-
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script><!-- 팝업 관련 -->
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<link rel="stylesheet" type="text/css" href="resources/css/F_P002_D001.css?ver=1.3">
+
+<script src="http://code.jquery.com/jquery-latest.min.js"></script><!-- jquery -->
 <script type="text/javascript">
 
 
@@ -103,12 +96,14 @@ $(document).ready(function(){
 	document.getElementById('selectItems').appendChild(input);
 	
 	if('${item.option_yn}'=='n'){  //옵션없음
+		console.log("옵션없음");
 		var selectedBox = document.createElement('div');
 		input = document.createElement("input");
 		//document.getElementById('selectItem').prepend('${item.pro_name}');
 		
 		selectedBox.innerHTML+="<input type='number' name='quantity1' class='quantity' value='1' min='0' max='99' >";
-		document.getElementById('selectItem').prepend(selectedBox);	
+		document.getElementById('selectItems').prepend(selectedBox);	
+		
 	}
 	 
 	if(!option_kinds.includes("size")  && option_kinds.includes("color")){ ///////색상옵션
@@ -135,7 +130,7 @@ $(document).ready(function(){
 			
 			deletebtn.append('삭제');
 			deletebtn.setAttribute('type', 'button');
-			deletebtn.setAttribute('class', 'btn btn-info');
+			deletebtn.setAttribute('class', 'btn-default');
 			deletebtn.setAttribute('onclick', "itemDelete('selectbox"+option_stack+"')");
 						
 			selectedBox.setAttribute('class', 'selectItem');
@@ -170,7 +165,7 @@ $(document).ready(function(){
 			
 			deletebtn.append('삭제');
 			deletebtn.setAttribute('type', 'button');
-			deletebtn.setAttribute('class', 'btn btn-info');
+			deletebtn.setAttribute('class', 'btn-default');
 			deletebtn.setAttribute('onclick', "itemDelete('selectbox"+option_stack+"')");
 			
 			selectedBox.setAttribute('class', 'selectItem');
@@ -223,7 +218,7 @@ $(document).ready(function(){
 					
 					deletebtn.append('삭제');
 					deletebtn.setAttribute('type', 'button');
-					deletebtn.setAttribute('class', 'btn btn-info');
+					deletebtn.setAttribute('class', 'btn-default');
 					deletebtn.setAttribute('onclick', "itemDelete('selectbox"+option_stack+"')");
 					
 					selectedBox.setAttribute('class', 'selectItem');
@@ -260,19 +255,15 @@ function basket(){
           data : queryString,
           dataType : 'json',
           error: function(xhr, status, error){
-              alert(error);
+              console.log(error);
           },
           success : function(json){
               console.log(json);
           },
       });
 
-
-
 	
 	///////////////////////////
-	
-	
 	
 	Swal.fire({
 		  title: '장바구니에 담겼습니다',
@@ -339,7 +330,7 @@ function basket(){
 		<form method="get" name="selectPush" accept-charset="UTF-8" >
 			<div id="selectItems" class="sellInfo">
 			
-				<button type="button" class="btn btn-light" id="basketbtn" onclick="basket()" >장바구니</button>
+				<button type="button" class="btn-default" id="basketbtn" onclick="basket()" >장바구니</button>
 				<button type="submit" class="btn btn-primary" id="orderbtn" formaction="/devFw/order.do">바로구매</button>
 				
 			</div>

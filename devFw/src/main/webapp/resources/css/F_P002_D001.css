@@ -114,7 +114,10 @@
 	height:28px;
 	left:105px;
 	top:-3px;
-	border-radius: 5px;
+	border-radius:5px;
+	font-size:12px;
+	font-weight:bold;
+	color:gray;
 }
 .infoBox{
 	display:inline-block;

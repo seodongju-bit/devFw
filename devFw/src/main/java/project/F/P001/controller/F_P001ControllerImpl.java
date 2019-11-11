@@ -38,19 +38,24 @@ public class F_P001ControllerImpl implements F_P001Controller {
 		return mav;
 	}
 	
+	
+	
 	@Override
 	@RequestMapping(value="/memberReview.do" ,method = RequestMethod.GET)
 	public ModelAndView memberReview(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String viewName = getViewName(request);
-		viewName = "memberReview";
-		ModelAndView mav = new ModelAndView(viewName);
-		return mav;
+		String viewName3 = getViewName(request);
+		viewName3 = "memberReview";
+
+		ModelAndView mav3 = new ModelAndView(viewName3);
+	
+		return mav3;
 	}
 	
 	@Autowired
 	private F_P001Service f_P001Service;
 	@Autowired
 	F_P001VO F_P001VO;
+	
 	
 	@Override
 	@RequestMapping(value="/bestProduct.do" ,method = RequestMethod.GET)

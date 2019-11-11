@@ -40,7 +40,7 @@
 	
 	 <definition name="itemLayout"  template="/WEB-INF/views/common/item_layout.jsp">
       <put-attribute name="title" value="" />
-      <put-attribute name="header" value="/WEB-INF/views/common/item_header.jsp" />
+      <put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
       <put-attribute name="body" value="" />
       <put-attribute name="bodyDetail" value="" />
       <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
@@ -64,20 +64,26 @@
    
    <!-- 레이아웃 페이지 구분 -->
    
-   <definition name="login" extends="baseLayout3">
+   <definition name="signinpage" extends="baseLayout3">
       <put-attribute name="title" value="로그인창" />
       <put-attribute name="body" value="/WEB-INF/views/A/P001/D001.jsp" />
       <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
-   </definition> 
+   </definition>  
    
-    <definition name="signuppage" extends="baseLayout3">
-      <put-attribute name="title" value="회원가입창" />
+    <definition name="memberdivisionpage" extends="baseLayout3">
+      <put-attribute name="title" value="회원가입구분창" />
       <put-attribute name="body" value="/WEB-INF/views/A/P002/D001.jsp" />
       <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
    </definition> 
    
-   <definition name="signupsuccess" extends="baseLayout3">
+   <definition name="signuppage" extends="baseLayout3">
       <put-attribute name="title" value="회원가입창" />
+      <put-attribute name="body" value="/WEB-INF/views/A/P002/D002.jsp" />
+      <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
+   </definition> 
+   
+   <definition name="signupsuccesspage" extends="baseLayout3">
+      <put-attribute name="title" value="회원가입성공창" />
       <put-attribute name="body" value="/WEB-INF/views/A/P002/D005.jsp" />
       <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
    </definition>
@@ -152,7 +158,7 @@
    <definition name="sellItems" extends="itemLayout">
       <put-attribute name="title" value="상품페이지" />
       <put-attribute name="body" value="/WEB-INF/views/F/P002/D001.jsp" />
-      <put-attribute name="bodyDetail" value="/WEB-INF/views/F/P002/test.jsp" />
+      <put-attribute name="bodyDetail" value="/WEB-INF/views/F/P002/D002.jsp" />
    </definition> 
    
 <!--  웅건

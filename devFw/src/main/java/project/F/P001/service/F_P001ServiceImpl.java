@@ -24,7 +24,7 @@ public class F_P001ServiceImpl implements F_P001Service{
 	@Override
 	public List searchItem() throws DataAccessException {
 		List list = null; 
-		System.out.println("¼­ºñ½º½ÇÇà");
+		System.out.println("ï¿½ï¿½ï¿½ñ½º½ï¿½ï¿½ï¿½");
          list=f_P001DAO.selectItem();
 		return list;
 	}
@@ -35,7 +35,7 @@ public class F_P001ServiceImpl implements F_P001Service{
 	@Override
 	public List searchItem1() throws DataAccessException {
 		List list1 = null; 
-		System.out.println("¼­ºñ½º½ÇÇà");
+		System.out.println("ï¿½ï¿½ï¿½ñ½º½ï¿½ï¿½ï¿½");
          list1=f_P001_D04DAO.selectItem1();
 		return list1;
 	}
@@ -47,11 +47,12 @@ public class F_P001ServiceImpl implements F_P001Service{
 	@Override
 	public List searchItem2() throws DataAccessException {
 		List list2 = null; 
-		System.out.println("¼­ºñ½º½ÇÇà");
+		System.out.println("ï¿½ï¿½ï¿½ñ½º½ï¿½ï¿½ï¿½");
          list2=f_P001_D03DAO.selectItem2();
 		return list2;
 	}
 	
+
           
 
 }

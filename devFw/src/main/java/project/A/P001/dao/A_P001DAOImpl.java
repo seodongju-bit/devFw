@@ -18,14 +18,9 @@ public class A_P001DAOImpl implements A_P001DAO {
 	
 	@Override
 	public A_P001VO login(Map loginMap) throws DataAccessException{
-		A_P001VO A_P001=(A_P001VO)sqlSession.selectOne("A.A_P001.login",loginMap);
-	   return A_P001;
-	}
+		A_P001VO A_P001VO=(A_P001VO)sqlSession.selectOne("A.A_P001.login",loginMap);
+	   return A_P001VO;
 	
-	@Override
-	public String selectOverlappedID(String mem_id) throws DataAccessException {
-		String result =  sqlSession.selectOne("A.A_P001.selectOverlappedID",mem_id);
-		return result;
 	}
 	
 	

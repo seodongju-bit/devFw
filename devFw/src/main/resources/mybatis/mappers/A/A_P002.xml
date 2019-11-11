@@ -40,6 +40,7 @@
                                      mem_zip,
                                      mem_address1,
                                      mem_address2,
+                                     mem_division,
                                      mem_no)
 							 values(#{mem_id},
 									#{mem_pw},
@@ -51,6 +52,7 @@
                                     #{mem_zip},
                                     #{mem_address1},
                                    	#{mem_address2},
+                                   	#{mem_division},
                                    	mem_no.nextval)
                                              
    ]]>      
