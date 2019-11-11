@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   
+   <mapper namespace="mapper.event">
+	<resultMap id="eventResult" type="eventVO">
+		<result property="no_number" column="no_number" />
+        <result property="mem_no" column="mem_no" />
+        <result property="no_contents" column="no_contents" />
+        <result property="no_division" column="no_division" />
+        <result property="no_title" column="no_title" />
+        <result property="imagefilename" column="imagefilename" />
+        <result property="writedate" column="writedate" />
+        <result property="view_cnt" column="view_cnt" />
+	</resultMap> 
+	
+	<select id="selectAllEventList" resultMap="eventResult">
+      <![CDATA[
+         select * from notice 	 	
+      ]]>
+	</select>
+	
+	 <select id="selectBoardDetail" parameterType="java.util.Map" resultType="java.util.HashMap">
+
+      <![CDATA[
+         select 
+         no_number, 
+         view_cnt, 
+         no_division, 
+         no_contents, 
+         no_title, 
+         writedate
+         
+         from notice
+         
+         where no_number=#{no_number}
+      ]]>
+	</select>
+
+	<update id="updateCnt" parameterType="java.util.HashMap">
+	<![CDATA[
+        update notice
+        set
+        view_cnt= nvl(view_cnt,0) + 1
+         where 
+         no_number=#{no_number}
+      ]]>
+	</update>
+	
+	</mapper>
