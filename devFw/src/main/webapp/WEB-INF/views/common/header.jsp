@@ -92,7 +92,7 @@
 	text-align:center;
 	position:absolute;
 	float:left;
-	margin: 39px 0 0 -36px;
+	margin: 40px 0 0 -12px;
 	padding: 0;
 }
 	#menuBar > .mainMenu{
@@ -264,7 +264,7 @@
     </div>
       <div id="menuBar">
 		<div id="dropMenu">
-			<button class="menubtn" onclick="location.href='category.do'">전체 카테고리</button>
+			<button class="menubtn">전체 카테고리</button>
   			<div class="dropdown-content">
   				<div class="menu1">브랜드패션
   					<div class="dropdown-content2">
@@ -296,18 +296,18 @@
   				</div>
   				<div class="menu1">자동차·공구
   					<div class="dropdown-content2"></div>
-  				</div>     
+  				</div>
   				<div class="menu1">여행·도서·티켓·e쿠폰
   					<div class="dropdown-content2"></div>
   				</div>
   			</div>
 		</div>
 		<div class="mainMenu"><button class="menubtn"onclick="location.href='bestProduct.do'">베스트상품</button></div>
-		<div class="mainMenu"><button class="menubtn"onclick="location.href='eventProduct.do'">이벤트상품</button></div>
+		<div class="mainMenu"><button class="menubtn">기획전</button></div>
 		<div class="mainMenu"><button class="menubtn">리뷰랭킹</button></div>
 		<div class="mainMenu"><button class="menubtn">쿠폰</button></div>
-		<div class="mainMenu"><button class="menubtn"onclick="location.href='event.do'">이벤트/공지사항</button></div>
-	</div>                 
+		<div class="mainMenu"><button class="menubtn"onclick="location.href='eventProduct.do'">이벤트/공지사항</button></div>
+	</div>
 	</div>
 		
 	</div>  

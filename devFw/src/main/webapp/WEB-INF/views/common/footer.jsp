@@ -16,6 +16,13 @@
 	position: absolute;
 }
 
+#foot {
+	width:1910px;
+	max-width:none !important;
+
+
+}
+
 #foot li::before {
 	content: "|";
 	margin: 0 30px 0 30px;
