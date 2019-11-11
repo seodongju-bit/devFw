@@ -12,6 +12,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 <link href="../devFw/resources/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> 
 <title>Insert title here</title>
 <script
@@ -19,10 +20,18 @@
 <style>
 
 
+#main_container{
+	width:1120px;
+	max-width:none !important;
+	
+}
+
+
 * {
    margin: 0;
    padding: 0;
    list-style: none;
+   font-family: 'Noto Sans KR', sans-serif;
 }
 
 #main_list .container {
@@ -30,13 +39,25 @@
 	max-width:none !important;	
 }
 
-#more a {
-   text-decoration: none;
-   color: #666;
+#main_list hr{
+	width:100%;
+	background-color:black !important;
+	margin:0;
+	padding:0;
 }
 
-#more a:hover {
-   color: #1bc1a3;
+#main_list a {
+	color:black;
+}
+
+#all_prod {
+	margin: 20px 0 0 0;
+	font-size:large;
+}
+
+#more {
+	float:right;
+	margin: 0 50px 0 0;
 }
 
 body, hmtl {
@@ -245,23 +266,26 @@ body, hmtl {
    rel='stylesheet' type='text/css'>
 </head>
 <body>
-<div class="container" >
+<div class="container" id="main_container">
    <div id="wrapper">
       <div id="slider-wrap">
          <ul id="slider">
             <li data-color="#1abc9c">
                <div>
-               </div><img src="${contextPath}/resources/image/banner/01.jpg">
+               </div><img src="${contextPath}/resources/image/banner/1.jpg">
             </li>
             <li data-color="#9b59b6">
                <div>
-               </div><img src="${contextPath}/resources/image/banner/02.png">
+               </div><img src="${contextPath}/resources/image/banner/1.png">
             </li>
             <li data-color="#34495e">
                <div>
-               </div><img src="${contextPath}/resources/image/banner/03.jpg">
+               </div><img src="${contextPath}/resources/image/banner/3.jpg">
             </li>
-              
+            <li data-color="#e74c3c">
+               <div>
+               </div><img src="${contextPath}/resources/image/banner/4.jpg">
+            </li>
          </ul>
          <!--controls-->
          <div class="btns" id="next">
@@ -280,7 +304,10 @@ body, hmtl {
       </div>
    </div>
    <div id="main_list">
-   <h3 style="width:200px;">&nbsp;&nbsp;&nbsp;&nbsp;전체 상품</h3><a id="more" href="${contextPath}/category.do" >더보기</a>
+   <br>
+   <br>
+   <hr>
+   <span id="all_prod">&nbsp;&nbsp;&nbsp;&nbsp;전체 상품</span><button class="btn btn-outline-secondary" id="more" onclick="location.href='${contextPath}/category.do'">더보기</button>
    <hr>
    <c:set var="i" value="0"/>
    <c:set var="j" value="4"/>
@@ -290,7 +317,7 @@ body, hmtl {
      	<tr>
      </c:if>
       	<td><br><a href="${contextPath}/sellItems.do?sell_no=${main.sell_number}"><img id="#itemsImg" style="width:274px; height:400px; overflow:hidden;" src="${contextPath}/${main.sell_thumbnail}"></a>
-	   	  <br><a style="text-aling:center;" href="${contextPath}/sellItems.do?sell_no=${main.sell_number}">${main.sell_title}<br><fmt:formatNumber  value="${main.sell_price}" type="number" var="sell_price" />${main.sell_price}원</a></td>
+	   	  <br><a style="text-aling:center;" href="${contextPath}/sellItems.do?sell_no=${main.sell_number}">${main.sell_title}<br><fmt:formatNumber value="${main.sell_price}" pattern="#,###"/>원</a> </td>
 	 <c:if test="${i%j == j-1}">
 	 	</tr>
 	 </c:if>
@@ -299,43 +326,6 @@ body, hmtl {
 	</table>
    </div>
    </div>
-   <!-- <div class="main_focus" style="margin: 0 31px 0 0;">
-   <div class="container">
-   	<hr>
-   	<h1 align="center" style="margin: 0 0 30px 0;">상품전체</h1>
-
-    <div class="list_sort" style="font-size:0.8em;">
-		<ul id="sort">
-			<li><a href="#recommand">판매자 추천순</a></li>
-			<li><a href="#popular">인기도순</a></li>
-			<li><a href="#opinion">평점높은순</a></li>
-			<li><a href="#new">최신등록순</a></li>
-		</ul>
-    </div>
-   	<hr>
-   	<br><br><br>
-   	<div class="prod_list">
-   	  <ul id="productlist1" style="text-align:center">
-   	  	<li><a><img src="${contextPath}/resources/image/banner/banner_2.jpg"/></a><br><br><a id="title1">제목1</a></li>
-   	  	<li><a><img src="${contextPath}/resources/image/banner/banner_2.jpg}"/></a><br><br><a id="title2">제목2</a></li>
-   	  	<li><a><img src="${contextPath}/resources/image/banner/banner_2.jpg"/></a><br><br><a id="title3">제목3</a></li>
-   	  	<li><a><img src="${contextPath}/resources/image/banner/banner_2.jpg"/></a><br><br><a id="title4">제목4</a></li>
-   	  </ul>
-   	  <ul id="productlist2" style="text-align:center">
-   	  	<li><a><img src="${image_address5}"/></a><br><br><a>${pro_title5}제목5</a></li>
-   	  	<li><a><img src="${image_address6}"/></a><br><br><a>${pro_title6}제목6</a></li>
-   	  	<li><a><img src="${image_address7}"/></a><br><br><a>${pro_title7}제목7</a></li>
-   	  	<li><a><img src="${image_address8}"/></a><br><br><a>${pro_title8}제목8</a></li>
-   	  </ul>
-   	  <ul id="productlist3" style="text-align:center">
-   	  	<li><a><img src="${image_address9}"/></a><br><br><a>${pro_title9}제목9</a></li>
-   	  	<li><a><img src="${image_address10}"/></a><br><br><a>${pro_title10}제목10</a></li>
-   	  	<li><a><img src="${image_address11}"/></a><br><br><a>${pro_title11}제목11</a></li>
-   	  	<li><a><img src="${image_address12}"/></a><br><br><a>${pro_title12}제목12</a></li>
-   	  </ul>
-   	  </div>
-   	  </div>
-   </div>-->
    <script>
       //current position
       var pos = 0;

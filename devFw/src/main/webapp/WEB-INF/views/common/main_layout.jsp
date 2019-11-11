@@ -9,13 +9,6 @@
   <head>
     <meta charset="UTF-8">
     <style>
-    #container {
-}
-    
-    
-      #header {
-      }
-      
       #content {
         width: 100%;
         margin: 0 0 0 0px;
