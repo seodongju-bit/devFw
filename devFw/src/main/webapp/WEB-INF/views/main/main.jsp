@@ -272,20 +272,17 @@ body, hmtl {
          <ul id="slider">
             <li data-color="#1abc9c">
                <div>
-               </div><img src="${contextPath}/resources/image/banner/1.jpg">
+               </div><img src="${contextPath}/resources/image/banner/01.jpg">
             </li>
             <li data-color="#9b59b6">
                <div>
-               </div><img src="${contextPath}/resources/image/banner/1.png">
+               </div><img src="${contextPath}/resources/image/banner/02.png">
             </li>
             <li data-color="#34495e">
                <div>
-               </div><img src="${contextPath}/resources/image/banner/3.jpg">
+               </div><img src="${contextPath}/resources/image/banner/03.jpg">
             </li>
-            <li data-color="#e74c3c">
-               <div>
-               </div><img src="${contextPath}/resources/image/banner/4.jpg">
-            </li>
+            
          </ul>
          <!--controls-->
          <div class="btns" id="next">

@@ -69,7 +69,6 @@ public class B_P001ControllerImpl   implements B_P001Controller {
 	      //데이터 조회
 	      //List<B_P001VO> data = sqlSession.selectList("B.P001.searchList", searchMap);
 	      List<B_P001VO> data =b_P001DAO.selectItem(searchMap);
-	      System.out.println("왜!!!");
 	      System.out.println(data);
 	      resultMap.put("Data", data);
 	        

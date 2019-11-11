@@ -1,13 +1,16 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"   isELIgnored="false"
- %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+﻿<%@ page language="java" contentType="text/html;charset=UTF-8"
+    pageEncoding="UTF-8"
+    isELIgnored="false" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
 <!DOCTYPE html>
 <html>
   <head>
+  		<meta charset="utf-8">
+  		<META HTTP-EQUIV="contentType" CONTENT="text/html;charset=UTF-8">
   		<link rel="stylesheet" type="text/css" href="resources/css/A_P002_D001.css?ver=1.0">
-        <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Sign Up Form</title>
         <link rel="stylesheet" href="css/normalize.css">
@@ -15,13 +18,18 @@
         <link rel="stylesheet" href="css/main.css">
     </head>
     <body>
-
+	
+	<form action="${contextPath}/addMember.do" method="post" accept-charset="UTF-8">	
+		<input type="text" class="idbox" id="mem_id" name="mem_id" maxlength="15"  style="float:left;">
+		 <button type="submit" class="sign-upbtn" > 회원 가입</button>
+	</form>
+	
      <form action="${contextPath}/addMember.do" method="post" accept-charset="UTF-8">	
         <h1>회원 가입</h1>
         
         <fieldset>
           <label for="id" class="w" >회원 ID:</label>
-          <input type="text" class="idbox" id="mem_id" name="mem_id" maxlength="15" placeholder="ID" style="float:left;">
+          <input type="text" class="idbox" id="mem_id" name="mem_id" maxlength="15"  style="float:left;">
           <button type="button" id="btnOverlapped" class="overlapped-btn2" onClick="fn_overlapped();">중복 검사</button>
           <br></br>
           <label for="password" class="w">비밀번호:</label>
@@ -30,6 +38,8 @@
           <input type="text" class="nickbox" id="mem_nick" name="mem_nick"maxlength="10" placeholder="NICK NAME">
           <label for="name" class="w">이름:</label>
           <input type="text" class="namebox" id="mem_name" name="mem_name" maxlength="15" placeholder="NAME">
+          <input type="hidden" name="mem_division" value="0"/>
+          
           <label for="mail" class="w">이메일:</label> 
           <input type="text" class="mail1" id="mem_email1"  name="mem_email1" maxlength="15" >@
           <input type="text" class="mail2" id="mem_email2"  name="mem_email2" disabled value="naver.com"> 

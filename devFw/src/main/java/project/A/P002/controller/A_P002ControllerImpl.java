@@ -49,7 +49,8 @@ public class A_P002ControllerImpl   implements A_P002Controller {
 	@RequestMapping(value="/addMember.do" ,method = RequestMethod.POST)
 	public ResponseEntity addMember(@ModelAttribute("A_P002VO") A_P002VO _A_P002VO,HttpServletRequest request, HttpServletResponse response) throws Exception {
 		response.setContentType("text/html; charset=UTF-8");
-		request.setCharacterEncoding("utf-8");
+		request.setCharacterEncoding("UTF-8");
+		
 		String message = null;
 		ResponseEntity resEntity = null;
 		HttpHeaders responseHeaders = new HttpHeaders();

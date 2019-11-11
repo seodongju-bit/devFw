@@ -9,16 +9,31 @@
 <meta http-equiv="Content-Style-Type" content="text/css" />
 <script type="text/javascript" src="/devFw/resources/maskedit/js/jquery-1.7.0.min.js"></script>
 
-<script type="text/javascript" src="/devFw/resources/sheet/js/common.js?ver=1"></script>
+
 <script language="javascript" src="/devFw/resources/sheet/sheet/ibsheetinfo.js"></script>
 <script language="javascript" src="/devFw/resources/sheet/sheet/ibsheet.js"></script>
 <script language="javascript" src="/devFw/resources/sheet/sheet/ibexcel.js"></script>
 <style>
-	.smart-form .searchInput input[type=text]:hover + i:after{content:'\f00d'}
+
+#area{
+	background-color:lightgreen;
+	width:100%;
+	height:700px;
+}
+.main_content{
+	
+	width:1250px;
+	margin:0 auto;
+	background-color:lightblue;
+}
+#DIV_mySheet{
+	margin:0 auto;
+	
+}
 </style>
 <script language="javascript">
 	
-
+	
 	//시트 초기 높이 결정
 	var pageheightoffset = 200;
 	/*Sheet 기본 설정 */
@@ -30,12 +45,12 @@
 		initSheet.HeaderMode = {Sort:1,ColMove:1,ColResize:1,HeaderCheck:1};
 
 		initSheet.Cols = [
-	   		{Header:"NO",Type:"Seq", Align:"Center" , SaveName:"seq", MinWidth:40},
-			{Header:"상태",Type:"Text", Align:"Center", SaveName:"sell_number", MinWidth:40},
-			{Header:"상태",Type:"Text", Align:"Center", SaveName:"pro_number", MinWidth:40},
-			{Header:"상태",Type:"Text", Align:"Center", SaveName:"sell_price", MinWidth:40},
-			{Header:"상태",Type:"Text", Align:"Center", SaveName:"sell_title", MinWidth:40},
-			{Header:"삭제",Type:"DelCheck",MinWidth:50},
+			{Header:"선택",Type:"DelCheck", Width:10},
+	   		{Header:"NO",Type:"Seq", Align:"Center" , SaveName:"seq", Width:15},
+			{Header:"상품글번호",Type:"Text", Align:"Center", SaveName:"sell_number", Edit:"0" , Width:40},
+			{Header:"제품번호",Type:"Text", Align:"Center", SaveName:"pro_number", Width:40},
+			{Header:"제목",Type:"Text", Align:"Center", SaveName:"sell_title", MinWidth:40},
+			{Header:"가격",Type:"Text", Align:"Center", SaveName:"sell_price", MinWidth:40},
 			{Header:"문자열",Type:"Text", SaveName:"TEXT_DATA",MultiLineText:1,KeyField:1,MinWidth:80}
 		];
 		IBS_InitSheet( mySheet , initSheet);
@@ -44,16 +59,19 @@
 		mySheet.SetClipPasteMode(2);
 
 		//시트에서 보여질 이미지 배열 구성
-		mySheet.SetImageList(0,"../../common/img/am.jpg");
-		mySheet.SetImageList(1,"../../common/img/ca.jpg");
-		mySheet.SetImageList(2,"../../common/img/ch.png");
-		mySheet.SetImageList(3,"../../common/img/fe.jpg");
-		mySheet.SetImageList(4,"../../common/img/ko.jpg");
-		mySheet.SetImageList(4,"../../common/img/ru.jpg");
-		mySheet.SetDataLinkMouse("AUTOSUM_DATA",1);
+		//mySheet.SetImageList(0,"../../common/img/am.jpg");
+		//mySheet.SetImageList(1,"../../common/img/ca.jpg");
+		//mySheet.SetImageList(2,"../../common/img/ch.png");
+		//mySheet.SetImageList(3,"../../common/img/fe.jpg");
+		//mySheet.SetImageList(4,"../../common/img/ko.jpg");
+		//mySheet.SetImageList(4,"../../common/img/ru.jpg");
+		//mySheet.SetDataLinkMouse("AUTOSUM_DATA",1);
 		
 		//콤보 컬럼 클릭시 즉시 펼쳐짐.
 		mySheet.SetComboOpenMode(1);
+		
+		var json = mySheet.GetSearchData("/devFw/itemManager/searchList.do");
+		mySheet.LoadSearchData(json);
 	}
 	
 	var toggle = 0;
@@ -133,15 +151,10 @@
 <title>Insert title here</title>
 </head>
 <body onload="LoadPage()">
-        <div class="page_title">
-            <span><a class="closeDepth" href="#">closeDepth</a></span>
-            <span class="title">기본기능 > <b>데이터타입/포맷</b></span>
-        </div>
-
+     <div id="area">
+		
         <div class="main_content">
-            <div class="exp_product">
-                각 컬럼별  데이터 타입, 데이터 포멧을 확인한다.
-            </div>
+  			<h1>상품관리</h1><br>
 
             <div class="ib_function float_right">
                 <a href="javascript:doAction('reload')" class="f1_btn_gray lightgray">초기화</a>
@@ -153,9 +166,8 @@
 
             <div class="clear hidden"></div>
 
-			<p class="subtit_sheet">조회리스트</p>
             <div class="ib_product">
-							<script type="text/javascript"> createIBSheet("mySheet", "1200px", "500px"); </script>
+				<script type="text/javascript"> createIBSheet("mySheet", "1200px", "500px"); </script>
             </div>
 
         </div>
@@ -166,6 +178,6 @@
 	<div id="popupDiv" style="position:absolute;z-index:300;top:100px;left:300px;width:400px;height:200px;background-color:#FFFFFF;display:none">
 		<iframe id="popupFrame" src="" style="width:100%;height:100%;padding:0px;margin:0px;border:0px"></iframe>
 	</div>
-
+	</div>
 </body>
 </html>
