@@ -1,263 +1,257 @@
-@charset "UTF-8";
-*{
-	margin:0;
-	border:0;
-	padding:0;
-	max-width:100%;
-	background:transparent
+
+.w { text-align: left; }
+.x { text-align: right; }
+.y { text-align: center; }
+.z { text-align: justify; }
+div
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-#wrap{
-	margin:0 auto;
-	display:table-row;
-	height:100%;
-	width:1200px;
-	font-size:12px;
-	color:#4f4f4f;
-}
-#wrap .wrap-inner{
-	position:relative;
-	padding:0 0 30px;
-	min-width:1200px;
-	width:1200px;
-	background-color:#e6e6e7;
+body {
+  font-family: 'Nunito', sans-serif;
+  color: #384047;
 }
 
-/*------------------------------------*\
-	Section Header
-\*------------------------------------*/
-.member-join .section-header .heading{margin-left:88px;padding-top:55px;width:97px;height:26px;font-size:24px;line-height:1;letter-spacing:-4px}
-.member-join .section-header .heading:before{content:url(/images/join/txt_section_title.gif)}
-.member-join .section-header .sub-title{margin:11px 0 28px 88px;width:210px;height:20px;font-size:17px;font-weight:bold;line-height:1;letter-spacing:-2px}
-.member-join .section-header .sub-title:before{content:url(/images/join/txt_section_subtitle.gif)}
-.member-join .section-header .sub-title em{font-style:normal;color:#862ccc}
-.complete-join .section-header{border-top:5px solid #a962f9}
-.complete-join .section-header .heading{margin-left:475px;padding-top:45px;width:250px;height:50px;font-size:54px;line-height:1;color:#862ccc;letter-spacing:-8px}
-.complete-join .section-header .heading:before{content:url(/images/join/txt_complete_title.gif)}
-.complete-join .section-header .sub-title{margin:21px 0 0 413px;width:374px;height:29px;font-size:28px;font-weight:bold;line-height:1;color:#333;letter-spacing:-4px}
-.complete-join .section-header .sub-title:before{content:url(/images/join/txt_complete_subtitle.gif)}
-
-/*------------------------------------*\
-	Member Join Navigation
-\*------------------------------------*/
-.member-join .section-main .refer-benefit{overflow:hidden;margin:18px auto 32px;padding:20px 0 30px;width:682px;height:44px;font-size:14px;line-height:1;text-align:center}
-.member-join .section-main .refer-benefit:before{overflow:hidden;content:url(/images/join/bnnr_refer_benefit.png?v=2017120401);display:inline-block;margin-bottom:30px;width:100%;font-size:0}
-.member-join .section-main .junior-benefit:before{content:url(/images/join/bnnr_refer_benefit_junior.png)}
-.member-join .section-main .simple-benefit:before{content:url(/images/join/bnnr_refer_benefit_simple.png)}
-.member-join .section-main ul.tab-menu{display:table;margin:30px auto 0;max-width:1024px;width:100%}
-.member-join .section-main ul.tab-menu li{display:table-cell;border-top:1px solid #ccc;border-right:0;border-bottom:1px solid #ccc;border-left:1px solid #ccc;width:33.333%;background-color:#fff;text-align:center}
-.member-join .section-main ul.tab-menu li a{display:block;padding:23px 0 15px}
-.member-join .section-main ul.tab-menu li.on{border:1px solid #464646;background-color:#464646;color:#c690ff}
-.member-join .section-main ul.tab-menu li.on + li{border-left:0;border-right:1px solid #ccc}
-.member-join .section-main ul.tab-menu li.on + li + li{border-left:0;border-right:1px solid #ccc}
-.member-join .section-main ul.tab-menu li:first-child{border-top-left-radius:4px;border-bottom-left-radius:4px}
-.member-join .section-main ul.tab-menu li.on a{position:relative}
-.member-join .section-main ul.tab-menu li.on a::after{position:absolute;bottom:-10px;left:48.5%;content:'■';font-size:16px;color:#464646;text-align:center;transform:rotate(315deg);-ms-transform:rotate(315deg);-webkit-transform:rotate(315deg);-moz-transform:rotate(315deg);-o-transform:rotate(315deg)}
-.member-join .section-main ul.tab-menu li + li + li{border-top-right-radius:4px;border-bottom-right-radius:4px}
-.member-join .section-main ul.tab-menu li a b{overflow:hidden;display:inline-block;height:19px;font-size:15px;vertical-align:middle}
-.member-join .section-main ul.tab-menu li a b:before{position:relative;top:-24px;content:url(/images/join/tab_join_nav.png)}
-.member-join .section-main ul.tab-menu li:first-child a b{width:107px}
-.member-join .section-main ul.tab-menu li:first-child a b:before{left:-117px}
-.member-join .section-main ul.tab-menu li + li a b{width:123px}
-.member-join .section-main ul.tab-menu li + li a b:before{left:-450px}
-.member-join .section-main ul.tab-menu li + li + li a b{width:107px}
-.member-join .section-main ul.tab-menu li + li + li a b:before{left:-800px}
-.member-join .section-main ul.tab-menu li.on a b{color:#c690ff}
-.member-join .section-main ul.tab-menu li.on a b:before{top:-139px}
-.member-join .section-main ul.tab-menu li a em{overflow:hidden;display:block;margin:19px auto 0;height:27px;font-size:12px;font-style:normal;vertical-align:middle;letter-spacing:-1px}
-.member-join .section-main ul.tab-menu li a em:before{position:relative;top:-62px;content:url(/images/join/tab_join_nav.png)}
-.member-join .section-main ul.tab-menu li:first-child a em{width:108px}
-.member-join .section-main ul.tab-menu li:first-child a em:before{left:-117px}
-.member-join .section-main ul.tab-menu li + li a em{width:172px}
-.member-join .section-main ul.tab-menu li + li a em:before{left:-426px}
-.member-join .section-main ul.tab-menu li + li + li a em{width:148px}
-.member-join .section-main ul.tab-menu li + li + li a em:before{left:-779px}
-.member-join .section-main ul.tab-menu li.on a em{color:#fff}
-.member-join .section-main ul.tab-menu li.on a em:before{top:-177px}
-.setting-join .section-main h1 + ul{display:table;margin:50px auto 0;max-width:1024px;width:100%}
-.setting-join .section-main h1 + ul li{display:table-cell;border-top:1px solid #ccc;border-right:0;border-bottom:1px solid #ccc;border-left:1px solid #ccc;width:50%;background-color:#fff;text-align:center}
-.setting-join .section-main h1 + ul li a{display:block;padding:22px 0}
-.setting-join .section-main h1 + ul li.on{border:1px solid #464646;background-color:#464646;color:#c690ff}
-.setting-join .section-main h1 + ul li.on + li{border-left:0;border-right:1px solid #ccc}
-.setting-join .section-main h1 + ul li.on + li + li{border-left:0;border-right:1px solid #ccc}
-.setting-join .section-main h1 + ul li:first-child{border-top-left-radius:4px;border-bottom-left-radius:4px}
-.setting-join .section-main h1 + ul li.on a{position:relative}
-.setting-join .section-main h1 + ul li.on a::after{position:absolute;bottom:-10px;left:48.5%;content:'■';font-size:16px;color:#464646;text-align:center;transform:rotate(315deg);-ms-transform:rotate(315deg);-webkit-transform:rotate(315deg);-moz-transform:rotate(315deg);-o-transform:rotate(315deg)}
-.setting-join .section-main h1 + ul li a b{overflow:hidden;display:inline-block;height:19px;font-size:16px;vertical-align:middle;letter-spacing:-1px}
-.setting-join .section-main h1 + ul li.on a b{color:#c690ff}
-.setting-join .section-main h1 + ul li.on a b:before{top:-99px}
-.setting-join .section-main h1 + ul li + li{border-top-right-radius:4px;border-bottom-right-radius:4px}
-.setting-join .section-main h1 + ul li a b:before{position:relative;top:-23px;content:url(/images/join/tab_id_srch_pw_reset.png)}
-.setting-join .section-main h1 + ul li:first-child a b{width:85px}
-.setting-join .section-main h1 + ul li:first-child a b:before{left:-209px}
-.setting-join .section-main h1 + ul li + li a b{width:118px}
-.setting-join .section-main h1 + ul li + li a b:before{left:-709px}
-.complete-join .section-main{overflow:hidden;margin:0 auto;background-color: #fff}
-.complete-join .section-main .refer-benefit{margin-top:20px;font-size:14px;line-height:28px;color:#4c4c4c;text-align:center}
-.complete-join .section-main .refer-benefit span{display:block;font-size:11px;color:#757575}
-.complete-join .section-main .view-go{margin-top:19px;text-align:center}
-.complete-join .section-main .view-go a + a,
-.complete-join .section-main .view-go a + a + a{margin-left:5px}
-.complete-join .section-main .view-go .btn-live-tv,
-.complete-join .section-main .view-go .btn-air-vod,
-.complete-join .section-main .view-go .btn-best-movie{overflow:hidden;display:inline-block;width:200px;height:45px;font-size:14px;font-weight:bold;color:#a962f9}
-.complete-join .section-main .view-go .btn-live-tv:before{content:url(/images/join/btn_live_tv.png)}
-.complete-join .section-main .view-go .btn-air-vod:before{content:url(/images/join/btn_air_vod.png)}
-.complete-join .section-main .view-go .btn-best-movie:before{content:url(/images/join/btn_best_movie.png)}
-.complete-join .section-main .view-watch{overflow:hidden;margin-top:47px}
-.complete-join .section-main .view-watch a em{display:block;padding-bottom:10px;font-size:14px;font-style:normal;color:#8c8c8c}
-.complete-join .section-main .view-watch a strong,
-.complete-join .section-main .view-watch a span{font-size:28px;color:#343434;letter-spacing:-4px}
-.complete-join .section-main .view-watch .pass-view{overflow:hidden;display:block;margin:0 auto;width:507px;height:180px}
-.complete-join .section-main .view-watch .pass-view:before{content:url(/images/join/btn_pass_view.png)}
-
-.complete-join .section-benefit{
-	border-top: 1px solid #cfcfcf}
-.complete-join .section-benefit .complete-free{
-	overflow: hidden;
-	width: 535px;
-	height: 68px;
-	margin: 68px auto 22px;
-}
-.complete-join .section-benefit .complete-free:before{
-	content:url(/images/join/txt-complete-free.png)
-}
-.complete-join .section-benefit .complete-trial{
-	overflow: hidden;
-	width: 367px;
-	height: 40px;
-	margin: 0 auto;
-}
-.complete-join .section-benefit .complete-trial:before{
-	content:url(/images/join/txt-complete-trial.png)
-}
-.complete-join .section-benefit .complete-benefits{
-	overflow: hidden;
-	width: 904px;
-	height: 285px;
-	margin: 30px auto 22px;
-}
-.complete-join .section-benefit .complete-benefits:before{
-	content:url(/images/join/complete-benefits.png)
-}
-.complete-join .section-benefit .benefit-voucher{
-	display: block;
-	overflow: hidden;
-	width: 296px;
-	height: 157px;
-	margin: 0 auto;
-}
-.complete-join .section-benefit .benefit-voucher:before{
-	content:url(/images/join/btn-benefit-voucher.png)
+form {
+  max-width: 300px;
+  margin: 10px auto;
+  padding: 10px 20px;
+  background: #f4f7f8;
+  border-radius: 8px;
 }
 
-/*------------------------------------*\
-	[170905] addClass
-	free-trial, free-trial-simple 
-\*------------------------------------*/
-.member-join .section-main .free-trial,
-.member-join .section-main .free-trial-simple{
-	overflow:hidden;
-	margin:50px auto 70px;
-	padding:0;
-	width:1025px;
-	height:170px;
-	font-size:14px;
-	line-height:1;
-	text-align:center
-}
-.member-join .section-main .free-trial:before{
-	content:url(/images/join/bnnr_refer_benefit.png);
-}
-.member-join .section-main .free-trial-simple:before{
-	content:url(/images/join/bnnr_refer_benefit_simple.png)
+h1 {
+  margin: 0 0 30px 0;
+  text-align: center;
 }
 
-/*------------------------------------*\
-	General Member Form
-\*------------------------------------*/
-#generalMemberFrm{overflow:hidden;margin:37px auto 0;width:1024px;text-align:center}
-#generalMemberFrm .basic-info > span:first-child{display:block;padding-bottom:10px;font-size:11px;color:#757575;text-align:right}
-#generalMemberFrm .basic-info > span:first-child em{overflow:hidden;display:inline-block;padding-right:3px;width:11px;height:11px}
-#generalMemberFrm .basic-info > span:first-child em:before{content:url(/images/join/ico_required.png)}
-#generalMemberFrm .basic-info input[type='text'],
-#generalMemberFrm .basic-info input[type='password']{border:1px solid #a6a6a6;padding:0 10px;height:30px;background-color:#fff;-moz-border-radius:2px;-webkit-border-radius:2px;border-radius:2px;box-shadow:3px 3px 0 #d6d6d6, -3px -3px 0 #d6d6d6, 3px -3px 0 #d6d6d6, -3px 3px 0 #d6d6d6;font-size:12px;line-height:30px;color:#000}
-#generalMemberFrm .basic-info > div .email-at {margin:0 7px 0 7px;font-size:14px;color:#4c4c4c}
-#generalMemberFrm .basic-info select{border:1px solid #a6a6a6;padding:7px 0 7px 10px;background-color:#fff;-moz-border-radius:2px;-webkit-border-radius:2px;border-radius:2px;box-shadow:3px 3px 0 #d6d6d6, -3px -3px 0 #d6d6d6, 3px -3px 0 #d6d6d6, -3px 3px 0 #d6d6d6;font-size:12px;color:#000;vertical-align:middle;cursor:pointer}
-#generalMemberFrm .basic-info input[type='text']:hover,
-#generalMemberFrm .basic-info input[type='password']:hover,
-#generalMemberFrm .basic-info input[type='text']:focus,
-#generalMemberFrm .basic-info input[type='password']:focus{outline:0;border:1px solid #a962f9}
-#generalMemberFrm .basic-info input[type='checkbox']{margin-left:30px}
-#generalMemberFrm .basic-info > div{position:relative;padding:11px 0;border-top:1px solid #d4d4d5;text-align:left;line-height:35px}
-#generalMemberFrm .basic-info > div label,
-#generalMemberFrm .basic-info > div input,
-#generalMemberFrm .basic-info > div button,
-#generalMemberFrm .basic-info > div span{vertical-align:middle}
-#generalMemberFrm .basic-info > div .header{display:inline-block;padding-right:36px;width:154px;font-size:12px;font-weight:bold;color:#4c4c4c;text-align:right}
-#generalMemberFrm .basic-info .header em.require{overflow:hidden;display:inline-block;padding:1px 3px 0 0;width:11px;height:11px;line-height:1}
-#generalMemberFrm .basic-info .header em.require:before{display:block;content:url(/images/join/ico_required.png)}
-#generalMemberFrm .basic-info .required-group{background-color:#eee}
-#generalMemberFrm .basic-info .required-group .form-guide{position:absolute;left:485px;font-size:12px;color:#757575}
-#generalMemberFrm .basic-info .required-group #btnDuplicCheck{overflow:hidden;margin-left:10px;width:65px;height:37px;vertical-align:middle}
-#generalMemberFrm .basic-info .required-group #btnDuplicCheck:before{content:url(/images/join/btn_duplic_check.png)}
-#generalMemberFrm .basic-info .required-group #btnCertPhone,
-#generalMemberFrm .basic-info .required-group #btnParentCertPhone{overflow:hidden;width:160px;height:35px;font-weight:bold;color:#a962f9;text-align:center;vertical-align:middle}
-#generalMemberFrm .basic-info .required-group #btnCertIpin,
-#generalMemberFrm .basic-info .required-group #btnParentCertIpin{overflow:hidden;margin-left:8px;width:160px;height:35px;font-weight:bold;color:#a962f9;text-align:center;vertical-align:middle}
-#generalMemberFrm .basic-info .required-group #btnCertPhone:before,
-#generalMemberFrm .basic-info .required-group #btnParentCertPhone:before{content:url(/images/join/btn_cert_phone.png)}
-#generalMemberFrm .basic-info .required-group #btnCertIpin:before,
-#generalMemberFrm .basic-info .required-group #btnParentCertIpin:before{content:url(/images/join/btn_cert_ipin.png)}
-#generalMemberFrm .basic-info .required-write-group .user-gender{padding:22px 0}
-#generalMemberFrm .basic-info .required-write-group .user-gender label{display:inline;margin-right:85px;padding:0;width:auto;font-weight:normal}
-#generalMemberFrm .basic-info .required-write-group .user-birth input{margin-right:3px}
-#generalMemberFrm .basic-info .required-write-group .user-birth input + input,
-#generalMemberFrm .basic-info .required-write-group .user-birth input + input + input{margin:0 3px 0 23px}
-#generalMemberFrm .basic-info .gotten-user-info{overflow:hidden;border:0;padding:7px 0}
-#generalMemberFrm .basic-info .gotten-user-info dt{float:left;display:inline-block;padding-right:36px;width:154px;height:28px;font-size:12px;font-weight:bold;line-height:28px;color:#4c4c4c;text-align:right}
-#generalMemberFrm .basic-info .gotten-user-info dd{float:right;width:834px;height:28px;line-height:28px}
-#generalMemberFrm .basic-info .required-write-group{position:relative;display:block;border-top:1px solid #d4d4d5;padding:6px 0 7px;background-color:#eee}
-#generalMemberFrm .basic-info .required-write-group > div{padding:6px 0}
-#generalMemberFrm .basic-info .required-write-group > div .form-guide{position:absolute;left:413px;font-size:12px;color:#888}
-#generalMemberFrm .basic-info > div input[type='checkbox'] + label{padding:0;width:auto;font-weight:normal}
-#generalMemberFrm .basic-info > div .email-choice{margin-left:8px}
-#generalMemberFrm .basic-info .email-group{height:70px}
-#generalMemberFrm .basic-info .form-guide.email-guide{position:absolute;top:56px;font-size:12px;line-height:12px;color:#757575}
 
-/*------------------------------------*\
-	Survice Agreement Form
-\*------------------------------------*/
-#generalMemberFrm .survice-agreement{position:relative;padding-top:20px;text-align:right}
-#generalMemberFrm .survice-agreement-title{position:relative;top:84px;font-size:18px;color:#222;text-align:left}
-#generalMemberFrm .survice-agreement .all-agreement{font-size:14px;vertical-align:middle}
-#generalMemberFrm .survice-agreement .terms-group{margin-top:23px}
-#generalMemberFrm .survice-agreement .terms-group > div{position:relative;margin-left:50px;padding-top:19px;text-align:left}
-#generalMemberFrm .survice-agreement .terms-group > div > h3{display:inline;padding-left:9px;background:url(/images/join/bull_dot_agreement.png) no-repeat 0 4px;font-size:12px;font-weight:bold;color:#5c5c5c}
-#generalMemberFrm .survice-agreement .terms-group > div a{margin-left:7px;font-size:11px;color:#862ccc;text-decoration:underline}
-#generalMemberFrm .survice-agreement .terms-group > div > label{position:absolute;top:20px;right:0;font-size:12px;color:#757575}
-#generalMemberFrm .survice-agreement .terms-group > div > input[type='checkbox']{position:absolute;top:20px;right:63px;}
-#generalMemberFrm .survice-agreement .terms-group > div > blockquote{overflow-y:auto;position:relative;margin-top:9px;border:1px solid #a6a6a6;padding:5px 8px;height:68px;background-color:#dbdbdb;font-size:12px;line-height:23px;color:#5b5b5b;text-align:left}
-#generalMemberFrm .btn-submit{overflow:hidden;margin-top:60px;width:320px;height:50px;font-size:18px;font-weight:bold;color:#a962f9}
-#generalMemberFrm .btn-submit:before{content:url(/images/join/btn_general_member_submit.png)}
 
-#generalMemberFrm .btn-submit{overflow:hidden;margin-top:60px;width:320px;height:50px;font-size:18px;font-weight:bold;background-color:#a962f9; color:#fff;}
 
-#generalMemberFrm .basic-info .required-group #btnCertPhone, #generalMemberFrm .basic-info .required-group #btnParentCertPhone {
+
+.pwdbox,
+.namebox,
+.addressbox,
+.nickbox,
+.telbox,
+.btn btn-default,
+#mem_address1,
+#mem_address2,
+select{
+  background: rgba(255,255,255,0.1);
+  border: none;
+  font-size: 16px;
+  height: auto;
   margin: 0;
-    border: 0;
-    padding: 0;
-    background: transparent;
-    font: inherit;
-    cursor: pointer;
-    overflow: hidden;
-    width: 160px;
-    height: 35px;
-    font-weight: bold;
-    color: #a962f9;
-    text-align: center;
-    vertical-align: middle;
+  outline: 0;
+  padding: 15px;
+  width: 100%;
+  background-color: #e8eeef;
+  color: #8a97a0;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+  margin-bottom: 30px;
 }
-h2{
-  margin-top:43px;
+
+.idbox{
+background: rgba(255,255,255,0.1);
+  border: none;
+  font-size: 16px;
+  height: auto;
+  margin: 0;
+  outline: 0;
+  padding: 15px;
+  width: 65%;
+  background-color: #e8eeef;
+  color: #8a97a0;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+  margin-bottom: 30px;
+}
+
+#mem_zip{
+background: rgba(255,255,255,0.1);
+  border: none;
+  font-size: 16px;
+  height: auto;
+  margin: 0;
+  outline: 0;
+  padding: 15px;
+  width: 50%;
+  background-color: #e8eeef;
+  color: #8a97a0;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+  margin-bottom: 30px;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  margin: 0 4px 8px 0;
+}
+
+.mail1{
+	background: rgba(255,255,255,0.1);
+  border: none;
+  font-size: 16px;
+  height: auto;
+  margin: 0;
+  outline: 0;
+  padding: 15px;
+  width: 29%;
+  background-color: #e8eeef;
+  color: #8a97a0;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+  margin-bottom: 30px;
+}
+
+.mail2{
+  background: rgba(255,255,255,0.1);
+  border: none;
+  font-size: 16px;
+  height: auto;
+  margin: 0;
+  outline: 0;
+  padding: 15px;
+  width: 30%;
+  background-color: #e8eeef;
+  color: #8a97a0;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+  margin-bottom: 30px;
+}
+.mailselect{
+  background: rgba(255,255,255,0.1);
+  border: none;
+  font-size: 16px;
+  height: auto;
+  margin: 0;
+  outline: 0;
+  padding: 15px;
+  width: 35%;
+  background-color: #e8eeef;
+  color: #8a97a0;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+  margin-bottom: 30px;
+}
+
+select {
+  padding: 6px;
+  height: 32px;
+  border-radius: 2px;
+}
+
+
+.sign-upbtn{
+  padding: 19px 39px 18px 39px;
+  color: #FFF;
+  background-color: #4bc970;
+  font-size: 18px;
+  text-align: center;
+  font-style: normal;
+  border-radius: 5px;
+  width: 100%;
+  border: 1px solid #3ac162;
+  border-width: 1px 1px 3px;
+  box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;
+  margin-bottom: 10px;
+}
+
+.overlapped-btn{
+  padding: 10px 10px 10px 10px;
+  color: #FFF;
+  background-color: #4bc970;
+  font-size: 18px;
+  text-align: center;
+  font-style: normal;
+  border-radius: 5px;
+  width: 40%;
+  border: 1px solid #3ac162;
+  border-width: 1px 1px 3px;
+  box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;
+  margin-bottom: 10px;
+}
+.overlapped-btn2{
+  padding: 10px 10px 10px 10px;
+  color: #FFF;
+  background-color: #4bc970;
+  font-size: 18px;
+  text-align: center;
+  font-style: normal;
+  border-radius: 5px;
+  width: 30%;
+  border: 1px solid #3ac162;
+  border-width: 1px 1px 3px;
+  box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;
+  margin-bottom: 10px;
+}
+.email-btn{
+  padding: 10px 10px 10px 10px;
+  color: #FFF;
+  background-color: #4bc970;
+  font-size: 18px;  
+  text-align: center;
+  font-style: normal;
+  border-radius: 5px;
+  width: 40%;
+  border: 1px solid #3ac162;
+  border-width: 1px 1px 3px;
+  box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;
+  margin-bottom: 10px;
+}
+
+.btn-default{
+  padding: 10px 10px 10px 10px;
+  color: #FFF;
+  background-color: #4bc970;
+  font-size: 18px;
+  text-align: center;
+  font-style: normal;
+  border-radius: 5px;
+  width: 40%;
+  border: 1px solid #3ac162;
+  border-width: 1px 1px 3px;
+  box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;
+  margin-bottom: 10px;
+}
+
+
+fieldset {
+  margin-bottom: 30px;
+  border: none;
+}
+
+legend {
+  font-size: 1.4em;
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+label.light {
+  font-weight: 300;
+  display: inline;
+}
+
+.number {
+  background-color: #5fcf80;
+  color: #fff;
+  height: 30px;
+  width: 30px;
+  display: inline-block;
+  font-size: 0.8em;
+  margin-right: 4px;
+  line-height: 30px;
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.2);
+  border-radius: 100%;
+}
+
+@media screen and (min-width: 480px) {
+
+  form {
+    max-width: 480px;
+  }
 }
