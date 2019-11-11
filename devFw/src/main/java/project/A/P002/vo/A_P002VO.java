@@ -17,6 +17,7 @@ public class A_P002VO {
 	private String mem_zip = "";
 	private String mem_address1 = "";
 	private String mem_address2 = "";
+	private String mem_division = "";
 	
 	
 	
@@ -158,5 +159,19 @@ public class A_P002VO {
 		this.mem_address2 = mem_address2;
 	}
 
+
+
+	public String getMem_division() {
+		return mem_division;
+	}
+
+
+
+	public void setMem_division(String mem_division) {
+		this.mem_division = mem_division;
+	}
+
+	
+	
 	
 }
