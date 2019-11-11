@@ -20,6 +20,7 @@ public interface A_P002Controller {
 	public ModelAndView signupsuccess(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ResponseEntity  addMember(@ModelAttribute("A_P002VO") A_P002VO A_P002VO,HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ResponseEntity   overlapped(@RequestParam("id") String id,HttpServletRequest request, HttpServletResponse response) throws Exception;
-
+//	public ModelAndView emailAuth (HttpServletResponse response, HttpServletRequest request) throws Exception;
+	
 }
 

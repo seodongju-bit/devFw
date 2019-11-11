@@ -40,33 +40,26 @@ public class A_P001ControllerImpl implements A_P001Controller {
 	}
 
 	
-	@Override
-	@RequestMapping(value="/login.do" ,method = RequestMethod.POST)
-	public ModelAndView login(@RequestParam Map<String, String> loginMap,
-			                  HttpServletRequest request, HttpServletResponse response) throws Exception {
-		ModelAndView mav = new ModelAndView();
-		A_P001VO=a_p001Service.login(loginMap);
-		if(A_P001VO!= null && A_P001VO.getMem_id()!=null){
-			HttpSession session=request.getSession();
-			session=request.getSession();
-			session.setAttribute("isLogOn", true);
-			session.setAttribute("memberInfo",A_P001VO);
-			
-			String action=(String)session.getAttribute("action");
-			if(action!=null && action.equals("/orderEachGoods.do")){
-				mav.setViewName("forward:"+action);
-			}else{
-				mav.setViewName("redirect:/main.do");	
-			}
-			
-		}else{
-			String message="아이디나  비밀번호가 틀립니다. 다시 로그인해주세요";
-			mav.addObject("message", message);
-			mav.setViewName("/signinpage");
-		}
-		return mav;
-	}
-	
+	   @Override
+	   @RequestMapping(value="/login.do" ,method = RequestMethod.POST)
+	   public ModelAndView login(@RequestParam Map<String, String> loginMap,
+	                           HttpServletRequest request, HttpServletResponse response) throws Exception {
+	      ModelAndView mav = new ModelAndView();
+	      A_P001VO=a_p001Service.login(loginMap);
+	      System.out.println("로그인 시도");
+	      if(A_P001VO!= null && A_P001VO.getMem_id()!=null){
+	         HttpSession session=request.getSession();
+	         session=request.getSession();
+	         session.setAttribute("isLogOn", true);
+	         session.setAttribute("memberInfo",A_P001VO);
+	         mav.setViewName("main");
+	      }else{
+	         String message="아이디나  비밀번호가 틀립니다. 다시 로그인해주세요";
+	         mav.addObject("message", message);
+	         mav.setViewName("redirect:signinpage.do");
+	      }
+	      return mav;
+	   }
 	
 	
 	@Override
