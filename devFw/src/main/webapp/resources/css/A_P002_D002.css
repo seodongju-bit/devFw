@@ -69,7 +69,49 @@ background: rgba(255,255,255,0.1);
   box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
   margin-bottom: 30px;
 }
+.pwdbox{
+	padding:15px;
+	margin:8px 0px;
+	
+}
+#desc1{
+	float:left;
+	color:red;
+	font-size:8px;
+	display:inline-block;
+}
+#pwtip{
+	position:relative;
+	float:right;
+	display:inline-block;
+}
+#pwtip .tooltiptext {
+  visibility: hidden;
+  width: 300px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  font-size:13px;
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: -5px;
+  left: 105%;
+}
 
+#pwtip:hover .tooltiptext {
+  visibility: visible;
+}
+
+#desc2{
+	text-align:left;
+	color:red;
+	margin-bottom:20px;
+	height:10px;
+	font-size:8px;
+}
 #mem_zip{
 background: rgba(255,255,255,0.1);
   border: none;
@@ -248,7 +290,6 @@ label.light {
   text-shadow: 0 1px 0 rgba(255,255,255,0.2);
   border-radius: 100%;
 }
-
 
 
 

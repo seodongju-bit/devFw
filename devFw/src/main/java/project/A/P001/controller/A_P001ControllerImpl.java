@@ -51,7 +51,7 @@ public class A_P001ControllerImpl implements A_P001Controller {
 			session=request.getSession();
 			session.setAttribute("isLogOn", true);
 			session.setAttribute("memberInfo",A_P001VO);
-			mav.setViewName("main");
+			mav.setViewName("redirect:main.do");
 		}else{
 			String message="아이디나  비밀번호가 틀립니다. 다시 로그인해주세요";
 			mav.addObject("message", message);
@@ -59,9 +59,7 @@ public class A_P001ControllerImpl implements A_P001Controller {
 		}
 		return mav;
 	}
-	
 
-	
 	
 	@Override
 	@RequestMapping(value="/logout.do" ,method = RequestMethod.GET)

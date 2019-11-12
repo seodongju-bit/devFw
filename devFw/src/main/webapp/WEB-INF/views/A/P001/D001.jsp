@@ -2,7 +2,12 @@
     pageEncoding="UTF-8"   isELIgnored="false"
  %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+  request.setCharacterEncoding("UTF-8");
+%> 
 <c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
+
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -14,7 +19,7 @@
         
     </head>
     <body>
-
+    	
       <form action="${contextPath}/login.do" method="post" accept-charset="UTF-8">
       
         <h1>로그인</h1>
@@ -30,39 +35,26 @@
           <br></br>
           
         <button  class="small-btn" type="button" onclick="location.href='#'">비밀번호 찾기</button>   
-      <button  class="small-btn" type="button" onclick="location.href='#'">아이디 찾기</button>      
+        <button  class="small-btn" type="button" onclick="location.href='#'">아이디 찾기</button>      
         <button  class="small-btn" type="button" onclick="location.href='memberdivisionpage.do'">회원가입</button>
-        <button  class="small-btn" type="button" onclick="location.href='#'">판매자등록</button>
+        <button  class="small-btn" type="button" onclick="location.href='main.do'">홈페이지로</button>
         
         <br></br>
           
         
         </fieldset>
       </form>
-      
-<<<<<<< HEAD
+  	
+  
       <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-      <script>
-		
-		
-	
-
-
-	
-		
-	</script>
-
-=======
-
-		<script>
-		window.onload=function()	
-		{
-  		result();
-		}
-		function result(){
-			alert("아이디나  비밀번호가 틀립니다. 다시 로그인해주세요");
+	  <script type="text/javascript">  
+	    var message = "<%=request.getParameter("message") %>" ;
+	 	window.onload=function()	
+	 	{
+	 		if(message!="" && message!="null"){
+	 			alert(message);
+	 		}
 		}
 		</script>
->>>>>>> branch 'master' of https://github.com/seodongju-bit/devFw.git
     </body>
 </html>

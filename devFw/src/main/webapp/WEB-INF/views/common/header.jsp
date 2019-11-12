@@ -6,7 +6,9 @@
 <%
   request.setCharacterEncoding("UTF-8");
 %> 
+
 <c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,24 +57,46 @@
 		width:100%;
 		min-width:1000px;
 	}
+	
 	#navleft a {
-	   text-decoration: none;
-	   color: #666;
+		padding:6px 12px;
+		text-decoration: none;
+		color: #666;
 	}
 
 	#navleft a:hover {
 	   color: #1bc1a3;
+	   background-color:lightgray;
 	}
 	
 	#navright a {
-	   text-decoration: none;
-	   color: #666;
+		padding:6px 12px; 
+		text-decoration: none;
+		color: #666;
 	}
-
+	#navright #itemManagerlink{
+		color:white;
+		background-color:#6E6E6E;
+	}
+	#navright #siteManagerlink{
+		color:white;
+		background-color:#A5C3FC;
+	}
 	#navright a:hover {
 	   color: #1bc1a3;
+	   background-color:lightgray;
 	}
 	
+	#navright #itemManagerlink:hover{
+		color: #1bc1a3;
+	   background-color:lightgray;
+	}
+	#navright #siteManagerlink:hover{
+		color: #1bc1a3;
+	   background-color:lightgray;
+	}
+	
+
 	
 	/*검색어 자동완성창*/
 	#suggest {
@@ -239,18 +263,37 @@
 </script>
 <body>
 	<div class="header" id="header">
-	  <div class="collapse navbar-collapse justify-content-between" id="navbar" >
-        <div class="navbar-nav" id="navleft"style="font-size:0.9em; float:left; margin: 6px 0 6px 0; color:#BBBBBB;">
-          <a class="nav-item nav-link" href="./main.do">홈으로 이동</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <a class="nav-item nav-link" href="./event.html">이 사이트를 시작 페이지로</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <a class="nav-item nav-link" href="./blog.html">즐겨찾기</a>
-        </div>
-        <div class="navbar-nav mr-sm-2" id="navright" style="font-size:0.9em; float:right; margin: 6px 0 0 0; color:#BBBBBB;">
-          <a class="nav-item nav-link" href="${contextPath}/signinpage.do">로그인</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <a class="nav-item nav-link" href="./userLogout.html">장바구니</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <a class="nav-item nav-link" href="./userEdit.html">고객센터</a>
-        </div>
-      </div>
+	
+	 	 <div class="collapse navbar-collapse justify-content-between" id="navbar" >
+        	<div class="navbar-nav" id="navleft"style="font-size:0.9em; float:left; margin: 6px 0 6px 0; color:#BBBBBB;">
+        	  <a class="nav-item nav-link" href="./main.do">홈으로 이동</a>
+        	  <a class="nav-item nav-link" href="./event.html">이 사이트를 시작 페이지로</a>
+        	  <a class="nav-item nav-link" href="./blog.html">즐겨찾기</a>
+       	 </div>
+       	 <div class="navbar-nav mr-sm-2" id="navright" style="font-size:0.9em; float:right; margin: 6px 0 0 0; color:#BBBBBB;">
+       	 <c:choose>
+       		 <c:when test="${isLogOn==true and not empty memberInfo }" >
+       		 	<a class="nav-item nav-link" href="${contextPath}/logout.do">로그아웃</a>
+       		 	<c:choose>
+       		 		<c:when test="${memberInfo.mem_division==0 }" >
+       		 			<a class="nav-item nav-link" href="${contextPath}/basket.do">장바구니</a>
+       		 		</c:when>
+       		 		<c:when test="${memberInfo.mem_division==1 }" >
+       		 			<a class="nav-item nav-link" id="itemManagerlink" href="${contextPath}/itemManager.do">상품관리</a>
+       		 		</c:when>
+       		 		<c:when test="${memberInfo.mem_division==2 }" >
+       		 			<a class="nav-item nav-link" id="siteManagerlink" href="${contextPath}/basket.do">사이트관리</a>
+       		 		</c:when>
+       		 	</c:choose>
+			</c:when>
+			<c:otherwise>
+				 <a class="nav-item nav-link" href="${contextPath}/signinpage.do">로그인</a>
+			</c:otherwise>
+       	  </c:choose>
+        	  <a class="nav-item nav-link" href="./userEdit.html">고객센터</a>
+       	 </div>
+   	   </div>
+       
 		<div class="container">
   	<div class="logo">
 	<a href="${contextPath}/main.do"><img id="toplogo" src="${contextPath}/resources/image/logo.png"/></a>
@@ -310,7 +353,6 @@
 		<div class="mainMenu"><button class="menubtn"onclick="location.href='event.do'">이벤트/공지사항</button></div>
 	</div>
 	</div>
-	 	
 	</div>  
 </body>
 </html>                    

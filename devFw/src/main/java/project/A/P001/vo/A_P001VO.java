@@ -12,7 +12,7 @@ public class A_P001VO {
 	private String mem_name = "";
 	private String mem_email1 = "";
 	private String mem_email2 = "";
-	
+	private String mem_division = "";
 	
 	
 	public A_P001VO() {
@@ -94,5 +94,17 @@ public class A_P001VO {
 	}
 
 
+
+	public String getMem_division() {
+		return mem_division;
+	}
+
+
+
+	public void setMem_division(String mem_division) {
+		this.mem_division = mem_division;
+	}
+
+	
 	
 }

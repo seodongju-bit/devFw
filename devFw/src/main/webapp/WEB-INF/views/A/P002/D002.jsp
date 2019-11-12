@@ -25,6 +25,9 @@
           <br></br>
           <label for="password" class="w">비밀번호:</label>
           <input type="password" class="pwdbox" id="mem_pw" name="mem_pw"maxlength="20" placeholder="PW">
+          	<div id="desc1"></div>
+          	<div id="pwtip">tip<span class="tooltiptext">영문/숫자/특수문자를 혼용하여 6자 이상 입력해주세요</span></div>
+          <input type="password" class="pwdbox" id="mem_pw_check" maxlength="20" placeholder="PW 확인"><div id="desc2"></div>
           <label for="nick" class="w">닉네임:</label>
           <input type="text" class="nickbox" id="mem_nick" name="mem_nick"maxlength="10" placeholder="NICK NAME">
           <label for="name" class="w">이름:</label>
@@ -72,6 +75,31 @@
 						} 
 					}); 
 				}); 
+			$('#mem_pw').keyup(function(){
+				if(regPasswordType(document.getElementById('mem_pw').value)){
+					document.getElementById('desc1').innerHTML="사용 가능한 비밀번호입니다";
+					document.getElementById('desc1').style.color = 'green';
+				}else{
+					document.getElementById('desc1').innerHTML="사용 불가능한 비밀번호입니다";
+				}
+			})
+			
+			$('#mem_pw_check').keyup(function(){
+				var pw=document.getElementById('mem_pw').value;
+				var pwc=document.getElementById('mem_pw_check').value
+				if(pw == pwc){
+					document.getElementById('desc2').innerHTML="비밀번호 일치";
+					document.getElementById('desc2').style.color = 'green';
+				}else{
+					document.getElementById('desc2').innerHTML="비밀번호가 일치하지 않습니다";
+				}
+				
+			})
+			
+			function regPasswordType(data) { //비밀번호 유효성 검사 6-16자리 영문, 숫자, 특수문자 조합
+				var regex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{6,16}/;
+				return regex.test(data);
+			}
 			
 			function execPostCode() {
 		         new daum.Postcode({
