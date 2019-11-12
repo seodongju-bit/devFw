@@ -37,11 +37,7 @@ public class F_P002ControllerImpl   implements F_P002Controller {
 	@RequestMapping(value="/sellItems.do" ,method = RequestMethod.GET)
 	public ModelAndView searchSell(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = getViewName(request);
-		
-		////////임시 세션
-		HttpSession session = request.getSession();
-		session.setAttribute("id", "seodongju");
-		////////
+
 		viewName = "sellItems";
 		String p_id= request.getParameter("sell_no");
 		if(p_id==null || p_id=="") {

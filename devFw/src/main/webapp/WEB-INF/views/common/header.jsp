@@ -259,6 +259,18 @@
 		  element.style.display = 'none';
 	   }
 	}
+	function logout(){
+		var addr = window.location.href;
+		var form = document.createElement("form");
+		var input = document.createElement("input");
+		input.setAttribute("type", "hidden");
+		input.setAttribute("name", "referrer");
+		input.setAttribute("value", addr);
+		form.setAttribute("action","logout.do");
+		form.appendChild(input);
+		document.getElementById("header").append(form);
+		form.submit();
+	}
 
 </script>
 <body>
@@ -273,7 +285,7 @@
        	 <div class="navbar-nav mr-sm-2" id="navright" style="font-size:0.9em; float:right; margin: 6px 0 0 0; color:#BBBBBB;">
        	 <c:choose>
        		 <c:when test="${isLogOn==true and not empty memberInfo }" >
-       		 	<a class="nav-item nav-link" href="${contextPath}/logout.do">로그아웃</a>
+       		 	<a class="nav-item nav-link" href="#" onclick="logout(); return false;">로그아웃</a>
        		 	<c:choose>
        		 		<c:when test="${memberInfo.mem_division==0 }" >
        		 			<a class="nav-item nav-link" href="${contextPath}/basket.do">장바구니</a>

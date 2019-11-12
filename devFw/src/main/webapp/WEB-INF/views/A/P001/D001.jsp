@@ -30,7 +30,7 @@
           <label for="password" class="w">비밀번호:</label>
           <input type="password" id="mem_pw" name="mem_pw">  
          
-         
+          <input type="hidden" id="referrer" name="referrer">
         <button id="login_btn" type="submit">로그인 </button>
           <br></br>
           
@@ -49,8 +49,12 @@
       <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	  <script type="text/javascript">  
 	    var message = "<%=request.getParameter("message") %>" ;
+	    
+		
 	 	window.onload=function()	
-	 	{
+	 	{	
+	 		var referrer =  document.referrer;
+	 		document.getElementById('referrer').value = referrer;
 	 		if(message!="" && message!="null"){
 	 			alert(message);
 	 		}

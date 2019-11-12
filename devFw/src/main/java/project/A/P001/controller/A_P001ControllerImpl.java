@@ -44,14 +44,22 @@ public class A_P001ControllerImpl implements A_P001Controller {
 	public ModelAndView login(@RequestParam Map<String, String> loginMap,
 			                  HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ModelAndView mav = new ModelAndView();
+		
+		String addr = (String)request.getParameter("referrer");
+		String[] addr2 = addr.split("devFw");
+		addr2 = addr2[1].split("\\?");
+		
 		A_P001VO=a_p001Service.login(loginMap);
-		System.out.println("로그인 시도");
 		if(A_P001VO!= null && A_P001VO.getMem_id()!=null){
 			HttpSession session=request.getSession();
 			session=request.getSession();
 			session.setAttribute("isLogOn", true);
 			session.setAttribute("memberInfo",A_P001VO);
-			mav.setViewName("redirect:main.do");
+			mav.setViewName("redirect:"+addr2[0]);
+			if(addr2.length==2) {
+				addr2 = addr2[1].split("\\=");
+				mav.addObject(addr2[0], addr2[1]);
+			}
 		}else{
 			String message="아이디나  비밀번호가 틀립니다. 다시 로그인해주세요";
 			mav.addObject("message", message);
@@ -65,10 +73,19 @@ public class A_P001ControllerImpl implements A_P001Controller {
 	@RequestMapping(value="/logout.do" ,method = RequestMethod.GET)
 	public ModelAndView logout(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ModelAndView mav = new ModelAndView();
+		String addr = (String)request.getParameter("referrer");
+		String[] addr2 = addr.split("devFw");
+		addr2 = addr2[1].split("\\?");
+		
 		HttpSession session=request.getSession();
 		session.setAttribute("isLogOn", false);
 		session.removeAttribute("memberInfo");
-		mav.setViewName("redirect:/main.do");
+		
+		mav.setViewName("redirect:"+addr2[0]);
+		if(addr2.length==2) {
+			addr2 = addr2[1].split("\\=");
+			mav.addObject(addr2[0], addr2[1]);
+		}
 		return mav;
 	}
 
