@@ -26,10 +26,7 @@ import project.A.P002.service.A_P002Service;
 @Controller("A_P002Controller")
 public class A_P002ControllerImpl   implements A_P002Controller {
 		
-	@Autowired
-	A_P002Service a_p002Service;
-	@Autowired
-	A_P002VO A_P002VO;
+
 	
 	
 	@Override
@@ -42,7 +39,30 @@ public class A_P002ControllerImpl   implements A_P002Controller {
 		return mav;
 	}
 	
+	@Override
+	@RequestMapping(value="/memberdivisionpage.do" ,method = RequestMethod.GET)
+	public ModelAndView memberdivision(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = getViewName(request);
+		viewName = "memberdivisionpage";
+		ModelAndView mav = new ModelAndView(viewName);
+		//mav.addObject("membersList", membersList);
+		return mav;
+	}
 	
+	@Override
+	@RequestMapping(value="/signupsuccesspage.do" ,method = RequestMethod.GET)
+	public ModelAndView signupsuccess(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = getViewName(request);
+		viewName = "signupsuccesspage";
+		ModelAndView mav = new ModelAndView(viewName);
+		//mav.addObject("membersList", membersList);
+		return mav;
+	}
+	
+	@Autowired
+	A_P002Service a_p002Service;
+	@Autowired
+	A_P002VO A_P002VO;
 	
 	
 	@Override
@@ -59,7 +79,7 @@ public class A_P002ControllerImpl   implements A_P002Controller {
 		try {
 			a_p002Service.addMember(_A_P002VO);
 		    message  = "<script>";
-		    message += " location.href='"+request.getContextPath()+"/signupsuccess.do';";
+		    message += " location.href='"+request.getContextPath()+"/signupsuccesspage.do';";
 		    message += " </script>";
 		    
 		}catch(Exception e) {

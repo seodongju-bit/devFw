@@ -245,7 +245,7 @@
           <a class="nav-item nav-link" href="./blog.html">즐겨찾기</a>
         </div>
         <div class="navbar-nav mr-sm-2" id="navright" style="font-size:0.9em; float:right; margin: 6px 0 0 0; color:#BBBBBB;">
-          <a class="nav-item nav-link" href="${contextPath}/login.do">로그인</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <a class="nav-item nav-link" href="${contextPath}/signinpage.do">로그인</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <a class="nav-item nav-link" href="./userLogout.html">장바구니</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <a class="nav-item nav-link" href="./userEdit.html">고객센터</a>
         </div>

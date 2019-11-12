@@ -20,14 +20,12 @@ public class A_P001ServiceImpl implements A_P001Service {
 	@Autowired
 	A_P001DAO a_p001DAO;
 	
+	
 	@Override
 	public A_P001VO login(Map  loginMap) throws Exception{
 		return a_p001DAO.login(loginMap);
-	}
-
+		
 	
-	@Override
-	public String overlapped(String mem_id) throws Exception{
-		return a_p001DAO.selectOverlappedID(mem_id);
 	}
+	
 }

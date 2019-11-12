@@ -16,6 +16,8 @@ import project.A.P002.vo.A_P002VO;
 
 public interface A_P002Controller {
 	public ModelAndView signupmain(HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public ModelAndView memberdivision(HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public ModelAndView signupsuccess(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ResponseEntity  addMember(@ModelAttribute("A_P002VO") A_P002VO A_P002VO,HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ResponseEntity   overlapped(@RequestParam("id") String id,HttpServletRequest request, HttpServletResponse response) throws Exception;
 
