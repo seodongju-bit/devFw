@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import project.B.P001.dao.B_P001DAO;
+import project.B.P001.service.B_P001Service;
 import project.B.P001.vo.B_P001VO;
 
  
@@ -53,22 +53,22 @@ public class B_P001ControllerImpl   implements B_P001Controller {
 	B_P001VO b_P001VO;
 	
 	@Autowired
-	B_P001DAO b_P001DAO;
+	B_P001Service b_P001Service;
 	
 	   @Override
 	   @RequestMapping(value = "/itemManager/searchList.do", method = { RequestMethod.GET, RequestMethod.POST })
 	   @ResponseBody
 	   public Map searchList(HttpServletRequest request, HttpServletResponse response) throws Exception  {
 	      request.setCharacterEncoding("utf-8");
-	      System.out.println("조회 실행");
+	   //   HttpSession session=request.getSession();
+	    //  if((Boolean)session.getAttribute("isLogOn")) {
+	    	  
+	   //   }
+	      
 	      Map<String, Object> searchMap = new HashMap<String, Object>(); // 검색조건
 	      Map<String, Object> resultMap = new HashMap<String, Object>(); // 조회결과
-	      //System.out.println("1. "+request.getParameter("person_BC_OUTPUT"));
-	      // 검색조건설정
-	     // searchMap.put("person_BC_OUTPUT", request.getParameter("person_BC_OUTPUT"));
-	      //데이터 조회
-	      //List<B_P001VO> data = sqlSession.selectList("B.P001.searchList", searchMap);
-	      List<B_P001VO> data =b_P001DAO.selectItem(searchMap);
+	      
+	      List<B_P001VO> data =b_P001Service.selectItem(searchMap);
 	      System.out.println(data);
 	      resultMap.put("Data", data);
 	        
