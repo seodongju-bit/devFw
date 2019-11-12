@@ -19,47 +19,85 @@ h1{
 }
 #orderBox{
 	position:relative;
-	width:800px;
-	margin:10px auto;
-	background-color:lightblue;
+	width:1140px;
+	margin:0 0 0 28px;
+	min-width:1000px;
 }
 #orderListTable{
 	width:100%;
 	text-align:center;
-	margin:0 auto;
-	
+	margin:0 0 0 -28px;
+	position:relative;
+	min-width:1000px;
+	float:left;
+	border-bottom:1px solid #CCCCCC;"
+}
+#option {
+	border: 1px solid #CCCCCC;
+	padding:5px;
+	position:relative;
+	margin:10% 0 0 30%;
+	text-align:left;
+	text-overflow:ellipsis;
+}
+
+#prod {	
+	width:300px;
+	margin: 30px 0 10px 0;
+	float:left;
 }
 </style>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-<h1 id="id">주문페이지</h1>
+<div class="container" style="min-width:1000px !important;">
+<h1 style="width:1096px;">주문페이지</h1>
+<hr style="border: 2px solid black; width: 100%; min-width:1000px">
+<h4 style="float:left">1. 주문 상품 확인</h4>
+<br>
+<br>
 <div id="orderBox">
 	<form name="orderForm">
-		<table border=1 id="orderListTable">
-			<tr>
+		<table id="orderListTable">
+			<col width="30px"/>
+			<col width="500px"/>
+			<col width="150px"/>
+			<col width="150px"/>
+			<col width="100px"/>
+			<col width="150px"/>
+			<tr style="background-color:purple; color:white; border-top:2px solid black;">
 				<td>번호</td>
-				<td>판매번호</td>
-				<td>사이즈</td>
-				<td>색상</td>
-				<td>가격</td>
-				<td>수량</td>
+				<td>상품정보</td>
+				<td>상품가격</td>
+				<td>할인적용금액(할인률)</td>
 				<td>판매자</td>
+				<td>배송비 지급방법</td>
 			</tr>
-				<c:forEach var="item" items="${orderList }">
+				<c:set var = "total" value="0"/>
+				<c:forEach var="item" items="${orderList }" varStatus="list_num">
 			<tr>
-				<td>1</td>
-				<td><c:out value="${item.sell_number }" /></td>
-				<td><c:out value="${item.order_size }" /></td>
-				<td><c:out value="${item.order_color }" /></td>
-				<td><c:out value="${item.sell_price }" /></td>
-				<td><c:out value="${item.detail_quantity }" /></td>
+				<td>${list_num.count}</td>
+				<td><img src="${item.sell_thumbnail}" style="width:75px; height:100px; float:left;"/>
+				<div id="prod"><a style="color:black; margin: 50% 0 0 0;" href="${contextPath}/sellItems.do?sell_no=${item.sell_number}">[${item.sell_number}]&nbsp;${item.sell_title}</a></div>
+				<div id="option">${item.order_size }&nbsp;&nbsp;&nbsp;
+				${item.order_color }&nbsp;&nbsp;&nbsp;${item.detail_quantity }개</div></td>
+				<td>item.prod_price</td>
+				<td><fmt:formatNumber value="${item.sell_price}" pattern="#,###"/>원(할인률)</td>
 				<td><c:out value="${item.mem_ID }" /></td>
+				<td>착불 or 결제</td>
 			</tr>
+			<fmt:formatNumber var="total" value="${total+item.sell_price}" pattern="#,###"/>
 		</c:forEach>
 		</table>
+		<br><br>
+		<h3 style="float:right;">최종 주문 금액:&nbsp;&nbsp; <c:out value="${total}"/>원</h3>
 	</form>
+</div>
+<div class="transport">
+	<tr>
+	</tr>
+</div>
 </div>
 
 </body>

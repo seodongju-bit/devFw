@@ -10,16 +10,15 @@
 <style>
 #com {
 	text-align: center;
-	margin: 20px 0 0 650px;
-	width: 700px;
-	min-width: 700px;
-	position: absolute;
+	width: 100%;
+	min-width: 1000px;
 }
 
 #foot {
-	width:1910px;
+	width:100%;
+	min-width:1000px;
 	max-width:none !important;
-
+	 background-color: lightblue;
 
 }
 

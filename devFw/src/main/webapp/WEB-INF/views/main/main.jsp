@@ -276,13 +276,13 @@ body, hmtl {
             </li>
             <li data-color="#9b59b6">
                <div>
+
                </div><img src="${contextPath}/resources/image/banner/02.png">
             </li>
             <li data-color="#34495e">
                <div>
                </div><img src="${contextPath}/resources/image/banner/03.jpg">
             </li>
-            
          </ul>
          <!--controls-->
          <div class="btns" id="next">

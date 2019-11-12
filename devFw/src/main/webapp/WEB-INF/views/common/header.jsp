@@ -52,7 +52,8 @@
 	/*네비게이션 바*/
 	#navbar {
 		background-color:#DDDDDD; 
-		width:1910px;
+		width:100%;
+		min-width:1000px;
 	}
 	#navleft a {
 	   text-decoration: none;
@@ -303,10 +304,10 @@
   			</div>
 		</div>
 		<div class="mainMenu"><button class="menubtn"onclick="location.href='bestProduct.do'">베스트상품</button></div>
-		<div class="mainMenu"><button class="menubtn">기획전</button></div>
-		<div class="mainMenu"><button class="menubtn">리뷰랭킹</button></div>
+		<div class="mainMenu"><button class="menubtn"onclick="location.href='eventProduct.do'">이벤트상품</button></div>
+		<div class="mainMenu"><button class="menubtn"onclick="location.href='reviewRanking.do'">리뷰랭킹</button></div>
 		<div class="mainMenu"><button class="menubtn">쿠폰</button></div>
-		<div class="mainMenu"><button class="menubtn"onclick="location.href='eventProduct.do'">이벤트/공지사항</button></div>
+		<div class="mainMenu"><button class="menubtn"onclick="location.href='event.do'">이벤트/공지사항</button></div>
 	</div>
 	</div>
 	 	

@@ -39,8 +39,7 @@ public class A_P001ControllerImpl implements A_P001Controller {
 		return mav;
 	}
 
-	
-	@Override
+
 	@RequestMapping(value="/login.do" ,method = RequestMethod.POST)
 	public ModelAndView login(@RequestParam Map<String, String> loginMap,
 			                  HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -61,6 +60,7 @@ public class A_P001ControllerImpl implements A_P001Controller {
 		return mav;
 	}
 	
+
 	
 	
 	@Override
