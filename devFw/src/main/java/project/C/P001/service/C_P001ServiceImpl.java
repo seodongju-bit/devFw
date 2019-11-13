@@ -19,11 +19,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import project.C.P001.dao.C_P001DAO;
 import project.C.P001.vo.C_P001VO;
+import project.C.P001.vo.Criteria;
 import project.F.P002.vo.F_P002VO;
 
 
 @Service("eventService")
-@Transactional(propagation = Propagation.REQUIRED)
 public class C_P001ServiceImpl implements C_P001Service {
 	@Autowired
 	private C_P001DAO eventDAO;
@@ -52,5 +52,6 @@ public class C_P001ServiceImpl implements C_P001Service {
 		
 		eventDAO.write(dataMap);
 	}		
-		
+			
+	
 }

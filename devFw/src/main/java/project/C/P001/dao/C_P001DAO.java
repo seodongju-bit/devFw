@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.dao.DataAccessException;
 
 import project.C.P001.vo.C_P001VO;
+import project.C.P001.vo.Criteria;
 import project.F.P002.vo.F_P002VO;
 
 
@@ -15,5 +16,6 @@ public interface C_P001DAO {
 	 public List selectBoardDetail(Map<String, Object> dataMap) throws DataAccessException;
 	 public void updateCNT(Map<String, Object> dataMap) throws DataAccessException;
 	 public void write(Map<String, Object> dataMap);
+
 }
 

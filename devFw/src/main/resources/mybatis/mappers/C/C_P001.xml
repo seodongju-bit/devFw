@@ -18,6 +18,7 @@
 	<select id="selectAllEventList" resultMap="eventResult">
       <![CDATA[
          select * from notice 	 	
+      
       ]]>
 	</select>
 	
@@ -37,6 +38,7 @@
          where no_number=#{no_number}
       ]]>
 	</select>
+
 
 	<update id="updateCnt" parameterType="java.util.HashMap">
 	<![CDATA[

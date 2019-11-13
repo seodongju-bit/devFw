@@ -9,6 +9,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
 import project.C.P001.vo.C_P001VO;
+import project.C.P001.vo.Criteria;
 import project.F.P002.vo.F_P002VO;
 
 
@@ -26,6 +27,7 @@ public class C_P001DAOImpl implements C_P001DAO {
 		return eventList;
 	}
 	
+
 	@Override
 	public void updateCNT(Map<String, Object>dataMap) {
 		sqlSession.update("mapper.event.updateCnt", dataMap);
@@ -43,6 +45,7 @@ public class C_P001DAOImpl implements C_P001DAO {
 	public void write(Map<String, Object> dataMap) throws DataAccessException {
 		sqlSession.insert("mapper.event.insertEvent", dataMap);
 	}
+	
 	
 	
 }
