@@ -21,6 +21,8 @@ import org.springframework.web.servlet.ModelAndView;
 import net.sf.json.JSONObject;
 import project.F.P002.service.F_P002Service;
 import project.F.P002.vo.F_P002VO;
+import project.main.paging.PageMaker;
+import project.main.paging.PagingVO;
 
 @Controller("mainController")
 @EnableAspectJAutoProxy
@@ -31,11 +33,21 @@ public class MainController {
 	private F_P002VO F_P002VO;
 
 	@RequestMapping(value= "/main.do" ,method={RequestMethod.POST,RequestMethod.GET})
-	public ModelAndView main(HttpServletRequest request, HttpServletResponse response) throws Exception{
+	//현재 페이지 번호와 페이지당 보여줄 게시글 수가 담긴 pagingVO 객체를 사용
+	public ModelAndView main(HttpServletRequest request, HttpServletResponse response, PagingVO pagingVO) throws Exception{
 		String viewName=(String)request.getAttribute("viewName");
-		List mainList = F_P002Service.mainList();
+		PageMaker pageMaker = new PageMaker();
+		//page와 perPageNum 세팅
+		pageMaker.setpagingVO(pagingVO);
+		//총 게시글의 수를 세팅
+		//pageMaker.setTotalCount(F_P002Service.countMainListTotal());
+		pageMaker.setTotalCount(F_P002Service.countMainList());
+		//PagingVO 파라미터를 이용하여 목록 조회
+		List<PagingVO> mainList = F_P002Service.mainList(pagingVO);
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("mainList", mainList);
+		//세팅된 pageMaker에는 페이징을 위한 버튼의 값들이 들어있으며 ModelAndView를 이용하여 jsp에 넘겨줌
+		mav.addObject("pageMaker", pageMaker);
 		return mav;
 	}
 																			//브라우저로 전송하는 JSON 데이터의 한글 인코딩을 지정
@@ -65,11 +77,16 @@ public class MainController {
 	
 	@RequestMapping(value="/searchProd.do" ,method = RequestMethod.GET)
 	public ModelAndView searchProd(@RequestParam("searchWord") String searchWord,
-			                       HttpServletRequest request, HttpServletResponse response) throws Exception{
+			                       HttpServletRequest request, HttpServletResponse response, PagingVO pagingVO) throws Exception{
 		String viewName=(String)request.getAttribute("viewName");
+		PageMaker pageMaker = new PageMaker();
 		//검색창에서 가져온 단어가 포함된 상품 제목을 조회
+		pageMaker.setpagingVO(pagingVO);
+		//총 게시글의 수를 세팅
+		//pageMaker.setTotalCount(F_P002Service.countMainListTotal());
+		pageMaker.setTotalCount(F_P002Service.countMainList());
 		List<F_P002VO> searchList=F_P002Service.searchProd(searchWord);
-		ModelAndView mav = new ModelAndView(viewName);
+		ModelAndView mav = new ModelAndView();
 		mav.addObject("searchList", searchList);
 		System.out.println(mav);
 		return mav;

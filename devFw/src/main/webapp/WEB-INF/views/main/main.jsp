@@ -255,6 +255,9 @@ body, hmtl {
 	height: 350px;
 }
 
+#itemsImg {
+}
+
 </style>
 
 <link
@@ -313,8 +316,15 @@ body, hmtl {
      <c:if test="${i%j == 0}">
      	<tr>
      </c:if>
-      	<td><br><a href="${contextPath}/sellItems.do?sell_no=${main.sell_number}"><img id="#itemsImg" style="width:274px; height:400px; overflow:hidden;" src="${contextPath}/${main.sell_thumbnail}"></a>
-	   	  <br><a style="text-aling:center;" href="${contextPath}/sellItems.do?sell_no=${main.sell_number}">${main.sell_title}<br><fmt:formatNumber value="${main.sell_price}" pattern="#,###"/>원</a> </td>
+      	<td><br>
+      		<a href="${contextPath}/sellItems.do?sell_no=${main.sell_number}">
+      			<img id="#itemsImg" style="width:274px; height:400px; min-width:274px; min-height:400px; overflow:hidden;" src="${contextPath}/${main.sell_thumbnail}">
+      		</a>
+	   	<br>
+	   		<a style="text-aling:center;" href="${contextPath}/sellItems.do?sell_no=${main.sell_number}">
+	   			${main.sell_title}<br><fmt:formatNumber value="${main.sell_price}" pattern="#,###"/>원
+	   		</a>
+	   	</td>
 	 <c:if test="${i%j == j-1}">
 	 	</tr>
 	 </c:if>
@@ -322,6 +332,21 @@ body, hmtl {
 	 	</c:forEach>
 	</table>
    </div>
+   		<div>
+		 <ul class="btn-group pagination">
+		  <c:if test="${pageMaker.prev}">
+		   <li><a href='<c:url value="/main.do?page=${pageMaker.startPage - 1}"/>'><i class="fa fa-chevron-left"></i></a></li>
+		  </c:if> 
+		  
+		  <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+		   <li><a href='<c:url value="/main.do?page=${idx}"/>'><i class="fa">${idx}</i></a></li>
+		  </c:forEach>
+		    
+		  <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+		   <li><a href='<c:url value="/main.do?page=${pageMaker.endPage + 1}"/>'><i class="fa fa-chevron-right"></i></a></li>
+		  </c:if> 
+		 </ul>
+		</div>
    </div>
    <script>
       //current position

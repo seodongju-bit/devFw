@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import project.F.P002.dao.F_P002DAO;
 import project.F.P002.vo.F_P002VO;
+import project.main.paging.PagingVO;
 
 
 @Service("F_P002Service")
@@ -42,10 +43,14 @@ public class F_P002ServiceImpl implements F_P002Service {
 		f_P002DAO.addBasket(searchMap);
 	}
 	
-
-	public List<F_P002VO> mainList() throws Exception {
-		List<F_P002VO> mainlist=f_P002DAO.mainList();
-		return mainlist;
+	@Override
+	public List<PagingVO> mainList(PagingVO pagingVO) throws Exception {
+		return f_P002DAO.mainList(pagingVO);
+	}
+	
+	@Override
+	public int countMainList() throws Exception {
+		return f_P002DAO.countMainList();
 	}
 	
 	/*public Map F_P002Detail(String sell_number) throws Exception {

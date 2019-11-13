@@ -76,17 +76,26 @@
  
 
 
-	<select id="mainList" resultMap="F_P002Result01" parameterType="java.util.Map">
-	<!-- 각각의 상품을 등록일 순으로 16개까지 조회 -->
+	<select id="mainList" resultType="project.F.P002.vo.F_P002VO" parameterType="project.main.paging.PagingVO">
+	<!-- 각각의 상품을 등록일 순으로 조회 -->
 	  <![CDATA[
-	  	select sell_number, sell_thumbnail, sell_title, sell_price
-	  	from(
-	  		select *
-	  		from productsell
-	  		)
-	  	where rowNum < 17
-	  	order by sell_date
+	  	select sell_number, sell_title, sell_price, sell_thumbnail
+		from (
+	        select sell_number, sell_title, sell_price, sell_thumbnail,
+	        row_number() over (order by sell_number desc) as rNum
+	        from productsell
+	        ) mb
+       where rNum between #{rowStart} and #{rowEnd}
 	  ]]>
+	</select>
+	
+	<select id="countMainList" resultType="Integer">
+	<!-- 조회한 상품의 갯수를 뿌려줌 -->
+		<![CDATA[
+			select count(sell_number) as totalCount
+			from productsell
+			where sell_number > 0
+		]]>
 	</select>
 	
 	<!-- 검색어 자동완성 -->
@@ -99,16 +108,28 @@
 	  ]]>
 	</select>
 	
-	<!-- 상품 검색 후 결과를 등록일 순으로 나열 -->
+	<!-- 상품 검색 결과 -->
 	<select id="searchWord" resultMap="F_P002Result01" parameterType="String">
-	  <![CDATA[
-	    select p.sell_number, p.sell_thumbnail, p.sell_title, p.sell_price, p.sell_date, p.mem_ID, p2.pro_name
-	    from productsell p, product p2
-	    where p.pro_number = p2.pro_number and
-	    sell_title like '%' || #{searchWord} || '%' and
-	    pro_name like '%' || #{searchWord} || '%'
+	 <![CDATA[
+	    select sell_number, sell_thumbnail, sell_title, sell_price, sell_date, mem_ID
+	    from (
+	    		select sell_number, sell_thumbnail, sell_title, sell_price, sell_date, mem_id,
+	    		row_number() over (order by sell_number desc) as rNum
+	    		from productsell
+	    		) mb
+	    where sell_title like '%' || #{searchWord} || '%'
+	    and rNum between #{rowStart} and #{rowEnd}
 	    order by sell_date  
 	  ]]>
+	</select>
+	
+	<select id="countSearchList" resultType="Integer">
+	<!-- 검색한 상품의 갯수를 뿌려줌 -->
+		<![CDATA[
+			select count(sell_number) as totalSearchCount
+			from productsell
+			where sell_number > 0
+		]]>
 	</select>
 	
 </mapper>
