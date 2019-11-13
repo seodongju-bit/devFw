@@ -48,4 +48,16 @@
       ]]>
 	</update>
 	
+	<insert id="insertEvent" parameterType="java.util.HashMap">
+		<![CDATA[
+			insert into notice  (no_number, mem_no, no_contents, no_division, no_title, writedate, view_cnt) 
+			
+			values
+			
+			(seq.nextval, #{mem_no}, #{no_contents}, #{no_division}, #{no_title}, sysdate, 0)
+			
+		]]>
+	</insert>
+	
+	
 	</mapper>

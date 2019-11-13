@@ -39,5 +39,10 @@ public class C_P001DAOImpl implements C_P001DAO {
 		return dataList;
 	}
 	
+	@Override
+	public void write(Map<String, Object> dataMap) throws DataAccessException {
+		sqlSession.insert("mapper.event.insertEvent", dataMap);
+	}
+	
 	
 }

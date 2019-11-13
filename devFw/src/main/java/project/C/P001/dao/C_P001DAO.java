@@ -14,5 +14,6 @@ public interface C_P001DAO {
 	 public List selectAllEventList() throws DataAccessException;
 	 public List selectBoardDetail(Map<String, Object> dataMap) throws DataAccessException;
 	 public void updateCNT(Map<String, Object> dataMap) throws DataAccessException;
+	 public void write(Map<String, Object> dataMap);
 }
 
