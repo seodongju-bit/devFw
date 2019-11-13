@@ -44,27 +44,39 @@ public class A_P001ControllerImpl implements A_P001Controller {
 	public ModelAndView login(@RequestParam Map<String, String> loginMap,
 			                  HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ModelAndView mav = new ModelAndView();
-		
-		String addr = (String)request.getParameter("referrer");
-		String[] addr2 = addr.split("devFw");
-		addr2 = addr2[1].split("\\?");
-		
-		A_P001VO=a_p001Service.login(loginMap);
-		if(A_P001VO!= null && A_P001VO.getMem_id()!=null){
-			HttpSession session=request.getSession();
-			session=request.getSession();
-			session.setAttribute("isLogOn", true);
-			session.setAttribute("memberInfo",A_P001VO);
-			mav.setViewName("redirect:"+addr2[0]);
-			if(addr2.length==2) {
-				addr2 = addr2[1].split("\\=");
-				mav.addObject(addr2[0], addr2[1]);
+		try {
+			String addr = (String)request.getParameter("referrer");
+			String[] addr2 = addr.split("devFw");
+			addr2 = addr2[1].split("\\?");
+
+			A_P001VO=a_p001Service.login(loginMap);
+			if(A_P001VO!= null && A_P001VO.getMem_id()!=null){
+				HttpSession session=request.getSession();
+				session=request.getSession();
+				session.setAttribute("isLogOn", true);
+				session.setAttribute("mem_division", A_P001VO.getMem_division());
+				session.setAttribute("mem_id", A_P001VO.getMem_id());
+				session.setAttribute("memberInfo",A_P001VO);
+				System.out.println(addr2[0]);
+				if(addr2[0].equals("/signupsuccesspage.do") || addr2[0].equals("/signinpage.do")) {
+					mav.setViewName("redirect:main.do");
+				}else {   
+					mav.setViewName("redirect:"+addr2[0]);
+					if(addr2.length==2) {
+						addr2 = addr2[1].split("\\=");
+						mav.addObject(addr2[0], addr2[1]);
+					}
+				}
+			}else{
+				String message="아이디나  비밀번호가 틀립니다. 다시 로그인해주세요";
+				mav.addObject("message", message);
+				mav.setViewName("redirect:signinpage.do");
 			}
-		}else{
-			String message="아이디나  비밀번호가 틀립니다. 다시 로그인해주세요";
-			mav.addObject("message", message);
-			mav.setViewName("redirect:signinpage.do");
+		}catch(Exception e) {
+			mav.setViewName("redirect:main.do");
 		}
+
+
 		return mav;
 	}
 

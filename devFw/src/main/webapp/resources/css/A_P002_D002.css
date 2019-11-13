@@ -186,17 +186,23 @@ select {
 .sign-upbtn{
   padding: 19px 39px 18px 39px;
   color: #FFF;
-  background-color: #4bc970;
+  background-color: lightgray;
   font-size: 18px;
   text-align: center;
   font-style: normal;
   border-radius: 5px;
   width: 100%;
-  border: 1px solid #3ac162;
+  border: 1px solid lightgray;
   border-width: 1px 1px 3px;
-  box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;
+  box-shadow: 0 -1px 0 gray inset;
   margin-bottom: 10px;
 }
+<!--
+background-color: #4bc970;
+border: 1px solid #3ac162;
+box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;
+-->
+
 
 .overlapped-btn{
   padding: 10px 10px 10px 10px;
@@ -225,6 +231,12 @@ select {
   border-width: 1px 1px 3px;
   box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;
   margin-bottom: 10px;
+}
+
+.sign-upbtn,
+.btn-default,
+.overlapped-btn2:hover{
+	cursor:pointer;
 }
 .email-btn{
   padding: 10px 10px 10px 10px;

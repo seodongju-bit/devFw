@@ -16,6 +16,7 @@
       <![CDATA[
          select sell_number, pro_number, sell_price, sell_title
          from productsell
+         where mem_id = '${seller_id}'
       ]]>
 	</select>
 

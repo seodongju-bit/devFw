@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-  		<link rel="stylesheet" type="text/css" href="resources/css/A_P002_D002.css?ver=1.0">
+  		<link rel="stylesheet" type="text/css" href="resources/css/A_P002_D002.css?ver=1.1">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <title>Sign Up Form</title>
@@ -58,14 +58,34 @@
 		  <input type="hidden" name="mem_division" value="0">
         
         </fieldset>
-        <button type="submit" class="sign-upbtn" > 회원 가입</button>
+        <button type="submit" class="sign-upbtn" id="memberFormButton" disabled="true" > 회원 가입</button>
       </form>
      	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 		<script type="text/javascript"> 
+		
+		var id_check=false;
+		var pw_check=false;
+		var pwc_check=false;
+		
+		function formCheck(){
+			if(id_check && pw_check && pwc_check){
+				document.getElementById('memberFormButton').style.background='#4bc970';
+				document.getElementById('memberFormButton').removeAttribute('disabled');
+			}else{
+				document.getElementById('memberFormButton').style.background='lightgray';
+				document.getElementById('memberFormButton').setAttribute('disabled','true');
+			}
+		}
+		
+		
+			$('#_mem_id').change(function(){
+				id_check = false;
+				formCheck();
+			});
+			
 			$('#selectEmail').change(function(){
 				$("#selectEmail option:selected").each(function () {
-					
 						if($(this).val()== '1'){
 									$("#mem_email2").val(''); 
 									$("#mem_email2").attr("disabled",false); 
@@ -79,9 +99,12 @@
 				if(regPasswordType(document.getElementById('mem_pw').value)){
 					document.getElementById('desc1').innerHTML="사용 가능한 비밀번호입니다";
 					document.getElementById('desc1').style.color = 'green';
+					pw_check = true;
 				}else{
 					document.getElementById('desc1').innerHTML="사용 불가능한 비밀번호입니다";
+					pw_check = false;
 				}
+				formCheck();
 			})
 			
 			$('#mem_pw_check').keyup(function(){
@@ -90,10 +113,12 @@
 				if(pw == pwc){
 					document.getElementById('desc2').innerHTML="비밀번호 일치";
 					document.getElementById('desc2').style.color = 'green';
+					pwc_check = true;
 				}else{
 					document.getElementById('desc2').innerHTML="비밀번호가 일치하지 않습니다";
+					pwc_check = false;
 				}
-				
+				formCheck();
 			})
 			
 			function regPasswordType(data) { //비밀번호 유효성 검사 6-16자리 영문, 숫자, 특수문자 조합
@@ -199,17 +224,20 @@
 			       success:function (data,textStatus){
 			          if(data=='false'){
 			       	    alert("사용할 수 있는 ID입니다.");
-			       	    $('#btnOverlapped').prop("disabled", true);
-			       	    $('#_signupsuccesspagemem_id').prop("disabled", true);
+// 			       	    $('#btnOverlapped').prop("disabled", true);
+// 			       	    $('#_signupsuccesspagemem_id').prop("disabled", true);
 			       	    $('#mem_id').val(_id);
+			       	 	id_check =true;
 			          }else{
 			        	  alert("사용할 수 없는 ID입니다.");
+			        	  id_check =false;
 			          }
 			       },
 			       error:function(data,textStatus){
 			          alert("에러가 발생했습니다.");ㅣ
 			       },
 			       complete:function(data,textStatus){
+			    	   formCheck();
 			          //alert("작업을완료 했습니다");
 			       }
 			    });  //end ajax	 

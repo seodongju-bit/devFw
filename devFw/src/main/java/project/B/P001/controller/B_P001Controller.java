@@ -17,7 +17,9 @@ public interface B_P001Controller {
 
 	ModelAndView itemManager(HttpServletRequest request, HttpServletResponse response) throws Exception;
 
-	Map searchList(HttpServletRequest request, HttpServletResponse response) throws Exception;	
+	Map searchList(HttpServletRequest request, HttpServletResponse response) throws Exception;
+
+	ModelAndView addProduct(HttpServletRequest request, HttpServletResponse response) throws Exception;	
 	 
 	
 }

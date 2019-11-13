@@ -34,6 +34,11 @@ public class B_P001ControllerImpl   implements B_P001Controller {
 	@RequestMapping(value="/itemManager.do" ,method = RequestMethod.GET)
 	public ModelAndView itemManager(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = getViewName(request);
+		if(!sellerCheck(request)) {
+			ModelAndView mav = new ModelAndView(viewName);
+			mav.setViewName("redirect:main.do");
+			return mav;
+		}
 		viewName = "itemManager";
 		//JSONObject obj = new JSONObject();
 		//obj.put("name", "123");
@@ -60,22 +65,50 @@ public class B_P001ControllerImpl   implements B_P001Controller {
 	   @ResponseBody
 	   public Map searchList(HttpServletRequest request, HttpServletResponse response) throws Exception  {
 	      request.setCharacterEncoding("utf-8");
-	   //   HttpSession session=request.getSession();
-	    //  if((Boolean)session.getAttribute("isLogOn")) {
-	    	  
-	   //   }
+	      
+	      HttpSession session = request.getSession();
+	      session=request.getSession();
+	      String seller_id = (String)session.getAttribute("mem_id");
 	      
 	      Map<String, Object> searchMap = new HashMap<String, Object>(); // 검색조건
 	      Map<String, Object> resultMap = new HashMap<String, Object>(); // 조회결과
 	      
+	      searchMap.put("seller_id", seller_id);
 	      List<B_P001VO> data =b_P001Service.selectItem(searchMap);
-	      System.out.println(data);
 	      resultMap.put("Data", data);
 	        
 	      return resultMap;
 	   }
 
-
+	   @Override
+	   @RequestMapping(value = "/itemManager/addProduct.do", method = { RequestMethod.GET, RequestMethod.POST })
+	   @ResponseBody
+	   public ModelAndView addProduct(HttpServletRequest request, HttpServletResponse response) throws Exception  {
+		   String viewName = getViewName(request);
+			viewName = "addProduct";
+			ModelAndView mav = new ModelAndView(viewName);
+			return mav;
+	   }
+	   
+	   
+	   
+	   
+	public boolean sellerCheck(HttpServletRequest request) {
+		boolean result = false;
+		HttpSession session = request.getSession();
+		session=request.getSession();
+		Boolean isLogOn = (Boolean)session.getAttribute("isLogOn");
+		String mem_division = (String)session.getAttribute("mem_division");
+		try {
+			if(isLogOn && mem_division.equals("1")) {
+				result = true;
+			}
+		}catch(Exception e) {}
+		return result;
+	}
+	
+	
+	
 	private String getViewName(HttpServletRequest request) throws Exception {
 		String contextPath = request.getContextPath();
 		String uri = (String) request.getAttribute("javax.servlet.include.request_uri");

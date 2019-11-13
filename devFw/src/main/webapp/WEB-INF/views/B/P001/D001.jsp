@@ -96,7 +96,7 @@
 				
 		}
 	}
-	function mySheet_OnButtonClick(Row, Col) { 
+	function mySheet_OnButtonClick(Row, Col) {
 		alert(Row+"행의 버튼이 클릭되었습니다.");	
 	}
 
@@ -108,43 +108,15 @@
 		//DIV 형태의 팝업창을 띄운다.
 		showAndHide(1);
 	}
+	/////////
 	
+	var popupX = (window.screen.width/2) - (900/2);
+	var popupY = (window.screen.height/2) - (1000/2);
 
-	//DIV 형태의 팝업창
-	function showAndHide(flag){
-		if(flag){
-			//block이 있는지 확인
-			if($j("#block").length==0){
-				//block 생성하기
-				$j("<div/>", {
-				    id: "block",
-				   css:{position:"absolute",top:0,left:0,width:"100%",height:"100%","background-color":"#777777", opacity: "0.4",    filter: "alpha(opacity=40)"}
-				}).appendTo(document.body);
-			}else{ $j("#block").show();}
-
-
-			//팝업이 나타날 위치 계산하기
-			//시트 안에서 해당 열의 left 값
-			var pleft =  ($j(window).width()/2)-200;
-			//시트 안에서 해당 행의 top 값
-			var ptop =  ($j(window).height()/2)-100;
-			$j("#popupDiv").css("top",ptop).css("left",pleft);
-			$j("#popupDiv").show();
-		}else{
-			//감춘다.
-			$j("#block").hide();
-			$j("#popupDiv").hide();
-		}
-	}
-	//DIV팝업으로 부터 받은 내용을 시트에 반영한다.
-	function setData(rowData){
-		mySheet.SetRowData(  mySheet.GetSelectRow(),  rowData);
-
+	function showPopup(){
+		window.open("itemManager/addProduct.do", "제품추가창", "width=800, height=800, left="+popupX+", top="+popupY);
 	}
 
-//	function mySheet_OnSearchEnd(code,msg){
-//		mySheet.InitCellProperty(3,"MULTICHECKBOX_DATA",{"Type":"CheckBox",ItemText:"가 나 다라 마바사 아자차 카타파하|나|다",ItemCode:"A|B|C"});
-//	}
 
 </script>
 
@@ -155,6 +127,7 @@
 		
         <div class="main_content">
   			<h1>상품관리</h1><br>
+  			<button onclick="showPopup()">제품추가</button>
 
             <div class="ib_function float_right">
                 <a href="javascript:doAction('reload')" class="f1_btn_gray lightgray">초기화</a>
@@ -173,11 +146,9 @@
         </div>
         <!--main_content-->
 
+	
 
-	<!-- popup -->
-	<div id="popupDiv" style="position:absolute;z-index:300;top:100px;left:300px;width:400px;height:200px;background-color:#FFFFFF;display:none">
-		<iframe id="popupFrame" src="" style="width:100%;height:100%;padding:0px;margin:0px;border:0px"></iframe>
-	</div>
+
 	</div>
 </body>
 </html>

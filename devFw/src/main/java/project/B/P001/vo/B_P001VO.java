@@ -6,15 +6,24 @@ import org.springframework.stereotype.Component;
 
 @Component("B_P001VO")
 public class B_P001VO {
+	private String mem_id="";
 	private String sell_number="";
 	private String pro_number="";
 	private String sell_price="";
 	private String sell_title="";
 
-
 	
 	public B_P001VO() {
 		System.out.println("B_P001VO 호출");
+	}
+	
+	public String getMem_id() {
+		return mem_id;
+	}
+
+
+	public void setMem_id(String mem_id) {
+		this.mem_id = mem_id;
 	}
 
 
