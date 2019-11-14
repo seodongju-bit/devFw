@@ -4,6 +4,8 @@ import java.sql.Date;
 
 import org.springframework.stereotype.Component;
 
+import project.main.paging.MainPagingVO;
+
 @Component("F_P002VO")
 public class F_P002VO {
 	private String sell_number="";

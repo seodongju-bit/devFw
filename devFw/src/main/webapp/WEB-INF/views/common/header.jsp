@@ -117,7 +117,7 @@
 	text-align:center;
 	position:absolute;
 	float:left;
-	margin: 40px 0 0 -12px;
+	margin: 39px 0 0 -12px;
 	padding: 0;
 }
 	#menuBar > .mainMenu{
@@ -199,6 +199,7 @@
 </style>
 <title>Insert title here</title>
 </head>
+<script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
 <script type="text/javascript">
 	var loopSearch=true;			//제시된 키워드를 클릭하면 keywordSearch() 함수의 실행을 중지시킴
 	function keywordSearch(){
@@ -271,6 +272,17 @@
 		document.getElementById("header").append(form);
 		form.submit();
 	}
+	
+	$(function(){
+		$('#search').click(function(){
+			self.location = "searchProd"
+			+ '${pageMaker.makeQuery(1)}'
+			+ "&searchType="
+			+ $("select option:selected").val()
+			+ "$searchWord="
+			+ endcodeURIComponent($('#SearchWordInput').val());
+		});
+	});
 
 </script>
 <body>
@@ -313,7 +325,7 @@
       <form class="form-inline" name="frmSearch" action="${contextPath}/searchProd.do" style="width:360px;">
           <input class="form-control" type="text"    
           placeholder="상품을 검색해보세요"aria-label="Search" style=width:300px name="searchWord" onKeyUp="keywordSearch()">
-          <button class="btn btn-outline-secondary" type="submit" name="search">검색</button>
+          <button class="btn btn-outline-secondary" type="submit" id="search">검색</button>
       </form>
     <div id="suggest">
       <div id="suggestList"></div>

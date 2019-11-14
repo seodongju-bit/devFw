@@ -92,12 +92,33 @@ h1{
 		</table>
 		<br><br>
 		<h3 style="float:right;">최종 주문 금액:&nbsp;&nbsp; <c:out value="${total}"/>원</h3>
+		<h4 style="float:left">2. 배송 정보</h4>
+			<table>
+				<tr>
+					<td>배송방법</td>
+					<td><input type="text"></td>
+				</tr>
+				<tr>
+					<td>받으실 분</td>
+					<td><input type="text"></td>
+				</tr>
+				<tr>
+					<td>연락처</td>
+					<td><input type="text"></td>
+				</tr>
+				<tr>
+					<td>배송지 주소</td>
+					<td><input type="text"></td>
+				</tr>
+				<tr>
+					<td>배송메시지</td>
+					<td><input type="text"></td>
+				</tr>
+			</table>
 	</form>
 </div>
-<div class="transport">
-	<tr>
-	</tr>
-</div>
+
+
 </div>
 
 </body>

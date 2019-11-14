@@ -10,7 +10,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import project.F.P002.vo.F_P002VO;
-import project.main.paging.PagingVO;
+import project.main.paging.MainPagingVO;
+import project.search.vo.SearchVO;
+import project.search.paging.SearchPagingVO;
 
 
 
@@ -22,10 +24,11 @@ public interface F_P002Service {
 	void addBasket(Map<String, Object> searchMap) throws DataAccessException;
 	 
 
-	public List<PagingVO> mainList(PagingVO pagingVO) throws Exception;
-	public int countMainList() throws Exception;
+	public List<F_P002VO> mainList(MainPagingVO mainpagingVO) throws Exception;
+	public int countList() throws Exception;
 	public List<String> predictive(String keyword) throws Exception;
-	public List<F_P002VO> searchProd(String searchWord) throws Exception;
+	public List<F_P002VO> searchList(SearchVO searchVO) throws Exception;
+	public int countSearch(SearchVO searchVO) throws Exception;
 
 
 }

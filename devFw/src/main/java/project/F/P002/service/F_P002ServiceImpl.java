@@ -15,7 +15,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import project.F.P002.dao.F_P002DAO;
 import project.F.P002.vo.F_P002VO;
-import project.main.paging.PagingVO;
+import project.main.paging.MainPagingVO;
+import project.search.paging.SearchPagingVO;
+import project.search.vo.SearchVO;
 
 
 @Service("F_P002Service")
@@ -44,13 +46,13 @@ public class F_P002ServiceImpl implements F_P002Service {
 	}
 	
 	@Override
-	public List<PagingVO> mainList(PagingVO pagingVO) throws Exception {
-		return f_P002DAO.mainList(pagingVO);
+	public List<F_P002VO> mainList(MainPagingVO mainpagingVO) throws Exception {
+		return f_P002DAO.mainList(mainpagingVO);
 	}
 	
 	@Override
-	public int countMainList() throws Exception {
-		return f_P002DAO.countMainList();
+	public int countList() throws Exception {
+		return f_P002DAO.countList();
 	}
 	
 	/*public Map F_P002Detail(String sell_number) throws Exception {
@@ -61,16 +63,17 @@ public class F_P002ServiceImpl implements F_P002Service {
 		goodsMap.put("imageList", imageList);
 		return goodsMap;
 	}*/
-	
+	@Override
 	public List<String> predictive(String keyword) throws Exception {
 		List<String> list=f_P002DAO.predictive(keyword);
 		return list;
 	}
-	
-	public List<F_P002VO> searchProd(String searchWord) throws Exception{
-		List searchList=f_P002DAO.searchProd(searchWord);
-		return searchList;
+	@Override
+	public List<F_P002VO> searchList(SearchVO searchVO) throws Exception{
+		return f_P002DAO.searchList(searchVO);
 	}
-
-
+	@Override
+	public int countSearch(SearchVO searchVO) throws Exception {
+		return f_P002DAO.countSearch(searchVO);
+	}
 }

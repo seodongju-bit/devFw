@@ -111,30 +111,31 @@
 	  <tbody>
 		<c:set var = "sum" value="${0}"/>
 		<c:forEach var="search" items="${searchList}" varStatus="status"> 
-			<c:set var="sum" value="${sum + status.count}"/>
 	      <tr>
+	      	<!-- 썸네일 -->
 		    <td class="prod_image">
 			   <a href="${contextPath}/sellItems.do?sell_no=${search.sell_number}">
 			   <img style="width:100px; height:100px; overflow:hidden; margin: 0; padding:0;" src="${contextPath}/${search.sell_thumbnail}">
 			   </a>
 			</td>
-			<td>
+			
+			<!-- 게시글 제목 -->
+			<td class="prod_title">
 				<a href="${contextPath}/sellItems.do?sell_no=${search.sell_number}">${search.sell_title}</a>
 			</td>
+			<!-- 판매자 아이디  -->
 			<td class="prod_description" style="margin:0; padding:0;">
-					<c:set var="prod_sell_date" value="${search.sell_date }" />
-				    <c:set var="arr" value="${fn:split(sell_date,' ')}" />
 				<div class="seller" style="margin:0; padding:0;"  >
-						|${search.mem_ID }|<c:out value="${arr[0]}" />
+						${search.mem_ID}
 				</div>
 			</td>
-			<td class="price" style="margin:0; padding:0;"><span>${search.sell_price }원</span><br>
+			<!-- 제품 가격 -->
+			<td class="prod_price" style="margin:0; padding:0;"><span>${search.sell_price }원</span><br>
 				<strong>
 					<fmt:formatNumber  value="${search.sell_price*0.9}" type="number" var="discounted_price" />
 			        ${discounted_price}원
 				</strong>
 			</td>
-			<td><input type="checkbox" value="" style="margin:0; padding:0;"></td>
 			<td class="buy_btns" style="margin:0; padding:0;">
 				<ul style="display:inline; margin:0; padding:0;">
 					<li><a href="#">장바구니로</a></li>
@@ -151,25 +152,25 @@
 				<li><a style="border: currentColor; border-image: none;" href="#">상품평 순</a></li>
 			</ul>
 		</div>
-		<h4>총 ${sum}건의 상품이 검색되었습니다</h4>
+		<h4>총 건의 상품이 검색되었습니다</h4>
 		</tbody>
 	</table>
 	<div class="clear"></div>
-	<div id="page_wrap">
-		<ul id="page_control">
-			<li><a class="no_border" href="#">Prev</a></li>
-			<c:set var="page_num" value="0" />
-			<c:forEach var="count" begin="1" end="10" step="1">
-				<c:choose>
-					<c:when test="${count==1 }">
-						<li><a class="page_contrl_active" href="#">${count+page_num*10 }</a></li>
-					</c:when>
-					<c:otherwise>
-						<li><a href="#">${count+page_num*10 }</a></li>
-					</c:otherwise>
-				</c:choose>
+	<div>
+		<ul class="btn-group pagination">
+			<c:if test="${searchPageMaker.prev}">
+				<li><a href='<c:url value="/searchProd.do${searchPageMaker.makeSearch(pageMaker.startPage - 1)}"/>'><i class="fa fa-chevron-left"></i></a></li>
+			</c:if>
+			
+			<c:forEach begin="${searchPageMaker.startPage}" end="${searchPageMaker.endPage}" var="idx">
+				<li>
+				<a href='<c:url value="/searchProd.do${searchPageMaker.makeSearch(idx)}"/>'><i class="fa">${idx}</i></a>
+				</li>
 			</c:forEach>
-			<li><a class="no_border" href="#">Next</a></li>
+			
+			<c:if test="${searchPageMaker.next && searchPageMaker.endPage > 0}">
+				<li><a href='<c:url value="/searchPord.do${searchPageMaker.makeSearch(searchPageMaker.endPage + 1)}"/>'><i class="fa fa-chevron-right"></i></a></li>
+			</c:if>
 		</ul>
 	</div>
 </div>

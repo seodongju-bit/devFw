@@ -76,7 +76,7 @@
  
 
 
-	<select id="mainList" resultType="project.F.P002.vo.F_P002VO" parameterType="project.main.paging.PagingVO">
+	<select id="mainList" resultType="project.F.P002.vo.F_P002VO" parameterType="project.main.paging.MainPagingVO">
 	<!-- 각각의 상품을 등록일 순으로 조회 -->
 	  <![CDATA[
 	  	select sell_number, sell_title, sell_price, sell_thumbnail
@@ -89,7 +89,7 @@
 	  ]]>
 	</select>
 	
-	<select id="countMainList" resultType="Integer">
+	<select id="countList" resultType="Integer">
 	<!-- 조회한 상품의 갯수를 뿌려줌 -->
 		<![CDATA[
 			select count(sell_number) as totalCount
@@ -109,27 +109,29 @@
 	</select>
 	
 	<!-- 상품 검색 결과 -->
-	<select id="searchWord" resultMap="F_P002Result01" parameterType="String">
-	 <![CDATA[
+	<select id="searchWord" resultType="project.F.P002.vo.F_P002VO" parameterType="project.search.paging.SearchPagingVO">
 	    select sell_number, sell_thumbnail, sell_title, sell_price, sell_date, mem_ID
 	    from (
 	    		select sell_number, sell_thumbnail, sell_title, sell_price, sell_date, mem_id,
 	    		row_number() over (order by sell_number desc) as rNum
 	    		from productsell
+	    		where sell_title like '%' || #{searchWord} || '%'
 	    		) mb
-	    where sell_title like '%' || #{searchWord} || '%'
-	    and rNum between #{rowStart} and #{rowEnd}
-	    order by sell_date  
-	  ]]>
+	    where rNum between #{rowStart} and #{rowEnd}
 	</select>
 	
-	<select id="countSearchList" resultType="Integer">
-	<!-- 검색한 상품의 갯수를 뿌려줌 -->
-		<![CDATA[
-			select count(sell_number) as totalSearchCount
+	<sql id="search">
+		<if test="searchType == null">
+			where sell_title like '%' || #{searchWord} || '%'
+		</if>
+	</sql>
+	
+	<select id="countSearch" resultType="int">
+			select count(sell_number)
 			from productsell
-			where sell_number > 0
+					<include refid="search"></include>
+		<![CDATA[
+			and sell_number > 0
 		]]>
 	</select>
-	
 </mapper>

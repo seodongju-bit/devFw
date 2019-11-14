@@ -66,7 +66,7 @@ body, hmtl {
 }
 
 #wrapper {
-   width: 1096px;
+   width: 1095px;
    margin: 0 0 0 2px;
    height: 400px;
    position: relative;
@@ -76,7 +76,7 @@ body, hmtl {
 }
 
 #slider-wrap {
-   width: 1096px;
+   width: 1095px;
    height: 400px;
    position: relative;
    overflow: hidden;
@@ -93,7 +93,7 @@ body, hmtl {
 #slider-wrap ul#slider li {
    float: left;
    position: relative;
-   width: 1096px; /* 슬라이드 크기 조절 800 600 잇는건 다바궈야 함 */
+   width: 1095px; /* 슬라이드 크기 조절 800 600 잇는건 다바궈야 함 */
    height: 400px;
 }
 
@@ -334,16 +334,16 @@ body, hmtl {
    </div>
    		<div>
 		 <ul class="btn-group pagination">
-		  <c:if test="${pageMaker.prev}">
-		   <li><a href='<c:url value="/main.do?page=${pageMaker.startPage - 1}"/>'><i class="fa fa-chevron-left"></i></a></li>
+		  <c:if test="${mainPageMaker.prev}">
+		   <li><a href='<c:url value="/main.do?page=${mainPageMaker.startPage - 1}"/>'><i class="fa fa-chevron-left"></i></a></li>
 		  </c:if> 
 		  
-		  <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+		  <c:forEach begin="${mainPageMaker.startPage}" end="${mainPageMaker.endPage}" var="idx">
 		   <li><a href='<c:url value="/main.do?page=${idx}"/>'><i class="fa">${idx}</i></a></li>
 		  </c:forEach>
 		    
-		  <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-		   <li><a href='<c:url value="/main.do?page=${pageMaker.endPage + 1}"/>'><i class="fa fa-chevron-right"></i></a></li>
+		  <c:if test="${mainPageMaker.next && mainPageMaker.endPage > 0}">
+		   <li><a href='<c:url value="/main.do?page=${mainPageMaker.endPage + 1}"/>'><i class="fa fa-chevron-right"></i></a></li>
 		  </c:if> 
 		 </ul>
 		</div>

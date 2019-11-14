@@ -9,8 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
+import project.F.P001.vo.F_P001VO;
 import project.F.P002.vo.F_P002VO;
-import project.main.paging.PagingVO;
+import project.main.paging.MainPagingVO;
+import project.search.paging.SearchPagingVO;
+import project.search.vo.SearchVO;
 
 
 @Repository("F_P002DAO") 
@@ -30,29 +33,30 @@ public class F_P002DAOImpl implements F_P002DAO {
 		List<F_P002VO> list = sqlSession.selectList("F.P002.searchOption", searchMap);
 		return list;
 	}
-	
-	@Override
-	public List<PagingVO> mainList(PagingVO pagingVO) throws Exception {
-		return sqlSession.selectList("F.P002.mainList", pagingVO);	
-	}
-	@Override
-	public int countMainList() throws Exception {
-		return sqlSession.selectOne("F.P002.countMainList");
-	}
 	@Override
 	public List<String> predictive(String keyword) throws DataAccessException {
 	   List<String> list=(ArrayList)sqlSession.selectList("F.P002.searchKeyword",keyword);
 	   System.out.println(list);
 	   return list;
 	}
+	@Override
+	public List<F_P002VO> mainList(MainPagingVO mainpagingVO) throws Exception {
+		return sqlSession.selectList("F.P002.mainList", mainpagingVO);	
+	}
+	@Override
+	public int countList() throws Exception {
+		return sqlSession.selectOne("F.P002.countList");
+	}
 	
 	@Override
-	public List<F_P002VO> searchProd(String searchWord) throws DataAccessException{
-		List<F_P002VO> list=sqlSession.selectList("F.P002.searchWord", searchWord);
-		System.out.println(list);
-		return list;
+	public List<F_P002VO> searchList(SearchVO searchVO) throws Exception {
+		return sqlSession.selectList("F.P002.searchWord", searchVO);
 	}
-
+	
+	public int countSearch(SearchVO searchVO) throws Exception {
+		return sqlSession.selectOne("F.P002.countSearch", searchVO);
+	}
+	
 	@Override
 	public void addBasket(Map<String, Object> searchMap) throws DataAccessException { //상품 옵션검색
 		System.out.println("addDao실행"+searchMap);

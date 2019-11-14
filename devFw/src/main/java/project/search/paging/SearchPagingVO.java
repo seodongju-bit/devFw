@@ -1,6 +1,6 @@
-package project.main.paging;
+package project.search.paging;
 
-public class PagingVO {
+public class SearchPagingVO {
 	
 	private int page;		//현재 페이지 번호
 	private int perPageNum;		//한 페이지당 보여줄 게시글의 갯수
@@ -8,10 +8,10 @@ public class PagingVO {
 	private int rowEnd;
 	
 	//처음 게시판 목록에 들어왔을때를 대비하여 반드시 기본 세팅을 해야함
-		//현재 페이지를 1페이지로, 페이지당 보여줄 게시글의 갯수를 16개로
-	public PagingVO() {
+		//현재 페이지를 1페이지로, 페이지당 보여줄 게시글의 갯수를 10개로
+	public SearchPagingVO() {
 		this.page = 1;
-		this.perPageNum = 8;
+		this.perPageNum = 10;
 	}
 	
 	public void setPage(int page) {
@@ -26,7 +26,7 @@ public class PagingVO {
 	 public void setPerPageNum(int perPageNum) {
 	  
 		if (perPageNum <= 0 || perPageNum > 100) {
-			this.perPageNum = 8;
+			this.perPageNum =10;
 			return;
 		}
 			this.perPageNum = perPageNum;
@@ -46,7 +46,7 @@ public class PagingVO {
 
 	 @Override
 	 public String toString() {
-		 return "PagingVO [page=" + page + ", perPageNum=" + perPageNum + ""
+		 return "SearchPagingVO [page=" + page + ", perPageNum=" + perPageNum + ""
 				 + ", rowStart=" +  getRowStart() + ", rowEnd=" + getRowEnd()
 				 + "]";
 	 }
