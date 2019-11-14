@@ -110,11 +110,11 @@
 	}
 	/////////
 	
-	var popupX = (window.screen.width/2) - (900/2);
+	var popupX = (window.screen.width/2) - (800/2);
 	var popupY = (window.screen.height/2) - (1000/2);
 
 	function showPopup(){
-		window.open("itemManager/addProduct.do", "제품추가창", "width=800, height=800, left="+popupX+", top="+popupY);
+		window.open("itemManager/addProduct.do", "제품추가창", "width=600, height=700, left="+popupX+", top="+popupY,"resizable=no");
 	}
 
 

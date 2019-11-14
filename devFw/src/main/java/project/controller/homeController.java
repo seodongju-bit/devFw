@@ -88,4 +88,28 @@ public class homeController {
 		
 		return list;
 	}
+	
+	@RequestMapping(value = "/bigDivision.do", method = { RequestMethod.GET, RequestMethod.POST })
+	@ResponseBody
+	public List<Map<String, Object>> searchBigDivision(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		request.setCharacterEncoding("utf-8");
+		List<Map<String, Object>> list = sqlSession.selectList("common.bigDivision");
+		System.out.println(list);
+		
+		return list;
+	}
+	
+	@RequestMapping(value = "/smallDivision.do", method = { RequestMethod.GET, RequestMethod.POST })
+	@ResponseBody
+	public List<Map<String, Object>> searchSmallDivision(@RequestParam(value="p_code", required=false) String p_code, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		request.setCharacterEncoding("utf-8");
+		System.out.println("소분류 찾기");
+		Map<String, Object> searchMap = new HashMap<String, Object>();
+		searchMap.put("p_code", p_code);
+		List<Map<String, Object>> list = sqlSession.selectList("common.smallDivision" ,searchMap);
+		System.out.println(list);
+		
+		return list;
+	}
+	
 }

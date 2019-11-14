@@ -163,7 +163,7 @@
    <definition name="sellItems" extends="itemLayout">
       <put-attribute name="title" value="상품페이지" />
       <put-attribute name="body" value="/WEB-INF/views/F/P002/D001.jsp" />
-      <put-attribute name="bodyDetail" value="/WEB-INF/views/F/P002/D002.jsp" />
+      <put-attribute name="bodyDetail" value="/WEB-INF/views/F/P002/test.jsp" />
    </definition> 
    
 <!--  웅건

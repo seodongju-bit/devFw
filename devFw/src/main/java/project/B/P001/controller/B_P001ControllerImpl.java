@@ -91,7 +91,21 @@ public class B_P001ControllerImpl   implements B_P001Controller {
 	   }
 	   
 	   
-	   
+	   @RequestMapping(value = "/itemManager/InsertProduct.do", method = { RequestMethod.GET, RequestMethod.POST })
+	   @ResponseBody
+	   public ModelAndView InsertProduct(HttpServletRequest request, HttpServletResponse response) throws Exception  {
+		   System.out.println("컨트롤러 도착");
+		   String viewName = getViewName(request);
+		   System.out.println(request.getParameter("bigCtgr"));
+		   viewName = "addProduct";
+		   //Map<String, Object> resultMap = new HashMap<String, Object>();
+		   ModelAndView mav = new ModelAndView(viewName);
+		   //mav.addObject(resultMap);
+		   return mav;
+	   }
+
+	
+
 	   
 	public boolean sellerCheck(HttpServletRequest request) {
 		boolean result = false;
