@@ -9,7 +9,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
 import project.C.P001.vo.C_P001VO;
-import project.C.P001.vo.Criteria;
+import project.C.P001.vo.PagingVO;
 import project.F.P002.vo.F_P002VO;
 
 
@@ -20,9 +20,9 @@ public class C_P001DAOImpl implements C_P001DAO {
 	private SqlSession sqlSession;
 
 	@Override
-	public List selectAllEventList() throws DataAccessException {
+	public List selectAllEventList(PagingVO vo) throws DataAccessException {
 		List<C_P001VO> eventList = null;
-		eventList = sqlSession.selectList("mapper.event.selectAllEventList");
+		eventList = sqlSession.selectList("mapper.event.selectAllEventList", vo);
 		System.out.println("eventList"+eventList);
 		return eventList;
 	}
@@ -44,6 +44,12 @@ public class C_P001DAOImpl implements C_P001DAO {
 	@Override
 	public void write(Map<String, Object> dataMap) throws DataAccessException {
 		sqlSession.insert("mapper.event.insertEvent", dataMap);
+	}
+
+
+	@Override
+	public int countBoard() {
+		return sqlSession.selectOne("mapper.event.countBoard");
 	}
 	
 	

@@ -19,7 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import project.C.P001.dao.C_P001DAO;
 import project.C.P001.vo.C_P001VO;
-import project.C.P001.vo.Criteria;
+import project.C.P001.vo.PagingVO;
 import project.F.P002.vo.F_P002VO;
 
 
@@ -29,9 +29,9 @@ public class C_P001ServiceImpl implements C_P001Service {
 	private C_P001DAO eventDAO;
 
 	@Override
-	public List listEvent() throws DataAccessException {
+	public List listEvent(PagingVO vo) throws DataAccessException {
 		List eventList = null;
-		eventList = eventDAO.selectAllEventList();
+		eventList = eventDAO.selectAllEventList(vo);
 		return eventList;
 	}		
 	
@@ -51,6 +51,12 @@ public class C_P001ServiceImpl implements C_P001Service {
 	public void eventWrite(Map<String, Object> dataMap) throws DataAccessException {
 		
 		eventDAO.write(dataMap);
+	}
+
+	@Override
+	public int countBoard() {
+		return eventDAO.countBoard();
+		
 	}		
 			
 	

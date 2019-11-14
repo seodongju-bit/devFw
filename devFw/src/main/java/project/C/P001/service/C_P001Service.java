@@ -10,14 +10,15 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.web.multipart.MultipartFile;
 
 import project.C.P001.vo.C_P001VO;
-import project.C.P001.vo.Criteria;
+import project.C.P001.vo.PagingVO;
 import project.F.P002.vo.F_P002VO;
 
 
 
 public interface C_P001Service {
-	 public List listEvent() throws DataAccessException;
+	 public List listEvent(PagingVO vo) throws DataAccessException;
 	 public List<Map<String,Object>> selectBoardDetail(Map<String, Object> dataMap) throws DataAccessException;
 	 public void eventWrite(Map<String, Object> dataMap);
+	 public int countBoard();
 
 }
