@@ -19,11 +19,18 @@ import project.B.P001.dao.B_P001DAO;
 public class B_P001ServiceImpl implements B_P001Service {
 	@Autowired
 	private B_P001DAO b_P001DAO;
+
 	
 	@Override
 	public List<B_P001VO> selectItem(Map<String, Object> searchMap) throws DataAccessException {
 		List<B_P001VO> list =  b_P001DAO.selectItem(searchMap);
 		return list;
+	}
+	
+	@Override
+	public void addProduct(B_P001VO b_P001VO) throws DataAccessException {
+		System.out.println("서비스 실행");
+		b_P001DAO.addProduct(b_P001VO);
 	}
 
 

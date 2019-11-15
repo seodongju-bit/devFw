@@ -103,7 +103,6 @@ public class homeController {
 	@ResponseBody
 	public List<Map<String, Object>> searchSmallDivision(@RequestParam(value="p_code", required=false) String p_code, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("utf-8");
-		System.out.println("소분류 찾기");
 		Map<String, Object> searchMap = new HashMap<String, Object>();
 		searchMap.put("p_code", p_code);
 		List<Map<String, Object>> list = sqlSession.selectList("common.smallDivision" ,searchMap);

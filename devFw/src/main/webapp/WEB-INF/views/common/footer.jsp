@@ -12,14 +12,18 @@
 	text-align: center;
 	width: 100%;
 	min-width: 1000px;
+	background-color:lightgray;
+	margin:0 auto;
 }
 
 #foot {
 	width:100%;
+	height:30px;
 	min-width:1000px;
+	padding:5px;
 	max-width:none !important;
-	 background-color: lightblue;
-
+	background-color: #A4A4A4;
+	margin:0 auto;
 }
 
 #foot li::before {
@@ -32,26 +36,30 @@
 	margin: 0px;
 }
 
-#g {
+.g {
 	width: 100%;
 	height: 100%;
 	margin: 0 0 0 0px;
 	padding: 0 0 0 0px;
 	display: inline;
 	min-width: 100%;
+	
+}
+.g a{
+	color: #E6E6E6;
 }
 </style>
 </head>
 <body>
 
 <ul id="foot" align="center">
-	  <li id="g"><a href="#">회사소개</a></li>
-	  <li id="g"><a href="#">이용약관</a></li>
-	  <li id="g"><a href="#">개인정보취급방침</a></li>
-	  <li id="g"><a href="#">제휴/홍보</a></li>
-	  <li id="g"><a href="#">광고센터</a></li>
-	  <li id="g"><a href="#">고객만족센터</a></li>
-	  <li id="g"><a href="#">찾아오시는길</a></li>
+	  <li class="g"><a href="#">회사소개</a></li>
+	  <li class="g"><a href="#">이용약관</a></li>
+	  <li class="g"><a href="#">개인정보취급방침</a></li>
+	  <li class="g"><a href="#">제휴/홍보</a></li>
+	  <li class="g"><a href="#">광고센터</a></li>
+	  <li class="g"><a href="#">고객만족센터</a></li>
+	  <li class="g"><a href="#">찾아오시는길</a></li>
 </ul>
 
 <div id="com">

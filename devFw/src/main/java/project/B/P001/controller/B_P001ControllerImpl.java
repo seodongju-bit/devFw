@@ -90,16 +90,20 @@ public class B_P001ControllerImpl   implements B_P001Controller {
 			return mav;
 	   }
 	   
-	   
+	   @Override
 	   @RequestMapping(value = "/itemManager/InsertProduct.do", method = { RequestMethod.GET, RequestMethod.POST })
 	   @ResponseBody
-	   public ModelAndView InsertProduct(HttpServletRequest request, HttpServletResponse response) throws Exception  {
+	   public ModelAndView InsertProduct(@ModelAttribute("B_P001VO") B_P001VO b_P001VO, HttpServletRequest request, HttpServletResponse response) throws Exception  {
 		   System.out.println("컨트롤러 도착");
+		   //System.out.println(b_P001VO.getRelease_date());
+		   //System.out.println(b_P001VO.getPro_vendor());
 		   String viewName = getViewName(request);
-		   System.out.println(request.getParameter("bigCtgr"));
+
+		   b_P001Service.addProduct(b_P001VO);
 		   viewName = "addProduct";
 		   //Map<String, Object> resultMap = new HashMap<String, Object>();
 		   ModelAndView mav = new ModelAndView(viewName);
+		   mav.addObject("error","실패하였습니다.");
 		   //mav.addObject(resultMap);
 		   return mav;
 	   }
