@@ -7,25 +7,130 @@
 
 	
 	<resultMap id="E_P001Result01" type="E_P001VO">
-		<result property="sell_number" column="sell_number" />
-		<result property="pro_number" column="pro_number" />
-		<result property="pro_name" column="pro_name" />
-		<result property="sell_price" column="sell_price" />
-		<result property="sell_title" column="sell_title" />
-		<result property="sell_thumbnail" column="sell_thumbnail" />
-		<result property="mem_ID" column="mem_ID" />
-		<result property="order_size" column="" />
-		<result property="order_color" column="" />
-		<result property="detail_quantity" column="" />
+		<!-- 주문번호 부여 -->
+		<result property="order_number" column="order_number"/>
+		<!-- sell_title 가져오기 -->
+		<result property="order_title" column="order_title"/>
+		<!-- 원가 가져오기 -->
+		<result property="pro_price" column="pro_price"/>
+		<!-- 배송비 -->
+		<result property="transport_cost" column="transport_cost"/>
+		<!-- 할인금액(view 에서 계산) -->
+		<result property="discount_rate" column="discount_rate"/>
+		<!-- 할인적용금액(view 에서 계산) -->
+		<result property="order_money" column="order_money"/>
+		<!-- 총 주문 금액(view 에서 계산) -->
+		<result property="order_totalMoney" column="order_totalMoney"/>
+		<!-- 썸네일 이미지 가져오기 -->
+		<result property="order_thumbnail" column="order_thumbnail"/>
+		<!-- 사용 포인트 -->
+		<result property="order_pointuse" column="order_pointuse"/>
+		<!-- 사용 쿠폰 -->
+		<result property="co_number" column="co_number"/>
+		<!-- 주문날자 부여 -->
+		<result property="order_date" column="order_date"/>
+		<!-- 배송방법 -->
+		<result property="transport_status" column="transport_status"/>
+		<!-- 구매자 ID -->
+		<result property="buyer_id" column="buyer_id"/>
+		<!-- 수령인 -->
+		<result property="receiver_name" column="receiver_name"/>
+		<!-- 구매자 이메일 -->
+		<result property="buyer_email" column="buyer_email"/>
+		<!-- 배송지 주소 -->
+		<result property="order_address" column="order_address"/>
+		<!-- 우편번호 -->
+		<result property="order_zip" column="order_zip"/>
+		<!-- 연락처 -->
+		<result property="order_phone" column="order_phone"/>
+		<!-- 배송시 요청사항 -->
+		<result property="order_request" column="order_request"/>
+		<!-- 옵션1 -->
+		<result property="option1" column="option1"/>
+		<!-- 옵션2 -->
+		<result property="option2" column="option2"/>
+		<!-- 옵션3 -->
+		<result property="option3" column="option3"/>
 	</resultMap>
 	
-
-	<select id="searchItem" resultMap="E_P001Result01" parameterType="java.util.Map"> 
-      <![CDATA[
-         select *
-         from productsell
-         where sell_number = ${p_id}
-      ]]>
+	<select id="selectMyOrderList" resultMap="E_P001Result01" parameterType="E_P001VO">
+		<![CDATA[
+			select *
+			from orders
+			where to_char(order_date, 'yyyy-mm-dd')=to_char(sysdate, 'yyyy-mm-dd')
+			and mem_no = ${mem_no}
+			order by order_date desc
+		]]>
 	</select>
-
+	<select id="searchItem" resultMap="E_P001Result01" parameterType="java.util.Map"> 
+      	<![CDATA[
+         	select *
+         	from productsell p1, product p2
+         	where p1.pro_number = p2.pro_number 
+         	and sell_number = ${p_id}
+      	]]>
+	</select>
+	
+	<insert id="insertNewOrder" parameterType="E_P001VO2">
+		<selectKey resultType="int" keyProperty="order_seq_num" order="BEFORE">
+			select order_seq_num.nextval
+			from dual
+		</selectKey>
+		<![CDATA[
+			insert into orders(
+								order_seq_num,
+								order_number,
+								order_title,
+								pro_price,
+								transport_cost,
+								discount_rate,
+								order_money,
+								order_totalmoney,
+								order_thumbnail,
+								order_pointuse,
+								co_number,
+								order_date,
+								transport_status,
+								buyer_id,
+								receiver_name,
+								buyer_email,
+								order_address,
+								order_zip,
+								order_phone,
+								order_request
+								option1,
+								option2,
+								option3)
+						values(
+							   #{order_seq_num},
+							   #{order_number},
+							   #{order_title},
+							   #{pro_price},
+							   #{transport_cost},
+							   #{discount_rate},
+							   #{order_money},
+							   #{order_totalmoney},
+							   #{order_thumbnail},
+							   #{order_pointuse},
+							   #{co_number},
+							   #{order_date},
+							   #{transport_status},
+							   #{buyer_id},
+							   #{receiver_name},
+							   #{buyer_email},
+							   #{order_address},
+							   #{order_zip},
+							   #{order_phone},
+							   #{order_request},
+							   #{option1},
+							   #{option2},
+							   #{option3})
+		]]>	
+	</insert>
+	
+	  <select id="selectOrderNumber" resultType="int"  >
+	    <![CDATA[
+		    select seq_order_number.nextval from dual
+    	]]>
+	</select>
 </mapper>

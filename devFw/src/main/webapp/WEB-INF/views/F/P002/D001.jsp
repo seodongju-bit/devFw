@@ -279,6 +279,16 @@ function basket(){
 		  }
 	})
 }
+
+function fn_order(){
+	var _isLogOn=document.getElementById("isLogOn");
+	var isLogOn=_isLogOn.value;
+	
+	if(isLogOn=="false" || isLogOn=='') {
+		alert("로그인 후 주문이 가능합니다.");
+	}
+}
+
 </script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -327,11 +337,11 @@ function basket(){
 				<option value="">색상 선택</option>
 			</select>
 		</div>
-		<form method="get" name="selectPush" accept-charset="UTF-8" >
+		<form method="post" name="selectPush" accept-charset="UTF-8" >
 			<div id="selectItems" class="sellInfo">
 			
 				<button type="button" class="btn-default" id="basketbtn" onclick="basket()" >장바구니</button>
-				<button type="submit" class="btn btn-primary" id="orderbtn" formaction="/devFw/order.do">바로구매</button>
+				<button type="submit" class="btn btn-primary" id="orderbtn" formaction="/devFw/order.do" onclick="fn_order()">바로구매</button>
 				
 			</div>
 		</form>
@@ -371,4 +381,5 @@ ${info }
  	
 
 </body>
+<input type="hidden" name="isLogOn" id="isLogOn" value="${isLogOn}"/>
 </html>

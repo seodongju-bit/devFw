@@ -1,5 +1,7 @@
 package project.E.P001.vo;
 
+import java.util.Date;
+
 import org.springframework.stereotype.Component;
 
 @Component("E_P001VO")
@@ -14,10 +16,21 @@ public class E_P001VO {
 	private String order_size="";
 	private String order_color="";
 	private String detail_quantity="";
+	private String pro_price="";
 	
 	
 	public E_P001VO() {
 		System.out.println("E_P001VO 호출");
+	}
+
+
+	public String getPro_price() {
+		return pro_price;
+	}
+
+
+	public void setPro_price(String pro_price) {
+		this.pro_price = pro_price;
 	}
 
 
@@ -119,15 +132,4 @@ public class E_P001VO {
 	public void setDetail_quantity(String detail_quantity) {
 		this.detail_quantity = detail_quantity;
 	}
-
-
-	
-
-
-
-
-
-
-
-	
 }

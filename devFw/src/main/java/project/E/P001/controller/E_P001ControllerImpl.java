@@ -28,32 +28,47 @@ import project.E.P001.service.E_P001Service;
 public class E_P001ControllerImpl   implements E_P001Controller {
 	@Autowired
 	E_P001VO e_P001VO;
+	
 	@Autowired
 	E_P001Service e_P001Service;
 	
-	@Override
-	@RequestMapping(value = "/order.do", method = { RequestMethod.GET, RequestMethod.POST })
+	@RequestMapping(value = "/order.do", method = { RequestMethod.POST })
 	public ModelAndView order(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = "order";
+		request.setCharacterEncoding("utf-8");
+		HttpSession session = request.getSession();
+		session = request.getSession();
+		Boolean isLogOn = (Boolean)session.getAttribute("isLogOn");
+		String action=(String)session.getAttribute("action");
+		
 		List<Map<String, Object>> list = createModel(request);
 		Map<String, Object> searchMap = new HashMap<String, Object>();
 		List<E_P001VO> result = new ArrayList<E_P001VO>();
-		for(int i=0;i<list.size();i++) {
-			searchMap.put("p_id", list.get(i).get("sell_number"));
-			e_P001VO = (E_P001VO)e_P001Service.selectItem(searchMap).get(0);
-			
-			//List<E_P001VO>
-			e_P001VO.setSell_number((String)list.get(i).get("sell_number")); 
-			e_P001VO.setDetail_quantity((String)list.get(i).get("detail_quantity")); 
-			e_P001VO.setOrder_size((String)list.get(i).get("order_size")); 
-			e_P001VO.setOrder_color((String)list.get(i).get("order_color"));
-			System.out.println(BeanUtils.describe(e_P001VO));
-			result.add(e_P001VO);
-		}
 		
-		ModelAndView mav = new ModelAndView(viewName);
-		mav.addObject("orderList", result);
-		return mav;
+			
+			for(int i=0;i<list.size();i++) {
+				searchMap.put("p_id", list.get(i).get("sell_number"));
+				e_P001VO = (E_P001VO)e_P001Service.selectItem(searchMap).get(0);
+				
+				//List<E_P001VO>
+				e_P001VO.setSell_number((String)list.get(i).get("sell_number")); 
+				e_P001VO.setDetail_quantity((String)list.get(i).get("detail_quantity")); 
+				e_P001VO.setOrder_size((String)list.get(i).get("order_size")); 
+				e_P001VO.setOrder_color((String)list.get(i).get("order_color"));
+				System.out.println(BeanUtils.describe(e_P001VO));
+				result.add(e_P001VO);
+			}
+			
+			
+		
+		if(isLogOn==null || isLogOn == false) {
+			return new ModelAndView("redirect:../devFw/signinpage.do");
+		}else {
+			ModelAndView mav = new ModelAndView(viewName);
+			mav.addObject("orderList", result);
+			return mav;
+			
+		}
 	}
 	
 	
@@ -113,8 +128,6 @@ public class E_P001ControllerImpl   implements E_P001Controller {
 		}
 		return viewName;
 	}
-
-
 
 }
 
