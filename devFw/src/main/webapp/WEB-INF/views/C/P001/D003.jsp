@@ -48,6 +48,10 @@ $(function() {
    		alert("작성자를 입력해주세요");
    		return false;
    	}
+	if (division.trim() == '') {
+   		alert("구분을 선택해주세요");
+   		return false;
+   	}
    	if (content.trim() == '') {
    		alert("내용을 입력해주세요");
    		return false;
@@ -80,7 +84,7 @@ $(function() {
  
  <h2 style="text-align: center;">글 작성</h2><br><br><br>
 
-<div style="width: 60%; margin-left: 30%; margin-right: auto;">
+<div style="width: 60%; margin-left: 20%; margin-right: auto;">
 
 		<input type="text" name="writer" style="width: 20%;" placeholder="작성자"/><br>
 		<input type="text" name="title" style="width: 40%;" placeholder="제목"/><br>
