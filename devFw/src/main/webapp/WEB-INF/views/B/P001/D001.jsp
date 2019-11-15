@@ -73,7 +73,7 @@
 		var json = mySheet.GetSearchData("/devFw/itemManager/searchList.do");
 		mySheet.LoadSearchData(json);
 	}
-	
+	 
 	var toggle = 0;
 	/*Sheet 각종 처리*/
 	function doAction(sAction) {
