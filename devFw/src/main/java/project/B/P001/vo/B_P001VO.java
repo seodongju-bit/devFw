@@ -11,7 +11,12 @@ public class B_P001VO {
 	private String pro_number="";
 	private String sell_price="";
 	private String sell_title="";
-
+	
+	private String pro_name="";
+	private String pro_division="";
+	private String pro_price="";
+	private String pro_vender="";
+	private String pro_explain="";
 	
 	public B_P001VO() {
 		System.out.println("B_P001VO 호출");
@@ -61,6 +66,46 @@ public class B_P001VO {
 
 	public void setSell_title(String sell_title) {
 		this.sell_title = sell_title;
+	}
+
+	public String getPro_name() {
+		return pro_name;
+	}
+
+	public void setPro_name(String pro_name) {
+		this.pro_name = pro_name;
+	}
+
+	public String getPro_division() {
+		return pro_division;
+	}
+
+	public void setPro_division(String pro_division) {
+		this.pro_division = pro_division;
+	}
+
+	public String getPro_price() {
+		return pro_price;
+	}
+
+	public void setPro_price(String pro_price) {
+		this.pro_price = pro_price;
+	}
+
+	public String getPro_vender() {
+		return pro_vender;
+	}
+
+	public void setPro_vender(String pro_vender) {
+		this.pro_vender = pro_vender;
+	}
+
+	public String getPro_explain() {
+		return pro_explain;
+	}
+
+	public void setPro_explain(String pro_explain) {
+		this.pro_explain = pro_explain;
 	}
 	
 	

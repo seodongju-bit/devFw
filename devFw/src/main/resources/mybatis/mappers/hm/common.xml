@@ -25,6 +25,27 @@
 		</where>
 		order by common_code
 	</select>
+	
+		<select id="bigDivision" resultMap="commonResult01" parameterType="java.util.Map"> 
+      <![CDATA[
+      
+      	select * 
+         from commonlist
+         where common_code like('H___')
+         order by common_code
+      ]]>	
+	</select>   
+	
+
+	
+	<select id="smallDivision" resultMap="commonResult01" parameterType="java.util.Map"> 
+      <![CDATA[
+         select * 
+         from commonlist
+         where common_code like('${p_code}_%')
+         order by common_code
+      ]]>	
+	</select>
 
 
 </mapper>
