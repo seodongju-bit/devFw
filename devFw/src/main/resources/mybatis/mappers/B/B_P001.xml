@@ -19,5 +19,12 @@
          where mem_id = '${seller_id}'
       ]]>
 	</select>
-
+	
+	<insert id="addProduct" parameterType="java.util.Map">
+		<![CDATA[
+			insert into product(pro_number, pro_name, release_date, pro_price, pro_division, pro_vendor ,pro_explain)
+			values('${pro_number}','${pro_name}','${release_date}','${pro_price}', '${pro_division}', '${pro_vendor}', '${pro_explain}')
+		]]>
+	</insert>
+	
 </mapper>

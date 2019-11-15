@@ -23,6 +23,10 @@ public class B_P001DAOImpl implements B_P001DAO {
 		return list;
 	}
 	
-
+	@Override
+	public void addProduct(B_P001VO b_P001VO) throws DataAccessException {
+		System.out.println("dao 실행");
+		sqlSession.insert("B.P001.addProduct", b_P001VO);
+	}
 
 }

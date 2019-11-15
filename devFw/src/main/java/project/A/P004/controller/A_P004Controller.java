@@ -11,6 +11,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 public interface A_P004Controller {
 	public ModelAndView myPage(HttpServletRequest request, HttpServletResponse response) throws Exception;
-
+	public ModelAndView coupon(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	
 }

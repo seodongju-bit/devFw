@@ -18,6 +18,8 @@ public interface B_P001Service {
 	
 	 public List<B_P001VO> selectItem(Map<String, Object> searchMap) throws DataAccessException;
 
+	 void addProduct(B_P001VO b_P001VO) throws DataAccessException;
+
 
 
 }

@@ -15,11 +15,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import project.A.P004.service.A_P004Service;
+import project.A.P004.vo.A_P004VO;
+
 
 
 @Controller("A_P004Controller")
 public class A_P004ControllerImpl   implements A_P004Controller {
-	
+	@Autowired
+	private A_P004Service couponService;
+	@Autowired
+	A_P004VO couponVO ;
 	
 	@Override
 	@RequestMapping(value="/myPage.do" ,method = RequestMethod.GET)
@@ -29,6 +35,17 @@ public class A_P004ControllerImpl   implements A_P004Controller {
 		//List membersList = memberService.listMembers();
 		ModelAndView mav = new ModelAndView(viewName);
 		//mav.addObject("membersList", membersList);
+		return mav;
+	}
+	
+	@Override
+	@RequestMapping(value="/coupon.do" ,method = RequestMethod.GET)
+	public ModelAndView coupon(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = getViewName(request);
+		viewName = "coupon";
+		List couponsList = couponService.listCoupon();
+		ModelAndView mav = new ModelAndView(viewName);
+		mav.addObject("couponsList", couponsList);
 		return mav;
 	}
 	

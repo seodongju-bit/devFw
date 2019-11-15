@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   
+   <mapper namespace="mapper.coupon">
+	<resultMap id="couResult" type="couponVO">
+		<result property="co_number" column="co_number" />
+        <result property="co_name" column="co_name" />
+        <result property="co_enddate" column="co_enddate" />
+        <result property="co_usedate" column="co_usedate" />
+        <result property="co_sale" column="co_sale" />
+        <result property="co_salepercent" column="co_salepercent" />
+	</resultMap> 
+	
+	<select id="selectAllCouponList" resultMap="couResult">
+      <![CDATA[
+         select * from coupon 	 	
+      ]]>
+	</select>
+	
+	
+	</mapper>

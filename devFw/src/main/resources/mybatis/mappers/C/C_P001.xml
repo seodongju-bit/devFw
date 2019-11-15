@@ -17,8 +17,19 @@
 	
 	<select id="selectAllEventList" resultMap="eventResult">
       <![CDATA[
-         select * from notice 	 	
+         	
       
+      	SELECT * 
+		FROM (
+			SELECT ROWNUM RN, A.* 
+				FROM (
+						SELECT * 
+						FROM notice 
+						ORDER BY no_number DESC 
+						) A
+				)
+		WHERE RN BETWEEN #{start} AND #{end}
+      	
       ]]>
 	</select>
 	
@@ -61,5 +72,10 @@
 		]]>
 	</insert>
 	
+	<select id="countBoard" resultType="int">
+	<![CDATA[
+	SELECT COUNT(*) FROM notice
+	]]>
+	</select>
 	
 	</mapper>

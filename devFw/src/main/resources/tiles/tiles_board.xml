@@ -24,7 +24,7 @@
       <put-attribute name="title" value="" />
       <put-attribute name="body" value="" />
       <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
-   </definition>
+   </definition> 
 	
 	  <definition name="baseLayout4"  template="/WEB-INF/views/common/layout.jsp">
       <put-attribute name="title" value="" />
@@ -104,6 +104,11 @@
       <put-attribute name="body" value="/WEB-INF/views/C/P001/D002.jsp" />
    </definition>
    
+   <definition name="coupon" extends="baseLayout">
+      <put-attribute name="title" value="쿠폰조회" />
+      <put-attribute name="body" value="/WEB-INF/views/A/P004/D005.jsp" />
+   </definition>
+   
    <definition name="eventWrite" extends="eventLayout">
       <put-attribute name="title" value="이벤트/공지사항-상세" />
       <put-attribute name="body" value="/WEB-INF/views/C/P001/D003.jsp" />
@@ -163,7 +168,7 @@
    <definition name="sellItems" extends="itemLayout">
       <put-attribute name="title" value="상품페이지" />
       <put-attribute name="body" value="/WEB-INF/views/F/P002/D001.jsp" />
-      <put-attribute name="bodyDetail" value="/WEB-INF/views/F/P002/D002.jsp" />
+      <put-attribute name="bodyDetail" value="/WEB-INF/views/F/P002/test.jsp" />
    </definition> 
    
 <!--  웅건

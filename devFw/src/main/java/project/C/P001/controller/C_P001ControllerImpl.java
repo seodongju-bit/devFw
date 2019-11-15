@@ -30,8 +30,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import project.C.P001.service.C_P001Service;
 import project.C.P001.vo.C_P001VO;
-import project.C.P001.vo.Criteria;
-import project.C.P001.vo.PageMaker;
+import project.C.P001.vo.PagingVO;
 import project.F.P002.vo.F_P002VO;
 
 
@@ -47,12 +46,28 @@ public class C_P001ControllerImpl implements C_P001Controller {
 	
 	
 	@Override
-	@RequestMapping(value="/event.do" ,method = { RequestMethod.GET, RequestMethod.POST})
-	public ModelAndView listEvent(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	@RequestMapping(value="/event.do" ,method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView listEvent(PagingVO vo 
+			, @RequestParam(value="nowPage", required=false)String nowPage
+			, @RequestParam(value="cntPerPage", required=false)String cntPerPage, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = "event";
-		List eventList = eventService.listEvent();
+		
+		int total = eventService.countBoard();
+		System.out.println("33333333333333333333333333333333333333333"+total);
+		if (nowPage == null && cntPerPage == null) {
+			nowPage = "1";
+			cntPerPage = "5";
+		} else if (nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) { 
+			cntPerPage = "5";
+		}
+			vo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+			
+		
+		List eventList = eventService.listEvent(vo);
 		ModelAndView mav = new ModelAndView(viewName);
-		    
+		mav.addObject("paging", vo);    
 		mav.addObject("eventList", eventList);
 		return mav;
 	}
