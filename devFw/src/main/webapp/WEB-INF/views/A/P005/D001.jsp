@@ -126,7 +126,7 @@ aside {
  
  <c:forEach var="basket" items="${basketList}" varStatus='index' >
  <c:set var="ba_quantity" value="${basketList[index.count-1].ba_quantity}" />
-<c:set var="mem_no" value="${basketList[index.count-1].mem_no}" />
+<c:set var="ba_no" value="${basketList[index.count-1].ba_no}" />
  <tr>
  <td class=check><input type="checkbox"></td>
  <td class="item">
@@ -136,17 +136,17 @@ aside {
  </td>
  <td class="product-details">
  <strong>Eliza J</strong> Lace Sleeve Cuff Dress
- <p><strong>Navy, Size 18</strong></p>
- <p>Product Code - ${basket.pro_number}</p>
+ <p><strong>${basket.ba_color}, ${basket.ba_size}</strong></p>
+ <p>Sell Number - ${basket.sell_number}</p>
  </td>
  <td class="price">${basket.sell_number}</td>
  <td class="quantity"><input type="number" id="ba_quantity"  value="${basket.ba_quantity}" min="1" class="quantity-field"></td>
  <td class="subtotal">${basket.sell_number*basket.ba_quantity}
  </td>
- <td class="remove"><button class="btn btn-default" id="delete" onclick="deleteBasket(${basket.mem_no})" >삭제</button></td>
- <td class="change"><button class="btn btn-default" id="modify" onclick="modifyBasket(${basket.mem_no}, ${index.count-1})" >수정</button></td>
+ <td class="remove"><button class="btn btn-default" id="delete" onclick="deleteBasket(${basket.ba_no})" >삭제</button></td>
+ <td class="change"><button class="btn btn-default" id="modify" onclick="modifyBasket(${basket.ba_no}, ${index.count-1})" >수정</button></td>
  </tr>
- <input type="hidden" id="mem_no" value="${basket.mem_no}">
+ <input type="hidden" id="mem_no" value="${basket.ba_no}">
  </c:forEach>
  
  </table>
@@ -161,7 +161,7 @@ aside {
 			type : "POST",
 			url : "${contextPath}/basket/removeBasket.do",
 			data : {	
-				"mem_no" : id,
+				"ba_no" : id,
 				
 			},
 			success : function() {
@@ -198,7 +198,7 @@ aside {
 			type : "POST",
 			url : "${contextPath}/basket/updateBasket.do",
 			data : {	
-				"mem_no" : id,
+				"ba_no" : id,
 				"ba_quantity" : ba_quantity
 			},
 			success : function() {

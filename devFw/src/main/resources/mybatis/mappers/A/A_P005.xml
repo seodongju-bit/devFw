@@ -5,31 +5,33 @@
    
    <mapper namespace="mapper.basket">
 	<resultMap id="basResult" type="basketVO">
-		<result property="mem_no" column="mem_no" />
-        <result property="sell_number" column="sell_number" />
-        <result property="pro_number" column="pro_number" />
+		<result property="ba_no" column="ba_no" />
+		<result property="mem_id" column="mem_id" />
+		<result property="sell_number" column="sell_number" />
+        <result property="ba_size" column="ba_size" />
+        <result property="ba_color" column="ba_color" />
         <result property="ba_quantity" column="ba_quantity" />
 	</resultMap> 
 	
 	<select id="selectAllBasketList" resultMap="basResult">
       <![CDATA[
-         select * from basket 	 	
+         select * from basket2
       ]]>
 	</select>
 	
 	<delete id="deleteBasket"  parameterType="java.util.Map">
 	<![CDATA[
-	   DELETE FROM basket
-           WHERE mem_no = #{mem_no}
+	   DELETE FROM basket2
+           WHERE ba_no = #{ba_no}
 	]]>      
   </delete>
   
 	<update id="updateBasket" parameterType="java.util.Map">
 	<![CDATA[
-		update basket
+		update basket2
 		set 
 		    ba_quantity = #{ba_quantity}
-		where mem_no = #{mem_no}
+		where ba_no = #{ba_no}
 		]]> 
 	</update>
 	

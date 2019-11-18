@@ -373,7 +373,7 @@
 		<div class="mainMenu"><button class="menubtn"onclick="location.href='bestProduct.do'">베스트상품</button></div>
 		<div class="mainMenu"><button class="menubtn"onclick="location.href='eventProduct.do'">이벤트상품</button></div>
 		<div class="mainMenu"><button class="menubtn"onclick="location.href='reviewRanking.do'">리뷰랭킹</button></div>
-		<div class="mainMenu"><button class="menubtn">쿠폰</button></div>
+		<div class="mainMenu"><button class="menubtn"onclick="location.href='coupon.do'">쿠폰</button></div>
 		<div class="mainMenu"><button class="menubtn"onclick="location.href='event.do'">이벤트/공지사항</button></div>
 	</div>
 	</div>
