@@ -1,6 +1,7 @@
 package project.F.P001.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +42,18 @@ public class F_P001DAOImpl implements F_P001DAO {
 		productlist2 = sqlSession.selectList("mapper.product.selectItem2");
 		System.out.println(productlist2);
 		return productlist2;
+	}
+
+
+
+
+	@Override
+	public List selectItem5() throws DataAccessException {
+		List<F_P001VO> productlist5 = null;
+		System.out.println("dao실행");    
+		productlist5 = sqlSession.selectList("mapper.product.selectItem5");
+		System.out.println(productlist5);
+		return productlist5;
 	}
 	
 	

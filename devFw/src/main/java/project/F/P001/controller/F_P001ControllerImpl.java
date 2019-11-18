@@ -29,16 +29,24 @@ import project.F.P001.service.F_P001Service;
 @Controller("F_P001Controller")
 public class F_P001ControllerImpl implements F_P001Controller {
 	
+	@Autowired
+	private F_P001Service f_P001Service;
+	@Autowired
+	F_P001VO F_P001VO;
+	
 	@Override
 	@RequestMapping(value="/reviewRanking.do" ,method = RequestMethod.GET)
 	public ModelAndView reviewRanking(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = getViewName(request);
 		viewName = "reviewRanking";
-		ModelAndView mav = new ModelAndView(viewName);
-		return mav;
+		List productlist5 = f_P001Service.searchItem5();
+		System.out.println(productlist5);
+		ModelAndView mav5 = new ModelAndView(viewName);
+		mav5.addObject("List", productlist5);
+		return mav5;
 	}
 	
-	
+
 	
 	@Override
 	@RequestMapping(value="/memberReview.do" ,method = RequestMethod.GET)
@@ -51,10 +59,7 @@ public class F_P001ControllerImpl implements F_P001Controller {
 		return mav3;
 	}
 	
-	@Autowired
-	private F_P001Service f_P001Service;
-	@Autowired
-	F_P001VO F_P001VO;
+
 	
 	
 	@Override
@@ -62,10 +67,10 @@ public class F_P001ControllerImpl implements F_P001Controller {
 	public ModelAndView bestProduct(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName2 = getViewName(request);
 		viewName2 = "bestProduct";
-		List list2 = f_P001Service.searchItem2(); 
-		System.out.println(list2);
+		List productlist2 = f_P001Service.searchItem2(); 
+		System.out.println(productlist2);
 		ModelAndView mav2 = new ModelAndView(viewName2);
-		mav2.addObject("List",list2);
+		mav2.addObject("List",productlist2);
 		return mav2;
 	}
 	
@@ -76,10 +81,10 @@ public class F_P001ControllerImpl implements F_P001Controller {
 	public ModelAndView eventProduct(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName1 = getViewName(request);
 		viewName1 = "eventProduct";
-		List list1 = f_P001Service.searchItem1();
-		System.out.println(list1);
+		List productlist1 = f_P001Service.searchItem1();
+		System.out.println(productlist1);
 		ModelAndView mav1 = new ModelAndView(viewName1);
-		mav1.addObject("List",list1);
+		mav1.addObject("List",productlist1);
 		return mav1;
 	}
 
@@ -89,10 +94,10 @@ public class F_P001ControllerImpl implements F_P001Controller {
 	public ModelAndView category(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = getViewName(request);
 		viewName = "category";
-		List list = f_P001Service.searchItem();
-		System.out.println(list);
+		List productlist = f_P001Service.searchItem();
+		System.out.println(productlist);
 		ModelAndView mav = new ModelAndView(viewName);
-		mav.addObject("List", list);
+		mav.addObject("List", productlist);
 		return mav;
 	}                  
 	
@@ -129,4 +134,3 @@ public class F_P001ControllerImpl implements F_P001Controller {
 
 
 }
-

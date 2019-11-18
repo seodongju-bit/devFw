@@ -21,5 +21,6 @@ public interface F_P001Controller {
 	ModelAndView bestProduct(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	ModelAndView category(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	
+	
 }
                    
