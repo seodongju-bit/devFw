@@ -69,12 +69,12 @@ public class A_P005ControllerImpl   implements A_P005Controller {
 	@Override
 	@RequestMapping(value="/basket/removeBasket.do" ,method = { RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody
-	public Map<String, Object> removeBasket(@RequestParam("mem_no") String mem_no, HttpServletRequest request, HttpServletResponse response) throws Exception{
+	public Map<String, Object> removeBasket(@RequestParam("ba_no") String ba_no, HttpServletRequest request, HttpServletResponse response) throws Exception{
 		request.setCharacterEncoding("utf-8");
-		System.out.println("고객번호="+mem_no);
+		System.out.println("고객번호="+ba_no);
 		Map<String, Object> dataMap = new HashMap<String, Object>();
 		Map<String, Object> resultMap = new HashMap<String, Object>();
-		dataMap.put("mem_no", mem_no);
+		dataMap.put("ba_no", ba_no);
 		System.out.println("=======================>>"+dataMap.toString());
 		
 		try {
@@ -109,13 +109,13 @@ public class A_P005ControllerImpl   implements A_P005Controller {
 	@Override
 	@RequestMapping(value="/basket/updateBasket.do" ,method = { RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody
-	public Map<String, Object> updateBasket(@RequestParam("mem_no") String mem_no, @RequestParam("ba_quantity") String ba_quantity, HttpServletRequest request, HttpServletResponse response) throws Exception{
+	public Map<String, Object> updateBasket(@RequestParam("ba_no") String ba_no, @RequestParam("ba_quantity") String ba_quantity, HttpServletRequest request, HttpServletResponse response) throws Exception{
 		request.setCharacterEncoding("utf-8");
-		System.out.println("고객번호="+mem_no);
+		System.out.println("고객번호="+ba_no);
 		System.out.println("상품개수="+ba_quantity);
 		Map<String, Object> dataMap = new HashMap<String, Object>();
 		Map<String, Object> resultMap = new HashMap<String, Object>();
-		dataMap.put("mem_no", mem_no);
+		dataMap.put("ba_no", ba_no);
 		dataMap.put("ba_quantity", ba_quantity);
 	
 		System.out.println("=======================>>"+dataMap.toString());

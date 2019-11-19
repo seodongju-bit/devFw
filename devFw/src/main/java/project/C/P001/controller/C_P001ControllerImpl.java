@@ -49,7 +49,8 @@ public class C_P001ControllerImpl implements C_P001Controller {
 	@RequestMapping(value="/event.do" ,method = {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView listEvent(PagingVO vo 
 			, @RequestParam(value="nowPage", required=false)String nowPage
-			, @RequestParam(value="cntPerPage", required=false)String cntPerPage, HttpServletRequest request, HttpServletResponse response) throws Exception {
+			, @RequestParam(value="cntPerPage", required=false)String cntPerPage, 
+			HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = "event";
 		
 		int total = eventService.countBoard();
@@ -62,6 +63,8 @@ public class C_P001ControllerImpl implements C_P001Controller {
 		} else if (cntPerPage == null) { 
 			cntPerPage = "5";
 		}
+
+		
 			vo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
 			
 		

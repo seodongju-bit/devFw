@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import project.E.P001.dao.E_P001DAO;
 import project.E.P001.vo.E_P001VO;
+import project.E.P001.vo.E_P001VO2;
 
 
 @Service("E_P001Service")
@@ -19,7 +20,6 @@ import project.E.P001.vo.E_P001VO;
 public class E_P001ServiceImpl implements E_P001Service {
 	@Autowired
 	private E_P001DAO e_P001DAO;
-	
 	@Override
 	public List<E_P001VO> selectItem(Map<String, Object> searchMap) throws DataAccessException {
 		List<E_P001VO> list =  e_P001DAO.selectItem(searchMap);
@@ -27,7 +27,11 @@ public class E_P001ServiceImpl implements E_P001Service {
 		return list;
 	}
 	
-
+	public void addNewOrder(List<E_P001VO2> myOrderList) throws Exception {
+		e_P001DAO.insertNewOrder(myOrderList);
+	}
 	
-
+	public E_P001VO2 findMyOrder(String order_number) throws Exception {
+		return e_P001DAO.findMyOrder(order_number);
+	}
 }

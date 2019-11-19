@@ -1,12 +1,14 @@
 package project.F.P001.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
+import project.F.P001.vo.PagingVO;
 import project.F.P001.vo.F_P001VO;
 
 
@@ -42,9 +44,38 @@ public class F_P001DAOImpl implements F_P001DAO {
 		System.out.println(productlist2);
 		return productlist2;
 	}
+
+
+
+
+	@Override
+	public List selectItem5() throws DataAccessException {
+		List<F_P001VO> productlist5 = null;
+		System.out.println("dao실행");    
+		productlist5 = sqlSession.selectList("mapper.product.selectItem5");
+		System.out.println(productlist5);
+		return productlist5;
+	}
 	
 	
 	
-	
+	@Override
+	public List memberReviewList(PagingVO vo) throws DataAccessException {
+		List<F_P001VO> reviewList = null;
+		reviewList = sqlSession.selectList("mapper.product.memberReviewList", vo);
+		System.out.println("reviewList"+reviewList);
+		return reviewList;
+	}
+
+
+	@Override
+	public int countBoard() {
+		return sqlSession.selectOne("mapper.product.countBoard");
+	}
+
+
+
+
+
 }
    

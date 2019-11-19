@@ -14,8 +14,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 public interface A_P005Controller {
 	public ModelAndView listBasket(HttpServletRequest request, HttpServletResponse response) throws Exception;
-	public Map<String, Object> removeBasket(@RequestParam("mem_no") String mem_no, HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public Map<String, Object> removeBasket(@RequestParam("ba_no") String ba_no, HttpServletRequest request, HttpServletResponse response) throws Exception;
 //	public ModelAndView updateBasket(@RequestParam("mem_no") String mem_no, @RequestParam("ba_quantity") String ba_quantity, HttpServletRequest request, HttpServletResponse response) throws Exception;	
-	public Map<String, Object> updateBasket(@RequestParam("mem_no") String mem_no, @RequestParam("ba_quantity") String ba_quantity, HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public Map<String, Object> updateBasket(@RequestParam("ba_no") String ba_no, @RequestParam("ba_quantity") String ba_quantity, HttpServletRequest request, HttpServletResponse response) throws Exception;
 	
 }

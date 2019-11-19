@@ -30,4 +30,8 @@ public class A_P002ServiceImpl implements A_P002Service {
 	public String overlapped(String id) throws Exception{
 		return a_p002DAO.selectOverlappedID(id);
 	}
+	
+	public void verifyMember(A_P002VO A_P002VO) {
+		a_p002DAO.verifyMember(A_P002VO);
+	}
 }

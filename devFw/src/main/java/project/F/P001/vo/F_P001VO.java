@@ -27,7 +27,19 @@ private String pro_explain;
    private String common_code;
    private String common_name;  
    
-  
+   private String review_number;
+   private String mem_no;
+   private int review_monthpoint;
+   private String review_content;
+   private String review_stdate;
+
+
+
+
+	public F_P001VO() {
+		System.out.println("F_P001VO 호출");
+	}
+
    public String getCommon_code() {
 	return common_code;
 }
@@ -134,4 +146,45 @@ public String getSell_number() {
 			public void setDetail_quantity(int detail_quantity) {
 				this.detail_quantity = detail_quantity;
 			}
+			   
+			   
+			  
+			public String getReview_number() {
+			return review_number;
+		}
+
+		public void setReview_number(String review_number) {
+			this.review_number = review_number;
+		}
+
+		public String getMem_no() {
+			return mem_no;
+		}
+
+		public void setMem_no(String mem_no) {
+			this.mem_no = mem_no;
+		}
+
+		public int getReview_monthpoint() {
+			return review_monthpoint;
+		}
+
+		public void setReview_monthpoint(int review_monthpoint) {
+			this.review_monthpoint = review_monthpoint;
+		}
+
+		public String getReview_content() {
+			return review_content;
+		}
+
+		public void setReview_content(String review_content) {
+			this.review_content = review_content;
+		}
+		public String getReview_stdate() {
+			return review_stdate;
+		}
+
+		public void setReview_stdate(String review_stdate) {
+			this.review_stdate = review_stdate;
+		}
 }
