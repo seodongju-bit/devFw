@@ -13,7 +13,7 @@ public class A_P001VO {
 	private String mem_email1 = "";
 	private String mem_email2 = "";
 	private String mem_division = "";
-	
+	private String mem_verify = "";
 	
 	public A_P001VO() {
 		System.out.println("A_P001VO 호출");
@@ -103,6 +103,18 @@ public class A_P001VO {
 
 	public void setMem_division(String mem_division) {
 		this.mem_division = mem_division;
+	}
+
+
+
+	public String getMem_verify() {
+		return mem_verify;
+	}
+
+
+
+	public void setMem_verify(String mem_verify) {
+		this.mem_verify = mem_verify;
 	}
 
 	

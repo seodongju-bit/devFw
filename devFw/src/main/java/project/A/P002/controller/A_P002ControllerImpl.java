@@ -2,6 +2,7 @@ package project.A.P002.controller;
 
 import java.io.UnsupportedEncodingException;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import javax.inject.Inject;
@@ -140,18 +141,28 @@ public class A_P002ControllerImpl   implements A_P002Controller {
 
 	
 	@Override
-	@RequestMapping(value="/overlapped.do" ,method = RequestMethod.POST)
-	public ResponseEntity overlapped(@RequestParam("id") String id,HttpServletRequest request, HttpServletResponse response) throws Exception{
+	@RequestMapping(value="/overlappedid.do" ,method = RequestMethod.POST)
+	public ResponseEntity overlappedid(@RequestParam("id") String id,HttpServletRequest request, HttpServletResponse response) throws Exception{
 		ResponseEntity resEntity = null;
 		System.out.println(id);
-		String result = a_p002Service.overlapped(id);
+		String result = a_p002Service.overlappedid(id);
 		resEntity =new ResponseEntity(result, HttpStatus.OK);
 		return resEntity;
 	}
 	
 	
+	@Override
+	@RequestMapping(value="/overlappedemail.do" ,method = RequestMethod.POST)
+	public ResponseEntity overlappedemail(@RequestParam Map<String, String> emailMap,HttpServletRequest request, HttpServletResponse response) throws Exception {
+		ResponseEntity resEntity = null;
+		emailMap.put("mem_email1", "mem_email2");
+		String data = a_p002Service.overlappedemail(emailMap);
+		resEntity =new ResponseEntity(emailMap, HttpStatus.OK);
+		return resEntity;
+	}
+	
 	@RequestMapping(value = "/verify.do", method = RequestMethod.GET)
-	public String signSuccess(@RequestParam String mem_email1,@RequestParam String mem_email2, @RequestParam String m_email_domain) {
+	public String signSuccess(@RequestParam String mem_email1,@RequestParam String mem_email2) throws Exception {
 		System.out.println("이메일 인증기능 처리");
 		System.out.println(mem_email1);
 		System.out.println(mem_email2);
@@ -159,10 +170,10 @@ public class A_P002ControllerImpl   implements A_P002Controller {
 		A_P002VO.setMem_email1(mem_email1);
 		A_P002VO.setMem_email2(mem_email2);
 		a_p002Service.verifyMember(A_P002VO);
-		return "signSuccess.jsp";
+		return "signupsuccesspage";
 	}
 	
-	 
+	 	
 	private String getViewName(HttpServletRequest request) throws Exception {
 		String contextPath = request.getContextPath();
 		String uri = (String) request.getAttribute("javax.servlet.include.request_uri");

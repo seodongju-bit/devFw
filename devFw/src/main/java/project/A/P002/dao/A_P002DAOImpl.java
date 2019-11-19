@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
+import org.aspectj.ajde.internal.LstBuildConfigFileParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
@@ -27,8 +28,17 @@ public class A_P002DAOImpl implements A_P002DAO {
 		return result;
 	}
 	
-	public void verifyMember(A_P002VO A_P002VO){
-		sqlSession.update("A.A_P002A.verifyMember",A_P002VO);
+
+	@Override
+	public String selectOverlappedEMAIL(Map emailMap) throws DataAccessException {
+		String result = sqlSession.selectOne("A.A_P002.selectOverlappedEMAIL",emailMap);
+		return result;
+	}
+	
+	
+
+	public void verifyMember(A_P002VO A_P002VO) throws DataAccessException {
+		sqlSession.update("A.A_P002.verifyMember",A_P002VO);
 	}
 	
 }

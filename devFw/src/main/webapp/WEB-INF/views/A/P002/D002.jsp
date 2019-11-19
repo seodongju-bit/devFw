@@ -21,7 +21,7 @@
           <label for="id" class="w" >회원 ID:</label>
           <input type="text" class="idbox" id="_mem_id" name="_mem_id" maxlength="15" placeholder="ID" style="float:left;">
           <input type="hidden" class="idbox" id="mem_id" name="mem_id" maxlength="15" placeholder="ID" style="float:left;">
-          <button type="button" id="btnOverlapped" class="overlapped-btn2" onClick="fn_overlapped();">중복 검사</button>
+          <button type="button" id="btnOverlapped" class="overlapped-btn2" onClick="fn_overlappedid();">중복 검사</button>
           <br></br>
           <label for="password" class="w">비밀번호:</label>
           <input type="password" class="pwdbox" id="mem_pw" name="mem_pw"maxlength="20" placeholder="PW">
@@ -67,6 +67,7 @@
 		var id_check=false;
 		var pw_check=false;
 		var pwc_check=false;
+		//var email_check=false;
 		
 		function formCheck(){
 			if(id_check && pw_check && pwc_check){
@@ -210,7 +211,7 @@
 			
 
 			
-			function fn_overlapped(){
+			function fn_overlappedid(){
 			    var _id=$("#_mem_id").val();
 			    if(_id==''){
 			   	 alert("ID를 입력하세요");
@@ -219,7 +220,7 @@
 			    $.ajax({
 			       type:"post",
 			       async:false,  
-			       url:"${contextPath}/overlapped.do",
+			       url:"${contextPath}/overlappedid.do",
 			       dataType:"text",
 			       data: {"id":_id},
 			       success:function (data,textStatus){
@@ -244,6 +245,32 @@
 			    });  //end ajax	 
 			 }	
 				
+			
+			/* function fn_overlappedemail(){
+			    var _mem_email1=$("#_mem_email1").val();
+			    var _mem_email2=$("#_mem_email2").val();
+			    $.ajax({
+			       type:"post",
+			       async:false,  
+			       url:"${contextPath}/overlappedemail.do",
+			       dataType:"text",
+			       data: {"mem_email1":_mem_email1},
+			       		 {"mem_email2";_mem_email2},
+			       success:function (data,textStatus){
+			          if(data=='false'){
+			       	    alert("사용할 수 있는 ID입니다.");
+// 			       	    $('#btnOverlapped').prop("disabled", true);
+// 			       	    $('#_signupsuccesspagemem_id').prop("disabled", true);
+			       	    $('#mem_id').val(_id);
+			       	 	id_check =true;
+			          }else{
+			        	  alert("사용할 수 없는 ID입니다.");
+			        	  id_check =false;
+			          });
+			    }
+			    }
+			} */
+
 
 			
 		</script>
