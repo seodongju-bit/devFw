@@ -18,196 +18,78 @@ div.name{
 font-size:25px;
 margin-top:100px; 
 }
-    body{
-        line-height:2em;        
-        font-family:"맑은 고딕";
-}
-    ul, li{ 
-        list-style:none;
-        text-align:center;
-        padding:0;
-        margin:0;
-}
 
-    #mainWrapper{
-        width: 1250px;     
-        height:500px;                                                             
-        margin: 0 50; /*가운데  정렬*/
-    }
 
-    #mainWrapper > ul > li:first-child {
-        text-align: center;
-        font-size:14pt;
-        height:40px;
-        vertical-align:middle;
-        line-height:30px;
-}
-
-    #ulTable {margin-top:10px;}
-    
-
-    #ulTable > li:first-child > ul > li {
-        background-color:#c9c9c9;
-        font-weight:bold;
-        text-align:center;
-}                
-                                          
-                                               
-                 
-    #ulTable > li > ul {
-        clear:both;
-        padding:0px auto;
-        position:relative;
-        min-width:40px;
-}
-    #ulTable > li > ul > li { 
-        float:left;
-        font-size:10pt;
-        border-bottom:1px solid silver;
-        vertical-align:baseline;
-}    
-
-    #ulTable > li > ul > li:first-child               {width:150px;} /*No 열 크기*/
-    #ulTable > li > ul > li:first-child +li           {width:450px;;} /*제목 열 크기*/
-    #ulTable > li > ul > li:first-child +li+li        {width:200px;} /*작성일 열 크기*/
-    #ulTable > li > ul > li:first-child +li+li+li     {width:250px;} /*작성자 열 크기*/
-    #ulTable > li > ul > li:first-child +li+li+li+li{width:150px;} /*조회수 열 크기*/
-
-    #divPaging {
-          clear:both; 
-        margin:0 auto; 
-        width:220px; 
-        height:50px;               
-}
-                                                                         
-    #divPaging > div {
-        float:left;
-        width: 30px;
-        margin:0 auto;                                   
-        text-align:center;
-}
-
-    #liSearchOption {clear:both;}
-    #liSearchOption > div {
-        margin:0 auto; 
-        margin-top: 30px; 
-        width:auto; 
-        height:100px;
-
-}
-
-    .title {
-        text-align : left;                                                 
-        height:30px;       
-}                                       
-
-                                  
-    
+   
 
       
 </style>
 
 </head>
 <body>
+<form name="frm" method="post" encType="UTF-8">
 <div class="individual">
 individual review
 </div>
 
 <div class="name">
-님의 리뷰 목록입니다.
+고객님의 리뷰 목록입니다.
 </div>
+<div class="review">
 
+<div style="float: right;">
+		<select id="cntPerPage" name="sel" onchange="selChange()">
+			<option value="5"
+				<c:if test="${paging.cntPerPage == 5}">selected</c:if>>5줄 보기</option>
+			<option value="10"
+				<c:if test="${paging.cntPerPage == 10}">selected</c:if>>10줄 보기</option>
+			<option value="15"
+				<c:if test="${paging.cntPerPage == 15}">selected</c:if>>15줄 보기</option>
+			<option value="20"
+				<c:if test="${paging.cntPerPage == 20}">selected</c:if>>20줄 보기</option>
+		</select>
+	</div> <!-- 옵션선택 끝 -->
+<table class="table table-hover" id="review_td">
+<tr>
+<th>번호</th>
+<th>상품명</th>
+<th>내용</th>
+<th>아이디</th>
+<th>게시날짜</th>
+</tr>
 
+<c:forEach var="memberReview" items="${List}" varStatus='index' >
+<tr align="center" onclick="location.href='#'">
+<td>${List.review_number}</td>               
+<td>${List.sell_title}</td>
+<td>${List.review_content}</td>
+<td>${List.mem_id}</td>
+<td>${List.review_stdate}</td>
+</tr>
+</c:forEach>
+</table>
 
-   <div id="mainWrapper">
+<div style="display: block; text-align: center;">		
+		<c:if test="${paging.startPage != 1 }">
+			<a href="${contextPath}/memberReview.do?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
+		</c:if>
+		<c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="p">
+			<c:choose>
+				<c:when test="${p == paging.nowPage }">
+					<b>${p }</b>
+				</c:when>
+				<c:when test="${p != paging.nowPage }">
+					<a href="${contextPath}/memberReview.do?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
+				</c:when>
+			</c:choose>
+		</c:forEach>
+		<c:if test="${paging.endPage != paging.lastPage}">
+			<a href="${contextPath}/memberReview.do?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
+		</c:if>
+	</div>
 
-        <ul>
-         
-
-            <!-- 게시판 목록  -->
-            <li>
-             
-                <ul id ="ulTable">
-                    <li>
-                        <ul>
-                            <li>No</li>
-                            <li>제목</li>
-                            <li>작성일</li>
-                            <li>상품명</li>
-                            <li>조회수</li>
-                        </ul>
-                    </li>
-                    <!-- 게시물이 출력될 영역 -->
-                    <li>
-                        <ul>
-                            <li>1</li>
-                            <li class="title">제목제목제목제목1</li>
-                            <li>2014.07.09</li>
-                            <li>자바킹</li>
-                            <li>0</li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <ul>
-                            <li>2</li>
-                            <li class="title">제목제목제목제목1</li>
-                            <li>2014.07.09</li>
-                            <li>자바킹</li>
-                            <li>0</li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <ul>
-                            <li>3</li>
-                            <li class="title">제목제목제목제목1</li>
-                            <li>2014.07.09</li>
-                            <li>자바킹</li>
-                            <li>0</li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <ul>
-                            <li>4</li>
-                            <li class="title">제목제목제목제목1</li>
-                            <li>2014.07.09</li>
-                            <li>자바킹</li>
-                            <li>0</li>
-                        </ul>
-                    <li>                                        
-                </ul>
-            </li>
-
-            <!-- 게시판 페이징 영역 -->
-            <li>
-                <div id="divPaging">
-                    <div>◀</div>
-                       <div><b>1</b></div>
-                    <div>2</div>
-                    <div>3</div>
-                    <div>4</div>
-                    <div>5</div>
-                    <div>▶</div>
-                </div>
-            </li>
-
-            <!-- 검색 폼 영역 -->
-            <li id='liSearchOption'>
-                <div>
-                    <select id='selSearchOption' >
-                        <option value='A'>제목+내용</option>
-                        <option value='T'>제목</option>
-                        <option value='C'>내용</option>
-                    </select>
-                    <input id='txtKeyWord' />
-                    <input type='button' value='검색'/>
-                </div>
-                </li>
-
-        </ul>
-    </div>
+</div>
+</form>
 </body>
 </html>
 

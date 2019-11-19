@@ -79,6 +79,16 @@
     
    </resultMap>
 
+  <resultMap id="memberReviewDAO" type="F_P001VO">
+     <result property="review_number" column="review_number" />
+     <result property="sell_title" column="sell_title" />
+     <result property="review_content" column="review_content" />
+     <result property="mem_id" column="mem_id" />
+     <result property="review_stdate" column="review_stdate" />
+     <result property="sell_number" column="sell_number" />
+     
+
+   </resultMap>
 
 
 
@@ -138,6 +148,35 @@
                                
       
    </select>  
+   
+   
+   
+         <select id="memberReviewList" resultMap="memberReviewDAO" > 
+      <![CDATA[
+      	 	SELECT * 
+		FROM (
+			SELECT ROWNUM RN, A.* 
+				FROM (
+						SELECT r.review_number,r.review_content,r.review_stdate,s.sell_title,m.mem_id
+						FROM review r, members m, productsell s 
+						WHERE r.sell_number = s.sell_number AND
+						m.mem_id = s.mem_id
+						ORDER BY r.review_number DESC
+						)A   
+				)
+		 WHERE RN BETWEEN #{start} AND #{end}          
+      	
+          
+      ]]>          
+                               
+            
+   </select>  
+   
+   	<select id="countBoard" resultType="int">      
+	<![CDATA[                        
+	SELECT COUNT(*) FROM notice
+	]]>
+	</select>
 
   
 </mapper>         

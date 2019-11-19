@@ -31,7 +31,9 @@ private String pro_explain;
    private String mem_no;
    private int review_monthpoint;
    private String review_content;
- 
+   private String review_stdate;
+
+
 
 
 	public F_P001VO() {
@@ -177,5 +179,12 @@ public String getSell_number() {
 
 		public void setReview_content(String review_content) {
 			this.review_content = review_content;
+		}
+		public String getReview_stdate() {
+			return review_stdate;
+		}
+
+		public void setReview_stdate(String review_stdate) {
+			this.review_stdate = review_stdate;
 		}
 }

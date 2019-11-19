@@ -21,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import project.F.P001.vo.F_P001VO;
+import project.F.P001.vo.PagingVO;
 import project.F.P001.service.F_P001Service;
 
 
@@ -48,16 +49,46 @@ public class F_P001ControllerImpl implements F_P001Controller {
 	
 
 	
-	@Override
-	@RequestMapping(value="/memberReview.do" ,method = RequestMethod.GET)
-	public ModelAndView memberReview(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String viewName3 = getViewName(request);
-		viewName3 = "memberReview";
-
-		ModelAndView mav3 = new ModelAndView(viewName3);
+//	@Override
+//	@RequestMapping(value="/memberReview.do" ,method = RequestMethod.GET)
+//	public ModelAndView memberReview(HttpServletRequest request, HttpServletResponse response) throws Exception {
+//		String viewName3 = getViewName(request);
+//		viewName3 = "memberReview";
+//
+//		ModelAndView mav3 = new ModelAndView(viewName3);
+//	
+//		return mav3;
+//	}
 	
-		return mav3;
+
+	@Override
+	@RequestMapping(value="/memberReview.do" ,method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView memberReview(PagingVO vo
+			, @RequestParam(value="nowPage", required=false)String nowPage
+			, @RequestParam(value="cntPerPage", required=false)String cntPerPage, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = "memberReview";
+		
+		int total = f_P001Service.countBoard();
+		System.out.println("controller실행"+total);
+		if (nowPage == null && cntPerPage == null) {
+			nowPage = "1";
+			cntPerPage = "5";
+		} else if (nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) { 
+			cntPerPage = "5";
+		}
+			vo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+			
+		
+		List reviewList = f_P001Service.listEvent(vo);
+		ModelAndView mav7 = new ModelAndView(viewName);
+		mav7.addObject("paging", vo);    
+		mav7.addObject("reviewList", reviewList);
+		return mav7;
 	}
+	
+	
 	
 
 	
@@ -131,6 +162,8 @@ public class F_P001ControllerImpl implements F_P001Controller {
 		}
 		return viewName;
 	}
+
+
 
 
 }

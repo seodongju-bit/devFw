@@ -10,8 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-
-
+import project.F.P001.vo.PagingVO;
 import  project.F.P001.dao.F_P001DAO;
 
 
@@ -65,5 +64,19 @@ public class F_P001ServiceImpl implements F_P001Service{
 	}
 
 	
+	@Autowired
+	private F_P001DAO memberReviewDAO ;
+	@Override
+	public List listEvent(PagingVO vo) throws DataAccessException {
+		List reviewList = null;
+		reviewList = memberReviewDAO.memberReviewList(vo);
+		return reviewList;
+	}
+	@Override
+	public int countBoard() {
+		return memberReviewDAO.countBoard();
+	}
+
+
 
 }

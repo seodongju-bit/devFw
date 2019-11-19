@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
+import project.F.P001.vo.PagingVO;
 import project.F.P001.vo.F_P001VO;
 
 
@@ -58,6 +59,23 @@ public class F_P001DAOImpl implements F_P001DAO {
 	
 	
 	
-	
+	@Override
+	public List memberReviewList(PagingVO vo) throws DataAccessException {
+		List<F_P001VO> reviewList = null;
+		reviewList = sqlSession.selectList("mapper.product.memberReviewList", vo);
+		System.out.println("reviewList"+reviewList);
+		return reviewList;
+	}
+
+
+	@Override
+	public int countBoard() {
+		return sqlSession.selectOne("mapper.product.countBoard");
+	}
+
+
+
+
+
 }
    

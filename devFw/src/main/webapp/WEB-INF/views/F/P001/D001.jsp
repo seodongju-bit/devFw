@@ -99,20 +99,17 @@ Review Ranking
 </div>            
       
 <!-- 리뷰 3등까지만 출력되게 -->
-<c:forEach var="productlist7" items="${List}">
-<c:if test="${!empty List}">
-<div class="gallery">
-<c:forEach var="productlist5" items="${List}" varStatus='index' begin='0' end='2' >         
-  <div class="ranking1"><div class="ranking1_1"> ${index.count} 등 ${productlist5.mem_id}님</div> : ${productlist5.review_content}<br> 월 추천수:${productlist5.review_monthpoint} <br>
- </div>  
- </c:forEach>             
-<c:forEach var="productlist6" items="${List}" varStatus='index' begin='0' end='0' >
+
+<c:forEach var="productlist6" items="${List}" varStatus='index' >
   
-   
-   <div class="desc">
-
+  <div class="gallery"> 
+  
    <div class="desc1">${productlist6.sell_title}</div>
-
+    ${index.count} 등<br>
+    ${productlist6.mem_id}님 :<br> 
+    ${productlist6.review_content}<br> 
+    월 추천수:${productlist6.review_monthpoint} <br>
+    
    <fmt:formatNumber value="${productlist6.sell_price}" pattern="#,###"/>원<br>    
         ${productlist6.pro_explain}
 <a href="#" height="5" width="10" target="_blank">
@@ -120,9 +117,7 @@ Review Ranking
  </a>      
 </div>
  </c:forEach> 
-       </div>  
-       </c:if> 
-      </c:forEach>                         
-
+    
+                          
 </body>
 </html>     

@@ -13,10 +13,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import project.F.P001.vo.PagingVO;
+
 public interface F_P001Controller {
 	
 	ModelAndView reviewRanking(HttpServletRequest request, HttpServletResponse response) throws Exception;
-	ModelAndView memberReview(HttpServletRequest request, HttpServletResponse response) throws Exception;
+	ModelAndView memberReview(PagingVO vo, String nowPage, String cntPerPage, HttpServletRequest request,
+			HttpServletResponse response) throws Exception;
 	ModelAndView eventProduct(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	ModelAndView bestProduct(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	ModelAndView category(HttpServletRequest request, HttpServletResponse response) throws Exception;
