@@ -3,6 +3,7 @@ package project.A.P001.controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.mail.Session;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -38,6 +39,17 @@ public class A_P001ControllerImpl implements A_P001Controller {
 		//mav.addObject("membersList", membersList);
 		return mav;
 	}
+	
+	@Override
+	@RequestMapping(value="/unauthorizedmember.do" ,method = RequestMethod.GET)
+	public ModelAndView unauthorizedmember(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = getViewName(request);
+		viewName = "unauthorizedmember";
+		//List membersList = memberService.listMembers();
+		ModelAndView mav = new ModelAndView(viewName);
+		//mav.addObject("membersList", membersList);
+		return mav;
+	}
 
 
 	@RequestMapping(value="/login.do" ,method = RequestMethod.POST)
@@ -51,6 +63,11 @@ public class A_P001ControllerImpl implements A_P001Controller {
 
 			A_P001VO=a_p001Service.login(loginMap);
 			if(A_P001VO!= null && A_P001VO.getMem_id()!=null){
+				
+				if(A_P001VO.getMem_verify().equals('n')) {
+					mav.setViewName("redirect:unauthorizedmember.do");
+					return mav;
+				}
 				HttpSession session=request.getSession();
 				session=request.getSession();
 				session.setAttribute("isLogOn", true);
@@ -58,7 +75,7 @@ public class A_P001ControllerImpl implements A_P001Controller {
 				session.setAttribute("mem_id", A_P001VO.getMem_id());
 				session.setAttribute("memberInfo",A_P001VO);
 				System.out.println(addr2[0]);
-				if(addr2[0].equals("/signupsuccesspage.do") || addr2[0].equals("/signinpage.do")) {
+				if(addr2[0].equals("/signupsuccesspage.do") || addr2[0].equals("/signinpage.do") || addr2[0].equals("/verify.do")) {
 					mav.setViewName("redirect:main.do");
 				}else {   
 					mav.setViewName("redirect:"+addr2[0]);
@@ -73,10 +90,10 @@ public class A_P001ControllerImpl implements A_P001Controller {
 				mav.setViewName("redirect:signinpage.do");
 			}
 		}catch(Exception e) {
+
 			mav.setViewName("redirect:main.do");
+			return mav;	
 		}
-
-
 		return mav;
 	}
 

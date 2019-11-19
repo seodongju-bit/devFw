@@ -28,6 +28,16 @@
 	   where mem_id = #{id}
 	</select>
 	
+	
+	<select id="selectOverlappedEMAIL" parameterType="String" resultType="String">
+	   select decode(count(*),1, 'true', 0, 'false')
+	   from members
+	   where mem_email1  = #{mem_email1} 
+	   and mem_email2 = #{mem_email2}
+	   
+
+	</select>
+	
   <insert id="insertNewMember"  parameterType="A_P002VO">
   <![CDATA[
     	insert into members			(mem_id,
@@ -58,7 +68,7 @@
    ]]>      
   </insert>
   
-  <update id="verifyMember">
+  <update id="verifyMember" parameterType="A_P002VO">
 				update members set mem_verify='y' where	mem_email1=#{mem_email1} and mem_email2=#{mem_email2}
 		</update>
   

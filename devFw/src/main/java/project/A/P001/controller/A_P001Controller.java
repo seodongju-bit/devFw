@@ -14,6 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 public interface A_P001Controller {
 	public ModelAndView signinmain(HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public ModelAndView unauthorizedmember(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView login(@RequestParam Map<String, String> loginMap,HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView logout(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	
