@@ -31,7 +31,6 @@ h1 {
 
 
 
-
 .pwdbox,
 .namebox,
 .addressbox,
@@ -55,6 +54,21 @@ select{
   margin-bottom: 30px;
 }
 
+
+.codebox{
+  background: rgba(255,255,255,0.1);
+  border: none;
+  font-size: 16px;
+  height: auto;
+  margin: 0;
+  outline: 0;
+  padding: 15px;
+  width: 50%;
+  background-color: #e8eeef;
+  color: #8a97a0;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+}
+
 .idbox{
 background: rgba(255,255,255,0.1);
   border: none;
@@ -67,7 +81,7 @@ background: rgba(255,255,255,0.1);
   background-color: #e8eeef;
   color: #8a97a0;
   box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
-  margin-bottom: 30px;
+  	
 }
 .pwdbox{
 	padding:15px;
@@ -141,6 +155,21 @@ input[type="checkbox"] {
   outline: 0;
   padding: 15px;
   width: 29%;
+  background-color: #e8eeef;
+  color: #8a97a0;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+  margin-bottom: 30px;
+}
+
+.codebox{
+	background: rgba(255,255,255,0.1);
+  border: none;
+  font-size: 16px;
+  height: auto;
+  margin: 0;
+  outline: 0;
+  padding: 15px;
+  width: 35%;
   background-color: #e8eeef;
   color: #8a97a0;
   box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
@@ -238,17 +267,17 @@ box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;
 .overlapped-btn2:hover{
 	cursor:pointer;
 }
+.conf-btn,
 .email-btn{
   padding: 10px 10px 10px 10px;
   color: #FFF;
   background-color: #4bc970;
-  font-size: 18px;  
-  text-align: center;
+  font-size: 18px;
   font-style: normal;
   border-radius: 5px;
-  width: 40%;
   border: 1px solid #3ac162;
   border-width: 1px 1px 3px;
+  width: 45%;
   box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;
   margin-bottom: 10px;
 }
@@ -301,6 +330,15 @@ label.light {
   text-align: center;
   text-shadow: 0 1px 0 rgba(255,255,255,0.2);
   border-radius: 100%;
+}
+.idbox:first-child{
+	margin-bottom:0px;
+	
+}
+#wrkr_check{
+	text-align:left;
+	font-size:8px;
+	color:red;
 }
 
 

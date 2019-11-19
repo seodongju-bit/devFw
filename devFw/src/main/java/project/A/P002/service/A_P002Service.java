@@ -14,4 +14,5 @@ import project.A.P002.vo.A_P002VO;
 public interface A_P002Service {
 	public void addMember(A_P002VO A_P002VO) throws Exception;
 	public String overlapped(String id) throws Exception;
+	public void verifyMember(A_P002VO A_P002VO);
 }

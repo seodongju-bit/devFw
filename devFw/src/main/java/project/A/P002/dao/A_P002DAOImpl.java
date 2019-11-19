@@ -27,5 +27,8 @@ public class A_P002DAOImpl implements A_P002DAO {
 		return result;
 	}
 	
+	public void verifyMember(A_P002VO A_P002VO){
+		sqlSession.update("A.A_P002A.verifyMember",A_P002VO);
+	}
 	
 }

@@ -57,4 +57,10 @@
                                              
    ]]>      
   </insert>
+  
+  <update id="verifyMember">
+				update members set mem_verify='y' where	mem_email1=#{mem_email1} and mem_email2=#{mem_email2}
+		</update>
+  
+  
 </mapper>
