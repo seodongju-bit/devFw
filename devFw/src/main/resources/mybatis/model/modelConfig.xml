@@ -16,6 +16,7 @@
 		<typeAlias type="project.C.P001.vo.C_P001VO"  alias="eventVO" />
 		<typeAlias type="project.A.P004.vo.A_P004VO"  alias="couponVO" />
 		<typeAlias type="project.B.P001.vo.B_P001VO"  alias="B_P001VO" />
+		<typeAlias type="project.B.P002.vo.B_P002VO"  alias="B_P002VO" />
 		<typeAlias type="project.E.P001.vo.E_P001VO"  alias="E_P001VO" />
 		<typeAlias type="project.controller.commonVO"  alias="commonVO" />
 		<typeAlias type="project.main.paging.MainPagingVO" alias="mainPagingVO"/>

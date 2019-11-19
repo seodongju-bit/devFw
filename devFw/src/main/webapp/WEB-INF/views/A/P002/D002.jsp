@@ -15,7 +15,7 @@
     <body>
 
      <form action="${contextPath}/addMember.do" method="post" >	
-        <h1>회원 분류</h1>
+        <h1>회원가입</h1>
         
         <fieldset>
           <label for="id" class="w" >회원 ID:</label>

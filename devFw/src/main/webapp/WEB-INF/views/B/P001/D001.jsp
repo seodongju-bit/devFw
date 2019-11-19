@@ -9,6 +9,10 @@
 <meta http-equiv="Content-Style-Type" content="text/css" />
 <script type="text/javascript" src="/devFw/resources/maskedit/js/jquery-1.7.0.min.js"></script>
 
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
 <script language="javascript" src="/devFw/resources/sheet/sheet/ibsheetinfo.js"></script>
 <script language="javascript" src="/devFw/resources/sheet/sheet/ibsheet.js"></script>
@@ -16,7 +20,7 @@
 <style>
 
 #area{
-	background-color:lightgreen;
+	background-color: white;
 	width:100%;
 	height:700px;
 }
@@ -24,7 +28,7 @@
 	
 	width:1250px;
 	margin:0 auto;
-	background-color:lightblue;
+	background-color: white;
 }
 #DIV_mySheet{
 	margin:0 auto;
@@ -110,11 +114,18 @@
 	}
 	/////////
 	
-	var popupX = (window.screen.width/2) - (800/2);
-	var popupY = (window.screen.height/2) - (1000/2);
+	
 
-	function showPopup(){
+	function addProduct(){
+		var popupX = (window.screen.width/2) - (400);
+		var popupY = (window.screen.height/2) - (500);
 		window.open("itemManager/addProduct.do", "제품추가창", "width=600, height=700, left="+popupX+", top="+popupY,"resizable=no");
+	}
+	
+	function addSell(){
+		var popupX = (window.screen.width/2) - (400);
+		var popupY = (window.screen.height/2) - (500);
+		window.open("itemManager/addSell.do", "판매등록창", "width=885, height=920, left="+popupX+", top="+popupY,"resizable=no");
 	}
 
 
@@ -127,7 +138,8 @@
 		
         <div class="main_content">
   			<h1>상품관리</h1><br>
-  			<button onclick="showPopup()">제품추가</button>
+  			<button class="btn btn-default" onclick="addProduct()">제품추가</button>
+  			<button class="btn btn-default" onclick="addSell()">판매등록</button>
 
             <div class="ib_function float_right">
                 <a href="javascript:doAction('reload')" class="f1_btn_gray lightgray">초기화</a>
