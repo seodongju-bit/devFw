@@ -1,5 +1,6 @@
 package project.A.P002.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -27,7 +28,16 @@ public class A_P002ServiceImpl implements A_P002Service {
 	}
 	
 	@Override
-	public String overlapped(String id) throws Exception{
+	public String overlappedid(String id) throws Exception{
 		return a_p002DAO.selectOverlappedID(id);
+	}
+	
+	@Override
+	public String overlappedemail(Map emailMap) throws Exception{
+		return a_p002DAO.selectOverlappedEMAIL(emailMap);
+	}
+	
+	public void verifyMember(A_P002VO A_P002VO) {
+		a_p002DAO.verifyMember(A_P002VO);
 	}
 }

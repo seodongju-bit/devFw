@@ -16,6 +16,7 @@
 			/WEB-INF/spring/appServlet/servlet-context.xml
 			/WEB-INF/spring/message-context.xml
 			/WEB-INF/spring/action-mybatis.xml
+			/WEB-INF/spring/presentation-layer.xml
 			</param-value>
     </init-param>
     <load-on-startup>1</load-on-startup>

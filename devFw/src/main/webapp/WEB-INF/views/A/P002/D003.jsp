@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-  		<link rel="stylesheet" type="text/css" href="resources/css/A_P002_D002.css?ver=1.1">
+  		<link rel="stylesheet" type="text/css" href="resources/css/A_P002_D002.css?ver=1.3">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <title>Sign Up Form</title>
@@ -14,25 +14,30 @@
     </head>
     <body>
 
-     <form action="${contextPath}/addMember.do" method="post" >	
-        <h1>회원가입</h1>
+     <form name="frm1" action="${contextPath}/addMember.do" method="post" >	
+        <h1>판매자 회원가입</h1>
         
         <fieldset>
+          <label for="id" class="w" >사업자 등록번호 :</label>
+          <input type="text" class="idbox" id="wrkr_no" name="wrkr_no" maxlength="10" placeholder="사업자등록번호" onkeyup="checkwno(this.value)" style="float:left;">
+          <button type="button" type="button" id="btnOverlapped" class="overlapped-btn2" onclick="onopen();" style="float:center;"><i class="fa fa-search"></i>조회</button>
+          <div id="wrkr_check"></div>
+          <br></br>
           <label for="id" class="w" >회원 ID:</label>
           <input type="text" class="idbox" id="_mem_id" name="_mem_id" maxlength="15" placeholder="ID" style="float:left;">
           <input type="hidden" class="idbox" id="mem_id" name="mem_id" maxlength="15" placeholder="ID" style="float:left;">
-          <button type="button" id="btnOverlapped" class="overlapped-btn2" onClick="fn_overlappedid();">중복 검사</button>
+          <button type="button" id="btnOverlapped" class="overlapped-btn2" onClick="fn_overlapped();">중복 검사</button>
           <br></br>
           <label for="password" class="w">비밀번호:</label>
           <input type="password" class="pwdbox" id="mem_pw" name="mem_pw"maxlength="20" placeholder="PW">
           	<div id="desc1"></div>
           	<div id="pwtip">tip<span class="tooltiptext">영문/숫자/특수문자를 혼용하여 6자 이상 입력해주세요</span></div>
           <input type="password" class="pwdbox" id="mem_pw_check" maxlength="20" placeholder="PW 확인"><div id="desc2"></div>
-          <label for="nick" class="w">닉네임:</label>
-          <input type="text" class="nickbox" id="mem_nick" name="mem_nick"maxlength="10" placeholder="NICK NAME">
-          <label for="name" class="w">이름:</label>
+          <label for="nick" class="w">판매처명:</label>
+          <input type="text" class="nickbox" id="mem_nick" name="mem_nick"maxlength="10" placeholder="COMPANY NAME">
+          <label for="name" class="w">대표자명:</label>
           <input type="text" class="namebox" id="mem_name" name="mem_name" maxlength="15" placeholder="NAME">
-          <label for="mail" class="w">이메일:</label> 
+          <label for="mail" class="w">이메일:</label> 	
           <input type="text" class="mail1" id="mem_email1"  name="mem_email1" maxlength="15" >@
           <input type="text" class="mail2" id="mem_email2"  name="mem_email2" disabled value="naver.com"> 
           <select class="mailselect" name="mem_email2" id="selectEmail"> 
@@ -55,7 +60,7 @@
 		  <div class="form-group">
     	  <input class="form-control" placeholder="상세주소" name="mem_address2" id="mem_address2" type="text"  />
 		  </div>
-		  <input type="hidden" name="mem_division" value="0">
+		  <input type="hidden" name="mem_division" value="1">
         
         </fieldset>
         <button type="submit" class="sign-upbtn" id="memberFormButton" disabled="true" > 회원 가입</button>
@@ -64,13 +69,13 @@
 		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 		<script type="text/javascript"> 
 		
+		var wrk_check=false;
 		var id_check=false;
 		var pw_check=false;
 		var pwc_check=false;
-		//var email_check=false;
 		
 		function formCheck(){
-			if(id_check && pw_check && pwc_check){
+			if(wrk_check &&id_check && pw_check && pwc_check){
 				document.getElementById('memberFormButton').style.background='#4bc970';
 				document.getElementById('memberFormButton').removeAttribute('disabled');
 			}else{
@@ -79,6 +84,24 @@
 			}
 		}
 		
+			
+			$('#_mem_id').change(function(){
+				id_check = false;
+				formCheck();
+			});
+		
+			$('#selectEmail').change(function(){
+				$("#selectEmail option:selected").each(function () {
+						if($(this).val()== '1'){
+									$("#mem_email2").val(''); 
+									$("#mem_email2").attr("disabled",false); 
+						}else{
+									$("#mem_email2").val($(this).text()); 
+									$("#mem_email2").attr("disabled",true); 
+						} 
+					}); 
+				}); 
+			
 		
 			$('#_mem_id').change(function(){
 				id_check = false;
@@ -103,7 +126,6 @@
 					pw_check = true;
 				}else{
 					document.getElementById('desc1').innerHTML="사용 불가능한 비밀번호입니다";
-					document.getElementById('desc1').style.color = 'red';
 					pw_check = false;
 				}
 				formCheck();
@@ -211,7 +233,7 @@
 			
 
 			
-			function fn_overlappedid(){
+			function fn_overlapped(){
 			    var _id=$("#_mem_id").val();
 			    if(_id==''){
 			   	 alert("ID를 입력하세요");
@@ -220,7 +242,7 @@
 			    $.ajax({
 			       type:"post",
 			       async:false,  
-			       url:"${contextPath}/overlappedid.do",
+			       url:"${contextPath}/overlapped.do",
 			       dataType:"text",
 			       data: {"id":_id},
 			       success:function (data,textStatus){
@@ -244,36 +266,51 @@
 			       }
 			    });  //end ajax	 
 			 }	
+			
+			
+						
+			function checkwno(value){
+				if(checkCorporateRegistrationNumber(value)){
+					wrk_check=true;
+					document.getElementById('wrkr_check').innerHTML = "";
+				}else{
+					wrk_check=false;
+					document.getElementById('wrkr_check').innerHTML = "유효하지 않은 사업자 등록번호입니다";
+				}
+				formCheck();
+			}
+			
+			
+			function checkCorporateRegistrationNumber(value) {
+			    var valueMap = value.replace(/-/gi, '').split('').map(function(item) {
+			        return parseInt(item, 10);
+			    });
+
+			    if (valueMap.length === 10) {
+			        var multiply = new Array(1, 3, 7, 1, 3, 7, 1, 3, 5);
+			        var checkSum = 0;
+
+			        for (var i = 0; i < multiply.length; ++i) {
+			            checkSum += multiply[i] * valueMap[i];
+			        }
+
+			        checkSum += parseInt((multiply[8] * valueMap[8]) / 10, 10);
+			        return Math.floor(valueMap[9]) === (10 - (checkSum % 10));
+			    }
+
+			    return false;
+			}
+			
 				
-			
-			/* function fn_overlappedemail(){
-			    var _mem_email1=$("#_mem_email1").val();
-			    var _mem_email2=$("#_mem_email2").val();
-			    $.ajax({
-			       type:"post",
-			       async:false,  
-			       url:"${contextPath}/overlappedemail.do",
-			       dataType:"text",
-			       data: {"mem_email1":_mem_email1},
-			       		 {"mem_email2";_mem_email2},
-			       success:function (data,textStatus){
-			          if(data=='false'){
-			       	    alert("사용할 수 있는 ID입니다.");
-// 			       	    $('#btnOverlapped').prop("disabled", true);
-// 			       	    $('#_signupsuccesspagemem_id').prop("disabled", true);
-			       	    $('#mem_id').val(_id);
-			       	 	id_check =true;
-			          }else{
-			        	  alert("사용할 수 없는 ID입니다.");
-			        	  id_check =false;
-			          });
-			    }
-			    }
-			} */
-
-
-			
+		function onopen()
+		{
+		var url =
+		"http://www.ftc.go.kr/bizCommPop.do?wrkr_no="+frm1.wrkr_no.value;
+		window.open(url, "bizCommPop", "width=750, height=700;");
+		}
+		
 		</script>
+		
     </body>
 </html>
 
