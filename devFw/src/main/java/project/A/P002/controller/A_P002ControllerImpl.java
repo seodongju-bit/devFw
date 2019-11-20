@@ -157,8 +157,8 @@ public class A_P002ControllerImpl   implements A_P002Controller {
 		ResponseEntity resEntity = null;
 		emailMap.put("mem_email1", "mem_email1");
 		emailMap.put("mem_email2", "mem_email2");		
-		String data = a_p002Service.overlappedemail(emailMap);
-		resEntity =new ResponseEntity(emailMap, HttpStatus.OK);
+		String result = a_p002Service.overlappedemail(emailMap);
+		resEntity =new ResponseEntity(result, HttpStatus.OK);
 		return resEntity;
 	}
 	
