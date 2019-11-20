@@ -155,7 +155,8 @@ public class A_P002ControllerImpl   implements A_P002Controller {
 	@RequestMapping(value="/overlappedemail.do" ,method = RequestMethod.POST)
 	public ResponseEntity overlappedemail(@RequestParam Map<String, String> emailMap,HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ResponseEntity resEntity = null;
-		emailMap.put("mem_email1", "mem_email2");
+		emailMap.put("mem_email1", "mem_email1");
+		emailMap.put("mem_email2", "mem_email2");		
 		String data = a_p002Service.overlappedemail(emailMap);
 		resEntity =new ResponseEntity(emailMap, HttpStatus.OK);
 		return resEntity;
