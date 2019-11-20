@@ -55,7 +55,7 @@ margin-left: 5px;
 			{Header:"주문번호",Type:"Text",SaveName:"order_number",MinWidth:90},
 			{Header:"사용메모",Type:"Text",SaveName:"point_content",MinWidth:60}
 			
-		];   
+		];    
 		IBS_InitSheet( mySheet , initSheet);
 
 		mySheet.SetEditableColorDiff(1); // 편집불가능할 셀 표시구분
