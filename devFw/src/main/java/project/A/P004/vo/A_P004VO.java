@@ -2,7 +2,7 @@ package project.A.P004.vo;
 
 import org.springframework.stereotype.Component;
 
-@Component("couponVO")
+@Component("activeVO")
 public class A_P004VO {
 	private String co_number;
 	private String co_name;
@@ -10,7 +10,15 @@ public class A_P004VO {
 	private String co_usedate;
 	private String co_sale;
 	private String co_salepercent;
-
+	private String mem_no;
+	private String point_number;
+	private String point_date;
+	private String point_usedate;
+	private String point_usemoney;
+	private String order_number;
+	private String point_content;
+	private String mem_id;
+	
 	public A_P004VO() {
 
 	}
@@ -25,6 +33,17 @@ public class A_P004VO {
 		this.co_salepercent = co_salepercent;
 	}
 
+	public A_P004VO(String mem_no, String point_number, String point_date, String point_usedate, String point_usemoney, String order_number, String point_content, String mem_id) {
+		this.mem_no=mem_no;
+		this.point_number=point_number;
+		this.point_date=point_date;
+		this.point_usedate=point_usedate;
+		this.point_usemoney=point_usemoney;
+		this.order_number=order_number;
+		this.point_content=point_content;
+		this.mem_id=mem_id;
+	}
+	
 	public String getCo_number() {
 		return co_number;
 	}
@@ -73,4 +92,68 @@ public class A_P004VO {
 		this.co_salepercent = co_salepercent;
 	}
 
+	public String getMem_no() {
+		return mem_no;
+	}
+
+	public void setMem_no(String mem_no) {
+		this.mem_no = mem_no;
+	}
+
+	public String getPoint_number() {
+		return point_number;
+	}
+
+	public void setPoint_number(String point_number) {
+		this.point_number = point_number;
+	}
+
+	public String getPoint_date() {
+		return point_date;
+	}
+
+	public void setPoint_date(String point_date) {
+		this.point_date = point_date;
+	}
+
+	public String getPoint_usedate() {
+		return point_usedate;
+	}
+
+	public void setPoint_usedate(String point_usedate) {
+		this.point_usedate = point_usedate;
+	}
+
+	public String getPoint_usemoney() {
+		return point_usemoney;
+	}
+
+	public void setPoint_usemoney(String point_usemoney) {
+		this.point_usemoney = point_usemoney;
+	}
+
+	public String getOrder_number() {
+		return order_number;
+	}
+
+	public void setOrder_number(String order_number) {
+		this.order_number = order_number;
+	}
+
+	public String getPoint_content() {
+		return point_content;
+	}
+
+	public void setPoint_content(String point_content) {
+		this.point_content = point_content;
+	}
+
+	public String getMem_id() {
+		return mem_id;
+	}
+
+	public void setMem_id(String mem_id) {
+		this.mem_id = mem_id;
+	}
+	
 }

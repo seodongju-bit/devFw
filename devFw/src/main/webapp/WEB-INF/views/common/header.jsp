@@ -283,7 +283,19 @@
 			+ endcodeURIComponent($('#SearchWordInput').val());
 		});
 	});
-
+	
+	function fn_coupon(){
+		
+		var _isLogOn=document.getElementById("isLogOn");
+		var isLogOn=_isLogOn.value;
+		
+		if(isLogOn=="false" || isLogOn=='') {
+			alert("로그인 후 조회가 가능합니다.");
+			location.href="${contextPath}/signinpage.do";
+		}else{
+			location.href="${contextPath}/coupon.do";
+		}
+	}
 </script>
 <body>
 	<div class="header" id="header">
@@ -373,10 +385,11 @@
 		<div class="mainMenu"><button class="menubtn"onclick="location.href='bestProduct.do'">베스트상품</button></div>
 		<div class="mainMenu"><button class="menubtn"onclick="location.href='eventProduct.do'">이벤트상품</button></div>
 		<div class="mainMenu"><button class="menubtn"onclick="location.href='reviewRanking.do'">리뷰랭킹</button></div>
-		<div class="mainMenu"><button class="menubtn"onclick="location.href='coupon.do'">쿠폰</button></div>
+		<div class="mainMenu"><button class="menubtn"onclick="fn_coupon()">쿠폰</button></div>
 		<div class="mainMenu"><button class="menubtn"onclick="location.href='event.do'">이벤트/공지사항</button></div>
 	</div>
 	</div>
 	</div>  
 </body>
+<input type="hidden" name="isLogOn" id="isLogOn" value="${isLogOn}"/>
 </html>                    
