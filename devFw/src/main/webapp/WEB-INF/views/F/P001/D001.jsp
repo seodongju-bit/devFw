@@ -103,18 +103,21 @@ Review Ranking
 <c:forEach var="productlist6" items="${List}" varStatus='index' >
   
   <div class="gallery"> 
-  
+  <a href="${contextPath}/sellItems.do?sell_no=${productlist6.sell_number}">
    <div class="desc1">${productlist6.sell_title}</div>
     ${index.count} 등<br>
     ${productlist6.mem_id}님 :<br> 
     ${productlist6.review_content}<br> 
     월 추천수:${productlist6.review_monthpoint} <br>
+    </a>
     
+     <a href="${contextPath}/sellItems.do?sell_no=${productlist6.sell_number}"> 
    <fmt:formatNumber value="${productlist6.sell_price}" pattern="#,###"/>원<br>    
         ${productlist6.pro_explain}
-<a href="#" height="5" width="10" target="_blank">
+
  <img src="${productlist6.sell_thumbnail}" alt="1" width="600" height="400">                                
  </a>      
+ 
 </div>
  </c:forEach> 
     
