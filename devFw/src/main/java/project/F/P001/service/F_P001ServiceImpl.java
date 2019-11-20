@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import project.F.P001.vo.F_P001VO;
 import project.F.P001.vo.PagingVO;
 import  project.F.P001.dao.F_P001DAO;
 
@@ -29,6 +30,16 @@ public class F_P001ServiceImpl implements F_P001Service{
 		return productlist;
 	}
 	
+	@Override
+	public List<F_P001VO> searchoption(Map<String, Object> searchMap) throws DataAccessException {
+		List<F_P001VO> productlist =  f_P001DAO.searchoption(searchMap);
+		System.out.println("서비스 실행");
+		return productlist;
+	}
+
+
+	
+
 	@Autowired
 	private F_P001DAO f_P001_D04DAO ;           
 	

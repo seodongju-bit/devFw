@@ -97,16 +97,18 @@ new product
 
  <c:forEach var="productlist" items="${List}" >   
 <div class="gallery">
-  <a target="_blank" href="myPage.do">
 
+<a href="${contextPath}/sellItems.do?sell_no=${productlist.sell_number}">
     <img src="${productlist.sell_thumbnail}" alt="1" width="600" height="400">
-  </a>
+    </a>
+<a href="${contextPath}/sellItems.do?sell_no=${productlist.sell_number}">
   <div class="desc"><div class="desc1">${productlist.sell_title}</div>
 <fmt:formatNumber value="${productlist.sell_price}" pattern="#,###"/>원<br>
         ${productlist.pro_explain} 
-   </div>                   
+   </div>        
+   </a>           
                                                             
-</div>                                                        
+</div>                                                                      
      
 </c:forEach>         
 

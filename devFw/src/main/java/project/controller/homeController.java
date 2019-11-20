@@ -68,7 +68,7 @@ public class homeController {
 		return "test";
 	}*/
 	
-	
+	    
 
 	@Autowired
 	private SqlSession sqlSession;
@@ -86,7 +86,7 @@ public class homeController {
 		List<Map<String, Object>> list = sqlSession.selectList("common.searchCommon" ,searchMap);
 		System.out.println(list);
 		
-		return list;
+		return list;                
 	}
 	
 	@RequestMapping(value = "/bigDivision.do", method = { RequestMethod.GET, RequestMethod.POST })
