@@ -103,16 +103,19 @@ best product
 </div>
  <c:forEach var="productlist2" items="${List}" >   
 <div class="gallery">
-  <a target="_blank" href="myPage.do">
 
+<a href="${contextPath}/sellItems.do?sell_no=${productlist2.sell_number}">
     <img src="${productlist2.sell_thumbnail}" alt="1" width="600" height="400">
-  </a>
+</a>
+
+<a href="${contextPath}/sellItems.do?sell_no=${productlist2.sell_number}">
   <div class="desc"><div class="desc1">${productlist2.sell_title}</div>
 <fmt:formatNumber value="${productlist2.sell_price}" pattern="#,###"/>원<br> 
 판매 수:${productlist2.detail_quantity} 회
                
-   </div>                   
-                                                            
+   </div>              
+    </a>         
+                                                                                                   
 </div>                                                  
      
 </c:forEach> 
@@ -122,7 +125,7 @@ best product
 <s_paging id="page"> 
                              
     <a href="#">Prev</a>
-    <strong>1</strong>   
+    <strong>1</strong>      
      <a href="#">2</a>
     <a href="#">3</a>
     <a href="#">4</a>

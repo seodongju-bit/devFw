@@ -103,15 +103,17 @@ event product
 </div>
  <c:forEach var="productlist1" items="${List}" >   
 <div class="gallery">
-  <a target="_blank" href="myPage.do">
 
+  
+<a href="${contextPath}/sellItems.do?sell_no=${productlist1.sell_number}">
     <img src="${productlist1.sell_thumbnail}" alt="1" width="600" height="400">
-  </a>
+</a>
+<a href="${contextPath}/sellItems.do?sell_no=${productlist1.sell_number}">
   <div class="desc"><div class="desc1">${productlist1.sell_title}<br></div>
 <fmt:formatNumber value="${productlist1.sell_price}" pattern="#,###"/>원 
-   ${productlist1.event_explain}  
-               
-   </div>                   
+   ${productlist1.event_explain}    
+   </div>        
+   </a>           
                                                             
 </div>                                                  
      

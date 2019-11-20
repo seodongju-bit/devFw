@@ -15,13 +15,13 @@
     <body>
 
      <form action="${contextPath}/addMember.do" method="post" >	
-        <h1>회원 분류</h1>
+        <h1>회원가입</h1>
         
         <fieldset>
           <label for="id" class="w" >회원 ID:</label>
           <input type="text" class="idbox" id="_mem_id" name="_mem_id" maxlength="15" placeholder="ID" style="float:left;">
           <input type="hidden" class="idbox" id="mem_id" name="mem_id" maxlength="15" placeholder="ID" style="float:left;">
-          <button type="button" id="btnOverlapped" class="overlapped-btn2" onClick="fn_overlapped();">중복 검사</button>
+          <button type="button" id="btnOverlapped" class="overlapped-btn2" onClick="fn_overlappedid();">중복 검사</button>
           <br></br>
           <label for="password" class="w">비밀번호:</label>
           <input type="password" class="pwdbox" id="mem_pw" name="mem_pw"maxlength="20" placeholder="PW">
@@ -32,7 +32,7 @@
           <input type="text" class="nickbox" id="mem_nick" name="mem_nick"maxlength="10" placeholder="NICK NAME">
           <label for="name" class="w">이름:</label>
           <input type="text" class="namebox" id="mem_name" name="mem_name" maxlength="15" placeholder="NAME">
-          <label for="mail" class="w">이메일:</label> 
+          <label for="mail" class="w">이메일:</label>
           <input type="text" class="mail1" id="mem_email1"  name="mem_email1" maxlength="15" >@
           <input type="text" class="mail2" id="mem_email2"  name="mem_email2" disabled value="naver.com"> 
           <select class="mailselect" name="mem_email2" id="selectEmail"> 
@@ -42,6 +42,9 @@
           <option value="nate.com">nate.com</option> 
           <option value="gmail.com">gmail.com</option> 
           </select>
+          <button type="button" id="btnOverlapped" class="overlapped-btn2" style="float:right;" onClick="fn_overlappedemail();">중복 검사</button> 
+          <br></br>
+          <br></br>
           <label for="nick" class="w" >연락처:</label>
           <input type="text" class="telbox" id="mem_tel" name="mem_tel" maxlength="13" placeholder="TEL" >
           <label for="address" class="w" >주소:</label>
@@ -67,9 +70,10 @@
 		var id_check=false;
 		var pw_check=false;
 		var pwc_check=false;
+		var email_check=false;
 		
 		function formCheck(){
-			if(id_check && pw_check && pwc_check){
+			if(id_check && pw_check && pwc_check && email_check){
 				document.getElementById('memberFormButton').style.background='#4bc970';
 				document.getElementById('memberFormButton').removeAttribute('disabled');
 			}else{
@@ -102,6 +106,7 @@
 					pw_check = true;
 				}else{
 					document.getElementById('desc1').innerHTML="사용 불가능한 비밀번호입니다";
+					document.getElementById('desc1').style.color = 'red';
 					pw_check = false;
 				}
 				formCheck();
@@ -209,7 +214,7 @@
 			
 
 			
-			function fn_overlapped(){
+			function fn_overlappedid(){
 			    var _id=$("#_mem_id").val();
 			    if(_id==''){
 			   	 alert("ID를 입력하세요");
@@ -218,7 +223,7 @@
 			    $.ajax({
 			       type:"post",
 			       async:false,  
-			       url:"${contextPath}/overlapped.do",
+			       url:"${contextPath}/overlappedid.do",
 			       dataType:"text",
 			       data: {"id":_id},
 			       success:function (data,textStatus){
@@ -242,7 +247,42 @@
 			       }
 			    });  //end ajax	 
 			 }	
+				
 			
+			 function fn_overlappedemail(){
+			    var mem_email1=$("#mem_email1").val();
+			    var mem_email2=$("#mem_email2").val();
+			    if(mem_email1=''){
+			    	alert("EMAIL을 입력하세요");
+			    	return;
+			    }
+			    $.ajax({
+			       type:"post",
+			       async:false,  
+			       url:"${contextPath}/overlappedemail.do",
+			       dataType:"text",
+			       data: {"mem_email1":mem_email1,"mem_email2":mem_email2 },
+			       success:function (data,textStatus){
+			          if(data=='true'){
+			        	  alert("사용할 수 없는 EMAIL입니다.");
+			       	 	  email_check =true;
+			          }else{
+			        	  alert("사용할 수 없는 EMAIL입니다.")
+			        	  email_check =false;
+			          }
+			       },
+			       error:function(data,textStatus){
+			          alert("에러가 발생했습니다.");
+			       },
+			       complete:function(data,textStatus){
+			    	   formCheck();
+			       }
+			    });  
+			 }	
+			    
+			
+
+
 			
 		</script>
     </body>

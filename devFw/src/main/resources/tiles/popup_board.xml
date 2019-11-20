@@ -18,4 +18,14 @@
       <put-attribute name="body" value="/WEB-INF/views/B/P001/D002.jsp" />
    </definition>  
    
+     <definition name="addSell" extends="baseLayout3">
+      <put-attribute name="title" value="판매등록 "/>
+      <put-attribute name="body" value="/WEB-INF/views/B/P002/D001.jsp" />
+   </definition> 
+   
+   <definition name="proNumSearch" extends="baseLayout3">
+      <put-attribute name="title" value="제품번호검색 "/>
+      <put-attribute name="body" value="/WEB-INF/views/B/P002/proNumSearch.jsp" />
+   </definition> 
+   
 </tiles-definitions>

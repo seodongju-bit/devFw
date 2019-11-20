@@ -31,7 +31,12 @@ private String pro_explain;
    private String mem_no;
    private int review_monthpoint;
    private String review_content;
- 
+   private String review_stdate;
+
+
+   private String option_size;
+   private String option_color;
+   private String option_quantity;
 
 
 	public F_P001VO() {
@@ -177,5 +182,35 @@ public String getSell_number() {
 
 		public void setReview_content(String review_content) {
 			this.review_content = review_content;
+		}
+		public String getReview_stdate() {
+			return review_stdate;
+		}
+
+		public void setReview_stdate(String review_stdate) {
+			this.review_stdate = review_stdate;
+		}
+		public String getOption_size() {
+			return option_size;
+		}
+
+		public void setOption_size(String option_size) {
+			this.option_size = option_size;
+		}
+
+		public String getOption_color() {
+			return option_color;
+		}
+
+		public void setOption_color(String option_color) {
+			this.option_color = option_color;
+		}
+
+		public String getOption_quantity() {
+			return option_quantity;
+		}
+
+		public void setOption_quantity(String option_quantity) {
+			this.option_quantity = option_quantity;
 		}
 }

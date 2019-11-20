@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
+import project.F.P001.vo.PagingVO;
+import project.F.P002.vo.F_P002VO;
 import project.F.P001.vo.F_P001VO;
 
 
@@ -25,15 +27,24 @@ public class F_P001DAOImpl implements F_P001DAO {
 		return productlist;
 	}
 
+	@Override
+	public List<F_P001VO> searchoption(Map<String, Object> searchMap) throws DataAccessException { 
+		List<F_P001VO> productlist = sqlSession.selectList("F.P001.searchoption", searchMap);
+		System.out.println("dao실행"); 
+		return productlist;
+	}
+
+	
 
 	@Override
 	public List selectItem1() throws DataAccessException {
 		List<F_P001VO> productlist1 = null;
-		System.out.println("dao����");    
+		System.out.println("dao����");        
 		productlist1 = sqlSession.selectList("mapper.product.selectItem1");
 		System.out.println(productlist1);
 		return productlist1;
 	}
+
 	
 	@Override
 	public List selectItem2() throws DataAccessException {
@@ -58,6 +69,23 @@ public class F_P001DAOImpl implements F_P001DAO {
 	
 	
 	
-	
+	@Override
+	public List memberReviewList(PagingVO vo) throws DataAccessException {
+		List<F_P001VO> reviewList = null;
+		reviewList = sqlSession.selectList("mapper.product.memberReviewList", vo);
+		System.out.println("reviewList"+reviewList);
+		return reviewList;
+	}
+
+
+	@Override
+	public int countBoard() {
+		return sqlSession.selectOne("mapper.product.countBoard");
+	}
+
+
+
+
+
 }
    

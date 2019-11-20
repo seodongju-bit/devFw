@@ -161,7 +161,6 @@ function formSubmit(){
 	       async:false,  
 	       url:"/devFw/itemManager/InsertProduct.do",
 	       data: queryString,
-	       dataType:"json",
 	       success:function (data,textStatus){
 	    	   window.close(); 
 	       },
