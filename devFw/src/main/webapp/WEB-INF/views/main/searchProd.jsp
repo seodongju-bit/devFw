@@ -130,7 +130,7 @@
 				</div>
 			</td>
 			<!-- 제품 가격 -->
-			<td class="prod_price" style="margin:0; padding:0;"><span>${search.sell_price }원</span><br>
+			<td class="prod_price" style="margin:0; padding:0;"><fmt:formatNumber value="${search.sell_price }"/>원<br>
 				<strong>
 					<fmt:formatNumber  value="${search.sell_price*0.9}" type="number" var="discounted_price" />
 			        ${discounted_price}원
@@ -139,7 +139,6 @@
 			<td class="buy_btns" style="margin:0; padding:0;">
 				<ul style="display:inline; margin:0; padding:0;">
 					<li><a href="#">장바구니로</a></li>
-					<li><a href="#">구매하기</a></li>
 				</ul>
 			</td>
 			</tr>

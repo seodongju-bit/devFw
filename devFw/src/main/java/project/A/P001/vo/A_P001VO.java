@@ -13,7 +13,12 @@ public class A_P001VO {
 	private String mem_email1 = "";
 	private String mem_email2 = "";
 	private String mem_division = "";
+	private String mem_tel = "";
+	private String mem_address1 = "";
+	private String mem_address2 = "";
+	private String mem_zip = "";
 	private String mem_verify = "";
+	
 	
 	public A_P001VO() {
 		System.out.println("A_P001VO 호출");
@@ -107,6 +112,52 @@ public class A_P001VO {
 
 
 
+	public String getMem_tel() {
+		return mem_tel;
+	}
+
+
+
+	public void setMem_tel(String mem_tel) {
+		this.mem_tel = mem_tel;
+	}
+
+
+
+	public String getMem_address1() {
+		return mem_address1;
+	}
+
+
+
+	public void setMem_address1(String mem_address1) {
+		this.mem_address1 = mem_address1;
+	}
+
+
+
+	public String getMem_address2() {
+		return mem_address2;
+	}
+
+
+
+	public void setMem_address2(String mem_address2) {
+		this.mem_address2 = mem_address2;
+	}
+
+
+
+	public String getMem_zip() {
+		return mem_zip;
+	}
+
+
+
+	public void setMem_zip(String mem_zip) {
+		this.mem_zip = mem_zip;
+	}
+	
 	public String getMem_verify() {
 		return mem_verify;
 	}
@@ -116,7 +167,4 @@ public class A_P001VO {
 	public void setMem_verify(String mem_verify) {
 		this.mem_verify = mem_verify;
 	}
-
-	
-	
 }

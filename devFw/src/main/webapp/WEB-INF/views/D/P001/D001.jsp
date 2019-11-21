@@ -25,14 +25,10 @@
 	/* veritcal-align: middle;
 text-align:center; */
 }
-
 #c { 
    
 	text-align: center;
 }
-
-
-
 #z {
 	text-align: center;
 	max-width: 100%;
@@ -40,52 +36,39 @@ text-align:center; */
 	height: auto;
 	/* padding-left: 250px; */
 }
-
 #r {
 	text-align: right;
 	font-size: 13px;
 }
-
 check {
 	background-color: #f3f3f3;
 }
-
 #side {
 	position: fixed;
 	right: 35px;
 	top: 280px;
 }
-
 #side-tb {
 	padding: 8px;
 	line-height: 1.42857143;
 	border-bottom: 1px solid #ddd;
 	/*border-top: 1px solid #ddd;*/
 }
-
 }
 /* Tooltip on left */
 .info+.tooltip.left>.tooltip-arrow {
 	border-left: 5px solid red;
 }
-
 .info+.tooltip>.tooltip-inner {
 	background-color: white;
 	color: black;
 	border: 1px solid black;
 	padding: 15px;
 }
-
 input{
 width:1000px;
 height:300px;
-
-
 }   
-
-
-
-
                           
 </style>
 
@@ -205,7 +188,6 @@ height:300px;
 		
 		
 		
-
 	</script>
 
 </body>

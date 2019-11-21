@@ -20,6 +20,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import project.E.P001.vo.E_P001VO;
+import project.A.P001.vo.A_P001VO;
+import project.A.P002.vo.A_P002VO;
 import project.E.P001.service.E_P001Service;
 
 
@@ -34,38 +36,39 @@ public class E_P001ControllerImpl   implements E_P001Controller {
 	
 	@RequestMapping(value = "/order.do", method = { RequestMethod.POST })
 	public ModelAndView order(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String viewName = "order";
+		
 		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
 		session = request.getSession();
 		Boolean isLogOn = (Boolean)session.getAttribute("isLogOn");
 		String action=(String)session.getAttribute("action");
 		
-		List<Map<String, Object>> list = createModel(request);
-		Map<String, Object> searchMap = new HashMap<String, Object>();
-		List<E_P001VO> result = new ArrayList<E_P001VO>();
-		
-			
-			for(int i=0;i<list.size();i++) {
-				searchMap.put("p_id", list.get(i).get("sell_number"));
-				e_P001VO = (E_P001VO)e_P001Service.selectItem(searchMap).get(0);
-				
-				//List<E_P001VO>
-				e_P001VO.setSell_number((String)list.get(i).get("sell_number")); 
-				e_P001VO.setDetail_quantity((String)list.get(i).get("detail_quantity")); 
-				e_P001VO.setOrder_size((String)list.get(i).get("order_size")); 
-				e_P001VO.setOrder_color((String)list.get(i).get("order_color"));
-				System.out.println(BeanUtils.describe(e_P001VO));
-				result.add(e_P001VO);
-			}
-			
-			
-		
 		if(isLogOn==null || isLogOn == false) {
 			return new ModelAndView("redirect:../devFw/signinpage.do");
 		}else {
+			String viewName = (String)request.getAttribute("viewName");
 			ModelAndView mav = new ModelAndView(viewName);
-			mav.addObject("orderList", result);
+			
+			List<Map<String, Object>> list = createModel(request);
+			Map<String, Object> searchMap = new HashMap<String, Object>();
+			List<E_P001VO> result = new ArrayList<E_P001VO>();
+			
+				
+				for(int i=0;i<list.size();i++) {
+					searchMap.put("p_id", list.get(i).get("sell_number"));
+					e_P001VO = (E_P001VO)e_P001Service.selectItem(searchMap).get(0);
+					
+					//List<E_P001VO>
+					e_P001VO.setSell_number((String)list.get(i).get("sell_number")); 
+					e_P001VO.setDetail_quantity((String)list.get(i).get("detail_quantity")); 
+					e_P001VO.setOrder_size((String)list.get(i).get("order_size")); 
+					e_P001VO.setOrder_color((String)list.get(i).get("order_color"));
+					System.out.println(BeanUtils.describe(e_P001VO));
+					result.add(e_P001VO);
+				}
+			session.setAttribute("orderList", result);
+			A_P001VO memberInfo=(A_P001VO)session.getAttribute("memberInfo");
+			session.setAttribute("orderer", memberInfo);
 			return mav;
 			
 		}

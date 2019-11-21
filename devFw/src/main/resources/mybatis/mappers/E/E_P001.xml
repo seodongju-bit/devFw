@@ -36,9 +36,11 @@
 		<!-- 수령인 -->
 		<result property="receiver_name" column="receiver_name"/>
 		<!-- 구매자 이메일 -->
-		<result property="buyer_email" column="buyer_email"/>
+		<result property="buyer_email1" column="buyer_email1"/>
+		<result property="buyer_email2" column="buyer_email2"/>
 		<!-- 배송지 주소 -->
 		<result property="order_address" column="order_address"/>
+		<result property="order_address2" column="order_address2"/>
 		<!-- 우편번호 -->
 		<result property="order_zip" column="order_zip"/>
 		<!-- 연락처 -->
@@ -93,8 +95,10 @@
 								transport_status,
 								buyer_id,
 								receiver_name,
-								buyer_email,
+								buyer_email1,
+								buyer_email2,
 								order_address,
+								order_address2,
 								order_zip,
 								order_phone,
 								order_request
@@ -117,8 +121,10 @@
 							   #{transport_status},
 							   #{buyer_id},
 							   #{receiver_name},
-							   #{buyer_email},
+							   #{buyer_email1},
+							   #{buyer_email2},
 							   #{order_address},
+							   #{order_address2},
 							   #{order_zip},
 							   #{order_phone},
 							   #{order_request},

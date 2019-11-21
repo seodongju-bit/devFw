@@ -7,7 +7,7 @@ public class E_P001VO2 {
 	private String option1;
 	private String option2;
 	private String option3;
-	private int order_seq_num;
+	private String order_seq_num;
 	private int order_number;
 	private String order_title;
 	private String order_quantity;
@@ -23,8 +23,10 @@ public class E_P001VO2 {
 	private String transport_status;
 	private String buyer_id;
 	private String receiver_name;
-	private String buyer_email;
+	private String buyer_email1;
+	private String buyer_email2;
 	private String order_address;
+	private String order_address2;
 	private String order_zip;
 	private int order_phone;
 	private String order_request;
@@ -57,12 +59,12 @@ public class E_P001VO2 {
 		this.option3 = option3;
 	}
 
-	public int getOrder_seq_num() {
+	public String getOrder_seq_num() {
 		return order_seq_num;
 	}
 
-	public void setOrder_seq_num(int order_seq_num) {
-		this.order_seq_num = order_seq_num;
+	public void setOrder_seq_num(String string) {
+		this.order_seq_num = string;
 	}
 
 	public int getOrder_number() {
@@ -185,12 +187,12 @@ public class E_P001VO2 {
 		this.receiver_name = receiver_name;
 	}
 
-	public String getBuyer_email() {
-		return buyer_email;
+	public String getBuyer_email1() {
+		return buyer_email1;
 	}
 
-	public void setBuyer_email(String buyer_email) {
-		this.buyer_email = buyer_email;
+	public void setBuyer_email(String buyer_email1) {
+		this.buyer_email1 = buyer_email1;
 	}
 
 	public String getOrder_address() {
@@ -224,5 +226,26 @@ public class E_P001VO2 {
 	public void setOrder_request(String order_request) {
 		this.order_request = order_request;
 	}
+
+	public String getBuyer_email2() {
+		return buyer_email2;
+	}
+
+	public void setBuyer_email2(String buyer_email2) {
+		this.buyer_email2 = buyer_email2;
+	}
+
+	public String getOrder_address2() {
+		return order_address2;
+	}
+
+	public void setOrder_address2(String order_address2) {
+		this.order_address2 = order_address2;
+	}
+
+	public void setBuyer_email1(String buyer_email1) {
+		this.buyer_email1 = buyer_email1;
+	}
+	
 
 }
