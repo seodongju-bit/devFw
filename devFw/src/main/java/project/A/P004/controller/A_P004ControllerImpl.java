@@ -48,6 +48,11 @@ public class A_P004ControllerImpl   implements A_P004Controller {
 		viewName = "coupon";
 		HttpSession session = request.getSession();
 		String p_id = (String)session.getAttribute("mem_id");
+		if(p_id == null) {
+			viewName = "redirect:main.do";
+			ModelAndView mav = new ModelAndView(viewName);
+			return mav;
+		}
 		List couponsList = activeService.listCoupon(p_id);
 		System.out.println(couponsList);
 		ModelAndView mav = new ModelAndView(viewName);
