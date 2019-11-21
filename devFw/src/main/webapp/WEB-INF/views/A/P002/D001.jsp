@@ -21,8 +21,8 @@
       <form>
         <h1>회원 가입 분류</h1>
         <br></br>
-        <button class="sign-upbtn" type="button" onclick="location.href='signuppage.do'"> 구매자 회원가입</button>
-        <button class="sign-upbtn" type="button" onclick="location.href='signuppage2.do'"> 판매자 회원가입</button>
+        <button class="btn-default" name="default-btn" type="button" onclick="location.href='signuppage.do'"> 구매자 회원가입</button>
+        <button class="btn-default" name="default-btn" type="button" onclick="location.href='signuppage2.do'"> 판매자 회원가입</button>
         
          <br></br>
          

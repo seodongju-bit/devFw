@@ -20,13 +20,13 @@
     </head>
     <body>
     	
-      <form method="post" accept-charset="UTF-8">
+      <form action="${contextPath}/pwsearch.do" method="post" accept-charset="UTF-8">
       
-        <h1>ID 찾기</h1>
+        <h1>PW 찾기</h1>
         
         <fieldset>
-          <label for="name" style="text-align: left;">이름:</label>
-          <input type="text" class="namebox" id="mem_name" name="mem_name" placeholder="NAME">
+          <label for="name" style="text-align: left;">ID:</label>
+          <input type="text" class="namebox" id="mem_id" name="mem_id" placeholder="ID">
           <label for="mail" class="w">이메일:</label>
           <input type="text" class="mail1" id="mem_email1"  name="mem_email1" maxlength="15" >@
           <input type="text" class="mail2" id="mem_email2"  name="mem_email2" disabled value="naver.com"> 
@@ -37,7 +37,7 @@
           <option value="nate.com">nate.com</option> 
           <option value="gmail.com">gmail.com</option> 
           </select>
-        <button type="button" class="search-btn" onClick="fn_searchid();" > ID 찾기</button>
+        <button type="submit" class="search-btn" >임시 비밀번호 발송</button>
           <br></br>
         <br></br>
         </fieldset>
@@ -60,30 +60,6 @@
 					} 
 				}); 
 			});
-	 	
-	 	function fn_searchid(){
-	 		var _name=$("#mem_name").val();
-	 		var _email1=$("#mem_email1").val();
-		    var _email2=$("#mem_email2").val();
-	 		if(_name==''){
-	 			alert("이름을 입력하세요");
-	 			return;
-	 		}else if(_email1==''){
-		    	alert("EMAIL을 입력하세요");
-		    	return;
-		    }
-	 		$.ajax({
-	 			type:"post",
-	 			url:"${contextPath}/searchid.do",
-	 			dataType:"text",
-	 			data:{ "mem_name":_name, "mem_email1":_email1, "mem_email2":_email2},
-	 			success:function (data,textStatus){
-	 				alert(data);
-	 			},error:function(data,textStatus){
-			          alert("에러가 발생했습니다.");
-	 			}
-	 		})
-	 	}
 		</script>
     </body>
 </html>

@@ -29,7 +29,9 @@
           	<div id="pwtip">tip<span class="tooltiptext">영문/숫자/특수문자를 혼용하여 6자 이상 입력해주세요</span></div>
           <input type="password" class="pwdbox" id="mem_pw_check" maxlength="20" placeholder="PW 확인"><div id="desc2"></div>
           <label for="nick" class="w">닉네임:</label>
-          <input type="text" class="nickbox" id="mem_nick" name="mem_nick"maxlength="10" placeholder="NICK NAME">
+          <input type="text" class="nickbox" id="mem_nick" name="mem_nick"maxlength="10" placeholder="NICK NAME" style="float:left;">
+          <button type="button" id="btnOverlapped" class="overlapped-btn2" onClick="fn_overlappednick();">중복 검사</button> 
+          <br></br>
           <label for="name" class="w">이름:</label>
           <input type="text" class="namebox" id="mem_name" name="mem_name" maxlength="15" placeholder="NAME">
           <label for="mail" class="w">이메일:</label>
@@ -70,10 +72,12 @@
 		var id_check=false;
 		var pw_check=false;
 		var pwc_check=false;
+		var nick_check=false;
 		var email_check=false;
 		
+		
 		function formCheck(){
-			if(id_check && pw_check && pwc_check && email_check){
+			if(id_check && pw_check && pwc_check && nick_check && email_check){
 				document.getElementById('memberFormButton').style.background='#4bc970';
 				document.getElementById('memberFormButton').removeAttribute('disabled');
 			}else{
@@ -99,6 +103,7 @@
 						} 
 					}); 
 				}); 
+			
 			$('#mem_pw').keyup(function(){
 				if(regPasswordType(document.getElementById('mem_pw').value)){
 					document.getElementById('desc1').innerHTML="사용 가능한 비밀번호입니다";
@@ -112,6 +117,7 @@
 				formCheck();
 			})
 			
+			
 			$('#mem_pw_check').keyup(function(){
 				var pw=document.getElementById('mem_pw').value;
 				var pwc=document.getElementById('mem_pw_check').value
@@ -121,10 +127,14 @@
 					pwc_check = true;
 				}else{
 					document.getElementById('desc2').innerHTML="비밀번호가 일치하지 않습니다";
+					document.getElementById('desc2').style.color = 'red';
 					pwc_check = false;
 				}
 				formCheck();
 			})
+			
+			
+			
 			
 			function regPasswordType(data) { //비밀번호 유효성 검사 6-16자리 영문, 숫자, 특수문자 조합
 				var regex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{6,16}/;
@@ -247,12 +257,48 @@
 			       }
 			    });  //end ajax	 
 			 }	
-				
+			
+			
+			function fn_overlappednick(){
+			    var _nick=$("#mem_nick").val();
+			    if(_nick==''){
+			   	 alert("닉네임을 입력하세요");
+			   	 return;
+			    }
+			    $.ajax({
+			       type:"post",
+			       async:false,  
+			       url:"${contextPath}/overlappednick.do",
+			       dataType:"text",
+			       data: {"nick":_nick},
+			       success:function (data,textStatus){
+			          if(data=='false'){
+			       	    alert("사용할 수 있는 닉네임입니다.");
+			       	 	nick_check =true;
+			          }else{
+			        	alert("사용할 수 없는 닉네임입니다.");
+			        	nick_check =false;
+			          }
+			       },
+			       error:function(data,textStatus){
+			          alert("에러가 발생했습니다.");ㅣ
+			       },
+			       complete:function(data,textStatus){
+			    	   formCheck();
+
+			       }
+			    });  
+			 }	
+			
+			
+
+			    
+			
 			
 			 function fn_overlappedemail(){
-			    var mem_email1=$("#mem_email1").val();
-			    var mem_email2=$("#mem_email2").val();
-			    if(mem_email1=''){
+			    var _mem_email1=$("#mem_email1").val();
+			    var _mem_email2=$("#mem_email2").val();
+			    if(mem_email1='', mem_email2=''){
 			    	alert("EMAIL을 입력하세요");
 			    	return;
 			    }
@@ -261,10 +307,10 @@
 			       async:false,  
 			       url:"${contextPath}/overlappedemail.do",
 			       dataType:"text",
-			       data: {"mem_email1":mem_email1,"mem_email2":mem_email2 },
+			       data: {"mem_email1":_mem_email1,"mem_email2":_mem_email2 },
 			       success:function (data,textStatus){
-			          if(data=='true'){
-			        	  alert("사용할 수 없는 EMAIL입니다.");
+			          if(data=='false'){
+			        	  alert("사용할 수 있는 EMAIL입니다.");
 			       	 	  email_check =true;
 			          }else{
 			        	  alert("사용할 수 없는 EMAIL입니다.")

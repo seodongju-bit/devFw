@@ -26,7 +26,7 @@
           <label for="id" class="w" >회원 ID:</label>
           <input type="text" class="idbox" id="_mem_id" name="_mem_id" maxlength="15" placeholder="ID" style="float:left;">
           <input type="hidden" class="idbox" id="mem_id" name="mem_id" maxlength="15" placeholder="ID" style="float:left;">
-          <button type="button" id="btnOverlapped" class="overlapped-btn2" onClick="fn_overlapped();">중복 검사</button>
+          <button type="button" id="btnOverlapped" class="overlapped-btn2" onClick="fn_overlappedid();">중복 검사</button>
           <br></br>
           <label for="password" class="w">비밀번호:</label>
           <input type="password" class="pwdbox" id="mem_pw" name="mem_pw"maxlength="20" placeholder="PW">
@@ -34,7 +34,10 @@
           	<div id="pwtip">tip<span class="tooltiptext">영문/숫자/특수문자를 혼용하여 6자 이상 입력해주세요</span></div>
           <input type="password" class="pwdbox" id="mem_pw_check" maxlength="20" placeholder="PW 확인"><div id="desc2"></div>
           <label for="nick" class="w">판매처명:</label>
-          <input type="text" class="nickbox" id="mem_nick" name="mem_nick"maxlength="10" placeholder="COMPANY NAME">
+          <input type="text" class="nickbox" id="mem_nick" name="mem_nick"maxlength="10" placeholder="COMPANY NAME" style="float:left;">
+          <button type="button" id="btnOverlapped" class="overlapped-btn2" onClick="fn_overlappednick();">중복 검사</button> 
+          <br></br>
+          <br></br>
           <label for="name" class="w">대표자명:</label>
           <input type="text" class="namebox" id="mem_name" name="mem_name" maxlength="15" placeholder="NAME">
           <label for="mail" class="w">이메일:</label> 	
@@ -47,8 +50,12 @@
           <option value="nate.com">nate.com</option> 
           <option value="gmail.com">gmail.com</option> 
           </select>
+          <button type="button" id="btnOverlapped" class="overlapped-btn2" style="float:right;" onClick="fn_overlappedemail();">중복 검사</button>
+          <br></br>
+          <br></br>
           <label for="nick" class="w" >연락처:</label>
           <input type="text" class="telbox" id="mem_tel" name="mem_tel" maxlength="13" placeholder="TEL" >
+          
           <label for="address" class="w" >주소:</label>
           <div class="form-group">                   
 		  <input class="form-control" style="width: 40%; display: inline; float:left; " placeholder="우편번호" name="mem_zip" id="mem_zip" type="text" readonly="readonly" >
@@ -308,6 +315,109 @@
 		"http://www.ftc.go.kr/bizCommPop.do?wrkr_no="+frm1.wrkr_no.value;
 		window.open(url, "bizCommPop", "width=750, height=700;");
 		}
+		
+		
+		function fn_overlappedid(){
+		    var _id=$("#_mem_id").val();
+		    if(_id==''){
+		   	 alert("ID를 입력하세요");
+		   	 return;
+		    }
+		    $.ajax({
+		       type:"post",
+		       async:false,  
+		       url:"${contextPath}/overlappedid.do",
+		       dataType:"text",
+		       data: {"id":_id},
+		       success:function (data,textStatus){
+		          if(data=='false'){
+		       	    alert("사용할 수 있는 ID입니다.");
+//			       	    $('#btnOverlapped').prop("disabled", true);
+//			       	    $('#_signupsuccesspagemem_id').prop("disabled", true);
+		       	    $('#mem_id').val(_id);
+		       	 	id_check =true;
+		          }else{
+		        	  alert("사용할 수 없는 ID입니다.");
+		        	  id_check =false;
+		          }
+		       },
+		       error:function(data,textStatus){
+		          alert("에러가 발생했습니다.");ㅣ
+		       },
+		       complete:function(data,textStatus){
+		    	   formCheck();
+		          //alert("작업을완료 했습니다");
+		       }
+		    });  //end ajax	 
+		 }	
+		
+		
+		function fn_overlappednick(){
+		    var _nick=$("#mem_nick").val();
+		    if(_nick==''){
+		   	 alert("판매처 명을 입력하세요");
+		   	 return;
+		    }
+		    $.ajax({
+		       type:"post",
+		       async:false,  
+		       url:"${contextPath}/overlappednick.do",
+		       dataType:"text",
+		       data: {"nick":_nick},
+		       success:function (data,textStatus){
+		          if(data=='false'){
+		       	    alert("사용할 수 있는 판매처명 입니다.");
+		       	 	nick_check =true;
+		          }else{
+		        	alert("사용할 수 없는 판매처명 입니다.");
+		        	nick_check =false;
+		          }
+		       },
+		       error:function(data,textStatus){
+		          alert("에러가 발생했습니다.");ㅣ
+		       },
+		       complete:function(data,textStatus){
+		    	   formCheck();
+
+		       }
+		    });  
+		 }	
+		
+		
+
+		    
+		
+		
+		 function fn_overlappedemail(){
+		    var _mem_email1=$("#mem_email1").val();
+		    var _mem_email2=$("#mem_email2").val();
+		    if(mem_email1='', mem_email2=''){
+		    	alert("EMAIL을 입력하세요");
+		    	return;
+		    }
+		    $.ajax({
+		       type:"post",
+		       async:false,  
+		       url:"${contextPath}/overlappedemail.do",
+		       dataType:"text",
+		       data: {"mem_email1":_mem_email1,"mem_email2":_mem_email2 },
+		       success:function (data,textStatus){
+		          if(data=='false'){
+		        	  alert("사용할 수 있는 EMAIL입니다.");
+		       	 	  email_check =true;
+		          }else{
+		        	  alert("사용할 수 없는 EMAIL입니다.")
+		        	  email_check =false;
+		          }
+		       },
+		       error:function(data,textStatus){
+		          alert("에러가 발생했습니다.");
+		       },
+		       complete:function(data,textStatus){
+		    	   formCheck();
+		       }
+		    });  
+		 }
 		
 		</script>
 		

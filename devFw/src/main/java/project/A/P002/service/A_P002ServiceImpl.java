@@ -33,6 +33,11 @@ public class A_P002ServiceImpl implements A_P002Service {
 	}
 	
 	@Override
+	public String overlappednick(String nick) throws Exception{
+		return a_p002DAO.selectOverlappedNICK(nick);
+	}
+	
+	@Override
 	public String overlappedemail(Map emailMap) throws Exception{
 		return a_p002DAO.selectOverlappedEMAIL(emailMap);
 	}

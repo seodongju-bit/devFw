@@ -111,7 +111,7 @@ public class A_P002ControllerImpl   implements A_P002Controller {
 		ResponseEntity resEntity = null;
 		HttpHeaders responseHeaders = new HttpHeaders();
 		System.out.println("asdfasf"+_A_P002VO.getMem_id());
-		  
+		 
 		responseHeaders.add("Content-Type", "text/html; charset=utf-8");
 		try {
 			a_p002Service.addMember(_A_P002VO);
@@ -152,11 +152,20 @@ public class A_P002ControllerImpl   implements A_P002Controller {
 	
 	
 	@Override
+	@RequestMapping(value="/overlappednick.do" ,method = RequestMethod.POST)
+	public ResponseEntity overlappednick(@RequestParam("nick") String nick,HttpServletRequest request, HttpServletResponse response) throws Exception{
+		ResponseEntity resEntity = null;
+		System.out.println(nick);
+		String result = a_p002Service.overlappednick(nick);
+		resEntity =new ResponseEntity(result, HttpStatus.OK);
+		return resEntity;
+	}
+	
+	@Override
 	@RequestMapping(value="/overlappedemail.do" ,method = RequestMethod.POST)
 	public ResponseEntity overlappedemail(@RequestParam Map<String, String> emailMap,HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ResponseEntity resEntity = null;
-		emailMap.put("mem_email1", "mem_email1");
-		emailMap.put("mem_email2", "mem_email2");		
+		System.out.println(emailMap);	
 		String result = a_p002Service.overlappedemail(emailMap);
 		resEntity =new ResponseEntity(result, HttpStatus.OK);
 		return resEntity;

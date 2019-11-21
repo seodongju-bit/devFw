@@ -23,4 +23,21 @@
 			 
 		]]>
 	</select>
+	
+	<select id="IDsearch" resultType="String"  parameterType="String"  >
+			<![CDATA[
+			select mem_id
+			from members
+			where mem_name = #{mem_name} and mem_email1 = #{mem_email1} and mem_email2 = #{mem_email2};		
+			 ]]>
+		
+	</select>
+	
+	<select id="PWsearch" resultType="String"  parameterType="String"  >
+	    <![CDATA[
+			select mem_pw
+			from members
+			where mem_id = #{mem_id} and mem_email1 = #{mem_email1} and mem_email2 = #{mem_email2};			
+		]]>
+	</select>
 </mapper>

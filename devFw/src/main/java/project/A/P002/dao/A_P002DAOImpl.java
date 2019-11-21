@@ -28,6 +28,12 @@ public class A_P002DAOImpl implements A_P002DAO {
 		return result;
 	}
 	
+	@Override
+	public String selectOverlappedNICK(String nick) throws DataAccessException {
+		String result =  sqlSession.selectOne("A.A_P002.selectOverlappedNICK",nick);
+		return result;
+	}
+	
 
 	@Override
 	public String selectOverlappedEMAIL(Map emailMap) throws DataAccessException {

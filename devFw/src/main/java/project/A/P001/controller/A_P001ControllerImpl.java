@@ -9,11 +9,14 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -41,6 +44,28 @@ public class A_P001ControllerImpl implements A_P001Controller {
 	}
 	
 	@Override
+	@RequestMapping(value="/searchidpage.do" ,method = RequestMethod.GET)
+	public ModelAndView searchidpage(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = getViewName(request);
+		viewName = "searchidpage";
+		//List membersList = memberService.listMembers();
+		ModelAndView mav = new ModelAndView(viewName);
+		//mav.addObject("membersList", membersList);
+		return mav;
+	}
+	
+	@Override
+	@RequestMapping(value="/searchpwpage.do" ,method = RequestMethod.GET)
+	public ModelAndView searchpwpage(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = getViewName(request);
+		viewName = "searchpwpage";
+		//List membersList = memberService.listMembers();
+		ModelAndView mav = new ModelAndView(viewName);
+		//mav.addObject("membersList", membersList);
+		return mav;
+	}
+	
+	@Override
 	@RequestMapping(value="/unauthorizedmember.do" ,method = RequestMethod.GET)
 	public ModelAndView unauthorizedmember(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = getViewName(request);
@@ -51,10 +76,8 @@ public class A_P001ControllerImpl implements A_P001Controller {
 		return mav;
 	}
 
-
 	@RequestMapping(value="/login.do" ,method = RequestMethod.POST)
-	public ModelAndView login(@RequestParam Map<String, String> loginMap,
-			                  HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public ModelAndView login(@RequestParam Map<String, String> loginMap,HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ModelAndView mav = new ModelAndView();
 		try {
 			String addr = (String)request.getParameter("referrer");
@@ -97,32 +120,28 @@ public class A_P001ControllerImpl implements A_P001Controller {
 		return mav;
 	}
 
+
 	
 	@Override
-	   @RequestMapping(value="/logout.do" ,method = RequestMethod.GET)
-	   public ModelAndView logout(HttpServletRequest request, HttpServletResponse response) throws Exception {
-	      ModelAndView mav = new ModelAndView();
-	      String addr = (String)request.getParameter("referrer");
-	      String[] addr2 = addr.split("devFw");
-	      addr2 = addr2[1].split("\\?");
-	      
-	      HttpSession session=request.getSession();
-	      session.invalidate();
-//	      session.setAttribute("isLogOn", false);
-//	      session.removeAttribute("memberInfo");
-//	      
-	      try {
-	    	  mav.setViewName("redirect:"+addr2[0]);
-	    	  if(addr2.length==2) {
-	    		  addr2 = addr2[1].split("\\=");
-	    		  mav.addObject(addr2[0], addr2[1]);
-	    	  }
-	      }catch(Exception e) {
-				mav.setViewName("redirect:main.do");
-				return mav;	
-	      }
-	      return mav;
-	   }
+	@RequestMapping(value="/logout.do" ,method = RequestMethod.GET)
+	public ModelAndView logout(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		ModelAndView mav = new ModelAndView();
+		String addr = (String)request.getParameter("referrer");
+		String[] addr2 = addr.split("devFw");
+		addr2 = addr2[1].split("\\?");
+		
+		HttpSession session=request.getSession();
+		session.invalidate();		
+		mav.setViewName("redirect:"+addr2[0]);
+		if(addr2.length==2) {
+			addr2 = addr2[1].split("\\=");
+			mav.addObject(addr2[0], addr2[1]);
+		}
+		return mav;
+	}
+	
+
+	
 
 	private String getViewName(HttpServletRequest request) throws Exception {
 		String contextPath = request.getContextPath();

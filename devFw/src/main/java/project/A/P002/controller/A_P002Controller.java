@@ -24,8 +24,8 @@ public interface A_P002Controller {
 	public ModelAndView mailsendmessage(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ResponseEntity  addMember(@ModelAttribute("A_P002VO") A_P002VO A_P002VO,HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ResponseEntity   overlappedid(@RequestParam("id") String id,HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public ResponseEntity   overlappednick(@RequestParam("nick") String nick,HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ResponseEntity   overlappedemail(@RequestParam Map<String, String> emailMap,HttpServletRequest request, HttpServletResponse response) throws Exception;
-//	public ModelAndView emailAuth (HttpServletResponse response, HttpServletRequest request) throws Exception;
 	
 }
 
