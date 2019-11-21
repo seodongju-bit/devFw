@@ -13,101 +13,68 @@
 <html>
 <head>            
  <style>
-body {
-  font-family: Arial, Helvetica, sans-serif;    
 
-     
+
+#topCategoryName{
+	display:block;
+	padding:5px 20px;
+	text-align: center;
+	float:right;
+	width:250px;
+	font-size:15px;
+	background-color:lightgray;
+	margin:5px 0;
+	border-radius: 10px;
+	
+}                
+#topCategoryName:hover{
+	background-color:lightgreen;
+	cursor:pointer;
 }
-/* Create a column layout with Flexbox */
-.row {
-  display: flex;
-}
-
-/* Left column (menu) */
-.left {
-  flex: 35%;    
-  padding: 15px 0;
-   font-size:20px;
-                      
-                        
-  }
-
-.left h2 {
-  padding-left: 8px;                    
-}
-
-                             
-/* 왼쪽 메뉴 스타일 */
-#myMenu {         
-  list-style-type: none;
-  padding: 0;          
-  margin: 0;
-  width:200px;       
- 
-}
-
-#myMenu li{
-font-size:20px;
-}                  
-      
-#myMenu li a {
-  padding: 12px;
-  font-size:15px;
-  text-decoration: none;
-  color: black;
-  display: block
-}
-
-#myMenu li a:hover {
-  background-color: #eee;
-}     
-
-.main {
-  margin-left: 160px;
-  font-size: 28px; 
-  padding: 0px 10px;
-}
-
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav ul {font-size: 18px;}
-}
-
-
-                    
-
 
 #sideMenu{
+	float: right;
 	text-align:center;
+	width:250px;
 }
 
 .bigCtgr{
 	text-align:center;
 }
-.smallCtgr:first-child{
+.bigCtrg{
+	padding:5px;
 	height:45px;
-	background-color:orange;
-	font-size:25px;
-	color: white;
+	background-color: #E0E6F8;
+	font-size:20px;
+	color: #5E59B5;
+	border-radius: 10px;
+	margin-top:3px;
+	font-weight:bold;
+	display:none;
 }
 .smallCtgr{
-	height:35px;
-	background-color:#444444;
-	font-size:19px;
-	color: lightgray;
+	background-color: #F2F2F2;
+	font-size:15px;
+	color: gray;
+	border-radius: 5px;
+	margin:5px 0;
+	border:1px solid lightgray;
+	display:none;
 }
-
-.smallCtgr:hover{
-	background-color: #eee;
+.bigCtrg:hover{
+	background-color: #A9D0F5;
 	cursor:pointer;
 }
+.smallCtgr:hover{
+	background-color: #A9D0F5;
+	cursor:pointer;
+}
+
  </style>
  
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
- 
-
- 
+//alert('${cnum}');
 $(document).ready(function(){
 	 $.ajax({
 	       type:"post",
@@ -130,8 +97,9 @@ $(document).ready(function(){
 	        	   		bigCtgr.setAttribute("class", "bigCtgr");
 	        	   		
 	        	   		smallCtgr = document.createElement('div');
-	        	  		smallCtgr.setAttribute("class", "smallCtgr");
-	        	  		smallCtgr.setAttribute("onclick", "location.href='/devFw/category.do?code="+code+"'");
+	        	  		smallCtgr.setAttribute("class", "bigCtrg");
+	        	  		smallCtgr.setAttribute("id", code);
+	        	  		smallCtgr.setAttribute("onclick", "location.href='/devFw/category.do?ctgrNum="+code+"'");
 	        	  		smallCtgr.append(name);
 	        	  		bigCtgr.appendChild(smallCtgr);
 	        	  		
@@ -142,7 +110,8 @@ $(document).ready(function(){
 	        		    //link.append(name);
 	        	   		smallCtgr = document.createElement('div');
 	        	  		smallCtgr.setAttribute("class", "smallCtgr");
-	        	  		smallCtgr.setAttribute("onclick", "location.href='/devFw/category.do?code="+code+"'");
+	        	  		smallCtgr.setAttribute("id", code);
+	        	  		smallCtgr.setAttribute("onclick", "location.href='/devFw/category.do?ctgrNum="+code+"'");
 	        	  		smallCtgr.append(name);
 	        	  		//smallCtgr.appendChild(link);               
 	        	  		bigCtgr.appendChild(smallCtgr);
@@ -161,63 +130,40 @@ $(document).ready(function(){
 	          //alert("작업을완료 했습니다");
 	       }
 	    });  //end ajax
+	    
+	 var nowCtgr = '${cnum}';
+	 
+	 if(nowCtgr==''){
+		 $('[id^=H_]').css("display","block");
+	 }else{
+	 	nowCtgr = nowCtgr.substr(0,4);
+		$('[id^='+nowCtgr+']').css("display","block");
+	 }
+	 
 });
+
+function totalMenu(){
+	$('[id^=H_]').toggle('fast');
+	
+	var tic = $('#topCategoryName').attr("value");
+	if(tic=='on'){
+		$('#topCategoryName').attr("value","off");
+		$('#topCategoryName').css("background-color","lightgray");
+		$('#topCategoryName').html("전체카테고리");
+	}else{
+		$('#topCategoryName').attr("value","on");
+		$('#topCategoryName').css("background-color","lightgreen");
+		$('#topCategoryName').html("이전카테고리");
+	}
+}
 </script>
   <meta charset="UTF-8">
   <title>사이드 메뉴</title>
 </head>
 <body>
-<div id="sideMenu">
-
-</div>
-	<!-- 
-	<h1>
-		<a href="#"  class="no-underline">회원관리</a><br>
-	    <a href="#"  class="no-underline">게시판관리</a><br>
-	    <a href="#"  class="no-underline">상품관리</a><br>
-    </h1>
-     --> 
-    <!--  
-<div class="row">
-  <div class="left" style="background-color:#bbb;">
-    <h2>카테고리</h2>
-    
-    <ul id="myMenu">
-      <li><a href="category.do?c=H01&l=1">패션의류</a>
-      <ul>                         
-      <li><a href="category.do?c=H_01_0001&l=2">여성_상의</a></li>
-       <li><a href="category.do">여성_바지</a></li>
-       <li><a href="category.do">여성_스커트</a></li>
-       <li><a href="category.do">여성_원피스</a></li>
-       <li><a href="category.do">여성_아우터</a></li>
-       <li><a href="#">남성_상의</a></li>
-       <li><a href="#">남성_하의</a></li>
-        <li><a href="#">남성_아우터</a></li>   
-        <li><a href="#">양말</a></li>
-         <li><a href="#">운동화</a></li>
-          <li><a href="#">남성구두</a></li>
-           <li><a href="#">여성구두</a></li>
-            <li><a href="#">가방</a></li>     
-             <li><a href="#">악세사리</a></li>            
-              <li><a href="#">아동의류</a></li>                  
-               <li><a href="#">아동신발</a></li>
-               <li><a href="#">내의/잠옷</a></li>
-               <li><a href="#">속옷</a></li>
-               <li><a href="#">명품관</a></li>
-               
-      </ul>
-
-  	</li>
-    
-    </ul>
-  </div>
-  
-
-</div>
-
-
--->
-
+<div id="topCategoryName" onclick="totalMenu()" value="">전체카테고리</div>
+	<div id="sideMenu">
+	</div>
 
 </body>
 </html>

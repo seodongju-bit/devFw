@@ -22,7 +22,7 @@
 
 $(document).ready(function(){
 	$('#itemsImg').attr('src','${item.sell_thumbnail}');
-	$('.miniImg').attr('src', 'resources/image/items/10.JPG' );
+	//$('.miniImg').attr('src', 'resources/image/items/10.JPG' );
 	
 	
 	if('${item.option_yn}'=='y'){

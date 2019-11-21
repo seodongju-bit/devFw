@@ -23,14 +23,11 @@
         width:100%;
         min-width:800px;
         height:202px;
-        background-color: #F3F3F3;
       }
        #sidebar-left {
-        width: 15%;  
+        width: 23%;  
         min-height:700px;
-        padding: 5px;
-        margin-right:120px;
-        margin-bottom: 5px;        
+        margin-right:20px;     
         float: left;
         border: 0px solid #bcbcbc;
         font-size:10px;
@@ -38,19 +35,10 @@
   
       
       #content {
-        width: 75%;
-        padding: 5px;
-        margin-right: 5px;
+        width: 73%;
         float: left;
         border: 0px solid #bcbcbc;
       } 
-      
-      #mainContent {
-        width: 100%;
-        padding: 0;
-        margin:0;
-        background-color:#222222;
-      }
       #footer {
         clear: both;
         padding: 5px;
@@ -71,9 +59,6 @@
        <div id="sidebar-left">
           <tiles:insertAttribute name="side"/>
       </div>           
-      <div id="mainContent">
-          <tiles:insertAttribute name="mainBody"/>
-      </div>
       <div id="content">
           <tiles:insertAttribute name="body"/>
       </div>

@@ -15,11 +15,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import project.D.P001.service.D_P001Service;
+
+
+
 
 
 @Controller("D_P001Controller")
 public class D_P001ControllerImpl   implements D_P001Controller {
-	
+
+	@Autowired
+	private D_P001Service d_P001Service;
 	
 	@Override
 	@RequestMapping(value="/myReview.do" ,method = RequestMethod.GET)
@@ -31,20 +37,18 @@ public class D_P001ControllerImpl   implements D_P001Controller {
 		//mav.addObject("membersList", membersList);
 		return mav;
 	}
+	
 	@Override
 	@RequestMapping(value="/reviewwrite.do" ,method = RequestMethod.GET)
 	public ModelAndView reviewwrite(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = getViewName(request);
 		viewName = "reviewwrite";
-		//List membersList = memberService.listMembers();
-		ModelAndView mav = new ModelAndView(viewName);
-		//mav.addObject("membersList", membersList);
-		return mav;
+		List reviewlist = d_P001Service.reviewItem();     
+		ModelAndView mavs = new ModelAndView(viewName);
+		mavs.addObject("List", reviewlist);
+		return mavs; 
 	}
 
-	
-
-	
 	private String getViewName(HttpServletRequest request) throws Exception {
 		String contextPath = request.getContextPath();
 		String uri = (String) request.getAttribute("javax.servlet.include.request_uri");
@@ -56,7 +60,7 @@ public class D_P001ControllerImpl   implements D_P001Controller {
 		if (!((contextPath == null) || ("".equals(contextPath)))) {
 			begin = contextPath.length();
 		}
-
+                   
 		int end;
 		if (uri.indexOf(";") != -1) {
 			end = uri.indexOf(";");

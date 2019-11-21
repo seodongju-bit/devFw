@@ -22,7 +22,7 @@ public interface F_P001Controller {
 			HttpServletResponse response) throws Exception;
 	ModelAndView eventProduct(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	ModelAndView bestProduct(HttpServletRequest request, HttpServletResponse response) throws Exception;
-	ModelAndView category(HttpServletRequest request, HttpServletResponse response) throws Exception;
+	ModelAndView category(String ctgrNum,HttpServletRequest request, HttpServletResponse response) throws Exception;
 	
 	
 }

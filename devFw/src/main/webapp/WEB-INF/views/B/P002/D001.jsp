@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-  
 <!DOCTYPE html>
 	<script type="text/javascript" src="/devFw/resources/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
 	
@@ -9,9 +7,6 @@
  	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
  	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
  	 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-  
-
-
 <style>
 body{
 	background-color: #F2F2F2;
@@ -25,6 +20,7 @@ body{
 	padding:3px;
 	
 }
+
 
 .form-control{
 	width:80%;
@@ -74,8 +70,6 @@ body{
 	width: 95%;
 	min-width:800px;
 	height: 400px;
-	
-	
 }
 #editorBox{
 	width:90%;
@@ -99,8 +93,45 @@ body{
  	display:inline-block;
  	float:left;
  }
+#imgUpload{
+	background-color:lightblue;
+	display:block;
+	widht:500px;
+}
+#imgUpload > button{
+	display:inline-block;
+	float:right;
+}
+.uploadList{
+	width:300px;
+	display:block;
+}
 
- 
+.uploadList button{
+	display: inline;
+	float:right;
+}
+
+#optionUp p{
+	position:relative;
+	top:5px;
+	color:black;
+	display:inline;
+	margin: 0 15px;
+}
+
+
+#optionUp button{/*옵션 내 버튼*/
+	float:right !important;
+	
+}
+#optionUp .form-control{
+	width:250px;
+}
+#optionUp .productLabel{
+	padding-right:10px;
+	background-color: #BDBDBD;
+}
 
 </style>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
@@ -145,38 +176,63 @@ $(function() {
           bUseVerticalResizer : true,
           // 모드 탭(Editor | HTML | TEXT) 사용 여부
           bUseModeChanger : true,
+          fOnBeforeUnload : function(){}
+
        }
     });
-    $("#submitBtn").click(function(){
-    	var frm = document.addSellForm;
-    	 //id가 smarteditor인 textarea에 에디터에서 대입
-        obj.getById["editor"].exec("UPDATE_CONTENTS_FIELD", []);
-   	 
-
-     frm.action="inputSell.do"; 
-   	 frm.submit();
-   	
+    
+    $("#submitBtn").click(function(){  //제출
+  
+    	var form = $('#uploadForm')[0];
+        var formData = new FormData(form);
+        $.ajax({
+            type: "POST",
+            enctype: 'multipart/form-data',
+            url: 'upload.do',
+            data: formData,
+            processData: false,
+            contentType: false,
+            cache: false,
+            timeout: 600000,
+            dataType:"json",
+            success: function (data) {
+               //data.path; 불러올 경로 정보
+            	document.getElementById('sell_thumbnail').value = data.path;
+            },
+            error: function (e) {
+                console.log("ERROR : ", e);
+                alert("fail");
+            },
+            complete: function() {
+               	Fsubmit();
+            }
+        });
     });
+    
+    function Fsubmit(){
+    	var frm = document.addSellForm;
+	    //id가 smarteditor인 textarea에 에디터에서 대입
+    	obj.getById["editor"].exec("UPDATE_CONTENTS_FIELD", []);
+		frm.action="inputSell.do"; 
+	 	frm.submit();
+	}
     
 });
 
-function proNumSearch(){
+function proNumSearch(){  //제품번호 검색창 실행
 	console.log("실행");
 	window.open("proNumSearch.do", "제품번호 검색", "width=600, height=350, left=500, top400", "resizable=no");
 }
 
-function numberWithCommas(x) {
+function numberWithCommas(x) {  //xxx,xxx원으로 변환해서 표출
 	  x = x.replace(/[^0-9]/g,'');   // 입력값이 숫자가 아니면 공백
 	  x = x.replace(/,/g,'');          // ,값 공백처리
 	  document.getElementById('price').innerHTML=x.replace(/\B(?=(\d{3})+(?!\d))/g, ",")+"원"; // 정규식을 이용해서 3자리 마다 , 추가 
 }
 
 let optionSet = new Set();
-function addOptionBox(sizeVal, colorVal){
-	//var option = document.getElementById("optionUp");
-	//var addSelect = document.createElement('select');
-
-	//option.append(addSelect);
+function addOptionBox(sizeVal, colorVal){  //셀렉트 박스에 옵션 추가
+	
 	console.log(optionSet);
 	if(sizeVal!=0 || sizeVal!=''){  //사이즈 옵션 추가
 		if(optionSet.has(sizeVal)){
@@ -189,26 +245,69 @@ function addOptionBox(sizeVal, colorVal){
 		sizeOption.append(sizeVal);
 		size.appendChild(sizeOption);
 		optionSet.add(sizeVal);
+		alert(sizeVal+"사이즈가 추가되었습니다");
+		$('#sizeOption').val("");
 	}
 	if(colorVal!=0 || colorVal!='' ){  //컬러옵션 추가
 		if(optionSet.has(colorVal)){
 			alert("이미 들어있는 옵션입니다");
 			return;
 		}
-		var size = document.getElementById("colorBox");
-		var sizeOption = document.createElement('option');
-		sizeOption.setAttribute("value", colorVal);
-		sizeOption.append(colorVal);
-		size.appendChild(sizeOption);
-		optionSet.add(sizeVal);
+		var color = document.getElementById("colorBox");
+		var Option = document.createElement('option');
+		Option.setAttribute("value", colorVal);
+		Option.append(colorVal);
+		color.appendChild(Option);
+		optionSet.add(colorVal);
+		alert(colorVal+"색상이 추가되었습니다");
+		$('#colorOption').val("");
 	}
 	
 }
+var quantityIndex =1;
 function addOptionUp(sizeVal, colorVal){
-	alert(sizeVal+":"+colorVal);
-	var option = document.getElementById("optionUp");
+	if(sizeVal=="" && colorVal==""){
+		alert("옵션을 추가해주세요");
+		return;
+	}
+	//alert(sizeVal+":"+colorVal);
+	var div = document.getElementById("optionUp");
+	var optionQnLabel = document.createElement('label');
+	var optionQn = document.createElement('input');
+	var deletebtn = document.createElement('button');
 	
+	deletebtn.append('삭제');
+	deletebtn.setAttribute('type', 'button');
+	deletebtn.setAttribute('onclick', "itemDelete('quantity"+quantityIndex+"')");
+	deletebtn.setAttribute('class', 'btn btn-default');
+	
+	optionQn.setAttribute("type","number");
+	optionQn.setAttribute("class","form-control");
+	optionQn.setAttribute("min","0");
+	
+	optionQnLabel.setAttribute("id","quantity"+quantityIndex);
+	
+	var sc = document.createElement('p');
+	sc.append("옵션 수량 : ");
+	if(sizeVal!=""){
+		sc.append('(size option : '+sizeVal+') ');
+	}
+	if(colorVal!=""){
+		sc.append('(color option : '+colorVal+') ');
+	}
+	optionQnLabel.append(sc);
+	optionQnLabel.appendChild(deletebtn);
+	optionQnLabel.appendChild(optionQn);
+	
+	optionQnLabel.setAttribute("class","productLabel");
+	div.appendChild(optionQnLabel);
+	quantityIndex++;
 }
+function itemDelete(id){
+	$('#'+id).remove();
+	quantityIndex--;
+}
+
 </script>
 <html>
 <head>
@@ -218,7 +317,8 @@ function addOptionUp(sizeVal, colorVal){
 <body>
 <h1>제품판매</h1>
 제품번호 , 제목, 썸네일, 판매가격, (판매내용), 등록날짜, 상품재고수, 옵션(size, color)
-<form name="addSellForm" method="post"  accept-charset="UTF-8" >
+<form name="addSellForm" id="addSellForm" method="post"  accept-charset="UTF-8" >
+	<input type="hidden" id="sell_thumbnail" name="sell_thumbnail" />
 	<div class="form-group">
 		<label class="productLabel"><p class="innerDiv" >제품번호</p>
 		<button type="button" class="btn btn-default"  id="pro_num_search" onclick="proNumSearch()">제품번호 찾기</button>
@@ -229,11 +329,6 @@ function addOptionUp(sizeVal, colorVal){
 		<label class="productLabel"><p class="innerDiv" >제목</p>
 		<input type="text" class="form-control" id="sell_title" name="sell_title" /></label>
 	</div>
-<!-- 	<div class="form-group"> -->
-<!-- 		<label class="productLabel"><a class="innerDiv">썸네일</a> -->
-<!-- 		<input type="text" class="form-control" /></label> -->
-<!-- 		<input type="file" name="fileName1"> -->
-<!-- 	</div> -->
 	<div class="form-group">
 		<label class="productLabel"><p class="innerDiv" >판매가격</p>
 		<input type="text"  class="form-control" name="sell_price" onkeyup="numberWithCommas(this.value)" />
@@ -270,7 +365,6 @@ function addOptionUp(sizeVal, colorVal){
 		</label>
 	</div>
 	<div class="form-group" id="optionUp">
-		
 	</div>
 
 
@@ -281,7 +375,21 @@ function addOptionUp(sizeVal, colorVal){
 	<div class="form-group" id="editorBox">
 		<textarea name="sell_contents" id="editor"  ></textarea>
 	</div><br>
-	<input type="button" class="btn btn-default" id="submitBtn"  value="판매등록" />
+	
 </form>
+<div id="imgUpload">이미지 업로드
+<!-- 	<button type="button" class="btn btn-default" onclick="addUpload()"><span class="glyphicon glyphicon-plus"></span></button> -->
+	<form id="uploadForm" method="post" enctype="multipart/form-data">
+         <label class="uploadList"><input type="file" name="file"></label>
+	</form> 
+</div>
+
+<br>
+<input type="button" class="btn btn-default" id="submitBtn"  value="판매등록" />
+
+
 </body>
 </html>
+
+
+

@@ -88,11 +88,7 @@ public class F_P001ControllerImpl implements F_P001Controller {
 		return mav7;
 	}
 	
-	
-	
 
-	
-	
 	@Override
 	@RequestMapping(value="/bestProduct.do" ,method = RequestMethod.GET)
 	public ModelAndView bestProduct(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -122,13 +118,18 @@ public class F_P001ControllerImpl implements F_P001Controller {
 	      
 	@Override
 	@RequestMapping(value="/category.do" ,method = RequestMethod.GET)
-	public ModelAndView category(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public ModelAndView category(@RequestParam(value="ctgrNum", required=false) String ctgrNum, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = getViewName(request);
 		viewName = "category";
 		List productlist = f_P001Service.searchItem();
-		System.out.println(productlist);
 		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("List", productlist);
+		if(ctgrNum!=null) {
+			mav.addObject("cnum", ctgrNum);
+		}else {
+			mav.addObject("cnum","");
+		}
+		
 		return mav;
 	}                  
 	

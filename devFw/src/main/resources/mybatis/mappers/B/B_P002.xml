@@ -29,8 +29,8 @@
 	
 	<insert id="addSell" parameterType="java.util.Map">
 		<![CDATA[
-			insert into productsell(sell_number, pro_number, sell_price, sell_contents, sell_date, sell_title, sell_quantity, mem_id, option_yn)
-			values(sell_number.nextval,'${pro_number}','${sell_price}','${sell_contents}',sysdate,'${sell_title}','${sell_quantity}','${mem_id}','${option_yn}')
+			insert into productsell(sell_number, pro_number,sell_thumbnail, sell_price, sell_contents, sell_date, sell_title, sell_quantity, mem_id, option_yn)
+			values(sell_number.nextval,'${pro_number}','${sell_thumbnail}','${sell_price}','${sell_contents}',sysdate,'${sell_title}','${sell_quantity}','${mem_id}','${option_yn}')
 		]]>
 	</insert>
 	

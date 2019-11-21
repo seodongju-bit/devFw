@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.review">
+
+<resultMap id="D_P001Result01" type="D_P001VO">
+<result property="review_number" column="review_number" />
+<result property="sell_number" column="sell_number" />
+<result property="pro_number" column="mem_no" />
+<result property="review_stdate" column="review_stdate" />
+<result property="review_pdscore" column="review_pdscore" />
+<result property="review_content" column="review_content" />
+<result property="review_url" column="review_url" />
+<result property="review_monthpoint" column="review_monthpoint" />
+<result property="review_totalpoint" column="review_totalpoint" />
+</resultMap>
+
+
+
+
+
+	<insert id="reviewwrite" parameterType="java.util.Map">
+		<![CDATA[
+			insert into review (review_number,sell_number,pro_number,mem_no,review_stdate,review_pdscore,review_content,review_url,review_monthpoint,review_totalpoint)
+			values(A((select max(review_number)+1 
+        				from review 
+        				where mem_no='${p_id}'),0),
+        			'${p_id}','${review_number}','${sell_number}','${pro_number}', '${review_stdate}','${review_pdscore}','${review_content}','${review_url}','${review_monthpoint}','${review_totalpoint}')
+		]]>
+	</insert>
+ 
+
+
+
+
+</mapper>

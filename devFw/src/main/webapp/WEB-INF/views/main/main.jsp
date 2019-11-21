@@ -60,10 +60,10 @@
 	margin: 0 50px 0 0;
 }
 
-body, hmtl {
-   background: #ecf0f1;
-   font-family: 'Anton', sans-serif;
-}
+/* body, hmtl { */
+/*    background: #ecf0f1; */
+/*    font-family: 'Anton', sans-serif; */
+/* } */
 
 #wrapper {
    width: 1095px;
