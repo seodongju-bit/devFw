@@ -9,7 +9,6 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
 import project.F.P001.vo.PagingVO;
-import project.F.P002.vo.F_P002VO;
 import project.F.P001.vo.F_P001VO;
 
 
