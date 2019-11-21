@@ -100,7 +100,15 @@
 	
 	/*검색어 자동완성창*/
 	#suggest {
-		display:none; position: absolute; left: 830px; top:80px; border: 0.1px  solid #87cb42; z-index:3;font-weight: bold;background-color:#ffffff; 	
+		display:none; 
+		position: absolute; 
+		left: 397px;
+		width: 300px;
+		top:95px; 
+		border: 0.1px  solid #87cb42; 
+		z-index:3;
+		font-weight: bold;
+		background-color:#ffffff; 	
 	}
 	
 	
@@ -324,7 +332,7 @@
 	</div>
       <form class="form-inline" name="frmSearch" action="${contextPath}/searchProd.do" style="width:360px;">
           <input class="form-control" type="text"    
-          placeholder="상품을 검색해보세요"aria-label="Search" style=width:300px name="searchWord" onKeyUp="keywordSearch()">
+          placeholder="상품을 검색해보세요"aria-label="Search" style=width:300px name="searchWord" onKeyUp="keywordSearch()"  autocomplete="off">
           <button class="btn btn-outline-secondary" type="submit" id="search">검색</button>
       </form>
     <div id="suggest">

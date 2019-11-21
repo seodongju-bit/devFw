@@ -255,8 +255,6 @@ body, hmtl {
 	height: 350px;
 }
 
-#itemsImg {
-}
 
 </style>
 
