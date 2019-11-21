@@ -17,6 +17,7 @@ public class A_P001VO {
 	private String mem_address1 = "";
 	private String mem_address2 = "";
 	private String mem_zip = "";
+	private String mem_verify = "";
 	
 	
 	public A_P001VO() {
@@ -155,5 +156,15 @@ public class A_P001VO {
 
 	public void setMem_zip(String mem_zip) {
 		this.mem_zip = mem_zip;
+	}
+	
+	public String getMem_verify() {
+		return mem_verify;
+	}
+
+
+
+	public void setMem_verify(String mem_verify) {
+		this.mem_verify = mem_verify;
 	}
 }
