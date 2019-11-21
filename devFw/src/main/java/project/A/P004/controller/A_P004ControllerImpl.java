@@ -79,12 +79,24 @@ public class A_P004ControllerImpl   implements A_P004Controller {
 		request.setCharacterEncoding("utf-8");
 		Map<String, Object> searchMap = new HashMap<String, Object>(); // 검색조건
 		Map<String, Object> resultMap = new HashMap<String, Object>(); // 조회결과
-		
+		String division = request.getParameter("division");
+		String start = request.getParameter("start");
+		String end = request.getParameter("end");
+		System.out.println(start);
+		System.out.println(end);
+		if("point_date".equals(division)) {
+			searchMap.put("date", division);
+		}else {
+			searchMap.put("date", division);
+		}
 		// 검색조건설정
+		System.out.println("####333333333333333333333333333333333333"+searchMap);
 		HttpSession session = request.getSession();
 		String mem_id = (String)session.getAttribute("mem_id");
 		System.out.println("session="+mem_id);
 		searchMap.put("mem_id", mem_id);
+		searchMap.put("start", start);
+		searchMap.put("end", end);
 		//데이터 조회
 		List<A_P004VO> data = activeService.listPoint(searchMap);
         resultMap.put("Data", data);

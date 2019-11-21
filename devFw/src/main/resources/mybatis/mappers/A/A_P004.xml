@@ -29,13 +29,22 @@
          select * from coupon 	 	
       ]]>
 	</select>
-	
+	  
 	<select id="selectAllPointlist" resultMap="pointResult" parameterType="java.util.Map">
       <![CDATA[
-         select * from pointuse
-          where mem_id=#{mem_id}
-          
+         SELECT * 
+         FROM pointuse
+         WHERE mem_id=#{mem_id}
+         
        ]]>
+          
+        <choose>
+        	<when test="start != '' and end !='' and date != ''"> 
+        		AND ${date} between to_date('${start}', 'YYYY-MM-DD') 
+       			AND  to_date('${end}', 'YYYY-MM-DD')+0.9999
+    		</when>
+		</choose>
+		
 	</select>
 	
 	</mapper>

@@ -47,13 +47,13 @@ margin-left: 5px;
 		initSheet.Cfg = {SearchMode:smLazyLoad,ToolTip:1};
 		initSheet.HeaderMode = {Sort:1,ColMove:1,ColResize:1,HeaderCheck:1};
 		initSheet.Cols = [
-			{Header:"상태",Type:"Status",SaveName:"STATUS",MinWidth:30, Align:"Center"},
-			{Header:"번호",Type:"Text",SaveName:"point_number",MinWidth:80,Align:"Center"},
-			{Header:"지급날자",Type:"Text",SaveName:"point_date",MinWidth:150,KeyField:1 ,MultiLineText:1},			
-			{Header:"사용날자",Type:"Text",SaveName:"point_usedate",MinWidth:150,KeyField:1 ,MultiLineText:1, Wrap:1},
-			{Header:"사용금액",Type:"Text",SaveName:"point_usemoney",MinWidth:105},
-			{Header:"주문번호",Type:"Text",SaveName:"order_number",MinWidth:90},
-			{Header:"사용메모",Type:"Text",SaveName:"point_content",MinWidth:60}
+			{Header:"상태",Type:"Status",SaveName:"STATUS",MinWidth:30, Align:"Center",Edit:0},
+			{Header:"번호",Type:"Text",SaveName:"point_number",MinWidth:80,Align:"Center",Edit:0},
+			{Header:"지급날자",Type:"Date",SaveName:"point_date",MinWidth:150,KeyField:1 ,MultiLineText:1,Align:"Center",Edit:0},			
+			{Header:"사용날자",Type:"Date",SaveName:"point_usedate",MinWidth:150,KeyField:1 ,MultiLineText:1, Wrap:1,Align:"Center",Edit:0},
+			{Header:"사용금액",Type:"Text",SaveName:"point_usemoney",MinWidth:105,Align:"Center",Edit:0},
+			{Header:"주문번호",Type:"Text",SaveName:"order_number",MinWidth:90,Align:"Center",Edit:0},
+			{Header:"사용메모",Type:"Text",SaveName:"point_content",MinWidth:60,Align:"Center",Edit:0}
 			
 		];    
 		IBS_InitSheet( mySheet , initSheet);
@@ -65,9 +65,12 @@ margin-left: 5px;
 	
 	/*Sheet 각종 처리*/
 	function doAction(sAction) {
+
 		switch(sAction) {
 			case "search": //조회
+			;
 			    var param = FormQueryStringEnc(document.frm);
+			   
 				mySheet.DoSearch("${contextPath}/pointSearch.do", param);
 				//mySheet.DoSearch("transaction_data2.json");
 				break;
@@ -75,6 +78,7 @@ margin-left: 5px;
 				mySheet.RemoveAll();
 				break;
 		}
+				
 	}
 	
 	// 조회완료 후 처리할 작업
@@ -102,7 +106,14 @@ margin-left: 5px;
   <div class="content-sheet">
     <div class="exp_product">
       <form name='frm'>
-        ID: <input type='text' id="point_number" name="point_number" /> 
+      <select name="division" >
+		<option value="">===선택===</option>
+		<option value="point_date">지급날자</option>
+		<option value="point_usedate">사용날자</option>
+		</select> 
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		
+        <input type='Date' id="start" name="start" /> ~ <input type='Date' id="end" name="end" />
         <a href="javascript:doAction('reload')" id="btn1" class="btn btn-default">초기화</a>
 	  <a href="javascript:doAction('search')" id="btn2" class="btn btn-default">조회</a>
       </form>
