@@ -109,7 +109,7 @@
 <div class="container">
 	<table id="list_view">
 	  <tbody>
-		<c:set var = "sum" value="${0}"/>
+		<c:set var = "total" value="0"/>
 		<c:forEach var="search" items="${searchList}" varStatus="status"> 
 	      <tr>
 	      	<!-- 썸네일 -->
@@ -130,7 +130,7 @@
 				</div>
 			</td>
 			<!-- 제품 가격 -->
-			<td class="prod_price" style="margin:0; padding:0;"><span>${search.sell_price }원</span><br>
+			<td class="prod_price" style="margin:0; padding:0;"><fmt:formatNumber value="${search.sell_price }"/>원<br>
 				<strong>
 					<fmt:formatNumber  value="${search.sell_price*0.9}" type="number" var="discounted_price" />
 			        ${discounted_price}원
@@ -139,11 +139,12 @@
 			<td class="buy_btns" style="margin:0; padding:0;">
 				<ul style="display:inline; margin:0; padding:0;">
 					<li><a href="#">장바구니로</a></li>
-					<li><a href="#">구매하기</a></li>
 				</ul>
 			</td>
 			</tr>
+			<c:set var = "total" value="${total + search.prodCount}"/>
 		</c:forEach>
+		<!-- 등록된 총 상품 갯수 ${total + searchPageMaker.totalCount}-->
 		<br>
 		<div id="sorting">
 			<ul>
@@ -152,7 +153,7 @@
 				<li><a style="border: currentColor; border-image: none;" href="#">상품평 순</a></li>
 			</ul>
 		</div>
-		<h4>총 건의 상품이 검색되었습니다</h4>
+		<h4>총 <c:out value="${total}"/>건의 상품이 검색되었습니다</h4>
 		</tbody>
 	</table>
 	<div class="clear"></div>
