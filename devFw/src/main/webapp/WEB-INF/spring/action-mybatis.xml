@@ -9,7 +9,10 @@
 	<bean id="propertyPlaceholderConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
-			<value>/WEB-INF/config/jdbc/jdbc.properties</value>
+			<list>
+      <value>/WEB-INF/config/jdbc/jdbc.properties</value>
+      <value>/WEB-INF/config/pic.properties</value>
+  			 </list>
 		</property>
 	</bean>
 

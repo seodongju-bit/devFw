@@ -33,7 +33,20 @@ text-align:left;
  </style>
   <meta charset="UTF-8">
   <title>사이드 메뉴</title>
-
+<script>
+function fn_coupon(){
+	
+	var _isLogOn=document.getElementById("isLogOn");
+	var isLogOn=_isLogOn.value;
+	
+	if(isLogOn=="false" || isLogOn=='') {
+		alert("로그인 후 조회가 가능합니다.");
+		location.href="${contextPath}/signinpage.do";
+	}else{
+		location.href="${contextPath}/coupon.do";
+	}
+}
+</script>
 </head>
 <body>
 
@@ -44,7 +57,7 @@ text-align:left;
         <li><a href="#">취소/반품/교환/환불 내역</a></li>
         <li><a href="#">배송관리</a></li>
         <li class="nav-header">My 혜택</li>
-        <li><a href="#">할인 쿠폰</a></li>
+        <li><a onclick="fn_coupon()">할인 쿠폰</a></li>
         <li><a href="#">캐시/기프트카드</a></li>
         <li class="nav-header">My 활동</li>
         <li><a href="myReview.do">내가 작성한 리뷰</a></li>
@@ -52,6 +65,7 @@ text-align:left;
         <li><a href="#">문의내역 확인</a></li>
         <li><a href="#">구매 리뷰</a></li>
         <li><a href="#">찜 리스트</a></li>
+        <li><a href="point.do">포인트 사용 내역</a></li>
         <li class="nav-header">My 정보</li>
         <li><a href="#">개인정보확인/수정</a></li>
         <li><a href="#">결제수단-쿠페이 관리</a></li>
@@ -81,4 +95,5 @@ text-align:left;
 	<script src="../devFw/resources/js/bootstrap.min.js"></script>
 
 </body>
+<input type="hidden" name="isLogOn" id="isLogOn" value="${isLogOn}"/>
 </html>

@@ -32,7 +32,7 @@
           <input type="text" class="nickbox" id="mem_nick" name="mem_nick"maxlength="10" placeholder="NICK NAME">
           <label for="name" class="w">이름:</label>
           <input type="text" class="namebox" id="mem_name" name="mem_name" maxlength="15" placeholder="NAME">
-          <label for="mail" class="w">이메일:</label> 
+          <label for="mail" class="w">이메일:</label>
           <input type="text" class="mail1" id="mem_email1"  name="mem_email1" maxlength="15" >@
           <input type="text" class="mail2" id="mem_email2"  name="mem_email2" disabled value="naver.com"> 
           <select class="mailselect" name="mem_email2" id="selectEmail"> 
@@ -42,6 +42,9 @@
           <option value="nate.com">nate.com</option> 
           <option value="gmail.com">gmail.com</option> 
           </select>
+          <button type="button" id="btnOverlapped" class="overlapped-btn2" style="float:right;" onClick="fn_overlappedemail();">중복 검사</button> 
+          <br></br>
+          <br></br>
           <label for="nick" class="w" >연락처:</label>
           <input type="text" class="telbox" id="mem_tel" name="mem_tel" maxlength="13" placeholder="TEL" >
           <label for="address" class="w" >주소:</label>
@@ -67,10 +70,10 @@
 		var id_check=false;
 		var pw_check=false;
 		var pwc_check=false;
-		//var email_check=false;
+		var email_check=false;
 		
 		function formCheck(){
-			if(id_check && pw_check && pwc_check){
+			if(id_check && pw_check && pwc_check && email_check){
 				document.getElementById('memberFormButton').style.background='#4bc970';
 				document.getElementById('memberFormButton').removeAttribute('disabled');
 			}else{
@@ -246,30 +249,38 @@
 			 }	
 				
 			
-			/* function fn_overlappedemail(){
-			    var _mem_email1=$("#_mem_email1").val();
-			    var _mem_email2=$("#_mem_email2").val();
+			 function fn_overlappedemail(){
+			    var mem_email1=$("#mem_email1").val();
+			    var mem_email2=$("#mem_email2").val();
+			    if(mem_email1=''){
+			    	alert("EMAIL을 입력하세요");
+			    	return;
+			    }
 			    $.ajax({
 			       type:"post",
 			       async:false,  
 			       url:"${contextPath}/overlappedemail.do",
 			       dataType:"text",
-			       data: {"mem_email1":_mem_email1},
-			       		 {"mem_email2";_mem_email2},
+			       data: {"mem_email1":mem_email1,"mem_email2":mem_email2 },
 			       success:function (data,textStatus){
-			          if(data=='false'){
-			       	    alert("사용할 수 있는 ID입니다.");
-// 			       	    $('#btnOverlapped').prop("disabled", true);
-// 			       	    $('#_signupsuccesspagemem_id').prop("disabled", true);
-			       	    $('#mem_id').val(_id);
-			       	 	id_check =true;
+			          if(data=='true'){
+			        	  alert("사용할 수 없는 EMAIL입니다.");
+			       	 	  email_check =true;
 			          }else{
-			        	  alert("사용할 수 없는 ID입니다.");
-			        	  id_check =false;
-			          });
-			    }
-			    }
-			} */
+			        	  alert("사용할 수 없는 EMAIL입니다.")
+			        	  email_check =false;
+			          }
+			       },
+			       error:function(data,textStatus){
+			          alert("에러가 발생했습니다.");
+			       },
+			       complete:function(data,textStatus){
+			    	   formCheck();
+			       }
+			    });  
+			 }	
+			    
+			
 
 
 			

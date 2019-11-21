@@ -1,6 +1,8 @@
 package project.A.P004.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -23,9 +26,9 @@ import project.A.P004.vo.A_P004VO;
 @Controller("A_P004Controller")
 public class A_P004ControllerImpl   implements A_P004Controller {
 	@Autowired
-	private A_P004Service couponService;
+	private A_P004Service activeService;
 	@Autowired
-	A_P004VO couponVO ;
+	A_P004VO activeVO ;
 	
 	@Override
 	@RequestMapping(value="/myPage.do" ,method = RequestMethod.GET)
@@ -43,13 +46,52 @@ public class A_P004ControllerImpl   implements A_P004Controller {
 	public ModelAndView coupon(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = getViewName(request);
 		viewName = "coupon";
-		List couponsList = couponService.listCoupon();
+/*		HttpSession session = request.getSession();
+		String p_id = (String)session.getAttribute("mem_id");*/
+		List couponsList = activeService.listCoupon();
+		System.out.println(couponsList);
 		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("couponsList", couponsList);
 		return mav;
 	}
 	
 
+	@Override
+	@RequestMapping(value="/point.do" ,method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView point(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = getViewName(request);
+		viewName = "point";
+//		HttpSession session = request.getSession();
+//		String mem_id = (String)session.getAttribute("mem_id");
+//		System.out.println("session="+mem_id);
+//		List pointList = activeService.listPoint(mem_id);
+//		System.out.println(pointList);
+		ModelAndView mav = new ModelAndView(viewName);
+//		mav.addObject("pointList", pointList);
+		return mav;
+		
+	}
+	
+	@Override
+	@RequestMapping(value="/pointSearch.do", method = {RequestMethod.GET, RequestMethod.POST})
+	@ResponseBody
+	public Map<String, Object> pointSearch(HttpServletRequest request, HttpServletResponse response) throws Exception{
+		request.setCharacterEncoding("utf-8");
+		Map<String, Object> searchMap = new HashMap<String, Object>(); // 검색조건
+		Map<String, Object> resultMap = new HashMap<String, Object>(); // 조회결과
+		
+		// 검색조건설정
+		HttpSession session = request.getSession();
+		String mem_id = (String)session.getAttribute("mem_id");
+		System.out.println("session="+mem_id);
+		searchMap.put("mem_id", mem_id);
+		//데이터 조회
+		List<A_P004VO> data = activeService.listPoint(searchMap);
+        resultMap.put("Data", data);
+        
+        return resultMap;
+	}
+	
 	
 	private String getViewName(HttpServletRequest request) throws Exception {
 		String contextPath = request.getContextPath();

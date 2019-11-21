@@ -128,6 +128,11 @@
       <put-attribute name="body" value="/WEB-INF/views/A/P004/D005.jsp" />
    </definition>
    
+   <definition name="point" extends="baseLayout">
+      <put-attribute name="title" value="포인트사용내역" />
+      <put-attribute name="body" value="/WEB-INF/views/A/P004/D003.jsp" />
+   </definition>
+   
    <definition name="eventWrite" extends="eventLayout">
       <put-attribute name="title" value="이벤트/공지사항-상세" />
       <put-attribute name="body" value="/WEB-INF/views/C/P001/D003.jsp" />

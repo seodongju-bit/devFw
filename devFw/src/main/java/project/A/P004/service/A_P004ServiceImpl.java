@@ -11,18 +11,25 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import project.A.P004.dao.A_P004DAO;
+import project.A.P004.vo.A_P004VO;
 
 
-@Service("couponService")
+@Service("activeService")
 @Transactional(propagation = Propagation.REQUIRED)
 public class A_P004ServiceImpl implements A_P004Service {
 	@Autowired
-	private A_P004DAO couponDAO;
+	private A_P004DAO activeDAO;
 
 	@Override
 	public List listCoupon() throws DataAccessException {
 		List couponList = null;
-		couponList = couponDAO.selectAllCouponList();
+		couponList = activeDAO.selectAllCouponList();
 		return couponList;
 	}	
+	@Override
+	public List<A_P004VO> listPoint(Map<String, Object> searchMap) throws DataAccessException{
+		List<A_P004VO> list = activeDAO.selectAllPointList(searchMap);
+		System.out.println("22222222222222222222222222"+list);
+		return list;
+	}
 }
