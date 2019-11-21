@@ -8,9 +8,10 @@
 		<result property="co_number" column="co_number" />
         <result property="co_name" column="co_name" />
         <result property="co_enddate" column="co_enddate" />
-        <result property="co_usedate" column="co_usedate" />
+        <result property="co_stdate" column="co_stdate" />
         <result property="co_sale" column="co_sale" />
-        <result property="co_salepercent" column="co_salepercent" />
+        <result property="co_percent" column="co_percent" />
+        <result property="mem_id" column="mem_id" />
 	</resultMap> 
 	
 	<resultMap id="pointResult" type="activeVO">
@@ -26,7 +27,16 @@
 	
 	<select id="selectAllCouponList" resultMap="couResult">
       <![CDATA[
-         select * from coupon 	 	
+         select 
+         mc.co_number, 
+         c.co_name, 
+         to_char(c.co_enddate,'YYYY-MM-DD') co_enddate, 
+         to_char(c.co_stdate,'YYYY-MM-DD') co_stdate,
+         c.co_sale, 
+         c.co_percent
+		 from coupon c, mycoupon mc
+		 where c.co_number = mc.co_number
+		 and mem_id = #{p_id}	
       ]]>
 	</select>
 	  

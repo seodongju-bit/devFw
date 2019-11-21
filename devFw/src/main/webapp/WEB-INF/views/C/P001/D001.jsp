@@ -25,7 +25,25 @@ margin-right: auto;
 #evnet_td{
 margin-top: 50px;
 }
-
+  .hit {
+      animation-name: blink;
+      animation-duration: 1s;
+      animation-timing-function: ease;
+      animation-iteration-count: infinite;
+      /* 위 속성들을 한 줄로 표기하기 */
+      /* -webkit-animation: blink 1.5s ease infinite; */
+    }
+     
+    /* 애니메이션 지점 설정하기 */
+    /* 익스플로러 10 이상, 최신 모던 브라우저에서 지원 */
+    @keyframes blink {
+      from {color: white;font-weight: bold;}
+      30% {color: yellow; font-weight: bold;}
+      to {color: red; font-weight: bold;}
+      /* 0% {color:white;}
+      30% {color: yellow;}
+      100% {color:red; font-weight: bold;} */
+    }
 
 </style>
 
@@ -69,7 +87,10 @@ function selChange() {
 <c:forEach var="event" items="${eventList}" varStatus='index' >
 <tr align="center" onclick="location.href='${contextPath}/eventDetail.do?no_number=${event.no_number}'">
 <td>${event.no_number}</td>
-<td>${event.no_title}</td>
+<td>${event.no_title}
+ <c:if test="${event.view_cnt >= 10}">
+                           <span class="hit">Hot!</span>
+                        </c:if></td>
 <td>${event.mem_no}</td>
 <td>${event.view_cnt}</td>
 <td>${event.no_division}</td>

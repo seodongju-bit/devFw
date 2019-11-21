@@ -18,9 +18,9 @@ public class A_P004DAOImpl implements A_P004DAO {
 	private SqlSession sqlSession;
 
 	@Override
-	public List selectAllCouponList() throws DataAccessException {
+	public List selectAllCouponList(String p_id) throws DataAccessException {
 		List<A_P004VO> couponList = null;
-		couponList = sqlSession.selectList("mapper.active.selectAllCouponList");
+		couponList = sqlSession.selectList("mapper.active.selectAllCouponList", p_id);
 		System.out.println(couponList);
 		return couponList;
 	}

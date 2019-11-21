@@ -21,9 +21,9 @@ public class A_P004ServiceImpl implements A_P004Service {
 	private A_P004DAO activeDAO;
 
 	@Override
-	public List listCoupon() throws DataAccessException {
+	public List listCoupon(String p_id) throws DataAccessException {
 		List couponList = null;
-		couponList = activeDAO.selectAllCouponList();
+		couponList = activeDAO.selectAllCouponList(p_id);
 		return couponList;
 	}	
 	@Override

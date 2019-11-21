@@ -19,7 +19,12 @@
       <![CDATA[
          	
       
-      	SELECT * 
+					SELECT  no_number, 
+         view_cnt, 
+         no_division, 
+         no_contents, 
+         no_title, 
+         to_char(writedate,'YYYY-MM-DD') as writedate
 		FROM (
 			SELECT ROWNUM RN, A.* 
 				FROM (
@@ -29,6 +34,7 @@
 						) A
 				)
 		WHERE RN BETWEEN #{start} AND #{end}
+      	
       	
       ]]>
 	</select>
@@ -42,7 +48,7 @@
          no_division, 
          no_contents, 
          no_title, 
-         writedate
+         to_char(writedate,'YYYY-MM-DD') as writedate
          
          from notice
          

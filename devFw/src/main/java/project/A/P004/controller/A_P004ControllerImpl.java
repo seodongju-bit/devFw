@@ -46,9 +46,9 @@ public class A_P004ControllerImpl   implements A_P004Controller {
 	public ModelAndView coupon(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = getViewName(request);
 		viewName = "coupon";
-/*		HttpSession session = request.getSession();
-		String p_id = (String)session.getAttribute("mem_id");*/
-		List couponsList = activeService.listCoupon();
+		HttpSession session = request.getSession();
+		String p_id = (String)session.getAttribute("mem_id");
+		List couponsList = activeService.listCoupon(p_id);
 		System.out.println(couponsList);
 		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("couponsList", couponsList);

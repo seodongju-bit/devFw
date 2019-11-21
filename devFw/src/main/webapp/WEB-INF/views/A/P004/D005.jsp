@@ -24,7 +24,7 @@
 <tr>
 <th>쿠폰번호</th>
 <th>쿠폰이름</th>
-<th>사용기간</th>
+<th>기간</th>
 <th>할인가격</th>
 </tr>
 
@@ -32,8 +32,8 @@
 <tr align="center">
 <td>${coupon.co_number}</td>
 <td>${coupon.co_name}</td>
-<td>${coupon.co_enddate}</td>
-<td>${coupon.co_sale}</td>
+<td>${coupon.co_stdate}~${coupon.co_enddate}</td>
+<td>${coupon.co_sale}${coupon.co_percent}</td>
 </tr>
 </c:forEach>
 
