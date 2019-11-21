@@ -30,6 +30,30 @@ margin-right: auto;
 float: right;
 margin-left: 5px;
 }
+
+p{
+color: red;
+}
+
+#division, #start, #end{
+	height: 34px;
+	padding: 6px 12px;
+	font-size: 14px;
+	line-height: 1.42857143;
+	color: #555;
+	background-color: #fff;
+	background-image: none;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+	-webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow
+		ease-in-out .15s;
+	-o-transition: border-color ease-in-out .15s, box-shadow ease-in-out
+		.15s;
+	transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
 </style>
 
 <%-- <link rel="stylesheet" href="${contextPath}/resources/ibsheet/css/style.css"> --%> 
@@ -106,14 +130,14 @@ margin-left: 5px;
   <div class="content-sheet">
     <div class="exp_product">
       <form name='frm'>
-      <select name="division" >
-		<option value="">===선택===</option>
+      <select name="division" id="division" style="width: 100px;">
+		<option value="">=선택=</option>
 		<option value="point_date">지급날자</option>
 		<option value="point_usedate">사용날자</option>
 		</select> 
-		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		
-        <input type='Date' id="start" name="start" /> ~ <input type='Date' id="end" name="end" />
+		
+        <input type='Date' id="start"  style="width: 150px;" name="start" /> ~ <input type='Date' id="end" style="width: 150px;"  name="end" />
         <a href="javascript:doAction('reload')" id="btn1" class="btn btn-default">초기화</a>
 	  <a href="javascript:doAction('search')" id="btn2" class="btn btn-default">조회</a>
       </form>
@@ -122,6 +146,6 @@ margin-left: 5px;
 	<div class="clear hidden"></div>
 	<script>createIBSheet("mySheet", "670px", "500px");</script>
   </div>
-
+<p align="center">[주의]-하나라도 빈칸일시 전체조회가 됩니다.-[주의]</p>
 </body>
 </html>
