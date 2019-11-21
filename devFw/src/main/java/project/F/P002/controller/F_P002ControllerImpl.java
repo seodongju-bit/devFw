@@ -95,55 +95,39 @@ public class F_P002ControllerImpl   implements F_P002Controller {
 	@ResponseBody
 	public Map<String, Object> addBasket(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("utf-8");
-		System.out.println("장바구니추가 실행");
-		
 		HttpSession session = request.getSession();
-		String p_id = (String)session.getAttribute("id");
-		System.out.println(p_id);
+		String p_id = (String)session.getAttribute("mem_id");
 		List<Map<String, Object>> list = createModel(request);
 		
 		Map<String, Object> Map = new HashMap<String, Object>();
-		//Map<String, Object> resultMap = new HashMap<String, Object>();
-	
-		//addBasket(Map<String, Object> searchMap)
 		for(int i=0;i<list.size();i++) {
 			list.get(i).put("p_id", p_id);
 			System.out.println(list.get(i));
 			f_P002Service.addBasket(list.get(i));
 		}
-		//판매번호, 색상, 사이즈, 수량
-		//현재 : 판매번호, 회원번호, 수량, 제품번호
-
-		System.out.println("list:"+list);
-		//System.out.println(BeanUtils.describe(e_P001VO));
 
 		return Map;
 
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	public List<Map<String, Object>> createModel(HttpServletRequest request){
 		List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
 		Map<String, Object> resultMap= new HashMap<String, Object>();
-		List size = new ArrayList();
-		List color = new ArrayList();
-		List quantity = new ArrayList();
+		String size="";
+		String color="";
 		int i=1;
 		while(true) {
 			if(request.getParameter("quantity"+i)==null || request.getParameter("quantity"+i)=="") { break; }
+			if(request.getParameter("size"+i)==null) {size="-1";}
+			else {size=request.getParameter("size"+i);}
+			if(request.getParameter("color"+i)==null) {color="-1";}
+			else {color=request.getParameter("color"+i);}
 			resultMap = new HashMap<String, Object>();
 			resultMap.put("sell_number", request.getParameter("sell_number"));
 			resultMap.put("quantity", request.getParameter("quantity"+i));
-			resultMap.put("size",request.getParameter("size"+i));
-			resultMap.put("color",request.getParameter("color"+i));
+			resultMap.put("size",size);
+			resultMap.put("color",color);
 			result.add(resultMap);
 			i++;
 		}

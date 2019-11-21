@@ -66,11 +66,8 @@
  
 	<insert id="addBasket" parameterType="java.util.Map">
 		<![CDATA[
-			insert into basket2 (ba_no, mem_id, sell_number, ba_size, ba_color, ba_quantity)
-			values(NVL((select max(ba_no)+1 
-        				from basket2 
-        				where mem_id='${p_id}'),0),
-        			'${p_id}','${sell_number}','${size}','${color}', '${quantity}')
+			insert into basket2 (mem_id, sell_number, ba_size, ba_color, ba_quantity)
+			values('${p_id}','${sell_number}','${size}','${color}', '${quantity}')
 		]]>
 	</insert>
  

@@ -150,7 +150,7 @@ function totalMenu(){
 	if(tic=='on'){
 		$('#topCategoryName').attr("value","off");
 		$('#topCategoryName').css("background-color","lightgray");
-		$('#topCategoryName').html("전체카테고리");
+		$('#topCategoryName').html("다른카테고리");
 	}else{
 		$('#topCategoryName').attr("value","on");
 		$('#topCategoryName').css("background-color","lightgreen");
@@ -162,7 +162,7 @@ function totalMenu(){
   <title>사이드 메뉴</title>
 </head>
 <body>
-<div id="topCategoryName" onclick="totalMenu()" value="">전체카테고리</div>
+<div id="topCategoryName" onclick="totalMenu()" value="">다른카테고리</div>
 	<div id="sideMenu">
 	</div>
 
