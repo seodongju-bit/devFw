@@ -20,5 +20,6 @@ public interface C_P001Service {
 	 public List<Map<String,Object>> selectBoardDetail(Map<String, Object> dataMap) throws DataAccessException;
 	 public void eventWrite(Map<String, Object> dataMap);
 	 public int countBoard();
+	
 
 }

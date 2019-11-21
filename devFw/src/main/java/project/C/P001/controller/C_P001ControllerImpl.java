@@ -16,6 +16,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -43,7 +44,10 @@ public class C_P001ControllerImpl implements C_P001Controller {
 	private C_P001Service eventService;
 	@Autowired
 	C_P001VO eventVO ;
-	
+	   @Value("${uploadFilePath}")
+	   private String uploadFilePath;
+	   @Value("${downloadFilePath}")
+	   private String downloadFilePath;
 	
 	@Override
 	@RequestMapping(value="/event.do" ,method = {RequestMethod.GET, RequestMethod.POST})
@@ -184,14 +188,14 @@ public class C_P001ControllerImpl implements C_P001Controller {
             String oldName = request.getHeader("file-name");
             // 파일 기본경로 _ 상세경로
            
-            String filePath = "C:/gitwork/devFw/devFw/devFw/devFw/src/main/webapp/resources/image/";
+//            String filePath = "C:/gitwork/devFw/devFw/devFw/devFw/src/main/webapp/resources/image/";
             
             String saveName = sb.append(new SimpleDateFormat("yyyyMMddHHmmss")
                           .format(System.currentTimeMillis()))
                           .append(UUID.randomUUID().toString())
                           .append(oldName.substring(oldName.lastIndexOf("."))).toString();
             InputStream is = request.getInputStream();
-            OutputStream os = new FileOutputStream(filePath + saveName);
+            OutputStream os = new FileOutputStream(uploadFilePath + saveName);
             int numRead;
             byte b[] = new byte[Integer.parseInt(request.getHeader("file-size"))];
             while ((numRead = is.read(b, 0, b.length)) != -1) {
@@ -203,7 +207,7 @@ public class C_P001ControllerImpl implements C_P001Controller {
             sb = new StringBuffer();
             sb.append("&bNewLine=true")
               .append("&sFileName=").append(oldName)
-              .append("&sFileURL=").append("http://localhost:8088/devFw/resources/image/")
+              .append("&sFileURL=").append(downloadFilePath)
         .append(saveName);
         } catch (Exception e) {
             e.printStackTrace();

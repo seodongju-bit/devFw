@@ -3,8 +3,8 @@
       PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
    
-   <mapper namespace="mapper.coupon">
-	<resultMap id="couResult" type="couponVO">
+   <mapper namespace="mapper.active">
+	<resultMap id="couResult" type="activeVO">
 		<result property="co_number" column="co_number" />
         <result property="co_name" column="co_name" />
         <result property="co_enddate" column="co_enddate" />
@@ -13,11 +13,38 @@
         <result property="co_salepercent" column="co_salepercent" />
 	</resultMap> 
 	
+	<resultMap id="pointResult" type="activeVO">
+		<result property="mem_no" column="mem_no" />
+        <result property="point_number" column="point_number" />
+        <result property="point_date" column="point_date" />
+        <result property="point_usedate" column="point_usedate" />
+        <result property="point_usemoney" column="point_usemoney" />
+        <result property="order_number" column="order_number" />
+        <result property="point_content" column="point_content" />
+        <result property="mem_id" column="mem_id" />
+	</resultMap> 
+	
 	<select id="selectAllCouponList" resultMap="couResult">
       <![CDATA[
          select * from coupon 	 	
       ]]>
 	</select>
-	
+	  
+	<select id="selectAllPointlist" resultMap="pointResult" parameterType="java.util.Map">
+      <![CDATA[
+         SELECT * 
+         FROM pointuse
+         WHERE mem_id=#{mem_id}
+         
+       ]]>
+          
+        <choose>
+        	<when test="start != '' and end !='' and date != ''"> 
+        		AND ${date} between to_date('${start}', 'YYYY-MM-DD') 
+       			AND  to_date('${end}', 'YYYY-MM-DD')+0.9999
+    		</when>
+		</choose>
+		
+	</select>
 	
 	</mapper>

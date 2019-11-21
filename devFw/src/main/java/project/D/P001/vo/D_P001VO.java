@@ -1,5 +1,8 @@
 package project.D.P001.vo;
+import java.sql.Date;
+import org.springframework.stereotype.Component;
 
+@Component("D_P001VO")
 public class D_P001VO {
 
 	private String review_number;
@@ -8,7 +11,7 @@ public class D_P001VO {
 	private String mem_no;
     private String review_stdate;
     private String review_pdscore;
-    private String review_content;
+    private String review_content; 
     private String review_url;
     private String review_monthpoint;
     private String review_totalpoint;

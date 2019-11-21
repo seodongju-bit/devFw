@@ -22,8 +22,13 @@ public interface F_P001Controller {
 			HttpServletResponse response) throws Exception;
 	ModelAndView eventProduct(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	ModelAndView bestProduct(HttpServletRequest request, HttpServletResponse response) throws Exception;
+
 	ModelAndView category(String ctgrNum,HttpServletRequest request, HttpServletResponse response) throws Exception;
+
+	List<Map<String, Object>> searchoption(String p_id, HttpServletRequest request, HttpServletResponse response)
+			throws Exception;
+
 	
-	
+
 }
                    

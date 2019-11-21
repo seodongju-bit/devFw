@@ -127,6 +127,11 @@
       <put-attribute name="body" value="/WEB-INF/views/A/P004/D005.jsp" />
    </definition>
    
+   <definition name="point" extends="baseLayout">
+      <put-attribute name="title" value="포인트사용내역" />
+      <put-attribute name="body" value="/WEB-INF/views/A/P004/D003.jsp" />
+   </definition>
+   
    <definition name="eventWrite" extends="eventLayout">
       <put-attribute name="title" value="이벤트/공지사항-상세" />
       <put-attribute name="body" value="/WEB-INF/views/C/P001/D003.jsp" />
@@ -177,7 +182,7 @@
       <put-attribute name="title" value="이벤트상품출력페이지" />         
       <put-attribute name="body" value="/WEB-INF/views/F/P001/D004.jsp" />
    </definition>
-	
+	 
    <definition name="category" extends="baseLayout2">
       <put-attribute name="title" value="카테고리별 상품창" />         
       <put-attribute name="body" value="/WEB-INF/views/F/P001/D005.jsp" />

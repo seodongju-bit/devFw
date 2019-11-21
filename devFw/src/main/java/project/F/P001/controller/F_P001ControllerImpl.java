@@ -133,6 +133,41 @@ public class F_P001ControllerImpl implements F_P001Controller {
 		return mav;
 	}                  
 	
+	@Override
+	@RequestMapping(value = "/searchoption.do", method = { RequestMethod.GET, RequestMethod.POST })
+	@ResponseBody
+	public List<Map<String, Object>> searchoption(@RequestParam(value="p_id", required=false) String p_id, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		request.setCharacterEncoding("utf-8");
+		System.out.println("옵션찾기 실행"+ p_id);
+		Map<String, Object> searchMap = new HashMap<String, Object>();
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
+		searchMap.put("p_id", p_id);	 
+		
+		List productlist = null;
+		try {
+			productlist = f_P001Service.searchoption(searchMap);
+			System.out.println("======>"+productlist);
+			for(int i=0; i < productlist.size();i++) {
+				F_P001VO = (F_P001VO)productlist.get(i);
+				resultMap = BeanUtils.describe(F_P001VO);
+				result.add(resultMap);
+			}
+		}catch(Exception e) {
+			resultMap.put("error_yn", "Y");
+			resultMap.put("error_text", "error_text");
+			e.printStackTrace();
+		}
+		
+		System.out.println("=======================>>"+result);
+		
+		return result;
+	}
+	
+	
+	
+
+
 	private String getViewName(HttpServletRequest request) throws Exception {
 		String contextPath = request.getContextPath();
 		String uri = (String) request.getAttribute("javax.servlet.include.request_uri");

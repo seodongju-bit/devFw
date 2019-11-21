@@ -16,6 +16,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import project.D.P001.service.D_P001Service;
+import project.D.P001.vo.D_P001VO;
+
 
 
 
@@ -26,17 +28,10 @@ public class D_P001ControllerImpl   implements D_P001Controller {
 
 	@Autowired
 	private D_P001Service d_P001Service;
-	
-	@Override
-	@RequestMapping(value="/myReview.do" ,method = RequestMethod.GET)
-	public ModelAndView myReview(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String viewName = getViewName(request);
-		viewName = "myReview";
-		//List membersList = memberService.listMembers();
-		ModelAndView mav = new ModelAndView(viewName);
-		//mav.addObject("membersList", membersList);
-		return mav;
-	}
+	@Autowired
+	D_P001VO D_P001VO;
+
+
 	
 	@Override
 	@RequestMapping(value="/reviewwrite.do" ,method = RequestMethod.GET)
@@ -45,7 +40,7 @@ public class D_P001ControllerImpl   implements D_P001Controller {
 		viewName = "reviewwrite";
 		List reviewlist = d_P001Service.reviewItem();     
 		ModelAndView mavs = new ModelAndView(viewName);
-		mavs.addObject("List", reviewlist);
+        mavs.addObject("List", reviewlist);
 		return mavs; 
 	}
 
@@ -80,7 +75,17 @@ public class D_P001ControllerImpl   implements D_P001Controller {
 		return viewName;
 	}
 
+	@Override
+	@RequestMapping(value="/myReview.do" ,method = RequestMethod.GET)
+	public ModelAndView myReview(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = getViewName(request);
+		viewName = "myReview";
+		//List membersList = memberService.listMembers();
+		ModelAndView mav = new ModelAndView(viewName);
+		//mav.addObject("membersList", membersList);
+		return mav;
+	}
+
 
 
 }
-

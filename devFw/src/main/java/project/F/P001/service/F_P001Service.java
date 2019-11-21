@@ -22,6 +22,15 @@ public interface F_P001Service {
 
 	public int countBoard();
 
+	public List searchoption(Map<String, Object> searchMap) throws DataAccessException;
+	
+
+
+	
+
+	
+
+
 
 
                                                                 

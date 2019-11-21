@@ -99,24 +99,25 @@ public class A_P001ControllerImpl implements A_P001Controller {
 
 	
 	@Override
-	@RequestMapping(value="/logout.do" ,method = RequestMethod.GET)
-	public ModelAndView logout(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		ModelAndView mav = new ModelAndView();
-		String addr = (String)request.getParameter("referrer");
-		String[] addr2 = addr.split("devFw");
-		addr2 = addr2[1].split("\\?");
-		
-		HttpSession session=request.getSession();
-		session.setAttribute("isLogOn", false);
-		session.removeAttribute("memberInfo");
-		
-		mav.setViewName("redirect:"+addr2[0]);
-		if(addr2.length==2) {
-			addr2 = addr2[1].split("\\=");
-			mav.addObject(addr2[0], addr2[1]);
-		}
-		return mav;
-	}
+	   @RequestMapping(value="/logout.do" ,method = RequestMethod.GET)
+	   public ModelAndView logout(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	      ModelAndView mav = new ModelAndView();
+	      String addr = (String)request.getParameter("referrer");
+	      String[] addr2 = addr.split("devFw");
+	      addr2 = addr2[1].split("\\?");
+	      
+	      HttpSession session=request.getSession();
+	      session.invalidate();
+//	      session.setAttribute("isLogOn", false);
+//	      session.removeAttribute("memberInfo");
+//	      
+	      mav.setViewName("redirect:"+addr2[0]);
+	      if(addr2.length==2) {
+	         addr2 = addr2[1].split("\\=");
+	         mav.addObject(addr2[0], addr2[1]);
+	      }
+	      return mav;
+	   }
 
 	private String getViewName(HttpServletRequest request) throws Exception {
 		String contextPath = request.getContextPath();

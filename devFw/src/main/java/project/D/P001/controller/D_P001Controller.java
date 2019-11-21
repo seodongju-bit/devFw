@@ -10,9 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 public interface D_P001Controller {
-
+    public ModelAndView myReview(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView reviewwrite(HttpServletRequest request, HttpServletResponse response) throws Exception;
-
-	ModelAndView myReview(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	
 }

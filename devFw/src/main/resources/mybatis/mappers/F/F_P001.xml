@@ -89,11 +89,18 @@
      
 
    </resultMap>
-
-
-
-
    
+   	<resultMap id="F_P001Result00" type="F_P001VO">
+		<result property="sell_number" column="sell_number" />
+		<result property="option_size" column="option_size" />
+		<result property="option_color" column="option_color" />
+		<result property="option_quantity" column="option_quantity" />
+	</resultMap>
+	
+	
+
+
+
    <select id="selectItem" resultMap="F_P001Result01" parameterType="java.util.Map"> 
       <![CDATA[
       select *    
@@ -101,10 +108,22 @@
          where c.common_code = p.pro_division AND
             p.pro_number = s.pro_number              
             AND c.common_code LIKE ${#p_id,jdbcType=VARCHAR}'%'
-      ]]>                   
-       
-	
-   </select>                                               
+      ]]>         
+
+   </select>  
+   
+
+         
+      	<select id="searchoption" resultMap="F_P001Result00" parameterType="java.util.Map"> 
+      <![CDATA[
+         select sell_number, option_size, option_color, option_quantity
+         from selloption
+         where sell_number = ${p_id}
+         order by to_number(option_size) 
+      ]]>
+
+	</select>    
+                                  
    <select id="selectItem1" resultMap="F_P001_D04Result01" parameterType="java.util.Map"> 
       <![CDATA[
          select *              

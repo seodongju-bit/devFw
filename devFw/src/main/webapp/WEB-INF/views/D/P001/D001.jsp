@@ -7,6 +7,8 @@
 	request.setCharacterEncoding("UTF-8");
 %>
 
+<c:set var="item" value="${reviewItem}" />
+
 <!DOCTYPE html>
 <html>
 <head> 
@@ -118,7 +120,7 @@ height:300px;
 			<td></td>
 			<td></td>
 		</tr>
-	</table>
+	</table>  
 
 
 	<p id="f" style=" margin-right: 0px;">리뷰 작성하기</p>
@@ -142,9 +144,9 @@ height:300px;
 		
 			<th id="c"><a href="#"><span style="color: blue;">주문상세
 						보기></span></a>
-					 <button type="button" onclick="#">리뷰 작성 확인</button> 	
-				
-		</tr>
+					 <button type="button" onclick="review">리뷰 작성 확인</button> 	
+				<!--  "location.href='myReview.do'" -->
+	 	</tr>
                		
 	
 
@@ -192,12 +194,16 @@ height:300px;
 			</tr>
 		</table>
 
-	</div>
+	</div> 
 
 	<script>
 		$(document).ready(function() {
 			$('[data-toggle="tooltip"]').tooltip();
 		});
+		
+		
+		
+		
 		
 
 	</script>
