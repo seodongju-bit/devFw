@@ -121,9 +121,13 @@ public class F_P001ControllerImpl implements F_P001Controller {
 	public ModelAndView category(@RequestParam(value="ctgrNum", required=false) String ctgrNum, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = getViewName(request);
 		viewName = "category";
-		List productlist = f_P001Service.searchItem();
+		Map<String, Object> searchMap = new HashMap<String, Object>();
+		searchMap.put("p_id", ctgrNum);
+		List productlist = f_P001Service.searchItem(searchMap);
 		ModelAndView mav = new ModelAndView(viewName);
-		mav.addObject("List", productlist);
+		if(productlist.size()==0) {mav.addObject("itemMsg", "nothing");}
+		else {mav.addObject("List", productlist);}
+				
 		if(ctgrNum!=null) {
 			mav.addObject("cnum", ctgrNum);
 		}else {

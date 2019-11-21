@@ -11,7 +11,7 @@ import project.F.P001.vo.PagingVO;
 
 public interface F_P001DAO {
 
-	public List selectItem() throws DataAccessException;
+	public List selectItem(Map<String, Object> searchMap) throws DataAccessException;
 	public List selectItem1() throws DataAccessException;
 	public List selectItem2() throws DataAccessException;
 	public List selectItem5() throws DataAccessException;

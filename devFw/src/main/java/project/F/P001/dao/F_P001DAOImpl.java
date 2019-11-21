@@ -18,10 +18,11 @@ public class F_P001DAOImpl implements F_P001DAO {
 	private SqlSession sqlSession;
 
 	@Override
-	public List selectItem() throws DataAccessException {
+	public List selectItem(Map<String, Object> searchMap) throws DataAccessException {
+		
+		System.out.println("dao:"+searchMap);
 		List<F_P001VO> productlist = null;
-		System.out.println("dao����");
-		productlist = sqlSession.selectList("mapper.product.selectItem");
+		productlist = sqlSession.selectList("mapper.product.selectItem", searchMap);
 		System.out.println(productlist);
 		return productlist;
 	}

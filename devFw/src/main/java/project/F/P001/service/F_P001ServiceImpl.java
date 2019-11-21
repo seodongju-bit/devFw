@@ -23,10 +23,9 @@ public class F_P001ServiceImpl implements F_P001Service{
 	private F_P001DAO f_P001DAO ;
 	
 	@Override
-	public List searchItem() throws DataAccessException {
+	public List searchItem(Map<String, Object> searchMap) throws DataAccessException {
 		List productlist = null; 
-		System.out.println("���񽺽���");
-		productlist=f_P001DAO.selectItem();
+		productlist=f_P001DAO.selectItem(searchMap);
 		return productlist;
 	}
 	

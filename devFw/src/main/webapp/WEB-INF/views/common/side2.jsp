@@ -135,6 +135,7 @@ $(document).ready(function(){
 	 
 	 if(nowCtgr==''){
 		 $('[id^=H_]').css("display","block");
+		 $('#topCategoryName').remove();
 	 }else{
 	 	nowCtgr = nowCtgr.substr(0,4);
 		$('[id^='+nowCtgr+']').css("display","block");

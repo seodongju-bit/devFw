@@ -111,10 +111,15 @@ public class A_P001ControllerImpl implements A_P001Controller {
 //	      session.setAttribute("isLogOn", false);
 //	      session.removeAttribute("memberInfo");
 //	      
-	      mav.setViewName("redirect:"+addr2[0]);
-	      if(addr2.length==2) {
-	         addr2 = addr2[1].split("\\=");
-	         mav.addObject(addr2[0], addr2[1]);
+	      try {
+	    	  mav.setViewName("redirect:"+addr2[0]);
+	    	  if(addr2.length==2) {
+	    		  addr2 = addr2[1].split("\\=");
+	    		  mav.addObject(addr2[0], addr2[1]);
+	    	  }
+	      }catch(Exception e) {
+				mav.setViewName("redirect:main.do");
+				return mav;	
 	      }
 	      return mav;
 	   }

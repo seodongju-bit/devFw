@@ -87,6 +87,14 @@ left:335px;
                                    
 
 </style>
+<script>
+$(document).ready(function(){
+	var main = document.getElementById('contentsList');
+	
+	main.append("등록된 상품이 없습니다.");
+});
+
+</script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>            
@@ -94,7 +102,7 @@ left:335px;
 <div class="name">
 new product
 </div>
-
+<div id="contentsList">
  <c:forEach var="productlist" items="${List}" >   
 <div class="gallery">
 
@@ -112,6 +120,7 @@ new product
      
 </c:forEach>         
 
+
 <div id="paging">
 <s_paging id="page"> 
 
@@ -126,6 +135,7 @@ new product
 </s_paging>
 </div>
 
+</div>
 
 </body>                
 </html>        

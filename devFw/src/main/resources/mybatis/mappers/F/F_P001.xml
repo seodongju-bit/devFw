@@ -103,11 +103,10 @@
 
    <select id="selectItem" resultMap="F_P001Result01" parameterType="java.util.Map"> 
       <![CDATA[
-      select *    
-         from commonlist c,product p, productsell s
-         where c.common_code = p.pro_division AND
-            p.pro_number = s.pro_number              
-            AND c.common_code LIKE ${#p_id,jdbcType=VARCHAR}'%'
+         select *    
+         from product p, productsell s
+         where p.pro_number = s.pro_number              
+         AND pro_division LIKE '${p_id}%'
       ]]>         
 
    </select>  

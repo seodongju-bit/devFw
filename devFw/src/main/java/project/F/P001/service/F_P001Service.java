@@ -10,7 +10,7 @@ import project.F.P001.vo.PagingVO;
 
 public interface F_P001Service {
 
-	 public List searchItem() throws DataAccessException;
+	 public List searchItem(Map<String, Object> searchMap) throws DataAccessException;
 
 	public List searchItem1() throws DataAccessException;
      
