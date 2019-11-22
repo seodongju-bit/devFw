@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-
+<c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
 <%
 	request.setCharacterEncoding("UTF-8");
 %>
@@ -77,6 +78,7 @@ check {
 p.inset {
 border-style: inset;
 position:relative;
+width: 500px;
 height:150px;                             
 }    
 
@@ -127,11 +129,14 @@ a.btn-layerClose:hover {
   color: #fff;
 }
 
-
+img {
+    vertical-align: middle;
+    width: 200px;
+}
 
 
                           
-</style>
+</style>           
 
 
 
@@ -190,27 +195,30 @@ a.btn-layerClose:hover {
 						보기></span></a>
 		</tr>
 
-		<tr>                    
-			<td align="left"><img src="http://placehold.it/120x166"></td>
-			
-            <td align="left"><p class="inset">An inset border.</p></td>
+ <c:forEach var="reviewlist2" items="${List}" > 
+		<tr> 
+			<td align="left"> 
+			<img src="${reviewlist2.sell_thumbnail}">
+			</td>
+		<!--  	${reviewlist2.sell_title}<br>
+		<fmt:formatNumber value="${reviewlist2.sell_price}" pattern="#,###"/>원<br>-->
+
+            <td align="left"><p class="inset"> ${reviewlist2.review_content}</p></td>
 
 			<td align="center">분류<br>
-			<a href="#layer1" class="btn-example">리뷰상세</a><br>
-			<input type="button" class="btn btn-link" value="리뷰내용조회"><br> 
+			<a href="#layer1" class="btn-example">리뷰상세</a><br> 
 			<input type="button" class="btn btn-link" value="월별 추천수"><br> 
 			<input type="button" class="btn btn-link" value="total추천수"><br> 
 			<input type="button" class="btn btn-link" value="수익"><br> 
-
 			</td>
 			
- <div id="layer1" class="pop-layer">
+            <div id="layer1" class="pop-layer">
         <div class="pop-container">
         <div class="pop-conts">
             <!--content //-->
-            <p class="ctxt mb20">환장스런 핏<br>
+            <p class="ctxt mb20">${reviewlist2.mem_nick}님의 리뷰<br>
             <br>
-              옷 진짜 이뻐요
+        ${reviewlist2.review_content}
             </p>
 
             <div class="btn-r">
@@ -221,74 +229,13 @@ a.btn-layerClose:hover {
             <!--// content-->
         </div>
     </div>
-	
-		</tr>
-
-		<tr>     
-			<td align="left"><img src="http://placehold.it/120x166"></td>
-			
-            <td align="left"><p class="inset">An inset border.</p></td>
-
-			<td align="center">분류<br>
-			<a href="#layer1" class="btn-example">리뷰상세</a><br>
-			<input type="button" class="btn btn-link" value="리뷰내용조회"><br>
-			<input type="button" class="btn btn-link" value="월별 추천수"><br> 
-			<input type="button" class="btn btn-link" value="total추천수"><br> 
-			<input type="button" class="btn btn-link" value="수익"><br> 
-
-			</td>
-	<div id="layer1" class="pop-layer">
-        <div class="pop-container">
-        <div class="pop-conts">
-            <!--content //-->
-            <p class="ctxt mb20">환장스런 핏<br>
-            <br>
-              옷 진짜 이뻐요
-            </p>
-
-            <div class="btn-r">
-                <a href="#" class="btn-layerClose">close</a>
-              <a href="#" class="btn-layerClose">review delete</a>
-              <a href="#" class="btn-layerClose">review update</a>
-            </div>
-            <!--// content-->
-        </div>
-    </div>		
-			
-		</tr>
-     
-		<tr>
-			<td align="left"><img src="http://placehold.it/120x166"></td>
-			
-            <td align="left"><p class="inset">An inset border.</p></td>
-
-			<td align="center">분류<br>
-			<a href="#layer1" class="btn-example">리뷰상세</a><br>
-			<input type="button" class="btn btn-link" value="리뷰내용조회"><br>
-			<input type="button" class="btn btn-link" value="월별 추천수"><br> 
-			<input type="button" class="btn btn-link" value="total추천수"><br> 
-			<input type="button" class="btn btn-link" value="수익"><br> 
-
-			</td>
-			<div id="layer1" class="pop-layer">
-        <div class="pop-container">
-        <div class="pop-conts">
-            <!--content //-->
-            <p class="ctxt mb20">환장스런 핏<br>
-            <br>
-              옷 진짜 이뻐요
-            </p>
-
-            <div class="btn-r">
-                <a href="#" class="btn-layerClose">close</a>
-              <a href="#" class="btn-layerClose">review delete</a>
-              <a href="#" class="btn-layerClose">review update</a>
-            </div>
-            <!--// content-->
-        </div>
+      
     </div>
-			
 		</tr>
+		    </c:forEach>
+		
+
+		
 	</table>
 
 	<div class="container" align="center" style="max-width:92%;">
@@ -299,38 +246,10 @@ a.btn-layerClose:hover {
 	</div>
                                                      
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-	<script type="text/javascript" src="../pro27/resources/js/bootstrap.js"></script>
+	<script type="text/javascript" src="../devFw/resources/js/bootstrap.js"></script>
 	<script src="../devFw/resources/js/bootstrap.min.js"></script>
 
-            
-	<div id="side">
-
-		<table class="table table-hover" id="side-tb">
-			<tr>
-				<td align="center">My</td>
-			</tr>
-			<tr>
-				<td style="background-color: #000000;"><a href="#"><strong
-						style="color: white;">장바구니 ▶ 0개</strong></a></td>
-			</tr>
-			<tr>
-				<td style="background-color: #000000;"><a href="#"><strong
-						style="color: white;">최근상품 ▶ 0개</strong></a></td>
-			</tr>
-			<tr>
-				<td><img class="info" data-toggle="tooltip"
-					data-placement="left" title="삼성전자 라이언 미니 스마트빔 프로젝터 SSB-12DLWA10"
-					src="http://placehold.it/120x166"></td>
-			</tr>
-			<tr>
-				<td><img class="info" data-toggle="tooltip"
-					data-placement="left" title="ipTIME 유무선공유기 A2004MU"
-					src="http://placehold.it/120x166"></td>
-			</tr>
-		</table>
-
-	</div>
-
+   
 	<script>
 		$(document).ready(function() {
 			$('[data-toggle="tooltip"]').tooltip();
@@ -339,7 +258,7 @@ a.btn-layerClose:hover {
 		$('.btn-example').click(function(){
 	        var $href = $(this).attr('href');
 	        layer_popup($href);
-	    });
+	    });         
 	    function layer_popup(el){
 
 	        var $el = $(el);		//레이어의 id를 $el 변수에 저장
@@ -374,6 +293,6 @@ a.btn-layerClose:hover {
 
 	    }
 	</script>
-
+       
 </body>
 </html>

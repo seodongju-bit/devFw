@@ -31,6 +31,16 @@ public class D_P001ServiceImpl implements D_P001Service {
 	    return reviewlist;
 	
 	}
+
+
+	@Override
+	public List reviewItem2() throws DataAccessException {
+		List reviewlist2 = null;
+		System.out.println("Service실행");
+		reviewlist2 = D_P001DAO.reviewItem2();
+		return reviewlist2;
+		
+	}
 	
 
 	

@@ -23,6 +23,17 @@ public class D_P001DAOImpl implements D_P001DAO {
 		System.out.println(reviewlist);
 		return reviewlist;
 	}
+
+	@Override
+	public List reviewItem2() throws DataAccessException {
+	   List<D_P001VO> reviewlist2 = null;
+	   System.out.println("dao실행");
+	   reviewlist2 = sqlSession.selectList("mapper.review.reviewItem2");
+	   System.out.println(reviewlist2);
+	   return reviewlist2;
+	   
+		
+	}
 	
 
 }

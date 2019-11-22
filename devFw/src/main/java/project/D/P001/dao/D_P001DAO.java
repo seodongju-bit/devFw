@@ -9,5 +9,5 @@ import org.springframework.dao.DataAccessException;
 public interface D_P001DAO {
 
 	public List reviewItem() throws DataAccessException;
-	
+	public List reviewItem2() throws DataAccessException;
 }

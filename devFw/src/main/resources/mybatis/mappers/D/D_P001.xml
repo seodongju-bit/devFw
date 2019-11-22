@@ -18,10 +18,27 @@
 </resultMap>
 
 
+<resultMap id="D_P001Result02" type="D_P001VO">
+<result property="review_number" column="review_number" />
+<result property="sell_number" column="sell_number" />
+<result property="pro_number" column="pro_no" />
+<result property="review_content" column="review_content" />
+<result property="mem_no" column="mem_no" />
+
+<result property="sell_price" column="sell_price" />
+<result property="sell_score" column="sell_score" />
+<result property="sell_contents" column="sell_contents" />
+<result property="sell_thumbnail" column="sell_thumbnail" />
+<result property="mem_id" column="mem_id" />
+<result property="mem_nick" column="mem_nick" />
+
+</resultMap>
 
 
 
-	<insert id="reviewwrite" parameterType="java.util.Map">
+
+
+	<insert id="reviewItem" parameterType="java.util.Map">
 		<![CDATA[
 			insert into review (review_number,sell_number,pro_number,mem_no,review_stdate,review_pdscore,review_content,review_url,review_monthpoint,review_totalpoint)
 			values(A((select max(review_number)+1 
@@ -31,6 +48,21 @@
 		]]>
 	</insert>
  
+ 
+ 
+       <select id="reviewItem2" resultMap="D_P001Result02" parameterType="java.util.Map"> 
+      <![CDATA[
+         SELECT r.review_content,s.sell_thumbnail,s.sell_title,s.sell_price,m.mem_nick
+         FROM review r, productsell s, members m
+         WHERE r.mem_no = m.mem_no AND
+         s.mem_id = m.mem_id
+         
+   
+                                   
+      ]]>          
+                               
+      
+   </select> 
 
 
 
