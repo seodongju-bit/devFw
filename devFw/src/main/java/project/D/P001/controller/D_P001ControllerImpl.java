@@ -31,8 +31,17 @@ public class D_P001ControllerImpl   implements D_P001Controller {
 	@Autowired
 	D_P001VO D_P001VO;
 
+	@Override
+	@RequestMapping(value="/myReview.do" ,method = RequestMethod.GET)
+	public ModelAndView myReview(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = getViewName(request);
+		viewName = "myReview";
+		List reviewlist2 = d_P001Service.reviewItem2();
+		ModelAndView mavs2 = new ModelAndView(viewName);
+		mavs2.addObject("List", reviewlist2);
+		return mavs2;
+	}
 
-	
 	@Override
 	@RequestMapping(value="/reviewwrite.do" ,method = RequestMethod.GET)
 	public ModelAndView reviewwrite(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -75,16 +84,6 @@ public class D_P001ControllerImpl   implements D_P001Controller {
 		return viewName;
 	}
 
-	@Override
-	@RequestMapping(value="/myReview.do" ,method = RequestMethod.GET)
-	public ModelAndView myReview(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String viewName = getViewName(request);
-		viewName = "myReview";
-		//List membersList = memberService.listMembers();
-		ModelAndView mav = new ModelAndView(viewName);
-		//mav.addObject("membersList", membersList);
-		return mav;
-	}
 
 
 

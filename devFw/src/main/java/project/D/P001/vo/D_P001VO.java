@@ -16,6 +16,20 @@ public class D_P001VO {
     private String review_monthpoint;
     private String review_totalpoint;
     
+    
+    private String sell_title;
+    private String sell_price;
+    private String sell_score;
+    private String sell_content;
+    private String sell_thumbnail;
+    private String mem_id;
+    private String mem_nick;
+    
+	public D_P001VO() {
+		System.out.println("D_P001VO 호출");
+	}     
+
+    
 	public String getReview_number() {
 		return review_number;
 	}
@@ -75,6 +89,48 @@ public class D_P001VO {
 	}
 	public void setReview_totalpoint(String review_totalpoint) {
 		this.review_totalpoint = review_totalpoint;
+	}
+	public String getSell_price() {
+		return sell_price;
+	}
+	public void setSell_price(String sell_price) {
+		this.sell_price = sell_price;
+	}
+	public String getSell_score() {
+		return sell_score;
+	}
+	public void setSell_score(String sell_score) {
+		this.sell_score = sell_score;
+	}
+	public String getSell_content() {
+		return sell_content;
+	}
+	public void setSell_content(String sell_content) {
+		this.sell_content = sell_content;
+	}
+	public String getSell_thumbnail() {
+		return sell_thumbnail;
+	}
+	public void setSell_thumbnail(String sell_thumbnail) {
+		this.sell_thumbnail = sell_thumbnail;
+	}
+	public String getMem_id() {
+		return mem_id;
+	}
+	public void setMem_id(String mem_id) {
+		this.mem_id = mem_id;
+	}
+	public String getSell_title() {
+		return sell_title;
+	}
+	public void setSell_title(String sell_title) {
+		this.sell_title = sell_title;
+	}
+	public String getMem_nick() {
+		return mem_nick;
+	}
+	public void setMem_nick(String mem_nick) {
+		this.mem_nick = mem_nick;
 	}
     
     
