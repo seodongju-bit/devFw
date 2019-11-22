@@ -110,6 +110,42 @@ height:150px;
   border: 5px solid #3571B5;
   z-index: 10;
 }
+.pop-layer1 {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 410px;
+  height: auto;
+  background-color: #fff;
+  border: 5px solid #3571B5;
+  z-index: 10;
+}
+
+.pop-layer2 {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 410px;
+  height: auto;
+  background-color: #fff;
+  border: 5px solid #3571B5;
+  z-index: 10;
+}
+
+.pop-layer3 {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 410px;
+  height: auto;
+  background-color: #fff;
+  border: 5px solid #3571B5;
+  z-index: 10;
+}
+
 
 
 a.btn-layerClose {
@@ -199,6 +235,9 @@ img {
 		<tr> 
 			<td align="left"> 
 			<img src="${reviewlist2.sell_thumbnail}">
+			${reviewlist2.sell_title}
+			<fmt:formatNumber value="${reviewlist2.sell_price}" pattern="#,###"/>원
+			
 			</td>
 		<!--  	${reviewlist2.sell_title}<br>
 		<fmt:formatNumber value="${reviewlist2.sell_price}" pattern="#,###"/>원<br>-->
@@ -207,20 +246,19 @@ img {
 
 			<td align="center">분류<br>
 			<a href="#layer1" class="btn-example">리뷰상세</a><br> 
-			<input type="button" class="btn btn-link" value="월별 추천수"><br> 
-			<input type="button" class="btn btn-link" value="total추천수"><br> 
-			<input type="button" class="btn btn-link" value="수익"><br> 
+			<a href="#layer2" class="btn btn-link"> 월별 추천수</a><br> 
+			<a href="#layer3" class="btn btn-link1"> total 추천수</a><br> <br> 
+			<a href="#layer4" class="btn btn-link2"> 수익</a><br> 
 			</td>
 			
             <div id="layer1" class="pop-layer">
         <div class="pop-container">
         <div class="pop-conts">
-            <!--content //-->
+            <!--content //-->                      
             <p class="ctxt mb20">${reviewlist2.mem_nick}님의 리뷰<br>
             <br>
         ${reviewlist2.review_content}
-            </p>
-
+            </p> 
             <div class="btn-r">
                 <a href="#" class="btn-layerClose">close</a>
               <a href="#" class="btn-layerClose">review delete</a>
@@ -228,9 +266,13 @@ img {
             </div>
             <!--// content-->
         </div>
+    </div>  
     </div>
-      
-    </div>
+    
+    
+
+    
+    
 		</tr>
 		    </c:forEach>
 		

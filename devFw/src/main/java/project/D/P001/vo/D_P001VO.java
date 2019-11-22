@@ -25,6 +25,8 @@ public class D_P001VO {
     private String mem_id;
     private String mem_nick;
     
+
+    
 	public D_P001VO() {
 		System.out.println("D_P001VO 호출");
 	}     
@@ -132,7 +134,9 @@ public class D_P001VO {
 	public void setMem_nick(String mem_nick) {
 		this.mem_nick = mem_nick;
 	}
-    
+
+
+
     
     
     

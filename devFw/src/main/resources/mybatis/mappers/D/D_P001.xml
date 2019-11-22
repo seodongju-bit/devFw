@@ -24,6 +24,8 @@
 <result property="pro_number" column="pro_no" />
 <result property="review_content" column="review_content" />
 <result property="mem_no" column="mem_no" />
+<result property="review_monthpoint" column="review_monthpoint" />
+<result property="review_totalpoint" column="review_totalpoint" />
 
 <result property="sell_price" column="sell_price" />
 <result property="sell_score" column="sell_score" />
@@ -32,6 +34,7 @@
 <result property="mem_id" column="mem_id" />
 <result property="mem_nick" column="mem_nick" />
 
+<result property="paypoint_price" column="paypoint_price" />
 </resultMap>
 
 
@@ -52,10 +55,13 @@
  
        <select id="reviewItem2" resultMap="D_P001Result02" parameterType="java.util.Map"> 
       <![CDATA[
-         SELECT r.review_content,s.sell_thumbnail,s.sell_title,s.sell_price,m.mem_nick
+       SELECT r.review_content,s.sell_thumbnail,s.sell_title,s.sell_price,m.mem_nick,r.review_monthpoint,r.review_totalpoint
          FROM review r, productsell s, members m
          WHERE r.mem_no = m.mem_no AND
-         s.mem_id = m.mem_id
+         s.mem_id = m.mem_id AND
+         s.sell_number = r.sell_number
+         
+     
          
    
                                    
