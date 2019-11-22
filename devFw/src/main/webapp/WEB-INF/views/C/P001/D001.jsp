@@ -63,6 +63,12 @@ function selChange() {
 <div class="event">
 
 <div style="float: right;">
+	<c:choose>
+		<c:when test="${memberInfo.mem_division==2 }" >
+       		 <a href='eventWrite.do' class="btn btn-default" >글쓰기</a>
+       	</c:when>
+    </c:choose>
+		
 		<select id="cntPerPage" name="sel" onchange="selChange()">
 			<option value="5"
 				<c:if test="${paging.cntPerPage == 5}">selected</c:if>>5줄 보기</option>

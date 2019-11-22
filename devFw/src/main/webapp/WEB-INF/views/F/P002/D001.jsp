@@ -14,7 +14,7 @@
 <head>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script><!-- 팝업 관련 -->
 
-<link rel="stylesheet" type="text/css" href="resources/css/F_P002_D001.css?ver=1.3">
+<link rel="stylesheet" type="text/css" href="resources/css/F_P002_D001.css?ver=1.4">
 
 <script src="http://code.jquery.com/jquery-latest.min.js"></script><!-- jquery -->
 <script type="text/javascript">
@@ -287,6 +287,7 @@ function fn_order(){
 	if(isLogOn=="false" || isLogOn=='') {
 		alert("로그인 후 주문이 가능합니다.");
 	}
+	return;
 }
 
 </script>
@@ -301,11 +302,9 @@ function fn_order(){
 	소분류코드:${item.smallCtgrCode}<br>
 <div id="catCategory" >
 	<div>
-	
-	
 		<a href="/devFw/category.do"> 카테고리 </a> > 
-		<a href="#"> ${item.bigCtgrName} </a> > 
-		<a href="#"> ${item.smallCtgrName} </a>
+		<a href="/devFw/category.do?ctgrNum=${item.bigCtgrCode}" > ${item.bigCtgrName} </a> > 
+		<a href="/devFw/category.do?ctgrNum=${item.smallCtgrCode}" > ${item.smallCtgrName} </a>
 	</div>
 </div>
 
@@ -352,6 +351,7 @@ function fn_order(){
 	<button id="itemsReview" class="btn btn-primary">리뷰</button>
 	<button id="itemsQna" class="btn btn-primary">QnA</button>
 	<button id="itemsSaller" class="btn btn-primary">판매자정보</button>
+	<button  class="btn btn-primary">상품의견</button>
 </div>
 
 <!--
@@ -375,11 +375,9 @@ ${info }
 	<p>${option1.option_size }</p>
 </c:forEach>
 -->
-<p id="test" ></p>
 
 
  	
 
 </body>
-<input type="hidden" name="isLogOn" id="isLogOn" value="${isLogOn}"/>
 </html>

@@ -56,10 +56,6 @@ $(function() {
    		alert("내용을 입력해주세요");
    		return false;
    	}
-   	alert(title);
-   	alert(writer);
-   	alert(content);
-   	alert(division);
    	
      frm.method="post"; 
      frm.action="./write.do"; 
