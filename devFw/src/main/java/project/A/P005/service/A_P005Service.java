@@ -10,7 +10,7 @@ import project.A.P005.vo.A_P005VO;
 
 
 public interface A_P005Service {
-	 public List listBasket() throws DataAccessException;
+	 public List listBasket(String mem_id) throws DataAccessException;
 	 public void removeBasket(Map<String, Object> dataMap) throws DataAccessException;
 	 public void updateBasket(Map<String, Object> dataMap) throws Exception;
 }

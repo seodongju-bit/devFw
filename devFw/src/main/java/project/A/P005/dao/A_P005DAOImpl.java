@@ -18,9 +18,9 @@ public class A_P005DAOImpl implements A_P005DAO {
 	private SqlSession sqlSession;
 
 	@Override
-	public List selectAllBasketList() throws DataAccessException {
+	public List selectAllBasketList(String mem_id) throws DataAccessException {
 		List<A_P005VO> basketList = null;
-		basketList = sqlSession.selectList("mapper.basket.selectAllBasketList");
+		basketList = sqlSession.selectList("mapper.basket.selectAllBasketList" ,mem_id);
 		System.out.println(basketList);
 		return basketList;
 	}

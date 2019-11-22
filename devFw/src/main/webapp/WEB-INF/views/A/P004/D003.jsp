@@ -130,8 +130,8 @@ color: red;
   <div class="content-sheet">
     <div class="exp_product">
       <form name='frm'>
-      <select name="division" id="division" style="width: 100px;">
-		<option value="">=선택=</option>
+      <select name="division" id="division" style="width: 150px;">
+		<option value="">==선택==</option>
 		<option value="point_date">지급날자</option>
 		<option value="point_usedate">사용날자</option>
 		</select> 

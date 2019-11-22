@@ -126,27 +126,48 @@ aside {
  
  <c:forEach var="basket" items="${basketList}" varStatus='index' >
  <c:set var="ba_quantity" value="${basketList[index.count-1].ba_quantity}" />
-<c:set var="ba_no" value="${basketList[index.count-1].ba_no}" />
+<c:set var="sell_number" value="${basketList[index.count-1].sell_number}" />
+
  <tr>
  <td class=check><input type="checkbox"></td>
  <td class="item">
  <div class="product-image">
- <img src="http://placehold.it/120x166">
+ <img src="${basket.sell_thumbnail}" width="120px" height="166px">
  </div>
  </td>
  <td class="product-details">
- <strong>Eliza J</strong> Lace Sleeve Cuff Dress
- <p><strong>${basket.ba_color}, ${basket.ba_size}</strong></p>
- <p>Sell Number - ${basket.sell_number}</p>
+ <strong>${basket.sell_title}</strong>
+ <strong><br>
+ <c:choose>
+ <c:when test="${basket.ba_color eq '-1'}">
+
+ </c:when>
+<c:otherwise>
+color : ${basket.ba_color} 
+</c:otherwise>
+</c:choose>
+</strong>
+<br>
+<strong> 
+ <c:choose>
+ <c:when test="${basket.ba_size eq '-1'}">
+
+ </c:when>
+<c:otherwise>
+size&nbsp;&nbsp;&nbsp;: ${basket.ba_size}
+</c:otherwise>
+</c:choose>
+</strong>
  </td>
- <td class="price">${basket.sell_number}</td>
+ 
+ <td class="price">${basket.sell_price}sell_number${basket.sell_number}</td>
  <td class="quantity"><input type="number" id="ba_quantity"  value="${basket.ba_quantity}" min="1" class="quantity-field"></td>
- <td class="subtotal">${basket.sell_number*basket.ba_quantity}
+ <td class="subtotal">${basket.sell_price*basket.ba_quantity}
  </td>
- <td class="remove"><button class="btn btn-default" id="delete" onclick="deleteBasket(${basket.ba_no})" >삭제</button></td>
- <td class="change"><button class="btn btn-default" id="modify" onclick="modifyBasket(${basket.ba_no}, ${index.count-1})" >수정</button></td>
+ <td class="remove"><button class="btn btn-default" id="delete" onclick="deleteBasket('${basket.sell_number}', '${basket.ba_color}', '${basket.ba_size}')" >삭제</button></td>
+ <td class="change"><button class="btn btn-default" id="modify" onclick="modifyBasket('${basket.sell_number}', ${index.count-1}, '${basket.ba_color}', '${basket.ba_size}')" >수정</button></td>
  </tr>
- <input type="hidden" id="mem_no" value="${basket.ba_no}">
+ <input type="hidden" id="mem_no" value="${basket.sell_number}">
  </c:forEach>
  
  </table>
@@ -155,14 +176,14 @@ aside {
     
   <script>
 
-  	function deleteBasket(id){
-  		alert(id);
+  	function deleteBasket(id, color, size){
   		$.ajax({
 			type : "POST",
 			url : "${contextPath}/basket/removeBasket.do",
 			data : {	
-				"ba_no" : id,
-				
+				"sell_number" : id,
+				"ba_color" : color,
+				"ba_size" : size
 			},
 			success : function() {
 				alert('삭제 성공');
@@ -175,10 +196,11 @@ aside {
 
   	}
   
-  	function modifyBasket(id, index){
-  		/* alert("id:"+id);
-  		alert("index:"+index); */
-  		
+  	function modifyBasket(id, index, color, size){
+  		/*  alert("id:"+id);
+  		alert("index:"+index);
+  		alert(color);
+		alert(size); */
   		var length=document.frm.ba_quantity.length;
   		/* alert("length:"+length); */
   	    var _ba_quantity=0;
@@ -193,13 +215,14 @@ aside {
   		
   		/* alert("수량:"+ba_quantity); */
   		
-  		
   		$.ajax({
 			type : "POST",
 			url : "${contextPath}/basket/updateBasket.do",
 			data : {	
-				"ba_no" : id,
-				"ba_quantity" : ba_quantity
+				"sell_number" : id,
+				"ba_quantity" : ba_quantity,
+				"ba_color" : color,
+				"ba_size" : size
 			},
 			success : function() {
 			

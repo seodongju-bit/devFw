@@ -48,7 +48,10 @@ public class A_P005ControllerImpl   implements A_P005Controller {
 	@RequestMapping(value="/basket.do" ,method = { RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView listBasket(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = "basket";
-		List basketList = basketService.listBasket();
+		HttpSession session = request.getSession();
+		String mem_id = (String)session.getAttribute("mem_id");
+		System.out.println("3333333333333333333333333333333333333333333333333333333333333333333333333"+mem_id);
+		List basketList = basketService.listBasket(mem_id);
 		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("basketList", basketList);
 		return mav;
@@ -69,12 +72,20 @@ public class A_P005ControllerImpl   implements A_P005Controller {
 	@Override
 	@RequestMapping(value="/basket/removeBasket.do" ,method = { RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody
-	public Map<String, Object> removeBasket(@RequestParam("ba_no") String ba_no, HttpServletRequest request, HttpServletResponse response) throws Exception{
+	public Map<String, Object> removeBasket(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		request.setCharacterEncoding("utf-8");
-		System.out.println("고객번호="+ba_no);
+		HttpSession session = request.getSession();
+		String mem_id = (String)session.getAttribute("mem_id");
+		String sell_number = request.getParameter("sell_number");
+		String ba_color = request.getParameter("ba_color");
+		String ba_size = request.getParameter("ba_size");
+		
 		Map<String, Object> dataMap = new HashMap<String, Object>();
 		Map<String, Object> resultMap = new HashMap<String, Object>();
-		dataMap.put("ba_no", ba_no);
+		dataMap.put("mem_id", mem_id);
+		dataMap.put("sell_number", sell_number);
+		dataMap.put("ba_color", ba_color);
+		dataMap.put("ba_size", ba_size);
 		System.out.println("=======================>>"+dataMap.toString());
 		
 		try {
@@ -109,15 +120,21 @@ public class A_P005ControllerImpl   implements A_P005Controller {
 	@Override
 	@RequestMapping(value="/basket/updateBasket.do" ,method = { RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody
-	public Map<String, Object> updateBasket(@RequestParam("ba_no") String ba_no, @RequestParam("ba_quantity") String ba_quantity, HttpServletRequest request, HttpServletResponse response) throws Exception{
+	public Map<String, Object> updateBasket(@RequestParam("sell_number") String sell_number, @RequestParam("ba_quantity") String ba_quantity, HttpServletRequest request, HttpServletResponse response) throws Exception{
 		request.setCharacterEncoding("utf-8");
-		System.out.println("고객번호="+ba_no);
+		System.out.println("고객번호="+sell_number);
 		System.out.println("상품개수="+ba_quantity);
 		Map<String, Object> dataMap = new HashMap<String, Object>();
 		Map<String, Object> resultMap = new HashMap<String, Object>();
-		dataMap.put("ba_no", ba_no);
+		HttpSession session = request.getSession();
+		String mem_id = (String)session.getAttribute("mem_id");
+		String ba_color = request.getParameter("ba_color");
+		String ba_size = request.getParameter("ba_size");
+		dataMap.put("sell_number", sell_number);
 		dataMap.put("ba_quantity", ba_quantity);
-	
+		dataMap.put("ba_color", ba_color);
+		dataMap.put("ba_size", ba_size);
+		dataMap.put("mem_id", mem_id);
 		System.out.println("=======================>>"+dataMap.toString());
 		
 		try {

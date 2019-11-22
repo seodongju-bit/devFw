@@ -20,9 +20,9 @@ public class A_P005ServiceImpl implements A_P005Service {
 	private A_P005DAO basketDAO;
 
 	@Override
-	public List listBasket() throws DataAccessException {
+	public List listBasket(String mem_id) throws DataAccessException {
 		List basketList = null;
-		basketList = basketDAO.selectAllBasketList();
+		basketList = basketDAO.selectAllBasketList(mem_id);
 		return basketList;
 	}
 
