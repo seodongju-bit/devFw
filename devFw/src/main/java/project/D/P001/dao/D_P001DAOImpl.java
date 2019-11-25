@@ -15,23 +15,26 @@ public class D_P001DAOImpl implements D_P001DAO {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	@Override
-	public List reviewItem() throws DataAccessException {
-		List<D_P001VO> reviewlist= null;
-		System.out.println("dao실행");
-		reviewlist = sqlSession.selectList("mapper.review.reviewItem");
-		System.out.println(reviewlist);
-		return reviewlist;
-	}
+
 
 	@Override
-	public List reviewItem2() throws DataAccessException {
+	public List reviewItem2(String p_id) throws DataAccessException {
 	   List<D_P001VO> reviewlist2 = null;
 	   System.out.println("dao실행");
 	   reviewlist2 = sqlSession.selectList("mapper.review.reviewItem2");
 	   System.out.println(reviewlist2);
 	   return reviewlist2;
 	   
+		
+	}
+
+
+
+	@Override
+	public void reviewwrite(Map<String, Object> dataMap) throws DataAccessException {
+		System.out.println("dao실행");
+		sqlSession.insert("mapper.review.reviewwrite",dataMap);
+		
 		
 	}
 	

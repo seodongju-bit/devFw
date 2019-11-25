@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import project.D.P001.dao.D_P001DAO;
+import project.D.P001.vo.D_P001VO;
 
 
 
@@ -22,25 +23,35 @@ public class D_P001ServiceImpl implements D_P001Service {
 	private D_P001DAO D_P001DAO ;
 	
 	
-	@Override
-	public List reviewItem() throws DataAccessException {
-		
-		List reviewlist = null;
-	    System.out.println("service 실행");
-	    reviewlist=D_P001DAO.reviewItem();
-	    return reviewlist;
-	
-	}
+
 
 
 	@Override
-	public List reviewItem2() throws DataAccessException {
+	public List reviewItem2(String p_id) throws DataAccessException {
 		List reviewlist2 = null;
 		System.out.println("Service실행");
-		reviewlist2 = D_P001DAO.reviewItem2();
+		reviewlist2 = D_P001DAO.reviewItem2(p_id);
 		return reviewlist2;
 		
 	}
+
+
+
+
+
+	@Override
+	public void reviewWrite(Map<String, Object> dataMap) {
+		D_P001DAO.reviewwrite(dataMap);
+		
+	}
+
+
+//	@Override
+//	public void reviewwrite(Map<String, Object> dataMap) throws DataAccessException {
+//	
+//	D_P001DAO.reviewwrite(dataMap);
+//	System.out.println("서비스실행");
+//	}
 	
 
 	
