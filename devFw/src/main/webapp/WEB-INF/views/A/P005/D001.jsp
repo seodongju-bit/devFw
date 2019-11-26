@@ -186,7 +186,7 @@ content
 						value="${sum + (basket.sell_price*basket.ba_quantity)}" />
 				</c:forEach>
 				<tr>
-					<td colspan="6" align="center"><strong>총금액</strong></td>
+					<td colspan="6" align="center"><strong>총금액</strong></td> 
 					<td id="sum" colspan="2"><fmt:formatNumber
 							pattern="###,###,###" value="${sum}" />원 <input type="hidden"
 						name="sum" value="${sum}"></td>
