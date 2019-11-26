@@ -18,7 +18,6 @@ public interface A_P005Controller {
 	public Map<String, Object> removeBasket(HttpServletRequest request, HttpServletResponse response) throws Exception;
 //	public ModelAndView updateBasket(@RequestParam("mem_no") String mem_no, @RequestParam("ba_quantity") String ba_quantity, HttpServletRequest request, HttpServletResponse response) throws Exception;	
 	public Map<String, Object> updateBasket(@RequestParam("sell_number") String sell_number, @RequestParam("ba_quantity") String ba_quantity, HttpServletRequest request, HttpServletResponse response) throws Exception;
-	public ModelAndView buy(HttpServletRequest request, HttpServletResponse response) throws Exception;
 //	public ModelAndView buy(Map<String, Object> dataMap, HttpServletRequest request, HttpServletResponse response)
 //			throws Exception;
 

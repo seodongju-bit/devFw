@@ -230,10 +230,7 @@ content
             	d_quantity += document.getElementById(quantities).value + ",";
             	d_sellnumber += document.getElementById(sellnumbers).value + ",";        	
             	
-            	alert(d_color);
-            	alert(d_size);
-            	alert(d_quantity);
-            	alert(d_sellnumber);
+          
             	
             	document.getElementsByName("test")[0].value = d_color;
             	document.getElementsByName("test1")[0].value = d_size;
@@ -243,7 +240,7 @@ content
          }
 		
 		frm.method="post";
-		frm.action="./basket/buy.do";
+		frm.action="./order2.do";
 		frm.submit();
 	});
 	

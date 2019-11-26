@@ -163,25 +163,8 @@ public class A_P005ControllerImpl   implements A_P005Controller {
 		return resultMap;
 	}
 		
-	@Override
-	@RequestMapping(value="/basket/buy.do" ,method = { RequestMethod.GET, RequestMethod.POST})
-	public ModelAndView buy(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		request.setCharacterEncoding("utf-8");
-
-		for(String value:request.getParameterValues("test")) {
-			System.out.println("color="+value);
-		}
-		for(String value:request.getParameterValues("test1")) {
-			System.out.println("size="+value);
-		}
-		for(String value:request.getParameterValues("test2")) {
-			System.out.println("quantity="+value);
-		}
-		for(String value:request.getParameterValues("test3")) {
-			System.out.println("sellnumber="+value);
-		}
-		return null;
-	}
+	
+	
 	
 	
 	/*@RequestMapping(value = "/basket/*Form.do", method =  { RequestMethod.GET, RequestMethod.POST})

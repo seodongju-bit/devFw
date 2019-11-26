@@ -166,7 +166,7 @@
    
     <definition name="basket" extends="baseLayout_cart">
       <put-attribute name="title" value="장바구니" />
-      <put-attribute name="body" value="/WEB-INF/views/F/P002/test3.jsp" />
+      <put-attribute name="body" value="/WEB-INF/views/A/P005/D001.jsp" />
 <!--       <put-attribute name="body" value="/WEB-INF/views/A/P005/D001.jsp" /> -->
    </definition>
    
