@@ -60,12 +60,36 @@ public class B_P002ControllerImpl   implements B_P002Controller {
 			viewName = "addSell";
 			HttpSession session = request.getSession();
 			String mem_id = (String)session.getAttribute("mem_id");
+
 			b_P002VO.setMem_id(mem_id);
-			
-			System.out.println("--->"+request.getParameter(b_P002VO.getSell_thumbnail()));
-			System.out.println(b_P002VO.getSell_contents());
 			b_P002Service.addSell(b_P002VO);
-			//b_P002Service.saveImg(request);
+			
+			try {
+				if(request.getParameter("option_yn").equals("y")) {
+					String[] coption = request.getParameterValues("ocolor");
+					String[] soption = request.getParameterValues("osize");
+					String[] oquantity = request.getParameterValues("quantity");
+					System.out.println(coption.length+":"+oquantity.length);
+					Map<String, Object> optionMap = new HashMap<String, Object>();
+					for(int i=0 ;i<oquantity.length; i++) {
+						if(coption[i]!="") {
+							optionMap.put("option_color", coption[i]);
+						}else {
+							optionMap.put("option_color", "-1");
+						}
+						if(soption[i]!="") {
+							optionMap.put("option_size", soption[i]);
+						}else {
+							optionMap.put("option_size", "-1");
+						}
+						optionMap.put("option_quantity", oquantity[i]);
+						//optionMap.put("sell_num", mem_id);
+						b_P002Service.addOption(optionMap);
+					}
+				}
+			}catch(Exception e) {
+				System.out.println("옵션추가오류");
+			}
 			
 			ModelAndView mav = new ModelAndView(viewName);
 			mav.addObject("error_yn" , "n");
@@ -112,10 +136,14 @@ public class B_P002ControllerImpl   implements B_P002Controller {
 	   @ResponseBody
 	   public Map<String, Object> imgUpload(@RequestParam("file") MultipartFile file, HttpServletRequest request, HttpServletResponse response) throws Exception  {
 		   String viewName = getViewName(request);
-		   String url = fileUploadService.restore(file);
 		   Map<String, Object> resultMap = new HashMap<String, Object>();
-		   System.out.println(url);
-		   resultMap.put("path", url);
+		   try {
+			   String url = fileUploadService.restore(file);
+			   System.out.println(url);
+			   resultMap.put("path", url);
+		   }catch(Exception e) {
+			   System.out.println("이미지 업로드 오류");
+		   }   
 		   return resultMap;
 	   }
 	

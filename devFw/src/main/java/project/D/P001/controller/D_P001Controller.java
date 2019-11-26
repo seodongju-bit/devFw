@@ -1,5 +1,7 @@
 package project.D.P001.controller;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -15,4 +17,5 @@ public interface D_P001Controller {
     public ModelAndView myReview(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView reviewwrite(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView writes(HttpServletRequest request, HttpServletResponse response) throws Exception;
+	Map<String, Object> reviewEnrollment(HttpServletRequest request, HttpServletResponse response) throws Exception;
 }            

@@ -53,7 +53,6 @@ public class E_P001ControllerImpl   implements E_P001Controller {
 			Map<String, Object> searchMap = new HashMap<String, Object>();
 			List<E_P001VO> result = new ArrayList<E_P001VO>();
 			
-				
 				for(int i=0;i<list.size();i++) {
 					searchMap.put("p_id", list.get(i).get("sell_number"));
 					e_P001VO = (E_P001VO)e_P001Service.selectItem(searchMap).get(0);

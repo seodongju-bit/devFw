@@ -275,16 +275,20 @@
          <ul id="slider">
             <li data-color="#1abc9c">
                <div>
-               </div><img src="${contextPath}/resources/image/banner/01.jpg">
+               </div><img src="${contextPath}/resources/image/banner/banner1.jpg">
             </li>
             <li data-color="#9b59b6">
                <div>
 
-               </div><img src="${contextPath}/resources/image/banner/02.png">
+               </div><img src="${contextPath}/resources/image/banner/banner2.jpg">
             </li>
             <li data-color="#34495e">
                <div>
-               </div><img src="${contextPath}/resources/image/banner/03.jpg">
+               </div><img src="${contextPath}/resources/image/banner/banner3.jpg">
+            </li>
+            <li data-color="#34495e">
+               <div>
+               </div><img src="${contextPath}/resources/image/banner/banner4.jpg">
             </li>
          </ul>
          <!--controls-->
@@ -401,7 +405,7 @@
             clearInterval(autoSlider);
          }, function() {
             $(this).removeClass('active');
-            autoSlider = setInterval(slideRight, 3000);
+            autoSlider = setInterval(slideRight, 4000);
          });
 
       });//DOCUMENT READY

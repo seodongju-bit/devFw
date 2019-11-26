@@ -38,6 +38,11 @@ public class B_P002ServiceImpl implements B_P002Service {
 	}
 	
 	@Override
+	public void addOption(Map<String, Object> optionMap) {
+		b_P002DAO.addOption(optionMap);
+	}
+	
+	@Override
 	public void saveImg(HttpServletRequest request) throws DataAccessException {
 		System.out.println("서비스 실행");
 		//ServletContext context = getServletContext();

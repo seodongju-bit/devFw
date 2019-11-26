@@ -5,12 +5,15 @@
 
 <mapper namespace="B.P002">
 
-	
 	<resultMap id="B_P002Result01" type="B_P002VO">
 		<result property="pro_number" column="pro_number" />
 		<result property="pro_vendor" column="pro_vendor" />
 		<result property="pro_name" column="pro_name" />
 		<result property="pro_brand" column="pro_brand" />
+	</resultMap>
+	
+	<resultMap id="B_P002Result02" type="java.util.Map">
+		<result property="sell_number" column="nextval" />
 	</resultMap>
 	
 	<select id="searchNum" resultMap="B_P002Result01" parameterType="java.util.Map"> 
@@ -26,11 +29,25 @@
 
 	</select>
 
+	<select id="nextSell" resultMap="B_P002Result02" parameterType="java.util.Map" > 
+      <![CDATA[
+         select sell_number.nextval
+         from dual
+      ]]>
+	</select>
 	
-	<insert id="addSell" parameterType="java.util.Map">
+	<insert id="addSell" parameterType="java.util.Map" >
 		<![CDATA[
 			insert into productsell(sell_number, pro_number,sell_thumbnail, sell_price, sell_contents, sell_date, sell_title, sell_quantity, mem_id, option_yn)
-			values(sell_number.nextval,'${pro_number}','${sell_thumbnail}','${sell_price}','${sell_contents}',sysdate,'${sell_title}','${sell_quantity}','${mem_id}','${option_yn}')
+			values('${sell_number}','${pro_number}','${sell_thumbnail}','${sell_price}','${sell_contents}',sysdate,'${sell_title}','${sell_quantity}','${mem_id}','${option_yn}')
+		]]>
+	 	
+	</insert>
+	
+	<insert id="addOption" parameterType="java.util.Map">
+		<![CDATA[
+			insert into selloption(sell_number, option_size, option_color, option_quantity)
+			values('${sell_number}','${option_size}','${option_color}','${option_quantity}')
 		]]>
 	</insert>
 	

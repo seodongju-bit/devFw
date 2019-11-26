@@ -14,6 +14,8 @@ public interface B_P002DAO {
 
 	List<B_P002VO> selectItem(Map<String, Object> searchMap) throws DataAccessException;
 
+	void addOption(Map<String, Object> optionMap);
+
 
 	 
 	 

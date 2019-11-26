@@ -13,20 +13,33 @@ import project.B.P002.vo.B_P002VO;
 
 @Repository("B_P002DAO") 
 public class B_P002DAOImpl implements B_P002DAO {
+	private String sell_number = "";
 	@Autowired
 	private SqlSession sqlSession;
+	
 
 	
 	@Override
 	public void addSell(B_P002VO b_P002VO) throws DataAccessException {
-		System.out.println("dao 실행");
+		List<Map<String, Object>> sellNum = sqlSession.selectList("B.P002.nextSell");
+		sell_number = String.valueOf(sellNum.get(0).get("sell_number"));
+		b_P002VO.setSell_number(sell_number);
 		sqlSession.insert("B.P002.addSell", b_P002VO);
+		
 	}
 
 	@Override
 	public List<B_P002VO> selectItem(Map<String, Object> searchMap) throws DataAccessException {
-		System.out.println("dao 실행");
 		return sqlSession.selectList("B.P002.searchNum", searchMap);
 				
 	}
+
+	@Override
+	public void addOption(Map<String, Object> optionMap) {
+		System.out.println("addoption dao 실행");
+		optionMap.put("sell_number", sell_number);
+		sqlSession.insert("B.P002.addOption", optionMap);
+		
+	}
+	
 }

@@ -1,5 +1,6 @@
 package project.D.P001.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -63,6 +65,20 @@ public class D_P001ControllerImpl   implements D_P001Controller {
 		ModelAndView mavs = new ModelAndView(viewName);
 		return mavs; 
 	}
+	
+	//리뷰등록
+	@Override
+	@RequestMapping(value="/reviewEnrollment.do" ,method = { RequestMethod.GET, RequestMethod.POST})
+	@ResponseBody
+	public Map<String, Object> reviewEnrollment(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = getViewName(request);
+		System.out.println(request.getParameter("grade"));
+		viewName = "reviewwrite";
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		//List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
+		return resultMap;
+	}
+	
 	
 	@Override
 	@RequestMapping(value="/writes.do" ,method = { RequestMethod.GET, RequestMethod.POST})

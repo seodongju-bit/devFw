@@ -152,7 +152,7 @@ check {
 			<input type="button" class="btn btn-link" value="배송조회"><br> 
 		    <input type="button" class="btn btn-link" value="교환신청"><br> 
 		    <input type="button" class="btn btn-link" value="반품신청"><br> 
-			<p><a href="reviewwrite.do">리뷰 작성하기<br></a>
+			<p><button onclick="reviewWrite()">리뷰 작성하기</button>
 			</td>
 		</tr>
 
@@ -268,6 +268,11 @@ check {
 	</div>
 
 	<script>
+	function reviewWrite(){
+		window.open("reviewwrite.do", "제품번호 검색", "width=850, height=700, left=600, top400", "resizable=no");
+	}
+	
+	
 		$(document).ready(function() {
 			$('[data-toggle="tooltip"]').tooltip();
 		});

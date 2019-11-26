@@ -26,6 +26,8 @@ public interface B_P002Service {
 
 	List<B_P002VO> selectItem(Map<String, Object> searchMap);
 
+	void addOption(Map<String, Object> optionMap);
+
 
 
 }

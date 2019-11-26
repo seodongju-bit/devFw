@@ -21,6 +21,10 @@ public class B_P002VO {
 	private String pro_name ="";
 	private String pro_brand ="";
 	
+	private String option_size ="";
+	private String option_color ="";
+	private String option_quantity ="";
+	private String nextval ="";
 	
 	public String getSell_number() {
 		return sell_number;
@@ -99,6 +103,30 @@ public class B_P002VO {
 	}
 	public void setPro_brand(String pro_brand) {
 		this.pro_brand = pro_brand;
+	}
+	public String getOption_size() {
+		return option_size;
+	}
+	public void setOption_size(String option_size) {
+		this.option_size = option_size;
+	}
+	public String getOption_color() {
+		return option_color;
+	}
+	public void setOption_color(String option_color) {
+		this.option_color = option_color;
+	}
+	public String getOption_quantity() {
+		return option_quantity;
+	}
+	public void setOption_quantity(String option_quantity) {
+		this.option_quantity = option_quantity;
+	}
+	public String getNextval() {
+		return nextval;
+	}
+	public void setNextval(String nextval) {
+		this.nextval = nextval;
 	}
 	
 	
