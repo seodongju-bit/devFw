@@ -11,6 +11,15 @@
       <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
    </definition>
    
+   
+     <definition name="noticeLayout"  template="/WEB-INF/views/common/notice_layout.jsp">
+      <put-attribute name="title" value="" />
+      <put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
+      <put-attribute name="side" value="/WEB-INF/views/common/notice_side.jsp" />
+      <put-attribute name="body" value="" />
+      <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
+   </definition>
+   
    <definition name="baseLayout2"  template="/WEB-INF/views/common/layout.jsp">
       <put-attribute name="title" value="" />
       <put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
@@ -205,6 +214,12 @@
       <put-attribute name="title" value="상품페이지" />
       <put-attribute name="body" value="/WEB-INF/views/F/P002/D001.jsp" />
       <put-attribute name="bodyDetail" value="/WEB-INF/views/F/P002/D002.jsp" />
+   </definition> 
+   
+   
+      <definition name="notice" extends="noticeLayout">
+      <put-attribute name="title" value="공지사항페이지" />
+      <put-attribute name="body" value="/WEB-INF/views/C/P003/D001.jsp" />
    </definition> 
    
 <!--  웅건

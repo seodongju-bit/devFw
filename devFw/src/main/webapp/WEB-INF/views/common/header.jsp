@@ -421,7 +421,7 @@ $(document).ready(function(){
 				 <a class="nav-item nav-link" href="${contextPath}/signinpage.do">로그인</a>
 			</c:otherwise>
        	  </c:choose>
-        	  <a class="nav-item nav-link" href="./userEdit.html">고객센터</a>
+        	  <a class="nav-item nav-link" href="${contextPath}/notice.do">고객센터</a>
        	 </div>
    	   </div>
        
