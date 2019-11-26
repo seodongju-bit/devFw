@@ -53,6 +53,10 @@ public class D_P001ServiceImpl implements D_P001Service {
 //	System.out.println("서비스실행");
 //	}
 	
+	@Override
+	public void addReview(Map<String, Object> resultMap) throws DataAccessException {
+		D_P001DAO.addReview(resultMap);
+	}
 
 	
 	

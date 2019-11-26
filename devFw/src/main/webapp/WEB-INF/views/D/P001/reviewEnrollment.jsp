@@ -49,22 +49,29 @@ span{
 	position:relative;
 	width: 95%;
 	min-width:90%;
-	height: 400px;
+	height: 350px;
 }
 #editorBox{
 	position:relative;
-	left:50px;
+	left:45px;
 }
 
 
-#star_grade a{
+#product_grade a{
       text-decoration: none;
       color: gray;
 }
-#star_grade a.on{
+#product_grade a.on{
       color: #FFBF00;
 }
 
+#seller_grade a{
+      text-decoration: none;
+      color: gray;
+}
+#seller_grade a.on{
+      color: #FFBF00;
+}
 iframe{
 	background-color:white;
 }
@@ -121,14 +128,24 @@ $(function() {
 
 ///별점
 $(document).ready(function(){
-	$("#star_grade a").click(function(){
+	$("#product_grade a").click(function(){
 		 var grade = $(this).prevAll("a").length;
 	     $(this).parent().children("a").removeClass("on");  /* 별점의 on 클래스 전부 제거 */ 
 	     $(this).addClass("on").prevAll("a").addClass("on"); /* 클릭한 별과, 그 앞 까지 별점에 on 클래스 추가 */
-	     $("#star").val(grade);
+	     $("#pro_score").val(grade);
+	     return false;
+	});
+	
+	$("#seller_grade a").click(function(){
+		 var grade = $(this).prevAll("a").length;
+	     $(this).parent().children("a").removeClass("on");  /* 별점의 on 클래스 전부 제거 */ 
+	     $(this).addClass("on").prevAll("a").addClass("on"); /* 클릭한 별과, 그 앞 까지 별점에 on 클래스 추가 */
+	     $("#sell_score").val(grade);
 	     return false;
 	});
 });
+
+
 </script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -139,9 +156,8 @@ $(document).ready(function(){
 	<form name="reviewEnrollment" method="post"  accept-charset="UTF-8" >
 		<div  class="titleBox" ><span>제목</span>
 		<input type="text" id="inputTitle" class="form-control" id="title"></div>
-		<br>
-		<div  class="titleBox" ><span>별점</span>
-		<span id="star_grade">
+		<div  class="titleBox" ><span>제품평가</span>
+		<span id="product_grade">
 			<a></a>
        		<a href="#" >★</a>
         	<a href="#" >★</a>
@@ -150,7 +166,18 @@ $(document).ready(function(){
         	<a href="#" >★</a>
 		</span>
 		</div>
-		<input type="hidden" name="grade" id="star" value="3">
+		<div  class="titleBox" ><span>판매자평가</span>
+		<span id="seller_grade">
+			<a></a>
+       		<a href="#" >★</a>
+        	<a href="#" >★</a>
+        	<a href="#" >★</a>
+        	<a href="#" >★</a>
+        	<a href="#" >★</a>
+		</span>
+		</div>
+		<input type="hidden" name="pro_score" id="pro_score" value="0">
+		<input type="hidden" name="sell_score" id="sell_score" value="0">
 		<div class="form-group" id="editorBox">본문
 			<textarea  id="editor"  ></textarea>
 		</div>

@@ -8,7 +8,7 @@ public class D_P001VO {
 	private String review_number;
 	private String sell_number;
 	private String pro_number;
-	private String mem_no;
+	private String mem_id;
     private String review_stdate;
     private String review_pdscore;
     private String review_content; 
@@ -22,7 +22,6 @@ public class D_P001VO {
     private String sell_score;
     private String sell_content;
     private String sell_thumbnail;
-    private String mem_id;
     private String mem_nick;
     
 
@@ -50,12 +49,7 @@ public class D_P001VO {
 	public void setPro_number(String pro_number) {
 		this.pro_number = pro_number;
 	}
-	public String getMem_no() {
-		return mem_no;
-	}
-	public void setMem_no(String mem_no) {
-		this.mem_no = mem_no;
-	}
+
 	public String getReview_stdate() {
 		return review_stdate;
 	}

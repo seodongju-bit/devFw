@@ -71,12 +71,18 @@ public class D_P001ControllerImpl   implements D_P001Controller {
 	@RequestMapping(value="/reviewEnrollment.do" ,method = { RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody
 	public Map<String, Object> reviewEnrollment(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String viewName = getViewName(request);
-		System.out.println(request.getParameter("grade"));
-		viewName = "reviewwrite";
 		Map<String, Object> resultMap = new HashMap<String, Object>();
-		//List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
-		return resultMap;
+		Map<String, Object> result = new HashMap<String, Object>();
+		//mem_id, 시간, 리뷰번호 생성
+		resultMap.put("sell_number", request.getParameter("sell_number"));
+		resultMap.put("pro_number", request.getParameter("pro_number"));
+		resultMap.put("review_pdscore", request.getParameter("review_pdscore"));
+		resultMap.put("review_sellscore", request.getParameter("review_sellscore"));
+		resultMap.put("sell_content", request.getParameter("sell_content"));
+		
+		d_P001Service.addReview(resultMap);
+		
+		return result;
 	}
 	
 	

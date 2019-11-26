@@ -12,4 +12,5 @@ public interface D_P001DAO {
 
 	void reviewwrite(Map<String, Object> dataMap);
 	public List reviewItem2(String p_id) throws DataAccessException;
+	void addReview(Map<String, Object> resultMap) throws DataAccessException;
 }

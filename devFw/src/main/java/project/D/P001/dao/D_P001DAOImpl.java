@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
+
 import project.D.P001.vo.D_P001VO;
 
 @Repository("D_P001DAO")
@@ -38,5 +39,10 @@ public class D_P001DAOImpl implements D_P001DAO {
 		
 	}
 	
+	@Override
+	public void addReview(Map<String, Object> resultMap) throws DataAccessException {
+		System.out.println("리뷰추가 dao");
+		//sqlSession.insert("D.P001.addReview", resultMap);
+	}
 
 }
