@@ -11,6 +11,15 @@
       <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
    </definition>
    
+   
+   <definition name="noticeLayout"  template="/WEB-INF/views/common/notice_layout.jsp">
+      <put-attribute name="title" value="" />
+      <put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
+      <put-attribute name="side" value="/WEB-INF/views/common/notice_side.jsp" />
+      <put-attribute name="body" value="" />
+      <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
+   </definition>
+   
    <definition name="baseLayout2"  template="/WEB-INF/views/common/layout.jsp">
       <put-attribute name="title" value="" />
       <put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
@@ -117,7 +126,23 @@
       <put-attribute name="body" value="/WEB-INF/views/A/P002/D006.jsp" />
       <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
    </definition>
+
  
+ 	<definition name="memberpwcheckpage" extends="baseLayout">
+      <put-attribute name="title" value="마이페이지비밀번호체크" />
+      <put-attribute name="side" value="" />
+      <put-attribute name="body" value="/WEB-INF/views/A/P003/D003.jsp" />
+   </definition>
+ 
+ 	<definition name="memberupdatepage" extends="baseLayout">
+      <put-attribute name="title" value="회원정보수정" />
+      <put-attribute name="body" value="/WEB-INF/views/A/P003/D001.jsp" />
+   </definition>
+   
+   <definition name="membersecessionpage" extends="baseLayout">
+      <put-attribute name="title" value="회원탈퇴페이지" />
+      <put-attribute name="body" value="/WEB-INF/views/A/P003/D002.jsp" />
+   </definition>
 
 	<definition name="myPage" extends="baseLayout">
       <put-attribute name="title" value="마이페이지" />
@@ -158,11 +183,12 @@
     <definition name="basket" extends="baseLayout_cart">
       <put-attribute name="title" value="장바구니" />
       <put-attribute name="body" value="/WEB-INF/views/A/P005/D001.jsp" />
+<!--       <put-attribute name="body" value="/WEB-INF/views/A/P005/D001.jsp" /> -->
    </definition>
    
-   <definition name="reviewwrite" extends="baseLayout">
+   <definition name="reviewwrite" extends="baseLayout3">
       <put-attribute name="title" value="리뷰작성" />
-      <put-attribute name="body" value="/WEB-INF/views/D/P001/D001.jsp" />
+      <put-attribute name="body" value="/WEB-INF/views/D/P001/reviewEnrollment.jsp" />
    </definition>
    
    	<definition name="myReview" extends="baseLayout">
@@ -204,6 +230,12 @@
       <put-attribute name="title" value="상품페이지" />
       <put-attribute name="body" value="/WEB-INF/views/F/P002/D001.jsp" />
       <put-attribute name="bodyDetail" value="/WEB-INF/views/F/P002/D002.jsp" />
+   </definition> 
+   
+   
+    <definition name="notice" extends="noticeLayout">
+      <put-attribute name="title" value="공지사항페이지" />
+      <put-attribute name="body" value="/WEB-INF/views/C/P003/D001.jsp" />
    </definition> 
    
 <!--  웅건
