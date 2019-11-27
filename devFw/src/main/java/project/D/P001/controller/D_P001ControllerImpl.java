@@ -60,8 +60,9 @@ public class D_P001ControllerImpl   implements D_P001Controller {
 	@RequestMapping(value="/reviewwrite.do" ,method = { RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView reviewwrite(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = getViewName(request);
+		String sell_number = request.getParameter("sell_number");
+		request.setAttribute("sell_number", sell_number);
 		viewName = "reviewwrite";
-		System.out.println("controller실행");    
 		ModelAndView mavs = new ModelAndView(viewName);
 		return mavs; 
 	}
@@ -73,13 +74,16 @@ public class D_P001ControllerImpl   implements D_P001Controller {
 	public Map<String, Object> reviewEnrollment(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		Map<String, Object> resultMap = new HashMap<String, Object>();
 		Map<String, Object> result = new HashMap<String, Object>();
-		//mem_id, 시간, 리뷰번호 생성
+		HttpSession session = request.getSession();
+		String mem_id = (String)session.getAttribute("mem_id");
+		
+		//mem_id, 시간, 리뷰번호 생성, 제품번호
+		resultMap.put("mem_id", mem_id);
 		resultMap.put("sell_number", request.getParameter("sell_number"));
-		resultMap.put("pro_number", request.getParameter("pro_number"));
+		//resultMap.put("pro_number", request.getParameter("pro_number"));
 		resultMap.put("review_pdscore", request.getParameter("review_pdscore"));
 		resultMap.put("review_sellscore", request.getParameter("review_sellscore"));
-		resultMap.put("sell_content", request.getParameter("sell_content"));
-		
+		resultMap.put("review_content", request.getParameter("review_content"));
 		d_P001Service.addReview(resultMap);
 		
 		return result;

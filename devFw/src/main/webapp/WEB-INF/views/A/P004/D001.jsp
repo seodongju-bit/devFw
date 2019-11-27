@@ -95,6 +95,9 @@ check {
 </head>
 <body>
 
+	<c:forEach var="orderList" items="${orderList}" varStatus='index'>
+		${orderList.SELL_NUMBER}
+	</c:forEach>
 
 
 	<h1 align="center" >마이페이지</h1>
@@ -117,7 +120,7 @@ check {
 		</tr>
 	</table>
 
-
+	
 	<p id="f" style=" margin-right: 0px;">주문목록/배송조회</p>
 
 	<table class="table table-hover">
@@ -152,7 +155,7 @@ check {
 			<input type="button" class="btn btn-link" value="배송조회"><br> 
 		    <input type="button" class="btn btn-link" value="교환신청"><br> 
 		    <input type="button" class="btn btn-link" value="반품신청"><br> 
-			<p><button onclick="reviewWrite()">리뷰 작성하기</button>
+			<p><button onclick="reviewWrite('0004')">리뷰 작성하기</button>
 			</td>
 		</tr>
 
@@ -268,8 +271,8 @@ check {
 	</div>
 
 	<script>
-	function reviewWrite(){
-		window.open("reviewwrite.do", "제품번호 검색", "width=850, height=700, left=600, top400", "resizable=no");
+	function reviewWrite(sell_number){
+		window.open("reviewwrite.do?sell_number="+sell_number, "제품번호 검색", "width=850, height=700, left=600, top400", "resizable=no");
 	}
 	
 	

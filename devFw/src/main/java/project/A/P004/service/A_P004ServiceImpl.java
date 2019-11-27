@@ -32,4 +32,9 @@ public class A_P004ServiceImpl implements A_P004Service {
 		System.out.println("22222222222222222222222222"+list);
 		return list;
 	}
+	
+	@Override
+	public List<Map<String, Object>> orderList(Map<String, Object> searchMap) {
+		return activeDAO.orderList(searchMap);
+	}
 }

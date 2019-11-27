@@ -14,7 +14,7 @@
 <head>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script><!-- 팝업 관련 -->
 
-<link rel="stylesheet" type="text/css" href="resources/css/F_P002_D001.css?ver=1.4">
+<link rel="stylesheet" type="text/css" href="resources/css/F_P002_D001.css?ver=1.2">
 
 <script src="http://code.jquery.com/jquery-latest.min.js"></script><!-- jquery -->
 <script type="text/javascript">
@@ -289,10 +289,10 @@ function fn_order(){
 <title>Insert title here</title>
 </head>
 <body>
-	대분류명:${item.bigCtgrName}<br>
-	소분류명:${item.smallCtgrName}<br>
-	대분류코드:${item.bigCtgrCode}<br>
-	소분류코드:${item.smallCtgrCode}<br>
+<%-- 	대분류명:${item.bigCtgrName}<br> --%>
+<%-- 	소분류명:${item.smallCtgrName}<br> --%>
+<%-- 	대분류코드:${item.bigCtgrCode}<br> --%>
+<%-- 	소분류코드:${item.smallCtgrCode}<br> --%>
 <div id="catCategory" >
 	<div>
 		<a href="/devFw/category.do"> 카테고리 </a> > 

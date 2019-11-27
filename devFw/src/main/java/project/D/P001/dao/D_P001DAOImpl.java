@@ -41,8 +41,18 @@ public class D_P001DAOImpl implements D_P001DAO {
 	
 	@Override
 	public void addReview(Map<String, Object> resultMap) throws DataAccessException {
-		System.out.println("리뷰추가 dao");
-		//sqlSession.insert("D.P001.addReview", resultMap);
+		System.out.println("리뷰추가 dao:"+resultMap);
+		List<Map<String, Object>> proNum = sqlSession.selectList("mapper.review.searProNum", resultMap);
+		String pro_number = String.valueOf(proNum.get(0).get("pro_number"));
+		resultMap.put("pro_number", pro_number);
+		
+		sqlSession.insert("mapper.review.addReview", resultMap);
+		if(!resultMap.get("review_pdscore").equals("0")) {
+			sqlSession.update("mapper.review.updateProScore", resultMap);
+		}
+		if(!resultMap.get("review_sellscore").equals("0")) {
+			sqlSession.update("mapper.review.updateSellScore", resultMap);
+		}
 	}
 
 }

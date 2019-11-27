@@ -21,8 +21,6 @@ $(document).ready(function(){
 </head>
 <html>
 <body>
-<input type="checkbox"/>asdf</input>
-<checkBox>asdf</checkBox>
     <div id="contentsBody"></div>
 </body>
 </html>
