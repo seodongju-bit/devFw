@@ -77,7 +77,6 @@ public class homeController {
 	@ResponseBody
 	public List<Map<String, Object>> searchCommon(@RequestParam(value="p_id", required=false) String p_id, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("utf-8");
-		System.out.println("공통코드 찾기");
 		Map<String, Object> searchMap = new HashMap<String, Object>();
 		searchMap.put("p_id", p_id);
 //		Map<String, Object> resultMap = new HashMap<String, Object>();

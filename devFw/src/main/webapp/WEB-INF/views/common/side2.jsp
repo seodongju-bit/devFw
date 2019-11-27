@@ -137,6 +137,8 @@ $(document).ready(function(){
 		 $('[id^=H_]').css("display","block");
 		 $('#topCategoryName').remove();
 	 }else{
+// 		 if(nowCtgr)
+// 		$('[id^='+nowCtgr+']').css("background-color","gray");
 	 	nowCtgr = nowCtgr.substr(0,4);
 		$('[id^='+nowCtgr+']').css("display","block");
 	 }

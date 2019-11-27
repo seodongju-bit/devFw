@@ -1,9 +1,12 @@
 package project.A.P005.conrtoller;
 
+
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.TreeMap;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
@@ -27,6 +30,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import net.sf.json.JSONObject;
 import project.A.P005.service.A_P005Service;
 import project.A.P005.vo.A_P005VO;
 import project.hm.p0004.vo.P0004VO;
@@ -51,6 +58,12 @@ public class A_P005ControllerImpl   implements A_P005Controller {
 		HttpSession session = request.getSession();
 		String mem_id = (String)session.getAttribute("mem_id");
 		System.out.println("3333333333333333333333333333333333333333333333333333333333333333333333333"+mem_id);
+		if(mem_id == null) {
+			viewName = "redirect:main.do";
+			ModelAndView mav = new ModelAndView(viewName);
+			return mav;
+		}
+		
 		List basketList = basketService.listBasket(mem_id);
 		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("basketList", basketList);
@@ -79,6 +92,8 @@ public class A_P005ControllerImpl   implements A_P005Controller {
 		String sell_number = request.getParameter("sell_number");
 		String ba_color = request.getParameter("ba_color");
 		String ba_size = request.getParameter("ba_size");
+		
+/*		String [] ba_siz = request.getParameterValues(ba_size);*/
 		
 		Map<String, Object> dataMap = new HashMap<String, Object>();
 		Map<String, Object> resultMap = new HashMap<String, Object>();
@@ -148,7 +163,8 @@ public class A_P005ControllerImpl   implements A_P005Controller {
 		return resultMap;
 	}
 		
-		
+	
+	
 	
 	
 	/*@RequestMapping(value = "/basket/*Form.do", method =  { RequestMethod.GET, RequestMethod.POST})
@@ -194,6 +210,8 @@ public class A_P005ControllerImpl   implements A_P005Controller {
 		}
 		return viewName;
 	}
+
+
 
 
 }

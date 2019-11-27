@@ -233,7 +233,7 @@ function numberWithCommas(x) {  //xxx,xxx원으로 변환해서 표출
 let optionSet = new Set();
 function addOptionBox(sizeVal, colorVal){  //셀렉트 박스에 옵션 추가
 	
-	console.log(optionSet);
+	//console.log(optionSet);
 	if(sizeVal!=0 || sizeVal!=''){  //사이즈 옵션 추가
 		if(optionSet.has(sizeVal)){
 			alert("이미 들어있는 옵션입니다");
@@ -241,7 +241,6 @@ function addOptionBox(sizeVal, colorVal){  //셀렉트 박스에 옵션 추가
 		}
 		var size = document.getElementById("sizeBox");
 		var sizeOption = document.createElement('option');
-		sizeOption.setAttribute("value", sizeVal);
 		sizeOption.append(sizeVal);
 		size.appendChild(sizeOption);
 		optionSet.add(sizeVal);
@@ -283,6 +282,7 @@ function addOptionUp(sizeVal, colorVal){
 	
 	optionQn.setAttribute("type","number");
 	optionQn.setAttribute("class","form-control");
+	optionQn.setAttribute("name","quantity");
 	optionQn.setAttribute("min","0");
 	
 	optionQnLabel.setAttribute("id","quantity"+quantityIndex);
@@ -301,6 +301,19 @@ function addOptionUp(sizeVal, colorVal){
 	
 	optionQnLabel.setAttribute("class","productLabel");
 	div.appendChild(optionQnLabel);
+	
+	var paramSize = document.createElement('input');
+	paramSize.setAttribute("type","hidden");
+	paramSize.setAttribute("name", "osize");
+	paramSize.setAttribute("value", sizeVal);
+	div.appendChild(paramSize);
+	
+	var paramColor = document.createElement('input');
+	paramColor.setAttribute("type","hidden");
+	paramColor.setAttribute("name", "ocolor");
+	paramColor.setAttribute("value", colorVal);
+	div.appendChild(paramColor);
+	
 	quantityIndex++;
 }
 function itemDelete(id){
@@ -361,7 +374,7 @@ function itemDelete(id){
 		<br>
 		<select name="sizeBox" id="sizeBox" class="form-control"><option value="">size선택</option></select>
 		<select name="colorBox" id="colorBox" class="form-control"><option value="">color선택</option></select>
-		<button type="button" class="btn btn-default" onclick="addOptionUp(sizeBox.value, colorBox.value)"><span class="glyphicon glyphicon-plus"></span></button>
+		<button type="button" class="btn btn-default" onclick="addOptionUp(sizeBox.value, colorBox.value)">추가</button>
 		</label>
 	</div>
 	<div class="form-group" id="optionUp">

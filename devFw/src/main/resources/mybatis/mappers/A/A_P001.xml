@@ -24,16 +24,16 @@
 		]]>
 	</select>
 	
-	<select id="IDsearch" resultType="String"  parameterType="String"  >
+	<select id="idsearch" resultType="String" parameterType="String"  >
 			<![CDATA[
-			select mem_id
+			select mem_id 
 			from members
-			where mem_name = #{mem_name} and mem_email1 = #{mem_email1} and mem_email2 = #{mem_email2};		
+			where mem_email1 = #{mem_email1} and mem_email2 = #{mem_email2};		
 			 ]]>
 		
 	</select>
 	
-	<select id="PWsearch" resultType="String"  parameterType="String"  >
+	<select id="pwsearch" resultType="String" parameterType="String"  >
 	    <![CDATA[
 			select mem_pw
 			from members

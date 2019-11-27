@@ -5,9 +5,12 @@ import java.util.Map;
 
 import org.springframework.dao.DataAccessException;
 
+import project.D.P001.vo.D_P001VO;
+
 
 public interface D_P001DAO {
 
-	public List reviewItem() throws DataAccessException;
-	public List reviewItem2() throws DataAccessException;
+	void reviewwrite(Map<String, Object> dataMap);
+	public List reviewItem2(String p_id) throws DataAccessException;
+	void addReview(Map<String, Object> resultMap) throws DataAccessException;
 }

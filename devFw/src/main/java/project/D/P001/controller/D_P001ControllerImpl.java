@@ -1,6 +1,9 @@
 package project.D.P001.controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -36,22 +40,79 @@ public class D_P001ControllerImpl   implements D_P001Controller {
 	public ModelAndView myReview(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = getViewName(request);
 		viewName = "myReview";
-		List reviewlist2 = d_P001Service.reviewItem2();
+		
+		HttpSession session = request.getSession();
+		String p_id = (String)session.getAttribute("mem_id");
+		if(p_id == null) {
+			viewName = "redirect:main.do";
+			ModelAndView mavs2 = new ModelAndView(viewName);
+			return mavs2;
+		}
+		
+		List reviewlist2 = d_P001Service.reviewItem2(p_id);
+		System.out.println(reviewlist2);
 		ModelAndView mavs2 = new ModelAndView(viewName);
 		mavs2.addObject("List", reviewlist2);
 		return mavs2;
 	}
 
 	@Override
-	@RequestMapping(value="/reviewwrite.do" ,method = RequestMethod.GET)
+	@RequestMapping(value="/reviewwrite.do" ,method = { RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView reviewwrite(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = getViewName(request);
 		viewName = "reviewwrite";
-		List reviewlist = d_P001Service.reviewItem();     
+		System.out.println("controller실행");    
 		ModelAndView mavs = new ModelAndView(viewName);
-        mavs.addObject("List", reviewlist);
 		return mavs; 
 	}
+	
+	//리뷰등록
+	@Override
+	@RequestMapping(value="/reviewEnrollment.do" ,method = { RequestMethod.GET, RequestMethod.POST})
+	@ResponseBody
+	public Map<String, Object> reviewEnrollment(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		Map<String, Object> result = new HashMap<String, Object>();
+		//mem_id, 시간, 리뷰번호 생성
+		resultMap.put("sell_number", request.getParameter("sell_number"));
+		resultMap.put("pro_number", request.getParameter("pro_number"));
+		resultMap.put("review_pdscore", request.getParameter("review_pdscore"));
+		resultMap.put("review_sellscore", request.getParameter("review_sellscore"));
+		resultMap.put("sell_content", request.getParameter("sell_content"));
+		
+		d_P001Service.addReview(resultMap);
+		
+		return result;
+	}
+	
+	
+	@Override
+	@RequestMapping(value="/writes.do" ,method = { RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView writes(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = "redirect:/reviewwrite.do";
+		Map<String, Object> dataMap = new HashMap();
+		
+		String review_content = request.getParameter("content");
+		String mem_no = request.getParameter("writer");
+
+		
+		System.out.println(review_content);
+		System.out.println(mem_no);
+
+		
+
+		dataMap.put("review_content", review_content);
+		dataMap.put("mem_no", mem_no);
+
+		
+		System.out.println(dataMap);
+		
+		 d_P001Service.reviewWrite(dataMap);
+		
+		ModelAndView mav = new ModelAndView(viewName);
+		return mav;
+	}
+	
 
 	private String getViewName(HttpServletRequest request) throws Exception {
 		String contextPath = request.getContextPath();
@@ -83,6 +144,8 @@ public class D_P001ControllerImpl   implements D_P001Controller {
 		}
 		return viewName;
 	}
+
+	
 
 
 

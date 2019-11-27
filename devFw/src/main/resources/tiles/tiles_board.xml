@@ -12,7 +12,8 @@
    </definition>
    
    
-   <definition name="noticeLayout"  template="/WEB-INF/views/common/notice_layout.jsp">
+
+     <definition name="noticeLayout"  template="/WEB-INF/views/common/notice_layout.jsp">
       <put-attribute name="title" value="" />
       <put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
       <put-attribute name="side" value="/WEB-INF/views/common/notice_side.jsp" />
@@ -233,7 +234,8 @@
    </definition> 
    
    
-    <definition name="notice" extends="noticeLayout">
+
+      <definition name="notice" extends="noticeLayout">
       <put-attribute name="title" value="공지사항페이지" />
       <put-attribute name="body" value="/WEB-INF/views/C/P003/D001.jsp" />
    </definition> 

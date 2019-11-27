@@ -7,7 +7,6 @@
 	request.setCharacterEncoding("UTF-8");
 %>
 
-<c:set var="item" value="${reviewItem}" />
 
 <!DOCTYPE html>
 <html>
@@ -72,6 +71,59 @@ height:300px;
                           
 </style>
 
+<script>
+
+    
+    $("#review").click(function(){
+    	var frm = document.frmch;
+    	 //id가 smarteditor인 textarea에 에디터에서 대입
+        obj.getById["editor"].exec("UPDATE_CONTENTS_FIELD", []);
+   	 
+   	var content = document.getElementsByName("content")[0].value;
+   	var writer = document.getElementsByName("writer")[0].value;
+
+  
+   	if (writer.trim() == '') {
+   		alert("작성자를 입력해주세요");
+   		return false;
+   	}
+   	if (content.trim() == '') {
+   		alert("내용을 입력해주세요");
+   		return false;
+   	}
+   	
+     frm.method="post"; 
+     frm.action="./writes.do"; 
+   	 frm.submit();
+   	
+    });
+    
+   
+});
+
+
+$('.btn_submit').click(function(){
+	$.ajax({
+		
+	method:"POST",
+	url:"/devFw/reviewwrite.do"
+	data:{content:"리뷰입니다."}
+		
+		
+	})
+	.done(function(msg){
+		
+		alert("리뷰가 작성되었습니다.");
+	})
+	
+	
+})
+
+
+
+		
+		
+	</script>
 
 
 
@@ -83,12 +135,12 @@ height:300px;
 </head>
 <body>
 
-
-
+                          
+<form name="addForm" method="post" accept-charset="UTF-8" >
 	<h1 align="center" >마이페이지</h1>
 
 	<table class="table table-hover" >
-		<tr>
+		<tr>                        
 
 			<th id="My" >My</th>
 			<th>미사용 티켓<br> <a href="#" style="">0장</a></th>
@@ -127,10 +179,10 @@ height:300px;
 		
 			<th id="c"><a href="#"><span style="color: blue;">주문상세
 						보기></span></a>
-					 <button type="button" onclick="review">리뷰 작성 확인</button> 	
+					 <button type="button" class="btn_submit" onclick="review">리뷰 작성 확인</button> 	
 				<!--  "location.href='myReview.do'" -->
 	 	</tr>
-               		
+               		       
 	
 
 	
@@ -143,7 +195,7 @@ height:300px;
                        
 		</tr>
 	</table>
-
+</form>
 	
                                                      
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
@@ -179,16 +231,6 @@ height:300px;
 
 	</div> 
 
-	<script>
-		$(document).ready(function() {
-			$('[data-toggle="tooltip"]').tooltip();
-		});
-		
-		
-		
-		
-		
-	</script>
-
+	
 </body>
 </html>

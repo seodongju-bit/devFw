@@ -20,7 +20,7 @@ public class E_P001DAOImpl implements E_P001DAO {
 	@Override
 	public List<E_P001VO> selectItem(Map<String, Object> searchMap) throws DataAccessException {
 		List<E_P001VO> list = sqlSession.selectList("E.P001.searchItem", searchMap);
-		//System.out.println("dao:"+list);
+		System.out.println("dao:"+list);
 		return list;
 	}
 	

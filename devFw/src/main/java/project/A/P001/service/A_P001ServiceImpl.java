@@ -25,4 +25,9 @@ public class A_P001ServiceImpl implements A_P001Service {
 	public A_P001VO login(Map  loginMap) throws Exception{
 		return a_p001DAO.login(loginMap);
 	}
+	
+	@Override
+	public String idsearch(Map idMap) throws Exception {
+		return a_p001DAO.idsearch(idMap);
+	}
 }

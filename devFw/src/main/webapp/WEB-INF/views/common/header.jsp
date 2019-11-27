@@ -421,7 +421,7 @@ $(document).ready(function(){
 				 <a class="nav-item nav-link" href="${contextPath}/signinpage.do">로그인</a>
 			</c:otherwise>
        	  </c:choose>
-        	  <a class="nav-item nav-link" href="./userEdit.html">고객센터</a>
+        	  <a class="nav-item nav-link" href="${contextPath}/notice.do">고객센터</a>
        	 </div>
    	   </div>
        
@@ -441,40 +441,7 @@ $(document).ready(function(){
 		<div id="dropMenu">
 			<button class="menubtn" onclick="location.href='category.do'">전체 카테고리</button>
   			<div class="dropdown-content" id="dropBox"> <!-- 카테고리 추가 -->
-<!--   				<div class="menu1">브랜드패션 -->
-<!--   					<div class="dropdown-content2"> -->
-<!-- 						<a href="#">카테고리를 넣어주세요.</a> -->
-<!-- 					</div> -->
-<!--   				</div> -->
-<!--   				<div class="menu1">패션의류·잡화·뷰티 -->
-<!--   					<div class="dropdown-content2"> -->
-<!-- 						<div class="menu2">메뉴2_2</div> -->
-<!-- 						<div class="menu2">메뉴2_2</div> -->
-<!-- 						<div class="menu2">메뉴2_2</div> -->
-<!-- 					</div> -->
-<!--   				</div> -->
-<!--   				<div class="menu1">유아동 -->
-<!--   					<div class="dropdown-content2"> -->
-<!-- 					</div> -->
-<!--   				</div> -->
-<!--   				<div class="menu1">식품·생필품 -->
-<!--   					<div class="dropdown-content2"></div> -->
-<!--   				</div> -->
-<!--   				<div class="menu1">홈데코·문구·취미·반려 -->
-<!--   					<div class="dropdown-content2"></div> -->
-<!--   				</div> -->
-<!--   				<div class="menu1">컴퓨터·디지털·가전 -->
-<!--   					<div class="dropdown-content2"></div> -->
-<!--   				</div> -->
-<!--   				<div class="menu1">스포츠·건강·렌탈 -->
-<!--   					<div class="dropdown-content2"></div> -->
-<!--   				</div> -->
-<!--   				<div class="menu1">자동차·공구 -->
-<!--   					<div class="dropdown-content2"></div> -->
-<!--   				</div> -->
-<!--   				<div class="menu1">여행·도서·티켓·e쿠폰 -->
-<!--   					<div class="dropdown-content2"></div> -->
-<!--   				</div> -->
+
   			</div>
 		</div>
 		<div class="mainMenu"><button class="menubtn"onclick="location.href='bestProduct.do'">베스트상품</button></div>

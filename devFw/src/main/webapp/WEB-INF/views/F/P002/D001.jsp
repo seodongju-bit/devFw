@@ -248,7 +248,7 @@ function itemDelete(id){
 function basket(){
 	
 	  var queryString = $("form[name=selectPush]").serialize() ;
-	  
+	  console.log(queryString);
       $.ajax({
           type : 'post',
           url : '/devFw/addBasket.do',
@@ -262,9 +262,6 @@ function basket(){
           },
       });
 
-	
-	///////////////////////////
-	
 	Swal.fire({
 		  title: '장바구니에 담겼습니다',
 		  text: "장바구니로 이동하시겠습니까?",
@@ -281,13 +278,10 @@ function basket(){
 }
 
 function fn_order(){
-	var _isLogOn=document.getElementById("isLogOn");
-	var isLogOn=_isLogOn.value;
-	
-	if(isLogOn=="false" || isLogOn=='') {
+	var isLogOn = '${isLogOn}';
+	if(isLogOn==false || isLogOn=='') {
 		alert("로그인 후 주문이 가능합니다.");
 	}
-	return;
 }
 
 </script>
@@ -295,7 +289,6 @@ function fn_order(){
 <title>Insert title here</title>
 </head>
 <body>
-
 	대분류명:${item.bigCtgrName}<br>
 	소분류명:${item.smallCtgrName}<br>
 	대분류코드:${item.bigCtgrCode}<br>
@@ -338,46 +331,21 @@ function fn_order(){
 		</div>
 		<form method="post" name="selectPush" accept-charset="UTF-8" >
 			<div id="selectItems" class="sellInfo">
-			
 				<button type="button" class="btn-default" id="basketbtn" onclick="basket()" >장바구니</button>
 				<button type="submit" class="btn btn-primary" id="orderbtn" formaction="/devFw/order.do" onclick="fn_order()">바로구매</button>
-				
 			</div>
 		</form>
 	</div>
 </div>
 <div id="itemsInfoSelect">
-	<button id="itemsInfo" class="btn btn-primary">상품정보</button>
+	<button id="itemsInfo" class="btn btn-primary" onclick="">상품정보</button>
 	<button id="itemsReview" class="btn btn-primary">리뷰</button>
 	<button id="itemsQna" class="btn btn-primary">QnA</button>
 	<button id="itemsSaller" class="btn btn-primary">판매자정보</button>
 	<button  class="btn btn-primary">상품의견</button>
 </div>
 
-<!--
-<div>
- <table border='1' width='800' align='center'>
 
-
-     <tr align=center>
-       <td>${item.sell_number}</td>
-       <td>${item.pro_number}</td>
-       <td>${item.sell_price}</td>
-       <td>${item.sell_score}</td>
-   
-     </tr>
- 
-</table>
-</div>
- 
-${info }
-<c:forEach var="option1" items="${info }" >
-	<p>${option1.option_size }</p>
-</c:forEach>
--->
-
-
- 	
 
 </body>
 </html>

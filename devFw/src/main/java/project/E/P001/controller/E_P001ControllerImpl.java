@@ -27,7 +27,7 @@ import project.E.P001.service.E_P001Service;
 
 
 @Controller("E_P001Controller")
-public class E_P001ControllerImpl   implements E_P001Controller {
+public class E_P001ControllerImpl implements E_P001Controller {
 	@Autowired
 	E_P001VO e_P001VO;
 	
@@ -48,12 +48,10 @@ public class E_P001ControllerImpl   implements E_P001Controller {
 		}else {
 			String viewName = (String)request.getAttribute("viewName");
 			ModelAndView mav = new ModelAndView(viewName);
-			
 			List<Map<String, Object>> list = createModel(request);
 			Map<String, Object> searchMap = new HashMap<String, Object>();
 			List<E_P001VO> result = new ArrayList<E_P001VO>();
 			
-				
 				for(int i=0;i<list.size();i++) {
 					searchMap.put("p_id", list.get(i).get("sell_number"));
 					e_P001VO = (E_P001VO)e_P001Service.selectItem(searchMap).get(0);
@@ -74,6 +72,46 @@ public class E_P001ControllerImpl   implements E_P001Controller {
 		}
 	}
 	
+	@RequestMapping(value="/order2.do" ,method = { RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView buy(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		request.setCharacterEncoding("utf-8");
+		HttpSession session = request.getSession();
+		session = request.getSession();
+		Boolean isLogOn = (Boolean)session.getAttribute("isLogOn");
+		String action=(String)session.getAttribute("action");
+System.out.println("장바구니에서 구매");
+		if(isLogOn==null || isLogOn == false) {
+			return new ModelAndView("redirect:../devFw/signinpage.do");
+		}else {
+			ModelAndView mav = new ModelAndView("order");
+			
+			List<Map<String, Object>> list = createModel2(request);
+System.out.println("리스트 변환"+list +"리스트사이즈"+list.size());
+			Map<String, Object> searchMap = new HashMap<String, Object>();
+			List<E_P001VO> result = new ArrayList<E_P001VO>();
+			
+				for(int i=0 ; i<list.size() ; i++) {
+					System.out.println(i);
+					searchMap = new HashMap<String, Object>();
+					searchMap.put("p_id", list.get(i).get("sell_number"));
+					System.out.println(55);
+					e_P001VO = (E_P001VO)e_P001Service.selectItem(searchMap).get(0);
+					System.out.println(i);
+					//List<E_P001VO>
+					e_P001VO.setSell_number((String)list.get(i).get("sell_number")); 
+					e_P001VO.setDetail_quantity((String)list.get(i).get("detail_quantity")); 
+					e_P001VO.setOrder_size((String)list.get(i).get("order_size")); 
+					e_P001VO.setOrder_color((String)list.get(i).get("order_color"));
+					System.out.println("--->"+BeanUtils.describe(e_P001VO));
+					result.add(e_P001VO);
+				}
+			session.setAttribute("orderList", result);
+			A_P001VO memberInfo=(A_P001VO)session.getAttribute("memberInfo");
+			session.setAttribute("orderer", memberInfo);
+			return mav;
+			
+		}
+	}
 	
 	
 	
@@ -98,6 +136,30 @@ public class E_P001ControllerImpl   implements E_P001Controller {
 	}
 	
 
+	public List<Map<String, Object>> createModel2(HttpServletRequest request){
+System.out.println("데이터 변환");
+		List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
+		Map<String, Object> resultMap= new HashMap<String, Object>();
+		String test = request.getParameter("test");
+		String[] colorOp = test.split(",");
+		String test1 = request.getParameter("test1");
+		String[] sizeOp = test1.split(",");
+		String test2 = request.getParameter("test2");
+		String[] quantityOp = test2.split(",");
+		String test3 = request.getParameter("test3");
+		String[] sellnumber = test3.split(",");
+		
+		for(int i=0; i<quantityOp.length;i++) {
+			resultMap = new HashMap<String, Object>();
+			resultMap.put("sell_number", sellnumber[i]);
+			resultMap.put("detail_quantity", quantityOp[i] );
+			resultMap.put("order_size", sizeOp[i]);
+			resultMap.put("order_color", colorOp[i]);
+			result.add(resultMap);
+		}
+		
+		return result;
+	}
 	
 	
 	
