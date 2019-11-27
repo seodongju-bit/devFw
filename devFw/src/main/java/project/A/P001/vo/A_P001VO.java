@@ -10,6 +10,7 @@ public class A_P001VO {
 	private String mem_id = "";
 	private String mem_pw = "";
 	private String mem_name = "";
+	private String mem_nick = "";
 	private String mem_email1 = "";
 	private String mem_email2 = "";
 	private String mem_division = "";
@@ -64,6 +65,18 @@ public class A_P001VO {
 
 	public String getMem_name() {
 		return mem_name;
+	}
+
+	
+
+	public String getMem_nick() {
+		return mem_nick;
+	}
+
+
+
+	public void setMem_nick(String mem_nick) {
+		this.mem_nick = mem_nick;
 	}
 
 
