@@ -52,13 +52,12 @@ function fn_coupon(){
 
 <aside class="well span3 oc" id="a" role="navigation">
       <ul class="nav nav-list">
-        <li class="nav-header">공지사항</li>
-        <li align=left><a href="#">자주묻는 질문</a></li>
+        <li class="nav-header">Q&A</li>
         <li><a href="#">자주묻는 질문</a></li>
         <li><a href="#">자주하는 답변</a></li>
         <li class="nav-header">문의글</li>
         <li><a href="#">문의글 등록</a></li>
-        <li><a href="#">문의글 답변</a></li>
+        <li><a href="#">문의글 답변</a></li>    
         <li class="nav-header">신고글</li>
         <li><a href="#">신고글 작성</a></li>
         <li><a href="#">신고글 확인</a></li>

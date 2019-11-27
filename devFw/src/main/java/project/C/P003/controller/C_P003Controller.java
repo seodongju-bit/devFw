@@ -13,8 +13,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import project.C.P001.vo.PagingVO;
+import project.C.P003.vo.PageVO;
+
 public interface C_P003Controller {
 	
 	
-	public ModelAndView notice(HttpServletRequest request, HttpServletResponse response) throws Exception;
+public ModelAndView notice(PageVO vo,String nowPage, String cntPerPage,HttpServletRequest request, HttpServletResponse response) throws Exception;
 }
+           

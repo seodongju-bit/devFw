@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   
+   <mapper namespace="mapper.notice">
+  <resultMap id="C_P003Result01" type="C_P003VO">
+  <result property="de_number" column="de_number" />
+  <result property="mem_no" column="mem_no" />
+  <result property="de_division" column="de_division" />
+  <result property="de_date" column="de_date" />
+  <result property="de_contents" column="de_contents" />
+ 
+  </resultMap>
+  
+     <select id="noticeItem" resultMap="C_P003Result01" parameterType="java.util.Map"> 
+      <![CDATA[
+       SELECT d.de_number,d.mem_no,d.de_division,d.de_date,d.de_contents
+       FROM declarations d, members m
+       WHERE d.mem_no = m.mem_no
+       ORDER BY d.de_number DESC
+      ]]>         
+
+   </select>  
+   
+   <select id="countBoard" resultType="int">
+	<![CDATA[
+	SELECT COUNT(*) FROM notice
+	]]>
+	</select>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </mapper>
