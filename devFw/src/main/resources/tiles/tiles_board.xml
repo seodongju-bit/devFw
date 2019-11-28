@@ -155,6 +155,11 @@
       <put-attribute name="body" value="/WEB-INF/views/C/P001/D001.jsp" />
    </definition>
    
+   <definition name="chatInit" extends="eventLayout">
+      <put-attribute name="title" value="채팅" />
+      <put-attribute name="body" value="/WEB-INF/views/A/P006/D001_chat.jsp" />
+   </definition>
+   
    <definition name="eventDetail" extends="eventLayout">
       <put-attribute name="title" value="이벤트/공지사항-상세" />
       <put-attribute name="body" value="/WEB-INF/views/C/P001/D002.jsp" />

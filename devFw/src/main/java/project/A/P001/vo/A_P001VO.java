@@ -25,8 +25,6 @@ public class A_P001VO {
 		System.out.println("A_P001VO 호출");
 }
 
-
-
 	public String getMem_no() {
 		return mem_no;
 	}
