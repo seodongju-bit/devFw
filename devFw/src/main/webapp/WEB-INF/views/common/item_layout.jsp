@@ -23,7 +23,7 @@
         border: 0px solid #bcbcbc;
       } 
       
-      #contentDtail {
+      #contentDetail {
         width: 100%;
         margin: 0 0 0 0px;
         border: 0px solid #bcbcbc;
@@ -31,9 +31,7 @@
       
       #footer {
         clear: both;
-        padding: 5px;
         border: 0px solid #bcbcbc;
-         background-color: lightblue;
       }
       
          
@@ -49,7 +47,7 @@
       <div id="content">
           <tiles:insertAttribute name="body"/>
       </div>
-      <div id="contentDtail">
+      <div id="contentDetail">
           <tiles:insertAttribute name="bodyDetail"/>
       </div>
       <br><br>

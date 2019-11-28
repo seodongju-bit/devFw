@@ -71,6 +71,12 @@
       <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
    </definition>
    
+   <definition name="emptyLayout"  template="/WEB-INF/views/common/layout2.jsp">
+      <put-attribute name="title" value="" />
+      <put-attribute name="body" value="" />
+      <put-attribute name="footer" value="" />
+   </definition>
+   
    <!-- 레이아웃 페이지 구분 -->
    
    <definition name="signinpage" extends="baseLayout3">
@@ -230,10 +236,13 @@
    <definition name="sellItems" extends="itemLayout">
       <put-attribute name="title" value="상품페이지" />
       <put-attribute name="body" value="/WEB-INF/views/F/P002/D001.jsp" />
-      <put-attribute name="bodyDetail" value="/WEB-INF/views/F/P002/D002.jsp" />
+      <put-attribute name="bodyDetail" value="" />
    </definition> 
    
-   
+   <definition name="itemsInfoLoad" extends="emptyLayout">
+      <put-attribute name="title" value="상품상세페이지" />
+      <put-attribute name="body" value="/WEB-INF/views/F/P002/D002.jsp" />
+   </definition> 
 
       <definition name="notice" extends="noticeLayout">
       <put-attribute name="title" value="공지사항페이지" />

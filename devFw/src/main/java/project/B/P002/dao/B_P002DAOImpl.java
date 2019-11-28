@@ -24,8 +24,7 @@ public class B_P002DAOImpl implements B_P002DAO {
 		List<Map<String, Object>> sellNum = sqlSession.selectList("B.P002.nextSell");
 		sell_number = String.valueOf(sellNum.get(0).get("sell_number"));
 		b_P002VO.setSell_number(sell_number);
-		sqlSession.insert("B.P002.addSell", b_P002VO);
-		
+		sqlSession.insert("B.P002.addSell", b_P002VO);	
 	}
 
 	@Override
