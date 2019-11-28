@@ -15,6 +15,8 @@ public interface D_P001Service {
 
 	void reviewWrite(Map<String, Object> dataMap);
 
+	void addReview(Map<String, Object> resultMap) throws DataAccessException;
+
 
 
 }

@@ -75,6 +75,18 @@ public class A_P001VO {
 		return mem_name;
 	}
 
+	
+
+	public String getMem_nick() {
+		return mem_nick;
+	}
+
+
+
+	public void setMem_nick(String mem_nick) {
+		this.mem_nick = mem_nick;
+	}
+
 
 
 	public void setMem_name(String mem_name) {

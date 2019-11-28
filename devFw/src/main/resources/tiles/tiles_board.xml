@@ -12,6 +12,7 @@
    </definition>
    
    
+
      <definition name="noticeLayout"  template="/WEB-INF/views/common/notice_layout.jsp">
       <put-attribute name="title" value="" />
       <put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
@@ -126,7 +127,23 @@
       <put-attribute name="body" value="/WEB-INF/views/A/P002/D006.jsp" />
       <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
    </definition>
+
  
+ 	<definition name="memberpwcheckpage" extends="baseLayout">
+      <put-attribute name="title" value="마이페이지비밀번호체크" />
+      <put-attribute name="side" value="" />
+      <put-attribute name="body" value="/WEB-INF/views/A/P003/D003.jsp" />
+   </definition>
+ 
+ 	<definition name="memberupdatepage" extends="baseLayout">
+      <put-attribute name="title" value="회원정보수정" />
+      <put-attribute name="body" value="/WEB-INF/views/A/P003/D001.jsp" />
+   </definition>
+   
+   <definition name="membersecessionpage" extends="baseLayout">
+      <put-attribute name="title" value="회원탈퇴페이지" />
+      <put-attribute name="body" value="/WEB-INF/views/A/P003/D002.jsp" />
+   </definition>
 
 	<definition name="myPage" extends="baseLayout">
       <put-attribute name="title" value="마이페이지" />
@@ -222,6 +239,7 @@
    </definition> 
    
    
+
       <definition name="notice" extends="noticeLayout">
       <put-attribute name="title" value="공지사항페이지" />
       <put-attribute name="body" value="/WEB-INF/views/C/P003/D001.jsp" />

@@ -8,14 +8,16 @@
 		<typeAlias type="project.hm.p0002.vo.P0002VO"  alias="p0002VO" />
 		<typeAlias type="project.hm.p0003.vo.P0003VO"  alias="p0003VO" />
 		<typeAlias type="project.hm.p0004.vo.P0004VO"  alias="p0004VO" />
-	  <typeAlias type="project.D.P001.vo.D_P001VO"  alias="D_P001VO" />
+	    <typeAlias type="project.D.P001.vo.D_P001VO"  alias="D_P001VO" />
 		<typeAlias type="project.F.P001.vo.F_P001VO"  alias="F_P001VO" />
 		<typeAlias type="project.F.P002.vo.F_P002VO"  alias="F_P002VO" />
 		<typeAlias type="project.A.P001.vo.A_P001VO"  alias="A_P001VO" />
 		<typeAlias type="project.A.P002.vo.A_P002VO"  alias="A_P002VO" />
+		<typeAlias type="project.A.P003.vo.A_P003VO"  alias="A_P003VO" />
 		<typeAlias type="project.A.P005.vo.A_P005VO"  alias="basketVO" />
 		<typeAlias type="project.A.P006.vo.A_P006VO"  alias="A_P006VO" />
 		<typeAlias type="project.C.P001.vo.C_P001VO"  alias="eventVO" />
+	    <typeAlias type="project.C.P003.vo.C_P003VO"  alias="C_P003VO" />
 		<typeAlias type="project.A.P004.vo.A_P004VO"  alias="activeVO" />
 		<typeAlias type="project.B.P001.vo.B_P001VO"  alias="B_P001VO" />
 		<typeAlias type="project.B.P002.vo.B_P002VO"  alias="B_P002VO" />

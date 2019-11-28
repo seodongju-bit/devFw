@@ -19,4 +19,5 @@ public interface A_P001Controller {
 	public ModelAndView unauthorizedmember(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView login(@RequestParam Map<String, String> loginMap,HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView logout(HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public ResponseEntity idsearch(@RequestParam Map<String, String> idMap,HttpServletRequest request,HttpServletResponse response)throws Exception;
 }

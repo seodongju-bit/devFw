@@ -25,11 +25,21 @@ html {overflow:hidden;}
 
 .titleBox{
 	width:90%;
-	background-color:lightblue;
 	height:35px;
-	margin:0 auto;
+	margin:5px auto;
 	padding:3px 0;
+	background-color: #fafafa;
+	border:1px solid lightgray;
+	border-radius:5px;
 }
+#TitleBox2{
+	height:30px;
+	margin:0 auto;
+	border-bottom:0px solid gray;
+	border-radius:6px 6px 0 0;
+	color: gray;
+}
+
 #inputTitle{	
 	position:relative;
 	width:500px;
@@ -47,31 +57,36 @@ span{
 #editor{
 	float:center;
 	position:relative;
-	width: 95%;
-	min-width:90%;
-	height: 400px;
+	width: 801px;
+	height: 350px;
 }
 #editorBox{
 	position:relative;
-	left:50px;
+	left:43px;
 }
 
 
-#star_grade a{
+#product_grade a{
       text-decoration: none;
       color: gray;
 }
-#star_grade a.on{
+#product_grade a.on{
       color: #FFBF00;
 }
 
+#seller_grade a{
+      text-decoration: none;
+      color: gray;
+}
+#seller_grade a.on{
+      color: #FFBF00;
+}
 iframe{
 	background-color:white;
 }
 </style>
 
 <script>
-
 $(function() {
     //전역변수
     var obj = [];
@@ -95,7 +110,6 @@ $(function() {
     $("#subBtn").click(function(){
     	 //id가 smarteditor인 textarea에 에디터에서 대입
         obj.getById["editor"].exec("UPDATE_CONTENTS_FIELD", []);
-        
 //    	 	//아작스
    	 	var queryString = $("form[name=reviewEnrollment]").serialize() ;
 	  	console.log(queryString);
@@ -121,14 +135,27 @@ $(function() {
 
 ///별점
 $(document).ready(function(){
-	$("#star_grade a").click(function(){
+	
+	$('#sell_number').val('${sell_number}');
+	
+	$("#product_grade a").click(function(){
 		 var grade = $(this).prevAll("a").length;
 	     $(this).parent().children("a").removeClass("on");  /* 별점의 on 클래스 전부 제거 */ 
 	     $(this).addClass("on").prevAll("a").addClass("on"); /* 클릭한 별과, 그 앞 까지 별점에 on 클래스 추가 */
-	     $("#star").val(grade);
+	     $("#review_pdscore").val(grade);
+	     return false;
+	});
+	
+	$("#seller_grade a").click(function(){
+		 var grade = $(this).prevAll("a").length;
+	     $(this).parent().children("a").removeClass("on");  /* 별점의 on 클래스 전부 제거 */ 
+	     $(this).addClass("on").prevAll("a").addClass("on"); /* 클릭한 별과, 그 앞 까지 별점에 on 클래스 추가 */
+	     $("#review_sellscore").val(grade);
 	     return false;
 	});
 });
+
+
 </script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -139,9 +166,8 @@ $(document).ready(function(){
 	<form name="reviewEnrollment" method="post"  accept-charset="UTF-8" >
 		<div  class="titleBox" ><span>제목</span>
 		<input type="text" id="inputTitle" class="form-control" id="title"></div>
-		<br>
-		<div  class="titleBox" ><span>별점</span>
-		<span id="star_grade">
+		<div  class="titleBox" ><span>제품평가</span>
+		<span id="product_grade">
 			<a></a>
        		<a href="#" >★</a>
         	<a href="#" >★</a>
@@ -150,14 +176,26 @@ $(document).ready(function(){
         	<a href="#" >★</a>
 		</span>
 		</div>
-		<input type="hidden" name="grade" id="star" value="3">
-		<div class="form-group" id="editorBox">본문
-			<textarea  id="editor"  ></textarea>
+		<div  class="titleBox" ><span>판매자평가</span>
+		<span id="seller_grade">
+			<a></a>
+       		<a href="#" >★</a>
+        	<a href="#" >★</a>
+        	<a href="#" >★</a>
+        	<a href="#" >★</a>
+        	<a href="#" >★</a>
+		</span>
 		</div>
-		
+		<input type="hidden" name="sell_number" id="sell_number" >
+<!-- 		<input type="hidden" name="pro_number" id="pro_number" > -->
+		<input type="hidden" name="review_pdscore" id="review_pdscore" value="0">
+		<input type="hidden" name="review_sellscore" id="review_sellscore" value="0">
+		<div class="titleBox" id="TitleBox2"><span>내용</span></div>
+		<div class="form-group" id="editorBox">
+			<textarea  id="editor"  name="review_content"></textarea>
+		</div>
 		<button type="button" id="subBtn" class="btn btn-default">등록</button>
 	</form>
-
 </div>
 </body>
 </html>

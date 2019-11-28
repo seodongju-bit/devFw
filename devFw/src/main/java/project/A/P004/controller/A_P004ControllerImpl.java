@@ -1,5 +1,6 @@
 package project.A.P004.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,14 +31,23 @@ public class A_P004ControllerImpl   implements A_P004Controller {
 	@Autowired
 	A_P004VO activeVO ;
 	
+	
 	@Override
 	@RequestMapping(value="/myPage.do" ,method = RequestMethod.GET)
 	public ModelAndView myPage(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = getViewName(request);
 		viewName = "myPage";
+		HttpSession session = request.getSession();
+		String p_id = (String)session.getAttribute("mem_id");
+		Map<String, Object> searchMap = new HashMap<String, Object>();
+		List<Map<String, Object>> resultList = new ArrayList<Map<String, Object>>();
+		searchMap.put("mem_id", p_id);
+		
+		resultList = activeService.orderList(searchMap);
 		//List membersList = memberService.listMembers();
 		ModelAndView mav = new ModelAndView(viewName);
-		//mav.addObject("membersList", membersList);
+		System.out.println("orderList"+resultList);
+		mav.addObject("orderList", resultList);
 		return mav;
 	}
 	

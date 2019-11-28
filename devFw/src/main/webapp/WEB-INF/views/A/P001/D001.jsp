@@ -19,12 +19,26 @@
         
     </head>
     <body>
+    
+    
+    
+    
+			
     	
-      <form action="${contextPath}/login.do" method="post" accept-charset="UTF-8">
+      <form action="${contextPath}/login.do" method="post" accept-charset="UTF-8"> 
+		<c:choose>
+			<c:when test="${sessionId != null}">
+				<h2> 네이버 아이디 로그인 성공하셨습니다!! </h2>
+				<h3>'${sessionId}' 님 환영합니다! </h3>
+			<h3><a href="logout">로그아웃</a></h3>
+
+			</c:when>
+			<c:otherwise>
+			
       
         <h1>로그인</h1>
         
-        <fieldset>
+        
           <label for="id" style="text-align: left;">회원 ID:</label>
           <input type="text" id="mem_id" name="mem_id" placeholder="ID">
           <label for="password" class="w">비밀번호:</label>
@@ -34,18 +48,26 @@
         <button id="login_btn" type="submit">로그인 </button>
           <br></br>
           
+          <div id="naver_id_login" style="text-align:center"><a href="${url}">
+		<img width="223" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/></a></div>
+		<br>
+		</c:otherwise>
+		</c:choose>
+			<!-- 네이버 로그인 창으로 이동 -->
+		
+		
+		
         <button  class="small-btn" type="button" onclick = "javascript:idsearchpopup()">아이디 찾기</button>   
         <button  class="small-btn" type="button" onclick = "javascript:pwsearchpopup()">비밀번호 찾기</button>      
         <button  class="small-btn" type="button" onclick = "location.href='memberdivisionpage.do'">회원가입</button>
         <button  class="small-btn" type="button" onclick = "location.href='main.do'">홈페이지로</button>
         
         <br></br>
-          
-        
-        </fieldset>
-      </form>
-  	
-  
+       
+		
+  		</form>
+  		
+  		
       <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	  <script type="text/javascript">  
 	    var message = "<%=request.getParameter("message") %>" ;
