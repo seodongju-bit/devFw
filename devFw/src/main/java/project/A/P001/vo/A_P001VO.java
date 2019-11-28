@@ -25,16 +25,6 @@ public class A_P001VO {
 		System.out.println("A_P001VO 호출");
 }
 
-	public String getMem_nick() {
-		return mem_nick;
-	}
-
-
-
-	public void setMem_nick(String mem_nick) {
-		this.mem_nick = mem_nick;
-	}
-
 	public String getMem_no() {
 		return mem_no;
 	}
