@@ -43,9 +43,9 @@ public class C_P003ControllerImpl implements C_P003Controller {
 			@RequestParam(value="nowPage", required=false)String nowPage
 			, @RequestParam(value="cntPerPage", required=false)String cntPerPage, 
 			
-			HttpServletRequest request, HttpServletResponse response) throws Exception {
+	    HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = getViewName(request);
-		viewName = "notice";
+		viewName = "notice";      
 		
 		int total=C_P003Service.countBoard();
 		System.out.println(total);
@@ -63,11 +63,87 @@ public class C_P003ControllerImpl implements C_P003Controller {
 		vo = new PageVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
 		
 		List noticelist = C_P003Service.searchnotice();
+		
 		System.out.println(noticelist);
+	
+		
+		List noticelist2 = C_P003Service.searchnotice2(); 
+		System.out.println(noticelist2);
+		
 		ModelAndView mavw = new ModelAndView(viewName);
 		mavw.addObject("List",noticelist);
+		mavw.addObject("List2",noticelist2);
+
 		return mavw;
+		
+		
+		
 	}
+	
+	
+
+	
+	
+
+	@Override
+	@RequestMapping(value="/noticeDetail.do" ,method = { RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView noticeDetail(@RequestParam("de_number") String de_number, 
+			           HttpServletRequest request, HttpServletResponse response) throws Exception{
+		request.setCharacterEncoding("utf-8");
+		String viewName = "noticeDetail";
+		Map<String, Object> dataMap = new HashMap();
+		Map<String, Object> resultMap = new HashMap();
+		dataMap.put("de_number", de_number);
+		List<Map<String,Object>> noticeList3 = C_P003Service.noticeDetail(dataMap);
+		resultMap = noticeList3.get(0);
+		System.out.println("controller실행"+noticeList3);
+		ModelAndView mavw2 = new ModelAndView(viewName);
+		mavw2.addObject("resultMap", resultMap);                  
+		return mavw2;
+	}
+            
+	
+	
+	@Override
+	@RequestMapping(value="/noticeDetail2.do" ,method = { RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView noticeDetail2(@RequestParam("qu_number") String qu_number, 
+			           HttpServletRequest request, HttpServletResponse response) throws Exception{
+		request.setCharacterEncoding("utf-8");
+		String viewName = "noticeDetail2";
+		Map<String, Object> dataMap2 = new HashMap();
+		Map<String, Object> resultMap2 = new HashMap();
+		dataMap2.put("qu_number", qu_number);
+		List<Map<String,Object>> noticeList4 = C_P003Service.noticeDetail2(dataMap2);
+		resultMap2 = noticeList4.get(0);
+		System.out.println("controller실행"+noticeList4);
+		ModelAndView mavw3 = new ModelAndView(viewName);
+		mavw3.addObject("resultMap2", resultMap2);                  
+		return mavw3;             
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 
@@ -101,6 +177,10 @@ public class C_P003ControllerImpl implements C_P003Controller {
 		}
 		return viewName;
 	}
+
+
+
+	
 
 
 

@@ -17,8 +17,11 @@ import project.C.P001.vo.PagingVO;
 import project.C.P003.vo.PageVO;
 
 public interface C_P003Controller {
-	
+	    
 	
 public ModelAndView notice(PageVO vo,String nowPage, String cntPerPage,HttpServletRequest request, HttpServletResponse response) throws Exception;
+public ModelAndView noticeDetail(@RequestParam("de_number")String de_number, HttpServletRequest request, HttpServletResponse response) throws Exception;
+public ModelAndView noticeDetail2(@RequestParam("qu_number")String qu_number, HttpServletRequest request, HttpServletResponse response) throws Exception;
+
 }
-           
+               

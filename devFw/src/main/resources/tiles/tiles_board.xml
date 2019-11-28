@@ -5,11 +5,11 @@
 <tiles-definitions>
   <definition name="baseLayout"  template="/WEB-INF/views/common/mp_layout.jsp">
       <put-attribute name="title" value="" />
-      <put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
+      <put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />   
       <put-attribute name="side" value="/WEB-INF/views/common/mp_side.jsp" />
       <put-attribute name="body" value="" />
       <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
-   </definition>
+   </definition>             
    
    
 
@@ -19,8 +19,8 @@
       <put-attribute name="side" value="/WEB-INF/views/common/notice_side.jsp" />
       <put-attribute name="body" value="" />
       <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
-   </definition>
-   
+   </definition>    
+                     
    <definition name="baseLayout2"  template="/WEB-INF/views/common/layout.jsp">
       <put-attribute name="title" value="" />
       <put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
@@ -28,7 +28,7 @@
       <put-attribute name="body" value="" />
       <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
    </definition>                
-
+          
 	<definition name="baseLayout3"  template="/WEB-INF/views/common/layout2.jsp">
       <put-attribute name="title" value="" />
       <put-attribute name="body" value="" />
@@ -260,9 +260,20 @@
       <put-attribute name="title" value="공지사항페이지" />
       <put-attribute name="body" value="/WEB-INF/views/C/P003/D001.jsp" />
    </definition> 
+
+
+
+   <definition name="noticeDetail" extends="noticeLayout">
+      <put-attribute name="title" value="공지사항상세페이지" />
+      <put-attribute name="body" value="/WEB-INF/views/C/P003/D001_1.jsp" />
+   </definition> 
    
-   
-<!--  웅건
+    <definition name="noticeDetail2" extends="noticeLayout">
+      <put-attribute name="title" value="문의사항상세페이지" />
+      <put-attribute name="body" value="/WEB-INF/views/C/P003/D001_2.jsp" />
+   </definition> 
+                  
+ 
    <definition name="/member/memberForm" extends="baseLayout">
       <put-attribute name="title" value="회원등록창" />
       <put-attribute name="body" value="/WEB-INF/views/member/memberForm.jsp" />
@@ -271,5 +282,5 @@
    <definition name="/member/viewDetail" extends="baseLayout">
       <put-attribute name="title" value="회원상세창" />
       <put-attribute name="body" value="/WEB-INF/views/member/viewDetail.jsp" />
-   </definition> -->
+   </definition> 
 </tiles-definitions>

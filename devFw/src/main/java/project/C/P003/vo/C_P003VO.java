@@ -12,6 +12,13 @@ public class C_P003VO {
     private Date de_date;
 	private String de_contents;
 	
+	private String qu_number;
+	private String qu_contents;
+	private String qu_answer;
+
+	
+	
+	
 	public C_P003VO() {
 		System.out.println("C_P003VO 호출");
 	}
@@ -45,6 +52,25 @@ public class C_P003VO {
 	public void setDe_contents(String de_contents) {
 		this.de_contents = de_contents;
 	}
+	public String getQu_number() {
+		return qu_number;
+	}
+	public void setQu_number(String qu_number) {
+		this.qu_number = qu_number;
+	}
+	public String getQu_contents() {
+		return qu_contents;
+	}
+	public void setQu_contents(String qu_contents) {
+		this.qu_contents = qu_contents;
+	}
+	public String getQu_answer() {
+		return qu_answer;
+	}
+	public void setQu_answer(String qu_answer) {
+		this.qu_answer = qu_answer;
+	}
+
 	
 	
 
