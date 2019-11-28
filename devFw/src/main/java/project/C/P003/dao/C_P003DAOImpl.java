@@ -34,6 +34,9 @@ public class C_P003DAOImpl implements C_P003DAO{
 		return noticelist2;
 	}
 
+
+	
+
 	
 	
 	@Override
@@ -42,11 +45,20 @@ public class C_P003DAOImpl implements C_P003DAO{
 	}
 	@Override
 	public List noticeDetail(Map<String, Object> dataMap) throws DataAccessException {
-		List noticelist2 = null;
-		noticelist2 = sqlSession.selectList("mapper.notice.noticeDetail", dataMap);
-		System.out.println("dao실행"+noticelist2);
-		return noticelist2;
+		List noticelist3 = null;
+		noticelist3 = sqlSession.selectList("mapper.notice.noticeDetail", dataMap);
+		System.out.println("dao실행"+noticelist3);
+		return noticelist3;
 	}
+
+	@Override
+	public List noticeDetail2(Map<String, Object> dataMap2) throws DataAccessException {
+		List noticelist4 = null;
+		noticelist4 = sqlSession.selectList("mapper.notice.noticeDetail2", dataMap2);
+		System.out.println("dao실행"+noticelist4);
+		return noticelist4;
+	}
+
 
 
 

@@ -12,15 +12,16 @@
   <result property="de_contents" column="de_contents" />
  
   </resultMap>
-    
-    <resultMap id="C_P003Result02" type="C_P003VO">
+
+
+ <resultMap id="C_P003Result02" type="C_P003VO">
   <result property="qu_number" column="qu_number" />
   <result property="mem_no" column="mem_no" />
   <result property="qu_contents" column="qu_contents" />
   <result property="qu_answer" column="qu_answer" />
+
  
   </resultMap>
-
   
   
   
@@ -28,7 +29,8 @@
       <![CDATA[
        SELECT d.de_number,d.mem_no,d.de_division,d.de_date,d.de_contents
        FROM declarations d, members m
-       WHERE d.mem_no = m.mem_no
+       WHERE d.mem_no = m.mem_no AND 
+       ROWNUM<4
        ORDER BY d.de_number DESC
       ]]>         
 
@@ -37,13 +39,16 @@
       <select id="noticeItem2" resultMap="C_P003Result02" parameterType="java.util.Map"> 
       <![CDATA[
      SELECT q.qu_number,q.mem_no,q.qu_contents,q.qu_answer
-     FROM questions q, members m
-     WHERE q.mem_no = m.mem_no
-     ORDER BY q.qu_number DESC
+      FROM questions q, members m
+      WHERE q.mem_no = m.mem_no AND
+      ROWNUM<4
+      ORDER BY q.qu_number DESC
       ]]>         
 
-   </select>
+   </select>   
    
+
+                          
    <select id="noticeDetail" parameterType="java.util.Map" resultType="java.util.HashMap"> 
     <![CDATA[
         
@@ -56,7 +61,16 @@
    </select>
    
    
-
+  <select id="noticeDetail2" parameterType="java.util.Map" resultType="java.util.HashMap"> 
+    <![CDATA[
+        
+   SELECT qu_number,qu_contents,qu_answer,mem_no
+   FROM questions 
+   WHERE qu_number=#{qu_number}
+           
+        ]]>         
+ 
+   </select>
    
    
    

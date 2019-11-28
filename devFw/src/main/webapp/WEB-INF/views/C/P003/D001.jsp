@@ -134,14 +134,13 @@ a:hover {
 							<th>문의회원</th>
 						</tr>                      
 					</thead>
-					
-						<c:forEach var="notice2" items="${List}" varStatus='index' >					
+					<c:forEach var="notice2" items="${List2}" varStatus='index' >					
 					<thead>
-					<tr align="center" onclick="location.href='#'">            
+					<tr align="center" onclick="location.href='${contextPath}/noticeDetail2.do?qu_number=${notice2.qu_number}'">            
 					<td>${notice2.qu_number}</td>
 					<td>${notice2.qu_contents}</td>
 					<td>${notice2.qu_answer}</td>
-				     <td>${notice2.mem_no}님</td>
+					<td>${notice2.mem_no}</td>
 				
 					</tr>
 					</thead>
@@ -149,15 +148,11 @@ a:hover {
 					</c:forEach>
 
 				
-				</table>
+				</table>            
 			</form>			
-			<!-- <div class="btn_right mt15">
-				<button type="button" class="btn black mr5" onclick="javascript:goBoardWrite();">작성하기</button>
-			</div>-->
-		</div>
-		<div id="pagination"></div>
 			
-	</div>
+		</div>
+ 
 </div>
 
 </body>

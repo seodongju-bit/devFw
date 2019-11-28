@@ -75,12 +75,7 @@ check {
 	padding: 15px;
 }
 
-p.inset {
-border-style: inset;
-position:relative;
-width: 500px;
-height:150px;                             
-}    
+ 
 
 .pop-layer .pop-container {
   padding: 20px 25px;     
@@ -239,10 +234,9 @@ img {
 			<fmt:formatNumber value="${reviewlist2.sell_price}" pattern="#,###"/>원
 			
 			</td>
-		<!--  	${reviewlist2.sell_title}<br>
-		<fmt:formatNumber value="${reviewlist2.sell_price}" pattern="#,###"/>원<br>-->
-
-            <td align="left"><p class="inset"> ${reviewlist2.review_content}</p></td>
+    
+            
+             <td align="left">${reviewlist2.review_content}</td>
 
 			<td align="center">분류<br>
 			<a href="#layer1" class="btn-example">리뷰상세</a><br> 
