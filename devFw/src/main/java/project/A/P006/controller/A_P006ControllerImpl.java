@@ -37,7 +37,7 @@ public class A_P006ControllerImpl implements A_P006Controller{
 		public ModelAndView chatInit(HttpServletRequest request, HttpServletResponse response) throws Exception {
 			String viewName = "chatInit";
 			HttpSession session = request.getSession();
-//			String mem_id = (String)session.getAttribute("mem_id");
+	
 			A_P001VO memberInfo = (A_P001VO) session.getAttribute("memberInfo");
 			String mem_id = memberInfo.getMem_id();
 			System.out.println("memberId ::::::::::::::: " + mem_id);
@@ -48,6 +48,27 @@ public class A_P006ControllerImpl implements A_P006Controller{
 			
 			ModelAndView mav = new ModelAndView(viewName);
 			mav.addObject("memberList", initList);
+			return mav;
+		
+		}
+		
+		@Override
+		@RequestMapping(value ="/sellerChat.do", method = { RequestMethod.GET, RequestMethod.POST })
+		public ModelAndView sellerChat(HttpServletRequest request, HttpServletResponse response) throws Exception {
+			String viewName = "sellerChat";
+			HttpSession session = request.getSession();
+			String seller = "홍길동1";
+			A_P001VO memberInfo = (A_P001VO) session.getAttribute("memberInfo");
+			String mem_id = memberInfo.getMem_id();
+			System.out.println("memberId ::::::::::::::: " + mem_id);
+/*			List<C_P001_D001VO> initList = new ArrayList<C_P001_D001VO>();
+			initList = c_p002_d005_Service.selectMemberList(mem_id);	*/
+			
+			List initList = p006_Service.selectMemberList(mem_id);
+			
+			ModelAndView mav = new ModelAndView(viewName);
+			mav.addObject("memberList", initList);
+			mav.addObject("seller", seller);
 			
 			return mav;
 		

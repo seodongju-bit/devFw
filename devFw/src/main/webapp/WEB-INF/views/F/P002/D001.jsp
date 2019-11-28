@@ -290,7 +290,9 @@ function pageLoad(command){
 	if(command=="itemsInfoLoad"){
 		$('#contentDetail').load('itemsInfoLoad.do',{ contents : '${item.sell_contents}'});
 	}
-	
+	if(command=="sellerChat"){
+		$('#contentDetail').load('sellerChat.do');
+	}
 }
 </script>
 <meta charset="UTF-8">
@@ -346,10 +348,10 @@ function pageLoad(command){
 	</div>
 </div>
 <div id="itemsInfoSelect">
-	<button class="btn btn-primary" onclick="pageLoad('contentDetail')">상품정보</button>
+	<button class="btn btn-primary" onclick="pageLoad('itemsInfoLoad')">상품정보</button>
 	<button class="btn btn-primary">리뷰</button>
 	<button class="btn btn-primary">상품의견</button>
-	<button class="btn btn-primary">QnA</button>
+	<button class="btn btn-primary" onclick="pageLoad('sellerChat')">QnA</button>
 	<button class="btn btn-primary">판매자정보</button>
 </div>
 

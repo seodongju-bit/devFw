@@ -166,6 +166,8 @@
       <put-attribute name="body" value="/WEB-INF/views/A/P006/D001_chat.jsp" />
    </definition>
    
+   
+   
    <definition name="eventDetail" extends="eventLayout">
       <put-attribute name="title" value="이벤트/공지사항-상세" />
       <put-attribute name="body" value="/WEB-INF/views/C/P001/D002.jsp" />
@@ -248,11 +250,17 @@
       <put-attribute name="title" value="상품상세페이지" />
       <put-attribute name="body" value="/WEB-INF/views/F/P002/D002.jsp" />
    </definition> 
+   
+   <definition name="sellerChat" extends="emptyLayout">
+      <put-attribute name="title" value="판매자와채팅" />
+      <put-attribute name="body" value="/WEB-INF/views/A/P006/D002_chat.jsp" />
+   </definition>
 
-      <definition name="notice" extends="noticeLayout">
+   <definition name="notice" extends="noticeLayout">
       <put-attribute name="title" value="공지사항페이지" />
       <put-attribute name="body" value="/WEB-INF/views/C/P003/D001.jsp" />
    </definition> 
+   
    
 <!--  웅건
    <definition name="/member/memberForm" extends="baseLayout">

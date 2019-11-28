@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <style>
 	#contentsBody{
-		width:1250px;
+		max-width:1250px;
 		background-color: #FAFAFA;
 		margin:0 auto;
 	}
