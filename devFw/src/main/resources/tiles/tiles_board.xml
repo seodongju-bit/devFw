@@ -18,7 +18,7 @@
       <put-attribute name="side" value="/WEB-INF/views/common/notice_side.jsp" />
       <put-attribute name="body" value="" />
       <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
-   </definition>
+   </definition>    
                      
    <definition name="baseLayout2"  template="/WEB-INF/views/common/layout.jsp">
       <put-attribute name="title" value="" />
