@@ -159,7 +159,7 @@
     FROM review r,members m,productsell s
     WHERE s.sell_number = r.sell_number AND
     s.pro_number = r.pro_number AND 
-    m.mem_no = r.mem_no 
+    m.mem_no = r.mem_id
     ORDER BY r.review_monthpoint desc
           
       ]]>          

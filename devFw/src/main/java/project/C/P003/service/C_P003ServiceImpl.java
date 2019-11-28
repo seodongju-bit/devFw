@@ -30,6 +30,14 @@ public class C_P003ServiceImpl implements C_P003Service {
 		noticelist=C_P003DAO.noticeItem();
 		return noticelist;
 		
+	}   
+
+	@Override
+	public List searchnotice2() throws DataAccessException {
+		List noticelist2 = null;
+		System.out.println("service실행");
+		noticelist2=C_P003DAO.noticeItem2();
+		return noticelist2;
 	}
 
 	@Override
@@ -37,5 +45,19 @@ public class C_P003ServiceImpl implements C_P003Service {
 		return C_P003DAO.countBoard();
 		
 	}
-	
+
+	@Override           
+	public List<Map<String, Object>> noticeDetail(Map<String, Object> dataMap) throws DataAccessException {
+		// C_P003DAO.updateCNT(dataMaps);
+
+		List noticeList2 = null;
+		noticeList2=C_P003DAO.noticeDetail(dataMap); 
+		System.out.println("service"+dataMap);
+		return noticeList2; 
+	}
+
+
+
+
+
 }

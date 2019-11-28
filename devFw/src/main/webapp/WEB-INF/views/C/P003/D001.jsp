@@ -73,7 +73,7 @@ a:hover {
 					</colgroup>
 					<thead>		
 						<tr>
-							<th>신고번호</th>
+							<th>신고번호</th>       
 							<th>신고내용</th>
 							<th>신고분류</th>
 							<th>신고자</th>
@@ -84,7 +84,7 @@ a:hover {
 					
 					<c:forEach var="notice" items="${List}" varStatus='index' >					
 					<thead>
-					<tr align="center" onclick="location.href='${contextPath}/noticeDetail.do?de_number=${notice.de_number}'">
+					<tr align="center" onclick="location.href='${contextPath}/noticeDetail.do?de_number=${notice.de_number}'">            
 					<td>${notice.de_number}</td>
 					<td>${notice.de_contents}</td>
 					<td>${notice.de_division}</td>
@@ -97,27 +97,7 @@ a:hover {
 			
 				</table>
 				
-				<div style="display: block; text-align: center;">		
-		<c:if test="${paging.startPage != 1 }">
-			<a href="${contextPath}/event.do?nowPage=${paging.startPage - 1 }&cntPerPage=${paging.cntPerPage}">&lt;</a>
-		</c:if>
-		<c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="p">
-			<c:choose>
-				<c:when test="${p == paging.nowPage }">
-					<b>${p }</b>
-				</c:when>
-				<c:when test="${p != paging.nowPage }">
-					<a href="${contextPath}/event.do?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
-				</c:when>
-			</c:choose>
-		</c:forEach>
-		<c:if test="${paging.endPage != paging.lastPage}">
-			<a href="${contextPath}/event.do?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">&gt;</a>
-		</c:if>
-	</div>
-				
-				
-				
+		
 				
 			</form>			
 			<!-- <div class="btn_right mt15">
@@ -129,6 +109,7 @@ a:hover {
 		<br>
 		<br>
 		<br>
+		 <a href="#" target="_blank">더 보기</a>
 		<div class="inner2">		
 			<h2>문의사항</h2>			
 			<form id="boardForm" name="boardForm">
@@ -140,7 +121,8 @@ a:hover {
 				<table class="table table-hover" id="evnet_td">              
 					<colgroup>
 						<col width="10%" />
-						<col width="80%" />
+						<col width="40%" />
+						<col width="40%" />
 						<col width="10%" />
 					
 					</colgroup>
@@ -148,12 +130,25 @@ a:hover {
 						<tr>
 							<th>문의번호</th>
 							<th>문의내용</th>
+							<th>문의답변</th>
 							<th>문의회원</th>
 						</tr>                      
 					</thead>
-					<tbody id="tbody">
 					
-					</tbody>	
+						<c:forEach var="notice2" items="${List}" varStatus='index' >					
+					<thead>
+					<tr align="center" onclick="location.href='#'">            
+					<td>${notice2.qu_number}</td>
+					<td>${notice2.qu_contents}</td>
+					<td>${notice2.qu_answer}</td>
+				     <td>${notice2.mem_no}님</td>
+				
+					</tr>
+					</thead>
+					
+					</c:forEach>
+
+				
 				</table>
 			</form>			
 			<!-- <div class="btn_right mt15">
