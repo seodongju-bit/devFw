@@ -10,202 +10,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-<style>
-
-.w{
-
-font-size: 15px;
-font-weight:bold;
-}
-
-
-#memsecessioninfo{
-  align:center;
-  max-width: 900px;
-  margin: 10px auto;
-  padding: 30px 20px;
-  background: #FFFFFF;
-  border-radius: 8px;
-  border-style: solid;
-  border-color: #A9D0F5;
-}
-
-#memsecession{
-  text-align:center;
-  max-width: 900px;
-  margin: 10px auto;
-  padding: 30px 20px;
-  background: #FFFFFF;
-  border-radius: 8px;
-  border-style: solid;
-  border-color: #A9D0F5;
-}
-
-.secession-btn{
-  padding: 19px 39px 18px 39px;
-  color: #FFF;
-  background-color: #4bc970;
-  font-size: 18px;
-  text-align: center;
-  font-style: normal;
-  border-radius: 5px;
-  width: 30%;
-  border: 1px solid lightgray;
-  border-width: 1px 1px 3px;
-  box-shadow: 0 -1px 0 gray inset;
-  margin-bottom: 10px;
-}
-.pwdbox{
-background: rgba(255,255,255,0.1);
-  border: none;
-  font-size: 16px;
-  height: auto;
-  margin: 0;
-  outline: 0;
-  padding: 15px;
-  width: 30%;
-  background-color: #e8eeef;
-  color: #8a97a0;
-  box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
-  margin-bottom: 30px;
-}
-
-#info{
-min-height: 1200px;
-}
-
-h1{
-text-align:left;
-font-size: 30px;
-font-weight:bold;
-}
-
-h2{
-text-align:center;
-font-size: 15px;
-}
-
-
-
-#f {
-	text-align: left;
-	margin: 0px;
-	padding: 0px;
-}
-
-#b {
-	color: black;
-	/* veritcal-align: middle;
-text-align:center; */
-}
-
-#c {
-	text-align: center;
-}
-
-#caution-box {
-	border: 1px solid #bcbcbc;
-	margin: 20px;
-	width: 80%;
-	margin-left: 140px;
-	margin-right: 0px;
-}
-
-#box {
-	padding: 20px;
-}
-
-#z {
-	text-align: center;
-	max-width: 100%;
-	width: auto;
-	height: auto;
-	/* padding-left: 250px; */
-}
-
-#r {
-	text-align: right;
-	font-size: 13px;
-}
-
-check {
-	background-color: #f3f3f3;
-}
-
-#side {
-	position: fixed;
-	right: 35px;
-	top: 280px;
-	
-}
-
-td
-
-{
-padding:0px 0px 0px 0px;
-}
-
-
-
-#side-tb {
-	padding: 8px;
-	line-height: 1.42857143;
-	border-bottom: 1px solid #ddd;
-	/*border-top: 1px solid #ddd;*/
-}
-
-.zipbox{
-	width: 10%;
-}
-
-
-.addressbox1,	
-.addressbox2{
-	width: 30%;
-}
-
-.memsecessiontitle{
-font-weight: bold;
-font-size: large;
-}
-
-table {
-    border-spacing: 0;
-    border-collapse: collapse;
-}
-
-table thead th {
-    padding-top: 8px;
-    border-top: 1px solid #d9d9d9;
-    border-left: 1px solid #d9d9d9;
-    padding-bottom: 7px;
-    border-right: 1px solid #d9d9d9;
-    font-size: 11px;
-    font-weight: bold;
-    color: #1c458e;
-    background: #fafcfe url(http://image.gmarket.co.kr/common/helpdesk/2012/11/bg_dot_line03.gif) repeat-x left bottom;
-}
-
-table tbody td {
-    padding-top: 8px;
-    padding-bottom: 7px;
-    text-align: center;
-    font-size: 11px;
-    border-top: 1px solid #d9d9d9;
-    border-left: 1px solid #d9d9d9;
-    border-bottom: 1px solid #d9d9d9;
-    border-right: 1px solid #d9d9d9;
-    color: #666;
-}
-
-</style>
-
-
-
-
 <meta charset="UTF-8">
 <title>회원 탈퇴</title>
+<link rel="stylesheet" type="text/css" href="resources/css/A_P003_D002.css?ver=1.0">
 <meta name="viewport" content="width=divice-width, initial-scale=1.0">
 </head>
 <body>
@@ -227,7 +34,7 @@ table tbody td {
 
 	
 	<h1>회원 탈퇴</h1>
-	<h2><strong>RE:com 회원 탈퇴신청전, 아래 사항을 반드시 읽어주세요.</strong></h2>
+	<h2><strong>RI:com 회원 탈퇴신청전, 아래 사항을 반드시 읽어주세요.</strong></h2>
 	<div id="info">
 	<div id="memsecessioninfo">	
     <ol>
@@ -266,7 +73,10 @@ table tbody td {
     	</tr>
     	</tbody>
     	</table>
+    	<p>또한 게시판형 서비스에 본인이 등록한 게시물은 탈퇴 후 에도 삭제 되지않습니다.</p>
+    	<p><strong>게시물 등의 삭제를 원하시는 경우에는 반드시 직접 삭제하신 후, 탈퇴를 신청을 해 주시기 바랍니다.</strong></p>
     </li>
+    <br></br>
     <li>
     <strong>탈퇴신청 불가 사유</strong>
     <p>-거래진행 중인 건이 있는 경우</p>
