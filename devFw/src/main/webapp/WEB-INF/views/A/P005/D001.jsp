@@ -195,6 +195,7 @@ content
 
 			</table>
 			<input type="button" class="btn btn-default" id="buy" value="구매">
+			
 		</div>
 
 

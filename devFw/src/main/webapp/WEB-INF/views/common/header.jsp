@@ -404,6 +404,7 @@ $(document).ready(function(){
        	 <c:choose>
        		 <c:when test="${isLogOn==true and not empty memberInfo }" >
        		 	<a class="nav-item nav-link" href="#" onclick="logout(); return false;">로그아웃</a>
+       		 	<a class="nav-item nav-link" onclick="location.href='${contextPath}/chatInit.do'" >채팅</a>
        		 	<c:choose>
        		 		<c:when test="${memberInfo.mem_division==0 }" >
        		 			<a class="nav-item nav-link" href="${contextPath}/basket.do">장바구니</a>
