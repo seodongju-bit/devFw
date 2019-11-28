@@ -1,5 +1,6 @@
 package project.A.P001.controller;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -8,10 +9,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,6 +24,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.github.scribejava.core.model.OAuth2AccessToken;
 
 import project.A.P001.base.A_P001Base;
 import project.A.P001.service.A_P001Service;
@@ -31,6 +38,8 @@ public class A_P001ControllerImpl implements A_P001Controller {
 	A_P001Service a_p001Service;
 	@Autowired
 	A_P001VO A_P001VO;
+	
+
 	
 	@Override
 	@RequestMapping(value="/signinpage.do" ,method = RequestMethod.GET)
@@ -83,7 +92,6 @@ public class A_P001ControllerImpl implements A_P001Controller {
 			String addr = (String)request.getParameter("referrer");
 			String[] addr2 = addr.split("devFw");
 			addr2 = addr2[1].split("\\?");
-
 			A_P001VO=a_p001Service.login(loginMap);
 			if(A_P001VO!= null && A_P001VO.getMem_id()!=null){
 				
@@ -97,6 +105,7 @@ public class A_P001ControllerImpl implements A_P001Controller {
 				session.setAttribute("mem_division", A_P001VO.getMem_division());
 				session.setAttribute("mem_id", A_P001VO.getMem_id());
 				session.setAttribute("memberInfo",A_P001VO);
+
 				System.out.println(addr2[0]);
 				if(addr2[0].equals("/signupsuccesspage.do") || addr2[0].equals("/signinpage.do") || addr2[0].equals("/verify.do")) {
 					mav.setViewName("redirect:main.do");
@@ -119,8 +128,21 @@ public class A_P001ControllerImpl implements A_P001Controller {
 		}
 		return mav;
 	}
+	
 
+	
+	@ResponseBody
+	@RequestMapping(value = "/idsearch.do", method = RequestMethod.POST)
+	public ResponseEntity idsearch(@RequestParam Map<String, String> idMap,HttpServletRequest request, HttpServletResponse response) throws Exception {
+		ResponseEntity resEntity = null;
+		System.out.println(idMap);	
+		String result = a_p001Service.idsearch(idMap);
+		resEntity =new ResponseEntity(result, HttpStatus.OK);
+		return resEntity;
+	
+	}
 
+	
 	
 	@Override
 	@RequestMapping(value="/logout.do" ,method = RequestMethod.GET)

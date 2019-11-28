@@ -13,6 +13,7 @@
 		<typeAlias type="project.F.P002.vo.F_P002VO"  alias="F_P002VO" />
 		<typeAlias type="project.A.P001.vo.A_P001VO"  alias="A_P001VO" />
 		<typeAlias type="project.A.P002.vo.A_P002VO"  alias="A_P002VO" />
+		<typeAlias type="project.A.P003.vo.A_P003VO"  alias="A_P003VO" />
 		<typeAlias type="project.A.P005.vo.A_P005VO"  alias="basketVO" />
 		<typeAlias type="project.C.P001.vo.C_P001VO"  alias="eventVO" />
 	    <typeAlias type="project.C.P003.vo.C_P003VO"  alias="C_P003VO" />

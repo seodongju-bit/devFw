@@ -106,7 +106,7 @@ $('.btn_submit').click(function(){
 	$.ajax({
 		
 	method:"POST",
-	url:"/devFw/reviewwrite.do"
+	url:"/devFw/reviewwrite.do",
 	data:{content:"리뷰입니다."}
 		
 		
@@ -157,7 +157,8 @@ $('.btn_submit').click(function(){
 		</tr>
 	</table>  
 
-
+	
+	
 	<p id="f" style=" margin-right: 0px;">리뷰 작성하기</p>
 
 	<table class="table ttable-hover">

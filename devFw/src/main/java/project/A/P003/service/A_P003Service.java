@@ -1,5 +1,6 @@
-package project.A.P001.service;
+package project.A.P003.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -9,10 +10,9 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import project.A.P001.vo.A_P001VO;
+import project.A.P003.vo.A_P003VO;
 
-
-public interface A_P001Service {
-	public A_P001VO login(Map  loginMap) throws Exception;
-	public String idsearch(Map idMap) throws Exception;
+public interface A_P003Service {
+	public A_P003VO  modifyMyInfo(Map memberMap) throws Exception;
+	public A_P003VO myDetailInfo(String mem_id) throws Exception;
 }

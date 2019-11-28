@@ -23,5 +23,10 @@ public class A_P001DAOImpl implements A_P001DAO {
 	
 	}
 	
+	@Override
+	public String idsearch(Map idMap) throws DataAccessException{
+		String result = sqlSession.selectOne("A.A_P001.idserach",idMap);
+		return result;
+	}
 
 }

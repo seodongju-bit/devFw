@@ -25,11 +25,21 @@ html {overflow:hidden;}
 
 .titleBox{
 	width:90%;
-	background-color:lightblue;
 	height:35px;
-	margin:0 auto;
+	margin:5px auto;
 	padding:3px 0;
+	background-color: #fafafa;
+	border:1px solid lightgray;
+	border-radius:5px;
 }
+#TitleBox2{
+	height:30px;
+	margin:0 auto;
+	border-bottom:0px solid gray;
+	border-radius:6px 6px 0 0;
+	color: gray;
+}
+
 #inputTitle{	
 	position:relative;
 	width:500px;
@@ -47,13 +57,12 @@ span{
 #editor{
 	float:center;
 	position:relative;
-	width: 95%;
-	min-width:90%;
+	width: 801px;
 	height: 350px;
 }
 #editorBox{
 	position:relative;
-	left:45px;
+	left:43px;
 }
 
 
@@ -78,7 +87,6 @@ iframe{
 </style>
 
 <script>
-
 $(function() {
     //전역변수
     var obj = [];
@@ -102,7 +110,6 @@ $(function() {
     $("#subBtn").click(function(){
     	 //id가 smarteditor인 textarea에 에디터에서 대입
         obj.getById["editor"].exec("UPDATE_CONTENTS_FIELD", []);
-        
 //    	 	//아작스
    	 	var queryString = $("form[name=reviewEnrollment]").serialize() ;
 	  	console.log(queryString);
@@ -128,11 +135,14 @@ $(function() {
 
 ///별점
 $(document).ready(function(){
+	
+	$('#sell_number').val('${sell_number}');
+	
 	$("#product_grade a").click(function(){
 		 var grade = $(this).prevAll("a").length;
 	     $(this).parent().children("a").removeClass("on");  /* 별점의 on 클래스 전부 제거 */ 
 	     $(this).addClass("on").prevAll("a").addClass("on"); /* 클릭한 별과, 그 앞 까지 별점에 on 클래스 추가 */
-	     $("#pro_score").val(grade);
+	     $("#review_pdscore").val(grade);
 	     return false;
 	});
 	
@@ -140,7 +150,7 @@ $(document).ready(function(){
 		 var grade = $(this).prevAll("a").length;
 	     $(this).parent().children("a").removeClass("on");  /* 별점의 on 클래스 전부 제거 */ 
 	     $(this).addClass("on").prevAll("a").addClass("on"); /* 클릭한 별과, 그 앞 까지 별점에 on 클래스 추가 */
-	     $("#sell_score").val(grade);
+	     $("#review_sellscore").val(grade);
 	     return false;
 	});
 });
@@ -176,15 +186,16 @@ $(document).ready(function(){
         	<a href="#" >★</a>
 		</span>
 		</div>
-		<input type="hidden" name="pro_score" id="pro_score" value="0">
-		<input type="hidden" name="sell_score" id="sell_score" value="0">
-		<div class="form-group" id="editorBox">본문
-			<textarea  id="editor"  ></textarea>
+		<input type="hidden" name="sell_number" id="sell_number" >
+<!-- 		<input type="hidden" name="pro_number" id="pro_number" > -->
+		<input type="hidden" name="review_pdscore" id="review_pdscore" value="0">
+		<input type="hidden" name="review_sellscore" id="review_sellscore" value="0">
+		<div class="titleBox" id="TitleBox2"><span>내용</span></div>
+		<div class="form-group" id="editorBox">
+			<textarea  id="editor"  name="review_content"></textarea>
 		</div>
-		
 		<button type="button" id="subBtn" class="btn btn-default">등록</button>
 	</form>
-
 </div>
 </body>
 </html>
