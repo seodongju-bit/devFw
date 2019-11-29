@@ -57,12 +57,12 @@ span{
 #editor{
 	float:center;
 	position:relative;
-	width: 801px;
+	width: 729px;
 	height: 350px;
 }
 #editorBox{
 	position:relative;
-	left:43px;
+	left:39px;
 }
 
 
@@ -135,7 +135,6 @@ $(function() {
 
 ///별점
 $(document).ready(function(){
-	
 	$('#sell_number').val('${sell_number}');
 	
 	$("#product_grade a").click(function(){
@@ -162,6 +161,7 @@ $(document).ready(function(){
 </head>
 <body><br>
 <h2>리뷰쓰기</h2>
+${sell_title }
 <div class="reviewBox">
 	<form name="reviewEnrollment" method="post"  accept-charset="UTF-8" >
 		<div  class="titleBox" ><span>제목</span>

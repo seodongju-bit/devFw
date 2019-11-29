@@ -36,7 +36,6 @@ public class A_P004DAOImpl implements A_P004DAO {
 	public List<Map<String, Object>> orderList(Map<String, Object> searchMap) {
 		System.out.println("mypage dao도착"+searchMap);
 		//orders 테이블 정리되면 수정,  일단 orderdetail 다 뽑아서 감
-		
 		return sqlSession.selectList("mapper.active.orderList",searchMap);
 	}
 	

@@ -10,7 +10,10 @@ public class F_P001VO {
 	   private String event_explain;
 	   
 	   private String order_number;
-	   private int detail_quantity;
+	   private String od_size;
+	   private String od_color;
+	   private int od_quantity;
+	   
 	   
 
 private String sell_number;
@@ -143,13 +146,7 @@ public String getSell_number() {
 			public void setOrder_number(String order_number) {
 				this.order_number = order_number;
 			}
-			public int getDetail_quantity() {
-				return detail_quantity;
-			}
-			public void setDetail_quantity(int detail_quantity) {
-				this.detail_quantity = detail_quantity;
-			}
-			   
+	
 			   
 			  
 			public String getReview_number() {
@@ -213,4 +210,31 @@ public String getSell_number() {
 		public void setOption_quantity(String option_quantity) {
 			this.option_quantity = option_quantity;
 		}
+
+		public String getOd_size() {
+			return od_size;
+		}
+
+		public void setOd_size(String od_size) {
+			this.od_size = od_size;
+		}
+
+		public String getOd_color() {
+			return od_color;
+		}
+
+		public void setOd_color(String od_color) {
+			this.od_color = od_color;
+		}
+
+		public int getOd_quantity() {
+			return od_quantity;
+		}
+
+		public void setOd_quantity(int od_quantity) {
+			this.od_quantity = od_quantity;
+		}
+		
+		
+		
 }

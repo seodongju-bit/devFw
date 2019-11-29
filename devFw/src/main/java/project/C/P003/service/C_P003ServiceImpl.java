@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import project.C.P001.vo.PagingVO;
 import project.C.P003.dao.C_P003DAO;
 import project.C.P003.vo.C_P003VO;
 
@@ -70,6 +71,15 @@ public class C_P003ServiceImpl implements C_P003Service {
 		return noticeList4; 
 	}
 
+
+	@Override
+	public List total(PagingVO vo) throws DataAccessException {
+		List totalList = null;
+		totalList = C_P003DAO.totalnoticeList(vo);
+		return totalList;
+	}
+
+	
 
 
 
