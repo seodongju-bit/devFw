@@ -137,7 +137,7 @@ public class A_P007ControllerImpl   implements A_P007Controller {
 			e.printStackTrace();
 		}
 		
-		resultMap.put("Result", result);         
+		resultMap.put("Result", result);          
         return resultMap;
 	}
 	
