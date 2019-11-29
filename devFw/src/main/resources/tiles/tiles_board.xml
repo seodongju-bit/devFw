@@ -170,6 +170,11 @@
       <put-attribute name="body" value="/WEB-INF/views/A/P004/D005.jsp" />
    </definition>
    
+   <definition name="makecoupon" extends="baseLayout">
+      <put-attribute name="title" value="쿠폰생성" />
+      <put-attribute name="body" value="/WEB-INF/views/A/P007/D001.jsp" />
+   </definition>
+   
    <definition name="point" extends="baseLayout">
       <put-attribute name="title" value="포인트사용내역" />
       <put-attribute name="body" value="/WEB-INF/views/A/P004/D003.jsp" />
