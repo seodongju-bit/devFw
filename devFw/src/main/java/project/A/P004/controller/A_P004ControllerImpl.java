@@ -44,9 +44,10 @@ public class A_P004ControllerImpl   implements A_P004Controller {
 		searchMap.put("mem_id", p_id);
 		
 		resultList = activeService.orderList(searchMap);
+		//System.out.println();
 		//List membersList = memberService.listMembers();
 		ModelAndView mav = new ModelAndView(viewName);
-		System.out.println("orderList"+resultList);
+		//System.out.println("날짜"+resultList.get(0).get("SELL_DATE"));
 		mav.addObject("orderList", resultList);
 		return mav;
 	}

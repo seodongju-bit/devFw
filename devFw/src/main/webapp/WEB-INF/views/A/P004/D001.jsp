@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%
 	request.setCharacterEncoding("UTF-8");
@@ -82,6 +82,31 @@ check {
 	border: 1px solid black;
 	padding: 15px;
 }
+
+#orderTable{
+	width:1150px;
+	margin:0 auto;
+	text-align:center;
+}
+.orderImg{
+	display:inline;
+	float:left;
+	left:20px;
+}
+.tdMenu{
+ 	margin:2px auto;
+	width:70px;
+	border:1px solid lightgray;
+	border-radius:5px;
+	padding:2px;
+	color:gray;
+	font-size:10px;
+}
+.tdMenu:hover{
+	cursor:pointer;
+	background-color: white;
+}
+
 </style>
 
 
@@ -95,16 +120,10 @@ check {
 </head>
 <body>
 
-	<c:forEach var="orderList" items="${orderList}" varStatus='index'>
-		${orderList.SELL_NUMBER}
-	</c:forEach>
-
-
 	<h1 align="center" >마이페이지</h1>
 
 	<table class="table table-hover" >
 		<tr>
-
 			<th id="My" >My</th>
 			<th>미사용 티켓<br> <a href="#" style="">0장</a></th>
 			<th>배송중<br> <a href="#" style="">0건</a></th>
@@ -119,12 +138,13 @@ check {
 			<td></td>
 		</tr>
 	</table>
-
+	
 	
 	<p id="f" style=" margin-right: 0px;">주문목록/배송조회</p>
 
-	<table class="table table-hover">
 
+
+	<table class="table table-hover">
 		<tr>
 			<!-- <th colspan="3"> <input type="button" class="btn btn-default" value="전체"> </th> -->
 			<th colspan="3">
@@ -136,61 +156,67 @@ check {
 				</div>
 			</th>
 		</tr>
-
-		<tr>
-			<th colspan="2" align=left>주문일 2019.08.20</th>
-			<th id="c"><a href="#"><span style="color: blue;">주문상세
-						보기></span></a>
-		</tr>
-
-		<tr>
-			<td align="left"><img src="http://placehold.it/120x166"></td>
-			<td align="center"><a href="#" id="b">에이수스 Vivobook
-					X507UA-EJ504 (i5-8250U WIN미포함 4G SSD 256G)<br>570,000원 / 1개
-			</a></td>
-
-
-			<td align="center">배송상태<br>
-			<br> <span style="color: green;">수요일 8/21 도착</span><br> 
-			<input type="button" class="btn btn-link" value="배송조회"><br> 
-		    <input type="button" class="btn btn-link" value="교환신청"><br> 
-		    <input type="button" class="btn btn-link" value="반품신청"><br> 
-			<p><button onclick="reviewWrite('0004')">리뷰 작성하기</button>
-			</td>
-		</tr>
-
-		<tr>
-			<td align="left"><img src="http://placehold.it/120x166"></td>
-			<td align="center"><a href="#" id="b">에이수스 Vivobook
-					X507UA-EJ504 (i5-8250U WIN미포함 4G SSD 256G)<br>570,000원 / 1개
-			</a></td>
-
-
-			<td align="center">배송상태<br>
-			<br> <span style="color: green;">수요일 8/21 도착</span><br> <input
-				type="button" class="btn btn-link" value="배송조회"><br> <input
-				type="button" class="btn btn-link" value="교환신청"><br> <input
-				type="button" class="btn btn-link" value="반품신청"><br> <input
-				type="button" class="btn btn-link" value="리뷰작성"><br>
-			</td>
-		</tr>
-
-		<tr>
-			<td align="left"><img src="http://placehold.it/120x166"></td>
-			<td align="center"><a href="#" id="b">에이수스 Vivobook
-					X507UA-EJ504 (i5-8250U WIN미포함 4G SSD 256G)<br>570,000원 / 1개
-			</a></td>
-
-
-			<td align="center">배송상태<br>
-			<br> <span style="color: green;">수요일 8/21 도착</span><br> <input
-				type="button" class="btn btn-link" value="배송조회"><br> <input
-				type="button" class="btn btn-link" value="교환신청"><br> <input
-				type="button" class="btn btn-link" value="반품신청"><br> <input
-				type="button" class="btn btn-link" value="리뷰작성"><br>
-			</td>
-		</tr>
 	</table>
+	
+	
+	
+	<table  id="orderTable" class="table table-striped" >
+		<tr>
+			<th width="150px" >날짜</th>
+			<th width="600px" >상품정보</th>
+			<th width="150px" >상태</th>
+			<th width="250px" >확인/신청 </th>
+		</tr>
+		
+		<c:forEach var="orderList" items="${orderList}" varStatus='index'>
+			<tr>
+				<td>
+					<p>주문번호 : ${orderList.ORDER_NUMBER}</p>
+					<fmt:formatDate value="${orderList.ORDER_DATE}" pattern="yyyy-MM-dd" /><br>
+					<fmt:formatDate value="${orderList.ORDER_DATE}" pattern="HH:mm" /><br>
+					<p class="tdMenu" >주문취소</p>
+					<p class="tdMenu" >구매확정</p>
+				</td>
+				<td>
+					<img class="orderImg" src="${orderList.SELL_THUMBNAIL}" width="80px" height="80px" >
+					<a href="sellItems.do?sell_no=${orderList.SELL_NUMBER}" >${orderList.SELL_TITLE}</a>
+					<br><fmt:formatNumber value="${orderList.SELL_PRICE}"  />원
+				</td>
+				<td>
+					<c:choose>
+  						<c:when test="${orderList.ORDER_STATE=='F_0001'}">
+							<p>결제준비중</p>
+  						</c:when>
+ 						<c:when test="${orderList.ORDER_STATE=='F_0002'}">
+							<p>결제완료</p>
+  						</c:when>
+  						<c:when test="${orderList.ORDER_STATE=='F_0003'}">
+     						<p>배송중</p>
+  						</c:when>
+  						<c:when test="${orderList.ORDER_STATE=='F_0004'}">
+   							<p>배송완료</p>
+  						</c:when>
+  						<c:when test="${orderList.ORDER_STATE=='F_0005'}">
+   							<p>구매확정</p>
+  						</c:when>
+  						<c:when test="${orderList.ORDER_STATE=='F_0006'}">
+   							<p>취소완료</p>
+  						</c:when>
+					</c:choose>
+				</td>
+				<td>
+					<p class="tdMenu" onclick="reviewWrite(${orderList.SELL_NUMBER})">리뷰작성</p>
+					<p class="tdMenu" >리뷰 수정</p>
+					<p class="tdMenu" >교환신청</p>
+				</td>
+				
+			</tr>
+		</c:forEach>
+		
+		
+	</table>
+
+
 
 	<div class="container" align="center" style="max-width:92%;">
 		<ul class="pagination">
@@ -200,7 +226,6 @@ check {
 	</div>
 
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-	<script type="text/javascript" src="../pro27/resources/js/bootstrap.js"></script>
 	<script src="../devFw/resources/js/bootstrap.min.js"></script>
 
 
@@ -267,10 +292,42 @@ check {
 					src="http://placehold.it/120x166"></td>
 			</tr>
 		</table>
-
 	</div>
-
+	
 	<script>
+	$(document).ready(function aa(){
+		$('#orderTable').rowspan(0);
+	});
+	
+	$.fn.rowspan = function(colIdx, isStats) {       
+	    return this.each(function(){      
+	        var that;     
+	        $('tr', this).each(function(row) {      
+	            $('td:eq('+colIdx+')', this).filter(':visible').each(function(col) {
+	                 
+	                if ($(this).html() == $(that).html() && (!isStats || isStats && $(this).prev().html() == $(that).prev().html()
+	                            )
+	                    ) {            
+	                    rowspan = $(that).attr("rowspan") || 1;
+	                    rowspan = Number(rowspan)+1;
+	                    $(that).attr("rowspan",rowspan);
+	                    // do your action for the colspan cell here            
+	                    //$(this).hide();
+	                    $(this).remove(); 
+	                    // do your action for the old cell here    
+	                } else {            
+	                    that = this;         
+	                }          
+	                // set the that if not already set
+	                that = (that == null) ? this : that;      
+	            });     
+	        });    
+	    });  
+	}; 
+
+
+	출처: https://thinkweb.tistory.com/48 [Think Web!]
+	
 	function reviewWrite(sell_number){
 		window.open("reviewwrite.do?sell_number="+sell_number, "제품번호 검색", "width=850, height=700, left=600, top400", "resizable=no");
 	}
