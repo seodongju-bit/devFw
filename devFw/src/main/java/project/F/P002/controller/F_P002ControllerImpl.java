@@ -58,6 +58,20 @@ public class F_P002ControllerImpl   implements F_P002Controller {
 		mav.addObject("searchItem", f_P002VO);
 		return mav;
 	}
+	
+	///로드 페이지
+	@RequestMapping(value="/itemsInfoLoad.do" ,method = { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView itemsInfoLoad(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = getViewName(request);
+		viewName = "itemsInfoLoad";
+		Map<String, Object> searchMap = new HashMap<String, Object>();
+
+		ModelAndView mav = new ModelAndView(viewName);
+		mav.addObject("content", request.getParameter("contents"));
+		System.out.println(request.getParameter("contents"));
+		return mav;
+	}
+	
 	@Override
 	@RequestMapping(value = "/searchOption.do", method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody

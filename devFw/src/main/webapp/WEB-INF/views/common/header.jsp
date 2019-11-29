@@ -448,8 +448,17 @@ $(document).ready(function(){
 		<div class="mainMenu"><button class="menubtn"onclick="location.href='bestProduct.do'">베스트상품</button></div>
 		<div class="mainMenu"><button class="menubtn"onclick="location.href='eventProduct.do'">이벤트상품</button></div>
 		<div class="mainMenu"><button class="menubtn"onclick="location.href='reviewRanking.do'">리뷰랭킹</button></div>
-		<div class="mainMenu"><button class="menubtn"onclick="fn_coupon()">쿠폰</button></div>
-		<div class="mainMenu"><button class="menubtn"onclick="location.href='event.do'">이벤트/공지사항</button></div>
+				<c:choose>
+					<c:when test="${memberInfo.mem_division==2 }">
+						<div class="mainMenu"><button class="menubtn" onclick="location.href='${contextPath}/makecoupon.do'">쿠폰발급</button></div>
+					</c:when>
+					<c:otherwise>
+						<div class="mainMenu">
+							<div class="mainMenu"><button class="menubtn" onclick="fn_coupon()">쿠폰</button></div>
+						</div>
+					</c:otherwise>
+				</c:choose>
+				<div class="mainMenu"><button class="menubtn"onclick="location.href='event.do'">이벤트/공지사항</button></div>
 	</div>
 	</div>
 	</div>  
