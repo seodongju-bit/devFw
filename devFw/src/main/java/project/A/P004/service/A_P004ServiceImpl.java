@@ -27,6 +27,12 @@ public class A_P004ServiceImpl implements A_P004Service {
 		return couponList;
 	}	
 	@Override
+	public int couponcheck(String co_number) {
+		return activeDAO.couponcheck(co_number);
+		
+		
+	}	
+	@Override
 	public List<A_P004VO> listPoint(Map<String, Object> searchMap) throws DataAccessException{
 		List<A_P004VO> list = activeDAO.selectAllPointList(searchMap);
 		System.out.println("22222222222222222222222222"+list);
@@ -36,5 +42,16 @@ public class A_P004ServiceImpl implements A_P004Service {
 	@Override
 	public List<Map<String, Object>> orderList(Map<String, Object> searchMap) {
 		return activeDAO.orderList(searchMap);
+	}
+	@Override
+	public void takecoupon(Map<String, Object> dataMap) throws DataAccessException{
+		activeDAO.takecoupon(dataMap);
+	}
+	
+	@Override
+	public List givecoupon() throws DataAccessException {
+		List couponList = null;
+		couponList = activeDAO.givecoupon();
+		return couponList;
 	}
 }

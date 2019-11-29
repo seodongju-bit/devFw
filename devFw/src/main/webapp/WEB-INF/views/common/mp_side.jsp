@@ -34,7 +34,7 @@ text-align:left;
   <meta charset="UTF-8">
   <title>사이드 메뉴</title>
 <script>
-function fn_coupon(){
+function fn_coupon1(){
 	
 	var _isLogOn=document.getElementById("isLogOn");
 	var isLogOn=_isLogOn.value;
@@ -57,7 +57,7 @@ function fn_coupon(){
         <li><a href="#">취소/반품/교환/환불 내역</a></li>
         <li><a href="#">배송관리</a></li>
         <li class="nav-header">My 혜택</li>
-        <li><a onclick="fn_coupon()">할인 쿠폰</a></li>
+        <li><a onclick="fn_coupon1()">할인 쿠폰</a></li>
         <li><a href="#">캐시/기프트카드</a></li>
         <li class="nav-header">My 활동</li>
         <li><a href="myReview.do">내가 작성한 리뷰</a></li>

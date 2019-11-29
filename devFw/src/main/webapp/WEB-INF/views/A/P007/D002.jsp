@@ -41,6 +41,11 @@ function make(){
 	var end = $('#end').val();
 	var percent = $('#percent').val();
 	
+	if(end<start){
+		alert("날짜를 제대로 입력해주세요");
+		return false;
+	}
+	
 	if (name.trim() == '') {
    		alert("제목을 입력해주세요");
    		return false;

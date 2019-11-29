@@ -8,7 +8,6 @@ public class A_P004VO {
 	private String co_name;
 	private String co_enddate;
 	private String co_stdate;
-	private String co_sale;
 	private String co_percent;
 	private String mem_no;
 	private String point_number;
@@ -23,13 +22,12 @@ public class A_P004VO {
 
 	}
 
-	public A_P004VO(String co_number, String co_name, String co_enddate, String co_stdate, String co_sale,
+	public A_P004VO(String co_number, String co_name, String co_enddate, String co_stdate, 
 			String co_percent, String mem_id) {
 		this.co_number = co_number;
 		this.co_name = co_name;
 		this.co_enddate = co_enddate;
 		this.co_stdate = co_stdate;
-		this.co_sale = co_sale;
 		this.co_percent = co_percent;
 		this.mem_id=mem_id;
 	}
@@ -75,14 +73,6 @@ public class A_P004VO {
 
 	public void setCo_stdate(String co_stdate) {
 		this.co_stdate = co_stdate;
-	}
-
-	public String getCo_sale() {
-		return co_sale;
-	}
-
-	public void setCo_sale(String co_sale) {
-		this.co_sale = co_sale;
 	}
 
 	public String getCo_percent() {

@@ -9,7 +9,6 @@
         <result property="co_name" column="co_name" />
         <result property="co_enddate" column="co_enddate" />
         <result property="co_stdate" column="co_stdate" />
-        <result property="co_sale" column="co_sale" />
         <result property="co_percent" column="co_percent" />
         <result property="mem_id" column="mem_id" />
 	</resultMap> 
@@ -37,7 +36,6 @@
          c.co_name, 
          to_char(c.co_enddate,'YYYY-MM-DD') co_enddate, 
          to_char(c.co_stdate,'YYYY-MM-DD') co_stdate,
-         c.co_sale, 
          c.co_percent
 		 from coupon c, mycoupon mc
 		 where c.co_number = mc.co_number
@@ -73,5 +71,36 @@
          order by order_date, od.sell_number
       ]]>
 	</select>
+	
+	<insert id="takecoupon"  parameterType="makecouponVO">
+  <![CDATA[
+    	 INSERT INTO mycoupon (co_number, mem_id) 
+      VALUES (#{co_number}, #{mem_id})            
+   ]]>      
+  </insert>
+  
+  
+  <select id="givecoupon" resultMap="couResult">
+      <![CDATA[
+         select 
+         co_number, 
+         co_name, 
+         to_char(co_enddate,'YYYY-MM-DD') co_enddate, 
+         to_char(co_stdate,'YYYY-MM-DD') co_stdate,
+         co_percent
+		 from coupon 
+		 order by co_stdate desc
+      ]]>
+	</select>
+	
+	<select id="countcoupon" parameterType="String" resultType="Integer">
+	<![CDATA[
+      SELECT COUNT(*) FROM mycoupon
+      WHERE
+          co_number = #{co_number} 
+           ]]> 
+</select>
+	
+	
 	
 	</mapper>
