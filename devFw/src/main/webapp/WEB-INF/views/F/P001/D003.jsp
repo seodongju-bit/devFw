@@ -111,9 +111,9 @@ best product
 <a href="${contextPath}/sellItems.do?sell_no=${productlist2.sell_number}">
   <div class="desc"><div class="desc1">${productlist2.sell_title}</div>
 <fmt:formatNumber value="${productlist2.sell_price}" pattern="#,###"/>원<br> 
-판매 수:${productlist2.detail_quantity} 회
+판매 수:${productlist2.od_quantity} 회
                
-   </div>              
+   </div>                              
     </a>         
                                                                                                    
 </div>                                                  

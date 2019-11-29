@@ -45,7 +45,10 @@
 
   <resultMap id="F_P001_D03Result01" type="F_P001VO">
      <result property="order_number" column="order_number" />
-     <result property="detail_quantity" column="detail_quantity" />
+     <result property="od_quantity" column="od_quantity" />
+      <result property="od_size" column="od_size" />
+       <result property="od_color" column="od_color" />
+       
 
       <result property="sell_number" column="sell_number" />
       <result property="pro_number" column="pro_number" />
@@ -142,7 +145,7 @@
       SELECT *               
       FROM orderdetail od, productsell ps
        WHERE od.sell_number = ps.sell_number 
-      ORDER BY od.detail_quantity desc          
+      ORDER BY od.od_quantity desc          
           
       ]]>          
                                

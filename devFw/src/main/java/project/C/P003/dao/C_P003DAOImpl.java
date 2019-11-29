@@ -3,10 +3,17 @@ package project.C.P003.dao;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.servlet.ModelAndView;
+
+import project.C.P001.vo.C_P001VO;
+import project.C.P001.vo.PagingVO;
 
 
 @Repository("C_P003DAO")
@@ -59,9 +66,21 @@ public class C_P003DAOImpl implements C_P003DAO{
 		return noticelist4;
 	}
 
-
-
-
 	
 
-}
+	@Override
+	public List totalnoticeList(PagingVO vo) throws DataAccessException {
+		List<C_P001VO> totalList = null;
+		totalList = sqlSession.selectList("mapper.notice.totalnoticeList", vo);
+		System.out.println("totalList"+totalList);
+		return totalList;
+	}
+	
+
+	
+	
+	
+		
+	}
+
+

@@ -122,9 +122,42 @@ public class C_P003ControllerImpl implements C_P003Controller {
 	}
 	
 	
-	
-	
-	
+
+
+	@Override
+	@RequestMapping(value="/noticetotal.do" ,method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView noticetotal(PagingVO vo 
+			, @RequestParam(value="nowPage", required=false)String nowPage
+			, @RequestParam(value="cntPerPage", required=false)String cntPerPage, 
+			HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = "noticetotal";
+		
+		int total = C_P003Service.countBoard();
+		System.out.println("service실행"+total);
+		if (nowPage == null && cntPerPage == null) {
+			nowPage = "1";
+			cntPerPage = "5";
+		} else if (nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) { 
+			cntPerPage = "5";
+		}
+
+		
+			vo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+			
+		
+		List totalList = C_P003Service.total(vo);
+		ModelAndView mavw4 = new ModelAndView(viewName);
+		mavw4.addObject("paging", vo);    
+		mavw4.addObject("totalList", totalList);
+		return mavw4;
+	}
+
+
+
+
+
 	
 	
 	
@@ -177,6 +210,13 @@ public class C_P003ControllerImpl implements C_P003Controller {
 		}
 		return viewName;
 	}
+
+
+
+
+
+
+
 
 
 
