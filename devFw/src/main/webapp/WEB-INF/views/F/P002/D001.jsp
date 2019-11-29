@@ -21,6 +21,9 @@
 
 
 $(document).ready(function(){
+	//시작시 상세설명페이지 로드
+	$('#contentDetail').load('itemsInfoLoad.do',{ contents : '${item.sell_contents}'});
+	
 	$('#itemsImg').attr('src','${item.sell_thumbnail}');
 	//$('.miniImg').attr('src', 'resources/image/items/10.JPG' );
 	
@@ -283,7 +286,14 @@ function fn_order(){
 		alert("로그인 후 주문이 가능합니다.");
 	}
 }
-
+function pageLoad(command){
+	if(command=="itemsInfoLoad"){
+		$('#contentDetail').load('itemsInfoLoad.do',{ contents : '${item.sell_contents}'});
+	}
+	if(command=="sellerChat"){
+		$('#contentDetail').load('sellerChat.do');
+	}
+}
 </script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -304,9 +314,9 @@ function fn_order(){
 <div id="sellBox" >
 	<div id="imgBox">
 		<img id="itemsImg" src="" width="400px" height="400px" />
-		<div id="imgList">
-			<img class="miniImg" src="" width="60px" height="60px" />
-		</div>
+<!-- 		<div id="imgList"> -->
+<!-- 			<img class="miniImg" src="" width="60px" height="60px" /> -->
+<!-- 		</div> -->
 	</div>
 	<div id="selectBox"> 
 		<div id="sellerInfo" class="sellInfo">
@@ -338,14 +348,12 @@ function fn_order(){
 	</div>
 </div>
 <div id="itemsInfoSelect">
-	<button id="itemsInfo" class="btn btn-primary" onclick="">상품정보</button>
-	<button id="itemsReview" class="btn btn-primary">리뷰</button>
-	<button id="itemsQna" class="btn btn-primary">QnA</button>
-	<button id="itemsSaller" class="btn btn-primary">판매자정보</button>
-	<button  class="btn btn-primary">상품의견</button>
+	<button class="btn btn-primary" onclick="pageLoad('itemsInfoLoad')">상품정보</button>
+	<button class="btn btn-primary">리뷰</button>
+	<button class="btn btn-primary">상품의견</button>
+	<button class="btn btn-primary" onclick="pageLoad('sellerChat')">QnA</button>
+	<button class="btn btn-primary">판매자정보</button>
 </div>
-
-
 
 </body>
 </html>
