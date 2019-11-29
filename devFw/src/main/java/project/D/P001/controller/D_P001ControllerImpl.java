@@ -61,7 +61,9 @@ public class D_P001ControllerImpl   implements D_P001Controller {
 	public ModelAndView reviewwrite(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = getViewName(request);
 		String sell_number = request.getParameter("sell_number");
+		String sell_title = request.getParameter("sell_title");
 		request.setAttribute("sell_number", sell_number);
+		request.setAttribute("sell_title", sell_title);
 		viewName = "reviewwrite";
 		ModelAndView mavs = new ModelAndView(viewName);
 		return mavs; 
@@ -76,7 +78,6 @@ public class D_P001ControllerImpl   implements D_P001Controller {
 		Map<String, Object> result = new HashMap<String, Object>();
 		HttpSession session = request.getSession();
 		String mem_id = (String)session.getAttribute("mem_id");
-		
 		//mem_id, 시간, 리뷰번호 생성, 제품번호
 		resultMap.put("mem_id", mem_id);
 		resultMap.put("sell_number", request.getParameter("sell_number"));

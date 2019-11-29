@@ -180,7 +180,7 @@ check {
 				<td>
 					<img class="orderImg" src="${orderList.SELL_THUMBNAIL}" width="80px" height="80px" >
 					<a href="sellItems.do?sell_no=${orderList.SELL_NUMBER}" >${orderList.SELL_TITLE}</a>
-					<br><fmt:formatNumber value="${orderList.SELL_PRICE}"  />원
+					<br><fmt:formatNumber value="${orderList.SELL_PRICE}"  />원 
 				</td>
 				<td>
 					<c:choose>
@@ -205,7 +205,7 @@ check {
 					</c:choose>
 				</td>
 				<td>
-					<p class="tdMenu" onclick="reviewWrite(${orderList.SELL_NUMBER})">리뷰작성</p>
+					<p class="tdMenu" onclick="reviewWrite('${orderList.SELL_NUMBER}','${orderList.SELL_TITLE}')">리뷰작성</p>
 					<p class="tdMenu" >리뷰 수정</p>
 					<p class="tdMenu" >교환신청</p>
 				</td>
@@ -325,11 +325,8 @@ check {
 	    });  
 	}; 
 
-
-	출처: https://thinkweb.tistory.com/48 [Think Web!]
-	
-	function reviewWrite(sell_number){
-		window.open("reviewwrite.do?sell_number="+sell_number, "제품번호 검색", "width=850, height=700, left=600, top400", "resizable=no");
+	function reviewWrite(sell_number, title){
+		window.open("reviewwrite.do?sell_number="+sell_number+"&sell_title="+title, "제품번호 검색", "width=850, height=800, left=600, top400", "resizable=no");
 	}
 	
 	
