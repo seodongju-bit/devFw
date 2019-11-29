@@ -72,12 +72,7 @@
  
    </select>
    
-   
-   
-   
-   
-   
-   
+
    <select id="countBoard" resultType="int">
 	<![CDATA[
 	SELECT COUNT(*) FROM notice
