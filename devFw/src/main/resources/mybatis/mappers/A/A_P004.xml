@@ -68,7 +68,7 @@
          and o.mem_id = #{mem_id}
       ]]>
 	</select>
-	
+ 	
 	<insert id="takecoupon"  parameterType="makecouponVO">
   <![CDATA[
     	 INSERT INTO mycoupon (co_number, mem_id) 
