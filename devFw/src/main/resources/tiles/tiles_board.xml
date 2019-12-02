@@ -10,7 +10,7 @@
       <put-attribute name="body" value="" />
       <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
    </definition>             
-   
+                              
    
 
      <definition name="noticeLayout"  template="/WEB-INF/views/common/notice_layout.jsp">
@@ -253,6 +253,12 @@
     <definition name="noticeDetail2" extends="noticeLayout">
       <put-attribute name="title" value="문의사항상세페이지" />
       <put-attribute name="body" value="/WEB-INF/views/C/P003/D001_2.jsp" />
+   </definition> 
+   
+   
+      <definition name="questions" extends="noticeLayout">
+      <put-attribute name="title" value="문의사항전체페이지" />
+      <put-attribute name="body" value="/WEB-INF/views/C/P003/D003_1.jsp" />
    </definition> 
    
   
