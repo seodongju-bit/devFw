@@ -76,4 +76,10 @@ public class F_P002ServiceImpl implements F_P002Service {
 	public int countSearch(SearchVO searchVO) throws Exception {
 		return f_P002DAO.countSearch(searchVO);
 	}
+
+	@Override
+	public List<Map<String, Object>> searchReview(Map<String, Object> searchMap) {
+		// TODO Auto-generated method stub
+		return f_P002DAO.searchReview(searchMap);
+	}
 }

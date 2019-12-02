@@ -60,7 +60,7 @@ public class A_P006ControllerImpl implements A_P006Controller{
 			String seller = "홍길동1";
 			A_P001VO memberInfo = (A_P001VO) session.getAttribute("memberInfo");
 			String mem_id = memberInfo.getMem_id();
-			System.out.println("memberId ::::::::::::::: " + mem_id);
+			System.out.println("memberId :: " + mem_id);
 /*			List<C_P001_D001VO> initList = new ArrayList<C_P001_D001VO>();
 			initList = c_p002_d005_Service.selectMemberList(mem_id);	*/
 			

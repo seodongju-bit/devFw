@@ -40,5 +40,7 @@ public interface F_P002DAO {
 	
 	//검색 결과 갯수 계측
 	public int countSearch(SearchVO searchVO) throws Exception;
+
+	public List<Map<String, Object>> searchReview(Map<String, Object> searchMap);
 	 
 }
