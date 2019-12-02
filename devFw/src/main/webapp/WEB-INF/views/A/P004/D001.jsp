@@ -148,7 +148,7 @@ check {
 
 	<table class="table table-hover">
 		<tr>
-			<!-- <th colspan="3"> <input type="button" class="btn btn-default" value="전체"> </th> -->
+
 			<th colspan="3">
 				<div class="container">
 					<ul class="nav nav-tabs">
