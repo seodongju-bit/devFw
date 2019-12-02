@@ -10,9 +10,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import project.C.P001.vo.PagingVO;
+
 import project.C.P003.dao.C_P003DAO;
 import project.C.P003.vo.C_P003VO;
+import project.C.P003.vo.PageVO;
 
 @Service("noticeitem")
 @Transactional(propagation = Propagation.REQUIRED)
@@ -20,8 +21,7 @@ public class C_P003ServiceImpl implements C_P003Service {
 
 	@Autowired
 	private C_P003DAO C_P003DAO;
-	@Autowired
-	private C_P003VO C_P003VO;
+
 	
 	
 	@Override
@@ -73,11 +73,14 @@ public class C_P003ServiceImpl implements C_P003Service {
 
 
 	@Override
-	public List total(PagingVO vo) throws DataAccessException {
-		List totalList = null;
-		totalList = C_P003DAO.totalnoticeList(vo);
-		return totalList;
+	public List listquestion(PageVO vo1) throws DataAccessException {
+		List questionList = null;
+		questionList = C_P003DAO.Allquestions(vo1);
+		System.out.println("service실행"+questionList);
+		return questionList;  
 	}
+           
+   
 
 	
 
