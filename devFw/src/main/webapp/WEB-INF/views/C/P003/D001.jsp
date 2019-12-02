@@ -112,7 +112,7 @@ a:hover {
 		<br>
 		<br>
 		<br>
-		 <a href="#" target="_blank">더 보기</a>
+		 <a href="${contextPath}/questions.do" target="_blank">더 보기</a>
 		<div class="inner2">		
 			<h2>문의사항</h2>			
 			<form id="boardForm" name="boardForm">

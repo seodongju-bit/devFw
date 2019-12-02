@@ -7,7 +7,6 @@ public class PageVO {
 	public PageVO() {
 	}
 	public PageVO(int total, int nowPage, int cntPerPage) {
-		setNowPage(nowPage);
 		setCntPerPage(cntPerPage);
 		setTotal(total);
 		calcLastPage(getTotal(), getCntPerPage());
@@ -96,4 +95,5 @@ public class PageVO {
 				+ ", cntPage=" + cntPage + "]";
 	}
 }
+
 

@@ -12,8 +12,9 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.servlet.ModelAndView;
 
-import project.C.P001.vo.C_P001VO;
-import project.C.P001.vo.PagingVO;
+
+import project.C.P003.vo.C_P003VO;
+import project.C.P003.vo.PageVO;
 
 
 @Repository("C_P003DAO")
@@ -66,15 +67,17 @@ public class C_P003DAOImpl implements C_P003DAO{
 		return noticelist4;
 	}
 
+	@Override
+	public List Allquestions(PageVO vo1) throws DataAccessException {
+		List<C_P003VO> questionList = null;
+		questionList = sqlSession.selectList("mapper.notice.Allquestions", vo1);
+		System.out.println("dao실행"+questionList);
+		return questionList;
+	}
+                         
 	
 
-	@Override
-	public List totalnoticeList(PagingVO vo) throws DataAccessException {
-		List<C_P001VO> totalList = null;
-		totalList = sqlSession.selectList("mapper.notice.totalnoticeList", vo);
-		System.out.println("totalList"+totalList);
-		return totalList;
-	}
+
 	
 
 	

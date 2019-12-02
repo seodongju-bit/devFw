@@ -56,7 +56,7 @@ function fn_coupon(){
         <li><a href="#">자주묻는 질문</a></li>
         <li class="nav-header">문의글</li>
         <li><a href="#">문의글 등록</a></li>
-        <li><a href="#">문의내역 조회</a></li>    
+        <li><a href="${contextPath}/questions.do">문의내역 조회</a></li>    
         <li class="nav-header">신고글</li>
         <li><a href="#">신고글 작성</a></li>
         <li><a href="#">신고글 확인</a></li>
