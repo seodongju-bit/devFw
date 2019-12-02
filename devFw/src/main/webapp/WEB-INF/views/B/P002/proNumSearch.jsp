@@ -96,6 +96,10 @@
 // 		msg +=mySheet.GetCellValue(row,col);
 		//alert(msg);
 		opener.document.getElementById("pro_number").value = mySheet.GetCellValue(row,1);
+		opener.document.getElementById("pro_numberView").value = mySheet.GetCellValue(row,1)+"/";
+		opener.document.getElementById("pro_numberView").value += mySheet.GetCellValue(row,2)+"/";
+		opener.document.getElementById("pro_numberView").value += mySheet.GetCellValue(row,3)+"/";
+		opener.document.getElementById("pro_numberView").value += mySheet.GetCellValue(row,4);
 		window.close();
 
 	}

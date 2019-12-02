@@ -186,22 +186,22 @@ check {
 				</td>
 				<td>
 					<c:choose>
-  						<c:when test="${orderList.ORDER_STATE=='F_0001'}">
+  						<c:when test="${orderList.OD_STATE=='F_0001'}">
 							<p>결제준비중</p>
   						</c:when>
- 						<c:when test="${orderList.ORDER_STATE=='F_0002'}">
+ 						<c:when test="${orderList.OD_STATE=='F_0002'}">
 							<p>결제완료</p>
   						</c:when>
-  						<c:when test="${orderList.ORDER_STATE=='F_0003'}">
+  						<c:when test="${orderList.OD_STATE=='F_0003'}">
      						<p>배송중</p>
   						</c:when>
-  						<c:when test="${orderList.ORDER_STATE=='F_0004'}">
+  						<c:when test="${orderList.OD_STATE=='F_0004'}">
    							<p>배송완료</p>
   						</c:when>
-  						<c:when test="${orderList.ORDER_STATE=='F_0005'}">
+  						<c:when test="${orderList.OD_STATE=='F_0005'}">
    							<p>구매확정</p>
   						</c:when>
-  						<c:when test="${orderList.ORDER_STATE=='F_0006'}">
+  						<c:when test="${orderList.OD_STATE=='F_0006'}">
    							<p>취소완료</p>
   						</c:when>
 					</c:choose>

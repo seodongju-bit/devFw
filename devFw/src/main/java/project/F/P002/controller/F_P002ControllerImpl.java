@@ -68,7 +68,22 @@ public class F_P002ControllerImpl   implements F_P002Controller {
 
 		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("content", request.getParameter("contents"));
-		System.out.println(request.getParameter("contents"));
+//		System.out.println(">>>>"+request.getParameter("contents"));
+		return mav;
+	}
+	
+	@RequestMapping(value="/sellItemsReview.do" ,method = { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView sellItemsReview(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = getViewName(request);
+		viewName = "sellItemsReview";
+		Map<String, Object> searchMap = new HashMap<String, Object>();
+		List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
+		
+		searchMap.put("sell_number", request.getParameter("sell_number"));
+		result = f_P002Service.searchReview(searchMap);
+		ModelAndView mav = new ModelAndView(viewName);
+		mav.addObject("reviewList" , result);
+		System.out.println(">>>>"+result);
 		return mav;
 	}
 	

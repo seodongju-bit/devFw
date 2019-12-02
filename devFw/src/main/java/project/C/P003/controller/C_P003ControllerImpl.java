@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import project.C.P001.vo.PagingVO;
+
 import project.C.P003.service.C_P003Service;
 import project.C.P003.vo.C_P003VO;
 import project.C.P003.vo.PageVO;
@@ -32,10 +32,7 @@ public class C_P003ControllerImpl implements C_P003Controller {
 	private C_P003Service C_P003Service;
 	@Autowired
 	C_P003VO C_P003VO;
-	 @Value("${uploadFilePath}")
-	   private String uploadFilePath;
-	   @Value("${downloadFilePath}")
-	   private String downloadFilePath;
+	
 	
 	@Override
 	@RequestMapping(value="/notice.do" ,method = {RequestMethod.GET, RequestMethod.POST})
@@ -123,17 +120,15 @@ public class C_P003ControllerImpl implements C_P003Controller {
 	
 	
 
-
 	@Override
-	@RequestMapping(value="/noticetotal.do" ,method = {RequestMethod.GET, RequestMethod.POST})
-	public ModelAndView noticetotal(PagingVO vo 
+	@RequestMapping(value="/questions.do" ,method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView questions(PageVO vo1 
 			, @RequestParam(value="nowPage", required=false)String nowPage
 			, @RequestParam(value="cntPerPage", required=false)String cntPerPage, 
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String viewName = "noticetotal";
-		
-		int total = C_P003Service.countBoard();
-		System.out.println("service실행"+total);
+		String viewName = "questions";
+		int totals = C_P003Service.countBoard();
+		System.out.println("컨트롤러"+totals);
 		if (nowPage == null && cntPerPage == null) {
 			nowPage = "1";
 			cntPerPage = "5";
@@ -144,13 +139,13 @@ public class C_P003ControllerImpl implements C_P003Controller {
 		}
 
 		
-			vo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+			vo1 = new PageVO(totals, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
 			
 		
-		List totalList = C_P003Service.total(vo);
+		List questionList = C_P003Service.listquestion(vo1);
 		ModelAndView mavw4 = new ModelAndView(viewName);
-		mavw4.addObject("paging", vo);    
-		mavw4.addObject("totalList", totalList);
+		mavw4.addObject("page", vo1);    
+		mavw4.addObject("questionList", questionList);
 		return mavw4;
 	}
 
@@ -158,26 +153,7 @@ public class C_P003ControllerImpl implements C_P003Controller {
 
 
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 
 	private String getViewName(HttpServletRequest request) throws Exception {
@@ -210,6 +186,13 @@ public class C_P003ControllerImpl implements C_P003Controller {
 		}
 		return viewName;
 	}
+
+
+
+
+
+
+	
 
 
 

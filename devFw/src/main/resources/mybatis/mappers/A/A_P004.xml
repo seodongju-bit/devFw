@@ -61,14 +61,14 @@
 
 	<select id="orderList" resultMap="orderListResult" parameterType="java.util.Map">
       <![CDATA[
-         select (DENSE_RANK() OVER(order by order_date DESC, od.order_number DESC)) rownums, o.order_number,od.sell_number, order_date ,sell_price, sell_title, sell_thumbnail, order_state
+         select (DENSE_RANK() OVER(order by order_date DESC, od.order_number DESC)) rownums, o.order_number,od.sell_number, order_date ,sell_price, sell_title, sell_thumbnail, od_state
          from orders o, orderdetail od, productsell ps
          where od.sell_number = ps.sell_number
          and o.order_number = od.order_number
          and o.mem_id = #{mem_id}
       ]]>
 	</select>
-	
+ 	
 	<insert id="takecoupon"  parameterType="makecouponVO">
   <![CDATA[
     	 INSERT INTO mycoupon (co_number, mem_id) 

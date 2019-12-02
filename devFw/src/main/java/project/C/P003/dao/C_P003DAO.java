@@ -10,7 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.dao.DataAccessException;
 import org.springframework.web.servlet.ModelAndView;
 
-import project.C.P001.vo.PagingVO;
+
+import project.C.P003.vo.PageVO;
 
 
 public interface C_P003DAO {
@@ -23,7 +24,7 @@ public interface C_P003DAO {
 
 	public List noticeDetail2(Map<String, Object> dataMap2) throws DataAccessException;
 	
-	public List totalnoticeList(PagingVO vo) throws DataAccessException;
+	public List Allquestions(PageVO vo1) throws DataAccessException;
 	
 	public int countBoard();
 	
