@@ -68,8 +68,8 @@ function make(){
 			url : "${contextPath}/devFw/make.do",
 			data : {	
 				"co_name" : name,
-				"co_enddate" : start,
-				"co_stdate" : end,
+				"co_stdate" : start,
+				"co_enddate" : end,
 				"co_percent" : percent
 			},
 			success : function() {

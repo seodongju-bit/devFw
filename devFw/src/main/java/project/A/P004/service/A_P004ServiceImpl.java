@@ -29,8 +29,8 @@ public class A_P004ServiceImpl implements A_P004Service {
 		return couponList;
 	}	
 	@Override
-	public int couponcheck(String co_number) {
-		return activeDAO.couponcheck(co_number);
+	public int couponcheck(Map<String, Object> check) {
+		return activeDAO.couponcheck(check);
 		
 		
 	}	
@@ -43,7 +43,7 @@ public class A_P004ServiceImpl implements A_P004Service {
 	
 	@Override
 	public List<Map<String, Object>> orderList(Map<String, Object> searchMap) {
-		List<Map<String, Object>> list= activeDAO.orderList(searchMap);
+		List<Map<String, Object>> list= activeDAO.orderList(searchMap);	
 		List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
 		
 		for(int i=0; i<list.size();i++) {
@@ -54,7 +54,9 @@ public class A_P004ServiceImpl implements A_P004Service {
 			result.add(list.get(i));
 		}
 		return result;
+		
 	}
+	
 	@Override
 	public void takecoupon(Map<String, Object> dataMap) throws DataAccessException{
 		activeDAO.takecoupon(dataMap);
@@ -65,5 +67,21 @@ public class A_P004ServiceImpl implements A_P004Service {
 		List couponList = null;
 		couponList = activeDAO.givecoupon();
 		return couponList;
+	}
+	@Override
+	public int coulist(String p_id) throws DataAccessException{
+		return activeDAO.coulist(p_id);
+	}
+	@Override
+	public int baslist(String p_id) throws DataAccessException{
+		return activeDAO.baslist(p_id);
+	}
+	@Override
+	public int mempoint(String p_id) throws DataAccessException{
+		return activeDAO.mempoint(p_id);
+	}
+	@Override
+	public int delcount(String p_id) throws DataAccessException{
+		return activeDAO.delcount(p_id);
 	}
 }

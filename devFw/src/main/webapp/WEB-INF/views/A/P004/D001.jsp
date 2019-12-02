@@ -123,12 +123,13 @@ check {
 	<h1 align="center" >마이페이지</h1>
 
 	<table class="table table-hover" >
+
 		<tr>
 			<th id="My" >My</th>
 			<th>미사용 티켓<br> <a href="#" style="">0장</a></th>
-			<th>배송중<br> <a href="#" style="">0건</a></th>
-			<th>할인쿠폰<br> <a href="#" style="">0장</a></th>
-			<th>포인트<br> <a href="#" style="">0 P </a></th>
+			<th>배송중<br> <a href="#" style="">${del_count}건</a></th>
+			<th>할인쿠폰<br> <a href="coupon.do" style="">${coupon_count}장</a></th>
+			<th>포인트<br> <a href="point.do" style="">${mem_point}P </a></th>
 		</tr>
 		<tr>
 			<td></td>
@@ -137,6 +138,7 @@ check {
 			<td></td>
 			<td></td>
 		</tr>
+		
 	</table>
 	
 	
@@ -218,13 +220,6 @@ check {
 
 
 
-	<div class="container" align="center" style="max-width:92%;">
-		<ul class="pagination">
-			<li><a href="#"><</a></li>
-			<li><a href="#">></a></li>
-		</ul>
-	</div>
-
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script src="../devFw/resources/js/bootstrap.min.js"></script>
 
@@ -275,7 +270,7 @@ check {
 			</tr>
 			<tr>
 				<td style="background-color: #000000;"><a href="basket.do"><strong
-						style="color: white;">장바구니 ▶ 0개</strong></a></td>
+						style="color: white;">장바구니 ▶${basket_count}개</strong></a></td>
 			</tr>
 			<tr>
 				<td style="background-color: #000000;"><a href="#"><strong

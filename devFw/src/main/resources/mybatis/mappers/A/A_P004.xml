@@ -95,9 +95,42 @@
       SELECT COUNT(*) FROM mycoupon
       WHERE
           co_number = #{co_number} 
+          and
+          mem_id = #{mem_id}
            ]]> 
 </select>
-	
-	
+
+<select id="coulist" parameterType="String" resultType="Integer">
+	<![CDATA[
+      SELECT COUNT(*) FROM mycoupon
+      WHERE
+          mem_id = #{mem_id} 
+           ]]> 
+</select>
+
+<select id="baslist" parameterType="String" resultType="Integer">
+	<![CDATA[
+      SELECT COUNT(*) FROM basket2
+      WHERE
+          mem_id = #{mem_id} 
+           ]]> 
+</select>
+
+<select id="mempoint" parameterType="String" resultType="Integer">
+	<![CDATA[
+      select mem_point
+         from members 
+         where mem_id = #{mem_id}
+           ]]> 
+</select>
+
+<select id="delcount" parameterType="String" resultType="Integer">
+	<![CDATA[
+      SELECT COUNT(*) FROM orders
+      WHERE
+          mem_id = #{mem_id} 
+           ]]> 
+</select>
+
 	
 	</mapper>
