@@ -378,7 +378,6 @@ $(document).ready(function(){
 });
 
 	function fn_coupon(){
-		
 		var _isLogOn=document.getElementById("isLogOn");
 		var isLogOn=_isLogOn.value;
 		
@@ -386,7 +385,8 @@ $(document).ready(function(){
 			alert("로그인 후 조회가 가능합니다.");
 			location.href="${contextPath}/signinpage.do";
 		}else{
-			location.href="${contextPath}/coupon.do";
+			
+			location.href="${contextPath}/givecoupon.do";
 		}
 	}
 

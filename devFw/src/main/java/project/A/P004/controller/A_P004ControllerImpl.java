@@ -44,9 +44,10 @@ public class A_P004ControllerImpl   implements A_P004Controller {
 		searchMap.put("mem_id", p_id);
 		
 		resultList = activeService.orderList(searchMap);
+		//System.out.println();
 		//List membersList = memberService.listMembers();
 		ModelAndView mav = new ModelAndView(viewName);
-		System.out.println("orderList"+resultList);
+		//System.out.println("날짜"+resultList.get(0).get("SELL_DATE"));
 		mav.addObject("orderList", resultList);
 		return mav;
 	}
@@ -117,6 +118,52 @@ public class A_P004ControllerImpl   implements A_P004Controller {
         resultMap.put("Data", data);
         
         return resultMap;
+	}
+	
+	@Override
+	@RequestMapping(value="/givecoupon.do" ,method = RequestMethod.GET)
+	public ModelAndView givecoupon(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = getViewName(request);
+		viewName = "givecoupon";
+		HttpSession session = request.getSession();
+		String mem_id = (String)session.getAttribute("mem_id");
+		if(mem_id == null) {
+			viewName = "redirect:main.do";
+			ModelAndView mav = new ModelAndView(viewName);
+			return mav;
+		}
+		List couponsList = activeService.givecoupon();
+		System.out.println(couponsList);
+		ModelAndView mav = new ModelAndView(viewName);
+		mav.addObject("couponsList", couponsList);
+		return mav;
+	}
+	
+	@Override
+	@RequestMapping(value="/takecoupon.do", method = {RequestMethod.GET, RequestMethod.POST})
+	@ResponseBody
+	public Map<String, Object> takecoupon(HttpServletRequest request, HttpServletResponse response) throws Exception{
+		request.setCharacterEncoding("utf-8");
+		Map<String, Object> dataMap = new HashMap<String, Object>(); // 검색조건
+		Map<String, Object> resultMap = new HashMap<String, Object>(); // 조회결과
+		String co_number = request.getParameter("co_number");
+		HttpSession session = request.getSession();
+		String mem_id = (String)session.getAttribute("mem_id");
+		int count = 0;
+		count = activeService.couponcheck(co_number);
+		// 검색조건설정
+		dataMap.put("mem_id", mem_id);
+		dataMap.put("co_number", co_number);
+		resultMap.put("cnt", count);
+		try {
+			activeService.takecoupon(dataMap);
+			resultMap.put("error_yn", "N");	
+		} catch (Exception e) {
+			resultMap.put("error_yn", "Y");
+			resultMap.put("error_text", "�����߻�");
+			e.printStackTrace();
+		}		
+		return resultMap;
 	}
 	
 	

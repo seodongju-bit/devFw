@@ -33,7 +33,7 @@
 <td>${coupon.co_number}</td>
 <td>${coupon.co_name}</td>
 <td>${coupon.co_stdate}~${coupon.co_enddate}</td>
-<td>${coupon.co_sale}${coupon.co_percent}</td>
+<td>${coupon.co_percent}</td>
 </tr>
 </c:forEach>
 

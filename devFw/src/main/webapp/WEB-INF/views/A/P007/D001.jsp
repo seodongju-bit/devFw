@@ -54,8 +54,8 @@ margin-left: 5px;
 			{Header:"상태",Type:"Status",SaveName:"STATUS",MinWidth:30, Align:"Center",Edit:0},
 			{Header:"번호",Type:"Text",SaveName:"co_number",MinWidth:150,Align:"Center",Edit:0},
 			{Header:"이름",Type:"Text",SaveName:"co_name",MinWidth:150,Align:"Center",Edit:0},
-			{Header:"지급날자",Type:"Date",SaveName:"co_stdate",MinWidth:150,KeyField:1 ,MultiLineText:1,Align:"Center",Edit:0},			
-			{Header:"마감날자",Type:"Date",SaveName:"co_enddate",MinWidth:150,KeyField:1 ,MultiLineText:1, Wrap:1,Align:"Center",Edit:0},
+			{Header:"지급날자",Type:"Date",SaveName:"co_stdate",MinWidth:150,KeyField:1 ,MultiLineText:1,Align:"Center"},			
+			{Header:"마감날자",Type:"Date",SaveName:"co_enddate",MinWidth:150,KeyField:1 ,MultiLineText:1, Wrap:1,Align:"Center"},
 			{Header:"할인금액",Type:"Text",SaveName:"co_percent",MinWidth:105,Align:"Center"},
 			{Header:"삭제",Type:"DelCheck",Width:60,SaveName:"sDelete",Align:"Center"}
 			

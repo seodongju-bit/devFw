@@ -36,7 +36,26 @@ public class A_P004DAOImpl implements A_P004DAO {
 	public List<Map<String, Object>> orderList(Map<String, Object> searchMap) {
 		System.out.println("mypage dao도착"+searchMap);
 		//orders 테이블 정리되면 수정,  일단 orderdetail 다 뽑아서 감
-		
 		return sqlSession.selectList("mapper.active.orderList",searchMap);
+	}
+	
+	@Override
+	public int takecoupon(Map<String, Object> dataMap) throws DataAccessException {
+	int result =  sqlSession.insert("mapper.active.takecoupon", dataMap);
+		return result;
+		
+	}
+	
+	@Override
+	public List givecoupon() throws DataAccessException {
+		List<A_P004VO> couponList = null;
+		couponList = sqlSession.selectList("mapper.active.givecoupon");
+		System.out.println(couponList);
+		return couponList;
+	}
+
+	@Override
+	public int couponcheck(String co_number) {
+		return sqlSession.selectOne("mapper.active.countcoupon", co_number);
 	}
 }
