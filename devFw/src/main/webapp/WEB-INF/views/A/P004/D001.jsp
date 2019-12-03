@@ -123,12 +123,13 @@ check {
 	<h1 align="center" >마이페이지</h1>
 
 	<table class="table table-hover" >
+
 		<tr>
 			<th id="My" >My</th>
 			<th>미사용 티켓<br> <a href="#" style="">0장</a></th>
-			<th>배송중<br> <a href="#" style="">0건</a></th>
-			<th>할인쿠폰<br> <a href="#" style="">0장</a></th>
-			<th>포인트<br> <a href="#" style="">0 P </a></th>
+			<th>배송중<br> <a href="#" style="">${del_count}건</a></th>
+			<th>할인쿠폰<br> <a href="coupon.do" style="">${coupon_count}장</a></th>
+			<th>포인트<br> <a href="point.do" style="">${mem_point}P </a></th>
 		</tr>
 		<tr>
 			<td></td>
@@ -137,6 +138,7 @@ check {
 			<td></td>
 			<td></td>
 		</tr>
+		
 	</table>
 	
 	
@@ -146,7 +148,7 @@ check {
 
 	<table class="table table-hover">
 		<tr>
-			<!-- <th colspan="3"> <input type="button" class="btn btn-default" value="전체"> </th> -->
+
 			<th colspan="3">
 				<div class="container">
 					<ul class="nav nav-tabs">
@@ -184,22 +186,22 @@ check {
 				</td>
 				<td>
 					<c:choose>
-  						<c:when test="${orderList.ORDER_STATE=='F_0001'}">
+  						<c:when test="${orderList.OD_STATE=='F_0001'}">
 							<p>결제준비중</p>
   						</c:when>
- 						<c:when test="${orderList.ORDER_STATE=='F_0002'}">
+ 						<c:when test="${orderList.OD_STATE=='F_0002'}">
 							<p>결제완료</p>
   						</c:when>
-  						<c:when test="${orderList.ORDER_STATE=='F_0003'}">
+  						<c:when test="${orderList.OD_STATE=='F_0003'}">
      						<p>배송중</p>
   						</c:when>
-  						<c:when test="${orderList.ORDER_STATE=='F_0004'}">
+  						<c:when test="${orderList.OD_STATE=='F_0004'}">
    							<p>배송완료</p>
   						</c:when>
-  						<c:when test="${orderList.ORDER_STATE=='F_0005'}">
+  						<c:when test="${orderList.OD_STATE=='F_0005'}">
    							<p>구매확정</p>
   						</c:when>
-  						<c:when test="${orderList.ORDER_STATE=='F_0006'}">
+  						<c:when test="${orderList.OD_STATE=='F_0006'}">
    							<p>취소완료</p>
   						</c:when>
 					</c:choose>
@@ -217,13 +219,6 @@ check {
 	</table>
 
 
-
-	<div class="container" align="center" style="max-width:92%;">
-		<ul class="pagination">
-			<li><a href="#"><</a></li>
-			<li><a href="#">></a></li>
-		</ul>
-	</div>
 
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script src="../devFw/resources/js/bootstrap.min.js"></script>
@@ -275,7 +270,7 @@ check {
 			</tr>
 			<tr>
 				<td style="background-color: #000000;"><a href="basket.do"><strong
-						style="color: white;">장바구니 ▶ 0개</strong></a></td>
+						style="color: white;">장바구니 ▶${basket_count}개</strong></a></td>
 			</tr>
 			<tr>
 				<td style="background-color: #000000;"><a href="#"><strong

@@ -31,6 +31,10 @@
 		<result property="option_quantity" column="option_quantity" />
 	</resultMap>
 	
+	<resultMap id="F_P002Result03" type="java.util.Map">
+		<result property="sell_number" column="sell_number" />
+	</resultMap>
+	
 	<select id="searchItem" resultMap="F_P002Result01" parameterType="java.util.Map"> 
       <![CDATA[
          select sell_number, ps.pro_number, pro_name, sell_price, sell_score, sell_contents, sell_contents, sell_total
@@ -52,6 +56,17 @@
 		</where>
 		 -->
 	</select>
+	
+	<select id="searchReview" resultMap="F_P002Result03" parameterType="java.util.Map"> 
+      <![CDATA[
+         select *
+         from review
+         where sell_number = #{sell_number}
+         order by review_stdate desc
+        
+      ]]>
+	</select>
+	
 	
 	<select id="searchOption" resultMap="F_P002Result02" parameterType="java.util.Map"> 
       <![CDATA[

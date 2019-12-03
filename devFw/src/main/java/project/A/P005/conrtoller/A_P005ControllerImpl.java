@@ -70,17 +70,6 @@ public class A_P005ControllerImpl   implements A_P005Controller {
 		return mav;
 	}
 
-//	@Override
-//	@RequestMapping(value="/basket/removeBasket.do" ,method = { RequestMethod.GET, RequestMethod.POST})
-//	public ModelAndView removeBasket(@RequestParam("mem_no") String mem_no,
-//			           HttpServletRequest request, HttpServletResponse response) throws Exception{
-//		request.setCharacterEncoding("utf-8");
-//		basketService.removeBasket(mem_no);
-//		System.out.println("고객번호"+mem_no);
-//		
-//		ModelAndView mav = new ModelAndView("redirect:/basket.do");
-//		return mav;
-//	}
 	
 	@Override
 	@RequestMapping(value="/basket/removeBasket.do" ,method = { RequestMethod.GET, RequestMethod.POST})
@@ -93,7 +82,6 @@ public class A_P005ControllerImpl   implements A_P005Controller {
 		String ba_color = request.getParameter("ba_color");
 		String ba_size = request.getParameter("ba_size");
 		
-/*		String [] ba_siz = request.getParameterValues(ba_size);*/
 		
 		Map<String, Object> dataMap = new HashMap<String, Object>();
 		Map<String, Object> resultMap = new HashMap<String, Object>();
@@ -114,24 +102,6 @@ public class A_P005ControllerImpl   implements A_P005Controller {
 		return resultMap;
 	}
 		
-//	@Override
-//	@RequestMapping(value="/basket/updateBasket.do" ,method = { RequestMethod.GET, RequestMethod.POST})
-//	public ModelAndView updateBasket( @RequestParam("mem_no") String mem_no, @RequestParam("ba_quantity") String ba_quantity,
-//			           HttpServletRequest request, HttpServletResponse response) throws Exception{
-//		request.setCharacterEncoding("utf-8");
-//		System.out.println("고객번호="+mem_no);
-//		System.out.println("상품개수="+ba_quantity);
-//		Map dataMap = new HashMap();
-//		dataMap.put("mem_no", mem_no);
-//		dataMap.put("ba_quantity", ba_quantity);
-//		System.out.println(dataMap);
-//		System.out.println("333333333333333333333333333" + ba_quantity);
-//		basketService.updateBasket(dataMap);
-//		ModelAndView mav = new ModelAndView("redirect:/basket.do");
-//		return mav;
-//	}	
-		
-	
 	@Override
 	@RequestMapping(value="/basket/updateBasket.do" ,method = { RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody
@@ -163,22 +133,6 @@ public class A_P005ControllerImpl   implements A_P005Controller {
 		return resultMap;
 	}
 		
-	
-	
-	
-	
-	/*@RequestMapping(value = "/basket/*Form.do", method =  { RequestMethod.GET, RequestMethod.POST})
-	private ModelAndView form(@RequestParam(value= "result", required=false) String result,
-						       HttpServletRequest request, 
-						       HttpServletResponse response) throws Exception {
-		//String viewName = getViewName(request);
-		String viewName = (String)request.getAttribute("viewName");
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("result",result);
-		mav.setViewName(viewName);
-		return mav;
-	}*/
-	
 
 	private String getViewName(HttpServletRequest request) throws Exception {
 		String contextPath = request.getContextPath();

@@ -80,6 +80,7 @@ public class D_P001ControllerImpl   implements D_P001Controller {
 		String mem_id = (String)session.getAttribute("mem_id");
 		//mem_id, 시간, 리뷰번호 생성, 제품번호
 		resultMap.put("mem_id", mem_id);
+		resultMap.put("review_title", request.getParameter("review_title"));
 		resultMap.put("sell_number", request.getParameter("sell_number"));
 		//resultMap.put("pro_number", request.getParameter("pro_number"));
 		resultMap.put("review_pdscore", request.getParameter("review_pdscore"));

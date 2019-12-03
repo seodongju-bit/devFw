@@ -32,7 +32,7 @@ body{
 	float:right;
 	
 }
-#pro_number{
+#pro_numberView{
 	float:right;
 	width:65%;	
 }
@@ -335,9 +335,11 @@ function itemDelete(id){
 	<div class="form-group">
 		<label class="productLabel"><p class="innerDiv" >제품번호</p>
 		<button type="button" class="btn btn-default"  id="pro_num_search" onclick="proNumSearch()">제품번호 찾기</button>
-		<input type="text" class="form-control" id="pro_number" name="pro_number" readonly autocomplete="off" />
+		<input type="text" class="form-control" id="pro_numberView" name="pro_numberView" readonly autocomplete="off" />
+		<input type="hidden"  id="pro_number" name="pro_number" />
 		</label>
 	</div>
+	
 	<div class="form-group">
 		<label class="productLabel"><p class="innerDiv" >제목</p>
 		<input type="text" class="form-control" id="sell_title" name="sell_title" /></label>

@@ -15,6 +15,10 @@ public interface A_P004DAO {
 	 public List<Map<String, Object>> orderList(Map<String, Object> searchMap);
 	 public int takecoupon(Map<String, Object> dataMap) throws DataAccessException;
 	 public List givecoupon() throws DataAccessException;
-	 public int couponcheck(String co_number);
+	 public int couponcheck(Map<String, Object> check);
+	 public int coulist(String p_id);
+	 public int baslist(String p_id);
+	 public int mempoint(String p_id);
+	 public int delcount(String p_id);
 }
 

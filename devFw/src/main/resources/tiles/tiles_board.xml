@@ -71,6 +71,11 @@
       <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
    </definition>
    
+	<definition template="/WEB-INF/views/common/layout2.jsp" name="emptyLayout">
+		<put-attribute name="title" value=""/>
+		<put-attribute name="body" value=""/>
+		<put-attribute name="footer" value=""/>
+	</definition>
    <!-- 레이아웃 페이지 구분 -->
    
    <definition name="signinpage" extends="baseLayout3">
@@ -245,10 +250,27 @@
    <definition name="sellItems" extends="itemLayout">
       <put-attribute name="title" value="상품페이지" />
       <put-attribute name="body" value="/WEB-INF/views/F/P002/D001.jsp" />
-      <put-attribute name="bodyDetail" value="/WEB-INF/views/F/P002/D002.jsp" />
    </definition> 
    
+   <definition name="sellItemsReview" extends="emptyLayout">
+      <put-attribute name="title" value="해당상품리뷰" />
+      <put-attribute name="body" value="/WEB-INF/views/F/P002/D003.jsp" />
+   </definition> 
    
+	<definition name="itemsInfoLoad" extends="emptyLayout">
+		<put-attribute name="title" value="상품상세내용"/>
+		<put-attribute name="body" value="/WEB-INF/views/F/P002/D002.jsp"/>
+	</definition>
+
+	<definition name="sellerInfo" extends="emptyLayout">
+		<put-attribute name="title" value="판매자정보"/>
+		<put-attribute name="body" value=""/>
+	</definition>
+	
+	<definition name="sellerChat" extends="emptyLayout">
+		<put-attribute name="title" value="판매자와채팅"/>
+		<put-attribute name="body" value="/WEB-INF/views/A/P006/D002_chat.jsp"/>
+	</definition>
 
     <definition name="notice" extends="noticeLayout">
       <put-attribute name="title" value="공지사항페이지" />

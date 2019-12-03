@@ -57,12 +57,12 @@ span{
 #editor{
 	float:center;
 	position:relative;
-	width: 729px;
+	width: 801px;
 	height: 350px;
 }
 #editorBox{
 	position:relative;
-	left:39px;
+	left:43px;
 }
 
 
@@ -165,7 +165,7 @@ ${sell_title }
 <div class="reviewBox">
 	<form name="reviewEnrollment" method="post"  accept-charset="UTF-8" >
 		<div  class="titleBox" ><span>제목</span>
-		<input type="text" id="inputTitle" class="form-control" id="title"></div>
+		<input type="text" id="inputTitle" name="review_title" class="form-control" id="title"></div>
 		<div  class="titleBox" ><span>제품평가</span>
 		<span id="product_grade">
 			<a></a>

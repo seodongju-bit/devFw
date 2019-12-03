@@ -321,7 +321,7 @@
      </c:if>
       	<td><br>
       		<a href="${contextPath}/sellItems.do?sell_no=${main.sell_number}">
-      			<img id="itemsImg" style="width:274px; height:400px; min-width:274px; min-height:400px; overflow:hidden;" src="${contextPath}/${main.sell_thumbnail}">
+      			<img id="itemsImg" style="width:274px;  overflow:hidden;" src="${contextPath}/${main.sell_thumbnail}">
       		</a>
 	   	<br>
 	   		<a style="text-aling:center;" href="${contextPath}/sellItems.do?sell_no=${main.sell_number}">

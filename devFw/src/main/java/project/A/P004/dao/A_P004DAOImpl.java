@@ -55,7 +55,24 @@ public class A_P004DAOImpl implements A_P004DAO {
 	}
 
 	@Override
-	public int couponcheck(String co_number) {
-		return sqlSession.selectOne("mapper.active.countcoupon", co_number);
+	public int couponcheck(Map<String, Object> check) throws DataAccessException {
+		return sqlSession.selectOne("mapper.active.countcoupon", check);
+	}
+
+	@Override
+	public int coulist(String p_id) throws DataAccessException {
+		return sqlSession.selectOne("mapper.active.coulist", p_id);
+	}
+	@Override
+	public int baslist(String p_id) throws DataAccessException {
+		return sqlSession.selectOne("mapper.active.baslist", p_id);
+	}
+	@Override
+	public int mempoint(String p_id) throws DataAccessException {
+		return sqlSession.selectOne("mapper.active.mempoint", p_id);
+	}
+	@Override
+	public int delcount(String p_id) throws DataAccessException {
+		return sqlSession.selectOne("mapper.active.delcount", p_id);
 	}
 }

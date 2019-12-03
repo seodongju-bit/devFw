@@ -29,6 +29,7 @@ public interface F_P002Service {
 	public List<String> predictive(String keyword) throws Exception;
 	public List<F_P002VO> searchList(SearchVO searchVO) throws Exception;
 	public int countSearch(SearchVO searchVO) throws Exception;
+	public List<Map<String, Object>> searchReview(Map<String, Object> searchMap);
 
 
 }
