@@ -56,9 +56,9 @@ a:hover {
 <div id="wrap">
 	<div id="container">
 	<!-- <button type="button" class="btn black mr5" onclick="javascript:goBoardWrite();">1:1문의하기</button>-->
-	      <a href="#" target="_blank">더 보기</a>
+	      <a href="${contextPath}/questions1.do" target="_blank">더 보기</a>
 		<div class="inner">		
-			<h2>신고사항</h2>			
+			<h2>신고사항</h2>			     
 			<form id="boardForm" name="boardForm">
 				<input type="hidden" id="function_name" name="function_name" value="getBoardList" />
 				<input type="hidden" id="current_page_no" name="current_page_no" value="1" />
@@ -101,7 +101,7 @@ a:hover {
 				</table>
 				
 		
-				
+				             
 			</form>			
 			<!-- <div class="btn_right mt15">
 				<button type="button" class="btn black mr5" onclick="javascript:goBoardWrite();">작성하기</button>

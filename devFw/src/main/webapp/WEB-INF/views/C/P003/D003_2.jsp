@@ -72,22 +72,22 @@ margin-top: 50px;
       30% {color: yellow;}
       100% {color:red; font-weight: bold;} */
     }
+        
 
-
-</style>
+</style>      
 
 <title>게시판 목록</title>
 <script>
 function selChange() {
 	var sel = document.getElementById('cntPerPage').value;
-	location.href="${contextPath}/questions.do?nowPage=${page.nowPage}&cntPerPage="+sel;
+	location.href="${contextPath}/questions1.do?nowPage=${page.nowPage}&cntPerPage="+sel;
 }
 </script>
 
 </head>
 <body>           
 <form name="frm" method="post" encType="UTF-8">
-<h1 align="center">문의사항</h1>
+<h1 align="center">신고사항</h1>
 <div class="event">
 
 <div style="float: right;">
@@ -113,26 +113,29 @@ function selChange() {
 				<table class="table table-hover" id="evnet_td">              
 					<colgroup>
 						<col width="10%" />
-						<col width="40%" />
-						<col width="40%" />
+						<col width="30%" />
+						<col width="30%" />
 						<col width="10%" />
-					
+					    <col width="20%" />    
 					</colgroup>
 					<thead>		
 						<tr>
-							<th>문의번호</th>
-							<th>문의내용</th>
-							<th>문의답변</th>
-							<th>문의회원</th>
+							<th>신고번호</th>
+							<th>신고내용</th>
+							<th>신고분류</th>
+							<th>신고자</th>
+							<th>신고일자</th>                   
 						</tr>                      
 					</thead>
-					<c:forEach var="question2" items="${questionList}" varStatus='index' >					
+					<c:forEach var="question1" items="${questionList1}" varStatus='index' >					
 					<thead>
-					<tr align="center" onclick="location.href='${contextPath}/questionDetail1.do?qu_number=${question2.qu_number}'">            
-					<td>${question2.qu_number}</td>                      
-					<td>${question2.qu_contents}</td>
-					<td>${question2.qu_answer}</td>
-					<td>${question2.mem_no}</td>                   
+					<tr align="center" onclick="location.href='${contextPath}/questionDetail.do?de_number=${question1.de_number}'">            
+					<td>${question1.de_number}</td>                      
+					<td>${question1.de_contents}</td>
+					<td>${question1.de_division}</td>
+					<td>${question1.mem_no}</td>
+					<td>${question1.de_date}</td>
+					
 				
 					</tr>
 					</thead>                 
@@ -143,7 +146,7 @@ function selChange() {
 				</table>
 				<div style="display: block; text-align: center;">		
 		<c:if test="${page.startPage != 1 }">
-			<a href="${contextPath}/questions.do?nowPage=${page.startPage - 1 }&cntPerPage=${page.cntPerPage}">&lt;</a>
+			<a href="${contextPath}/questions1.do?nowPage=${page.startPage - 1 }&cntPerPage=${page.cntPerPage}">&lt;</a>
 		</c:if>
 		<c:forEach begin="${page.startPage }" end="${page.endPage }" var="p">
 			<c:choose>
@@ -151,12 +154,12 @@ function selChange() {
 					<b>${p }</b>
 				</c:when>
 				<c:when test="${p != page.nowPage }">
-					<a href="${contextPath}/questions.do?nowPage=${p }&cntPerPage=${page.cntPerPage}">${p }</a>
+					<a href="${contextPath}/questions1.do?nowPage=${p }&cntPerPage=${page.cntPerPage}">${p }</a>
 				</c:when>
 			</c:choose>                                                                                            
 		</c:forEach>
 		<c:if test="${page.endPage != page.lastPage}">
-			<a href="${contextPath}/questions.do?nowPage=${page.endPage+1 }&cntPerPage=${page.cntPerPage}">&gt;</a>
+			<a href="${contextPath}/questions1.do?nowPage=${page.endPage+1 }&cntPerPage=${page.cntPerPage}">&gt;</a>
 		</c:if>
 	</div>   
 				</div>         

@@ -119,6 +119,41 @@ public class C_P003ControllerImpl implements C_P003Controller {
 	}
 	
 	
+	
+	@Override
+	@RequestMapping(value="/questionDetail.do" ,method = { RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView questionDetail(@RequestParam("de_number") String de_number, 
+			           HttpServletRequest request, HttpServletResponse response) throws Exception{
+		request.setCharacterEncoding("utf-8");
+		String viewName = "questionDetail";
+		Map<String, Object> dataMap3 = new HashMap();
+		Map<String, Object> resultMap3 = new HashMap();
+		dataMap3.put("de_number", de_number);
+		List<Map<String,Object>> noticeList5 = C_P003Service.questionDetail(dataMap3);
+		resultMap3 = noticeList5.get(0);
+		System.out.println("controller실행"+noticeList5);
+		ModelAndView mavw5 = new ModelAndView(viewName);
+		mavw5.addObject("resultMap3", resultMap3);                  
+		return mavw5;
+	}
+	
+	
+	@Override
+	@RequestMapping(value="/questionDetail1.do" ,method = { RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView questionDetail1(@RequestParam("qu_number") String qu_number, 
+			           HttpServletRequest request, HttpServletResponse response) throws Exception{
+		request.setCharacterEncoding("utf-8");
+		String viewName = "questionDetail1";
+		Map<String, Object> dataMap4 = new HashMap();
+		Map<String, Object> resultMap4 = new HashMap();
+		dataMap4.put("qu_number", qu_number);
+		List<Map<String,Object>> noticeList6 = C_P003Service.questionDetail1(dataMap4);
+		resultMap4 = noticeList6.get(0);
+		System.out.println("controller실행"+noticeList6);
+		ModelAndView mavw5 = new ModelAndView(viewName);
+		mavw5.addObject("resultMap4", resultMap4);                  
+		return mavw5;             
+	}
 
 	@Override
 	@RequestMapping(value="/questions.do" ,method = {RequestMethod.GET, RequestMethod.POST})
@@ -150,6 +185,39 @@ public class C_P003ControllerImpl implements C_P003Controller {
 	}
 
 
+	
+	@Override
+	@RequestMapping(value="/questions1.do" ,method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView questions1(PageVO vo1 
+			, @RequestParam(value="nowPage", required=false)String nowPage
+			, @RequestParam(value="cntPerPage", required=false)String cntPerPage, 
+			HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = "questions1";
+		int totals1 = C_P003Service.countBoard();
+		System.out.println("컨트롤러"+totals1);
+		if (nowPage == null && cntPerPage == null) {
+			nowPage = "1";
+			cntPerPage = "5";
+		} else if (nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) { 
+			cntPerPage = "5";
+		}
+
+		
+			vo1 = new PageVO(totals1, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+			
+		
+		List questionList1 = C_P003Service.listquestion1(vo1);
+		ModelAndView mavw4 = new ModelAndView(viewName);
+		mavw4.addObject("page", vo1);    
+		mavw4.addObject("questionList1", questionList1);
+		return mavw4;
+	}
+
+
+	
+	
 
 
 

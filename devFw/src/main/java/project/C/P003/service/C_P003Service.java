@@ -18,6 +18,11 @@ public interface C_P003Service {
 	public List<Map<String,Object>> noticeDetail2(Map<String, Object> dataMap2) throws DataAccessException;
 
 	public List listquestion(PageVO vo1) throws DataAccessException;
+	public List listquestion1(PageVO vo1) throws DataAccessException;
 	
+	public List<Map<String,Object>> questionDetail(Map<String, Object> dataMap3) throws DataAccessException;
+	public List<Map<String,Object>> questionDetail1(Map<String, Object> dataMap4) throws DataAccessException;
+	
+
 	public int countBoard();
 }

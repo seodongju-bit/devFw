@@ -59,10 +59,10 @@ function fn_coupon(){
         <li><a href="${contextPath}/questions.do">문의내역 조회</a></li>    
         <li class="nav-header">신고글</li>
         <li><a href="#">신고글 작성</a></li>
-        <li><a href="#">신고글 확인</a></li>
+        <li><a href="${contextPath}/questions1.do">신고글 확인</a></li>
  
   
-      </ul>
+      </ul>              
     </aside>
 	 <br>
 	 <br>

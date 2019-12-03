@@ -72,6 +72,30 @@
  
    </select>
    
+   
+   
+    <select id="questionDetail" parameterType="java.util.Map" resultType="java.util.HashMap"> 
+    <![CDATA[
+        
+   SELECT de_number,mem_no,de_division,de_date,de_contents
+   FROM declarations 
+   WHERE de_number=#{de_number}
+           
+        ]]>         
+ 
+   </select>
+   
+   
+     <select id="questionDetail1" parameterType="java.util.Map" resultType="java.util.HashMap"> 
+    <![CDATA[
+        
+   SELECT qu_number,qu_contents,qu_answer,mem_no
+   FROM questions 
+   WHERE qu_number=#{qu_number}
+           
+        ]]>         
+ 
+   </select>
 
    <select id="countBoard" resultType="int">
 	<![CDATA[
@@ -102,12 +126,26 @@
   
   
   
-  
-  
-  
-  
-  
-  
+    <select id="Allquestions1" resultMap="C_P003Result01" >                   
+      <![CDATA[
+        SELECT de_number,mem_no,de_contents,de_division,de_date
+        FROM (
+        SELECT ROWNUM RN, A.* 
+				FROM (
+				SELECT d.de_number,d.mem_no,d.de_contents,d.de_division,d.de_date
+                FROM declarations d, members m
+                WHERE d.mem_no = m.mem_no
+				ORDER BY d.de_number DESC
+				)A
+			)
+	    WHERE RN BETWEEN #{start} AND #{end}
+			      
+      
+      ]]>         
+
+   </select>   
+   
+ 
   
   
   
