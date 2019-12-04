@@ -32,7 +32,7 @@ public interface C_P003DAO {
 	
 	public List questionDetail1(Map<String, Object> dataMap4) throws DataAccessException;
 	
-
+	public void writes(Map<String, Object> dataMap5);
 	
 	public int countBoard();
 	

@@ -132,7 +132,7 @@ function selChange() {
 					<td>${question2.qu_number}</td>                      
 					<td>${question2.qu_contents}</td>
 					<td>${question2.qu_answer}</td>
-					<td>${question2.mem_no}</td>                   
+					<td>${question2.mem_id}</td>                   
 				
 					</tr>
 					</thead>                 

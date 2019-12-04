@@ -105,6 +105,13 @@ public class C_P003ServiceImpl implements C_P003Service {
 		return questionList1;  
 	}
 
+	@Override
+	public void questionwrite(Map<String, Object> dataMap5) throws DataAccessException {
+		
+		C_P003DAO.writes(dataMap5);
+	}
+	
+
 
 
 
