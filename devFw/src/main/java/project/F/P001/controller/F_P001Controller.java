@@ -17,7 +17,7 @@ import project.F.P001.vo.PagingVO;
 
 public interface F_P001Controller {
 	
-	ModelAndView reviewRanking(HttpServletRequest request, HttpServletResponse response) throws Exception;
+//	ModelAndView reviewRanking(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	ModelAndView memberReview(PagingVO vo, String nowPage, String cntPerPage, HttpServletRequest request,
 			HttpServletResponse response) throws Exception;
 	ModelAndView eventProduct(HttpServletRequest request, HttpServletResponse response) throws Exception;

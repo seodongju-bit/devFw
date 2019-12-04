@@ -71,7 +71,7 @@
       <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
    </definition>
    
-	<definition template="/WEB-INF/views/common/layout2.jsp" name="emptyLayout">
+	<definition name="emptyLayout" template="/WEB-INF/views/common/layout2.jsp" >
 		<put-attribute name="title" value=""/>
 		<put-attribute name="body" value=""/>
 		<put-attribute name="footer" value=""/>
@@ -224,7 +224,7 @@
 
 	<definition name="reviewRanking" extends="baseLayout2">
       <put-attribute name="title" value="리뷰랭킹 페이지" />         
-      <put-attribute name="body" value="/WEB-INF/views/F/P001/D001.jsp" />
+      <put-attribute name="body" value="/WEB-INF/views/F/P002/reviewRanking.jsp" />
    </definition>
 
 	<definition name="memberReview" extends="baseLayout4">
@@ -252,8 +252,10 @@
       <put-attribute name="body" value="/WEB-INF/views/F/P002/D001.jsp" />
    </definition> 
    
+   
+   
    <definition name="sellItemsReview" extends="emptyLayout">
-      <put-attribute name="title" value="해당상품리뷰" />
+      <put-attribute name="title" value="상품상세리뷰" />
       <put-attribute name="body" value="/WEB-INF/views/F/P002/D003.jsp" />
    </definition> 
    
@@ -262,9 +264,14 @@
 		<put-attribute name="body" value="/WEB-INF/views/F/P002/D002.jsp"/>
 	</definition>
 
-	<definition name="sellerInfo" extends="emptyLayout">
-		<put-attribute name="title" value="판매자정보"/>
-		<put-attribute name="body" value=""/>
+	<definition name="exchangeInfo" extends="emptyLayout">
+		<put-attribute name="title" value="반품교환정보"/>
+		<put-attribute name="body" value="/WEB-INF/views/F/P002/D004.jsp"/>
+	</definition>
+	
+	<definition name="proOpinion" extends="emptyLayout">
+		<put-attribute name="title" value="상품의견"/>
+		<put-attribute name="body" value="/WEB-INF/views/F/P002/D005.jsp"/>
 	</definition>
 	
 	<definition name="sellerChat" extends="emptyLayout">

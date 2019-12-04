@@ -112,8 +112,11 @@ public class A_P001ControllerImpl implements A_P001Controller {
 				}else {   
 					mav.setViewName("redirect:"+addr2[0]);
 					if(addr2.length==2) {
-						addr2 = addr2[1].split("\\=");
-						mav.addObject(addr2[0], addr2[1]);
+						addr2 = addr2[1].split("\\&");
+						for(int i=0; i<addr2.length; i++) {
+							String[] addr3 = addr2[i].split("\\=");
+							mav.addObject(addr3[0], addr3[1]);
+						}
 					}
 				}
 			}else{
@@ -122,7 +125,7 @@ public class A_P001ControllerImpl implements A_P001Controller {
 				mav.setViewName("redirect:signinpage.do");
 			}
 		}catch(Exception e) {
-
+			System.out.println("catch");
 			mav.setViewName("redirect:main.do");
 			return mav;	
 		}

@@ -67,6 +67,38 @@
       ]]>
 	</select>
 	
+	<select id="searchMonthReview" resultMap="F_P002Result03" parameterType="java.util.Map"> 
+      <![CDATA[
+         select *
+		 from (select *
+         	from review
+         	where sell_number =  #{sell_number}
+         	order by review.review_monthpoint desc)
+		 where rownum <= 5
+      ]]>
+	</select>
+	
+	<select id="searchTotalReview" resultMap="F_P002Result03" parameterType="java.util.Map"> 
+      <![CDATA[
+         select *
+		 from (select *
+         	from review
+         	where sell_number =  #{sell_number}
+         	order by review.review_totalpoint desc)
+		 where rownum <= 5
+      ]]>
+	</select>
+	 
+	
+	
+	<select id="searchReviewInfo" resultMap="F_P002Result03" parameterType="java.util.Map"> 
+      <![CDATA[
+         select *
+		 from review r, members m
+		 where r.mem_id = m.mem_id
+		 and review_number = #{p_id}
+      ]]>
+	</select>
 	
 	<select id="searchOption" resultMap="F_P002Result02" parameterType="java.util.Map"> 
       <![CDATA[
@@ -86,6 +118,10 @@
 		]]>
 	</insert>
  
+
+
+
+
 
 
 	<select id="mainList" resultType="project.F.P002.vo.F_P002VO" parameterType="project.main.paging.MainPagingVO">

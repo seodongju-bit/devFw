@@ -67,4 +67,22 @@ public class F_P002DAOImpl implements F_P002DAO {
 		return sqlSession.selectList("F.P002.searchReview", searchMap);
 	}
 
+	@Override
+	public List<Map<String, Object>> searchMonthReview(Map<String, Object> searchMap) {
+		List<Map<String, Object>> list = sqlSession.selectList("F.P002.searchMonthReview", searchMap);
+		return list;
+	}
+
+	@Override
+	public List<Map<String, Object>> searchTotalReview(Map<String, Object> searchMap) {
+		List<Map<String, Object>> list = sqlSession.selectList("F.P002.searchTotalReview", searchMap);
+		return list;
+	}
+
+	@Override
+	public List<Map<String, Object>> searchReviewInfo(Map<String, Object> searchMap) {
+		List<Map<String, Object>> list = sqlSession.selectList("F.P002.searchReviewInfo", searchMap);
+		return list;
+	}
+
 }

@@ -16,6 +16,7 @@
 }
 #catCategory a{
 	color:gray;
+	margin:0 8px;
 }
 #sellBox{
 	position:relative;
@@ -131,18 +132,18 @@
 	display:block;
 	width:1250px;
 	height:42px;	
-	/*background-color:#FA8258;*/
+/* 	background-color:#FA8258; */
 	margin:0 auto;
+	border-bottom: 1px solid #0174DF;
 	
 }
 #itemsInfoSelect > button{
 	float:left;
 	margin:0 8px;
+	padding: 0px;
 	position:relative;
 	width:180px;
 	height:38px;
-	/*border-left:1px solid #F2F2F2;
-	border-right:1px solid #F2F2F2;*/
 	border-radius: 15px 15px 0 0;
 	font-size:16px;
 }
