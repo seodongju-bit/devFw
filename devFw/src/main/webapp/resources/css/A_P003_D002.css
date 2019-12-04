@@ -41,6 +41,7 @@ font-weight:bold;
   box-shadow: 0 -1px 0 gray inset;
   margin-bottom: 10px;
 }
+.idbox,
 .pwdbox{
 background: rgba(255,255,255,0.1);
   border: none;

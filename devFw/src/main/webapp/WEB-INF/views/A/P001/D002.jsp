@@ -60,9 +60,12 @@
 			});
 	 	
 	 	function fn_searchid(){
-	 		var _email1=$("#mem_email1").val();
-		    var _email2=$("#mem_email2").val();
-	 		if(_email1=='', _email2==''){
+	 		var mem_email1=$("#mem_email1").val();
+		    var mem_email2=$("#mem_email2").val();
+	 		if(mem_email1==''){
+		    	alert("EMAIL을 입력하세요");
+		    	return;
+		    }else if(mem_email2==''){
 		    	alert("EMAIL을 입력하세요");
 		    	return;
 		    }
@@ -71,19 +74,19 @@
 	 			async:false,
 	 			url:"${contextPath}/idsearch.do",
 	 			dataType:"text",
-	 			data:{"mem_email1":_email1, "mem_email2":_email2},
+	 			data:{"mem_email1":mem_email1, "mem_email2":mem_email2},
 	 			success:function (data,textStatus){
-	 			if(data == null){
-	 					alert("존재하지 않는 회원입니다.");
-	 			}else{
-	 				alert(data);	
+	 				if(data != null){
+	 					alert(data.result);
+	 				}else{
+	 				alert("존재하지 않는 회원입니다.");
 	 				}
 	 			},
 	 			error:function(data,textStatus){
 			          alert("에러가 발생했습니다.");
 			       }
 			    });  
-			 }	
+	 	} 
 	 		
 	 	
 	 	
