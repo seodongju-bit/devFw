@@ -40,6 +40,12 @@ public class A_P004ControllerImpl   implements A_P004Controller {
 		viewName = "myPage";
 		HttpSession session = request.getSession();
 		String p_id = (String)session.getAttribute("mem_id");
+		if(p_id==null) {
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("redirect:main.do");
+			return mav;	
+		}
+		
 		Map<String, Object> searchMap = new HashMap<String, Object>();
 		List<Map<String, Object>> resultList = new ArrayList<Map<String, Object>>();
 		int basket_count = 0;
