@@ -84,6 +84,17 @@ public class A_P001ControllerImpl implements A_P001Controller {
 		//mav.addObject("membersList", membersList);
 		return mav;
 	}
+	
+	@Override
+	@RequestMapping(value="/secessionmember.do" ,method = RequestMethod.GET)
+	public ModelAndView secessionmember(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = getViewName(request);
+		viewName = "secessionmember";
+		//List membersList = memberService.listMembers();
+		ModelAndView mav = new ModelAndView(viewName);
+		//mav.addObject("membersList", membersList);
+		return mav;
+	}
 
 	@RequestMapping(value="/login.do" ,method = RequestMethod.POST)
 	public ModelAndView login(@RequestParam Map<String, String> loginMap,HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -95,8 +106,11 @@ public class A_P001ControllerImpl implements A_P001Controller {
 			A_P001VO=a_p001Service.login(loginMap);
 			if(A_P001VO!= null && A_P001VO.getMem_id()!=null){
 				
-				if(A_P001VO.getMem_verify().equals('n')) {
+				if(A_P001VO.getMem_verify().equals("n")) {
 					mav.setViewName("redirect:unauthorizedmember.do");
+					return mav;
+				}else if(A_P001VO.getMem_division().equals("3")) {
+					mav.setViewName("redirect:secessionmember.do");
 					return mav;
 				}
 				HttpSession session=request.getSession();

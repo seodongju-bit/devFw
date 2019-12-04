@@ -29,6 +29,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.github.scribejava.core.model.OAuth2AccessToken;
 
+
 import project.A.P003.service.A_P003Service;
 import project.A.P003.vo.A_P003VO;
 
@@ -66,11 +67,25 @@ public class A_P003ControllerImpl implements A_P003Controller {
 		return mav;
 	}
 	
+	
+	@Override
+	@RequestMapping(value="/Secessionsuccesspage.do" ,method = RequestMethod.GET)
+	public ModelAndView Secessionsuccesspage(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = getViewName(request);
+		viewName = "Secessionsuccesspage";
+		HttpSession session=request.getSession();
+		session.invalidate();		
+		//List membersList = memberService.listMembers();
+		ModelAndView mav = new ModelAndView(viewName);
+		//mav.addObject("membersList", membersList);
+		return mav;
+	}
+	
 	@Override
 	@RequestMapping(value="/memberpwcheckpage.do" ,method = RequestMethod.GET)
 	public ModelAndView memberpwcheckpage(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = getViewName(request);
-		viewName = "memberpwcheckpageㄴ";
+		viewName = "memberpwcheckpage";
 		//List membersList = memberService.listMembers();
 		ModelAndView mav = new ModelAndView(viewName);
 		//mav.addObject("membersList", membersList);
@@ -88,13 +103,11 @@ public class A_P003ControllerImpl implements A_P003Controller {
 		HttpSession session=request.getSession();
 		A_P003VO=(A_P003VO)session.getAttribute("memberInfo");
 		String  mem_id=A_P003VO.getMem_id();
-		if(attribute.equals("tel")){
-			memberMap.put("tel",val[0]);
-		}else if(attribute.equals("email")){
+		if(attribute.equals("mem_email")){
 			val=value.split(",");
-			memberMap.put("email1",val[0]);
-			memberMap.put("email2",val[1]);
-		}else if(attribute.equals("address")){
+			memberMap.put("mem_email1",val[0]);
+			memberMap.put("mem_email2",val[1]);
+		}else if(attribute.equals("mem_address")){
 			val=value.split(",");
 			memberMap.put("mem_zip",val[0]);
 			memberMap.put("mem_address1",val[1]);
@@ -117,6 +130,13 @@ public class A_P003ControllerImpl implements A_P003Controller {
 		resEntity =new ResponseEntity(message, responseHeaders, HttpStatus.OK);
 		return resEntity;
 	}	
+	
+	
+	@RequestMapping(value = "/Secessionmember.do", method = RequestMethod.GET)
+	public String Secessionmember(@RequestParam String mem_id,@RequestParam String mem_pw) throws Exception {
+		a_p003Serivce.Secessionmember(A_P003VO);
+		return "Secessionsuccesspage";
+	}
 	
 
 

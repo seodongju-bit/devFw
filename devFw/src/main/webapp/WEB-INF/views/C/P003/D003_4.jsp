@@ -49,27 +49,27 @@ caption {
 		</colgroup>
 		<caption>게시글 상세</caption>
 		<tbody>             
-		<c:set var="notice3" value="${resultMap2}" />
+		<c:set var="notice4" value="${resultMap4}" />
 			<tr>
 				<th scope="row">문의번호</th>
-				<td>${notice3.QU_NUMBER}</td>
+				<td>${notice4.QU_NUMBER}</td>
 		    </tr>
 		    <tr>
 				<th scope="row">문의내용</th>
-				<td>${notice3.QU_CONTENTS}</td>
+				<td>${notice4.QU_CONTENTS}</td>
 			</tr>
 			<tr>
 				<th scope="row">문의자</th>
-				<td colspan="3">${notice3.MEM_ID}님</td>
+				<td colspan="3">${notice4.MEM_ID}님</td>
 			</tr>                
 			<tr>  
 		       	<th scope="row">답변내용</th>                                        
-				<td colspan="4" id="contents">${notice3.QU_ANSWER}</td>
+				<td colspan="4" id="contents">${notice4.QU_ANSWER}</td>
 			</tr>
-			<button class="btn btn-default"  onclick="location.href='${contextPath}/notice.do'">목록</button>
+			<button class="btn btn-default"  onclick="location.href='${contextPath}/questions.do'">목록</button>
 			<tr></tr>
 			
-			    
+			
 		</tbody>
 		                 
 	</table>

@@ -21,6 +21,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import project.A.P004.service.A_P004Service;
 import project.A.P004.vo.A_P004VO;
+import project.A.P005.vo.A_P005VO;
 
 
 
@@ -41,14 +42,27 @@ public class A_P004ControllerImpl   implements A_P004Controller {
 		String p_id = (String)session.getAttribute("mem_id");
 		Map<String, Object> searchMap = new HashMap<String, Object>();
 		List<Map<String, Object>> resultList = new ArrayList<Map<String, Object>>();
+		int basket_count = 0;
+		int coupon_count = 0;
+		int mem_point = 0;
+		int del_count;
 		searchMap.put("mem_id", p_id);
 		
+		del_count = activeService.delcount(p_id);
+		mem_point = activeService.mempoint(p_id);
+		basket_count = activeService.baslist(p_id);
+		coupon_count = activeService.coulist(p_id);
 		resultList = activeService.orderList(searchMap);
-		//System.out.println();
+		System.out.println("asdfasdfadfasdfasdfasdfasdfas"+mem_point);
 		//List membersList = memberService.listMembers();
 		ModelAndView mav = new ModelAndView(viewName);
 		//System.out.println("날짜"+resultList.get(0).get("SELL_DATE"));
 		mav.addObject("orderList", resultList);
+		mav.addObject("coupon_count",coupon_count);
+		mav.addObject("basket_count",basket_count);
+		mav.addObject("mem_point",mem_point);
+		mav.addObject("del_count",del_count);
+		
 		return mav;
 	}
 	
@@ -77,13 +91,7 @@ public class A_P004ControllerImpl   implements A_P004Controller {
 	public ModelAndView point(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = getViewName(request);
 		viewName = "point";
-//		HttpSession session = request.getSession();
-//		String mem_id = (String)session.getAttribute("mem_id");
-//		System.out.println("session="+mem_id);
-//		List pointList = activeService.listPoint(mem_id);
-//		System.out.println(pointList);
 		ModelAndView mav = new ModelAndView(viewName);
-//		mav.addObject("pointList", pointList);
 		return mav;
 		
 	}
@@ -150,7 +158,10 @@ public class A_P004ControllerImpl   implements A_P004Controller {
 		HttpSession session = request.getSession();
 		String mem_id = (String)session.getAttribute("mem_id");
 		int count = 0;
-		count = activeService.couponcheck(co_number);
+		Map<String, Object> check = new HashMap<String, Object>(); // 검색조건
+		check.put("co_number", co_number);
+		check.put("mem_id", mem_id);
+		count = activeService.couponcheck(check);
 		// 검색조건설정
 		dataMap.put("mem_id", mem_id);
 		dataMap.put("co_number", co_number);

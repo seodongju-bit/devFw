@@ -42,36 +42,38 @@ caption {
 <body>
 <table class="notice_view">              
 		<colgroup>
-			<col width="15%" />  
+			<col width="15%" />
 			<col width="35%" />
 			<col width="15%" />
 			<col width="35%" />
 		</colgroup>
 		<caption>게시글 상세</caption>
 		<tbody>             
-		<c:set var="notice3" value="${resultMap2}" />
+		<c:set var="notice3" value="${resultMap3}" />
 			<tr>
-				<th scope="row">문의번호</th>
-				<td>${notice3.QU_NUMBER}</td>
-		    </tr>
-		    <tr>
-				<th scope="row">문의내용</th>
-				<td>${notice3.QU_CONTENTS}</td>
+				<th scope="row">신고번호</th>
+				<td>${notice3.DE_NUMBER}</td>
+				<th scope="row">신고분류</th>
+				<td>${notice3.DE_DIVISION}</td>
 			</tr>
 			<tr>
-				<th scope="row">문의자</th>
+				
+				<th scope="row">신고일자</th>
+				<td>${notice3.DE_DATE}</td>                               
+			</tr>
+			<tr>
+				<th scope="row">신고자</th>
 				<td colspan="3">${notice3.MEM_ID}님</td>
-			</tr>                
-			<tr>  
-		       	<th scope="row">답변내용</th>                                        
-				<td colspan="4" id="contents">${notice3.QU_ANSWER}</td>
 			</tr>
-			<button class="btn btn-default"  onclick="location.href='${contextPath}/notice.do'">목록</button>
+			<tr>                                         
+				<td colspan="4" id="contents">${notice3.DE_CONTENTS}</td>
+			</tr>
+			<button class="btn btn-default"  onclick="location.href='${contextPath}/questions1.do'">목록</button>
 			<tr></tr>
 			
-			    
+			            
 		</tbody>
-		                 
+		
 	</table>
 
 

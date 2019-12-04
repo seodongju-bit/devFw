@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 <%
 	request.setCharacterEncoding("UTF-8");
@@ -57,26 +57,38 @@ aside {
 }
 
 .price
+
+
 :after
 ,
 .subtotal
+
+
 :after
 ,
 .subtotal-value
+
+
 :after
 ,
 .total-value
+
+
 :after
 ,
 {
 content
+
+
 :
+
  
+
 '
 원
+
+
 ';
-
-
 }
 .subtotal-value, .total-value {
 	text-align: right;
@@ -100,11 +112,15 @@ content
 	padding: 0.625rem 0;
 	width: 100%;
 }
+
+.buybutton {
+	margin-left: auto;
+	margin-right: auto;
+}
 </style>
 <body>
 
-	<form name="frm" method="post" action="./basket/buy.do"
-		encType="UTF-8">
+	<form name="frm" method="post" encType="UTF-8">
 
 
 
@@ -129,37 +145,41 @@ content
 						value="${basketList[index.count-1].ba_quantity}" />
 					<c:set var="sell_number"
 						value="${basketList[index.count-1].sell_number}" />
-						
-<%-- 					<input type="hidden" id="basketSize" value="${fn:length(basket) }"> --%>
+
 
 					<tr>
-						<td class=check style="text-align: center;">
-						<input type="checkbox" name="check" value="" data-cartNum="${index.count}" class="checkSelect" id="check${index.count }">
-						</td>
+						<td class=check style="text-align: center;"><input
+							type="checkbox" name="check" value=""
+							data-cartNum="${index.count}" class="checkSelect"
+							id="check${index.count }"></td>
 						<td class="item" name="src">
 							<div class="product-image">
 								<img src="${basket.sell_thumbnail}" width="120px" height="166px">
-								<input type="hidden" name="thumbnail" id="thumbnail${index.count }"
-									value="${basket.sell_thumbnail}">
+								<input type="hidden" name="thumbnail"
+									id="thumbnail${index.count }" value="${basket.sell_thumbnail}">
 							</div>
 						</td>
 						<td class="product-details" name="product-details"><strong>${basket.sell_title}</strong>
 							<input type="hidden" name="title" value="${basket.sell_title}">
 							<strong><br> <c:choose>
 									<c:when test="${basket.ba_color eq '-1'}">
-										<input type="hidden" name="color" id="color${index.count}" value="${basket.ba_color}">
+										<input type="hidden" name="color" id="color${index.count}"
+											value="${basket.ba_color}">
 									</c:when>
 									<c:otherwise>
 										color : ${basket.ba_color} 
-										<input type="hidden" name="color" id="color${index.count}" value="${basket.ba_color}">
+										<input type="hidden" name="color" id="color${index.count}"
+											value="${basket.ba_color}">
 									</c:otherwise>
 								</c:choose> </strong> <br> <strong> <c:choose>
 									<c:when test="${basket.ba_size eq '-1'}">
-										<input type="hidden" name="size" id="size${index.count}" value="${basket.ba_size}">
+										<input type="hidden" name="size" id="size${index.count}"
+											value="${basket.ba_size}">
 									</c:when>
 									<c:otherwise>
 										size&nbsp;&nbsp;&nbsp;: ${basket.ba_size}
-										<input type="hidden" name="size" id="size${index.count}" value="${basket.ba_size}">
+										<input type="hidden" name="size" id="size${index.count}"
+											value="${basket.ba_size}">
 									</c:otherwise>
 								</c:choose>
 						</strong></td>
@@ -169,24 +189,26 @@ content
 						</td>
 						<td class="quantity"><input type="number" name="ba_quantity"
 							id="ba_quantity" value="${basket.ba_quantity}" min="1"
-							class="quantity-field"> 
-							<input type="hidden" name="quantity" id="quantity${index.count}" value="${basket.ba_quantity}"></td>
+							class="quantity-field"> <input type="hidden"
+							name="quantity" id="quantity${index.count}"
+							value="${basket.ba_quantity}"></td>
 						<td class="subtotal">${basket.sell_price*basket.ba_quantity}
 						</td>
-						<td class="remove"><button class="btn btn-default"
-								id="delete"
-								onclick="deleteBasket('${basket.sell_number}', '${basket.ba_color}', '${basket.ba_size}')">삭제</button></td>
-						<td class="change"><button class="btn btn-default"
-								id="modify"
-								onclick="modifyBasket('${basket.sell_number}', ${index.count-1}, '${basket.ba_color}', '${basket.ba_size}')">수정</button></td>
+						<td class="remove"><input type="button"
+							class="btn btn-default" id="delete" value="삭제"
+							onclick="deleteBasket('${basket.sell_number}', '${basket.ba_color}', '${basket.ba_size}')"></td>
+						<td class="change"><input type="button"
+							class="btn btn-default" id="modify" value="수정"
+							onclick="modifyBasket('${basket.sell_number}', ${index.count-1}, '${basket.ba_color}', '${basket.ba_size}')"></td>
 					</tr>
 
-					<input type="hidden" name="sell_number" id="sellnumber${index.count}" value="${basket.sell_number}">
+					<input type="hidden" name="sell_number"
+						id="sellnumber${index.count}" value="${basket.sell_number}">
 					<c:set var="sum"
 						value="${sum + (basket.sell_price*basket.ba_quantity)}" />
 				</c:forEach>
 				<tr>
-					<td colspan="6" align="center"><strong>총금액</strong></td> 
+					<td colspan="6" align="center"><strong>총금액</strong></td>
 					<td id="sum" colspan="2"><fmt:formatNumber
 							pattern="###,###,###" value="${sum}" />원 <input type="hidden"
 						name="sum" value="${sum}"></td>
@@ -194,15 +216,16 @@ content
 
 
 			</table>
-			<input type="button" class="btn btn-default" id="buy" value="구매">
-			
+			<div class="buybutton" style="max-width: 850px;">
+				<input type="button" class="btn btn-default" id="buy" value="구매">
+			</div>
 		</div>
 
 
-<input type="hidden" name="test" value="">
-<input type="hidden" name="test1" value="">
-<input type="hidden" name="test2" value="">
-<input type="hidden" name="test3" value="">
+		<input type="hidden" name="test" value=""> <input
+			type="hidden" name="test1" value=""> <input type="hidden"
+			name="test2" value=""> <input type="hidden" name="test3"
+			value="">
 	</form>
 
 
@@ -239,25 +262,16 @@ content
             	document.getElementsByName("test3")[0].value = d_sellnumber;
             }
          }
+		if(d_sellnumber == ""){
+			alert("구매할 제품을 선택해 주세요.");
+			return false;
+		}
+		
 		
 		frm.method="post";
 		frm.action="./order2.do";
 		frm.submit();
 	});
-	
-	
-	/* $(document).ready(function(){
-		var size = $("#basketSize");
-		//alert(size);
-		for(var i=0;i<size;i++){
-			if(chkbox1[i].checked == true){
-	               prod_group += chkbox1[i].value + " ";
-	        }
-		}
-			
-	}); */
-	
-  
   
   	function deleteBasket(id, color, size){
   		$.ajax({
@@ -280,10 +294,10 @@ content
   	}
   
   	function modifyBasket(id, index, color, size){
-  		  alert("id:"+id);
+  		 /*  alert("id:"+id);
   		alert("index:"+index);
   		alert(color);
-		alert(size); 
+		alert(size); */ 
   		var length=document.frm.ba_quantity.length;
   		/* alert("length:"+length); */
   	    var _ba_quantity=0;

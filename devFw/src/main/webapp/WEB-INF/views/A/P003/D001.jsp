@@ -13,7 +13,6 @@
 <meta charset="UTF-8">
 <title>회원 정보 수정</title>
 <link rel="stylesheet" type="text/css" href="resources/css/A_P003_D001.css?ver=1.0">
-<meta name="viewport" content="width=divice-width, initial-scale=1.0">
 </head>
 <body>
 <p id="f" style=" margin-right: 0px;">회원정보관리</p>
@@ -55,7 +54,7 @@
 					<td class="fixed_join">비밀번호</td>
 					<td>
 					  <input name="mem_pw" type="password" size="20" style="float:left;" value="${memberInfo.mem_pw }" />&nbsp;&nbsp;&nbsp;&nbsp;
-					  <input type="button" value="수정하기" onClick="fn_modify_member_info('pw')" />
+					  <input type="button" value="수정하기" onClick="fn_modify_member_info('mem_pw')" />
 					</td>
 				</tr>
 				<tr class="dot_line">
@@ -87,7 +86,7 @@
 					<td class="fixed_join">연락처</td>
 					<td>
 						<input name="mem_tel" type="text" size="20" value="${memberInfo.mem_tel }" />
-					  <input type="button" value="수정하기" onClick="fn_modify_member_info('tel')" />
+					  <input type="button" value="수정하기" onClick="fn_modify_member_info('mem_tel')" />
 					</td>
 					 <td>
 					</td>
@@ -100,8 +99,8 @@
 					  <br>
 					<p> 
 					<input type="text" class="addressbox1" id="address1" name="mem_address1" size="50" value="${memberInfo.mem_address1 }" disabled><br><br>
-					<input type="text" class="addressbox2" id="address2" name="mem_address2" size="50" value="${memberInfo.mem_address1 }" /><br><br>
-					<input type="button" value="수정하기" onClick="fn_modify_member_info('address')" />
+					<input type="text" class="addressbox2" id="address2" name="mem_address2" size="50" value="${memberInfo.mem_address2 }" /><br><br>
+					<input type="button" value="수정하기" onClick="fn_modify_member_info('mem_address')" />
 					   </p>
 					</td>
 					<td>
@@ -160,65 +159,95 @@
      }).open();
  }
  
+ var autoHypenPhone = function(str){
+     str = str.replace(/[^0-9]/g, '');
+     var tmp = '';
+     if( str.length < 4){
+         return str;
+     }else if(str.length < 7){
+         tmp += str.substr(0, 3);
+         tmp += '-';
+         tmp += str.substr(3);
+         return tmp;
+     }else if(str.length < 11){
+         tmp += str.substr(0, 3);
+         tmp += '-';
+         tmp += str.substr(3, 3);
+         tmp += '-';
+         tmp += str.substr(6);
+         return tmp;
+     }else{              
+         tmp += str.substr(0, 3);
+         tmp += '-';
+         tmp += str.substr(3, 4);
+         tmp += '-';
+         tmp += str.substr(7);
+         return tmp;
+     }
  
- 
-function fn_modify_member_info(attribute){
-	var value;
-	// alert(member_id);
-	// alert("mod_type:"+mod_type);
-		var frm_mod_member=document.frm_mod_member;
-		if(attribute=='pw'){
-			value=frm_mod_member.mem_pw.value;
-			//alert("member_pw:"+value);
-		}else if(attribute=='tel'){
-			var mem_tel=frm_mod_member.mem_tel;
-			value_mem_tel=mem_tel.value;
-		}else if(attribute=='email'){
-			var mem_email1=frm_mod_member.mem_email1;
-			var mem_email2=frm_mod_member.mem_email2;
-
-			
-			value_mem_email1=mem_email1.value;
-			value_mem_email2=mem_email2.value;
-			value=value_mem_email1+","+value_mem_email2;
-			//alert(value);
-		}else if(attribute=='address'){
-			var mem_zip=frm_mod_member.mem_zip;
-			var mem_address1=frm_mod_member.mem_address1;
-			var mem_address2=frm_mod_member.mem_address2;
-			
-			value_mem_zip=mem_zip.value;
-			value_mem_address1=mem_address1.value;
-			value_mem_address2=mem_address2.value;
-			value=value_mem_zip+","+value_mem_address1+","+value_mem_address2;
-		}
-		console.log(attribute);
-	 
-		$.ajax({
-			type : "post",
-			async : false, //false인 경우 동기식으로 처리한다.
-			url : "${contextPath}/modifyMyInfo.do",
-			data : {
-				attribute:attribute,
-				value:value,
-			},
-			success : function(data, textStatus) {
-				if(data.trim()=='mod_success'){
-					alert("회원 정보를 수정했습니다.");
-				}else if(data.trim()=='failed'){
-					alert("다시 시도해 주세요.");	
-				}
-				
-			},
-			error : function(data, textStatus) {
-				alert("에러가 발생했습니다."+data);
-			},
-			complete : function(data, textStatus) {
-				//alert("작업을완료 했습니다");
-				
-			}
-		}); //end ajax
+     return str;
 }
+ 
+ 
+ var phoneNum = document.getElementById('mem_tel');
+
+	phoneNum.onkeyup = function(){
+	  console.log(this.value);
+	  this.value = autoHypenPhone( this.value ) ;  
+	}
+	
+ 
+ 
+ 
+	function fn_modify_member_info(attribute){
+		var value;
+		// alert(member_id);
+		// alert("mod_type:"+mod_type);
+			var frm_mod_member=document.frm_mod_member;
+			if(attribute=='mem_pw'){
+				value=frm_mod_member.mem_pw.value;
+				//alert("member_pw:"+value);
+			}else if(attribute=='mem_tel'){
+				var mem_tel=frm_mod_member.mem_tel;
+				value_mem_tel=mem_tel.value;
+				value=value_mem_tel;
+			}else if(attribute=='mem_address'){
+				var mem_zip=frm_mod_member.mem_zip;
+				var mem_address1=frm_mod_member.mem_address1;
+				var mem_address2=frm_mod_member.mem_address2;
+				
+				value_mem_zip=mem_zip.value;
+				value_mem_address1=mem_address1.value;
+				value_mem_address2=mem_address2.value;
+				value=value_mem_zip+","+value_mem_address1+","+value_mem_address2;
+			}
+			console.log(attribute);
+		 
+			$.ajax({
+				type : "post",
+				async : false, //false인 경우 동기식으로 처리한다.
+				url : "${contextPath}/modifyMyInfo.do",	
+				data : {
+					attribute:attribute,
+					value:value,
+				},
+				success : function(data, textStatus) {
+					if(data.trim()=='mod_success'){
+						alert("회원 정보를 수정했습니다.");
+					}else if(data.trim()=='failed'){
+						alert("다시 시도해 주세요.");	
+					}
+					
+				},
+				error : function(data, textStatus) {
+					alert("에러가 발생했습니다."+data);
+				},
+				complete : function(data, textStatus) {
+					//alert("작업을완료 했습니다");
+					
+				}
+			}); //end ajax
+	}
 </script>
 </body>
 </html>
