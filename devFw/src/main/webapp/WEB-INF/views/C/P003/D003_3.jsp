@@ -63,7 +63,7 @@ caption {
 			</tr>
 			<tr>
 				<th scope="row">신고자</th>
-				<td colspan="3">${notice3.MEM_NO}님</td>
+				<td colspan="3">${notice3.MEM_ID}님</td>
 			</tr>
 			<tr>                                         
 				<td colspan="4" id="contents">${notice3.DE_CONTENTS}</td>

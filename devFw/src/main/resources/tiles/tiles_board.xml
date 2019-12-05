@@ -71,7 +71,7 @@
       <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
    </definition>
    
-	<definition template="/WEB-INF/views/common/layout2.jsp" name="emptyLayout">
+	<definition name="emptyLayout" template="/WEB-INF/views/common/layout2.jsp" >
 		<put-attribute name="title" value=""/>
 		<put-attribute name="body" value=""/>
 		<put-attribute name="footer" value=""/>
@@ -122,14 +122,19 @@
  
    <definition name="unauthorizedmember" extends="baseLayout3">
       <put-attribute name="title" value="비인증회원로그인시" />
-      <put-attribute name="body" value="/WEB-INF/views/A/P002/D005.jsp" />
+      <put-attribute name="body" value="/WEB-INF/views/A/P001/D004.jsp" />
       <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
    </definition>
  
+  <definition name="secessionmember" extends="baseLayout3">
+      <put-attribute name="title" value="탈퇴신청회원로그인시" />
+      <put-attribute name="body" value="/WEB-INF/views/A/P001/D005.jsp" />
+      <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
+   </definition>
    
    <definition name="signupsuccesspage" extends="baseLayout3">
       <put-attribute name="title" value="회원가입성공창" />
-      <put-attribute name="body" value="/WEB-INF/views/A/P002/D006.jsp" />
+      <put-attribute name="body" value="/WEB-INF/views/A/P002/D005.jsp" />
       <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
    </definition>
 
@@ -149,6 +154,14 @@
       <put-attribute name="title" value="회원탈퇴페이지" />
       <put-attribute name="body" value="/WEB-INF/views/A/P003/D002.jsp" />
    </definition>
+   
+   
+   <definition name="Secessionsuccesspage" extends="baseLayout3">
+      <put-attribute name="title" value="회원탈퇴성공페이지" />
+      <put-attribute name="body" value="/WEB-INF/views/A/P003/D004.jsp" />
+      <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
+   </definition>
+   
 
 	<definition name="myPage" extends="baseLayout">
       <put-attribute name="title" value="마이페이지" />
@@ -229,7 +242,7 @@
 
 	<definition name="reviewRanking" extends="baseLayout2">
       <put-attribute name="title" value="리뷰랭킹 페이지" />         
-      <put-attribute name="body" value="/WEB-INF/views/F/P001/D001.jsp" />
+      <put-attribute name="body" value="/WEB-INF/views/F/P002/reviewRanking.jsp" />
    </definition>
 
 	<definition name="memberReview" extends="baseLayout4">
@@ -257,8 +270,10 @@
       <put-attribute name="body" value="/WEB-INF/views/F/P002/D001.jsp" />
    </definition> 
    
+   
+   
    <definition name="sellItemsReview" extends="emptyLayout">
-      <put-attribute name="title" value="해당상품리뷰" />
+      <put-attribute name="title" value="상품상세리뷰" />
       <put-attribute name="body" value="/WEB-INF/views/F/P002/D003.jsp" />
    </definition> 
    
@@ -267,9 +282,14 @@
 		<put-attribute name="body" value="/WEB-INF/views/F/P002/D002.jsp"/>
 	</definition>
 
-	<definition name="sellerInfo" extends="emptyLayout">
-		<put-attribute name="title" value="판매자정보"/>
-		<put-attribute name="body" value=""/>
+	<definition name="exchangeInfo" extends="emptyLayout">
+		<put-attribute name="title" value="반품교환정보"/>
+		<put-attribute name="body" value="/WEB-INF/views/F/P002/D004.jsp"/>
+	</definition>
+	
+	<definition name="proOpinion" extends="emptyLayout">
+		<put-attribute name="title" value="상품의견"/>
+		<put-attribute name="body" value="/WEB-INF/views/F/P002/D005.jsp"/>
 	</definition>
 	
 	<definition name="sellerChat" extends="emptyLayout">
@@ -314,13 +334,17 @@
       <put-attribute name="body" value="/WEB-INF/views/C/P003/D003_4.jsp" />
    </definition> 
                
-
+   <definition name="questionwrite" extends="noticeLayout">
+      <put-attribute name="title" value="문의사항상세페이지" /> 
+      <put-attribute name="body" value="/WEB-INF/views/C/P003/D004.jsp" />
+   </definition> 
+   
+   
 <!--  웅건                    
    <definition name="/member/memberForm" extends="baseLayout">
       <put-attribute name="title" value="회원등록창" />
       <put-attribute name="body" value="/WEB-INF/views/member/memberForm.jsp" />
    </definition>
-
    <definition name="/member/viewDetail" extends="baseLayout">
       <put-attribute name="title" value="회원상세창" />
       <put-attribute name="body" value="/WEB-INF/views/member/viewDetail.jsp" />

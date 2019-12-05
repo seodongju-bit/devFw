@@ -91,7 +91,7 @@ a:hover {
 					<td>${notice.de_number}</td>
 					<td>${notice.de_contents}</td>
 					<td>${notice.de_division}</td>
-					<td>${notice.mem_no}님</td>
+					<td>${notice.mem_id}님</td>
 					<td>${notice.de_date}</td>
 					</tr>
 					</thead>
@@ -143,7 +143,7 @@ a:hover {
 					<td>${notice2.qu_number}</td>
 					<td>${notice2.qu_contents}</td>
 					<td>${notice2.qu_answer}</td>
-					<td>${notice2.mem_no}</td>
+					<td>${notice2.mem_id}</td>
 				
 					</tr>
 					</thead>

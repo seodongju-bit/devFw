@@ -133,7 +133,7 @@ function selChange() {
 					<td>${question1.de_number}</td>                      
 					<td>${question1.de_contents}</td>
 					<td>${question1.de_division}</td>
-					<td>${question1.mem_no}</td>
+					<td>${question1.mem_id}</td>
 					<td>${question1.de_date}</td>
 					
 				

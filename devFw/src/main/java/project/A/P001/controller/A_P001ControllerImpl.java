@@ -84,6 +84,17 @@ public class A_P001ControllerImpl implements A_P001Controller {
 		//mav.addObject("membersList", membersList);
 		return mav;
 	}
+	
+	@Override
+	@RequestMapping(value="/secessionmember.do" ,method = RequestMethod.GET)
+	public ModelAndView secessionmember(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = getViewName(request);
+		viewName = "secessionmember";
+		//List membersList = memberService.listMembers();
+		ModelAndView mav = new ModelAndView(viewName);
+		//mav.addObject("membersList", membersList);
+		return mav;
+	}
 
 	@RequestMapping(value="/login.do" ,method = RequestMethod.POST)
 	public ModelAndView login(@RequestParam Map<String, String> loginMap,HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -95,8 +106,11 @@ public class A_P001ControllerImpl implements A_P001Controller {
 			A_P001VO=a_p001Service.login(loginMap);
 			if(A_P001VO!= null && A_P001VO.getMem_id()!=null){
 				
-				if(A_P001VO.getMem_verify().equals('n')) {
+				if(A_P001VO.getMem_verify().equals("n")) {
 					mav.setViewName("redirect:unauthorizedmember.do");
+					return mav;
+				}else if(A_P001VO.getMem_division().equals("3")) {
+					mav.setViewName("redirect:secessionmember.do");
 					return mav;
 				}
 				HttpSession session=request.getSession();
@@ -112,8 +126,11 @@ public class A_P001ControllerImpl implements A_P001Controller {
 				}else {   
 					mav.setViewName("redirect:"+addr2[0]);
 					if(addr2.length==2) {
-						addr2 = addr2[1].split("\\=");
-						mav.addObject(addr2[0], addr2[1]);
+						addr2 = addr2[1].split("\\&");
+						for(int i=0; i<addr2.length; i++) {
+							String[] addr3 = addr2[i].split("\\=");
+							mav.addObject(addr3[0], addr3[1]);
+						}
 					}
 				}
 			}else{
@@ -122,7 +139,6 @@ public class A_P001ControllerImpl implements A_P001Controller {
 				mav.setViewName("redirect:signinpage.do");
 			}
 		}catch(Exception e) {
-
 			mav.setViewName("redirect:main.do");
 			return mav;	
 		}
@@ -155,9 +171,13 @@ public class A_P001ControllerImpl implements A_P001Controller {
 		HttpSession session=request.getSession();
 		session.invalidate();		
 		mav.setViewName("redirect:"+addr2[0]);
+		mav.setViewName("redirect:"+addr2[0]);
 		if(addr2.length==2) {
-			addr2 = addr2[1].split("\\=");
-			mav.addObject(addr2[0], addr2[1]);
+			addr2 = addr2[1].split("\\&");
+			for(int i=0; i<addr2.length; i++) {
+				String[] addr3 = addr2[i].split("\\=");
+				mav.addObject(addr3[0], addr3[1]);
+			}
 		}
 		return mav;
 	}

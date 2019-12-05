@@ -34,12 +34,13 @@ public class F_P002ControllerImpl   implements F_P002Controller {
 	F_P002VO f_P002VO;
 	
 	@Override
-	@RequestMapping(value="/sellItems.do" ,method = RequestMethod.GET)
+	@RequestMapping(value="/sellItems.do" ,method ={ RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView searchSell(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = getViewName(request);
 
 		viewName = "sellItems";
 		String p_id= request.getParameter("sell_no");
+		String recom = request.getParameter("recom");
 		if(p_id==null || p_id=="") {
 			ModelAndView mav = new ModelAndView("redirect:category.do");
 			return mav;
@@ -56,6 +57,16 @@ public class F_P002ControllerImpl   implements F_P002Controller {
 		}
 		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("searchItem", f_P002VO);
+		if(recom!=null) { //추천리뷰어 가 있을때
+			List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
+			searchMap = new HashMap<String, Object>();
+			searchMap.put("p_id", recom);
+			result = f_P002Service.searchReviewInfo(searchMap);
+			System.out.println(result);
+			if(result.size()!=0) {
+				mav.addObject("reiewer", result.get(0));
+			}
+		}
 		return mav;
 	}
 	
@@ -68,7 +79,6 @@ public class F_P002ControllerImpl   implements F_P002Controller {
 
 		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("content", request.getParameter("contents"));
-//		System.out.println(">>>>"+request.getParameter("contents"));
 		return mav;
 	}
 	
@@ -76,14 +86,43 @@ public class F_P002ControllerImpl   implements F_P002Controller {
 	public ModelAndView sellItemsReview(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = getViewName(request);
 		viewName = "sellItemsReview";
-		Map<String, Object> searchMap = new HashMap<String, Object>();
-		List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
-		
-		searchMap.put("sell_number", request.getParameter("sell_number"));
-		result = f_P002Service.searchReview(searchMap);
+		request.setAttribute("sell_number", request.getParameter("sell_number"));
 		ModelAndView mav = new ModelAndView(viewName);
+		Map<String, Object> searchMap = new HashMap<String, Object>();
+		List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();//전체조회
+		List<Map<String, Object>> monthBestResult = new ArrayList<Map<String, Object>>();//월간 best리뷰
+		List<Map<String, Object>> totalBestresult = new ArrayList<Map<String, Object>>();//best리뷰
+		
+		int page = Integer.parseInt(request.getParameter("page"));
+		searchMap.put("sell_number", request.getParameter("sell_number"));
+		result = f_P002Service.searchReview(searchMap, 1);
+		monthBestResult = f_P002Service.searchReview(searchMap, 2);
+		totalBestresult = f_P002Service.searchReview(searchMap, 3);
+		
+		result = f_P002Service.paging(result, page);
+		mav.addObject("pageInfo", result.get(result.size()-1));
+		result.remove(result.size()-1);
 		mav.addObject("reviewList" , result);
-		System.out.println(">>>>"+result);
+		mav.addObject("reviewMonthList" , monthBestResult);
+		mav.addObject("reviewTotalList" , totalBestresult);
+		return mav;
+	}
+	
+	@RequestMapping(value="/proOpinion.do" ,method = { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView proOpinion(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = getViewName(request);
+		viewName = "proOpinion";
+		//Map<String, Object> searchMap = new HashMap<String, Object>();
+		ModelAndView mav = new ModelAndView(viewName);
+		return mav;
+	}
+	
+	@RequestMapping(value="/exchangeInfo.do" ,method = { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView exchangeInfo(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = getViewName(request);
+		viewName = "exchangeInfo";
+		//Map<String, Object> searchMap = new HashMap<String, Object>();
+		ModelAndView mav = new ModelAndView(viewName);
 		return mav;
 	}
 	
@@ -112,9 +151,7 @@ public class F_P002ControllerImpl   implements F_P002Controller {
 			resultMap.put("error_text", "error_text");
 			e.printStackTrace();
 		}
-		
-		System.out.println("=======================>>"+result);
-		
+
 		return result;
 	}
 
@@ -139,7 +176,32 @@ public class F_P002ControllerImpl   implements F_P002Controller {
 
 	}
 	
-
+	//readReview
+	@RequestMapping(value="/readReview.do" ,method = { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView readReview(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = getViewName(request);
+		viewName = "readReview";
+		String review_number = request.getParameter("review");
+		Map<String, Object> searchMap = new HashMap<String, Object>();
+		searchMap.put("p_id", review_number);
+		List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
+		result = f_P002Service.searchReviewInfo(searchMap);
+		//Map<String, Object> searchMap = new HashMap<String, Object>();
+		System.out.println(result);
+		ModelAndView mav = new ModelAndView(viewName);
+		mav.addObject("reviewInfo",result.get(0));
+		return mav;
+	}
+	
+	
+	@RequestMapping(value="/reviewRanking.do" ,method = RequestMethod.GET)
+	public ModelAndView reviewRanking(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = getViewName(request);
+		viewName = "reviewRanking";
+		ModelAndView mav = new ModelAndView(viewName);
+		return mav;
+	}
+	
 	public List<Map<String, Object>> createModel(HttpServletRequest request){
 		List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
 		Map<String, Object> resultMap= new HashMap<String, Object>();
@@ -162,7 +224,6 @@ public class F_P002ControllerImpl   implements F_P002Controller {
 		}
 		return result;
 	}
-	
 	
 	private String getViewName(HttpServletRequest request) throws Exception {
 		String contextPath = request.getContextPath();

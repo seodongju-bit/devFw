@@ -35,17 +35,17 @@ public class F_P001ControllerImpl implements F_P001Controller {
 	@Autowired
 	F_P001VO F_P001VO;
 	
-	@Override
-	@RequestMapping(value="/reviewRanking.do" ,method = RequestMethod.GET)
-	public ModelAndView reviewRanking(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String viewName = getViewName(request);
-		viewName = "reviewRanking";
-		List productlist5 = f_P001Service.searchItem5();
-		System.out.println(productlist5);
-		ModelAndView mav5 = new ModelAndView(viewName);
-		mav5.addObject("List", productlist5);
-		return mav5;
-	}
+//	@Override
+//	@RequestMapping(value="/reviewRanking.do" ,method = RequestMethod.GET)
+//	public ModelAndView reviewRanking(HttpServletRequest request, HttpServletResponse response) throws Exception {
+//		String viewName = getViewName(request);
+//		viewName = "reviewRanking";
+//		List productlist5 = f_P001Service.searchItem5();
+//		System.out.println(productlist5);
+//		ModelAndView mav5 = new ModelAndView(viewName);
+//		mav5.addObject("List", productlist5);
+//		return mav5;
+//	}
 	
 
 	

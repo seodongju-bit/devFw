@@ -60,7 +60,7 @@ caption {
 			</tr>
 			<tr>
 				<th scope="row">문의자</th>
-				<td colspan="3">${notice4.MEM_NO}님</td>
+				<td colspan="3">${notice4.MEM_ID}님</td>
 			</tr>                
 			<tr>  
 		       	<th scope="row">답변내용</th>                                        

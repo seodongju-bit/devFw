@@ -88,14 +88,25 @@
 	<br></br>
 	<h2><strong>회원탈퇴를 위해 회원 정보를 입력해주세요</strong></h2>
 	
+	
+	<form action="${contextPath}/Secessionmember.do" method="post" >	
 	<div id="memsecession">
 	<p>
 	<label for="password" class="w" style="float:center;">위 탈퇴 정책을 확인하였으며, 내용에 동의합니다.</label>
     </p>
+	<input type="hidden" value="${memberInfo.mem_id }">
+	<br>
     <input type="password" class="pwdbox" id="mem_pw" name="mem_pw"maxlength="20" placeholder="비밀번호 입력">
-    <br></br>
-    <button type="submit" class="secession-btn" id="memberFormButton"> 탈퇴 신청</button>
+    </br>
+    <button type="submit" class="secession-btn" id="membersecessionButton"> 탈퇴 신청</button>
 	</div>
+	</form>
 	</div>
+	
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<script type="text/javascript"> 
+			    
+		
+		</script>
 </body>
 </html>

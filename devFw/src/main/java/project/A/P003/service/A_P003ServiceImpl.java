@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import project.A.P002.vo.A_P002VO;
 import project.A.P003.dao.A_P003DAO;
 import project.A.P003.vo.A_P003VO;
 
@@ -32,4 +33,8 @@ public class A_P003ServiceImpl implements A_P003Service {
 		return a_p003DAO.selectMyDetailInfo(mem_id);
 	}
 
+	public void Secessionmember(A_P003VO A_P003VO) {
+		a_p003DAO.Secessionmember(A_P003VO);
+	}
+	
 }

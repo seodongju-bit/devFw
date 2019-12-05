@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component("C_P003VO")
 public class C_P003VO {
 	private String de_number;
-	private String mem_no;
+	private String mem_id;
 	private String de_division;
     private Date de_date;
 	private String de_contents;
@@ -28,11 +28,11 @@ public class C_P003VO {
 	public void setDe_number(String de_number) {
 		this.de_number = de_number;
 	}
-	public String getMem_no() {
-		return mem_no;
+	public String getMem_id() {
+		return mem_id;
 	}
-	public void setMem_no(String mem_no) {
-		this.mem_no = mem_no;
+	public void setMem_id(String mem_id) {
+		this.mem_id = mem_id;
 	}
 	public String getDe_division() {
 		return de_division;
