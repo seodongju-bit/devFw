@@ -221,6 +221,11 @@
       <put-attribute name="title" value="주문정보입력" />
       <put-attribute name="body" value="/WEB-INF/views/E/P001/D001.jsp" />
    </definition>
+   
+    <definition name="payToOrder" extends="itemLayout">
+   	  <put-attribute name="title" value="주문정보확인"/>
+   	  <put-attribute name="body" value="/WEB-INF/views/E/P001/D003.jsp"/>
+   </definition>
 
 	<definition name="reviewRanking" extends="baseLayout2">
       <put-attribute name="title" value="리뷰랭킹 페이지" />         
