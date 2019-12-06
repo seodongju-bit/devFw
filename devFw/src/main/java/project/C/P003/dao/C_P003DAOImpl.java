@@ -102,9 +102,15 @@ public class C_P003DAOImpl implements C_P003DAO{
 	
 	@Override
 	public void writes(Map<String, Object> dataMap5) throws DataAccessException {
-		sqlSession.insert("mapper.notice.questionwrite", dataMap5);
+	    System.out.println(dataMap5);
+		sqlSession.insert("mapper.notice.insertquestion", dataMap5);
 	}
 	
+	@Override
+	public void writes2(Map<String, Object> dataMap6) throws DataAccessException {
+	    System.out.println(dataMap6);
+		sqlSession.insert("mapper.notice.insertquestion2", dataMap6);
+	}
 		
 	}
 

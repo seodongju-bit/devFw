@@ -42,10 +42,12 @@ caption {
 <body>
 <table class="notice_view">              
 		<colgroup>
-			<col width="15%" />  
+			<col width="10%" />  
 			<col width="35%" />
-			<col width="15%" />
-			<col width="35%" />
+			<col width="10%" />
+			<col width="40%" />
+			<col width="5%" />
+			
 		</colgroup>
 		<caption>게시글 상세</caption>
 		<tbody>             
@@ -61,11 +63,19 @@ caption {
 			<tr>
 				<th scope="row">문의자</th>
 				<td colspan="3">${notice4.MEM_ID}님</td>
+				
 			</tr>                
 			<tr>  
-		       	<th scope="row">답변내용</th>                                        
+		       	<th scope="row">답변내용</th>                                                   
 				<td colspan="4" id="contents">${notice4.QU_ANSWER}</td>
 			</tr>
+			<tr>
+			
+			<th scope="row">문의날짜</th>
+				<td colspan="5">${notice4.QU_DATE}</td>
+			
+			</tr>
+	
 			<button class="btn btn-default"  onclick="location.href='${contextPath}/questions.do'">목록</button>
 			<tr></tr>
 			

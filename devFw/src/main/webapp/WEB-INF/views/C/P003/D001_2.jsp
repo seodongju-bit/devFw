@@ -43,9 +43,10 @@ caption {
 <table class="notice_view">              
 		<colgroup>
 			<col width="15%" />  
-			<col width="35%" />
+			<col width="30%" />
 			<col width="15%" />
-			<col width="35%" />
+			<col width="30%" />
+			
 		</colgroup>
 		<caption>게시글 상세</caption>
 		<tbody>             
@@ -66,6 +67,8 @@ caption {
 		       	<th scope="row">답변내용</th>                                        
 				<td colspan="4" id="contents">${notice3.QU_ANSWER}</td>
 			</tr>
+			
+			
 			<button class="btn btn-default"  onclick="location.href='${contextPath}/notice.do'">목록</button>
 			<tr></tr>
 			

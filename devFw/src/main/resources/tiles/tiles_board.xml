@@ -292,7 +292,7 @@
 		<put-attribute name="body" value="/WEB-INF/views/F/P002/D005.jsp"/>
 	</definition>
 	
-	<definition name="sellerChat" extends="emptyLayout">
+	<definition name="sellerChat" extends="emptyLayout">   
 		<put-attribute name="title" value="판매자와채팅"/>
 		<put-attribute name="body" value="/WEB-INF/views/A/P006/D002_chat.jsp"/>
 	</definition>

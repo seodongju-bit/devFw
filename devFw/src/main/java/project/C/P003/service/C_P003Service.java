@@ -25,6 +25,7 @@ public interface C_P003Service {
 	
 	public void questionwrite(Map<String, Object> dataMap5);
 	
+	public void questionwrite2(Map<String, Object> dataMap6);
 	
 	public int countBoard();
 }
