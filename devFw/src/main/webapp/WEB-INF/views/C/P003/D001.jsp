@@ -44,7 +44,10 @@ a:hover {
     background-color: #150717;
     color: white;
 }
-
+#nowView{
+color:white;
+background-color:black;    
+}
 
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -85,7 +88,7 @@ $(document).ready(function(){
       	$(this).after("<tr id='nowView'><td colspan='4'>원칙적으로 1년간 로그인 이력이 없는 경우 개인정보 유효기간이 종료 </td></tr>");
       }
    });   
-});
+});               
 </script>
                      
 </head>

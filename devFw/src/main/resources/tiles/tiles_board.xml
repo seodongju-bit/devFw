@@ -345,6 +345,13 @@
    </definition>
    
    
+    <definition name="questionwrite5" extends="noticeLayout">
+      <put-attribute name="title" value="문의사항답변페이지" /> 
+      <put-attribute name="body" value="/WEB-INF/views/C/P003/D006.jsp" />
+   </definition>
+   
+   
+   
 <!--  웅건                    
    <definition name="/member/memberForm" extends="baseLayout">
       <put-attribute name="title" value="회원등록창" />

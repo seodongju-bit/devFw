@@ -152,8 +152,7 @@
 			values
 			 (qu_number.nextval,#{mem_id}, #{qu_contents}, sysdate)   
 		]]>     
-	</insert>          
-	
+	</insert>          	
 	
      
   <insert id="insertquestion2" parameterType="java.util.Map">
@@ -162,6 +161,18 @@
 			values
 			 (de_number.nextval,#{mem_id},#{de_division},sysdate,#{de_contents})   
 		]]>     
-	</insert>    
-  
+	</insert>
+	
+	
+	
+	  <update id="insertquestion3" parameterType="java.util.Map">
+		<![CDATA[
+			UPDATE questions 
+            SET qu_answer =#{qu_answer}
+            WHERE qu_number=#{qu_number} 
+            AND mem_id=#{mem_id}     
+			 
+		]]>     
+	</update>       
+      
   </mapper>

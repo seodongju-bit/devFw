@@ -36,6 +36,8 @@ public interface C_P003DAO {
 	
 	public void writes2(Map<String, Object> dataMap6);
 	
+	public void writes3(Map<String, Object> dataMap7);
+	
 	public int countBoard();
 	
 	

@@ -39,4 +39,9 @@ public ModelAndView questionwrite4(HttpServletRequest request, HttpServletRespon
 
 
 
+public ModelAndView questionwrite5(HttpServletRequest request, HttpServletResponse response) throws Exception;
+public ModelAndView questionwrite6(HttpServletRequest request, HttpServletResponse response) throws Exception;
+
+
+
 }                      
