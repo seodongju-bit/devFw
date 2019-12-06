@@ -323,9 +323,14 @@
    </definition> 
                
    <definition name="questionwrite" extends="noticeLayout">
-      <put-attribute name="title" value="문의사항상세페이지" /> 
+      <put-attribute name="title" value="문의사항작성페이지" /> 
       <put-attribute name="body" value="/WEB-INF/views/C/P003/D004.jsp" />
    </definition> 
+   
+   <definition name="questionwrite3" extends="noticeLayout">
+      <put-attribute name="title" value="신고사항작성페이지" /> 
+      <put-attribute name="body" value="/WEB-INF/views/C/P003/D005.jsp" />
+   </definition>
    
    
 <!--  웅건                    
