@@ -33,4 +33,8 @@
       <put-attribute name="body" value="/WEB-INF/views/A/P007/D002.jsp" />
    </definition> 
    
+   <definition name="readReview" extends="baseLayout3">
+      <put-attribute name="title" value="리뷰보기 "/>
+      <put-attribute name="body" value="/WEB-INF/views/F/P002/readReview.jsp" />
+   </definition> 
 </tiles-definitions>

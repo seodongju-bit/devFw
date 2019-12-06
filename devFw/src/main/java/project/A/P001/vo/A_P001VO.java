@@ -20,6 +20,8 @@ public class A_P001VO {
 	private String mem_zip = "";
 	private String mem_address1 = "";
 	private String mem_address2 = "";
+	private int mem_point;
+	private int mem_point_test;
 	
 	public A_P001VO() {
 		System.out.println("A_P001VO 호출");
@@ -177,6 +179,22 @@ public class A_P001VO {
 
 	public void setMem_address2(String mem_address2) {
 		this.mem_address2 = mem_address2;
+	}
+
+	public int getMem_point() {
+		return mem_point;
+	}
+
+	public void setMem_point(int mem_point) {
+		this.mem_point = mem_point;
+	}
+
+	public int getMem_point_test() {
+		return mem_point_test;
+	}
+
+	public void setMem_point_test(int mem_point_test) {
+		this.mem_point_test = mem_point_test;
 	}
 
 	
