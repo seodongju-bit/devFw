@@ -68,6 +68,34 @@
          and o.mem_id = #{mem_id}
       ]]>
 	</select>
+	
+	<select id="orderList2" resultMap="orderListResult" parameterType="java.util.Map">
+      <![CDATA[
+         select (DENSE_RANK() OVER(order by order_date DESC, od.order_number DESC)) rownums, o.order_number,od.sell_number, order_date ,sell_price, sell_title, sell_thumbnail, od_state
+         from orders o, orderdetail od, productsell ps
+         where od.sell_number = ps.sell_number
+         and o.order_number = od.order_number
+         and o.mem_id = #{mem_id}
+      ]]>
+	</select>
+	
+	<select id="orderList3" resultMap="orderListResult" parameterType="java.util.Map">
+      <![CDATA[
+         select p.sell_thumbnail, p.sell_title, b.sell_number
+         from basket2 b, productsell p
+         where b.sell_number = p.sell_number
+         and b.mem_id =  #{mem_id}
+         and rownum <3
+      ]]>
+	</select>
+	
+	<select id="quList" resultMap="orderListResult" parameterType="java.util.Map">
+      <![CDATA[
+         select MEM_ID, QU_CONTENTS, QU_NUMBER, QU_ANSWER,  to_char(qu_date, 'YYYY-MM-DD') QU_DATE
+         from QUESTIONS
+         where mem_id = #{mem_id}
+      ]]>
+	</select>
  	
 	<insert id="takecoupon"  parameterType="makecouponVO">
   <![CDATA[
@@ -126,9 +154,11 @@
 
 <select id="delcount" parameterType="String" resultType="Integer">
 	<![CDATA[
-      SELECT COUNT(*) FROM orders
-      WHERE
-          mem_id = #{mem_id} 
+     select count(od_state)
+         from orders o, orderdetail od
+         where o.order_number = od.order_number
+         and mem_id = #{mem_id}
+         and od.od_state = 'F_0003'
            ]]> 
 </select>
 

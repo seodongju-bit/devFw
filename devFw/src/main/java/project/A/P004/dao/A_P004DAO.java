@@ -13,6 +13,9 @@ public interface A_P004DAO {
 	 public List selectAllCouponList(String p_id) throws DataAccessException;
 	 public List<A_P004VO> selectAllPointList(Map<String, Object> searchMap) throws DataAccessException;
 	 public List<Map<String, Object>> orderList(Map<String, Object> searchMap);
+	 public List<Map<String, Object>> orderList2(Map<String, Object> searchMap);
+	 public List<Map<String, Object>> orderList3(Map<String, Object> searchMap);
+	 public List<Map<String, Object>> quList(Map<String, Object> searchMap);
 	 public int takecoupon(Map<String, Object> dataMap) throws DataAccessException;
 	 public List givecoupon() throws DataAccessException;
 	 public int couponcheck(Map<String, Object> check);

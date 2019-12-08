@@ -11,6 +11,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.servlet.ModelAndView;
 
 import project.A.P004.dao.A_P004DAO;
 import project.A.P004.vo.A_P004VO;
@@ -58,6 +59,30 @@ public class A_P004ServiceImpl implements A_P004Service {
 	}
 	
 	@Override
+	public List<Map<String, Object>> orderList2(Map<String, Object> searchMap) {
+		List<Map<String, Object>> list= activeDAO.orderList(searchMap);	
+		
+		return list;
+		
+	}
+	
+	@Override
+	public List<Map<String, Object>> orderList3(Map<String, Object> searchMap) {
+		List<Map<String, Object>> list= activeDAO.orderList3(searchMap);	
+		
+		return list;
+		
+	}
+	
+	@Override
+	public List<Map<String, Object>> quList(Map<String, Object> searchMap) {
+		List<Map<String, Object>> list= activeDAO.quList(searchMap);	
+		
+		return list;
+		
+	}
+	
+	@Override
 	public void takecoupon(Map<String, Object> dataMap) throws DataAccessException{
 		activeDAO.takecoupon(dataMap);
 	}
@@ -79,6 +104,7 @@ public class A_P004ServiceImpl implements A_P004Service {
 	@Override
 	public int mempoint(String p_id) throws DataAccessException{
 		return activeDAO.mempoint(p_id);
+		
 	}
 	@Override
 	public int delcount(String p_id) throws DataAccessException{
