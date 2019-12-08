@@ -15,6 +15,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public interface A_P003Controller {
 	public ModelAndView memberupdatepage(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView membersecessionpage(HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public ModelAndView Secessionsuccesspage(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView memberpwcheckpage(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ResponseEntity modifyMyInfo(@RequestParam("attribute")  String attribute,@RequestParam("value")  String value,HttpServletRequest request, HttpServletResponse response)  throws Exception;
+
 }

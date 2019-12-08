@@ -71,18 +71,57 @@ public class C_P003ServiceImpl implements C_P003Service {
 		return noticeList4; 
 	}
 
+	@Override           
+	public List<Map<String, Object>> questionDetail(Map<String, Object> dataMap3) throws DataAccessException {
+		// C_P003DAO.updateCNT(dataMaps);
+
+		List noticeList5 = null;
+		noticeList5=C_P003DAO.questionDetail(dataMap3); 
+		System.out.println("service"+dataMap3);
+		return noticeList5; 
+	}
+	@Override           
+	public List<Map<String, Object>> questionDetail1(Map<String, Object> dataMap4) throws DataAccessException {
+		// C_P003DAO.updateCNT(dataMaps);
+
+		List noticeList6 = null;
+		noticeList6=C_P003DAO.questionDetail1(dataMap4); 
+		System.out.println("service"+dataMap4);
+		return noticeList6; 
+	}
 
 	@Override
 	public List listquestion(PageVO vo1) throws DataAccessException {
 		List questionList = null;
 		questionList = C_P003DAO.Allquestions(vo1);
-		System.out.println("service실행"+questionList);
 		return questionList;  
-	}
+	}     
            
    
+	@Override
+	public List listquestion1(PageVO vo1) throws DataAccessException {
+		List questionList1 = null;
+		questionList1 = C_P003DAO.Allquestions1(vo1);
+		return questionList1;  
+	}
 
-	
+	@Override
+	public void questionwrite(Map<String, Object> dataMap5) throws DataAccessException {
+		
+		C_P003DAO.writes(dataMap5);
+	}
+	@Override
+	public void questionwrite3(Map<String, Object> dataMap6) throws DataAccessException {
+		
+		C_P003DAO.writes2(dataMap6);
+	}
+
+
+	@Override
+	public void questionwrite5(Map<String, Object> dataMap7) throws DataAccessException {
+		
+		C_P003DAO.writes3(dataMap7);
+	}
 
 
 

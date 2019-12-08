@@ -72,6 +72,13 @@ margin-top: 50px;
       30% {color: yellow;}
       100% {color:red; font-weight: bold;} */
     }
+.h1, h1 {
+    font-size: 36px;
+    background-color:black;
+    color:white;
+}
+
+
 
 
 </style>
@@ -113,26 +120,29 @@ function selChange() {
 				<table class="table table-hover" id="evnet_td">              
 					<colgroup>
 						<col width="10%" />
-						<col width="40%" />
-						<col width="40%" />
+						<col width="30%" />
+						<col width="30%" />
 						<col width="10%" />
+						<col width="20%" />
 					
 					</colgroup>
 					<thead>		
 						<tr>
 							<th>문의번호</th>
 							<th>문의내용</th>
-							<th>문의답변</th>
+							<th>문의답변</th> 
 							<th>문의회원</th>
+							<th>문의날짜</th>
 						</tr>                      
 					</thead>
-					<c:forEach var="question" items="${questionList}" varStatus='index' >					
+					<c:forEach var="question2" items="${questionList}" varStatus='index' >					
 					<thead>
-					<tr align="center" onclick="location.href='#'">            
-					<td>${question.qu_number}</td>                      
-					<td>${question.qu_contents}</td>
-					<td>${question.qu_answer}</td>
-					<td>${question.mem_no}</td>
+					<tr align="center" onclick="location.href='${contextPath}/questionDetail1.do?qu_number=${question2.qu_number}'">            
+					<td>${question2.qu_number}</td>                      
+					<td>${question2.qu_contents}</td>
+					<td>${question2.qu_answer}</td>
+					<td>${question2.mem_id}</td> 
+					<td>${question2.qu_date}</td>                    
 				
 					</tr>
 					</thead>                 

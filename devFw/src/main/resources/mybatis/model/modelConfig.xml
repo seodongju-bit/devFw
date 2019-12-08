@@ -24,9 +24,8 @@
 		<typeAlias type="project.B.P002.vo.B_P002VO"  alias="B_P002VO" />
 		<typeAlias type="project.D.P001.vo.D_P001VO"  alias="D_P001VO" />
 		<typeAlias type="project.E.P001.vo.E_P001VO"  alias="E_P001VO" />
-		<typeAlias type="project.E.P001.vo.E_P001VO2"  alias="E_P001VO2" />
 		<typeAlias type="project.controller.commonVO"  alias="commonVO" />
 		<typeAlias type="project.main.paging.MainPagingVO" alias="mainPagingVO"/>
 		<typeAlias type="project.search.paging.SearchPagingVO" alias="searchPagingVO"/>
 	</typeAliases>
-</configuration>                                                                           
+</configuration>                                                                                                                        

@@ -26,6 +26,18 @@ public interface C_P003DAO {
 	
 	public List Allquestions(PageVO vo1) throws DataAccessException;
 	
+	public List Allquestions1(PageVO vo1) throws DataAccessException;
+	
+	public List questionDetail(Map<String, Object> dataMap3) throws DataAccessException;
+	
+	public List questionDetail1(Map<String, Object> dataMap4) throws DataAccessException;
+	
+	public void writes(Map<String, Object> dataMap5);
+	
+	public void writes2(Map<String, Object> dataMap6);
+	
+	public void writes3(Map<String, Object> dataMap7);
+	
 	public int countBoard();
 	
 	

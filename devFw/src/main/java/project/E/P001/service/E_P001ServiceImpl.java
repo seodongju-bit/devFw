@@ -12,7 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import project.E.P001.dao.E_P001DAO;
 import project.E.P001.vo.E_P001VO;
-import project.E.P001.vo.E_P001VO2;
 
 
 @Service("E_P001Service")
@@ -27,11 +26,8 @@ public class E_P001ServiceImpl implements E_P001Service {
 		return list;
 	}
 	
-	public void addNewOrder(List<E_P001VO2> myOrderList) throws Exception {
-		e_P001DAO.insertNewOrder(myOrderList);
+	public void addNewOrder(List<E_P001VO> orderList) throws Exception {
+		e_P001DAO.insertNewOrder(orderList);
 	}
 	
-	public E_P001VO2 findMyOrder(String order_number) throws Exception {
-		return e_P001DAO.findMyOrder(order_number);
-	}
 }

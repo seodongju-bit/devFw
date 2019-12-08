@@ -14,7 +14,7 @@
 <head>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script><!-- 팝업 관련 -->
 
-<link rel="stylesheet" type="text/css" href="resources/css/F_P002_D001.css?ver=1.2">
+<link rel="stylesheet" type="text/css" href="resources/css/F_P002_D001.css?ver=1.3">
 
 <script src="http://code.jquery.com/jquery-latest.min.js"></script><!-- jquery -->
 <script type="text/javascript">
@@ -26,7 +26,6 @@ $(document).ready(function(){
 	
 	$('#itemsImg').attr('src','${item.sell_thumbnail}');
 	//$('.miniImg').attr('src', 'resources/image/items/10.JPG' );
-	
 	
 	if('${item.option_yn}'=='y'){
 	/////ajax
@@ -51,7 +50,6 @@ $(document).ready(function(){
 	        		   $('#colorOption').css('display', 'block');
 	        	   }
 	           }
-	           console.log(option_kinds);
 	           const size = new Set();
 	           const color = new Set();
 
@@ -88,7 +86,6 @@ $(document).ready(function(){
 
 });
 
-//var itemList = [];
 var option_kinds=[];
 var option_stack=1;
 $(document).ready(function(){
@@ -111,14 +108,7 @@ $(document).ready(function(){
 	 
 	if(!option_kinds.includes("size")  && option_kinds.includes("color")){ ///////색상옵션
 		$('#colorOption').on('change',function(){
-			/*item={};
-			item.color=document.getElementById('colorOption').value;
-			if(item in itemList){
-				alert("이미 선택되어 있는 옵션입니다.");
-				return;
-			}
-			itemList.push(item);
-			*/
+	
 			var selectedBox = document.createElement('div');
 			var deletebtn = document.createElement('button');
 			var input = document.createElement("input");
@@ -186,13 +176,12 @@ $(document).ready(function(){
 		});
 	}
 
-	if(option_kinds.includes("size")  && option_kinds.includes("color")){ //컬러&색상옵션
+	if(option_kinds.includes("size") && option_kinds.includes("color")){ //컬러&색상옵션
 		$('#sizeOption').on('change',function(){
 			 $('#colorOption').on('change',function(){
 				if(document.getElementById('colorOption').value=='' || document.getElementById('sizeOption').value==''){
 					return;
 				}
-				 
 				 	var selectedBox = document.createElement('div');
 					var deletebtn = document.createElement('button');
 					var input = document.createElement("input");
@@ -218,7 +207,6 @@ $(document).ready(function(){
 					input.setAttribute("value", document.getElementById('sizeOption').value );
 					selectedBox.appendChild(input);
 
-					
 					deletebtn.append('삭제');
 					deletebtn.setAttribute('type', 'button');
 					deletebtn.setAttribute('class', 'btn-default');
@@ -226,8 +214,6 @@ $(document).ready(function(){
 					
 					selectedBox.setAttribute('class', 'selectItem');
 					selectedBox.setAttribute('id', 'selectbox'+option_stack);
-					//selectedBox.append(document.getElementById('sizeOption').value);
-					//selectedBox.append(document.getElementById('colorOption').value);
 					
 					selectedBox.innerHTML+="<input type='number' name='quantity"+option_stack+"' class='quantity' value='1' min='0' max='99' >";
 					selectedBox.appendChild(deletebtn);
@@ -291,12 +277,17 @@ function pageLoad(command){
 		$('#contentDetail').load('itemsInfoLoad.do',{ contents : '${item.sell_contents}'});
 	}
 	if(command=="sellItemsReview"){
-		$('#contentDetail').load('sellItemsReview.do',{ sell_number : '${item.sell_number}'});
+		$('#contentDetail').load('sellItemsReview.do',{ sell_number :'${item.sell_number}', page :1});
 	}
 	if(command=="sellerChat"){
 		$('#contentDetail').load('sellerChat.do');
 	}
-	
+	if(command=="proOpinion"){
+		$('#contentDetail').load('proOpinion.do');
+	}
+	if(command=="exchangeInfo"){
+		$('#contentDetail').load('exchangeInfo.do');
+	}
 }
 </script>
 <meta charset="UTF-8">
@@ -310,7 +301,7 @@ function pageLoad(command){
 <div id="catCategory" >
 	<div>
 		<a href="/devFw/category.do"> 카테고리 </a> > 
-		<a href="/devFw/category.do?ctgrNum=${item.bigCtgrCode}" > ${item.bigCtgrName} </a> > 
+		<a href="/devFw/category.do?ctgrNum=${item.bigCtgrCode}" > ${item.bigCtgrName} </a> >
 		<a href="/devFw/category.do?ctgrNum=${item.smallCtgrCode}" > ${item.smallCtgrName} </a>
 	</div>
 </div>
@@ -343,6 +334,15 @@ function pageLoad(command){
 				<option value="">색상 선택</option>
 			</select>
 		</div>
+		<c:choose>
+			<c:when test='${reiewer.REVIEW_NUMBER!=null }'>
+			<div class="sellInfo">
+				<input type="hidden" name="od_recomreview" value='${reiewer.REVIEW_NUMBER}'>
+				추천리뷰 : ${reiewer.REVIEW_TITLE}<br>
+				by ${reiewer.MEM_ID}
+				</div>
+			</c:when>
+		</c:choose>
 		<form method="post" name="selectPush" accept-charset="UTF-8" >
 			<div id="selectItems" class="sellInfo">
 				<button type="button" class="btn-default" id="basketbtn" onclick="basket()" >장바구니</button>
@@ -354,9 +354,9 @@ function pageLoad(command){
 <div id="itemsInfoSelect">
 	<button class="btn btn-primary" onclick="pageLoad('itemsInfoLoad')">상품정보</button>
 	<button class="btn btn-primary" onclick="pageLoad('sellItemsReview')">리뷰</button>
-	<button class="btn btn-primary">상품의견</button>
+	<button class="btn btn-primary" onclick="pageLoad('proOpinion')">상품의견</button>
 	<button class="btn btn-primary" onclick="pageLoad('sellerChat')">QnA</button>
-	<button class="btn btn-primary">판매자정보</button>
+	<button class="btn btn-primary" onclick="pageLoad('exchangeInfo')">반품/교환정보</button>
 </div>
 
 </body>

@@ -155,7 +155,7 @@
 	  background-color:#9E9E9E;
 	  color:white;
 	  width:180px;
-	  height:30px;
+	  height:31px;
 	  margin:0px;
 	  padding:0px;
 	  font-size:16px;
@@ -166,15 +166,15 @@
 	  display: none;
 	  position: absolute;
 	  background-color: black;
-	  min-width: 180px;
+	  width: 180px;
 	  z-index: 1;
 	  opacity: 0.9;  
-	}
+	} 
 	.dropdown-content .menu1{
 	  color:white;
-	  padding: 12px 8px;
+	  padding: 12px 0;
 	  text-decoration: none;
-	  display: block;    
+	  display: block; 
 	}
 	.dropdown-content2{
 	  display: none;
@@ -390,7 +390,7 @@ $(document).ready(function(){
 		}
 	}
 
-</script>
+</script>           
 <body>
 	<div class="header" id="header">
 	
@@ -412,6 +412,7 @@ $(document).ready(function(){
        		 		</c:when>
        		 		<c:when test="${memberInfo.mem_division==1 }" >
        		 			<a class="nav-item nav-link" id="itemManagerlink" href="${contextPath}/itemManager.do">상품관리</a>
+       		 			<a class="nav-item nav-link" id="itemManagerlink" href="${contextPath}/questionwrite5.do">문의사항 답변</a>
        		 		</c:when>
        		 		<c:when test="${memberInfo.mem_division==2 }" >
        		 			<a class="nav-item nav-link" id="siteManagerlink" href="${contextPath}/basket.do">사이트관리</a>
@@ -445,9 +446,9 @@ $(document).ready(function(){
 
   			</div>
 		</div>
+		<div class="mainMenu"><button class="menubtn"onclick="location.href='reviewRanking.do'">리뷰랭킹</button></div>
 		<div class="mainMenu"><button class="menubtn"onclick="location.href='bestProduct.do'">베스트상품</button></div>
 		<div class="mainMenu"><button class="menubtn"onclick="location.href='eventProduct.do'">이벤트상품</button></div>
-		<div class="mainMenu"><button class="menubtn"onclick="location.href='reviewRanking.do'">리뷰랭킹</button></div>
 				<c:choose>
 					<c:when test="${memberInfo.mem_division==2 }">
 						<div class="mainMenu"><button class="menubtn" onclick="location.href='${contextPath}/makecoupon.do'">쿠폰발급</button></div>

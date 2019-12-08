@@ -42,5 +42,11 @@ public interface F_P002DAO {
 	public int countSearch(SearchVO searchVO) throws Exception;
 
 	public List<Map<String, Object>> searchReview(Map<String, Object> searchMap);
+
+	public List<Map<String, Object>> searchMonthReview(Map<String, Object> searchMap);
+
+	public List<Map<String, Object>> searchTotalReview(Map<String, Object> searchMap);
+
+	public List<Map<String, Object>> searchReviewInfo(Map<String, Object> searchMap);
 	 
 }

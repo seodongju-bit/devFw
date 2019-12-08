@@ -43,9 +43,10 @@ caption {
 <table class="notice_view">              
 		<colgroup>
 			<col width="15%" />  
-			<col width="35%" />
+			<col width="30%" />
 			<col width="15%" />
-			<col width="35%" />
+			<col width="30%" />
+			
 		</colgroup>
 		<caption>게시글 상세</caption>
 		<tbody>             
@@ -60,16 +61,18 @@ caption {
 			</tr>
 			<tr>
 				<th scope="row">문의자</th>
-				<td colspan="3">${notice3.MEM_NO}님</td>
+				<td colspan="3">${notice3.MEM_ID}님</td>
 			</tr>                
 			<tr>  
 		       	<th scope="row">답변내용</th>                                        
 				<td colspan="4" id="contents">${notice3.QU_ANSWER}</td>
 			</tr>
+			
+			
 			<button class="btn btn-default"  onclick="location.href='${contextPath}/notice.do'">목록</button>
 			<tr></tr>
 			
-			
+			    
 		</tbody>
 		                 
 	</table>

@@ -66,6 +66,22 @@ public class C_P003DAOImpl implements C_P003DAO{
 		System.out.println("dao실행"+noticelist4);
 		return noticelist4;
 	}
+	
+	@Override
+	public List questionDetail(Map<String, Object> dataMap3) throws DataAccessException {
+		List noticelist5 = null;
+		noticelist5 = sqlSession.selectList("mapper.notice.questionDetail", dataMap3);
+		System.out.println("dao실행"+noticelist5);
+		return noticelist5;
+	}
+	
+	@Override
+	public List questionDetail1(Map<String, Object> dataMap4) throws DataAccessException {
+		List noticelist6 = null;
+		noticelist6 = sqlSession.selectList("mapper.notice.questionDetail1", dataMap4);
+		System.out.println("dao실행"+noticelist6);
+		return noticelist6;
+	}
 
 	@Override
 	public List Allquestions(PageVO vo1) throws DataAccessException {
@@ -75,13 +91,32 @@ public class C_P003DAOImpl implements C_P003DAO{
 		return questionList;
 	}
                          
-	
+	@Override
+	public List Allquestions1(PageVO vo1) throws DataAccessException {
+		List<C_P003VO> questionList1 = null;
+		questionList1 = sqlSession.selectList("mapper.notice.Allquestions1", vo1);
+		System.out.println("dao실행"+questionList1);
+		return questionList1;
+	}
 
-
 	
-
+	@Override
+	public void writes(Map<String, Object> dataMap5) throws DataAccessException {
+	    System.out.println(dataMap5);
+		sqlSession.insert("mapper.notice.insertquestion", dataMap5);
+	}
 	
+	@Override
+	public void writes2(Map<String, Object> dataMap6) throws DataAccessException {
+	    System.out.println(dataMap6);
+		sqlSession.insert("mapper.notice.insertquestion2", dataMap6);
+	}
 	
+	@Override
+	public void writes3(Map<String, Object> dataMap7) throws DataAccessException {
+	    System.out.println(dataMap7);
+		sqlSession.insert("mapper.notice.insertquestion3", dataMap7);
+	}
 	
 		
 	}
