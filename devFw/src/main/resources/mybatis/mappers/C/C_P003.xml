@@ -26,6 +26,17 @@
   
   
   
+ <resultMap id="C_P003Result03" type="C_P003VO">
+  <result property="oq_number" column="oq_number" />
+  <result property="oq_question" column="oq_question" />
+  <result property="oq_answer" column="oq_answer" />                 
+
+
+ 
+  </resultMap>
+  
+  
+  
      <select id="noticeItem" resultMap="C_P003Result01" parameterType="java.util.Map"> 
       <![CDATA[
        SELECT d.de_number,d.mem_id,d.de_division,d.de_date,d.de_contents
@@ -173,6 +184,41 @@
             AND mem_id=#{mem_id}     
 			 
 		]]>     
-	</update>       
+	</update>     
+	
+	
+	
+	
+	<select id="Allquestions2" resultMap="C_P003Result03" >                   
+      <![CDATA[
+     SELECT oq_number,oq_question,oq_answer
+        FROM (
+        SELECT ROWNUM RN, A.* 
+				FROM (
+				SELECT oq_number,oq_question,oq_answer
+                FROM oftenquestion o
+				ORDER BY oq_number DESC
+				)A
+			)
+	    WHERE RN BETWEEN #{start} AND #{end}
+			
+         
+      ]]>         
+
+   </select>     
+      
+      
+       
+     <select id="questionDetail2" parameterType="java.util.Map" resultType="java.util.HashMap"> 
+    <![CDATA[
+        
+   SELECT oq_number,oq_question,oq_answer
+   FROM oftenquestion
+   WHERE oq_number=#{oq_number}
+           
+        ]]>         
+ 
+   </select>
+      
       
   </mapper>

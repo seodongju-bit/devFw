@@ -15,7 +15,7 @@
 <style>
 #content{
 width: 75%;
-height:1000px;
+height:1500px;
 padding: 5px;
 margin-left: 290px;
 border: 0px solid #bcbcbc;   
@@ -29,7 +29,7 @@ height:1000px;
 container.a{
 float:right;
 }
-
+                
 a:visited {
   color: black;
 }
@@ -96,7 +96,27 @@ $(document).ready(function(){
                      
 </head>
 <body>
-<div id="wrap">
+
+
+
+<div class="gallery">
+  <a target="_blank" href="${contextPath}/eventProduct.do">
+    <img src="resources/image/makeup1.JPG" alt="4" width="450" height="200">
+  </a>
+  <a target="_blank" href="${contextPath}/eventProduct.do">
+    <img src="resources/image/makeup2.JPG" alt="4" width="450" height="200">
+  </a>
+   <a target="_blank" href="${contextPath}/eventProduct.do">
+    <img src="resources/image/food1.JPG" alt="4" width="450" height="200">
+  </a>
+   
+  
+</div>
+
+
+
+
+<!--  <div id="wrap">-->
 	<div id="container">
 	<!-- <button type="button" class="btn black mr5" onclick="javascript:goBoardWrite();">1:1문의하기</button>-->
   
@@ -253,13 +273,13 @@ $(document).ready(function(){
 					</c:forEach>
 
 				
-				</table>            
+				</table>
+							
+		
+          
 			</form>
-			<br><br><br>			
-			
-		</div>
- 
-</div>
+ </div>
+</div>  						
 
 </body>
 </html>

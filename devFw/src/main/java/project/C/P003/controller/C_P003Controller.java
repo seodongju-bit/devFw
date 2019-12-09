@@ -44,4 +44,7 @@ public ModelAndView questionwrite6(HttpServletRequest request, HttpServletRespon
 
 
 
+public ModelAndView questions2(PageVO vo2,String nowPage, String cntPerPage,HttpServletRequest request, HttpServletResponse response) throws Exception;
+public ModelAndView questionDetail2(@RequestParam("oq_number")String qu_number, HttpServletRequest request, HttpServletResponse response) throws Exception;
+
 }                      

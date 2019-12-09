@@ -17,7 +17,8 @@
       <put-attribute name="side" value="/WEB-INF/views/common/notice_side.jsp" />
       <put-attribute name="body" value="" />
       <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
-   </definition>    
+   </definition>   
+  
                      
    <definition name="baseLayout2"  template="/WEB-INF/views/common/layout.jsp">
       <put-attribute name="title" value="" />
@@ -354,7 +355,15 @@
       <put-attribute name="body" value="/WEB-INF/views/C/P003/D006.jsp" />
    </definition>
    
+    <definition name="questions2" extends="noticeLayout">
+      <put-attribute name="title" value="자주묻는질문" />
+      <put-attribute name="body" value="/WEB-INF/views/C/P003/D007.jsp" />
+   </definition> 
    
+      <definition name="questionDetail2" extends="noticeLayout">
+      <put-attribute name="title" value="자주묻는질문상세페이지" />
+      <put-attribute name="body" value="/WEB-INF/views/C/P003/D007_1.jsp" />
+   </definition>
    
 <!--  웅건                    
    <definition name="/member/memberForm" extends="baseLayout">
