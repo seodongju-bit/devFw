@@ -273,7 +273,7 @@ $(".youtubeBox").mouseover(function(){
 		youtubeSw =0;
 	}
 });
-
+  
 $(".youtubeBox").mouseleave(function(){
  	$(this).html('<img src="resources/image/youtubeIcon.png" >');
  	youtubeSw=1;
