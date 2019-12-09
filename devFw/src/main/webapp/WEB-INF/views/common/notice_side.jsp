@@ -16,19 +16,25 @@
   <style>
 
 #a{
-width:250px;
+width:250px;                              
 height:800px;
 background-color: white;
-border: 1px solid #bcbcbc;
-text-align:left;
+border: 1px solid #000000;
+text-align:left;           
 }
    
    #cc{
    width:200px;
-   border: 1px solid #bcbcbc;
+   border: 1px solid #040404;
    font-color: black;
    }
    
+   li.nav-header{
+    font-size: 20px;
+    font-style: normal;
+    background-color: black;    
+    color: white;
+   }
    
  </style>
   <meta charset="UTF-8">

@@ -8,12 +8,19 @@
 <style>
 .h2, h2 {
     font-size: 30px;
-    background-color: #c0c2c3;
+    background-color: black;
+    color:white;
 }
+input{
+text-align: center;
+}
+
 
 form{
 height:1000px;
 }
+
+
 </style>
      
 
@@ -32,8 +39,9 @@ height:1000px;
 
 <div style="width: 60%; margin-left: 20%; margin-right: auto;">
 
-       <input type="text" name="qu_number" style="width: 20%;" placeholder="글번호"/><br>
-
+       <input type="text" name="qu_number" style="width: 20%;" placeholder="글번호"/>
+       <br>
+       <br>
 		<input type="text" name="mem_id" style="width: 20%;" placeholder="작성자"/><br>
 		
 		

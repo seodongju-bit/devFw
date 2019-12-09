@@ -8,12 +8,17 @@
 <style>
 .h2, h2 {
     font-size: 30px;
-    background-color: #c0c2c3;
+    background-color: black;
+    color:white;
 }
 
 form{
 height:1000px;
 }
+
+
+
+
 </style>
 
 

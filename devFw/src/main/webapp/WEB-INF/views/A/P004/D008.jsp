@@ -14,7 +14,12 @@
 
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <link href="../devFw/resources/css/bootstrap.min.css" rel="stylesheet">
+<style>
+#content{
+height:1000px;
+}
 
+</style>
 <script>
 function takecoupon(co_number, stdate, enddate){
 	
