@@ -124,6 +124,23 @@ public class C_P003ServiceImpl implements C_P003Service {
 	}
 
 
+	@Override
+	public List listquestion2(PageVO vo2) throws DataAccessException {
+		List questionList2 = null;
+		questionList2 = C_P003DAO.Allquestions2(vo2);
+		return questionList2;  
+	}
+	
+	@Override           
+	public List<Map<String, Object>> questionDetail2(Map<String, Object> dataMap8) throws DataAccessException {
+		
+
+		List noticeList7 = null;
+		noticeList7=C_P003DAO.questionDetail2(dataMap8); 
+		System.out.println("service"+dataMap8);
+		return noticeList7; 
+	}
+
 
 
 }
