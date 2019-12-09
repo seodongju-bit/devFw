@@ -17,6 +17,7 @@
 <c:set var="pointuse" value="0"/>
 <c:set var="point_save" value="0"/>
 <c:set var="point_save_total" value="0"/>
+<c:set var="total_delivery_price" value="0"/>
 <!DOCTYPE html>
 
 
@@ -310,29 +311,28 @@ h1{
     	$('#all_point').change(function(){
     		if($('#all_point').is(':checked')){
     			$('#order_pointuse').val('${orderer.mem_point}');
-    			$("#p_order_pointuse").text($("#order_pointuse").val());
+    			$('#p_order_pointuse').text($('#order_pointuse').val());
     		}else {
     			$('#order_pointuse').val('0');
-    			$("#p_order_pointuse").text($("#order_pointuse").val());
+    			$('#p_order_pointuse').text($('#order_pointuse').val());
     		}
-    		$("#order_pointuse").on("keyup", function(){
-        		var order_pointuse = $("#order_pointuse").val();
-        		var h_mypoint = $("#h_mypoint").val();
+    	})
+    		$("#order_pointuse").on('keyup', function(){
+        		var order_pointuse = $('#order_pointuse').val();
+        		var final_order_total_price = $('#h_final_order_total_price').val();
+        		var h_mypoint = $('#h_mypoint').val();
         		
         		if(Number(order_pointuse) > Number(h_mypoint)) {
         			alert("보유 금액 이상 사용은 불가능 합니다.");
-        			$('#order_pointuse').val('0');
+        			$('#order_pointuse').val('${orderer.mem_point}');
+        			$('#p_order_pointuse').text($('#order_pointuse').val());
+        		}
+        		else if(Number(order_pointuse) > Number(final_order_total_price)) {
+        			alert("입력하신 포인트가 상품 가격보다 높습니다.");
+        			$('#order_pointuse').val(final_order_total_price);
+        			$('#p_order_pointuse').text($('#order_pointuse').val());
         		}
         	});
-    	});
-    });
-
-   
-    
-    $(document).ready(function(){
-    	$("#order_pointuse").keyup(function(){
-    		$("#p_order_pointuse").text($("#order_pointuse").val());
-    	});
     });
 </script>
 <title>Insert title here</title>
@@ -389,7 +389,8 @@ h1{
 	  	      <fmt:formatNumber value="${item.sell_price * item.detail_quantity}"/>원 (<fmt:formatNumber value="${order_sale_price + (1-(item.sell_price / item.pro_price ))*100}" pattern="#"/>%)
 	  	    </td> 
 	  	    <td>
-	  	  		배송비
+	  	  		<fmt:formatNumber value="${item.delivery_price}"/>원
+	  	  		<input type="hidden" id="h_delivery_price" name="h_delivery_price" value="${item.delivery_price}"/>
 	  	    </td>
 	  	    <td>
 	  	       <input type="hidden" id="delivery_payment" name="delivery_payment" value=""/>
@@ -399,14 +400,15 @@ h1{
 		      </select>
 	  	    </td>
 	  	    <td>
-	  	      <c:set var="point_save" value="${point_save + (item.pro_price*0.05)}"/>
-	  	      <fmt:parseNumber value="${point_save + (item.pro_price*0.05)}" var="point_save" integerOnly="true"/>P
+	  	      <c:set var="point_save" value="${point_save + ((item.pro_price*0.05)*item.detail_quantity)}"/>
+	  	      <fmt:parseNumber value="${point_save + ((item.pro_price*0.05)*item.detail_quantity)}" var="point_save" integerOnly="true"/>P
 	  	      <input type="hidden" id="h_point_save" name="h_point_save" value="${point_save}"/>
 	  	    </td>
 	  	  </tr>
 	  	  	<c:set var="order_total_price" value="${order_total_price + item.sell_price * item.detail_quantity}"/>
-	  	  	<c:set var="order_total_sale_price" value="${order_total_sale_price + (item.pro_price - item.sell_price)}"/>
+	  	  	<c:set var="order_total_sale_price" value="${order_total_sale_price + (item.pro_price - item.sell_price) * item.detail_quantity}"/>
 	  	  	<c:set var="point_save_total" value="${point_save_total + point_save}"/>
+	  	  	<c:set var="total_delivery_price" value="${total_delivery_price + item.delivery_price}"/>
 	  	</c:forEach>
 	  	</table>
 	  		<input type="hidden" id="h_order_total_price" name="h_order_total_price" value="${order_total_price}"/>
@@ -530,12 +532,12 @@ h1{
 	      </tr>
 	      <tr style="cellpadding:40px; align:center;">
 	        <c:set var="final_order_total_pro_price" value="${final_order_total_pro_price + order_total_price}"/>
-	  		<c:set var="final_order_total_price" value="${final_order_total_pro_price + order_total_sale_price}"/>
+	  		<c:set var="final_order_total_price" value="${final_order_total_pro_price - order_total_sale_price}"/>
 	        <td>
 			  <p id="p_final_order_total_pro_price"><fmt:formatNumber value="${final_order_total_pro_price}"/>원</p>	  
 	        </td>
 	        <td>
-	          <p id="p_delivery_cost">배송비</p>
+	          <p id="p_total_delivery_price"><fmt:formatNumber value="${total_delivery_price}"/>원</p>
 	        </td>
 	        <td>
 	          <p id="p_order_total_sale_price"><fmt:formatNumber value="${order_total_sale_price}"/>원</p>
@@ -546,7 +548,7 @@ h1{
 	        <td>
 	        <c:set var="final_order_total_price" value="${final_order_total_price - pointuse}"/>
 	          <p id="p_final_order_total_price">
-	           <fmt:formatNumber value="${final_order_total_price}"/>원
+	           <fmt:formatNumber id="final_order_total_price_pattern" value="${final_order_total_price}"/>원
 	         </p>
 		  		<input type="hidden" id="h_order_total_price" name="h_order_total_price" value="${order_total_price}"/>
 		  		<input type="hidden" id="h_order_total_sale_price" name="h_order_total_sale_price" value="${order_total_sale_price}"/>

@@ -415,7 +415,7 @@ $(document).ready(function(){
        		 			<a class="nav-item nav-link" id="itemManagerlink" href="${contextPath}/questionwrite5.do">문의사항 답변</a>
        		 		</c:when>
        		 		<c:when test="${memberInfo.mem_division==2 }" >
-       		 			<a class="nav-item nav-link" id="siteManagerlink" href="${contextPath}/basket.do">사이트관리</a>
+       		 			<a class="nav-item nav-link" id="siteManagerlink" href="${contextPath}/adminPage.do">사이트관리</a>
        		 		</c:when>
        		 	</c:choose>
 			</c:when>
