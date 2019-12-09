@@ -85,4 +85,51 @@ public class F_P002DAOImpl implements F_P002DAO {
 		return list;
 	}
 
+	@Override
+	public List<Map<String, Object>> searchReviewRank(Map<String, Object> searchMap) {
+		List<Map<String, Object>> list = sqlSession.selectList("F.P002.searchReviewRank", searchMap);
+		return list;
+	}
+
+	@Override
+	public List<Map<String, Object>> searchProRank(Map<String, Object> searchMap) {
+		List<Map<String, Object>> list = sqlSession.selectList("F.P002.searchProRank", searchMap);
+		List<Map<String, Object>> list2 = new ArrayList<Map<String, Object>>();
+		try {
+			for (int i = 0; i < list.size(); i++) {
+				list2 = sqlSession.selectList("F.P002.matchThumbnail", list.get(i));
+				list.get(i).put("SELL_THUMBNAIL", list2.get(0).get("SELL_THUMBNAIL"));
+			}
+		} catch (Exception e) {
+			System.out.println("nullpointer c");
+		}
+		
+		try {
+			for (int i = 0; i < list.size(); i++) {
+				list2 = sqlSession.selectList("F.P002.proTopReview", list.get(i));
+
+				list.get(i).put("REVIEW_NUMBER1", list2.get(0).get("REVIEW_NUMBER"));
+				list.get(i).put("REVIEW_NUMBER2", list2.get(1).get("REVIEW_NUMBER"));
+				list.get(i).put("REVIEW_NUMBER3", list2.get(2).get("REVIEW_NUMBER"));
+
+				list.get(i).put("REVIEW_TITLE1", list2.get(0).get("REVIEW_TITLE"));
+				list.get(i).put("REVIEW_TITLE2", list2.get(1).get("REVIEW_TITLE"));
+				list.get(i).put("REVIEW_TITLE3", list2.get(2).get("REVIEW_TITLE"));
+
+				list.get(i).put("REVIEW_TOTALPOINT1", list2.get(0).get("REVIEW_TOTALPOINT"));
+				list.get(i).put("REVIEW_TOTALPOINT2", list2.get(1).get("REVIEW_TOTALPOINT"));
+				list.get(i).put("REVIEW_TOTALPOINT3", list2.get(2).get("REVIEW_TOTALPOINT"));
+			}
+		} catch (Exception e) {
+			System.out.println("nullpointer d");
+		}
+		return list;
+	}
+
+	@Override
+	public List<Map<String, Object>> searchReviewList(Map<String, Object> searchMap) {
+		List<Map<String, Object>> list = sqlSession.selectList("F.P002.searchReviewList", searchMap);
+		return list;
+	}
+
 }

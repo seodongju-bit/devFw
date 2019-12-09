@@ -81,7 +81,7 @@
 	display:none;
 }
 #selectItems{
-	
+	padding: 10px;
 	
 }
 
@@ -93,27 +93,28 @@
 	border:1px solid lightblue;
 }
 .quantity{
-	margin: 5px 20px;
+	margin: 5px ;
 	width:60px;
 	height:30px;
 	text-align:center;
 	border-radius: 8px;
 }
 .selectItem{
-	color:black;
+	color: gray;
 	margin:3px auto;
 	width:90%;
 	height:40px;
 	background-color:white;
 	border-bottom:1px solid lightgray;
 	border-radius: 5px;
+	font-size: 17px;
 }
 
-.selectItem > button{
+.selectItem button{
 	position:relative;
 	width:50px;
 	height:28px;
-	left:105px;
+	left:86px;
 	top:-3px;
 	border-radius:5px;
 	font-size:12px;
@@ -126,7 +127,8 @@
 	background-color:lightblue;
 	border-radius: 8px;
 	color:white;
-	margin:3px 10px;
+	margin:5px 15px;
+	float:left;
 }
 #itemsInfoSelect{
 	display:block;
@@ -150,4 +152,7 @@
 #itemsInfoSelect :first-child {
 	margin-left:0px;
 }
- 
+#reviewerBox{
+	height: 35px;
+	padding: 4px;
+}

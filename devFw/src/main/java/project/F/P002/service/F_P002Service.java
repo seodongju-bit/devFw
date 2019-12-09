@@ -32,6 +32,10 @@ public interface F_P002Service {
 	public List<Map<String, Object>> searchReview(Map<String, Object> searchMap, int command);
 	List<Map<String, Object>> paging(List<Map<String, Object>> list, int page);
 	public List<Map<String, Object>> searchReviewInfo(Map<String, Object> searchMap);
+	public List<Map<String, Object>> searchReviewRank(Map<String, Object> searchMap);
+	public List<Map<String, Object>> searchProRank(Map<String, Object> searchMap);
+	public List<Map<String, Object>> searchReviewList(Map<String, Object> searchMap);
+	List<Map<String, Object>> thumbnail(List<Map<String, Object>> list);
 
 
 }

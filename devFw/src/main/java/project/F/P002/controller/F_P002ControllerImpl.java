@@ -187,18 +187,55 @@ public class F_P002ControllerImpl   implements F_P002Controller {
 		List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
 		result = f_P002Service.searchReviewInfo(searchMap);
 		//Map<String, Object> searchMap = new HashMap<String, Object>();
-		System.out.println(result);
 		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("reviewInfo",result.get(0));
 		return mav;
 	}
 	
+	@RequestMapping(value="/reviewRankingMenu.do" ,method = { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView reviewRankingMenu(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = getViewName(request);
+		viewName = "reviewRankingMenu";
+		ModelAndView mav = new ModelAndView(viewName);
+		
+		return mav;
+	}
 	
-	@RequestMapping(value="/reviewRanking.do" ,method = RequestMethod.GET)
+	
+	@RequestMapping(value="/reviewRanking.do" ,method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView reviewRanking(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = getViewName(request);
 		viewName = "reviewRanking";
 		ModelAndView mav = new ModelAndView(viewName);
+		String ctgrNum = request.getParameter("ctgrNum");
+		request.setAttribute("ctgrNum", ctgrNum);
+		if(ctgrNum==null || ctgrNum=="") {
+			ctgrNum = "H________";
+		}else if(ctgrNum.length()==4) {
+			ctgrNum+="_____";
+		}
+		//전체,대분류별,소뷴류별/ 가장 인기있는 리뷰  /가장 리뷰가 많이 달린 제품&거기서 인기있는 리뷰3 / 가장 최근 등록된 리뷰 중 추천 3개 이상 받은거 
+		Map<String, Object> searchMap = new HashMap<String, Object>();
+		searchMap.put("p_id", ctgrNum);
+		List<Map<String, Object>> result1 = f_P002Service.searchReviewRank(searchMap);
+		List<Map<String, Object>> result2 = f_P002Service.searchProRank(searchMap);
+		List<Map<String, Object>> result3 = f_P002Service.searchReviewList(searchMap);
+		
+		String p = request.getParameter("page");
+		int page = 1;
+		if(p!=null) {
+			page = Integer.parseInt(p);
+		}
+		result3 = f_P002Service.paging(result3, page);
+		mav.addObject("pageInfo", result3.get(result3.size()-1));
+		result3.remove(result3.size()-1);
+		
+		result3 = f_P002Service.thumbnail(result3);
+		//System.out.println("bestReview:"+result2);
+		
+		mav.addObject("bestReview",result1);
+		mav.addObject("bestProduct",result2);
+		mav.addObject("reviewList" , result3);
 		return mav;
 	}
 	
