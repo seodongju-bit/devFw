@@ -39,6 +39,19 @@ a:hover {
   color: gray;
 }
 
+.h2, h2 {
+    font-size: 30px;
+    background-color:black;
+    color: white;    
+}
+#nowView{
+color:white;
+background-color:black;    
+}
+
+
+
+
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
@@ -49,15 +62,101 @@ a:hover {
 
 <!-- 공통 JavaScript -->
 <!--  <script type="text/javascript" src="/js/common/jquery.js"></script>-->
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+   $("#sample tr:not(:first-child)").click(function(){ 
+      $("#nowView").remove();          
+      //alert($(this).index());
+      $("#sample tr").eq($(this).index()).css("background-color","white");   
+      if($(this).index()==1){
+      	$(this).after("<tr id='nowView'><td colspan='4'>구매고객 : 1566-5701 / 평일 오전9시~오후6 판매고객 : 1566-5707 / 평일 오전9시~오후6시 스마일배송 : 1644-5718</td></tr>");
+      }
+      if($(this).index()==2){
+        	$(this).after("<tr id='nowView'><td colspan='4'>판매자와 전화연결이 되지 않는다면 상품 상세페이지에서 판매자에게 문의하기로 글을 남겨 주세요.</td></tr>");
+        }
+      if($(this).index()==3){
+      	$(this).after("<tr id='nowView'><td colspan='4'>타임아웃 : 일시적인 오류로 결제 시간초과 상태, 잠시 후 재결제 시도</td></tr>");
+      }
+      if($(this).index()==4){
+      	$(this).after("<tr id='nowView'><td colspan='4'>아이디는 수정이 불가합니다. 아이디 변경을 원하신다면 탈퇴 후 새 아이디로 가입하셔야 합니다.</td></tr>");
+      }
+      if($(this).index()==5){
+      	$(this).after("<tr id='nowView'><td colspan='4'>카드오류 : 한도초과, 사용중지 등인 경우</td></tr>");
+      }
+      if($(this).index()==6){
+      	$(this).after("<tr id='nowView'><td colspan='4'>개인회원에서 법인회원(사업자회원)으로 전환은 불가</td></tr>");
+      }
+      if($(this).index()==7){
+      	$(this).after("<tr id='nowView'><td colspan='4'>원칙적으로 1년간 로그인 이력이 없는 경우 개인정보 유효기간이 종료 </td></tr>");
+      }
+   });   
+});               
+</script>
                      
 </head>
 <body>
 <div id="wrap">
 	<div id="container">
 	<!-- <button type="button" class="btn black mr5" onclick="javascript:goBoardWrite();">1:1문의하기</button>-->
+  
+	     <h2>자주 묻는 질문</h2>
+	     <table id="sample"  width="1100px" align="center" style="text-align:center;">
+          <tr>
+             <th width="80px">글번호</th>
+             <th width=80px">분류</th>
+             <th width=600px">내용</th>
+   
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>이벤트/제휴/기타</td>
+            <td>전담 고객센터</td>
+          </tr>
+          <tr>
+             <td>2</td>
+             <td>상품/상품평</td>
+             <td>판매자에게 연락을 하는 방법이 뭔가요</td>
+          </tr>
+               <tr>
+             <td>3</td>
+             <td>주문/결제</td>
+             <td>결제하려고 하는데 오류가 납니다.</td>
+          </tr>
+               <tr>
+             <td>4</td>
+             <td>고객정보</td>
+             <td>회원정보를 수정하고 싶어요</td>
+          </tr>
+          
+               <tr>
+             <td>5</td>
+             <td>주문/결제</td>
+             <td>신용카드 결제 중 오류(승인실패)가 납니다.</td>
+          </tr>
+               <tr>
+             <td>6</td>
+             <td>고객정보</td>
+             <td>개인회원과 법인회원에 차이가 있나요?</td>
+          </tr>
+          
+               <tr>
+             <td>7</td>
+             <td>고객정보</td>
+             <td>개인정보 유효기간 연장 동의가 무엇인가요?</td>
+          </tr>
+       </table>
+	     
+	     
+	  <br>  
+	  <br>
+	  <br>
+	  <br>
+	  <br>   
 	      <a href="${contextPath}/questions1.do" target="_blank">더 보기</a>
-		<div class="inner">		
+		<div class="inner">	
+		
+			
 			<h2>신고사항</h2>			     
 			<form id="boardForm" name="boardForm">
 				<input type="hidden" id="function_name" name="function_name" value="getBoardList" />
@@ -124,9 +223,11 @@ a:hover {
 				<table class="table table-hover" id="evnet_td">              
 					<colgroup>
 						<col width="10%" />
-						<col width="40%" />
-						<col width="40%" />
+						<col width="30%" />
+						<col width="30%" />
 						<col width="10%" />
+						<col width="20%" />
+						
 					
 					</colgroup>
 					<thead>		
@@ -135,6 +236,7 @@ a:hover {
 							<th>문의내용</th>
 							<th>문의답변</th>
 							<th>문의회원</th>
+							<th>문의날짜</th>
 						</tr>                      
 					</thead>
 					<c:forEach var="notice2" items="${List2}" varStatus='index' >					
@@ -144,7 +246,7 @@ a:hover {
 					<td>${notice2.qu_contents}</td>
 					<td>${notice2.qu_answer}</td>
 					<td>${notice2.mem_id}</td>
-				
+				    <td>${notice2.qu_date}</td>
 					</tr>
 					</thead>
 					
@@ -152,7 +254,8 @@ a:hover {
 
 				
 				</table>            
-			</form>			
+			</form>
+			<br><br><br>			
 			
 		</div>
  

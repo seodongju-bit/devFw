@@ -19,6 +19,7 @@
   <result property="mem_id" column="mem_id" />
   <result property="qu_contents" column="qu_contents" />                 
   <result property="qu_answer" column="qu_answer" />
+  <result property="qu_date" column="qu_date" />
 
  
   </resultMap>
@@ -38,7 +39,7 @@
    
       <select id="noticeItem2" resultMap="C_P003Result02" parameterType="java.util.Map"> 
       <![CDATA[
-     SELECT q.qu_number,q.mem_id,q.qu_contents,q.qu_answer
+     SELECT q.qu_number,q.mem_id,q.qu_contents,q.qu_answer,q.qu_date
       FROM questions q, members m
       WHERE q.mem_id = m.mem_id AND
       ROWNUM<4
@@ -64,7 +65,7 @@
   <select id="noticeDetail2" parameterType="java.util.Map" resultType="java.util.HashMap"> 
     <![CDATA[
         
-   SELECT qu_number,qu_contents,qu_answer,mem_id
+   SELECT qu_number,qu_contents,qu_answer,mem_id,qu_date
    FROM questions 
    WHERE qu_number=#{qu_number}
            
@@ -89,7 +90,7 @@
      <select id="questionDetail1" parameterType="java.util.Map" resultType="java.util.HashMap"> 
     <![CDATA[
         
-   SELECT qu_number,qu_contents,qu_answer,mem_id
+   SELECT qu_number,qu_contents,qu_answer,mem_id,qu_date
    FROM questions 
    WHERE qu_number=#{qu_number}
            
@@ -107,11 +108,11 @@
   
   <select id="Allquestions" resultMap="C_P003Result02" >                   
       <![CDATA[
-        SELECT qu_number,mem_id,qu_contents,qu_answer
+        SELECT qu_number,mem_id,qu_contents,qu_answer,qu_date
         FROM (
         SELECT ROWNUM RN, A.* 
 				FROM (
-				SELECT q.qu_number,q.mem_id,qu_contents,q.qu_answer
+				SELECT q.qu_number,q.mem_id,qu_contents,q.qu_answer,q.qu_date
                 FROM questions q, members m
                 WHERE q.mem_id = m.mem_id
 				ORDER BY q.qu_number DESC
@@ -144,16 +145,34 @@
       ]]>         
 
    </select>   
-   
-<insert id="questionwrite" parameterType="java.util.HashMap">
+        
+<insert id="insertquestion" parameterType="java.util.Map">
 		<![CDATA[
-			insert into questions (qu_number,mem_id,qu_contents,qu_answer) 
+			insert into questions (qu_number,mem_id,qu_contents,qu_date) 
 			values
-			(#{qu_number}, #{mem_id}, #{qu_contents}, #{qu_answer})
-			          
-		]]>
+			 (qu_number.nextval,#{mem_id}, #{qu_contents}, sysdate)   
+		]]>     
+	</insert>          	
+	
+     
+  <insert id="insertquestion2" parameterType="java.util.Map">
+		<![CDATA[
+			insert into declarations (de_number,mem_id,de_division,de_date,de_contents) 
+			values
+			 (de_number.nextval,#{mem_id},#{de_division},sysdate,#{de_contents})   
+		]]>     
 	</insert>
-  
-  
-  
+	
+	
+	
+	  <update id="insertquestion3" parameterType="java.util.Map">
+		<![CDATA[
+			UPDATE questions 
+            SET qu_answer =#{qu_answer}
+            WHERE qu_number=#{qu_number} 
+            AND mem_id=#{mem_id}     
+			 
+		]]>     
+	</update>       
+      
   </mapper>

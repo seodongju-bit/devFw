@@ -230,17 +230,15 @@ public class C_P003ControllerImpl implements C_P003Controller {
 		String viewName = "redirect:/notice.do";
 		Map<String, Object> dataMap5 = new HashMap();
 		
-		String qu_number = request.getParameter("qu_number");
+
 		String mem_id = request.getParameter("mem_id");
 		String qu_contents = request.getParameter("qu_contents");
-	
-		
-		System.out.println(qu_number);
+	    
+
 		System.out.println(mem_id);
 		System.out.println(qu_contents);
 	
-		
-		dataMap5.put("qu_number", qu_number);
+
 		dataMap5.put("mem_id", mem_id);
 		dataMap5.put("qu_contents", qu_contents);
 	
@@ -255,10 +253,88 @@ public class C_P003ControllerImpl implements C_P003Controller {
 
 
 	
+	@Override
+	@RequestMapping(value="/questionwrite3.do" ,method = { RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView questionwrite3(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = "questionwrite3";
+		ModelAndView mavw7 = new ModelAndView(viewName);
+		return mavw7;
+	}
+	
+	@Override
+	@RequestMapping(value="/questionwrite4.do" ,method = { RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView questionwrite4(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = "redirect:/notice.do";
+		Map<String, Object> dataMap6 = new HashMap();
+		
 
+		String mem_id = request.getParameter("mem_id");
+		String de_division = request.getParameter("de_division");
+		String de_contents = request.getParameter("de_contents");
+	    
+
+		System.out.println(mem_id);
+		System.out.println(de_division);
+		System.out.println(de_contents);
+	
+
+		dataMap6.put("mem_id", mem_id);
+		dataMap6.put("de_division", de_division);
+		dataMap6.put("de_contents", de_contents);
+	
+		
+		System.out.println(dataMap6);
+		
+		C_P003Service.questionwrite3(dataMap6);
+		
+		ModelAndView mavw7 = new ModelAndView(viewName);
+		return mavw7;
+	}
     
 
 
+	@Override
+	@RequestMapping(value="/questionwrite5.do" ,method = { RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView questionwrite5(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = "questionwrite5";
+		ModelAndView mavw8 = new ModelAndView(viewName);
+		return mavw8;
+	}
+	
+	@Override
+	@RequestMapping(value="/questionwrite6.do" ,method = { RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView questionwrite6(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = "redirect:/notice.do";
+		Map<String, Object> dataMap7 = new HashMap();
+		
+		String qu_number = request.getParameter("qu_number"); 
+		String mem_id = request.getParameter("mem_id");
+		String qu_answer = request.getParameter("qu_answer");
+	    
+	    
+	  
+		System.out.println(qu_number);
+		System.out.println(mem_id);
+		System.out.println(qu_answer);
+	
+		dataMap7.put("qu_number", qu_number);
+		dataMap7.put("mem_id", mem_id);
+		dataMap7.put("qu_answer", qu_answer);
+	
+		
+		System.out.println(dataMap7);
+		
+		C_P003Service.questionwrite5(dataMap7);
+		
+		ModelAndView mavw8 = new ModelAndView(viewName);
+		return mavw8;
+	}
+
+	
+	
+	
+	
+	
 	
 
 	private String getViewName(HttpServletRequest request) throws Exception {

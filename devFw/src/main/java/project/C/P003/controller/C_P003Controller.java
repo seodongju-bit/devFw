@@ -32,4 +32,16 @@ public ModelAndView questionDetail1(@RequestParam("qu_number")String qu_number, 
 
 public ModelAndView questionwrite(HttpServletRequest request, HttpServletResponse response) throws Exception;
 public ModelAndView questionwrite2(HttpServletRequest request, HttpServletResponse response) throws Exception;
+
+
+public ModelAndView questionwrite3(HttpServletRequest request, HttpServletResponse response) throws Exception;
+public ModelAndView questionwrite4(HttpServletRequest request, HttpServletResponse response) throws Exception;
+
+
+
+public ModelAndView questionwrite5(HttpServletRequest request, HttpServletResponse response) throws Exception;
+public ModelAndView questionwrite6(HttpServletRequest request, HttpServletResponse response) throws Exception;
+
+
+
 }                      

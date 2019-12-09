@@ -110,9 +110,18 @@ public class C_P003ServiceImpl implements C_P003Service {
 		
 		C_P003DAO.writes(dataMap5);
 	}
-	
+	@Override
+	public void questionwrite3(Map<String, Object> dataMap6) throws DataAccessException {
+		
+		C_P003DAO.writes2(dataMap6);
+	}
 
 
+	@Override
+	public void questionwrite5(Map<String, Object> dataMap7) throws DataAccessException {
+		
+		C_P003DAO.writes3(dataMap7);
+	}
 
 
 

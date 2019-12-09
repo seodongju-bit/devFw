@@ -10,9 +10,7 @@
       <put-attribute name="body" value="" />
       <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
    </definition>             
-                              
        
-
      <definition name="noticeLayout"  template="/WEB-INF/views/common/notice_layout.jsp">
       <put-attribute name="title" value="" />
       <put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
@@ -234,6 +232,11 @@
       <put-attribute name="title" value="주문정보입력" />
       <put-attribute name="body" value="/WEB-INF/views/E/P001/D001.jsp" />
    </definition>
+   
+    <definition name="payToOrder" extends="itemLayout">
+   	  <put-attribute name="title" value="주문정보확인"/>
+   	  <put-attribute name="body" value="/WEB-INF/views/E/P001/D003.jsp"/>
+   </definition>
 
 	<definition name="reviewRankingMenu" extends="itemLayout">
       <put-attribute name="title" value="리뷰랭킹 메뉴" />  
@@ -293,7 +296,7 @@
 		<put-attribute name="body" value="/WEB-INF/views/F/P002/D005.jsp"/>
 	</definition>
 	
-	<definition name="sellerChat" extends="emptyLayout">
+	<definition name="sellerChat" extends="emptyLayout">   
 		<put-attribute name="title" value="판매자와채팅"/>
 		<put-attribute name="body" value="/WEB-INF/views/A/P006/D002_chat.jsp"/>
 	</definition>
@@ -336,9 +339,21 @@
    </definition> 
                
    <definition name="questionwrite" extends="noticeLayout">
-      <put-attribute name="title" value="문의사항상세페이지" /> 
+      <put-attribute name="title" value="문의사항작성페이지" /> 
       <put-attribute name="body" value="/WEB-INF/views/C/P003/D004.jsp" />
    </definition> 
+   
+   <definition name="questionwrite3" extends="noticeLayout">
+      <put-attribute name="title" value="신고사항작성페이지" /> 
+      <put-attribute name="body" value="/WEB-INF/views/C/P003/D005.jsp" />
+   </definition>
+   
+   
+    <definition name="questionwrite5" extends="noticeLayout">
+      <put-attribute name="title" value="문의사항답변페이지" /> 
+      <put-attribute name="body" value="/WEB-INF/views/C/P003/D006.jsp" />
+   </definition>
+   
    
    
 <!--  웅건                    

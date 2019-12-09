@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 <style>
 .h2, h2 {
     font-size: 30px;
@@ -15,11 +16,8 @@
 form{
 height:1000px;
 }
-
-
-
-
 </style>
+
 
 
   <!-- SmartEditor를 사용하기 위해서 다음 js파일을 추가 (경로 확인) -->
@@ -27,30 +25,31 @@ height:1000px;
 <!-- jQuery를 사용하기위해 jQuery라이브러리 추가 -->
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
 
-
+  
 </head>
 <body>  
 
 <form name="frmch" action = "./questionwrite2.do" method="post">             
  
- <h2 style="text-align: center;">문의사항 작성</h2><br><br><br>
+ <h2 style="text-align: center;">신고사항 작성</h2><br><br><br>
 
 <div style="width: 60%; margin-left: 20%; margin-right: auto;">
 
-		<input type="text" name="mem_id" style="width: 20%;" placeholder="작성자"/><br>
+		<input type="text" name="mem_id" style="width: 20%;" placeholder="작성자"/><br><br><br>
 		
+		<input type="text" name="de_division" style="width: 20%;" placeholder="분류"/><br>
 		
 		
 		<br><br> 
 		     
-		<textarea name="qu_contents" id="editor"   style="width: 80%; height: 400px;"></textarea>
+		<textarea name="de_contents" id="editor"   style="width: 80%; height: 400px;"></textarea>
 
 		
-		<input id="subBtns" type="button" value="글 작성" style="float: left;"/>
+		<input id="subBtns" type="button" value="글 작성" style="float: left;"/><br><br><br><br><br>
 
 </div>              
 
-  </form>
+  </form>     
  
  <script>
 
@@ -79,21 +78,26 @@ $(function() {
    	 
 
    	var mem_id = document.getElementsByName("mem_id")[0].value;
-   	var qu_contents = document.getElementsByName("qu_contents")[0].value;
+   	var de_division = document.getElementsByName("de_division")[0].value;
+   	var de_contents = document.getElementsByName("de_contents")[0].value;
    	
 
    	if (mem_id.trim() == '') {
    		alert("아이디를 입력해주세요");
    		return false;
    	}
-	if (qu_contents.trim() == '') {
+   	if (de_division.trim() == '') {
+   		alert("분류를 입력해주세요");
+   		return false;
+   	}
+	if (de_contents.trim() == '') {
    		alert("내용을 입력해주세요");
    		return false;
    	}
    
    	
      frm.method="post"; 
-     frm.action="./questionwrite2.do"; 
+     frm.action="./questionwrite4.do"; 
    	 frm.submit();
    	
     });

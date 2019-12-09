@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <%
 	request.setCharacterEncoding("UTF-8");
@@ -83,30 +83,90 @@ check {
 	padding: 15px;
 }
 
-#orderTable{
-	width:1150px;
-	margin:0 auto;
-	text-align:center;
+#orderTable, #orderTable2, #questions {
+	width: 1150px;
+	margin: 0 auto;
+	text-align: center;
 }
-.orderImg{
-	display:inline;
-	float:left;
-	left:20px;
+
+.orderImg {
+	display: inline;
+	float: left;
+	left: 20px;
 }
-.tdMenu{
- 	margin:2px auto;
-	width:70px;
-	border:1px solid lightgray;
-	border-radius:5px;
-	padding:2px;
-	color:gray;
-	font-size:10px;
+
+.tdMenu {
+	margin: 2px auto;
+	width: 70px;
+	border: 1px solid lightgray;
+	border-radius: 5px;
+	padding: 2px;
+	color: gray;
+	font-size: 10px;
 }
-.tdMenu:hover{
-	cursor:pointer;
+
+.tdMenu:hover {
+	cursor: pointer;
 	background-color: white;
 }
 
+ul.tabs {
+	margin-left: 135px;;
+	padding: 0;
+	float: left;
+	list-style: none;
+	height: 32px; /*--Set height of tabs--*/
+	border-bottom: 1px solid #999;
+	border-left: 1px solid #999;
+	border-radius: 4px 4px 4px 4px;
+	width: 81%;
+}
+
+ul.tabs li {
+	float: left;
+	margin: 0;
+	padding: 0;
+	height: 31px;
+	/*--Subtract 1px from the height of the unordered list--*/
+	line-height: 31px; /*--Vertically aligns the text within the tab--*/
+	border: 1px solid #999;
+	border-radius: 4px 4px 4px 4px;
+	border-left: none;
+	margin-bottom: -1px; /*--Pull the list item down 1px--*/
+	overflow: hidden;
+	position: relative;
+	background: white;
+}
+
+ul.tabs li a {
+	text-decoration: none;
+	color: black;
+	display: block;
+	font-size: 1.2em;
+	padding: 0 20px;
+	/*--Gives the bevel look with a 1px white border inside the list item--*/
+	border: 1px solid #fff;
+	border-radius: 4px 4px 4px 4px;
+	outline: none;
+}
+
+ul.tabs li a:hover {
+	background: gray;
+	color: white;
+}
+
+ul.tabs li.active, html ul.tabs li.active a:hover {
+	/*--Makes sure that the active tab does not listen to the hover properties--*/
+	background: gray;
+	color: white;
+	/*--Makes the active tab look like it's connected with its content--*/
+	border-bottom: 1px solid #fff;
+	border-radius: 4px 4px 4px 4px;
+}
+
+.tab_container {
+	clear: both;
+}
 </style>
 
 
@@ -120,146 +180,236 @@ check {
 </head>
 <body>
 
-	<h1 align="center" >마이페이지</h1>
-
-	<table class="table table-hover" >
-
-		<tr>
-			<th id="My" >My</th>
-			<th>미사용 티켓<br> <a href="#" style="">0장</a></th>
-			<th>배송중<br> <a href="#" style="">${del_count}건</a></th>
-			<th>할인쿠폰<br> <a href="coupon.do" style="">${coupon_count}장</a></th>
-			<th>포인트<br> <a href="point.do" style="">${mem_point}P </a></th>
-		</tr>
-		<tr>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-		</tr>
-		
-	</table>
-	
-	
-	<p id="f" style=" margin-right: 0px;">주문목록/배송조회</p>
-
-
+	<h1 align="center">마이페이지</h1>
 
 	<table class="table table-hover">
-		<tr>
 
-			<th colspan="3">
-				<div class="container">
-					<ul class="nav nav-tabs">
-						<li class="active"><a href="#">My</a></li>
-						<li><a href="#">전체</a></li>
-					</ul>
-				</div>
-			</th>
-		</tr>
-	</table>
-	
-	
-	
-	<table  id="orderTable" class="table table-striped" >
 		<tr>
-			<th width="150px" >날짜</th>
-			<th width="600px" >상품정보</th>
-			<th width="150px" >상태</th>
-			<th width="250px" >확인/신청 </th>
+			<th id="My">My</th>
+			<th>문의 내역<br> <a href="#" style="">0건</a></th>
+			<th>배송중<br> <a href="#" style=""><c:choose>
+						<c:when test="${del_count=='0'}">
+			0건
+			</c:when>
+						<c:when test="${del_count!='0'}">
+			${del_count}건
+			</c:when>
+					</c:choose></a></th>
+			<th>할인쿠폰<br> <a href="coupon.do" style=""><c:choose>
+						<c:when test="${coupon_count==''}">
+			0건
+			</c:when>
+						<c:when test="${coupon_count!=''}">
+			${coupon_count}장
+			</c:when>
+					</c:choose></a></th>
+			<th>포인트<br> <a href="point.do" style=""><c:choose>
+						<c:when test="${mem_point=='0'}">
+			0P
+			</c:when>
+						<c:when test="${mem_point!='0'}">
+			${mem_point}P
+			</c:when>
+					</c:choose> </a></th>
 		</tr>
-		
-		<c:forEach var="orderList" items="${orderList}" varStatus='index'>
-			<tr>
-				<td>
-					<p>주문번호 : ${orderList.ORDER_NUMBER}</p>
-					<fmt:formatDate value="${orderList.ORDER_DATE}" pattern="yyyy-MM-dd" /><br>
-					<fmt:formatDate value="${orderList.ORDER_DATE}" pattern="HH:mm" /><br>
-					<p class="tdMenu" >주문취소</p>
-					<p class="tdMenu" >구매확정</p>
-				</td>
-				<td>
-					<img class="orderImg" src="${orderList.SELL_THUMBNAIL}" width="80px" height="80px" >
-					<a href="sellItems.do?sell_no=${orderList.SELL_NUMBER}" >${orderList.SELL_TITLE}</a>
-					<br><fmt:formatNumber value="${orderList.SELL_PRICE}"  />원 
-				</td>
-				<td>
-					<c:choose>
-  						<c:when test="${orderList.OD_STATE=='F_0001'}">
-							<p>결제준비중</p>
-  						</c:when>
- 						<c:when test="${orderList.OD_STATE=='F_0002'}">
-							<p>결제완료</p>
-  						</c:when>
-  						<c:when test="${orderList.OD_STATE=='F_0003'}">
-     						<p>배송중</p>
-  						</c:when>
-  						<c:when test="${orderList.OD_STATE=='F_0004'}">
-   							<p>배송완료</p>
-  						</c:when>
-  						<c:when test="${orderList.OD_STATE=='F_0005'}">
-   							<p>구매확정</p>
-  						</c:when>
-  						<c:when test="${orderList.OD_STATE=='F_0006'}">
-   							<p>취소완료</p>
-  						</c:when>
-					</c:choose>
-				</td>
-				<td>
-					<p class="tdMenu" onclick="reviewWrite('${orderList.SELL_NUMBER}','${orderList.SELL_TITLE}')">리뷰작성</p>
-					<p class="tdMenu" >리뷰 수정</p>
-					<p class="tdMenu" >교환신청</p>
-				</td>
-				
-			</tr>
-		</c:forEach>
-		
-		
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+
 	</table>
 
 
-
-	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-	<script src="../devFw/resources/js/bootstrap.min.js"></script>
+	<p id="f" style="margin-right: 0px;">주문목록/배송조회</p>
 
 
-	<div id="caution-box">
-		<div id="all">
-			<div id="box">
-				<p4 id="x">
-				<strong>배송상품 주문 안내</strong></p4>
-				<p id="r">
-					<a href="#" id="r">자세한 내용 더보기 ></a>
-				</p>
-				<div id="z">
-					<img     
-						src="resources/image/asdf.PNG">
-				</div>
+	<div id="wrapper">
+
+
+		<ul class="tabs">
+			<li><a href="#tab1">My</a></li>
+			<li><a href="#tab2">전체</a></li>
+			<li><a href="#tab3">문의내역</a></li>
+		</ul>
+
+		<div class="tab_container">
+			<div id="tab1" class="tab_content">
+
+
+				<table id="orderTable" class="table table-striped">
+					<tr>
+						<th width="150px">날짜</th>
+						<th width="600px">상품정보</th>
+						<th width="150px">상태</th>
+						<th width="250px">확인/신청</th>
+					</tr>
+
+					<c:forEach var="orderList" items="${orderList}" varStatus='index'>
+						<tr>
+							<td>
+								<p>주문번호 : ${orderList.ORDER_NUMBER}</p> <fmt:formatDate
+									value="${orderList.ORDER_DATE}" pattern="yyyy-MM-dd" /><br>
+								<fmt:formatDate value="${orderList.ORDER_DATE}" pattern="HH:mm" /><br>
+							</td>
+							<td><img class="orderImg" src="${orderList.SELL_THUMBNAIL}"
+								width="80px" height="80px"> <a
+								href="sellItems.do?sell_no=${orderList.SELL_NUMBER}">${orderList.SELL_TITLE}</a>
+								<br> <fmt:formatNumber value="${orderList.SELL_PRICE}" />원</td>
+							<td><c:choose>
+									<c:when test="${orderList.OD_STATE=='F_0001'}">
+										<p>결제준비중</p>
+									</c:when>
+									<c:when test="${orderList.OD_STATE=='F_0002'}">
+										<p>결제완료</p>
+									</c:when>
+									<c:when test="${orderList.OD_STATE=='F_0003'}">
+										<p>배송중</p>
+									</c:when>
+									<c:when test="${orderList.OD_STATE=='F_0004'}">
+										<p>배송완료</p>
+									</c:when>
+									<c:when test="${orderList.OD_STATE=='F_0005'}">
+										<p>구매확정</p>
+									</c:when>
+									<c:when test="${orderList.OD_STATE=='F_0006'}">
+										<p>취소완료</p>
+									</c:when>
+								</c:choose></td>
+							<td>
+								<p class="tdMenu"
+									onclick="reviewWrite('${orderList.SELL_NUMBER}','${orderList.SELL_TITLE}')">리뷰작성</p>
+								<p class="tdMenu">리뷰 수정</p>
+								<p class="tdMenu">교환신청</p>
+								<p class="tdMenu">구매확정</p>
+								<p class="tdMenu">주문취소</p>
+							</td>
+
+						</tr>
+					</c:forEach>
+
+
+				</table>
 			</div>
-			<div class="check" style="background-color: #f3f3f3;">
+			<div id="tab2" class="tab_content">
+
+				<table id="orderTable2" class="table table-striped">
+					<tr>
+						<th width="150px">날짜</th>
+						<th width="600px">상품정보</th>
+						<th width="150px">상태</th>
+						<th width="250px">확인/신청</th>
+					</tr>
+
+					<c:forEach var="orderList2" items="${orderList2}" varStatus='index'>
+						<tr>
+							<td>
+								<p>주문번호 : ${orderList2.ORDER_NUMBER}</p> <fmt:formatDate
+									value="${orderList2.ORDER_DATE}" pattern="yyyy-MM-dd" /><br>
+								<fmt:formatDate value="${orderList2.ORDER_DATE}" pattern="HH:mm" /><br>
+							</td>
+							<td><img class="orderImg" src="${orderList2.SELL_THUMBNAIL}"
+								width="80px" height="80px"> <a
+								href="sellItems.do?sell_no=${orderList2.SELL_NUMBER}">${orderList2.SELL_TITLE}</a>
+								<br> <fmt:formatNumber value="${orderList2.SELL_PRICE}" />원</td>
+							<td><c:choose>
+									<c:when test="${orderList2.OD_STATE=='F_0001'}">
+										<p>결제준비중</p>
+									</c:when>
+									<c:when test="${orderList2.OD_STATE=='F_0002'}">
+										<p>결제완료</p>
+									</c:when>
+									<c:when test="${orderList2.OD_STATE=='F_0003'}">
+										<p>배송중</p>
+									</c:when>
+									<c:when test="${orderList2.OD_STATE=='F_0004'}">
+										<p>배송완료</p>
+									</c:when>
+									<c:when test="${orderList2.OD_STATE=='F_0005'}">
+										<p>구매확정</p>
+									</c:when>
+									<c:when test="${orderList2.OD_STATE=='F_0006'}">
+										<p>취소완료</p>
+									</c:when>
+								</c:choose></td>
+							<td>
+								<p class="tdMenu"
+									onclick="reviewWrite('${orderList2.SELL_NUMBER}','${orderList2.SELL_TITLE}')">리뷰작성</p>
+								<p class="tdMenu">리뷰 수정</p>
+								<p class="tdMenu">교환신청</p>
+								<p class="tdMenu">구매확정</p>
+								<p class="tdMenu">주문취소</p>
+							</td>
+
+						</tr>
+					</c:forEach>
+				</table>
+			</div>
+			<div id="tab3" class="tab_content">
+				<table id="questions" class="table table-hover">
+					<tr>
+						<th>ID</th>
+						<th>내용</th>
+						<th>문의날짜</th>
+						<th>답변상태</th>
+					</tr>
+					<c:forEach var="quList" items="${quList}">
+						<tr onclick="myquestion('${quList.qu_number}')">
+							<td>${quList.mem_id}</td>
+							<td>${quList.QU_CONTENTS}</td>
+							<td>${quList.QU_DATE}</td>
+							<c:set var="questionList" value="${quList}"/>
+								<c:if test="${questionList.QU_ANSWER ne null}">
+									<td style="color:red;">답변 완료!</td>
+								</c:if>
+								<c:if test="${questionList.QU_ANSWER eq null}">
+									<td style="color:blue;">답변 대기</td>
+								</c:if>
+						</tr>
+					</c:forEach>
+				</table>
+			</div>
+		</div>
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<script src="../devFw/resources/js/bootstrap.min.js"></script>
+
+		<br> <br> <br> <br> <br>
+
+		<div id="caution-box">
+			<div id="all">
 				<div id="box">
-					<b><span style="color: red;">취소/반품/교환 신청</span> 전 확인해주세요!</b> <br>
-					<br> <strong>취소</strong> <br>
-					<li>여행/레저/숙박 상품은 취소 시 수수료가 발생할 수 있으며, 취소수수료를 확인하여 2일 이내(주말,공휴일
-						제외)<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;처리결과를 문자로 안내해드립니다. (당일
-						접수 기준, 마감시간 오후 4시)
-					</li>
-					<li>문화 상품은 사용 전날 24시까지 취소 신청 시 취소수수료가 발생되지않습니다.</li>
-					<br> <strong>반품</strong>
-					<li>상품 수령 후 7일 이내 신청하여 주세요.</li>
-					<li>상품이 출고된 이후에는 배송 완료 후, 반품 상품을 회수합니다.</li>
-					<li>설치상품/주문제작/해외배송/신선냉동 상품 등은 고객센터에서만 반품 신청이
-						가능합니다.&nbsp;&nbsp;&nbsp; <a href="#">1:1문의하기> </a>
-					</li> <br> <strong>교환</strong>
-					<li>상품의 교환 신청은 고객센터로 문의하여 주세요.&nbsp;&nbsp;&nbsp; <a href="#">1:1문의하기>
-					</a>
-					</li>
+					<p4 id="x"> <strong>배송상품 주문 안내</strong></p4>
+					<p id="r">
+						<a href="#" id="r">자세한 내용 더보기 ></a>
+					</p>
+					<div id="z">
+						<img src="resources/image/asdf.PNG">
+					</div>
+				</div>
+				<div class="check" style="background-color: #f3f3f3;">
+					<div id="box">
+						<b><span style="color: red;">취소/반품/교환 신청</span> 전 확인해주세요!</b> <br>
+						<br> <strong>취소</strong> <br>
+						<li>여행/레저/숙박 상품은 취소 시 수수료가 발생할 수 있으며, 취소수수료를 확인하여 2일
+							이내(주말,공휴일 제외)<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;처리결과를 문자로
+							안내해드립니다. (당일 접수 기준, 마감시간 오후 4시)
+						</li>
+						<li>문화 상품은 사용 전날 24시까지 취소 신청 시 취소수수료가 발생되지않습니다.</li> <br> <strong>반품</strong>
+						<li>상품 수령 후 7일 이내 신청하여 주세요.</li>
+						<li>상품이 출고된 이후에는 배송 완료 후, 반품 상품을 회수합니다.</li>
+						<li>설치상품/주문제작/해외배송/신선냉동 상품 등은 고객센터에서만 반품 신청이
+							가능합니다.&nbsp;&nbsp;&nbsp; <a href="#">1:1문의하기> </a>
+						</li> <br> <strong>교환</strong>
+						<li>상품의 교환 신청은 고객센터로 문의하여 주세요.&nbsp;&nbsp;&nbsp; <a href="#">1:1문의하기>
+						</a>
+						</li>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
 
 
 	<div id="side">
@@ -270,61 +420,183 @@ check {
 			</tr>
 			<tr>
 				<td style="background-color: #000000;"><a href="basket.do"><strong
-						style="color: white;">장바구니 ▶${basket_count}개</strong></a></td>
+						style="color: white;"> <c:choose>
+								<c:when test="${basket_count==''}">
+						장바구니 ▶0개
+						</c:when>
+								<c:when test="${basket_count!=''}">
+						장바구니 ▶${basket_count}개
+						</c:when>
+							</c:choose></strong></a></td>
 			</tr>
-			<tr>
+			<!-- <tr>
 				<td style="background-color: #000000;"><a href="#"><strong
 						style="color: white;">최근상품 ▶ 0개</strong></a></td>
-			</tr>
-			<tr>
-				<td><img class="info" data-toggle="tooltip"
-					data-placement="left" title="삼성전자 라이언 미니 스마트빔 프로젝터 SSB-12DLWA10"
-					src="http://placehold.it/120x166"></td>
-			</tr>
-			<tr>
-				<td><img class="info" data-toggle="tooltip"
-					data-placement="left" title="ipTIME 유무선공유기 A2004MU"
-					src="http://placehold.it/120x166"></td>
-			</tr>
+			</tr> -->
+
+
+			<c:if test="${orderList3.size()==0}">
+				<tr>
+					<td>상품이 없습니다.</td>
+				</tr>
+			</c:if>
+
+			<c:forEach var="orderList3" items="${orderList3}">
+				<c:choose>
+					<c:when test="${orderList3.SELL_NUMBER!=''}">
+						<tr>
+							<td><a href="sellItems.do?sell_no=${orderList3.SELL_NUMBER}"><img
+									class="info" data-toggle="tooltip" data-placement="bottom"
+									title="${orderList3.sell_title}"
+									src="${orderList3.SELL_THUMBNAIL}" width="100px" height="100px"></a></td>
+						</tr>
+					</c:when>
+				</c:choose>
+			</c:forEach>
+
 		</table>
 	</div>
-	
-	<script>
-	$(document).ready(function aa(){
-		$('#orderTable').rowspan(0);
-	});
-	
-	$.fn.rowspan = function(colIdx, isStats) {       
-	    return this.each(function(){      
-	        var that;     
-	        $('tr', this).each(function(row) {      
-	            $('td:eq('+colIdx+')', this).filter(':visible').each(function(col) {
-	                 
-	                if ($(this).html() == $(that).html() && (!isStats || isStats && $(this).prev().html() == $(that).prev().html()
-	                            )
-	                    ) {            
-	                    rowspan = $(that).attr("rowspan") || 1;
-	                    rowspan = Number(rowspan)+1;
-	                    $(that).attr("rowspan",rowspan);
-	                    // do your action for the colspan cell here            
-	                    //$(this).hide();
-	                    $(this).remove(); 
-	                    // do your action for the old cell here    
-	                } else {            
-	                    that = this;         
-	                }          
-	                // set the that if not already set
-	                that = (that == null) ? this : that;      
-	            });     
-	        });    
-	    });  
-	}; 
 
-	function reviewWrite(sell_number, title){
-		window.open("reviewwrite.do?sell_number="+sell_number+"&sell_title="+title, "제품번호 검색", "width=850, height=800, left=600, top400", "resizable=no");
-	}
-	
-	
+	<script>
+		$(document).ready(function aa() {
+			$('#orderTable').rowspan(0);
+		});
+
+		$.fn.rowspan = function(colIdx, isStats) {
+			return this
+					.each(function() {
+						var that;
+						$('tr', this)
+								.each(
+										function(row) {
+											$('td:eq(' + colIdx + ')', this)
+													.filter(':visible')
+													.each(
+															function(col) {
+
+																if ($(this)
+																		.html() == $(
+																		that)
+																		.html()
+																		&& (!isStats || isStats
+																				&& $(
+																						this)
+																						.prev()
+																						.html() == $(
+																						that)
+																						.prev()
+																						.html())) {
+																	rowspan = $(
+																			that)
+																			.attr(
+																					"rowspan") || 1;
+																	rowspan = Number(rowspan) + 1;
+																	$(that)
+																			.attr(
+																					"rowspan",
+																					rowspan);
+																	// do your action for the colspan cell here            
+																	//$(this).hide();
+																	$(this)
+																			.remove();
+																	// do your action for the old cell here    
+																} else {
+																	that = this;
+																}
+																// set the that if not already set
+																that = (that == null) ? this
+																		: that;
+															});
+										});
+					});
+		};
+
+		$(document).ready(function aa() {
+			$('#orderTable2').rowspan(0);
+		});
+
+		$.fn.rowspan = function(colIdx, isStats) {
+			return this
+					.each(function() {
+						var that;
+						$('tr', this)
+								.each(
+										function(row) {
+											$('td:eq(' + colIdx + ')', this)
+													.filter(':visible')
+													.each(
+															function(col) {
+
+																if ($(this)
+																		.html() == $(
+																		that)
+																		.html()
+																		&& (!isStats || isStats
+																				&& $(
+																						this)
+																						.prev()
+																						.html() == $(
+																						that)
+																						.prev()
+																						.html())) {
+																	rowspan = $(
+																			that)
+																			.attr(
+																					"rowspan") || 1;
+																	rowspan = Number(rowspan) + 1;
+																	$(that)
+																			.attr(
+																					"rowspan",
+																					rowspan);
+																	// do your action for the colspan cell here            
+																	//$(this).hide();
+																	$(this)
+																			.remove();
+																	// do your action for the old cell here    
+																} else {
+																	that = this;
+																}
+																// set the that if not already set
+																that = (that == null) ? this
+																		: that;
+															});
+										});
+					});
+		};
+
+		function reviewWrite(sell_number, title) {
+			window.open("reviewwrite.do?sell_number=" + sell_number
+					+ "&sell_title=" + title, "제품번호 검색",
+					"width=850, height=800, left=600, top400", "resizable=no");
+		}
+		
+		function reviewWrite(sell_number, title) {
+			window.open("reviewwrite.do?sell_number=" + sell_number
+					+ "&sell_title=" + title, "제품번호 검색",
+					"width=850, height=800, left=600, top400", "resizable=no");
+		}
+
+		$(document).ready(function() {
+
+			//When page loads...
+			$(".tab_content").hide(); //Hide all content
+			$("ul.tabs li:first").addClass("active").show(); //Activate first tab
+			$(".tab_content:first").show(); //Show first tab content
+
+			//On Click Event
+			$("ul.tabs li").click(function() {
+
+				$("ul.tabs li").removeClass("active"); //Remove any "active" class
+				$(this).addClass("active"); //Add "active" class to selected tab
+				$(".tab_content").hide(); //Hide all tab content
+
+				var activeTab = $(this).find("a").attr("href"); //Find the href attribute value to identify the active tab + content
+				$(activeTab).fadeIn(); //Fade in the active ID content
+				return false;
+			});
+
+		});
+
 		$(document).ready(function() {
 			$('[data-toggle="tooltip"]').tooltip();
 		});

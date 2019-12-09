@@ -72,7 +72,11 @@ margin-top: 50px;
       30% {color: yellow;}
       100% {color:red; font-weight: bold;} */
     }
-        
+      .h1, h1 {
+    font-size: 36px;
+    background-color:black;
+    color:white;
+}  
 
 </style>      
 

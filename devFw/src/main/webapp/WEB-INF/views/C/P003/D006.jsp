@@ -11,16 +11,18 @@
     background-color: black;
     color:white;
 }
+input{
+text-align: center;
+}
+
 
 form{
 height:1000px;
 }
 
 
-
-
 </style>
-
+     
 
   <!-- SmartEditor를 사용하기 위해서 다음 js파일을 추가 (경로 확인) -->
 <script type="text/javascript" src="../devFw/resources/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
@@ -31,22 +33,25 @@ height:1000px;
 </head>
 <body>  
 
-<form name="frmch" action = "./questionwrite2.do" method="post">             
+<form name="frmch" action = "./questionwrite6.do" method="post">             
  
- <h2 style="text-align: center;">문의사항 작성</h2><br><br><br>
+ <h2 style="text-align: center;">문의사항 답변 작성</h2><br><br><br>
 
 <div style="width: 60%; margin-left: 20%; margin-right: auto;">
 
+       <input type="text" name="qu_number" style="width: 20%;" placeholder="글번호"/>
+       <br>
+       <br>
 		<input type="text" name="mem_id" style="width: 20%;" placeholder="작성자"/><br>
 		
 		
 		
 		<br><br> 
 		     
-		<textarea name="qu_contents" id="editor"   style="width: 80%; height: 400px;"></textarea>
+		<textarea name="qu_answer" id="editor"   style="width: 80%; height: 400px;"></textarea>
 
 		
-		<input id="subBtns" type="button" value="글 작성" style="float: left;"/>
+		<input id="subBtns" type="button" value="답변 작성" style="float: left;"/>
 
 </div>              
 
@@ -77,23 +82,28 @@ $(function() {
     	 //id가 smarteditor인 textarea에 에디터에서 대입
         obj.getById["editor"].exec("UPDATE_CONTENTS_FIELD", []);
    	 
-
+    var qu_number = document.getElementsByName("qu_number")[0].value;
    	var mem_id = document.getElementsByName("mem_id")[0].value;
-   	var qu_contents = document.getElementsByName("qu_contents")[0].value;
+   	var qu_answer = document.getElementsByName("qu_answer")[0].value;
    	
+   	
+  	if (qu_number.trim() == '') {
+   		alert("글 번호를 입력해주세요");
+   		return false;
+   	}
 
    	if (mem_id.trim() == '') {
    		alert("아이디를 입력해주세요");
    		return false;
    	}
-	if (qu_contents.trim() == '') {
-   		alert("내용을 입력해주세요");
+	if (qu_answer.trim() == '') {
+   		alert("답변을 입력해주세요");
    		return false;
    	}
    
    	
      frm.method="post"; 
-     frm.action="./questionwrite2.do"; 
+     frm.action="./questionwrite6.do"; 
    	 frm.submit();
    	
     });

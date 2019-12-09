@@ -390,7 +390,7 @@ $(document).ready(function(){
 		}
 	}
 
-</script>
+</script>           
 <body>
 	<div class="header" id="header">
 	
@@ -412,6 +412,7 @@ $(document).ready(function(){
        		 		</c:when>
        		 		<c:when test="${memberInfo.mem_division==1 }" >
        		 			<a class="nav-item nav-link" id="itemManagerlink" href="${contextPath}/itemManager.do">상품관리</a>
+       		 			<a class="nav-item nav-link" id="itemManagerlink" href="${contextPath}/questionwrite5.do">문의사항 답변</a>
        		 		</c:when>
        		 		<c:when test="${memberInfo.mem_division==2 }" >
        		 			<a class="nav-item nav-link" id="siteManagerlink" href="${contextPath}/basket.do">사이트관리</a>

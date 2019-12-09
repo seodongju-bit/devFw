@@ -40,14 +40,19 @@ public class A_P004ControllerImpl   implements A_P004Controller {
 		viewName = "myPage";
 		HttpSession session = request.getSession();
 		String p_id = (String)session.getAttribute("mem_id");
+
 		if(p_id==null) {
 			ModelAndView mav = new ModelAndView();
 			mav.setViewName("redirect:main.do");
 			return mav;	
+
 		}
 		
 		Map<String, Object> searchMap = new HashMap<String, Object>();
 		List<Map<String, Object>> resultList = new ArrayList<Map<String, Object>>();
+		List<Map<String, Object>> resultList2 = new ArrayList<Map<String, Object>>();
+		List<Map<String, Object>> resultList3 = new ArrayList<Map<String, Object>>();
+		List<Map<String, Object>> resultList4 = new ArrayList<Map<String, Object>>();
 		int basket_count = 0;
 		int coupon_count = 0;
 		int mem_point = 0;
@@ -59,16 +64,20 @@ public class A_P004ControllerImpl   implements A_P004Controller {
 		basket_count = activeService.baslist(p_id);
 		coupon_count = activeService.coulist(p_id);
 		resultList = activeService.orderList(searchMap);
-		System.out.println("asdfasdfadfasdfasdfasdfasdfas"+mem_point);
-		//List membersList = memberService.listMembers();
+		resultList2 = activeService.orderList2(searchMap);
+		resultList3 = activeService.orderList3(searchMap);
+		resultList4 = activeService.quList(searchMap);
+		System.out.println("33333333333333333333333333333333333333333333="+resultList3);
 		ModelAndView mav = new ModelAndView(viewName);
-		//System.out.println("날짜"+resultList.get(0).get("SELL_DATE"));
+		
 		mav.addObject("orderList", resultList);
+		mav.addObject("orderList2", resultList2);
 		mav.addObject("coupon_count",coupon_count);
 		mav.addObject("basket_count",basket_count);
 		mav.addObject("mem_point",mem_point);
 		mav.addObject("del_count",del_count);
-		
+		mav.addObject("orderList3", resultList3);
+		mav.addObject("quList", resultList4);
 		return mav;
 	}
 	
