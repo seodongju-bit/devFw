@@ -104,13 +104,13 @@ $(function() {
     
 });
 
-/* function goWrite(frm) {
+/* function goWrite(frm) {      
     //전역변수
     var obj = [];
   	
   }  */
 
-</script>
+</script>           
   
   
 </body>

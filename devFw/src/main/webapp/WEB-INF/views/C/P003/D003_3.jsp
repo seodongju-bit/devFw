@@ -11,6 +11,9 @@
 <html>
 <head>
 <style>
+
+            
+
 #content{
 width: 75%;
 height:1000px;
@@ -32,6 +35,9 @@ caption {
     text-align: left;
 }
 
+
+
+    
 </style>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -40,6 +46,7 @@ caption {
 
 </head>
 <body>
+
 <table class="notice_view">              
 		<colgroup>
 			<col width="15%" />

@@ -15,7 +15,7 @@
 <style>
 #content{
 width: 75%;
-height:1500px;
+height:1200px;
 padding: 5px;
 margin-left: 290px;
 border: 0px solid #bcbcbc;   
@@ -48,9 +48,32 @@ a:hover {
 color:white;
 background-color:black;    
 }
+#table{
+ border-collapse: collapse;
+      border-top: 3px solid #168;
 
-
-
+}
+.table th {
+      color: #168;
+      background: #f0f6f9;
+      text-align: center;
+    }
+ .table th, .table td {
+      padding: 10px;
+      border: 1px solid #ddd;
+    }
+    .table th:first-child, .table td:first-child {
+      border-left: 0;
+    }
+    .table th:last-child, .table td:last-child {
+      border-right: 0;
+    }
+    .table tr td:first-child{
+      text-align: center;
+    }
+    .table caption{caption-side: bottom; display: none;}    
+    
+          
 
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
