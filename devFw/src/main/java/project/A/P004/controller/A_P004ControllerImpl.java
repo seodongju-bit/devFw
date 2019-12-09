@@ -223,8 +223,52 @@ public class A_P004ControllerImpl   implements A_P004Controller {
 		}
 		return viewName;
 	}
+	
+	@RequestMapping(value="/initWithdraw.do" ,method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView initWithdraw(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = getViewName(request);
+		viewName = "initWithdraw";
+		ModelAndView mav = new ModelAndView(viewName);
+		return mav;
+		
+	}
 
-
-
+	
+	@RequestMapping(value="/withdraw.do" ,method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView Withdraw(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = getViewName(request);
+		viewName = "withdraw";
+		
+		HttpSession session = request.getSession();
+		String p_id = (String)session.getAttribute("mem_id");
+		String password = request.getParameter("password");
+		
+		ModelAndView mav = new ModelAndView(viewName);
+		if(password==null || !activeService.passCheck(p_id, password)) {
+			mav.setViewName("initWithdraw");
+			request.setAttribute("check", "비밀번호가 일치하지 않습니다");
+			return mav;
+		}
+		Map<String, Object> searchMap = new HashMap<String, Object>();
+		searchMap.put("mem_id", p_id);
+		int point = activeService.pointSearch(searchMap);
+		request.setAttribute("point", point);
+		
+		return mav;
+	}
+	
+	@RequestMapping(value="/withdrawSave.do" ,method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView withdrawSave(@RequestParam Map<String, String> withdrawMap, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = getViewName(request);
+		viewName = "close";
+		HttpSession session = request.getSession();
+		String p_id = (String)session.getAttribute("mem_id");
+		withdrawMap.put("mem_id", p_id);
+		activeService.withdrawSave(withdrawMap);
+		
+		
+		ModelAndView mav = new ModelAndView(viewName);
+		return mav;
+	}
 }
 

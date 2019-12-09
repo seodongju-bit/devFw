@@ -23,5 +23,8 @@ public interface A_P004DAO {
 	 public int baslist(String p_id);
 	 public int mempoint(String p_id);
 	 public int delcount(String p_id);
+	public int pointSearch(Map<String, Object> searchMap);
+	public boolean passCheck(String id, String password);
+	public void withdrawSave(Map<String, String> withdrawMap);
 }
 

@@ -217,14 +217,21 @@
 	
 	<!-- 상품 검색 결과 -->
 	<select id="searchWord" resultType="project.F.P002.vo.F_P002VO" parameterType="project.search.paging.SearchPagingVO">
+	
 	    select sell_number, sell_thumbnail, sell_title, sell_price, sell_date, mem_ID
 	    from (
-	    		select sell_number, sell_thumbnail, sell_title, sell_price, sell_date, mem_id,
+	    		select sell_number, sell_thumbnail, sell_title, sell_price, sell_date, ps.mem_id,
 	    		row_number() over (order by sell_number desc) as rNum
-	    		from productsell
-	    		where sell_title like '%' || #{searchWord} || '%'
+	    		from productsell ps, product p
+	    		where ps.pro_number = p.pro_number
+	    		and (sell_title like '%' || #{searchWord} || '%'
+	    		or pro_name like '%' || #{searchWord} || '%'
+	    		or pro_brand like '%' || #{searchWord} || '%'
+	    		or PRO_VENDOR like '%' || #{searchWord} || '%'
+	    		)
 	    		) mb
 	    where rNum between #{rowStart} and #{rowEnd}
+	   
 	</select>
 	
 	<sql id="search">

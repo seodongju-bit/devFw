@@ -110,4 +110,21 @@ public class A_P004ServiceImpl implements A_P004Service {
 	public int delcount(String p_id) throws DataAccessException{
 		return activeDAO.delcount(p_id);
 	}
+	@Override
+	public int pointSearch(Map<String, Object> searchMap) {
+		// TODO Auto-generated method stub
+		return activeDAO.pointSearch(searchMap);
+	}
+	@Override
+	public boolean passCheck(String id, String password) {
+		// TODO Auto-generated method stub
+		return activeDAO.passCheck(id, password);
+	}
+	@Override
+	public void withdrawSave(Map<String, String> withdrawMap) {
+		// TODO Auto-generated method stub
+		activeDAO.withdrawSave(withdrawMap);
+		
+	}
+	
 }

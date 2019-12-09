@@ -176,6 +176,7 @@
 	.youtubeBox{
 		position: absolute;
 		top:210px;
+		right:5px;
 		width:50px;
 		height:30px;
 	}
@@ -188,7 +189,7 @@
 		z-index: 1;
 	}
 	.youtubeBox img{
-		width:45px;
+		width:40px;
 		height:30px;
 	}
 </style>
@@ -252,7 +253,10 @@ function recommendation(recomNum, sellNo){
 	var url = "sellItems.do?sell_no="+sellNo+"&recom="+recomNum;
 	window.location.href = url;
 }
-
+function movePurchase(proName){
+	var url = "searchProd.do?searchWord="+proName;
+	window.location.href = url;
+}
 
 $(document).ready(function(){
 	pageMake();
@@ -275,11 +279,11 @@ $(".youtubeBox").mouseleave(function(){
  	youtubeSw=1;
 });
 
-
 </script>
 </head>
 <html>
 <body>
+
     <div id="contentsBody">
     
 		<h2>리뷰랭킹</h2>
@@ -289,7 +293,7 @@ $(".youtubeBox").mouseleave(function(){
 				<div class="reviewBox">
 					<span class="reviewNum">${index.count }</span>
 					<div class="imgBox" onclick="readReview(${bestReview.REVIEW_NUMBER })">${bestReview.REVIEW_THUMNAIL }</div>
-					${bestReview.REVIEW_TITLE }
+					<a onclick="readReview(${bestReview.REVIEW_NUMBER })">${bestReview.REVIEW_TITLE }</a>
 					<p style="text-align: right">by ${bestReview.MEM_ID }<p>
 					<br>추천수 ${bestReview.REVIEW_MONTHPOINT }
 					<c:choose>
@@ -302,7 +306,7 @@ $(".youtubeBox").mouseleave(function(){
 		</div>
 		
 		<div id="bestProduct">
-			<h3>best product</h3> (제품추천 높으것들중 각 3개의 리뷰)<br>
+			<h3>Best product</h3> (제품추천 높으것들중 각 3개의 리뷰)<br>
 			<c:forEach var="bestProduct" items="${bestProduct}" varStatus="index">
 				<div class="reviewBox">
 					<span class="prReviewNum">${index.count }</span>
@@ -322,6 +326,7 @@ $(".youtubeBox").mouseleave(function(){
 						</div>
 					</div>
 					${bestProduct.PRO_NAME }
+					<br><a onclick="movePurchase('${bestProduct.PRO_NAME }')">구매하러 가기</a>
 				</div>
 			</c:forEach>
 		</div>
@@ -331,16 +336,17 @@ $(".youtubeBox").mouseleave(function(){
 			<div class="reviewList">
     			<c:forEach var="reviewList" items="${reviewList}">
     			<div class="reviewBox">
-					${reviewList.REVIEW_THUMNAIL }
+					
+					<a class="reviewTag" onclick="readReview(${reviewList.REVIEW_NUMBER })">${reviewList.REVIEW_THUMNAIL }</a>
 					<a class="reviewTag" onclick="readReview(${reviewList.REVIEW_NUMBER })">${reviewList.REVIEW_TITLE }</a>
-					by ${reviewList.MEM_ID }
+					<br>by ${reviewList.MEM_ID }
 					<br>추천수 ${reviewList.REVIEW_MONTHPOINT }
     				<c:choose>
     					<c:when test='${reviewList.REVIEW_URL!=null }' >
     						<button onclick="reviewLink('${reviewList.REVIEW_URL}')">link</button>
     					</c:when>
     				</c:choose>
-					<button class="btn btn-default" onclick="recommendation('${reviewList.REVIEW_NUMBER }','${reviewList.SELL_NUMBER }')">추천 구매</button>
+<%-- 					<button class="btn btn-default" onclick="recommendation('${reviewList.REVIEW_NUMBER }','${reviewList.SELL_NUMBER }')">추천 구매</button> --%>
 				</div>
 				</c:forEach>
     			<br>
