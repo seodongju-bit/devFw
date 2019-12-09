@@ -38,6 +38,10 @@ public interface C_P003DAO {
 	
 	public void writes3(Map<String, Object> dataMap7);
 	
+	public List Allquestions2(PageVO vo2) throws DataAccessException;
+	
+	public List questionDetail2(Map<String, Object> dataMap8) throws DataAccessException;
+	
 	public int countBoard();
 	
 	

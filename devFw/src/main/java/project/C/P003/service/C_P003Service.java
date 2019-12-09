@@ -29,5 +29,8 @@ public interface C_P003Service {
 	
 	public void questionwrite5(Map<String, Object> dataMap7);
 	
+	public List listquestion2(PageVO vo2) throws DataAccessException;
+	public List<Map<String,Object>> questionDetail2(Map<String, Object> dataMap8) throws DataAccessException;
+	
 	public int countBoard();
 }

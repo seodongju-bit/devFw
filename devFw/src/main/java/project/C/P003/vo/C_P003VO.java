@@ -17,6 +17,9 @@ public class C_P003VO {
 	private String qu_answer;
     private Date qu_date;
 	
+    private String oq_number;
+    private String oq_question;
+    private String oq_answer;
 	
 	
 	public C_P003VO() {
@@ -76,8 +79,26 @@ public class C_P003VO {
 	public void setQu_date(Date qu_date) {
 		this.qu_date = qu_date;
 	}
-
 	
+	public String getOq_number() {
+		return oq_number;
+	}
+	public void setOq_number(String oq_number) {
+		this.oq_number = oq_number;
+	}
+	public String getOq_question() {
+		return oq_question;
+	}
+	public void setOq_question(String oq_question) {
+		this.oq_question = oq_question;
+	}
+	public String getOq_answer() {
+		return oq_answer;
+	}
+	public void setOq_answer(String oq_answer) {
+		this.oq_answer = oq_answer;
+	}
 	
+	   
 
 }

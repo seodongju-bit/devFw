@@ -109,10 +109,8 @@
 </head>
 <body onload="LoadPage()">
 <div id="searchBox">제품번호 검색<br>
-	
 	<input type="text" id="p_id" name="p_id" />
 	<button type="button" class="btn btn-default" id="searchBtn" onclick="search(p_id.value)">검색</button>
-	
 </div>
 
 

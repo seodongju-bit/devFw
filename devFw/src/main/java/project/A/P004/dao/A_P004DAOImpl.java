@@ -118,5 +118,24 @@ public class A_P004DAOImpl implements A_P004DAO {
 		alertList = sqlSession.selectList("mapper.active.alert", p_id);
 		System.out.println(alertList);
 		return alertList;
+
+	@Override
+	public int pointSearch(Map<String, Object> searchMap) {
+		int point = sqlSession.selectOne("mapper.active.pointSearch", searchMap);
+		return point;
+	}
+
+	@Override
+	public boolean passCheck(String id, String password) {
+		String check_id = sqlSession.selectOne("mapper.active.passCheck", id );
+		return password.equals(check_id);
+	}
+
+	@Override
+	public void withdrawSave(Map<String, String> withdrawMap) {
+		// TODO Auto-generated method stub
+		sqlSession.insert("mapper.active.withdrawSave", withdrawMap);
+		sqlSession.update("mapper.active.pointDeduction", withdrawMap);
+
 	}
 }

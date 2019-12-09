@@ -15,7 +15,7 @@
 <style>
 #content{
 width: 75%;
-height:1000px;
+height:1200px;
 padding: 5px;
 margin-left: 290px;
 border: 0px solid #bcbcbc;   
@@ -29,7 +29,7 @@ height:1000px;
 container.a{
 float:right;
 }
-
+                
 a:visited {
   color: black;
 }
@@ -41,13 +41,39 @@ a:hover {
 
 .h2, h2 {
     font-size: 30px;
-    background-color: #150717;
-    color: white;
+    background-color:black;
+    color: white;    
 }
 #nowView{
 color:white;
 background-color:black;    
 }
+#table{
+ border-collapse: collapse;
+      border-top: 3px solid #168;
+
+}
+.table th {
+      color: #168;
+      background: #f0f6f9;
+      text-align: center;
+    }
+ .table th, .table td {
+      padding: 10px;
+      border: 1px solid #ddd;
+    }
+    .table th:first-child, .table td:first-child {
+      border-left: 0;
+    }
+    .table th:last-child, .table td:last-child {
+      border-right: 0;
+    }
+    .table tr td:first-child{
+      text-align: center;
+    }
+    .table caption{caption-side: bottom; display: none;}    
+    
+          
 
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -93,9 +119,30 @@ $(document).ready(function(){
                      
 </head>
 <body>
-<div id="wrap">
+
+
+
+<div class="gallery">
+  <a target="_blank" href="${contextPath}/eventProduct.do">
+    <img src="resources/image/makeup1.JPG" alt="4" width="450" height="200">
+  </a>
+  <a target="_blank" href="${contextPath}/eventProduct.do">
+    <img src="resources/image/makeup2.JPG" alt="4" width="450" height="200">
+  </a>
+   <a target="_blank" href="${contextPath}/eventProduct.do">
+    <img src="resources/image/food1.JPG" alt="4" width="450" height="200">
+  </a>
+   
+  
+</div>
+
+
+
+
+<!--  <div id="wrap">-->
 	<div id="container">
 	<!-- <button type="button" class="btn black mr5" onclick="javascript:goBoardWrite();">1:1문의하기</button>-->
+  
 	     <h2>자주 묻는 질문</h2>
 	     <table id="sample"  width="1100px" align="center" style="text-align:center;">
           <tr>
@@ -249,13 +296,13 @@ $(document).ready(function(){
 					</c:forEach>
 
 				
-				</table>            
+				</table>
+							
+		
+          
 			</form>
-			<br><br><br>			
-			
-		</div>
- 
-</div>
+ </div>
+</div>  						
 
 </body>
 </html>

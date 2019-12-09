@@ -28,12 +28,12 @@ border: 0px solid #bcbcbc;
 float:right;
 }
 #container{
-height:1000px;
+height:1000px;   
 }
 container.a{
 float:right;
 }
-
+    
 a:visited {
   color: black;
 }
@@ -77,6 +77,21 @@ margin-top: 50px;
     background-color:black;
     color:white;
 }
+.h2,h2{
+font-size:25px;
+color:red;
+
+}
+
+
+#q{
+display: inline-block;
+    width: 600px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
+
+}
 
 #table{
  border-collapse: collapse;
@@ -104,21 +119,25 @@ margin-top: 50px;
     .table caption{caption-side: bottom; display: none;}    
     
 
-
 </style>
 
-<title>게시판 목록</title>
+<title>자주묻는질문</title>
 <script>
 function selChange() {
 	var sel = document.getElementById('cntPerPage').value;
-	location.href="${contextPath}/questions.do?nowPage=${page.nowPage}&cntPerPage="+sel;
+	location.href="${contextPath}/questions2.do?nowPage=${page.nowPage}&cntPerPage="+sel;
 }
 </script>
 
 </head>
-<body>           
+<body> 
+       
 <form name="frm" method="post" encType="UTF-8">
-<h1 align="center">문의사항</h1>
+
+
+<h1 align="center">자주묻는질문</h1>
+
+<h2 align="left">FAQ전체</h2>
 <div class="event">
 
 <div style="float: right;">
@@ -144,40 +163,37 @@ function selChange() {
 				<table class="table table-hover" id="evnet_td">              
 					<colgroup>
 						<col width="10%" />
-						<col width="30%" />
-						<col width="30%" />
-						<col width="10%" />
-						<col width="20%" />
+						<col width="45%" />
+						<col width="45%" />
+					
 					
 					</colgroup>
 					<thead>		
 						<tr>
-							<th>문의번호</th>
-							<th>문의내용</th>
-							<th>문의답변</th> 
-							<th>문의회원</th>
-							<th>문의날짜</th>
+							<th>질문번호</th>
+							<th>자주묻는 질문</th>
+							<th>답변</th> 
+							
 						</tr>                      
 					</thead>
-					<c:forEach var="question2" items="${questionList}" varStatus='index' >					
+					<c:forEach var="question4" items="${questionList2}" varStatus='index' >					
 					<thead>
-					<tr align="center" onclick="location.href='${contextPath}/questionDetail1.do?qu_number=${question2.qu_number}'">            
-					<td>${question2.qu_number}</td>                      
-					<td>${question2.qu_contents}</td>
-					<td>${question2.qu_answer}</td>
-					<td>${question2.mem_id}</td> 
-					<td>${question2.qu_date}</td>                    
+					<tr align="center" onclick="location.href='${contextPath}/questionDetail2.do?oq_number=${question4.oq_number}'">            
+					<td>${question4.oq_number}</td>         
+					<td>${question4.oq_question}</td>
+					<td id=q>${question4.oq_answer}</td>
+					                         
 				
 					</tr>
 					</thead>                 
-					
+					                             
 					</c:forEach>
             
 				
 				</table>
 				<div style="display: block; text-align: center;">		
 		<c:if test="${page.startPage != 1 }">
-			<a href="${contextPath}/questions.do?nowPage=${page.startPage - 1 }&cntPerPage=${page.cntPerPage}">&lt;</a>
+			<a href="${contextPath}/questions2.do?nowPage=${page.startPage - 1 }&cntPerPage=${page.cntPerPage}">&lt;</a>
 		</c:if>
 		<c:forEach begin="${page.startPage }" end="${page.endPage }" var="p">
 			<c:choose>
@@ -185,12 +201,12 @@ function selChange() {
 					<b>${p }</b>
 				</c:when>
 				<c:when test="${p != page.nowPage }">
-					<a href="${contextPath}/questions.do?nowPage=${p }&cntPerPage=${page.cntPerPage}">${p }</a>
+					<a href="${contextPath}/questions2.do?nowPage=${p }&cntPerPage=${page.cntPerPage}">${p }</a>
 				</c:when>
 			</c:choose>                                                                                            
 		</c:forEach>
 		<c:if test="${page.endPage != page.lastPage}">
-			<a href="${contextPath}/questions.do?nowPage=${page.endPage+1 }&cntPerPage=${page.cntPerPage}">&gt;</a>
+			<a href="${contextPath}/questions2.do?nowPage=${page.endPage+1 }&cntPerPage=${page.cntPerPage}">&gt;</a>
 		</c:if>
 	</div>   
 				</div>         

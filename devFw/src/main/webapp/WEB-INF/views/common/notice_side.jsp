@@ -16,19 +16,25 @@
   <style>
 
 #a{
-width:250px;
+width:250px;                              
 height:800px;
 background-color: white;
-border: 1px solid #bcbcbc;
-text-align:left;
+border: 1px solid #000000;
+text-align:left;           
 }
    
    #cc{
    width:200px;
-   border: 1px solid #bcbcbc;
+   border: 1px solid #040404;
    font-color: black;
    }
    
+   li.nav-header{
+    font-size: 20px;
+    font-style: normal;
+    background-color: black;    
+    color: white;
+   }
    
  </style>
   <meta charset="UTF-8">
@@ -53,6 +59,8 @@ function fn_coupon(){
 <aside class="well span3 oc" id="a" role="navigation">
       <ul class="nav nav-list">
     
+        <li class="nav-header">자주묻는질문</li>
+        <li><a href="${contextPath}/questions2.do">Q&A</a></li>
         <li class="nav-header">문의글</li>
         <li><a href="${contextPath}/questionwrite.do">문의글 등록</a></li>
         <li><a href="${contextPath}/questions.do">문의내역 조회</a></li>    

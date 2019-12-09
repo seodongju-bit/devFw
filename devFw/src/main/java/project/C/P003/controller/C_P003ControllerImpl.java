@@ -332,7 +332,59 @@ public class C_P003ControllerImpl implements C_P003Controller {
 
 	
 	
+	@Override
+	@RequestMapping(value="/questions2.do" ,method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView questions2(PageVO vo2 
+			, @RequestParam(value="nowPage", required=false)String nowPage
+			, @RequestParam(value="cntPerPage", required=false)String cntPerPage, 
+			HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = "questions2";
+		int totals2 = C_P003Service.countBoard();
+		System.out.println("컨트롤러"+totals2);
+		if (nowPage == null && cntPerPage == null) {
+			nowPage = "1";
+			cntPerPage = "5";
+		} else if (nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) { 
+			cntPerPage = "5";
+		}
+
+		
+			vo2 = new PageVO(totals2, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+			
+		
+		List questionList2 = C_P003Service.listquestion2(vo2);
+		ModelAndView mavw9 = new ModelAndView(viewName);
+		mavw9.addObject("page", vo2);    
+		mavw9.addObject("questionList2", questionList2);
+		return mavw9;
+	}
+
+
+	@Override
+	@RequestMapping(value="/questionDetail2.do" ,method = { RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView questionDetail2(@RequestParam("oq_number") String oq_number, 
+			           HttpServletRequest request, HttpServletResponse response) throws Exception{
+		request.setCharacterEncoding("utf-8");
+		String viewName = "questionDetail2";
+		Map<String, Object> dataMap8 = new HashMap();
+		Map<String, Object> resultMap8 = new HashMap();
+		dataMap8.put("oq_number", oq_number);
+		List<Map<String,Object>> noticeList7 = C_P003Service.questionDetail2(dataMap8);
+		resultMap8 = noticeList7.get(0);
+		System.out.println("controller실행"+noticeList7);
+		ModelAndView mavw9 = new ModelAndView(viewName);
+		mavw9.addObject("resultMap8", resultMap8);                  
+		return mavw9;             
+	}
+
+
+
+
 	
+
+
 	
 	
 	
@@ -367,6 +419,15 @@ public class C_P003ControllerImpl implements C_P003Controller {
 		}
 		return viewName;
 	}
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1,4 +1,4 @@
-package project.F.P002.dao;
+ package project.F.P002.dao;
 
 import java.util.List;
 
@@ -48,5 +48,11 @@ public interface F_P002DAO {
 	public List<Map<String, Object>> searchTotalReview(Map<String, Object> searchMap);
 
 	public List<Map<String, Object>> searchReviewInfo(Map<String, Object> searchMap);
+
+	public List<Map<String, Object>> searchReviewRank(Map<String, Object> searchMap);
+
+	public List<Map<String, Object>> searchProRank(Map<String, Object> searchMap);
+
+	public List<Map<String, Object>> searchReviewList(Map<String, Object> searchMap);
 	 
 }

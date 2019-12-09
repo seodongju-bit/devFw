@@ -117,7 +117,22 @@ public class C_P003DAOImpl implements C_P003DAO{
 	    System.out.println(dataMap7);
 		sqlSession.insert("mapper.notice.insertquestion3", dataMap7);
 	}
+
+	@Override
+	public List Allquestions2(PageVO vo2) throws DataAccessException {
+		List<C_P003VO> questionList2 = null;
+		questionList2 = sqlSession.selectList("mapper.notice.Allquestions2", vo2);
+		System.out.println("dao실행"+questionList2);
+		return questionList2;
+	}
 	
+	@Override
+	public List questionDetail2(Map<String, Object> dataMap8) throws DataAccessException {
+		List noticelist7 = null;
+		noticelist7 = sqlSession.selectList("mapper.notice.questionDetail2", dataMap8);
+		System.out.println("dao실행"+noticelist7);
+		return noticelist7;
+	}
 		
 	}
 

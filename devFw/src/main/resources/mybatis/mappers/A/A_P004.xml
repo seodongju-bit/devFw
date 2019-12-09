@@ -162,6 +162,7 @@
            ]]> 
 </select>
 
+
 <select id="question" parameterType="String" resultType="Integer">
 	<![CDATA[
      SELECT COUNT(*) FROM questions
@@ -186,5 +187,39 @@
          where mem_id = #{mem_id}
            ]]> 
 </select>
-	
-	</mapper>
+
+	<select id="pointSearch" parameterType="String" resultType="Integer">
+	<![CDATA[
+     	 select MEM_POINT
+         from members
+         where mem_id = #{mem_id}
+    ]]> 
+	</select>
+
+	<select id="passCheck" parameterType="String" resultType="String">
+	<![CDATA[
+     	 select MEM_PW
+         from members
+         where mem_id = #{mem_id}
+    ]]> 
+	</select>
+
+	<insert id="withdrawSave"  parameterType="java.util.Map">
+  <![CDATA[
+    	 INSERT INTO withdraw (wd_number, mem_id, wd_price, wd_date, wd_bank, wd_account, wd_name, wd_state) 
+         VALUES (
+      	(select NVL(max(wd_number), 0)+1 from withdraw where mem_id = #{mem_id} ),
+      	#{mem_id}, #{wd_price}, sysdate, #{wd_bank}, #{wd_account}, #{wd_name}, '입급신청' )
+   ]]>      
+  </insert>
+  
+	<update id="pointDeduction" parameterType="java.util.Map">
+	<![CDATA[
+		update members
+		set  mem_point = #{mem_point} - #{wd_price}
+		where mem_id = #{mem_id}
+	]]>
+	</update>
+
+</mapper>
+

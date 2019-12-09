@@ -26,5 +26,8 @@ public interface A_P004DAO {
 	 public int question(String p_id);
 	 public List<Map<String,Object>> listquestion(Map<String, Object> searchMap);
 	 public List alert(String p_id) throws DataAccessException;
+	public int pointSearch(Map<String, Object> searchMap);
+	public boolean passCheck(String id, String password);
+	public void withdrawSave(Map<String, String> withdrawMap);
 }
 

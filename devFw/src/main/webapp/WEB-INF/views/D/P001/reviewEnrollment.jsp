@@ -81,6 +81,10 @@ span{
 #seller_grade a.on{
       color: #FFBF00;
 }
+.grade{
+	left: -200px;
+}
+
 iframe{
 	background-color:white;
 }
@@ -135,6 +139,7 @@ $(function() {
 
 ///별점
 $(document).ready(function(){
+	$('[data-toggle="tooltip"]').tooltip();
 	$('#sell_number').val('${sell_number}');
 	
 	$("#product_grade a").click(function(){
@@ -164,32 +169,39 @@ $(document).ready(function(){
 ${sell_title }
 <div class="reviewBox">
 	<form name="reviewEnrollment" method="post"  accept-charset="UTF-8" >
-		<div  class="titleBox" ><span>제목</span>
-		<input type="text" id="inputTitle" name="review_title" class="form-control" id="title"></div>
-		<div  class="titleBox" ><span>제품평가</span>
+		<div  class="titleBox" ><span>리뷰 제목</span>
+		<input type="text" id="inputTitle" name="review_title" class="form-control" ></div>
+		
+		<div  class="titleBox" ><span data-toggle="tooltip" title="외부 사이트에 등록 된  리뷰 작성글로 연결되길 원하시원 해당 글의 주소를 적어주세요">Link</span>
+		<input type="text" id="inputTitle" name="review_url" class="form-control" ></div>
+		
+		<div  class="titleBox" ><span data-toggle="tooltip" title="youtube에 등록하신  영상 리뷰가 있으시면 해당 영상의 videoId를 적어주세요">youtube</span>
+		<input type="text" id="inputTitle" name="review_youtube" class="form-control" ></div>
+		
+		<div  class="titleBox" ><span class="grade" data-toggle="tooltip" title="해당 제품의 품질, 판매가격대, 성능, 기능 등에 대한 만족도를 평가해주세요">제품 만족도</span>
 		<span id="product_grade">
 			<a></a>
-       		<a href="#" >★</a>
-        	<a href="#" >★</a>
-        	<a href="#" >★</a>
+       		<a href="#" class="on" >★</a>
+        	<a href="#" class="on">★</a>
+        	<a href="#" class="on">★</a>
         	<a href="#" >★</a>
         	<a href="#" >★</a>
 		</span>
 		</div>
-		<div  class="titleBox" ><span>판매자평가</span>
+		<div  class="titleBox" ><span class="grade" data-toggle="tooltip" title="해당 판매자의  질의답변, 배송, 포장상태, 교환처리 등에 대한 만족도를 평가해주세요">판매 만족도</span>
 		<span id="seller_grade">
 			<a></a>
-       		<a href="#" >★</a>
-        	<a href="#" >★</a>
-        	<a href="#" >★</a>
+       		<a href="#" class="on">★</a>
+        	<a href="#" class="on">★</a>
+        	<a href="#" class="on">★</a>
         	<a href="#" >★</a>
         	<a href="#" >★</a>
 		</span>
 		</div>
 		<input type="hidden" name="sell_number" id="sell_number" >
 <!-- 		<input type="hidden" name="pro_number" id="pro_number" > -->
-		<input type="hidden" name="review_pdscore" id="review_pdscore" value="0">
-		<input type="hidden" name="review_sellscore" id="review_sellscore" value="0">
+		<input type="hidden" name="review_pdscore" id="review_pdscore" value="3">
+		<input type="hidden" name="review_sellscore" id="review_sellscore" value="3">
 		<div class="titleBox" id="TitleBox2"><span>내용</span></div>
 		<div class="form-group" id="editorBox">
 			<textarea  id="editor"  name="review_content"></textarea>

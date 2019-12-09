@@ -11,9 +11,6 @@
 <html>
 <head>
 <style>
-
-            
-
 #content{
 width: 75%;
 height:1000px;
@@ -26,6 +23,7 @@ width:100%;
 }   
 #contents{
 height:500px;
+font-size: xx-large;
 }                  
 caption {
     padding-top: 8px;
@@ -35,9 +33,6 @@ caption {
     text-align: left;
 }
 
-
-
-    
 </style>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -46,41 +41,38 @@ caption {
 
 </head>
 <body>
-
-<table class="notice_view">              
+<table class="notice_view">                                  
 		<colgroup>
-			<col width="15%" />
-			<col width="35%" />
-			<col width="15%" />
-			<col width="35%" />
+			<col width="10%" />  
+			<col width="45%" />
+			<col width="45%"/>
+			
+			
 		</colgroup>
 		<caption>게시글 상세</caption>
 		<tbody>             
-		<c:set var="notice3" value="${resultMap3}" />
+		<c:set var="oq" value="${resultMap8}" />
 			<tr>
-				<th scope="row">신고번호</th>
-				<td>${notice3.DE_NUMBER}</td>
-				<th scope="row">신고분류</th>
-				<td>${notice3.DE_DIVISION}</td>
+				<th scope="row">질문번호</th>
+				<td>${oq.OQ_NUMBER}</td>
+		    </tr>
+		    <tr>
+				<th scope="row">자주묻는질문</th>
+				<td>${oq.OQ_QUESTION}</td>
 			</tr>
 			<tr>
+				<th scope="row">답변</th>
+				<td colspan="3" id="contents">${oq.OQ_ANSWER}</td>
 				
-				<th scope="row">신고일자</th>
-				<td>${notice3.DE_DATE}</td>                               
-			</tr>
-			<tr>
-				<th scope="row">신고자</th>
-				<td colspan="3">${notice3.MEM_ID}님</td>
-			</tr>
-			<tr>                                         
-				<td colspan="4" id="contents">${notice3.DE_CONTENTS}</td>
-			</tr>
-			<button class="btn btn-default"  onclick="location.href='${contextPath}/questions1.do'">목록</button>
+			</tr>                
+			
+	
+			<button class="btn btn-default"  onclick="location.href='${contextPath}/questions2.do'">목록</button>
 			<tr></tr>
 			
-			            
+			
 		</tbody>
-		
+		                 
 	</table>
 
 
