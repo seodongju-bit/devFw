@@ -118,7 +118,7 @@ public class A_P004DAOImpl implements A_P004DAO {
 		alertList = sqlSession.selectList("mapper.active.alert", p_id);
 		System.out.println(alertList);
 		return alertList;
-
+	}
 	@Override
 	public int pointSearch(Map<String, Object> searchMap) {
 		int point = sqlSession.selectOne("mapper.active.pointSearch", searchMap);
