@@ -77,6 +77,13 @@ margin-top: 50px;
     background-color:black;
     color:white;
 }
+.h2,h2{
+font-size:25px;
+color:red;
+
+}
+
+
 #q{
 display: inline-block;
     width: 600px;
@@ -86,7 +93,31 @@ display: inline-block;
 
 }
 
+#table{
+ border-collapse: collapse;
+      border-top: 3px solid #168;
 
+}
+.table th {
+      color: #168;
+      background: #f0f6f9;
+      text-align: center;
+    }
+ .table th, .table td {
+      padding: 10px;
+      border: 1px solid #ddd;
+    }
+    .table th:first-child, .table td:first-child {
+      border-left: 0;
+    }
+    .table th:last-child, .table td:last-child {
+      border-right: 0;
+    }
+    .table tr td:first-child{
+      text-align: center;
+    }
+    .table caption{caption-side: bottom; display: none;}    
+    
 
 </style>
 
@@ -100,14 +131,13 @@ function selChange() {
 
 </head>
 <body> 
-
-
-    
-  
-
-          
+       
 <form name="frm" method="post" encType="UTF-8">
+
+
 <h1 align="center">자주묻는질문</h1>
+
+<h2 align="left">FAQ전체</h2>
 <div class="event">
 
 <div style="float: right;">
