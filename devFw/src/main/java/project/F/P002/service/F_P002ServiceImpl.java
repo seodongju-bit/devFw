@@ -42,7 +42,6 @@ public class F_P002ServiceImpl implements F_P002Service {
 
 	@Override
 	public void addBasket(Map<String, Object> searchMap) throws DataAccessException {
-		System.out.println("add서비스실행");
 		f_P002DAO.addBasket(searchMap);
 	}
 	
@@ -126,5 +125,49 @@ public class F_P002ServiceImpl implements F_P002Service {
 	public List<Map<String, Object>> searchReviewInfo(Map<String, Object> searchMap) {
 		return f_P002DAO.searchReviewInfo(searchMap);
 	}
+
+	@Override
+	public List<Map<String, Object>> searchReviewRank(Map<String, Object> searchMap) {
+		List<Map<String, Object>> list = f_P002DAO.searchReviewRank(searchMap);
+		list = thumbnail(list);
+		
+		return list;
+	}
 	
+	
+	@Override
+	public List<Map<String, Object>> thumbnail(List<Map<String, Object>> list){
+		if(list.size()!=0) {
+			for(int i=0; i<list.size(); i++) {
+				String thumb = (String)list.get(i).get("REVIEW_CONTENT");
+				if(thumb==null) { 
+					thumb = "<img src='resources/image/nothing.jpg' >";
+					list.get(i).put("REVIEW_THUMNAIL", thumb);
+					continue;}
+				int startImg = thumb.indexOf("<img");
+				
+				if(startImg!=-1) {
+					thumb = thumb.substring(startImg);
+					int endImg = thumb.indexOf(">");
+					thumb = thumb.substring(0, endImg+1);
+				}else {
+					thumb = "<img src='resources/image/nothing.jpg' >";
+				}
+				list.get(i).put("REVIEW_THUMNAIL", thumb);
+			}
+		}
+		return list;
+	}
+
+	@Override
+	public List<Map<String, Object>> searchProRank(Map<String, Object> searchMap) {
+		List<Map<String, Object>> list = f_P002DAO.searchProRank(searchMap);
+		return list;
+	}
+
+	@Override
+	public List<Map<String, Object>> searchReviewList(Map<String, Object> searchMap) {
+		List<Map<String, Object>> list = f_P002DAO.searchReviewList(searchMap);
+		return list;
+	}
 }

@@ -83,8 +83,6 @@ public class homeController {
 //		List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
 		
 		List<Map<String, Object>> list = sqlSession.selectList("common.searchCommon" ,searchMap);
-		System.out.println(list);
-		
 		return list;                
 	}
 	
@@ -93,8 +91,6 @@ public class homeController {
 	public List<Map<String, Object>> searchBigDivision(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("utf-8");
 		List<Map<String, Object>> list = sqlSession.selectList("common.bigDivision");
-		System.out.println(list);
-		
 		return list;
 	}
 	
@@ -105,8 +101,6 @@ public class homeController {
 		Map<String, Object> searchMap = new HashMap<String, Object>();
 		searchMap.put("p_code", p_code);
 		List<Map<String, Object>> list = sqlSession.selectList("common.smallDivision" ,searchMap);
-		System.out.println(list);
-		
 		return list;
 	}
 	

@@ -231,7 +231,6 @@ $(document).ready(function(){
     <div id="pagination"></div>
     </div>
     </div>
-<div id="player"></div>
 </body>
  
 </html>

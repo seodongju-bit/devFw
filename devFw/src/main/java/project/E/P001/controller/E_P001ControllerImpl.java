@@ -80,14 +80,11 @@ public class E_P001ControllerImpl implements E_P001Controller {
 		session = request.getSession();
 		Boolean isLogOn = (Boolean)session.getAttribute("isLogOn");
 		String action=(String)session.getAttribute("action");
-System.out.println("장바구니에서 구매");
 		if(isLogOn==null || isLogOn == false) {
 			return new ModelAndView("redirect:../devFw/signinpage.do");
 		}else {
 			ModelAndView mav = new ModelAndView("order");
-			
 			List<Map<String, Object>> list = createModel2(request);
-System.out.println("리스트 변환"+list +"리스트사이즈"+list.size());
 			Map<String, Object> searchMap = new HashMap<String, Object>();
 			List<E_P001VO> result = new ArrayList<E_P001VO>();
 			
@@ -277,6 +274,7 @@ System.out.println("리스트 변환"+list +"리스트사이즈"+list.size());
 			resultMap.put("detail_quantity", request.getParameter("quantity"+i));
 			resultMap.put("order_size",request.getParameter("size"+i));
 			resultMap.put("order_color",request.getParameter("color"+i));
+			resultMap.put("order_color",request.getParameter("od_recomReview"));
 			result.add(resultMap);
 			i++;
 		}
@@ -285,7 +283,6 @@ System.out.println("리스트 변환"+list +"리스트사이즈"+list.size());
 	
 
 	public List<Map<String, Object>> createModel2(HttpServletRequest request){
-System.out.println("데이터 변환");
 		List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
 		Map<String, Object> resultMap= new HashMap<String, Object>();
 		String test = request.getParameter("test");
@@ -305,7 +302,6 @@ System.out.println("데이터 변환");
 			resultMap.put("order_color", colorOp[i]);
 			result.add(resultMap);
 		}
-		
 		return result;
 	}
 	

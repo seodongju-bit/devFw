@@ -169,9 +169,9 @@ ${sell_title }
 		<div  class="titleBox" ><span>제품평가</span>
 		<span id="product_grade">
 			<a></a>
-       		<a href="#" >★</a>
-        	<a href="#" >★</a>
-        	<a href="#" >★</a>
+       		<a href="#" class="on" >★</a>
+        	<a href="#" class="on">★</a>
+        	<a href="#" class="on">★</a>
         	<a href="#" >★</a>
         	<a href="#" >★</a>
 		</span>
@@ -179,17 +179,17 @@ ${sell_title }
 		<div  class="titleBox" ><span>판매자평가</span>
 		<span id="seller_grade">
 			<a></a>
-       		<a href="#" >★</a>
-        	<a href="#" >★</a>
-        	<a href="#" >★</a>
+       		<a href="#" class="on">★</a>
+        	<a href="#" class="on">★</a>
+        	<a href="#" class="on">★</a>
         	<a href="#" >★</a>
         	<a href="#" >★</a>
 		</span>
 		</div>
 		<input type="hidden" name="sell_number" id="sell_number" >
 <!-- 		<input type="hidden" name="pro_number" id="pro_number" > -->
-		<input type="hidden" name="review_pdscore" id="review_pdscore" value="0">
-		<input type="hidden" name="review_sellscore" id="review_sellscore" value="0">
+		<input type="hidden" name="review_pdscore" id="review_pdscore" value="3">
+		<input type="hidden" name="review_sellscore" id="review_sellscore" value="3">
 		<div class="titleBox" id="TitleBox2"><span>내용</span></div>
 		<div class="form-group" id="editorBox">
 			<textarea  id="editor"  name="review_content"></textarea>

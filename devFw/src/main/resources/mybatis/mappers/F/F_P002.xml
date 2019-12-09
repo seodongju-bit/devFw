@@ -23,7 +23,7 @@
 		<result property="bigCtgrName" column="bign" />
 		<result property="smallCtgrName" column="common_name" />	
 	</resultMap>
-	
+	 
 	<resultMap id="F_P002Result02" type="F_P002VO">
 		<result property="sell_number" column="sell_number" />
 		<result property="option_size" column="option_size" />
@@ -32,7 +32,6 @@
 	</resultMap>
 	
 	<resultMap id="F_P002Result03" type="java.util.Map">
-		<result property="sell_number" column="sell_number" />
 	</resultMap>
 	
 	<select id="searchItem" resultMap="F_P002Result01" parameterType="java.util.Map"> 
@@ -90,7 +89,6 @@
 	</select>
 	 
 	
-	
 	<select id="searchReviewInfo" resultMap="F_P002Result03" parameterType="java.util.Map"> 
       <![CDATA[
          select *
@@ -99,6 +97,67 @@
 		 and review_number = #{p_id}
       ]]>
 	</select>
+	
+	<select id="searchReviewRank" resultMap="F_P002Result03" parameterType="java.util.Map"> 
+      <![CDATA[
+      select *
+      from (select review_number, review_title, REVIEW_CONTENT, r.MEM_ID, REVIEW_MONTHPOINT, REVIEW_YOUTUBE
+		 	from review r ,product p
+		 	where r.pro_number = p.pro_number
+		 	and pro_division like('${p_id}')
+			order by REVIEW_MONTHPOINT desc)
+	  where rownum <= 5
+      ]]>
+	</select>
+	
+	<select id="searchProRank" resultMap="F_P002Result03" parameterType="java.util.Map"> 
+      <![CDATA[
+      select *
+      from (select *
+		 	from product p
+		 	where pro_division like('${p_id}')
+			order by PRO_SCORE desc)
+	  where rownum <= 5
+      ]]>
+	</select>
+	 
+	<select id="matchThumbnail" resultMap="F_P002Result03" parameterType="java.util.Map"> 
+      <![CDATA[
+      select SELL_THUMBNAIL
+      from productsell
+      where pro_number = #{PRO_NUMBER}
+      and rownum <= 1
+      ]]>
+	</select>
+	
+	<select id="proTopReview" resultMap="F_P002Result03" parameterType="java.util.Map"> 
+      <![CDATA[
+      select *
+      from (select *
+		 	from review
+		 	where pro_number = #{PRO_NUMBER}
+			order by REVIEW_MONTHPOINT desc)
+	  where rownum <= 3
+      ]]>
+	</select>
+	
+	<select id="searchReviewList" resultMap="F_P002Result03" parameterType="java.util.Map"> 
+      <![CDATA[
+      
+      select *
+		 	from product p, review r
+		 	where p.pro_number = r.pro_number
+		 	and pro_division like('${p_id}')
+		 	and REVIEW_TOTALPOINT > 3
+			order by REVIEW_STDATE desc
+	  
+      ]]>
+	</select>
+	
+	
+	
+	
+	
 	
 	<select id="searchOption" resultMap="F_P002Result02" parameterType="java.util.Map"> 
       <![CDATA[

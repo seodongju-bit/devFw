@@ -14,7 +14,7 @@
 <head>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script><!-- 팝업 관련 -->
 
-<link rel="stylesheet" type="text/css" href="resources/css/F_P002_D001.css?ver=1.3">
+<link rel="stylesheet" type="text/css" href="resources/css/F_P002_D001.css?ver=1.5">
 
 <script src="http://code.jquery.com/jquery-latest.min.js"></script><!-- jquery -->
 <script type="text/javascript">
@@ -101,7 +101,7 @@ $(document).ready(function(){
 		input = document.createElement("input");
 		//document.getElementById('selectItem').prepend('${item.pro_name}');
 		
-		selectedBox.innerHTML+="<input type='number' name='quantity1' class='quantity' value='1' min='0' max='99' >";
+		selectedBox.innerHTML+="수량 <input type='number' name='quantity1' class='quantity' value='1' min='0' max='99' >";
 		document.getElementById('selectItems').prepend(selectedBox);	
 		
 	}
@@ -131,7 +131,7 @@ $(document).ready(function(){
 			//selectedBox.append(document.getElementById('colorOption').value);
 			selectedBox.appendChild(infoBox);
 			selectedBox.appendChild(input);
-			selectedBox.innerHTML+="<input type='number' name='quantity"+option_stack+"' class='quantity' value='1' min='0' max='99' >";
+			selectedBox.innerHTML+="수량 <input type='number' name='quantity"+option_stack+"' class='quantity' value='1' min='0' max='99' >";
 			selectedBox.appendChild(deletebtn);
 			document.getElementById('selectItems').prepend(selectedBox);
 			option_stack++;
@@ -166,7 +166,7 @@ $(document).ready(function(){
 			//selectedBox.append(document.getElementById('sizeOption').value);
 			selectedBox.appendChild(infoBox);
 			selectedBox.appendChild(input);
-			selectedBox.innerHTML+="<input type='number' name='quantity"+option_stack+"' class='quantity' value='1' min='0' max='99' >";
+			selectedBox.innerHTML+="수량 <input type='number' name='quantity"+option_stack+"' class='quantity' value='1' min='0' max='99' >";
 			selectedBox.appendChild(deletebtn);
 			document.getElementById('selectItems').prepend(selectedBox);
 			option_stack++;
@@ -215,7 +215,7 @@ $(document).ready(function(){
 					selectedBox.setAttribute('class', 'selectItem');
 					selectedBox.setAttribute('id', 'selectbox'+option_stack);
 					
-					selectedBox.innerHTML+="<input type='number' name='quantity"+option_stack+"' class='quantity' value='1' min='0' max='99' >";
+					selectedBox.innerHTML+="수량 <input type='number' name='quantity"+option_stack+"' class='quantity' value='1' min='0' max='99' >";
 					selectedBox.appendChild(deletebtn);
 					document.getElementById('selectItems').prepend(selectedBox);
 					option_stack++;
@@ -265,9 +265,14 @@ function basket(){
 		  }
 	})
 }
+function removeRef(){
+	var url = "sellItems.do?sell_no="+${item.sell_number};
+ 	window.location.href=url;	
+}
 
 function fn_order(){
 	var isLogOn = '${isLogOn}';
+	
 	if(isLogOn==false || isLogOn=='') {
 		alert("로그인 후 주문이 가능합니다.");
 	}
@@ -334,17 +339,20 @@ function pageLoad(command){
 				<option value="">색상 선택</option>
 			</select>
 		</div>
-		<c:choose>
-			<c:when test='${reiewer.REVIEW_NUMBER!=null }'>
-			<div class="sellInfo">
-				<input type="hidden" name="od_recomreview" value='${reiewer.REVIEW_NUMBER}'>
-				추천리뷰 : ${reiewer.REVIEW_TITLE}<br>
-				by ${reiewer.MEM_ID}
-				</div>
-			</c:when>
-		</c:choose>
+		
 		<form method="post" name="selectPush" accept-charset="UTF-8" >
+		
 			<div id="selectItems" class="sellInfo">
+			<c:choose>
+				<c:when test='${reiewer.REVIEW_NUMBER!=null }'>
+					<input type="hidden" name="od_recomReview" value='${reiewer.REVIEW_NUMBER}'>
+					<div class="selectItem" id="reviewerBox">
+						추천리뷰 : ${reiewer.REVIEW_TITLE}
+						by ${reiewer.MEM_ID}
+						<button type="button" class="btn btn-default" onclick="removeRef()">취소</button>
+					</div>
+				</c:when>
+			</c:choose>
 				<button type="button" class="btn-default" id="basketbtn" onclick="basket()" >장바구니</button>
 				<button type="submit" class="btn btn-primary" id="orderbtn" formaction="/devFw/order.do" onclick="fn_order()">바로구매</button>
 			</div>

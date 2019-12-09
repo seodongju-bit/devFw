@@ -43,7 +43,11 @@ body{
 </style>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script>
-
+function recomMove(){
+	var url = "sellItems.do?sell_no=${reviewInfo.SELL_NUMBER }&recom=${reviewInfo.REVIEW_NUMBER }";
+	opener.document.location.href = url;
+	window.close();
+}
 </script>
 </head>
 <html>
@@ -56,7 +60,7 @@ body{
    		<div class="reviewId form-control" >${reviewInfo.MEM_TOTALRC }</div>
    </div>
    	<div id="textArea">${reviewInfo.REVIEW_CONTENT }</div>
-   <button class="btn btn-default">선택</button>
+   <button class="btn btn-default" onclick="recomMove()">선택</button>
    <button class="btn btn-default" onclick="window.close()">닫기</button>
    
 </body>
