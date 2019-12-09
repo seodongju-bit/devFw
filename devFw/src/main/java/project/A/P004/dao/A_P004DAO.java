@@ -23,5 +23,8 @@ public interface A_P004DAO {
 	 public int baslist(String p_id);
 	 public int mempoint(String p_id);
 	 public int delcount(String p_id);
+	 public int question(String p_id);
+	 public List<Map<String,Object>> listquestion(Map<String, Object> searchMap);
+	 public List alert(String p_id) throws DataAccessException;
 }
 

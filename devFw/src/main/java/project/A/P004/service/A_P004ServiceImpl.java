@@ -110,4 +110,20 @@ public class A_P004ServiceImpl implements A_P004Service {
 	public int delcount(String p_id) throws DataAccessException{
 		return activeDAO.delcount(p_id);
 	}
+	@Override
+	public int question(String p_id) throws DataAccessException{
+		return activeDAO.question(p_id);
+	}
+	@Override
+	public List<Map<String,Object>> listquestion(Map<String, Object> searchMap) throws DataAccessException {
+		List list= activeDAO.listquestion(searchMap);	
+		
+		return list;
+	}
+	@Override
+	public List alert(String p_id) throws DataAccessException {
+		List alertList = null;
+		alertList = activeDAO.alert(p_id);
+		return alertList;
+	}
 }

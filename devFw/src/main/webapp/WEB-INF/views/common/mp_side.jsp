@@ -46,6 +46,12 @@ function fn_coupon1(){
 		location.href="${contextPath}/coupon.do";
 	}
 }
+
+function withdraw(){
+	   var popupX = (window.screen.width/2) - (400);
+	   var popupY = (window.screen.height/2) - (500);
+	   window.open("initWithdraw.do", "창", "width=400, height=250, left="+popupX+", top="+popupY);
+	}
 </script>
 </head>
 <body>
@@ -58,11 +64,11 @@ function fn_coupon1(){
         <li><a href="#">배송관리</a></li>
         <li class="nav-header">My 혜택</li>
         <li><a onclick="fn_coupon1()">할인 쿠폰</a></li>
-        <li><a href="#">캐시/기프트카드</a></li>
+        <li><a onclick="withdraw()">출금 신청</a></li>
         <li class="nav-header">My 활동</li>
         <li><a href="myReview.do">내가 작성한 리뷰</a></li>
         <li><a href="#">문의 하기</a></li>
-        <li><a href="#">문의내역 확인</a></li>
+        <li><a href="alert.do">신고내역</a></li>
         <li><a href="#">구매 리뷰</a></li>
         <li><a href="#">찜 리스트</a></li>
         <li><a href="point.do">포인트 사용 내역</a></li>
@@ -71,7 +77,7 @@ function fn_coupon1(){
         <li><a href="#">결제수단-쿠페이 관리</a></li>
         <li><a href="#">배송지 관리</a></li>
       </ul>
-    </aside>
+</aside>
 	 <br>
 	 <br>
 	 <table class="table table-hover" id="cc">

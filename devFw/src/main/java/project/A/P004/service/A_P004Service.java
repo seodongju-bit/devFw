@@ -18,9 +18,12 @@ public interface A_P004Service {
 	 public List<Map<String, Object>> quList(Map<String, Object> searchMap);
 	 public void takecoupon(Map<String, Object> dataMap) throws DataAccessException;
 	 public List givecoupon() throws DataAccessException;
-	 public int couponcheck(Map<String, Object> check);
+	 public int couponcheck(Map<String, Object> check) throws DataAccessException;
 	 public int coulist(String p_id);
 	 public int baslist(String p_id);
 	 public int mempoint(String p_id);
 	 public int delcount(String p_id);
+	 public int question(String p_id);
+	 public List<Map<String,Object>> listquestion(Map<String, Object> searchMap) throws DataAccessException;
+	 public List alert(String p_id) throws DataAccessException;
 }

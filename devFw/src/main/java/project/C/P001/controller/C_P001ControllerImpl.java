@@ -110,19 +110,21 @@ public class C_P001ControllerImpl implements C_P001Controller {
 		String viewName = "redirect:/event.do";
 		Map<String, Object> dataMap = new HashMap();
 		
+		HttpSession session = request.getSession();
+		String mem_id = (String)session.getAttribute("mem_id");
+		
 		String no_title = request.getParameter("title");
 		String no_division = request.getParameter("division");
-		String mem_no = request.getParameter("writer");
 		String no_contents = request.getParameter("content");
 		
 		System.out.println(no_title);
 		System.out.println(no_division);
-		System.out.println(mem_no);
+		System.out.println(mem_id);
 		System.out.println(no_contents);
 		
 		dataMap.put("no_title", no_title);
 		dataMap.put("no_division", no_division);
-		dataMap.put("mem_no", mem_no);
+		dataMap.put("mem_id", mem_id);
 		dataMap.put("no_contents", no_contents);
 		
 		System.out.println(dataMap);

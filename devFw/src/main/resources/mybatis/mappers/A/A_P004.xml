@@ -162,5 +162,29 @@
            ]]> 
 </select>
 
+<select id="question" parameterType="String" resultType="Integer">
+	<![CDATA[
+     SELECT COUNT(*) FROM questions
+      WHERE
+          mem_id = #{mem_id} 
+           ]]> 
+</select>
+
+<select id="listquestion" resultMap="orderListResult" parameterType="java.util.Map">
+      <![CDATA[
+         select MEM_ID, QU_CONTENTS, QU_NUMBER, QU_ANSWER,  to_char(qu_date, 'YYYY-MM-DD') QU_DATE
+         from QUESTIONS
+         where mem_id = #{mem_id}
+         and qu_number = #{qu_number}
+      ]]>
+	</select>
+
+<select id="alert" resultMap="orderListResult" parameterType="java.util.Map">
+	<![CDATA[
+    select MEM_ID, de_number, de_division, de_contents,  to_char(de_date, 'YYYY-MM-DD') DE_DATE
+         from declarations
+         where mem_id = #{mem_id}
+           ]]> 
+</select>
 	
 	</mapper>

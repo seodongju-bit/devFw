@@ -186,7 +186,14 @@ ul.tabs li.active, html ul.tabs li.active a:hover {
 
 		<tr>
 			<th id="My">My</th>
-			<th>문의 내역<br> <a href="#" style="">0건</a></th>
+			<th>문의 내역<br> <c:choose>
+						<c:when test="${question_count!='0' }=='0'}">
+			0건
+			</c:when>
+						<c:when test="${question_count!='0'}">
+			${question_count}건
+			</c:when>
+					</c:choose></th>
 			<th>배송중<br> <a href="#" style=""><c:choose>
 						<c:when test="${del_count=='0'}">
 			0건
@@ -223,7 +230,7 @@ ul.tabs li.active, html ul.tabs li.active a:hover {
 	</table>
 
 
-	<p id="f" style="margin-right: 0px;">주문목록/배송조회</p>
+	<p id="f" style="margin-right: 0px; margin-left: 135px;">주문목록/배송조회</p>
 
 
 	<div id="wrapper">
@@ -356,7 +363,7 @@ ul.tabs li.active, html ul.tabs li.active a:hover {
 						<th>답변상태</th>
 					</tr>
 					<c:forEach var="quList" items="${quList}">
-						<tr onclick="myquestion('${quList.qu_number}')">
+						<tr onclick="myquestion('${quList.QU_NUMBER}')">
 							<td>${quList.mem_id}</td>
 							<td>${quList.QU_CONTENTS}</td>
 							<td>${quList.QU_DATE}</td>
@@ -570,11 +577,17 @@ ul.tabs li.active, html ul.tabs li.active a:hover {
 					"width=850, height=800, left=600, top400", "resizable=no");
 		}
 		
-		function reviewWrite(sell_number, title) {
+		function myquestion(qu_number) {
+			var qu_number = qu_number;
+			window.open("myquestion.do?qu_number="+qu_number, "문의내역조회",
+					"width=850, height=800, left=600, top400", "resizable=no");
+		}
+		
+		/* function reviewWrite(sell_number, title) {
 			window.open("reviewwrite.do?sell_number=" + sell_number
 					+ "&sell_title=" + title, "제품번호 검색",
 					"width=850, height=800, left=600, top400", "resizable=no");
-		}
+		} */
 
 		$(document).ready(function() {
 

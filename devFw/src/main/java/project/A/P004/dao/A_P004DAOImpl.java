@@ -100,4 +100,23 @@ public class A_P004DAOImpl implements A_P004DAO {
 	public int delcount(String p_id) throws DataAccessException {
 		return sqlSession.selectOne("mapper.active.delcount", p_id);
 	}
+	
+	@Override
+	public int question(String p_id) throws DataAccessException {
+		return sqlSession.selectOne("mapper.active.question", p_id);
+	}
+
+	@Override
+	public List<Map<String,Object>> listquestion(Map<String, Object> searchMap) {
+		List list =sqlSession.selectList("mapper.active.listquestion",searchMap);
+		System.out.println(">>>"+ list);
+		return list;
+	}
+	@Override
+	public List alert(String p_id) throws DataAccessException {
+		List alertList = null;
+		alertList = sqlSession.selectList("mapper.active.alert", p_id);
+		System.out.println(alertList);
+		return alertList;
+	}
 }
