@@ -23,7 +23,7 @@
 		<result property="bigCtgrName" column="bign" />
 		<result property="smallCtgrName" column="common_name" />	
 	</resultMap>
-	
+	 
 	<resultMap id="F_P002Result02" type="F_P002VO">
 		<result property="sell_number" column="sell_number" />
 		<result property="option_size" column="option_size" />
