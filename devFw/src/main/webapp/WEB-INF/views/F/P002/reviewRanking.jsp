@@ -279,11 +279,17 @@ $(".youtubeBox").mouseleave(function(){
  	youtubeSw=1;
 });
 
+function withdraw(){
+	var popupX = (window.screen.width/2) - (400);
+	var popupY = (window.screen.height/2) - (500);
+	window.open("initWithdraw.do", "창", "width=400, height=250, left="+popupX+", top="+popupY);
+}
 </script>
 </head>
 <html>
 <body>
 
+	<button type="button" onclick="withdraw()">출금 신청</button>
     <div id="contentsBody">
     
 		<h2>리뷰랭킹</h2>
