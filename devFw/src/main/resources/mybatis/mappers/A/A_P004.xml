@@ -10,6 +10,8 @@
         <result property="co_enddate" column="co_enddate" />
         <result property="co_stdate" column="co_stdate" />
         <result property="co_percent" column="co_percent" />
+        <result property="co_usedate" column="co_usedate" />
+        <result property="co_check" column="co_check" />
         <result property="mem_id" column="mem_id" />
 	</resultMap> 
 	
@@ -38,7 +40,22 @@
          c.co_percent
 		 from coupon c, mycoupon mc
 		 where c.co_number = mc.co_number
-		 and mem_id = #{p_id}	
+		 and mem_id = #{p_id}
+		 and co_check = 'N'	
+      ]]>
+	</select>
+	
+	<select id="usecoupon" resultMap="couResult">
+      <![CDATA[
+         select 
+         mc.co_number, 
+         c.co_name, 
+         to_char(mc.co_usedate,'YYYY-MM-DD') co_usedate,
+         c.co_percent
+		 from coupon c, mycoupon mc
+		 where c.co_number = mc.co_number
+		 and mem_id = #{mem_id}
+		 and co_check = 'Y'	
       ]]>
 	</select>
 	  
@@ -94,6 +111,7 @@
          select MEM_ID, QU_CONTENTS, QU_NUMBER, QU_ANSWER,  to_char(qu_date, 'YYYY-MM-DD') QU_DATE
          from QUESTIONS
          where mem_id = #{mem_id}
+         
       ]]>
 	</select>
  	

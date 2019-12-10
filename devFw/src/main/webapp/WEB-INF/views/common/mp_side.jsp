@@ -69,6 +69,7 @@ function withdraw(){
         <li><a href="myReview.do">내가 작성한 리뷰</a></li>
         <li><a href="#">문의 하기</a></li>
         <li><a href="alert.do">신고내역</a></li>
+        <li><a href="usecoupon.do">사용한 쿠폰</a></li>
         <li><a href="#">구매 리뷰</a></li>
         <li><a href="#">찜 리스트</a></li>
         <li><a href="point.do">포인트 사용 내역</a></li>

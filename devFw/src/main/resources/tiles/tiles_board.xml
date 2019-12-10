@@ -192,6 +192,11 @@
       <put-attribute name="body" value="/WEB-INF/views/A/P004/D005.jsp" />
    </definition>
    
+   <definition name="usecoupon" extends="baseLayout">
+      <put-attribute name="title" value="사용쿠폰조회" />
+      <put-attribute name="body" value="/WEB-INF/views/A/P004/D006.jsp" />
+   </definition>
+   
    <definition name="givecoupon" extends="baseLayout">
       <put-attribute name="title" value="쿠폰발급" />
       <put-attribute name="body" value="/WEB-INF/views/A/P004/D008.jsp" />

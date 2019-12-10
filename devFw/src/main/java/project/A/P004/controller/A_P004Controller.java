@@ -20,4 +20,5 @@ public interface A_P004Controller {
 	public ModelAndView givecoupon(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView myquestion(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView alert(HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public ModelAndView usecoupon(HttpServletRequest request, HttpServletResponse response) throws Exception;
 }

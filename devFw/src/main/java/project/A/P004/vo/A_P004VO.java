@@ -9,6 +9,8 @@ public class A_P004VO {
 	private String co_enddate;
 	private String co_stdate;
 	private String co_percent;
+	private String co_usedate;
+	private String co_check;
 	private String mem_no;
 	private String point_number;
 	private String point_date;
@@ -23,17 +25,19 @@ public class A_P004VO {
 	}
 
 	public A_P004VO(String co_number, String co_name, String co_enddate, String co_stdate, 
-			String co_percent, String mem_id) {
+			String co_percent, String mem_id, String co_usedate, String co_check) {
 		this.co_number = co_number;
 		this.co_name = co_name;
 		this.co_enddate = co_enddate;
 		this.co_stdate = co_stdate;
 		this.co_percent = co_percent;
+		this.co_usedate = co_usedate;
+		this.co_check = co_check;
 		this.mem_id=mem_id;
 	}
 
-	public A_P004VO(String mem_no, String point_number, String point_date, String point_usedate, String point_usemoney, String order_number, String point_content, String mem_id) {
-		this.mem_no=mem_no;
+	public A_P004VO(String point_number, String point_date, String point_usedate, String point_usemoney, String order_number, String point_content, String mem_id) {
+		
 		this.point_number=point_number;
 		this.point_date=point_date;
 		this.point_usedate=point_usedate;
@@ -145,6 +149,22 @@ public class A_P004VO {
 
 	public void setMem_id(String mem_id) {
 		this.mem_id = mem_id;
+	}
+
+	public String getCo_usedate() {
+		return co_usedate;
+	}
+
+	public void setCo_usedate(String co_usedate) {
+		this.co_usedate = co_usedate;
+	}
+
+	public String getCo_check() {
+		return co_check;
+	}
+
+	public void setCo_check(String co_check) {
+		this.co_check = co_check;
 	}
 	
 }
