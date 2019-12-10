@@ -197,10 +197,16 @@ public class F_P002ControllerImpl   implements F_P002Controller {
 		String viewName = getViewName(request);
 		viewName = "reviewRankingMenu";
 		ModelAndView mav = new ModelAndView(viewName);
-		
 		return mav;
 	}
 	
+	@RequestMapping(value="/bestReviewPlusMenu.do" ,method = { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView bestReviewPlusMenu(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = getViewName(request);
+		viewName = "bestReviewPlusMenu";
+		ModelAndView mav = new ModelAndView(viewName);
+		return mav;
+	}
 	
 	@RequestMapping(value="/reviewRanking.do" ,method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView reviewRanking(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -236,6 +242,26 @@ public class F_P002ControllerImpl   implements F_P002Controller {
 		mav.addObject("bestReview",result1);
 		mav.addObject("bestProduct",result2);
 		mav.addObject("reviewList" , result3);
+		return mav;
+	}
+	
+	@RequestMapping(value="/bestReviewPlus.do" ,method = { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView bestReviewPlus(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = getViewName(request);
+		viewName = "bestReviewPlus";
+		ModelAndView mav = new ModelAndView(viewName);
+		String ctgrNum = request.getParameter("ctgrNum");
+		request.setAttribute("ctgrNum", ctgrNum);
+		if(ctgrNum==null || ctgrNum=="") {
+			ctgrNum = "H________";
+		}else if(ctgrNum.length()==4) {
+			ctgrNum+="_____";
+		}
+		Map<String, Object> searchMap = new HashMap<String, Object>();
+		searchMap.put("p_id", ctgrNum);
+		List<Map<String, Object>> result = f_P002Service.bestReviewPlus(searchMap);
+
+		mav.addObject("bestReview",result);
 		return mav;
 	}
 	

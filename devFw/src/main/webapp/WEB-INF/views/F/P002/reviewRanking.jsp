@@ -77,11 +77,12 @@
 		border: 1px solid lightgray;
 	}
 	.reviewNum{
-		font-size: 16px;
-		font-weight: bold;
-		border: 3px solid yellow;
-		padding: 5px;
+		font-size: 18px;
+		font-weight: 500;
+		border-bottom: 3px solid lightgreen;
+		padding: 3px 6px;
 		background-color: white;
+		margin-left: 6px;
 	}
 	.prReviewNum{
 		position: absolute;
@@ -279,22 +280,16 @@ $(".youtubeBox").mouseleave(function(){
  	youtubeSw=1;
 });
 
-function withdraw(){
-	var popupX = (window.screen.width/2) - (400);
-	var popupY = (window.screen.height/2) - (500);
-	window.open("initWithdraw.do", "창", "width=400, height=250, left="+popupX+", top="+popupY);
-}
+
 </script>
 </head>
 <html>
 <body>
-
-	<button type="button" onclick="withdraw()">출금 신청</button>
     <div id="contentsBody">
     
 		<h2>리뷰랭킹</h2>
 		<div id="bestReview">
-			<h3>Best Review</h3> (월간추천수 기준 정렬)<br>
+			<h3>Best Review</h3><a href="bestReviewPlusMenu.do">더보기</a> (월간추천수 기준 정렬)<br>
 			<c:forEach var="bestReview" items="${bestReview}" varStatus="index">
 				<div class="reviewBox">
 					<span class="reviewNum">${index.count }</span>

@@ -22,6 +22,10 @@ public class B_P001VO {
 
 	private Date release_date;
 	
+	private String option_size="";
+	private String option_color="";
+	private String option_quantity="";
+	
 	public B_P001VO() {
 		System.out.println("B_P001VO 호출");
 	}
@@ -128,6 +132,30 @@ public class B_P001VO {
 
 	public void setPro_vendor(String pro_vendor) {
 		this.pro_vendor = pro_vendor;
+	}
+
+	public String getOption_size() {
+		return option_size;
+	}
+
+	public void setOption_size(String option_size) {
+		this.option_size = option_size;
+	}
+
+	public String getOption_color() {
+		return option_color;
+	}
+
+	public void setOption_color(String option_color) {
+		this.option_color = option_color;
+	}
+
+	public String getOption_quantity() {
+		return option_quantity;
+	}
+
+	public void setOption_quantity(String option_quantity) {
+		this.option_quantity = option_quantity;
 	}
 	
 	

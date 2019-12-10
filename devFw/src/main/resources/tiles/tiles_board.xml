@@ -249,6 +249,17 @@
       <put-attribute name="title" value="리뷰랭킹 페이지" />  
       <put-attribute name="body" value="/WEB-INF/views/F/P002/reviewRanking.jsp" />
    </definition>
+   
+   <definition name="bestReviewPlusMenu" extends="itemLayout">
+      <put-attribute name="title" value="베스트리뷰 전체순위 메뉴" />  
+      <put-attribute name="body" value="/WEB-INF/views/F/P002/reviewMenu2.jsp" /> 
+      <put-attribute name="bodyDetail" value="" />
+   </definition>
+   
+   <definition name="bestReviewPlus" extends="emptyLayout">
+      <put-attribute name="title" value="베스트리뷰 전체순위" />  
+      <put-attribute name="body" value="/WEB-INF/views/F/P002/bestReviewPlus.jsp" />
+   </definition>
 
 	<definition name="memberReview" extends="baseLayout4">
       <put-attribute name="title" value="회원별 리뷰 조회 페이지" />         

@@ -132,4 +132,10 @@ public class F_P002DAOImpl implements F_P002DAO {
 		return list;
 	}
 
+	@Override
+	public List<Map<String, Object>> bestReviewPlus(Map<String, Object> searchMap) {
+		List<Map<String, Object>> list = sqlSession.selectList("F.P002.bestReviewPlus", searchMap);
+		return list;
+	}
+
 }
