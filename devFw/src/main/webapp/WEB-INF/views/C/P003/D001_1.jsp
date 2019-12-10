@@ -27,7 +27,7 @@ height:500px;
 caption {
     padding-top: 8px;
     padding-bottom: 8px;
-    background-color: #999;
+    background-color: black;
     color: rgb(255, 255, 255);
     text-align: left;
 }

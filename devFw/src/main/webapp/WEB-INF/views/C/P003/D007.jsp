@@ -79,8 +79,8 @@ margin-top: 50px;
 }
 .h2,h2{
 font-size:25px;
-color:red;
-
+color:blue;
+    
 }
 
 
@@ -148,7 +148,7 @@ function selChange() {
     </c:choose>
 		  
 		<select id="cntPerPage" name="sel" onchange="selChange()">
-			<option value="5"
+		 <option value="5"
 				<c:if test="${page.cntPerPage == 5}">selected</c:if>>5줄 보기</option>
 			<option value="10"
 				<c:if test="${page.cntPerPage == 10}">selected</c:if>>10줄 보기</option>
