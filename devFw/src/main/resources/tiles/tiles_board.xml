@@ -167,6 +167,11 @@
       <put-attribute name="body" value="/WEB-INF/views/A/P004/D001.jsp" />
    </definition>
    
+   <definition name="myPagePlus" extends="emptyLayout">
+      <put-attribute name="title" value="마이페이지plus" />
+      <put-attribute name="body" value="/WEB-INF/views/A/P004/D001.jsp" />
+   </definition>
+   
    <definition name="event" extends="eventLayout">
       <put-attribute name="title" value="이벤트/공지사항" />
       <put-attribute name="body" value="/WEB-INF/views/C/P001/D001.jsp" />

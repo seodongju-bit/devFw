@@ -34,7 +34,7 @@ public class A_P004ControllerImpl   implements A_P004Controller {
 	
 	
 	@Override
-	@RequestMapping(value="/myPage.do" ,method = RequestMethod.GET)
+	@RequestMapping(value="/myPage.do" ,method = {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView myPage(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = getViewName(request);
 		viewName = "myPage";
@@ -45,8 +45,8 @@ public class A_P004ControllerImpl   implements A_P004Controller {
 			ModelAndView mav = new ModelAndView();
 			mav.setViewName("redirect:main.do");
 			return mav;	
-
 		}
+		
 		
 		Map<String, Object> searchMap = new HashMap<String, Object>();
 		List<Map<String, Object>> resultList = new ArrayList<Map<String, Object>>();
@@ -71,8 +71,28 @@ public class A_P004ControllerImpl   implements A_P004Controller {
 		resultList3 = activeService.orderList3(searchMap);
 		resultList4 = activeService.quList(searchMap);
 		
-		System.out.println("33333333333333333333333333333333333333333333="+resultList3);
+		System.out.println("33333333333333="+resultList3);
 		ModelAndView mav = new ModelAndView(viewName);
+		
+		String p = request.getParameter("page");
+		int page = 1;
+		if(p!=null) {
+			page = Integer.parseInt(p);
+			request.setAttribute("tab", "2");
+		}
+		resultList2 = activeService.paging(resultList2, page);
+		mav.addObject("pageInfo", resultList2.get(resultList2.size()-1));
+		resultList2.remove(resultList2.size()-1);
+		//////// 페이징 2
+		String p2 = request.getParameter("page2");
+		int page2 = 1;
+		if(p2!=null) {
+			page2 = Integer.parseInt(p2);
+			request.setAttribute("tab", "3");
+		}
+		resultList4 = activeService.paging(resultList4, page2);
+		mav.addObject("pageInfo2", resultList4.get(resultList4.size()-1));
+		resultList4.remove(resultList4.size()-1);
 		
 		mav.addObject("orderList", resultList);
 		mav.addObject("orderList2", resultList2);

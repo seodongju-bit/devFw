@@ -167,6 +167,37 @@ ul.tabs li.active, html ul.tabs li.active a:hover {
 .tab_container {
 	clear: both;
 }
+
+	#pagination, #pagination2 {
+		left: 800px;
+ 		position: absolute;
+    	display: inline-block;
+		
+ 	}
+
+	#pagination a, #pagination2 a {
+   		color: black;
+   		float: left;
+   		padding: 8px 16px;
+		text-decoration: none;
+   		transition: background-color .3s;
+		border: 1px solid #ddd;
+	}
+
+	#pagination a.active,#pagination2 a.active {
+		background-color: #4CAF50;
+		color: white;
+		border: 1px solid #4CAF50;
+	}
+
+	#pagination a:hover:not(.active) {
+		background-color: #ddd;
+		cursor: pointer;
+	}
+	#pagination2 a:hover:not(.active) {
+		background-color: #ddd;
+		cursor: pointer;
+	}
 </style>
 
 
@@ -238,8 +269,8 @@ ul.tabs li.active, html ul.tabs li.active a:hover {
 
 		<ul class="tabs">
 			<li><a href="#tab1">My</a></li>
-			<li><a href="#tab2">전체</a></li>
-			<li><a href="#tab3">문의내역</a></li>
+			<li><a id="tab2c" href="#tab2">전체</a></li>
+			<li><a id="tab3c" href="#tab3">문의내역</a></li>
 		</ul>
 
 		<div class="tab_container">
@@ -352,7 +383,9 @@ ul.tabs li.active, html ul.tabs li.active a:hover {
 
 						</tr>
 					</c:forEach>
+					<tr><td><div id="pagination"></div></td></tr>
 				</table>
+				
 			</div>
 			<div id="tab3" class="tab_content">
 				<table id="questions" class="table table-hover">
@@ -376,6 +409,7 @@ ul.tabs li.active, html ul.tabs li.active a:hover {
 								</c:if>
 						</tr>
 					</c:forEach>
+					<tr><td><div id="pagination2"></div></td></tr>
 				</table>
 			</div>
 		</div>
@@ -609,9 +643,82 @@ ul.tabs li.active, html ul.tabs li.active a:hover {
 			});
 
 		});
-
+		function paging(movePage){
+// 			$('#content').load('myPage.do',{ page :movePage});
+			location.href = "myPage.do?page="+movePage;
+		}
+		function paging2(movePage){
+// 			$('#content').load('myPage.do',{ page :movePage});
+			location.href = "myPage.do?page2="+movePage;
+		}
+		
+		function pageMake(){
+			var startIndex =parseInt('${pageInfo.start }');
+		    var endIndex =parseInt('${pageInfo.end }');
+			var now = '${pageInfo.page }';
+			var div = document.getElementById('pagination');
+			
+			if(startIndex!='0'){
+				var start = document.createElement('a');
+				start.append("<");
+				start.setAttribute("onclick","paging("+startIndex+")");
+				div.appendChild(start);
+			}
+			for(var i=startIndex+1; i<= endIndex ; i++){
+				var index = document.createElement('a');
+				if(i==now){index.setAttribute("class", "active");}
+				index.append(i);
+				index.setAttribute("onclick","paging($(this).text())");
+				div.appendChild(index);
+				if(i==5){
+					break;
+				}
+			}
+			if(endIndex=='6'){
+				var end = document.createElement('a');
+				end.append(">");
+				end.setAttribute("onclick","paging("+endIndex+")");
+				div.appendChild(end);
+			}
+		}
+		
+		function pageMake2(){
+			var startIndex =parseInt('${pageInfo2.start }');
+		    var endIndex =parseInt('${pageInfo2.end }');
+			var now = '${pageInfo2.page }';
+			var div = document.getElementById('pagination2');
+			
+			if(startIndex!='0'){
+				var start = document.createElement('a');
+				start.append("<");
+				start.setAttribute("onclick","paging2("+startIndex+")");
+				div.appendChild(start);
+			}
+			for(var i=startIndex+1; i<= endIndex ; i++){
+				var index = document.createElement('a');
+				if(i==now){index.setAttribute("class", "active");}
+				index.append(i);
+				index.setAttribute("onclick","paging2($(this).text())");
+				div.appendChild(index);
+				if(i==5){
+					break;
+				}
+			}
+			if(endIndex=='6'){
+				var end = document.createElement('a');
+				end.append(">");
+				end.setAttribute("onclick","paging2("+endIndex+")");
+				div.appendChild(end);
+			}
+		}
+		
 		$(document).ready(function() {
 			$('[data-toggle="tooltip"]').tooltip();
+			pageMake();
+			pageMake2()
+			var tab = '${tab}';
+			if(tab=='2'){$('#tab2c').click();}
+			if(tab=='3'){$('#tab3c').click();}
 		});
 	</script>
 

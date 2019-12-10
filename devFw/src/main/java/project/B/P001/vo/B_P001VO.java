@@ -19,6 +19,7 @@ public class B_P001VO {
 	private String pro_vendor="";
 	private String pro_brand ="";
 	private String pro_explain="";
+	private String sell_quantity="";
 
 	private Date release_date;
 	
@@ -156,6 +157,14 @@ public class B_P001VO {
 
 	public void setOption_quantity(String option_quantity) {
 		this.option_quantity = option_quantity;
+	}
+
+	public String getSell_quantity() {
+		return sell_quantity;
+	}
+
+	public void setSell_quantity(String sell_quantity) {
+		this.sell_quantity = sell_quantity;
 	}
 	
 	

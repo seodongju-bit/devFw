@@ -22,13 +22,12 @@
 #area{
 	background-color: white;
 	width:100%;
-	height:700px;
+	height: 1000px;
 }
 .main_content{
-	
-	width:1250px;
+	width:1300px;
 	margin:0 auto;
-	background-color: white;
+	background-color: #f2f2f2;
 }
 #DIV_mySheet{
 	margin:0 auto;
@@ -50,18 +49,22 @@
 
 		initSheet.Cols = [
 			{Header:"NO",Type:"Seq", Align:"Center" , SaveName:"seq", Width:10},
-			{Header:"삭제",Type:"DelCheck", Width:15},
-			{Header:"상태",Type:"Status", Align:"Center", SaveName:"sStatus", Width:15},
-			{Header:"상품글번호",Type:"Text", Align:"Center", SaveName:"sell_number", Edit:"0" , Width:40},
-			{Header:"제품번호",Type:"Text", Align:"Center", SaveName:"pro_number", Width:40},
-			{Header:"제목",Type:"Text", Align:"Center", SaveName:"sell_title", MinWidth:40},
-			{Header:"가격",Type:"Text", Align:"Center", SaveName:"sell_price", MinWidth:40},
+			{Header:"삭제",Type:"DelCheck","ColMerge":0, Width:18},
+			{Header:"상태",Type:"Status", Align:"Center", SaveName:"sStatus","ColMerge":0, Width:20},
+			{Header:"상품글번호",Type:"Text", Align:"Center", SaveName:"sell_number", Edit:"0" , Width:25},
+			{Header:"제품번호",Type:"Text", Align:"Center", SaveName:"pro_number", Edit:"0", Width:25},
+			{Header:"제목",Type:"Text", Align:"Center", SaveName:"sell_title", MinWidth:50},
+			{Header:"가격",Type:"Int", Align:"Center",Format:"Integer", SaveName:"sell_price", MinWidth:40},
+			{Header:"사이즈",Type:"Text", Align:"Center", SaveName:"option_size","ColMerge":0, MinWidth:40},
+			{Header:"색상",Type:"Text", Align:"Center", SaveName:"option_color","ColMerge":0, MinWidth:40},
+			{Header:"수량",Type:"Text", Align:"Center", SaveName:"sell_quantity","ColMerge":0, MinWidth:40},
+			
 		];
 		IBS_InitSheet( mySheet , initSheet);
 		
 		//붙여넣기 모드 (0:한셀에붙여넣기(default) , 1:구분자 기준으로 붙여넣기 , 2:모자란 부분을 추가하면서 붙여넣기)
 		mySheet.SetClipPasteMode(2);
-
+		
 		//시트에서 보여질 이미지 배열 구성
 		//mySheet.SetImageList(0,"../../common/img/am.jpg");
 		//mySheet.SetImageList(1,"../../common/img/ca.jpg");
@@ -76,6 +79,7 @@
 		
 		var json = mySheet.GetSearchData("/devFw/itemManager/searchList.do");
 		mySheet.LoadSearchData(json);
+		mergeChg(7);
 	}
 	 
 	var toggle = 0;
@@ -128,7 +132,14 @@
 		window.open("itemManager/addSell.do", "판매등록창", "width=885, height=920, left="+popupX+", top="+popupY,"resizable=no");
 	}
 
+	
+	function mergeChg(str){
+		mySheet.SetMergeSheet(eval(str));
+		doAction('search')
+		//mySheet.SetDataMerge();
 
+	}
+	
 </script>
 
 <title>Insert title here</title>
@@ -143,20 +154,19 @@
 
             <div class="ib_function float_right">
 <!--                 <a href="javascript:doAction('reload')" class="f1_btn_gray lightgray">초기화</a> -->
-<!--                 <a href="javascript:doAction('insert')" class="f1_btn_gray lightgray">추가</a> -->
+                <a href="javascript:doAction('insert')" class="f1_btn_gray lightgray">추가</a>
                 <a href="javascript:doAction('search')" class="f1_btn_white gray">조회</a>
                 <a href="javascript:doAction('save')" class="f1_btn_white gray">저장</a>
             </div>
 
             <div class="clear hidden"></div>
-
+			
             <div class="ib_product">
-				<script type="text/javascript"> createIBSheet("mySheet", "1200px", "500px"); </script>
+				<script type="text/javascript"> createIBSheet("mySheet", "1300px", "600px"); </script>
             </div>
 
         </div>
    
-
 	</div>
 </body>
 </html>
