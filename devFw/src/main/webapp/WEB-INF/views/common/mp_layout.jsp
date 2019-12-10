@@ -12,6 +12,7 @@
 #container {
 	width: 100%;
 	margin: 0px auto;
+	
 	/*   text-align:center; */
 	border: 0px solid #bcbcbc;
 }
@@ -42,6 +43,7 @@
 	padding: 5px;
 	margin-left: 290px;
 	border: 0px solid #bcbcbc;   
+	min-height: 1000px;
 }
 
 #footer {

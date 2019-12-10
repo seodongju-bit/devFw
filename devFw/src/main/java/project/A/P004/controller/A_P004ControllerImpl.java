@@ -53,20 +53,24 @@ public class A_P004ControllerImpl   implements A_P004Controller {
 		List<Map<String, Object>> resultList2 = new ArrayList<Map<String, Object>>();
 		List<Map<String, Object>> resultList3 = new ArrayList<Map<String, Object>>();
 		List<Map<String, Object>> resultList4 = new ArrayList<Map<String, Object>>();
+
 		int basket_count = 0;
 		int coupon_count = 0;
 		int mem_point = 0;
 		int del_count;
+		int question_count = 0;
 		searchMap.put("mem_id", p_id);
 		
 		del_count = activeService.delcount(p_id);
 		mem_point = activeService.mempoint(p_id);
 		basket_count = activeService.baslist(p_id);
 		coupon_count = activeService.coulist(p_id);
+		question_count = activeService.question(p_id);
 		resultList = activeService.orderList(searchMap);
 		resultList2 = activeService.orderList2(searchMap);
 		resultList3 = activeService.orderList3(searchMap);
 		resultList4 = activeService.quList(searchMap);
+		
 		System.out.println("33333333333333333333333333333333333333333333="+resultList3);
 		ModelAndView mav = new ModelAndView(viewName);
 		
@@ -76,6 +80,7 @@ public class A_P004ControllerImpl   implements A_P004Controller {
 		mav.addObject("basket_count",basket_count);
 		mav.addObject("mem_point",mem_point);
 		mav.addObject("del_count",del_count);
+		mav.addObject("question_count",question_count);
 		mav.addObject("orderList3", resultList3);
 		mav.addObject("quList", resultList4);
 		return mav;
@@ -107,6 +112,31 @@ public class A_P004ControllerImpl   implements A_P004Controller {
 		String viewName = getViewName(request);
 		viewName = "point";
 		ModelAndView mav = new ModelAndView(viewName);
+		return mav;
+		
+	}
+	
+	@Override
+	@RequestMapping(value="/myquestion.do" ,method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView myquestion(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = getViewName(request);
+		viewName = "myquestion";
+		Map<String, Object> searchMap = new HashMap<String, Object>();
+		Map<String, Object> resultMap = new HashMap();
+		HttpSession session = request.getSession();
+		String mem_id = (String)session.getAttribute("mem_id");
+		if(mem_id == null) {
+			viewName = "redirect:main.do";
+			ModelAndView mav = new ModelAndView(viewName);
+			return mav;
+		}
+		searchMap.put("mem_id", mem_id);
+		searchMap.put("qu_number", request.getParameter("qu_number"));
+		List<Map<String,Object>> myquestionList = activeService.listquestion(searchMap);
+		resultMap = (Map<String, Object>) myquestionList.get(0);
+		System.out.println(myquestionList);
+		ModelAndView mav = new ModelAndView(viewName);
+		mav.addObject("myquestionList", resultMap);
 		return mav;
 		
 	}
@@ -190,6 +220,25 @@ public class A_P004ControllerImpl   implements A_P004Controller {
 			e.printStackTrace();
 		}		
 		return resultMap;
+	}
+	
+	@Override
+	@RequestMapping(value="/alert.do" ,method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView alert(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = getViewName(request);
+		viewName = "alert";
+		HttpSession session = request.getSession();
+		String p_id = (String)session.getAttribute("mem_id");
+		if(p_id == null) {
+			viewName = "redirect:main.do";
+			ModelAndView mav = new ModelAndView(viewName);
+			return mav;
+		}
+		List alertList = activeService.alert(p_id);
+		System.out.println(alertList);
+		ModelAndView mav = new ModelAndView(viewName);
+		mav.addObject("alertList", alertList);
+		return mav;
 	}
 	
 	

@@ -111,6 +111,22 @@ public class A_P004ServiceImpl implements A_P004Service {
 		return activeDAO.delcount(p_id);
 	}
 	@Override
+	public int question(String p_id) throws DataAccessException{
+		return activeDAO.question(p_id);
+	}
+	@Override
+	public List<Map<String,Object>> listquestion(Map<String, Object> searchMap) throws DataAccessException {
+		List list= activeDAO.listquestion(searchMap);	
+		
+		return list;
+	}
+	@Override
+	public List alert(String p_id) throws DataAccessException {
+		List alertList = null;
+		alertList = activeDAO.alert(p_id);
+		return alertList;
+	}
+
 	public int pointSearch(Map<String, Object> searchMap) {
 		// TODO Auto-generated method stub
 		return activeDAO.pointSearch(searchMap);
@@ -126,5 +142,4 @@ public class A_P004ServiceImpl implements A_P004Service {
 		activeDAO.withdrawSave(withdrawMap);
 		
 	}
-	
 }

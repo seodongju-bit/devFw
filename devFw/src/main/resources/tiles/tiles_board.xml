@@ -202,6 +202,11 @@
       <put-attribute name="body" value="/WEB-INF/views/A/P004/D003.jsp" />
    </definition>
    
+   <definition name="alert" extends="baseLayout">
+      <put-attribute name="title" value="포인트사용내역" />
+      <put-attribute name="body" value="/WEB-INF/views/A/P004/D007.jsp" />
+   </definition>
+   
    <definition name="eventWrite" extends="eventLayout">
       <put-attribute name="title" value="이벤트/공지사항-상세" />
       <put-attribute name="body" value="/WEB-INF/views/C/P001/D003.jsp" />
@@ -374,6 +379,29 @@
       <definition name="questionDetail2" extends="noticeLayout">
       <put-attribute name="title" value="자주묻는질문상세페이지" />
       <put-attribute name="body" value="/WEB-INF/views/C/P003/D007_1.jsp" />
+   </definition>
+   
+   <definition name="adminLayout"  template="/WEB-INF/views/common/admin_layout.jsp">
+      <put-attribute name="title" value="" />
+      <put-attribute name="header" value="/WEB-INF/views/admin/header_admin.jsp" />
+      <put-attribute name="body" value="" />
+      <put-attribute name="bodyDetail" value="" />
+      <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
+   </definition>    
+   
+   <definition name="adminPage" extends="adminLayout">
+      <put-attribute name="title" value="관리메뉴"/>
+      <put-attribute name="body" value="/WEB-INF/views/admin/main.jsp"/>
+   </definition>
+   
+   <definition name="memberManager" extends="adminLayout">
+      <put-attribute name="title" value="회원관리페이지"/>
+      <put-attribute name="body" value="/WEB-INF/views/A/P008/D001.jsp"/>
+   </definition>
+   
+   <definition name="declarationsManager" extends="adminLayout">
+      <put-attribute name="title" value="신고회원관리페이지"/>
+      <put-attribute name="body" value="/WEB-INF/views/A/P009/D001.jsp"/>
    </definition>
    
 <!--  웅건                    

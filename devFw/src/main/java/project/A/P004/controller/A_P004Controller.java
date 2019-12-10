@@ -18,4 +18,6 @@ public interface A_P004Controller {
 	public Map<String, Object> pointSearch(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public Map<String, Object> takecoupon(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView givecoupon(HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public ModelAndView myquestion(HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public ModelAndView alert(HttpServletRequest request, HttpServletResponse response) throws Exception;
 }

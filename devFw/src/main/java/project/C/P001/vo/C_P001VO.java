@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 @Component("eventVO")
 public class C_P001VO {
 	private String no_number;
-	private String mem_no;
+	private String mem_id;
 	private String no_contents;
 	private String no_division;
 	private String no_title;
@@ -17,9 +17,9 @@ public class C_P001VO {
 		
 	}
 
-	public C_P001VO(String no_number, String mem_no, String no_contents, String no_division, String no_title, String imagefilename, String writedate, String view_cnt) {
+	public C_P001VO(String no_number, String mem_id, String no_contents, String no_division, String no_title, String imagefilename, String writedate, String view_cnt) {
 		this.no_number=no_number;
-		this.mem_no=mem_no;
+		this.mem_id=mem_id;
 		this.no_contents=no_contents;
 		this.no_division=no_division;
 		this.no_title=no_title;
@@ -36,12 +36,12 @@ public class C_P001VO {
 		this.no_number = no_number;
 	}
 
-	public String getMem_no() {
-		return mem_no;
+	public String getMem_id() {
+		return mem_id;
 	}
 
-	public void setMem_no(String mem_no) {
-		this.mem_no = mem_no;
+	public void setMem_id(String mem_id) {
+		this.mem_id = mem_id;
 	}
 
 	public String getNo_contents() {

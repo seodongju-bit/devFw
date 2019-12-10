@@ -17,14 +17,14 @@
 <style>
 
 .event{
-width: 1300px;
+max-width: 1300px;
 margin-left: auto;
 margin-right: auto;
 }
-#content{
+/* #content{
 height:1000px;
 
-}
+} */
 
 #evnet_td{
 margin-top: 50px;
@@ -86,12 +86,12 @@ function selChange() {
 	</div> <!-- 옵션선택 끝 -->
 <table class="table table-hover" id="evnet_td">
 <tr>
-<th>번호</th>
-<th>제목</th>
-<th>게시자</th>
-<th>조회수</th>
-<th>종류</th>
-<th>게시날자</th>
+<th width="10%">번호</th>
+<th width="10%">제목</th>
+<th width="10%">게시자</th>
+<th width="10%">조회수</th>
+<th width="10%">종류</th>
+<th width="10%">게시날자</th>
 </tr>
 
 <c:forEach var="event" items="${eventList}" varStatus='index' >
@@ -101,7 +101,7 @@ function selChange() {
  <c:if test="${event.view_cnt >= 10}">
                            <span class="hit">Hot!</span>
                         </c:if></td>
-<td>${event.mem_no}</td>
+<td>${event.mem_id}</td>
 <td>${event.view_cnt}</td>
 <td>${event.no_division}</td>
 <td>${event.writedate}</td>

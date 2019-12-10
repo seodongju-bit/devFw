@@ -82,7 +82,7 @@ $(function() {
    	var de_contents = document.getElementsByName("de_contents")[0].value;
    	
 
-   	if (mem_id.trim() == '') {
+   	if (mem_id.trim() == '') {   
    		alert("아이디를 입력해주세요");
    		return false;
    	}

@@ -6,7 +6,7 @@
    <mapper namespace="mapper.event">
 	<resultMap id="eventResult" type="eventVO">
 		<result property="no_number" column="no_number" />
-        <result property="mem_no" column="mem_no" />
+        <result property="mem_id" column="mem_id" />
         <result property="no_contents" column="no_contents" />
         <result property="no_division" column="no_division" />
         <result property="no_title" column="no_title" />
@@ -22,6 +22,7 @@
 					SELECT  no_number, 
          view_cnt, 
          no_division, 
+         mem_id, 
          no_contents, 
          no_title, 
          to_char(writedate,'YYYY-MM-DD') as writedate
@@ -69,11 +70,11 @@
 	
 	<insert id="insertEvent" parameterType="java.util.HashMap">
 		<![CDATA[
-			insert into notice  (no_number, mem_no, no_contents, no_division, no_title, writedate, view_cnt) 
+			insert into notice  (no_number, mem_id, no_contents, no_division, no_title, writedate, view_cnt) 
 			
 			values
 			
-			(seq.nextval, #{mem_no}, #{no_contents}, #{no_division}, #{no_title}, sysdate, 0)
+			(seq.nextval, #{mem_id}, #{no_contents}, #{no_division}, #{no_title}, sysdate, 0)
 			
 		]]>
 	</insert>

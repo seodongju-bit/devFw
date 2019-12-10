@@ -72,8 +72,12 @@ background-color:black;
       text-align: center;
     }
     .table caption{caption-side: bottom; display: none;}    
-    
-          
+   #sample{
+   border-collapse: collapse;
+      border-top: 3px solid #168;
+   
+ } 
+   
 
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">

@@ -28,7 +28,7 @@ font-size: xx-large;
 caption {
     padding-top: 8px;
     padding-bottom: 8px;
-    background-color: #999;
+    background-color: black;
     color: rgb(255, 255, 255);
     text-align: left;
 }
@@ -43,7 +43,7 @@ caption {
 <body>
 <table class="notice_view">                                  
 		<colgroup>
-			<col width="10%" />  
+			<col width="10%" />    
 			<col width="45%" />
 			<col width="45%"/>
 			
