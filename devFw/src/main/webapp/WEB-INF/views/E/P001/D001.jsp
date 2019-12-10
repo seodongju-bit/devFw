@@ -531,7 +531,7 @@ h1{
 	        <td>총 적립 포인트</td>
 	      </tr>
 	      <tr style="cellpadding:40px; align:center;">
-	        <c:set var="final_order_total_pro_price" value="${final_order_total_pro_price + order_total_price}"/>
+	        <c:set var="final_order_total_pro_price" value="${final_order_total_pro_price + order_total_price}"/> 
 	  		<c:set var="final_order_total_price" value="${final_order_total_pro_price - order_total_sale_price}"/>
 	        <td>
 			  <p id="p_final_order_total_pro_price"><fmt:formatNumber value="${final_order_total_pro_price}"/>원</p>	  
