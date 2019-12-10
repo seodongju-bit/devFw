@@ -144,6 +144,7 @@ public class A_P004DAOImpl implements A_P004DAO {
 		// TODO Auto-generated method stub
 		sqlSession.insert("mapper.active.withdrawSave", withdrawMap);
 		sqlSession.update("mapper.active.pointDeduction", withdrawMap);
+		sqlSession.insert("mapper.active.pointUseRecord", withdrawMap);
 
 	}
 }

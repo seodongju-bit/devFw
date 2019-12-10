@@ -170,4 +170,11 @@ public class F_P002ServiceImpl implements F_P002Service {
 		List<Map<String, Object>> list = f_P002DAO.searchReviewList(searchMap);
 		return list;
 	}
+
+	@Override
+	public List<Map<String, Object>> bestReviewPlus(Map<String, Object> searchMap) {
+		List<Map<String, Object>> list = f_P002DAO.bestReviewPlus(searchMap);
+		list = thumbnail(list);
+		return list;
+	}
 }

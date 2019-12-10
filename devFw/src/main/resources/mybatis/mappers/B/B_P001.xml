@@ -14,9 +14,11 @@
 	
 	<select id="searchList" resultMap="B_P001Result01" parameterType="java.util.Map"> 
       <![CDATA[
-         select sell_number, pro_number, sell_price, sell_title
-         from productsell
-         where mem_id = '${seller_id}'
+         select ps.sell_number, pro_number, sell_price, sell_title, option_size, option_color, option_quantity
+         from productsell ps, selloption so
+         where ps.sell_number = so.sell_number
+         and mem_id = '${seller_id}'
+        
       ]]>
 	</select>
 	

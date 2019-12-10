@@ -238,6 +238,15 @@
 		where mem_id = #{mem_id}
 	]]>
 	</update>
+	
+	<insert id="pointUseRecord" parameterType="java.util.Map">
+	<![CDATA[
+		INSERT INTO pointuse (POINT_NUMBER, mem_id, point_usedate, point_usemoney, POINT_CONTENT) 
+         VALUES (
+      	(select NVL(max(point_number), 0)+1 from pointuse where mem_id = #{mem_id} ),
+      	#{mem_id}, sysdate, #{wd_price}, '출금' )
+	]]>
+	</insert>
 
 </mapper>
 

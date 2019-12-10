@@ -157,10 +157,10 @@ $(document).ready(function(){
 // 	 	nowCtgr = nowCtgr.substr(0,4);
 // 		$('[id^='+nowCtgr+']').css("display","block");
 // 	 }
-	 $('#contentDetail').load('reviewRanking.do',{ ctgrNum :'${ctgrNum}'});
+	 $('#contentDetail').load('bestReviewPlus.do',{ ctgrNum :'${ctgrNum}'});
 });
 function moveCtgr(ctgr){
-	$('#contentDetail').load('reviewRanking.do',{ ctgrNum :ctgr});
+	$('#contentDetail').load('bestReviewPlus.do',{ ctgrNum :ctgr});
 }
 </script>
   <meta charset="UTF-8">

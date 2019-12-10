@@ -54,5 +54,7 @@ public interface F_P002DAO {
 	public List<Map<String, Object>> searchProRank(Map<String, Object> searchMap);
 
 	public List<Map<String, Object>> searchReviewList(Map<String, Object> searchMap);
+
+	public List<Map<String, Object>> bestReviewPlus(Map<String, Object> searchMap);
 	 
 }

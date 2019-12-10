@@ -49,13 +49,13 @@
 		initSheet.HeaderMode = {Sort:1,ColMove:1,ColResize:1,HeaderCheck:1};
 
 		initSheet.Cols = [
-			{Header:"선택",Type:"DelCheck", Width:10},
-	   		{Header:"NO",Type:"Seq", Align:"Center" , SaveName:"seq", Width:15},
+			{Header:"NO",Type:"Seq", Align:"Center" , SaveName:"seq", Width:10},
+			{Header:"삭제",Type:"DelCheck", Width:15},
+			{Header:"상태",Type:"Status", Align:"Center", SaveName:"sStatus", Width:15},
 			{Header:"상품글번호",Type:"Text", Align:"Center", SaveName:"sell_number", Edit:"0" , Width:40},
 			{Header:"제품번호",Type:"Text", Align:"Center", SaveName:"pro_number", Width:40},
 			{Header:"제목",Type:"Text", Align:"Center", SaveName:"sell_title", MinWidth:40},
 			{Header:"가격",Type:"Text", Align:"Center", SaveName:"sell_price", MinWidth:40},
-			{Header:"문자열",Type:"Text", SaveName:"TEXT_DATA",MultiLineText:1,KeyField:1,MinWidth:80}
 		];
 		IBS_InitSheet( mySheet , initSheet);
 		
@@ -90,7 +90,7 @@
 				mySheet.RemoveAll();
 				break;
 			case "save":  //수정된 데이터 추출 확인
-//				mySheet.DoSave("save.jsp");
+				mySheet.DoSave("/devFw/itemManager/selectList.do");
 				var json = mySheet.GetSaveJson({ "AllTypeToText" : 1 });
 				alert(JSON.stringify(json));
 				break;
@@ -142,10 +142,9 @@
   			<button class="btn btn-default" onclick="addSell()">판매등록</button>
 
             <div class="ib_function float_right">
-                <a href="javascript:doAction('reload')" class="f1_btn_gray lightgray">초기화</a>
-                <a href="javascript:doAction('insert')" class="f1_btn_gray lightgray">추가</a>
+<!--                 <a href="javascript:doAction('reload')" class="f1_btn_gray lightgray">초기화</a> -->
+<!--                 <a href="javascript:doAction('insert')" class="f1_btn_gray lightgray">추가</a> -->
                 <a href="javascript:doAction('search')" class="f1_btn_white gray">조회</a>
-
                 <a href="javascript:doAction('save')" class="f1_btn_white gray">저장</a>
             </div>
 
@@ -156,10 +155,7 @@
             </div>
 
         </div>
-        <!--main_content-->
-
-	
-
+   
 
 	</div>
 </body>
