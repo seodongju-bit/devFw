@@ -21,10 +21,10 @@ max-width: 1300px;
 margin-left: auto;
 margin-right: auto;
 }
-#content{
+/* #content{
 height:1000px;
 
-}
+} */
 
 #evnet_td{
 margin-top: 50px;
