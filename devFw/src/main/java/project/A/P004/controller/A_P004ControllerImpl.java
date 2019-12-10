@@ -105,7 +105,25 @@ public class A_P004ControllerImpl   implements A_P004Controller {
 		return mav;
 	}
 	
-
+	@Override
+	@RequestMapping(value="/usecoupon.do" ,method = RequestMethod.GET)
+	public ModelAndView usecoupon(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = getViewName(request);
+		viewName = "usecoupon";
+		HttpSession session = request.getSession();
+		String mem_id = (String)session.getAttribute("mem_id");
+		if(mem_id == null) {
+			viewName = "redirect:main.do";
+			ModelAndView mav = new ModelAndView(viewName);
+			return mav;
+		}
+		List usecoupon = activeService.usecoupon(mem_id);
+		System.out.println(usecoupon);
+		ModelAndView mav = new ModelAndView(viewName);
+		mav.addObject("usecoupon", usecoupon);
+		return mav;
+	}
+	
 	@Override
 	@RequestMapping(value="/point.do" ,method = {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView point(HttpServletRequest request, HttpServletResponse response) throws Exception {

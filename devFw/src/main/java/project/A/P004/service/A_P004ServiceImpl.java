@@ -29,6 +29,14 @@ public class A_P004ServiceImpl implements A_P004Service {
 		couponList = activeDAO.selectAllCouponList(p_id);
 		return couponList;
 	}	
+	
+	@Override
+	public List usecoupon(String mem_id) throws DataAccessException {
+		List usecouponList = null;
+		usecouponList = activeDAO.usecoupon(mem_id);
+		return usecouponList;
+	}	
+	
 	@Override
 	public int couponcheck(Map<String, Object> check) {
 		return activeDAO.couponcheck(check);
