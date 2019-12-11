@@ -6,14 +6,13 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 %>
-
+<c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>회원 탈퇴</title>
 <link rel="stylesheet" type="text/css" href="resources/css/A_P003_D002.css?ver=1.0">
-<meta name="viewport" content="width=divice-width, initial-scale=1.0">
 </head>
 <body>
 <p id="f" style=" margin-right: 0px;">회원탈퇴</p>
@@ -94,7 +93,7 @@
 	<p>
 	<label for="password" class="w" style="float:center;">위 탈퇴 정책을 확인하였으며, 내용에 동의합니다.</label>
     </p>
-	<input type="hidden" value="${memberInfo.mem_id }">
+	<input type="hidden" id="mem_id" name="mem_id" value="${memberInfo.mem_id}">
 	<br>
     <input type="password" class="pwdbox" id="mem_pw" name="mem_pw"maxlength="20" placeholder="비밀번호 입력">
     </br>
@@ -106,6 +105,35 @@
 	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 		<script type="text/javascript"> 
 			    
+		
+		function fn_overlappedemail(){
+		    var mem_id=$("#mem_id").val();
+		    var mem_pw=$("#mem_pw").val();
+		    if(mem_id='', mem_pw=''){
+		    	alert("회원정보를 입력해주세요.");
+		    	return;
+		    }
+		    $.ajax({
+		       type:"post",
+		       async:false,  
+		       url:"${contextPath}/Secessionmember.do",
+		       dataType:"text",
+		       data: {"mem_id":mem_id,"mem_pw":mem_pw },
+		       success:function (data,textStatus){
+		          if(data=='false'){
+		        	  alert("회원정보가 틀렸습니다..")
+		          }else{
+		        	  
+		          }
+		       },
+		       error:function(data,textStatus){
+		          alert("에러가 발생했습니다.");
+		       },
+		       complete:function(data,textStatus){
+		    	   formCheck();
+		       }
+		    });  
+		 }	
 		
 		</script>
 </body>

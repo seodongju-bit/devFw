@@ -18,7 +18,7 @@ public class A_P002VO {
 	private String mem_address1 = "";
 	private String mem_address2 = "";
 	private String mem_division = "";
-	private char mem_verify;
+	private String mem_verify = "";
 	
 	
 	public A_P002VO() {
@@ -173,17 +173,14 @@ public class A_P002VO {
 
 
 
-	public char getMem_verify() {
+	public String getMem_verify() {
 		return mem_verify;
 	}
 
 
 
-	public void setMem_verify(char mem_verify) {
+	public void setMem_verify(String mem_verify) {
 		this.mem_verify = mem_verify;
 	}
 
-	
-	
-	
 }

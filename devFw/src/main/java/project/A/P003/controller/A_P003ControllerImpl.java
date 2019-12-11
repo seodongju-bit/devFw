@@ -31,7 +31,8 @@ import com.github.scribejava.core.model.OAuth2AccessToken;
 
 
 import project.A.P003.service.A_P003Service;
-import project.A.P003.vo.A_P003VO;
+import project.A.P001.vo.A_P001VO;
+import project.A.P002.service.A_P002Service;
 
 
 @Controller("A_P003Controller")
@@ -42,7 +43,8 @@ public class A_P003ControllerImpl implements A_P003Controller {
 	A_P003Service a_p003Serivce;
 	
 	@Autowired
-	A_P003VO A_P003VO;
+	A_P001VO A_P001VO;
+	
 	
 	@Override
 	@RequestMapping(value="/memberupdatepage.do" ,method = RequestMethod.GET)
@@ -101,8 +103,8 @@ public class A_P003ControllerImpl implements A_P003Controller {
 		Map<String,String> memberMap=new HashMap<String,String>();
 		String val[]=null;
 		HttpSession session=request.getSession();
-		A_P003VO=(A_P003VO)session.getAttribute("memberInfo");
-		String  mem_id=A_P003VO.getMem_id();
+		A_P001VO=(A_P001VO)session.getAttribute("memberInfo");
+		String mem_id=A_P001VO.getMem_id();
 		if(attribute.equals("mem_email")){
 			val=value.split(",");
 			memberMap.put("mem_email1",val[0]);
@@ -119,9 +121,9 @@ public class A_P003ControllerImpl implements A_P003Controller {
 		memberMap.put("mem_id", mem_id);
 		
 		//수정된 회원 정보를 다시 세션에 저장한다.
-		A_P003VO=(A_P003VO)a_p003Serivce.modifyMyInfo(memberMap);
+		A_P001VO=(A_P001VO)a_p003Serivce.modifyMyInfo(memberMap);
 		session.removeAttribute("memberInfo");
-		session.setAttribute("memberInfo", A_P003VO);
+		session.setAttribute("memberInfo", A_P001VO);
 		
 		String message = null;
 		ResponseEntity resEntity = null;
@@ -132,13 +134,27 @@ public class A_P003ControllerImpl implements A_P003Controller {
 	}	
 	
 	
-	@RequestMapping(value = "/Secessionmember.do", method = RequestMethod.GET)
-	public String Secessionmember(@RequestParam String mem_id,@RequestParam String mem_pw) throws Exception {
-		a_p003Serivce.Secessionmember(A_P003VO);
+	@RequestMapping(value = "/Secessionmember.do", method = RequestMethod.POST)
+	public String Secessionmember(@ModelAttribute A_P001VO A_P001VO,HttpServletRequest request, HttpServletResponse response) throws Exception {
+		HttpSession session=request.getSession();	
+		String message = null;
+		boolean result = a_p003Serivce.pwCheck(A_P001VO.getMem_id(),A_P001VO.getMem_pw());
+		System.out.println(A_P001VO);
+		if(result) {
+			a_p003Serivce.Secessionmember(A_P001VO);
+			session.invalidate();
 		return "Secessionsuccesspage";
+		}else {
+			message  = "<script>";
+		    message +=" alert('작업 중 오류가 발생했습니다. 다시 시도해 주세요');";
+		    message += " </script>";
+			return "membersecessionpage";
+		}
 	}
 	
-
+	
+	
+	
 
 
 	private String getViewName(HttpServletRequest request) throws Exception {

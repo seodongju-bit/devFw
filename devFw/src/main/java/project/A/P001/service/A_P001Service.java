@@ -14,5 +14,5 @@ import project.A.P001.vo.A_P001VO;
 
 public interface A_P001Service {
 	public A_P001VO login(Map  loginMap) throws Exception;
-	public String idsearch(Map idMap) throws Exception;
+	public String get_searchId(Map sidMap)throws Exception;
 }

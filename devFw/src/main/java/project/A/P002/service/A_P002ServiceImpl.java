@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import project.A.P002.dao.A_P002DAO;
-import project.A.P002.vo.A_P002VO;
+import project.A.P001.vo.A_P001VO;
 
 
 @Service("a_p002Service")
@@ -23,8 +23,8 @@ public class A_P002ServiceImpl implements A_P002Service {
 	
 	
 	@Override
-	public void addMember(A_P002VO A_P002VO) throws Exception{
-		a_p002DAO.insertNewMember(A_P002VO);
+	public void addMember(A_P001VO A_P001VO) throws Exception{
+		a_p002DAO.insertNewMember(A_P001VO);
 	}
 	
 	@Override
@@ -42,7 +42,7 @@ public class A_P002ServiceImpl implements A_P002Service {
 		return a_p002DAO.selectOverlappedEMAIL(emailMap);
 	}
 	
-	public void verifyMember(A_P002VO A_P002VO) {
-		a_p002DAO.verifyMember(A_P002VO);
+	public void verifyMember(A_P001VO A_P001VO) {
+		a_p002DAO.verifyMember(A_P001VO);
 	}
 }

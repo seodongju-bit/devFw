@@ -29,6 +29,9 @@
  -->
   <context:component-scan	base-package="project" />
   
+  <!-- 네이버 -->
+	<beans:bean id="naverLoginBO" class="project.A.P001.controller.NaverLoginBO"/>
+  
   <beans:bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver" >
     <beans:property name="defaultLocale" value="ko" />
   </beans:bean>

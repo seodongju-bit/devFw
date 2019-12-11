@@ -28,7 +28,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sun.mail.util.logging.MailHandler;
 
-import project.A.P002.vo.A_P002VO;
+import project.A.P001.vo.A_P001VO;
 import project.A.P002.mailservice.A_P002MailHandler;
 import project.A.P002.service.A_P002Service;
 
@@ -93,7 +93,7 @@ public class A_P002ControllerImpl   implements A_P002Controller {
 	@Autowired
 	A_P002Service a_p002Service;
 	@Autowired
-	A_P002VO A_P002VO;
+	A_P001VO A_P001VO;
 	@Inject
 	private JavaMailSender mailSender;
 
@@ -103,26 +103,26 @@ public class A_P002ControllerImpl   implements A_P002Controller {
 	
 	@Override
 	@RequestMapping(value="/addMember.do" ,method = RequestMethod.POST)
-	public ResponseEntity addMember(@ModelAttribute("A_P002VO") A_P002VO _A_P002VO,HttpServletRequest request, HttpServletResponse response) throws Exception  {
+	public ResponseEntity addMember(@ModelAttribute("A_P001VO") A_P001VO _A_P001VO,HttpServletRequest request, HttpServletResponse response) throws Exception  {
 		response.setContentType("text/html; charset=UTF-8");
 		request.setCharacterEncoding("UTF-8");
 		
 		String message = null;
 		ResponseEntity resEntity = null;
 		HttpHeaders responseHeaders = new HttpHeaders();
-		System.out.println("asdfasf"+_A_P002VO.getMem_id());
+		System.out.println("asdfasf"+_A_P001VO.getMem_id());
 		 
 		responseHeaders.add("Content-Type", "text/html; charset=utf-8");
 		try {
-			a_p002Service.addMember(_A_P002VO);
+			a_p002Service.addMember(_A_P001VO);
 			A_P002MailHandler sendMail = new A_P002MailHandler(mailSender);
 			sendMail.setSubject("[이메일 인증]");
 			sendMail.setText(new StringBuffer().append("<h1>메일인증</h1>")
-					.append("RI:COM에 가입해주셔서 감사합니다.<br><a href='http://localhost:8090/devFw/verify.do?mem_email1=" + _A_P002VO.getMem_email1()
-							+ "&mem_email2=" + _A_P002VO.getMem_email2())
+					.append("RI:COM에 가입해주셔서 감사합니다.<br><a href='http://localhost:8090/devFw/verify.do?mem_email1=" + _A_P001VO.getMem_email1()
+							+ "&mem_email2=" + _A_P001VO.getMem_email2())
 					.append("' target='_blenk'>이메일 인증 확인</a>").toString());
 			sendMail.setFrom("RICOM@ricom.com", "리컴");
-			sendMail.setTo(_A_P002VO.getMem_email1() + "@" + _A_P002VO.getMem_email2());
+			sendMail.setTo(_A_P001VO.getMem_email1() + "@" + _A_P001VO.getMem_email2());
 			sendMail.send();
 		    message  = "<script>";
 		    message += " location.href='"+request.getContextPath()+"/mailsendpage.do';";
@@ -176,10 +176,10 @@ public class A_P002ControllerImpl   implements A_P002Controller {
 		System.out.println("이메일 인증기능 처리");
 		System.out.println(mem_email1);
 		System.out.println(mem_email2);
-		A_P002VO A_P002VO = new A_P002VO();
-		A_P002VO.setMem_email1(mem_email1);
-		A_P002VO.setMem_email2(mem_email2);
-		a_p002Service.verifyMember(A_P002VO);
+		A_P001VO A_P001VO = new A_P001VO();
+		A_P001VO.setMem_email1(mem_email1);
+		A_P001VO.setMem_email2(mem_email2);
+		a_p002Service.verifyMember(A_P001VO);
 		return "signupsuccesspage";
 	}
 	
