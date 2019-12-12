@@ -94,7 +94,7 @@ left:335px;
     margin-right: auto; */
     width: 650px;
     height: 470px;
-    margin-right: 0;
+    margin-right: 0; 
     }                               
 
 </style>
