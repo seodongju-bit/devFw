@@ -280,7 +280,10 @@ $(".youtubeBox").mouseleave(function(){
  	youtubeSw=1;
 });
 
-
+function moveReviewer(id){
+	var url="reviewProfile.do?mem_id="+id;
+	location.href=url;
+}
 </script>
 </head>
 <html>
@@ -294,8 +297,8 @@ $(".youtubeBox").mouseleave(function(){
 				<div class="reviewBox">
 					<span class="reviewNum">${index.count }</span>
 					<div class="imgBox" onclick="readReview(${bestReview.REVIEW_NUMBER })">${bestReview.REVIEW_THUMNAIL }</div>
-					<a onclick="readReview(${bestReview.REVIEW_NUMBER })">${bestReview.REVIEW_TITLE }</a>
-					<p style="text-align: right">by ${bestReview.MEM_ID }<p>
+					<a onclick="readReview(${bestReview.REVIEW_NUMBER })">${bestReview.REVIEW_TITLE }</a><br>
+					<p style='text-align: right;' onclick="moveReviewer('${bestReview.MEM_ID }')">${bestReview.MEM_ID } </p>
 					<br>추천수 ${bestReview.REVIEW_MONTHPOINT }
 					<c:choose>
     					<c:when test='${bestReview.REVIEW_YOUTUBE!=null }' >

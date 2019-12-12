@@ -259,6 +259,12 @@
       <put-attribute name="body" value="/WEB-INF/views/F/P002/reviewMenu.jsp" /> 
       <put-attribute name="bodyDetail" value="" />
    </definition>
+   
+   <definition name="reviewProfile" extends="itemLayout">
+      <put-attribute name="title" value="리뷰랭킹 메뉴" />  
+      <put-attribute name="body" value="/WEB-INF/views/A/P010/reviewProfile.jsp" /> 
+      <put-attribute name="bodyDetail" value="" />
+   </definition>
 
 	<definition name="reviewRanking" extends="emptyLayout">
       <put-attribute name="title" value="리뷰랭킹 페이지" />  
@@ -280,10 +286,17 @@
       <put-attribute name="title" value="회원별 리뷰 조회 페이지" />         
       <put-attribute name="body" value="/WEB-INF/views/F/P001/D002.jsp" />                            
    </definition>
-
-	<definition name="bestProduct" extends="baseLayout2">
+   
+   
+	<definition name="bestMenu" extends="itemLayout">
+      <put-attribute name="title" value="베스트상품 메뉴" />  
+      <put-attribute name="body" value="/WEB-INF/views/F/P001/bestMenu.jsp" /> 
+      <put-attribute name="bodyDetail" value="" />
+   </definition>
+   
+	<definition name="bestProduct" extends="emptyLayout">
       <put-attribute name="title" value="카테고리별 베스트상품분류" />         
-      <put-attribute name="body" value="/WEB-INF/views/F/P001/D003.jsp" />
+      <put-attribute name="body" value="/WEB-INF/views/F/P001/bestSell.jsp" />
    </definition>
 
 	<definition name="eventProduct" extends="baseLayout2">

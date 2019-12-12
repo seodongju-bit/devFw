@@ -14,7 +14,7 @@ public interface F_P001Service {
 
 	public List searchItem1() throws DataAccessException;
      
-	public List searchItem2() throws DataAccessException;
+	public List searchItem2(String ctgrNum) throws DataAccessException;
 
 	public List searchItem5() throws DataAccessException;
 	

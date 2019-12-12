@@ -30,6 +30,7 @@ public class F_P002VO {
 	private String smallCtgrName="";
 	
 	
+	
 	public F_P002VO() {
 		System.out.println("F_P002VO 호출");
 	}
@@ -198,7 +199,4 @@ public class F_P002VO {
 
 
 
-
-
-	
 }

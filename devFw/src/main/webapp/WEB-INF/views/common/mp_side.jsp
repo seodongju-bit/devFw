@@ -52,6 +52,11 @@ function withdraw(){
 	   var popupY = (window.screen.height/2) - (500);
 	   window.open("initWithdraw.do", "창", "width=400, height=250, left="+popupX+", top="+popupY);
 	}
+function profile(){
+	   var popupX = (window.screen.width/2) - (400);
+	   var popupY = (window.screen.height/2) - (500);
+	   window.open("profile.do", "창", "width=700, height=400, left="+popupX+", top="+popupY);
+	}
 </script>
 </head>
 <body>
@@ -66,6 +71,7 @@ function withdraw(){
         <li><a onclick="fn_coupon1()">할인 쿠폰</a></li>
         <li><a onclick="withdraw()">출금 신청</a></li>
         <li class="nav-header">My 활동</li>
+        <li><a onclick="profile()">프로필</a></li>
         <li><a href="myReview.do">내가 작성한 리뷰</a></li>
         <li><a href="#">문의 하기</a></li>
         <li><a href="alert.do">신고내역</a></li>

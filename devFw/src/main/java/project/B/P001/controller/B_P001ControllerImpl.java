@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import oracle.jdbc.proxy.annotation.GetProxy;
 import project.B.P001.service.B_P001Service;
 import project.B.P001.vo.B_P001VO;
 
@@ -80,23 +81,40 @@ public class B_P001ControllerImpl   implements B_P001Controller {
 	   
 	   @RequestMapping(value = "/itemManager/selectList.do", method = { RequestMethod.GET, RequestMethod.POST })
 	   @ResponseBody
-	   public Map selectList(HttpServletRequest request, HttpServletResponse response) throws Exception  {
+	   public Map selectList(@RequestParam(value="data") List list, HttpServletRequest request, HttpServletResponse response) throws Exception  {
 	      request.setCharacterEncoding("utf-8");
-	      
+	      System.out.println(request.getParameterValues("sStatus")[0]);
+	      System.out.println(list);
 //	      HttpSession session = request.getSession();
 //	      session = request.getSession();
 //	      String seller_id = (String)session.getAttribute("mem_id");
 //	      
 //	      Map<String, Object> searchMap = new HashMap<String, Object>(); // 검색조건
 	      Map<String, Object> resultMap = new HashMap<String, Object>(); // 조회결과
-	      System.out.println("아아아아아앙");
+	      
 //	      searchMap.put("seller_id", seller_id);
 //	      List<B_P001VO> data =b_P001Service.selectItem(searchMap);
 //	      resultMap.put("Data", data);
-	        
 	      return resultMap;
 	   }
 	   
+	   @RequestMapping(value = "/itemManager/deleteList.do", method = { RequestMethod.GET, RequestMethod.POST })
+	   @ResponseBody
+	   public Map deleteList(@RequestParam Map<String, String> requestMap, HttpServletRequest request, HttpServletResponse response) throws Exception  {
+	      request.setCharacterEncoding("utf-8");
+	      System.out.println(requestMap);
+//	      HttpSession session = request.getSession();
+//	      session = request.getSession();
+//	      String seller_id = (String)session.getAttribute("mem_id");
+//	      
+//	      Map<String, Object> searchMap = new HashMap<String, Object>(); // 검색조건
+	      Map<String, Object> resultMap = new HashMap<String, Object>(); // 조회결과
+	      
+//	      searchMap.put("seller_id", seller_id);
+//	      List<B_P001VO> data =b_P001Service.selectItem(searchMap);
+//	      resultMap.put("Data", data);
+	      return resultMap;
+	   }
 
 	   @Override
 	   @RequestMapping(value = "/itemManager/addProduct.do", method = { RequestMethod.GET, RequestMethod.POST })

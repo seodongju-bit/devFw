@@ -131,7 +131,6 @@ public class F_P002ControllerImpl   implements F_P002Controller {
 	@ResponseBody
 	public List<Map<String, Object>> searchOption(@RequestParam(value="p_id", required=false) String p_id, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("utf-8");
-		System.out.println("옵션찾기 실행"+ p_id);
 		Map<String, Object> searchMap = new HashMap<String, Object>();
 		Map<String, Object> resultMap = new HashMap<String, Object>();
 		List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
@@ -171,9 +170,7 @@ public class F_P002ControllerImpl   implements F_P002Controller {
 			System.out.println(list.get(i));
 			f_P002Service.addBasket(list.get(i));
 		}
-
 		return Map;
-
 	}
 	
 	//readReview

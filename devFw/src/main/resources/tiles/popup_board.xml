@@ -53,6 +53,11 @@
       <put-attribute name="body" value="/WEB-INF/views/A/P004/withdraw.jsp" />
    </definition>  
    
+   <definition name="profile" extends="baseLayout3">
+      <put-attribute name="title" value="" />
+      <put-attribute name="body" value="/WEB-INF/views/A/P010/profile.jsp" />
+   </definition>  
+   
    <definition name="close" extends="baseLayout3">
       <put-attribute name="title" value="" />
       <put-attribute name="body" value="/WEB-INF/views/common/close.jsp" />

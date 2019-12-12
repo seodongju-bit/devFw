@@ -55,10 +55,9 @@ public class F_P001ServiceImpl implements F_P001Service{
 	private F_P001DAO f_P001_D03DAO ;           
 	
 	@Override
-	public List searchItem2() throws DataAccessException {
+	public List searchItem2(String ctgrNum) throws DataAccessException {
 		List productlist2 = null; 
-		System.out.println("���񽺽���");
-		productlist2=f_P001_D03DAO.selectItem2();
+		productlist2=f_P001_D03DAO.selectItem2(ctgrNum);
 		return productlist2;
 	}
 

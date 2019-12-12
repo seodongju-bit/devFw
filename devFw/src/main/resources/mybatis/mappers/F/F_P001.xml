@@ -15,7 +15,6 @@
       <result property="mem_id" column="mem_id" />
       <result property="pro_vendor" column="pro_vendor" />
       <result property="pro_explain" column="pro_explain" />
-
        <result property="common_code" column="common_code" />
        <result property="common_name" column="common_name" />   
    </resultMap>
@@ -25,7 +24,6 @@
       <result property="ev_discount" column="ev_discount" />
       <result property="event_explain" column="event_explain" />
      
-
       <result property="sell_number" column="sell_number" />
       <result property="pro_number" column="pro_number" />
       <result property="sell_price" column="sell_price" />
@@ -36,7 +34,6 @@
       <result property="mem_id" column="mem_id" />
       <result property="pro_vendor" column="pro_vendor" />
             
-
        <result property="common_code" column="common_code" />
        <result property="common_name" column="common_name" />   
                  
@@ -44,26 +41,7 @@
 
 
   <resultMap id="F_P001_D03Result01" type="F_P001VO">
-     <result property="order_number" column="order_number" />
-     <result property="od_quantity" column="od_quantity" />
-      <result property="od_size" column="od_size" />
-       <result property="od_color" column="od_color" />
-       
-
-      <result property="sell_number" column="sell_number" />
-      <result property="pro_number" column="pro_number" />
-      <result property="sell_price" column="sell_price" />
-      <result property="pro_price" column="pro_price" />
-      <result property="sell_score" column="sell_score" />
-      <result property="sell_title" column="sell_title" />
-      <result property="sell_thumbnail" column="sell_thumbnail" />
-      <result property="mem_id" column="mem_id" />
-      <result property="pro_vendor" column="pro_vendor" />
-            
-
-       <result property="common_code" column="common_code" />
-       <result property="common_name" column="common_name" />   
-                 
+  
    </resultMap>
 
 
@@ -137,23 +115,25 @@
       ]]>          
      
       
-   </select>                                      
-   
-   
-      <select id="selectItem2" resultMap="F_P001_D03Result01" parameterType="java.util.Map"> 
+   </select>
+
+
+	<select id="selectItem2" resultMap="F_P001_D03Result01" parameterType="java.util.Map"> 
       <![CDATA[
-      SELECT *               
-      FROM orderdetail od, productsell ps
-       WHERE od.sell_number = ps.sell_number 
-      ORDER BY od.od_quantity desc          
-          
-      ]]>          
-                               
-      
-   </select>   
+      select *
+      from(
+      SELECT sell_thumbnail, sell_title, ps.sell_number, sell_score, sell_price, pro_price, sell_month, sell_shippingFee
+      FROM productsell ps, product p
+      where ps.pro_number = p.pro_number
+      and pro_division like('${ctgrNum}')
+      order by sell_month desc) 
+      where rownum <=100
+      ]]>
+  
+	</select>   
 
 
-
+ 
 
 
       <select id="selectItem5" resultMap="F_P001_D01Result01" parameterType="java.util.Map"> 
