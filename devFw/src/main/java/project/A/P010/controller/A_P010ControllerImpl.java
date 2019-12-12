@@ -52,7 +52,7 @@ public class A_P010ControllerImpl implements A_P010Controller{
 		mav.addObject("profile", resultList.get(0));
 		return mav;
 	}
-	
+	 
 	@RequestMapping(value="/reviewProfile.do", method = RequestMethod.GET)
 	public ModelAndView reviewProfile(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("utf-8");
