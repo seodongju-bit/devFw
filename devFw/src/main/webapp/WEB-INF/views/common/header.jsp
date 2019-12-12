@@ -447,7 +447,7 @@ $(document).ready(function(){
   			</div>
 		</div>
 		<div class="mainMenu"><button class="menubtn"onclick="location.href='reviewRankingMenu.do'">리뷰랭킹</button></div>
-		<div class="mainMenu"><button class="menubtn"onclick="location.href='bestProduct.do'">베스트상품</button></div>
+		<div class="mainMenu"><button class="menubtn"onclick="location.href='bestMenu.do'">베스트상품</button></div>
 		<div class="mainMenu"><button class="menubtn"onclick="location.href='eventProduct.do'">이벤트상품</button></div>
 				<c:choose>
 					<c:when test="${memberInfo.mem_division==2 }">

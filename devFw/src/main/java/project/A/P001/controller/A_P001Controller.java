@@ -16,9 +16,10 @@ public interface A_P001Controller {
 	public ModelAndView signinmain(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView searchidpage(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView searchpwpage(HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public ModelAndView idsearchresult(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView unauthorizedmember(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView secessionmember(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView login(@RequestParam Map<String, String> loginMap,HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView logout(HttpServletRequest request, HttpServletResponse response) throws Exception;
-	public ResponseEntity idsearch(@RequestParam Map<String, String> idMap,HttpServletRequest request,HttpServletResponse response)throws Exception;
+	public String userIdSearch (@RequestParam Map<String, String> sidMap,HttpServletRequest request, HttpServletResponse response) throws Exception;
 }

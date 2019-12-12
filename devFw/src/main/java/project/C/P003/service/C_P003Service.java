@@ -33,4 +33,6 @@ public interface C_P003Service {
 	public List<Map<String,Object>> questionDetail2(Map<String, Object> dataMap8) throws DataAccessException;
 	
 	public int countBoard();
+	
+	public int countBoard2();
 }

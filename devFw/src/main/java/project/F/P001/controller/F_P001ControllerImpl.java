@@ -89,18 +89,31 @@ public class F_P001ControllerImpl implements F_P001Controller {
 	}
 	
 
-	@Override
-	@RequestMapping(value="/bestProduct.do" ,method = RequestMethod.GET)
-	public ModelAndView bestProduct(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String viewName2 = getViewName(request);
-		viewName2 = "bestProduct";
-		List productlist2 = f_P001Service.searchItem2(); 
-		System.out.println(productlist2);
-		ModelAndView mav2 = new ModelAndView(viewName2);
-		mav2.addObject("List",productlist2);
-		return mav2;
-	}
 	
+	@RequestMapping(value="/bestMenu.do" ,method = RequestMethod.GET)
+	public ModelAndView bestMenu(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = getViewName(request);
+		viewName = "bestMenu";
+		ModelAndView mav = new ModelAndView(viewName);
+		return mav;
+	}
+	@Override
+	@RequestMapping(value="/bestProduct.do" ,method =  { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView bestProduct(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = getViewName(request);
+		viewName = "bestProduct";
+		String ctgrNum = request.getParameter("ctgrNum");
+		if(ctgrNum==null || ctgrNum=="") {
+			ctgrNum = "H________";
+		}else if(ctgrNum.length()==4) {
+			ctgrNum+="_____";
+		}
+		
+		List productlist = f_P001Service.searchItem2(ctgrNum); 
+		ModelAndView mav = new ModelAndView(viewName);
+		mav.addObject("List",productlist);
+		return mav;
+	}
 
 	
 	@Override

@@ -30,5 +30,6 @@ public interface A_P004Service {
 	public int pointSearch(Map<String, Object> searchMap);
 	public boolean passCheck(String id, String password);
 	public void withdrawSave(Map<String, String> withdrawMap);
+	List<Map<String, Object>> paging(List<Map<String, Object>> list, int page);
 
 }

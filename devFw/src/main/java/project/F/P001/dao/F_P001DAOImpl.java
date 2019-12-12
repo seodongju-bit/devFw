@@ -1,5 +1,6 @@
 package project.F.P001.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -38,8 +39,7 @@ public class F_P001DAOImpl implements F_P001DAO {
 
 	@Override
 	public List selectItem1() throws DataAccessException {
-		List<F_P001VO> productlist1 = null;
-		System.out.println("dao����");        
+		List<F_P001VO> productlist1 = null;  
 		productlist1 = sqlSession.selectList("mapper.product.selectItem1");
 		System.out.println(productlist1);
 		return productlist1;
@@ -47,10 +47,13 @@ public class F_P001DAOImpl implements F_P001DAO {
 
 	
 	@Override
-	public List selectItem2() throws DataAccessException {
-		List<F_P001VO> productlist2 = null;
-		System.out.println("dao����");    
-		productlist2 = sqlSession.selectList("mapper.product.selectItem2");
+	public List selectItem2(String ctgrNum) throws DataAccessException {
+		Map<String, Object> searchMap = new HashMap<String, Object>();
+		System.out.println(ctgrNum);
+		searchMap.put("ctgrNum", ctgrNum);
+		List<F_P001VO> productlist2 = sqlSession.selectList("mapper.product.selectItem2", searchMap);
+		// sell_thumbnail, sell_title, sell_number, sell_score, sell_scorecount,
+		// sell_price, pro_price
 		System.out.println(productlist2);
 		return productlist2;
 	}

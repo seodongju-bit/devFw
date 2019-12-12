@@ -13,7 +13,7 @@ public interface F_P001DAO {
 
 	public List selectItem(Map<String, Object> searchMap) throws DataAccessException;
 	public List selectItem1() throws DataAccessException;
-	public List selectItem2() throws DataAccessException;
+	public List selectItem2(String ctgrNum) throws DataAccessException;
 	public List selectItem5() throws DataAccessException;
 	public List memberReviewList(PagingVO vo) throws DataAccessException;
 	public int countBoard();

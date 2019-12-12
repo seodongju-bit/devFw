@@ -44,7 +44,7 @@ public interface C_P003DAO {
 	
 	public int countBoard();
 	
-	
+	public int countBoard2();
 
 	
   

@@ -9,16 +9,20 @@
 		<result property="pro_number" column="pro_number" />
 		<result property="sell_price" column="sell_price" />
 		<result property="sell_title" column="sell_title" />
+		<result property="sell_quantity" column="option_quantity" />
 	</resultMap>
 	
 	
 	<select id="searchList" resultMap="B_P001Result01" parameterType="java.util.Map"> 
       <![CDATA[
-         select ps.sell_number, pro_number, sell_price, sell_title, option_size, option_color, option_quantity
-         from productsell ps, selloption so
-         where ps.sell_number = so.sell_number
-         and mem_id = '${seller_id}'
-        
+         select ps.sell_number, pro_number, sell_price, sell_quantity, sell_title, 
+          CASE WHEN option_size = '-1' THEN '' ELSE option_size END as option_size, 
+          CASE WHEN option_color = '-1' THEN '' ELSE option_color END as option_color, 
+          option_quantity
+          from productsell ps left outer join selloption so
+         on ps.sell_number = so.sell_number
+         where mem_id = '${seller_id}'
+          order by sell_number
       ]]>
 	</select>
 	

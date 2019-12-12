@@ -142,5 +142,11 @@ public class C_P003ServiceImpl implements C_P003Service {
 	}
 
 
+	@Override
+	public int countBoard2() {
+		return C_P003DAO.countBoard2();
+	}
+
+
 
 }

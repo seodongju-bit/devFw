@@ -18,4 +18,9 @@ public interface D_P001Controller {
 	public ModelAndView reviewwrite(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView writes(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	Map<String, Object> reviewEnrollment(HttpServletRequest request, HttpServletResponse response) throws Exception;
+	
+	public ModelAndView myReview2(HttpServletRequest request, HttpServletResponse response) throws Exception;
+	
+	
+	
 }            

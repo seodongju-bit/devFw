@@ -16,24 +16,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Sign In Form</title>
         <link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
-        
     </head>
     <body>
     
-    
-    
-    
-			
-    	
+    		
       <form action="${contextPath}/login.do" method="post" accept-charset="UTF-8"> 
-		<c:choose>
-			<c:when test="${sessionId != null}">
-				<h2> 네이버 아이디 로그인 성공하셨습니다!! </h2>
-				<h3>'${sessionId}' 님 환영합니다! </h3>
-			<h3><a href="logout">로그아웃</a></h3>
-
-			</c:when>
-			<c:otherwise>
+		
 			
       
         <h1>로그인</h1>
@@ -41,20 +29,15 @@
         
           <label for="id" style="text-align: left;">회원 ID:</label>
           <input type="text" id="mem_id" name="mem_id" placeholder="ID">
-          <label for="password" class="w">비밀번호:</label>
+          <label for="password" style="text-align: left;">비밀번호:</label>
           <input type="password" id="mem_pw" name="mem_pw" placeholder="Password">  
          
           <input type="hidden" id="referrer" name="referrer">
         <button id="login_btn" type="submit">로그인 </button>
           <br></br>
-          
-          <div id="naver_id_login" style="text-align:center"><a href="${url}">
-		<img width="223" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/></a></div>
-		<br>
-		</c:otherwise>
-		</c:choose>
-			<!-- 네이버 로그인 창으로 이동 -->
-		
+          <script type = "text/javascript" src = "https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+          <div id = "naver_id_login"></div>
+	
 		
 		
         <button  class="small-btn" type="button" onclick = "javascript:idsearchpopup()">아이디 찾기</button>   
@@ -67,7 +50,8 @@
 		
   		</form>
   		
-  		
+  	  <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.2.js" charset="utf-8"></script>
+ 	  <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
       <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	  <script type="text/javascript">  
 	    var message = "<%=request.getParameter("message") %>" ;
@@ -97,6 +81,16 @@
             var option = "width = 500, height = 500, top = 100, left = 200, location = no"
             window.open(url, name, option);
         }
+        
+        var naver_id_login = new naver_id_login("DphfmDygX4WFkf8nghMJ", "http://localhost:8090/hansub_project/login_result");    // Client ID, CallBack URL 삽입
+        // 단 'localhost'가 포함된 CallBack URL
+	var state = naver_id_login.getUniqState();
+
+	naver_id_login.setButton("white", 4, 40);
+	naver_id_login.setDomain("http://localhost:8090/hansub_project/login");    //  URL
+	naver_id_login.setState(state);
+	naver_id_login.setPopup();
+	naver_id_login.init_naver_id_login();
 		</script>
     </body>
 </html>

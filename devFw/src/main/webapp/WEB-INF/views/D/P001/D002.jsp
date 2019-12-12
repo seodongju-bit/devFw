@@ -222,8 +222,7 @@ img {
 		<tr>
 			<th colspan="1" align=left>주문상품</th>
 		
-			<th id="c"><a href="#"><span style="color: blue;">주문상세
-						보기></span></a>
+			
 		</tr>
 
  <c:forEach var="reviewlist2" items="${List}" > 

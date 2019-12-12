@@ -4,6 +4,7 @@
 .y { text-align: center; }
 .z { text-align: justify; }
 
+
 *, *:before, *:after {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -22,6 +23,7 @@ form {
   background: #f4f7f8;
   border-radius: 8px;
 }
+
 
 h1 {
   margin: 0 0 30px 0;
@@ -54,34 +56,10 @@ textarea{
   margin-bottom: 30px;
 }
 
-.namebox{
-	  background: rgba(255,255,255,0.1);
-  border: none;
-  font-size: 16px;
-  height: auto;
-  margin: 0;
-  outline: 0;
-  padding: 15px;
-  width: 100%;
-  background-color: #e8eeef;
-  color: #8a97a0;
-  box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
-  margin-bottom: 30px;
-}
 
-
-input[type="radio"],
-input[type="checkbox"] {
-  margin: 0 4px 8px 0;
-}
-
-
-
-
-select {
-  padding: 6px;
-  height: 32px;
-  border-radius: 2px;
+#selectbox1,
+#selectbox2{
+	text-align: center;
 }
 
 button {
@@ -133,20 +111,16 @@ padding: 7px 7px 7px 7px;
   margin-bottom: 10px;
 }
 
+.custom-radio{
+		
+}
+
+
 legend {
   font-size: 1.4em;
   margin-bottom: 10px;
 }
 
-label {
-  display: block;
-  margin-bottom: 8px;
-}
-
-label.light {
-  font-weight: 300;
-  display: inline;
-}
 
 .number {
   background-color: #5fcf80;
@@ -177,6 +151,20 @@ label.light {
   margin-bottom: 10px;
 }
 
+#mem_id{
+    background: rgba(255,255,255,0.1);
+    border: none;
+    font-size: 16px;
+    height: auto;
+    margin: 0;
+    outline: 0;
+    padding: 15px;
+    width: 100%;
+    background-color: #e8eeef;
+    color: #8a97a0;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+    margin-bottom: 30px;
+}
 
 .mail1{
 	background: rgba(255,255,255,0.1);
@@ -192,6 +180,7 @@ label.light {
   box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
   margin-bottom: 30px;
 }
+
 
 .mail2{
   background: rgba(255,255,255,0.1);

@@ -2,6 +2,7 @@ package project.A.P004.service;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -150,4 +151,32 @@ public class A_P004ServiceImpl implements A_P004Service {
 		activeDAO.withdrawSave(withdrawMap);
 		
 	}
+	
+	@Override
+	public List<Map<String, Object>> paging(List<Map<String, Object>> list, int page ) {
+		List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
+		Map<String, Object> pageInfo = new HashMap<String, Object>();
+		int size = list.size();
+		int one = ((page-1)*10);
+		int start = (page/10)*5;
+		int end = (int)Math.ceil( size/10.0 ); //최종페이지
+		int num = 10; //데이터 조회개수
+		if(start + 6 > end) { //페이지 여섯장이 안될때 
+			end = end - start; 
+		}else {
+			end = 6;
+		}
+		pageInfo.put("start", start);
+		pageInfo.put("end", end);
+		pageInfo.put("page", page);
+		if((size-one)<10) { //조회할 페이지의 데이터가 10개가 안될 때  
+			num = size-one;
+		}
+		for(int i=one; i < one+num ;i++){
+			result.add(list.get(i));
+		}
+		result.add(pageInfo);
+		return result;
+	}
+	
 }
