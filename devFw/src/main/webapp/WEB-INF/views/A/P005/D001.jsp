@@ -140,6 +140,7 @@ content
 				</tr>
 
 				<c:set var="sum" value="0" />
+				
 				<c:forEach var="basket" items="${basketList}" varStatus='index'>
 					<c:set var="ba_quantity"
 						value="${basketList[index.count-1].ba_quantity}" />

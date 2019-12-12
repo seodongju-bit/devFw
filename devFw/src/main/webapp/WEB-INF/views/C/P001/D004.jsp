@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-#division, #title, #file, #stdate, #enddate{
+#division, #title{
 	height: 34px;
 	padding: 6px 12px;
 	font-size: 14px;
@@ -54,7 +54,7 @@ $(function() {
     });
     
     $("#subBtn").click(function(){  //제출
-  	  
+    	  
     	var form = $('#uploadForm')[0];
         var formData = new FormData(form);
         $.ajax({
@@ -69,7 +69,7 @@ $(function() {
             dataType:"json",
             success: function (data) {
                //data.path; 불러올 경로 정보
-            	document.getElementById('banner').value = data.path;
+            	document.getElementById('sell_thumbnail').value = data.path;
             },
             error: function (e) {
                 console.log("ERROR : ", e);
@@ -88,30 +88,13 @@ $(function() {
         obj.getById["editor"].exec("UPDATE_CONTENTS_FIELD", []);
    	 
    	var title = document.getElementsByName("title")[0].value;
-   	var banner = document.getElementsByName("banner")[0].value;
    	var content = document.getElementsByName("content")[0].value;
    	var division = document.getElementsByName("division")[0].value;
-   	var no_stdate = document.getElementsByName("stdate")[0].value;
-   	var no_enddate = document.getElementsByName("enddate")[0].value;
    	
-   	if(division == '이벤트'){
-   		
-   		if(stdate == ''){
-   			alert("이벤트 시작 기간을 정확히 입력해주세요.");
-   			return false;
-   		}
-   		if(enddate == ''){
-   			alert("이벤트 종료 기간을 정확히 입력해주세요.");
-   			return false;
-   		}
-   		
-   		if(stdate > enddate){
-   			alert("입력된 기간을 확인해 주세요.");
-   			return false;
-   		}
-   	}
    	
-   	if (title.trim() == '') {
+   	
+   	
+   	/* if (title.trim() == '') {
    		alert("제목을 입력해주세요");
    		return false;
    	}
@@ -124,12 +107,9 @@ $(function() {
    		alert("내용을 입력해주세요");
    		return false;
    	}
-   	
-   	alert(no_stdate);
-   	alert(no_enddate);
-   	
+   	 */
      frm.method="post"; 
-     frm.action="./write.do"; 
+     frm.action="./bannerwrite.do"; 
    	 frm.submit();
    	
     }
@@ -152,7 +132,7 @@ $(function() {
 <body>
 
 <form name="frmch" action = "./write.do" method="post">
- <input type="hidden" id="banner" name="banner" />
+ <input type="hidden" id="sell_thumbnail" name="sell_thumbnail" />
  <h2 style="text-align: center;">이벤트/공지사항 작성</h2><br><br><br>
 
 <div style="width: 60%; margin-left: 20%; margin-right: auto;">
@@ -164,12 +144,6 @@ $(function() {
 		<option value="공지">공지</option>
 		<option value="이벤트">이벤트</option>
 		</select>
-		</td>
-		</tr>
-		<tr>
-		<th>이벤트 기간</th>
-		<td>
-		<input type="date" name="stdate" id="stdate">&nbsp;~&nbsp;<input type="date" name="enddate" id="enddate">
 		</td>
 		</tr>
 		<tr><th>제목</th>
@@ -185,13 +159,14 @@ $(function() {
 		</tr>
 
 </table>
-		<input id="subBtn" type="button" class="btn btn-default" value="글 작성" style="float: left; margin-right: 15px;"/>
+		
+		<input id="subBtn" type="button" class="btn btn-default" value="글 작성" style="float: left;"/>
 </div>
 
   </form>
-<form name="uploadForm" id="uploadForm" method="post" enctype="multipart/form-data">
-         <label class="uploadList"><input id="file" type="file" name="file"></label>
-</form>
+  	<form name="uploadForm" id="uploadForm" method="post" enctype="multipart/form-data">
+         <label class="uploadList"><input type="file" name="file"></label>
+	</form>
   
 </body>
 </html>  

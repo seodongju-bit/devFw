@@ -69,7 +69,7 @@ function selChange() {
 <div style="float: right;">
 	<c:choose>
 		<c:when test="${memberInfo.mem_division==2 }" >
-       		 <a href='eventWrite.do' class="btn btn-default" >글쓰기</a>
+       		 <a href='eventWrite.do' class="btn btn-default" style="margin-bottom: 3px;" >글쓰기</a>
        	</c:when>
     </c:choose>
 		
@@ -85,25 +85,25 @@ function selChange() {
 		</select>
 	</div> <!-- 옵션선택 끝 -->
 <table class="table table-hover" id="evnet_td">
-<tr>
-<th width="10%">번호</th>
-<th width="10%">제목</th>
+<tr style="background-color: gray; color: white;">
+<th width="5%">번호</th>
+<th width="8%">종류</th>
+<th width="35%">제목</th>
 <th width="10%">게시자</th>
-<th width="10%">조회수</th>
-<th width="10%">종류</th>
+<th width="8%">조회수</th>
 <th width="10%">게시날자</th>
 </tr>
 
 <c:forEach var="event" items="${eventList}" varStatus='index' >
-<tr align="center" onclick="location.href='${contextPath}/eventDetail.do?no_number=${event.no_number}'">
+<tr align="center" style="border-bottom: 1px solid #ddd;" onclick="location.href='${contextPath}/eventDetail.do?no_number=${event.no_number}'">
 <td>${event.no_number}</td>
-<td>${event.no_title}
+<td>${event.no_division}</td>
+<td style="color:#5465e2;">${event.no_title}
  <c:if test="${event.view_cnt >= 10}">
                            <span class="hit">Hot!</span>
                         </c:if></td>
 <td>${event.mem_id}</td>
 <td>${event.view_cnt}</td>
-<td>${event.no_division}</td>
 <td>${event.writedate}</td>
 </tr>
 </c:forEach>

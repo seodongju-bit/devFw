@@ -548,7 +548,7 @@ h1{
 	        <td>
 	        <c:set var="final_order_total_price" value="${final_order_total_price - pointuse}"/>
 	          <p id="p_final_order_total_price">
-	           <fmt:formatNumber id="final_order_total_price_pattern" value="${final_order_total_price}"/>원
+	           <fmt:formatNumber value="${final_order_total_price}"/>원
 	         </p>
 		  		<input type="hidden" id="h_order_total_price" name="h_order_total_price" value="${order_total_price}"/>
 		  		<input type="hidden" id="h_order_total_sale_price" name="h_order_total_sale_price" value="${order_total_sale_price}"/>

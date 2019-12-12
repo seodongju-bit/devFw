@@ -87,6 +87,14 @@ public class F_P001ServiceImpl implements F_P001Service{
 		return memberReviewDAO.countBoard();
 	}
 
+	
+	@Override
+	public List bannerList() throws DataAccessException {
+		List banner = null;
+		banner = f_P001_D04DAO.bannerList();
+		return banner;
+	}
+
 
 
 }

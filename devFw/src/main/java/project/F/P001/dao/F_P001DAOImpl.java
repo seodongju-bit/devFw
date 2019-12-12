@@ -83,6 +83,13 @@ public class F_P001DAOImpl implements F_P001DAO {
 		return sqlSession.selectOne("mapper.product.countBoard");
 	}
 
+	@Override
+	public List bannerList() throws DataAccessException {
+		List bannerList = null;     
+		bannerList = sqlSession.selectList("mapper.product.bannerList");
+		System.out.println("3333333333333333333333333333333"+bannerList);
+		return bannerList;
+	}
 
 
 

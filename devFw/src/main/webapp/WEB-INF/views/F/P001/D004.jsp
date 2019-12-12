@@ -13,7 +13,7 @@
 <head>
 <style>
 
-
+/* 
 div.name{
 font-size:30px;
 margin-top:50px;
@@ -88,8 +88,14 @@ border:#555555 1px solid;
 position:relative;
 left:335px;
 }
-                    
-                                   
+       */              
+    #banner{
+    /* margin-left: auto;
+    margin-right: auto; */
+    width: 650px;
+    height: 470px;
+    margin-right: 0;
+    }                               
 
 </style>
 <meta charset="UTF-8">
@@ -97,7 +103,19 @@ left:335px;
 </head>
 <body>  
 
+<div class="banner" id="banner">
+<c:forEach var="banner" items="${eventbanner}">
+<div style="max-width: 650px;">
+<p align="center">${banner.NO_TITLE}</p><br>
+<a href="#" style="align: center;">
+    <img src="${banner.NO_BANNER}" alt="" width="400" height="400" style="margin-left: 100px;">
+</a><br>
+<p align="center">이벤트 기간: ${banner.NO_STDATE}&nbsp;~&nbsp;${banner.NO_ENDDATE}</p>
+</div>
+</c:forEach>
+</div>
 
+<%-- 
 <div class="name">
 event product
 </div>
@@ -106,7 +124,7 @@ event product
 
   
 <a href="${contextPath}/sellItems.do?sell_no=${productlist1.sell_number}">
-    <img src="${productlist1.sell_thumbnail}" alt="1" width="600" height="400">
+    <img src="${productlist1.sell_thumbnail}" alt="1" width="400" height="400">
 </a>
 <a href="${contextPath}/sellItems.do?sell_no=${productlist1.sell_number}">
   <div class="desc"><div class="desc1">${productlist1.sell_title}<br></div>
@@ -134,6 +152,6 @@ event product
 </s_paging>
 </div>
 
-
+ --%>
 </body>
 </html>        

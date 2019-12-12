@@ -19,6 +19,7 @@ public interface F_P001DAO {
 	public int countBoard();
     List<F_P001VO> searchoption(Map<String, Object> searchMap) throws DataAccessException;
  
+    public List bannerList() throws DataAccessException;
     
 
     

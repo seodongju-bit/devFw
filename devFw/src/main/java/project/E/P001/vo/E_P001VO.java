@@ -43,6 +43,7 @@ public class E_P001VO {
 	private String deli_number;
 	private String deli_name;
 	private String od_state;
+	private String delivery_price;
 	
 	private String point_save;
 	private String point_save_total;
@@ -477,6 +478,18 @@ public class E_P001VO {
 
 	public void setPoint_save_total(String point_save_total) {
 		this.point_save_total = point_save_total;
+	}
+
+
+
+	public String getDelivery_price() {
+		return delivery_price;
+	}
+
+
+
+	public void setDelivery_price(String delivery_price) {
+		this.delivery_price = delivery_price;
 	}
 	
 	

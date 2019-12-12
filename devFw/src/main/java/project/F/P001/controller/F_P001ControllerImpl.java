@@ -112,6 +112,9 @@ public class F_P001ControllerImpl implements F_P001Controller {
 		System.out.println(productlist1);
 		ModelAndView mav1 = new ModelAndView(viewName1);
 		mav1.addObject("List",productlist1);
+		
+		List eventbanner = f_P001Service.bannerList();
+		mav1.addObject("eventbanner",eventbanner);
 		return mav1;
 	}
 

@@ -25,7 +25,7 @@ public interface F_P001Service {
 	public List searchoption(Map<String, Object> searchMap) throws DataAccessException;
 	
 
-
+	public List bannerList() throws DataAccessException;
 	
 
 	

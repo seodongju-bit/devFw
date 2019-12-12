@@ -29,6 +29,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import project.C.P001.service.FileUploadServiceBanner;
 import project.C.P001.service.C_P001Service;
 import project.C.P001.vo.C_P001VO;
 import project.C.P001.vo.PagingVO;
@@ -112,20 +113,28 @@ public class C_P001ControllerImpl implements C_P001Controller {
 		
 		HttpSession session = request.getSession();
 		String mem_id = (String)session.getAttribute("mem_id");
-		
-		String no_title = request.getParameter("title");
 		String no_division = request.getParameter("division");
+		String no_title = request.getParameter("title");
 		String no_contents = request.getParameter("content");
+		String no_stdate = request.getParameter("stdate");
+		String no_enddate = request.getParameter("enddate");
+		String no_banner = request.getParameter("banner");
 		
-		System.out.println(no_title);
-		System.out.println(no_division);
-		System.out.println(mem_id);
-		System.out.println(no_contents);
+		System.out.println("mem_id"+mem_id);
+		System.out.println("no_division"+no_division);
+		System.out.println("no_title"+no_title);
+		System.out.println("no_contents"+no_contents);
+		System.out.println("no_stdate"+no_stdate);
+		System.out.println("no_enddate"+no_enddate);
+		System.out.println("no_banner"+no_banner);
 		
-		dataMap.put("no_title", no_title);
-		dataMap.put("no_division", no_division);
 		dataMap.put("mem_id", mem_id);
+		dataMap.put("no_division", no_division);
+		dataMap.put("no_title", no_title);
 		dataMap.put("no_contents", no_contents);
+		dataMap.put("no_stdate", no_stdate);
+		dataMap.put("no_enddate", no_enddate);
+		dataMap.put("no_banner", no_banner);
 		
 		System.out.println(dataMap);
 		
@@ -135,6 +144,23 @@ public class C_P001ControllerImpl implements C_P001Controller {
 		return mav;
 	}
 	
+	 @Autowired
+	   FileUploadServiceBanner fileUploadService;
+
+	   @RequestMapping(value = "bannerupload.do", method = { RequestMethod.GET, RequestMethod.POST })
+	   @ResponseBody
+	   public Map<String, Object> imgUpload(@RequestParam("file") MultipartFile file, HttpServletRequest request, HttpServletResponse response) throws Exception  {
+		   String viewName = getViewName(request);
+		   Map<String, Object> resultMap = new HashMap<String, Object>();
+		  try {
+			   String url = fileUploadService.restore(file);
+			   System.out.println("222222222222222222222222222222222222222"+url);
+			   resultMap.put("path", url);
+		  }catch(Exception e) {
+			   System.out.println("이미지 업로드 오류");
+		  }
+		   return resultMap;
+	   }
 	
 	private String getViewName(HttpServletRequest request) throws Exception {
 		String contextPath = request.getContextPath();

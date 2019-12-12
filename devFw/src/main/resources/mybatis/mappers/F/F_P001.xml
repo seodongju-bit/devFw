@@ -101,6 +101,9 @@
 	</resultMap>
 	
 	
+	<resultMap id="bannerList" type="java.util.Map">
+		<result property="no_number" column="no_number" />
+	</resultMap>
 
 
 
@@ -195,9 +198,22 @@
    
    	<select id="countBoard" resultType="int">      
 	<![CDATA[                        
-	SELECT COUNT(*) FROM notice
+	SELECT COUNT(*) FROM questions
 	]]>
 	</select>
+
+<select id="bannerList" resultMap="bannerList" parameterType="java.util.Map"> 
+      <![CDATA[
+      
+      select no_number, no_title, to_char(no_stdate,'YYYY-MM-DD')no_stdate, to_char(no_enddate, 'YYYY-MM-DD')no_enddate, no_banner
+      from notice
+      where no_division = '이벤트'
+          
+      ]]>          
+                               
+      
+   </select> 
+
 
   
 </mapper>         

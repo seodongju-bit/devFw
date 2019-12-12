@@ -24,5 +24,4 @@ public interface C_P001Controller {
 	public ModelAndView listEvent(PagingVO vo, String nowPage, String cntPerPage, HttpServletRequest request,
 			HttpServletResponse response) throws Exception;
 
-
 }

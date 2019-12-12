@@ -12,12 +12,16 @@ public class C_P001VO {
 	private String imagefilename;
 	private String writedate;
 	private String view_cnt;
+	private String no_stdate;
+	private String no_enddate;
+	private String no_banner;
 
 	public C_P001VO() {
 		
 	}
 
-	public C_P001VO(String no_number, String mem_id, String no_contents, String no_division, String no_title, String imagefilename, String writedate, String view_cnt) {
+	public C_P001VO(String no_number, String mem_id, String no_contents, String no_division, String no_title, String imagefilename, String writedate, String view_cnt
+			, String no_stdate, String no_enddate, String no_banner) {
 		this.no_number=no_number;
 		this.mem_id=mem_id;
 		this.no_contents=no_contents;
@@ -26,6 +30,9 @@ public class C_P001VO {
 		this.imagefilename=imagefilename;
 		this.writedate=writedate;
 		this.view_cnt=view_cnt;
+		this.no_stdate = no_stdate;
+		this.no_enddate = no_enddate;
+		this.no_banner = no_banner;
 	}
 	
 	public String getNo_number() {
@@ -92,6 +99,27 @@ public class C_P001VO {
 		this.view_cnt = view_cnt;
 	}
 
-	
+	public String getNo_stdate() {
+		return no_stdate;
+	}
 
+	public void setNo_stdate(String no_stdate) {
+		this.no_stdate = no_stdate;
+	}
+
+	public String getNo_enddate() {
+		return no_enddate;
+	}
+
+	public void setNo_enddate(String no_enddate) {
+		this.no_enddate = no_enddate;
+	}
+
+	public String getNo_banner() {
+		return no_banner;
+	}
+
+	public void setNo_banner(String no_banner) {
+		this.no_banner = no_banner;
+	}
 }

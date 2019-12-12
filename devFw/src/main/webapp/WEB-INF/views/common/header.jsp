@@ -404,11 +404,11 @@ $(document).ready(function(){
        	 <c:choose>
        		 <c:when test="${isLogOn==true and not empty memberInfo }" >
        		 	<a class="nav-item nav-link" href="#" onclick="logout(); return false;">로그아웃</a>
-       		 	<a class="nav-item nav-link" onclick="location.href='${contextPath}/chatInit.do'" >채팅</a>
+       		 	<a class="nav-item nav-link" onclick="location.href='${contextPath}/chatInit.do'" ><img src="../devFw/resources/image/icon/chat.png"  alt="채팅" style="width: 16px;">&nbsp;채팅</a>
        		 	<c:choose>
        		 		<c:when test="${memberInfo.mem_division==0 }" >
-       		 			<a class="nav-item nav-link" href="${contextPath}/basket.do">장바구니</a>
-       		 			<a class="nav-item nav-link" href="${contextPath}/myPage.do">마이페이지</a>
+       		 			<a class="nav-item nav-link"  href="${contextPath}/basket.do"><img src="../devFw/resources/image/icon/shopping-cart.png"  alt="장바구니" style="width: 16px;">&nbsp;장바구니</a>
+       		 			<a class="nav-item nav-link" href="${contextPath}/myPage.do"><img src="../devFw/resources/image/icon/user1.png"  alt="마이페이지" style="width: 16px;">&nbsp;마이페이지</a>
        		 		</c:when>
        		 		<c:when test="${memberInfo.mem_division==1 }" >
        		 			<a class="nav-item nav-link" id="itemManagerlink" href="${contextPath}/itemManager.do">상품관리</a>
@@ -423,7 +423,7 @@ $(document).ready(function(){
 				 <a class="nav-item nav-link" href="${contextPath}/signinpage.do">로그인</a>
 			</c:otherwise>
        	  </c:choose>
-        	  <a class="nav-item nav-link" href="${contextPath}/notice.do">고객센터</a>
+        	  <a class="nav-item nav-link" href="${contextPath}/notice.do"><img src="../devFw/resources/image/icon/call-center-operator1.png"  alt="고객센터" style="width: 16px;">&nbsp;고객센터</a>
        	 </div>
    	   </div>
        
