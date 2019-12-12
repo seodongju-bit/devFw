@@ -114,6 +114,12 @@
 	SELECT COUNT(*) FROM questions
 	]]>
 	</select>
+	
+	   <select id="countBoard2" resultType="int">
+	<![CDATA[
+	SELECT COUNT(*) FROM declarations 
+	]]>
+	</select>
   
   
   

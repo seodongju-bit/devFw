@@ -7,7 +7,7 @@
 <%
   request.setCharacterEncoding("UTF-8");
 %>
-
+         
 <!DOCTYPE html>
 <html>
 <head>
@@ -95,7 +95,7 @@ display: inline-block;
 
 #table{
  border-collapse: collapse;
-      border-top: 3px solid #168;
+      border-top: 3px solid #168;        
 
 }
 .table th {
@@ -145,10 +145,10 @@ function selChange() {
 		<c:when test="${memberInfo.mem_division==2 }" >
        		 <a href='eventWrite.do' class="btn btn-default" >글쓰기</a>
        	</c:when>
-    </c:choose>
+    </c:choose>                 
 		  
 		<select id="cntPerPage" name="sel" onchange="selChange()">
-		 <option value="5"
+		    <option value="5"
 				<c:if test="${page.cntPerPage == 5}">selected</c:if>>5줄 보기</option>
 			<option value="10"
 				<c:if test="${page.cntPerPage == 10}">selected</c:if>>10줄 보기</option>
