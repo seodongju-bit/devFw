@@ -222,20 +222,21 @@ img {
 		<tr>
 			<th colspan="1" align=left>주문상품</th>
 		
-			
+			<th id="c"><a href="#"><span style="color: blue;">주문상세
+						보기></span></a>
 		</tr>
 
- <c:forEach var="reviewlist2" items="${List}" > 
+ <c:forEach var="reviewlist3" items="${List}" > 
 		<tr> 
 			<td align="left"> 
-			<img src="${reviewlist2.sell_thumbnail}">
-			${reviewlist2.sell_title}
-			<fmt:formatNumber value="${reviewlist2.sell_price}" pattern="#,###"/>원
+			<img src="${reviewlist3.SELL_THUMBNAIL}">
+			${reviewlist3.SELL_TITLE}
+			<fmt:formatNumber value="${reviewlist3.SELL_PRICE}" pattern="#,###"/>원
 			
 			</td>
     
             
-             <td align="left">${reviewlist2.review_content}</td>
+             <td align="left">${reviewlist3.REVIEW_CONTENT}</td>
 
 			<td align="center">분류<br>
 			<a href="#layer1" class="btn-example">리뷰상세</a><br> 
@@ -246,11 +247,11 @@ img {
 			
             <div id="layer1" class="pop-layer">
         <div class="pop-container">
-        <div class="pop-conts">
+        <div class="pop-conts">           
             <!--content //-->                      
-            <p class="ctxt mb20">${reviewlist2.mem_nick}님의 리뷰<br>
+            <p class="ctxt mb20">${reviewlist3.MEM_ID}님의 리뷰<br>
             <br>
-        ${reviewlist2.review_content}
+        ${reviewlist3.REVIEW_CONTENT}     
             </p> 
             <div class="btn-r">
                 <a href="#" class="btn-layerClose">close</a>

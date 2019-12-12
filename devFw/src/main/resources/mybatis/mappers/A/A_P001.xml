@@ -33,7 +33,7 @@
 	<select id="idsearch" resultType="String" parameterType="String"  >
 			select nvl(mem_id, 0)
 			from members
-			where mem_email1 = 'baetuk60' and mem_email2 = 'gmail.com'		
+			where mem_email1 ='baetuk60' and mem_email2 = 'gmail.com';			
 	</select>
 	
 	<select id="pwsearch" resultType="String" parameterType="String"  >

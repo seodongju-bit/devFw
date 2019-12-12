@@ -166,7 +166,7 @@ public class C_P003ControllerImpl implements C_P003Controller {
 		System.out.println("컨트롤러"+totals);
 		if (nowPage == null && cntPerPage == null) {
 			nowPage = "1";
-			cntPerPage = "5";
+			cntPerPage = "15";
 		} else if (nowPage == null) {
 			nowPage = "1";
 		} else if (cntPerPage == null) { 
@@ -197,11 +197,11 @@ public class C_P003ControllerImpl implements C_P003Controller {
 		System.out.println("컨트롤러"+totals1);
 		if (nowPage == null && cntPerPage == null) {
 			nowPage = "1";
-			cntPerPage = "5";
+			cntPerPage = "15";
 		} else if (nowPage == null) {
 			nowPage = "1";
 		} else if (cntPerPage == null) { 
-			cntPerPage = "5";
+			cntPerPage = "5";           
 		}
 
 		
@@ -319,7 +319,7 @@ public class C_P003ControllerImpl implements C_P003Controller {
 	
 		dataMap7.put("qu_number", qu_number);
 		dataMap7.put("mem_id", mem_id);
-		dataMap7.put("qu_answer", qu_answer);
+		dataMap7.put("qu_answer", qu_answer); 
 	
 		
 		System.out.println(dataMap7);
@@ -343,7 +343,7 @@ public class C_P003ControllerImpl implements C_P003Controller {
 		System.out.println("컨트롤러"+totals2);
 		if (nowPage == null && cntPerPage == null) {
 			nowPage = "1";
-			cntPerPage = "5";
+			cntPerPage = "15";
 		} else if (nowPage == null) {
 			nowPage = "1";
 		} else if (cntPerPage == null) { 

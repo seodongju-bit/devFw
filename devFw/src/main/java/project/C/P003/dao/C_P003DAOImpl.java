@@ -133,6 +133,11 @@ public class C_P003DAOImpl implements C_P003DAO{
 		System.out.println("dao실행"+noticelist7);
 		return noticelist7;
 	}
+
+	@Override
+	public int countBoard2() {
+		return sqlSession.selectOne("mapper.notice.countBoard2");
+	}
 		
 	}
 

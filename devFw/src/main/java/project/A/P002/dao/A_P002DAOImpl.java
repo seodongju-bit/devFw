@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
-import project.A.P002.vo.A_P002VO;
+import project.A.P001.vo.A_P001VO;
 
 
 @Repository("a_p002DAO") 
@@ -18,8 +18,8 @@ public class A_P002DAOImpl implements A_P002DAO {
 	private SqlSession sqlSession;	
 	
 	@Override
-	public void insertNewMember(A_P002VO A_P002VO) throws DataAccessException{
-		sqlSession.insert("A.A_P002.insertNewMember",A_P002VO);
+	public void insertNewMember(A_P001VO A_P001VO) throws DataAccessException{
+		sqlSession.insert("A.A_P002.insertNewMember",A_P001VO);
 	}
 
 	@Override
@@ -43,8 +43,8 @@ public class A_P002DAOImpl implements A_P002DAO {
 	
 	
 
-	public void verifyMember(A_P002VO A_P002VO) throws DataAccessException {
-		sqlSession.update("A.A_P002.verifyMember",A_P002VO);
+	public void verifyMember(A_P001VO A_P001VO) throws DataAccessException {
+		sqlSession.update("A.A_P002.verifyMember",A_P001VO);
 	}
 	
 }

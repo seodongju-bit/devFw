@@ -43,7 +43,7 @@
 	   where mem_nick = #{nick}
 	</select>  
 	
-  <insert id="insertNewMember"  parameterType="A_P002VO">
+  <insert id="insertNewMember"  parameterType="A_P001VO">
   <![CDATA[
     	insert into members			(mem_id,
 				 					 mem_pw,
@@ -75,7 +75,7 @@
    ]]>      
   </insert>
   
-  <update id="verifyMember" parameterType="A_P002VO">
+  <update id="verifyMember" parameterType="java.util.Map">
 				update members set mem_verify='y' where	mem_email1=#{mem_email1} and mem_email2=#{mem_email2}
 		</update>
   

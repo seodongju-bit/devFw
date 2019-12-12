@@ -244,6 +244,12 @@
       <put-attribute name="body" value="/WEB-INF/views/D/P001/D002.jsp" />
    </definition>
    
+   <definition name="myReview2" extends="baseLayout">
+      <put-attribute name="title" value="내 리뷰 확인" />
+      <put-attribute name="body" value="/WEB-INF/views/D/P001/D003.jsp" />
+   </definition>
+   
+   
    	<definition name="order" extends="itemLayout">
       <put-attribute name="title" value="주문정보입력" />
       <put-attribute name="body" value="/WEB-INF/views/E/P001/D001.jsp" />

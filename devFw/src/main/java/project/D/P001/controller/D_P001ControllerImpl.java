@@ -56,6 +56,47 @@ public class D_P001ControllerImpl   implements D_P001Controller {
 		return mavs2;
 	}
 
+	
+	
+	
+	@Override
+	@RequestMapping(value="/myReview2.do" ,method = RequestMethod.GET)
+	public ModelAndView myReview2(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = getViewName(request);
+		viewName = "myReview2";
+		
+		Map<String, Object> searchMaps2 = new HashMap<String, Object>();
+		Map<String, Object> resultMaps2 = new HashMap();
+		HttpSession session = request.getSession();
+		String mem_id = (String)session.getAttribute("mem_id");
+		if(mem_id == null) {
+			System.out.println("null");
+			viewName = "redirect:#";
+			ModelAndView mavs3 = new ModelAndView(viewName);
+			return mavs3;
+		}
+		else {
+			System.out.println(session);
+		}
+		
+		
+		searchMaps2.put("mem_id", mem_id);
+		
+		List<Map<String,Object>> reviewlist3 = d_P001Service.reviewItem3(searchMaps2);
+		resultMaps2 = (Map<String, Object>)reviewlist3.get(0);
+		System.out.println(reviewlist3);
+		ModelAndView mavs3 = new ModelAndView(viewName);
+		mavs3.addObject("List", resultMaps2);
+		return mavs3;
+		
+	
+	}
+	
+	
+	
+	
+	
+	
 	@Override
 	@RequestMapping(value="/reviewwrite.do" ,method = { RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView reviewwrite(HttpServletRequest request, HttpServletResponse response) throws Exception {

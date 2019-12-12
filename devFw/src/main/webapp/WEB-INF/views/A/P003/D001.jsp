@@ -45,7 +45,7 @@
 			<tr class="dot_line">
 					<td class="fixed_join">아이디</td>
 					<td>
-						<input name="mem_id" type="text" size="20" value="${memberInfo.mem_id }"  disabled/>
+						<input id="mem_id" name="mem_id" type="text" size="20" value="${memberInfo.mem_id }"  disabled/>
 					</td>
 					 <td>
 					</td>
@@ -53,14 +53,14 @@
 				<tr class="dot_line">
 					<td class="fixed_join">비밀번호</td>
 					<td>
-					  <input name="mem_pw" type="password" size="20" style="float:left;" value="${memberInfo.mem_pw }" />&nbsp;&nbsp;&nbsp;&nbsp;
+					  <input id="mem_pw" name="mem_pw" type="password" maxlength="20"  style="float:left;" value="${memberInfo.mem_pw }" />&nbsp;&nbsp;&nbsp;&nbsp;
 					  <input type="button" value="수정하기" onClick="fn_modify_member_info('mem_pw')" />
 					</td>
 				</tr>
 				<tr class="dot_line">
 					<td class="fixed_join">이름</td>
 					<td>
-						<input name="mem_name" type="text" size="20" value="${memberInfo.mem_name }"  disabled/>
+						<input id="mem_name" name="mem_name" type="text" size="20" value="${memberInfo.mem_name }"  disabled/>
 					</td>
 					 <td>
 					</td>
@@ -68,7 +68,7 @@
 				<tr class="dot_line">
 					<td class="fixed_join">닉네임</td>
 					<td>
-						<input name="mem_nick" type="text" size="20" value="${memberInfo.mem_nick }"  disabled/>
+						<input id="mem_nick" name="mem_nick" type="text" size="20" value="${memberInfo.mem_nick }"  disabled/>
 					</td>
 					 <td>
 					</td>
@@ -76,8 +76,8 @@
 				<tr class="dot_line">
 					<td class="fixed_join">이메일</td>
 					<td>
-						<input name="mem_email1" type="text" size="20" value="${memberInfo.mem_email1 }"  disabled/>@
-						<input name="mem_email2" type="text" size="20" value="${memberInfo.mem_email2 }"  disabled/>
+						<input id="mem_email1" name="mem_email1" type="text" size="20" value="${memberInfo.mem_email1 }"  disabled/>@
+						<input id="mem_email2" name="mem_email2" type="text" size="20" value="${memberInfo.mem_email2 }"  disabled/>
 					</td>
 					 <td>
 					</td>
@@ -85,7 +85,7 @@
 				<tr class="dot_line">
 					<td class="fixed_join">연락처</td>
 					<td>
-						<input name="mem_tel" type="text" size="20" value="${memberInfo.mem_tel }" />
+						<input id="mem_tel" name="mem_tel" type="text" maxlength="13" value="${memberInfo.mem_tel }" />
 					  <input type="button" value="수정하기" onClick="fn_modify_member_info('mem_tel')" />
 					</td>
 					 <td>
@@ -94,12 +94,12 @@
 				<tr class="dot_line">
 					<td class="fixed_join">주소</td>
 					<td>
-					<br><input type="text" class="zipbox" id="zip"  name="mem_zip" size="50" value="${memberInfo.mem_zip }" disabled> <a href="javascript:execPostCode()">우편번호검색</a>
+					<br><input type="text" class="zipbox" id="mem_zip"  name="mem_zip"  value="${memberInfo.mem_zip }" disabled> <a href="javascript:execPostCode()">우편번호검색</a>
 					  <br>
 					  <br>
 					<p> 
-					<input type="text" class="addressbox1" id="address1" name="mem_address1" size="50" value="${memberInfo.mem_address1 }" disabled><br><br>
-					<input type="text" class="addressbox2" id="address2" name="mem_address2" size="50" value="${memberInfo.mem_address2 }" /><br><br>
+					<input type="text" class="addressbox1" id="mem_address1" name="mem_address1"  value="${memberInfo.mem_address1 }" disabled><br><br>
+					<input type="text" class="addressbox2" id="mem_address2" name="mem_address2"  value="${memberInfo.mem_address2 }" /><br><br>
 					<input type="button" value="수정하기" onClick="fn_modify_member_info('mem_address')" />
 					   </p>
 					</td>
@@ -187,16 +187,15 @@
  
      return str;
 }
- 
- 
- var phoneNum = document.getElementById('mem_tel');
 
-	phoneNum.onkeyup = function(){
-	  console.log(this.value);
-	  this.value = autoHypenPhone( this.value ) ;  
-	}
-	
- 
+
+var phoneNum = document.getElementById('mem_tel');
+
+phoneNum.onkeyup = function(){
+ console.log(this.value);
+ this.value = autoHypenPhone( this.value ) ;  
+}
+
  
  
 	function fn_modify_member_info(attribute){
@@ -208,9 +207,7 @@
 				value=frm_mod_member.mem_pw.value;
 				//alert("member_pw:"+value);
 			}else if(attribute=='mem_tel'){
-				var mem_tel=frm_mod_member.mem_tel;
-				value_mem_tel=mem_tel.value;
-				value=value_mem_tel;
+				value=frm_mod_member.mem_tel.value;
 			}else if(attribute=='mem_address'){
 				var mem_zip=frm_mod_member.mem_zip;
 				var mem_address1=frm_mod_member.mem_address1;
