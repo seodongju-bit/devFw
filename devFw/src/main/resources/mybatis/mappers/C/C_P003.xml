@@ -105,13 +105,13 @@
    FROM questions 
    WHERE qu_number=#{qu_number}
            
-        ]]>         
+        ]]>           
  
    </select>
 
    <select id="countBoard" resultType="int">
 	<![CDATA[
-	SELECT COUNT(*) FROM notice
+	SELECT COUNT(*) FROM questions
 	]]>
 	</select>
   

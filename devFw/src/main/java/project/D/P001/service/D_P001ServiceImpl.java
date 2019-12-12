@@ -35,8 +35,16 @@ public class D_P001ServiceImpl implements D_P001Service {
 		
 	}
 
+	@Override
+	public List<Map<String,Object>> reviewItem3(Map<String, Object> searchMaps2) throws DataAccessException {
+	List reviewlist3 = null;
+	System.out.println("서비스 실행");
+    reviewlist3 = D_P001DAO.myReview2(searchMaps2);
+		return reviewlist3;
+		
+	}
 
-
+ 
 
 
 	@Override

@@ -28,9 +28,18 @@ public class D_P001DAOImpl implements D_P001DAO {
 	   
 		
 	}
-
-
-
+	
+	
+	@Override
+	public List<Map<String,Object>> myReview2(Map<String, Object> searchMaps2) {
+	  List reviewlist3=null;
+	  System.out.println("dao실행");
+	  reviewlist3 = sqlSession.selectList("mapper.review.myReview2");
+	   return reviewlist3;
+	   
+		
+	}
+	
 	@Override
 	public void reviewwrite(Map<String, Object> dataMap) throws DataAccessException {
 		System.out.println("dao실행");

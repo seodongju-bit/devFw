@@ -17,6 +17,7 @@ public interface D_P001Service {
 
 	void addReview(Map<String, Object> resultMap) throws DataAccessException;
 
+	public List<Map<String,Object>> reviewItem3(Map<String, Object> searchMaps2)  throws DataAccessException;
 
 
 }

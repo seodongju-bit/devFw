@@ -58,12 +58,27 @@
  
        <select id="reviewItem2" resultMap="D_P001Result02" parameterType="java.util.Map"> 
       <![CDATA[
-       SELECT r.review_content,s.sell_thumbnail,s.sell_title,s.sell_price,m.mem_nick,r.review_monthpoint,r.review_totalpoint
+         SELECT r.review_content,s.sell_thumbnail,s.sell_title,s.sell_price,m.mem_nick,r.review_monthpoint,r.review_totalpoint
          FROM review r, productsell s, members m
          WHERE r.mem_id = m.mem_id AND
          s.sell_number = r.sell_number 
+         
                                    
       ]]>          
+
+  	 </select> 
+  	 
+  	 
+  	 
+  	       <select id="myReview2" resultMap="D_P001Result02" parameterType="java.util.Map"> 
+      <![CDATA[
+         SELECT r.review_content,s.sell_thumbnail,s.sell_title,s.sell_price,m.mem_nick,r.review_monthpoint,r.review_totalpoint
+         FROM review r, productsell s, members m
+         WHERE r.mem_id = #{mem_id} AND 
+          r.sell_number = s.sell_number
+         
+                                   
+      ]]>           
 
   	 </select> 
 
