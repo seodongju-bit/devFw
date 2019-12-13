@@ -398,7 +398,7 @@ $(document).ready(function(){
 		var arr2 = arr[2].split('.');
 		return arr2[0];
 	}
- 
+  
 	function fn_coupon(){
 		var _isLogOn=document.getElementById("isLogOn");
 		var isLogOn=_isLogOn.value;
