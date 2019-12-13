@@ -118,7 +118,7 @@ public class A_P004DAOImpl implements A_P004DAO {
 	public List<Map<String,Object>> listquestion(Map<String, Object> searchMap) {
 		List list =sqlSession.selectList("mapper.active.listquestion",searchMap);
 		System.out.println(">>>"+ list);
-		return list;
+		return list; 
 	}
 	@Override
 	public List alert(String p_id) throws DataAccessException {
