@@ -11,10 +11,8 @@
     <style>
       #content {
         width: 100%;
-        height:100%;
         margin: 0 0 0 0px;
         border: 0px solid #bcbcbc;
-        position:relative;
       } 
       
       #footer {

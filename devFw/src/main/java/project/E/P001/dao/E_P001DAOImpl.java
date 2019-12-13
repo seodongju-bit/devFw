@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
-import project.A.P004.vo.A_P004VO;
 import project.E.P001.vo.E_P001VO;
 
 
@@ -27,16 +26,6 @@ public class E_P001DAOImpl implements E_P001DAO {
 	}
 	
 	@Override
-	public List selectAllCouponList(String p_id) throws DataAccessException {
-		List<A_P004VO> couponList = null;
-		couponList = sqlSession.selectList("E.P001.couponList", p_id);
-		System.out.println(couponList);
-		return couponList;
-	}
-
-
-	
-	@Override
 	public void insertNewOrder(List<E_P001VO> orderList) throws DataAccessException {
 		int order_number = selectOrderNumber();
 		int od_number = selectOrderDetailNumber();
@@ -46,15 +35,11 @@ public class E_P001DAOImpl implements E_P001DAO {
 			e_P001VO.setOd_number(od_number);
 			sqlSession.insert("E.P001.insertNewOrder", e_P001VO);
 			sqlSession.insert("E.P001.insertNewOrderDetail", e_P001VO);
-			sqlSession.update("E.P001.saveMemPoint", e_P001VO);
-			if(e_P001VO.getOrder_pointuse() != "" || e_P001VO.getOrder_pointuse() != null || e_P001VO.getOrder_pointuse() != "0") {
-			sqlSession.insert("E.P001.point_use", e_P001VO);
-			}
-			sqlSession.insert("E.P001.point_add", e_P001VO);
-			sqlSession.update("E.P001.useCoupon", e_P001VO);
+			sqlSession.insert("E.P001.saveMemPoint", e_P001VO);
+			sqlSession.insert("E.P001.usePoint", e_P001VO);
 			}
 		}
-	
+
 	private int selectOrderNumber() throws DataAccessException {
 		return sqlSession.selectOne("E.P001.selectOrderNumber");
 	}

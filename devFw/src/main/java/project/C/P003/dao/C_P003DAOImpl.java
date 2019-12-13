@@ -98,8 +98,14 @@ public class C_P003DAOImpl implements C_P003DAO{
 		System.out.println("dao실행"+questionList1);
 		return questionList1;
 	}
-
 	
+	
+	@Override
+	public List selectOrderInfo(String order_number) throws DataAccessException {
+		List<C_P003VO> orderInfo = null;
+		orderInfo = sqlSession.selectList("mapper.notice.selectOrderInfo", order_number);
+		return orderInfo;
+	}
 	@Override
 	public void writes(Map<String, Object> dataMap5) throws DataAccessException {
 	    System.out.println(dataMap5);

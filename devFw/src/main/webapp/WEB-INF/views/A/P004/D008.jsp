@@ -79,7 +79,7 @@ function takecoupon(co_number, stdate, enddate){
 <c:forEach var="coupon" items="${couponsList}" varStatus='index' >
 <tr align="center">
 <td>${coupon.co_name}</td>
-<td>${coupon.co_stdate}&nbsp;~&nbsp;${coupon.co_enddate}</td>
+<td>${coupon.co_stdate}~${coupon.co_enddate}</td>
 <td>${coupon.co_percent}</td>
 <td><input type="button" class="btn btn-default" value="발급" onclick="takecoupon('${coupon.co_number}','${coupon.co_stdate}','${coupon.co_enddate}')"></td>
 </tr>

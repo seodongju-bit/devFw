@@ -21,6 +21,4 @@ public interface A_P004Controller {
 	public ModelAndView myquestion(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView alert(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView usecoupon(HttpServletRequest request, HttpServletResponse response) throws Exception;
-	public Map<String, Object> confirm(HttpServletRequest request, HttpServletResponse response) throws Exception;
-	public Map<String, Object> cancle(HttpServletRequest request, HttpServletResponse response) throws Exception;
 }

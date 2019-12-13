@@ -26,6 +26,23 @@
   
   
   
+    <resultMap id="C_P003Result04" type="C_P003VO">
+  <result property="de_number" column="de_number" />
+  <result property="mem_id" column="mem_id" />
+  <result property="de_division" column="de_division" />
+  <result property="de_date" column="de_date" />
+  <result property="de_contents" column="de_contents" />
+ 
+  <result property="order_number" column="order_number" />
+    <result property="sell_number" column="sell_number" />
+      <result property="sell_title" column="sell_title" />
+        <result property="sell_thumbnail" column="sell_thumbnail" />
+        
+ 
+  </resultMap>
+  
+  
+  
  <resultMap id="C_P003Result03" type="C_P003VO">
   <result property="oq_number" column="oq_number" />
   <result property="oq_question" column="oq_question" />
@@ -48,9 +65,9 @@
 
    </select>  
    
-      <select id="noticeItem2" resultMap="C_P003Result02" parameterType="java.util.Map"> 
+      <select id="noticeItem2" resultMap="C_P003Result04" parameterType="java.util.Map"> 
       <![CDATA[
-     SELECT q.qu_number,q.mem_id,q.qu_contents,q.qu_answer,q.qu_date
+     SELECT q.qu_number,q.mem_id,q.qu_contents,q.qu_answer,q.qu_date,q.sell_title
       FROM questions q, members m
       WHERE q.mem_id = m.mem_id AND
       ROWNUM<4
@@ -165,12 +182,12 @@
         
 <insert id="insertquestion" parameterType="java.util.Map">
 		<![CDATA[
-			insert into questions (qu_number,mem_id,qu_contents,qu_date) 
+			insert into questions (qu_number,mem_id, order_number, qu_contents, qu_date,sell_title) 
 			values
-			 (qu_number.nextval,#{mem_id}, #{qu_contents}, sysdate)   
+			 (qu_number.nextval,#{mem_id}, #{order_number}, #{qu_contents}, sysdate, #{sell_title})   
 		]]>     
 	</insert>          	
-	
+	   
      
   <insert id="insertquestion2" parameterType="java.util.Map">
 		<![CDATA[
@@ -225,6 +242,14 @@
         ]]>         
  
    </select>
-      
-      
+   
+   <select id="selectOrderInfo" resultMap="C_P003Result04" parameterType="C_P003VO">
+   		<![CDATA[
+   		 select *
+   		 from orders o, orderdetail od, productsell ps
+   		 where o.order_number = od.order_number
+   		 and od.sell_number = ps.sell_number
+   		 and o.order_number = #{order_number}
+   		]]>
+   </select>   
   </mapper>

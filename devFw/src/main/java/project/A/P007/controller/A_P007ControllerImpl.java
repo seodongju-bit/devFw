@@ -83,7 +83,7 @@ public class A_P007ControllerImpl   implements A_P007Controller {
 		dataMap.put("co_stdate", co_stdate);
 		dataMap.put("co_enddate", co_enddate);
 		if(co_percent != null) {
-		dataMap.put("co_percent", co_percent);
+		dataMap.put("co_percent", co_percent+"%");
 		}else {
 		dataMap.put("co_percent", co_percent);
 		}

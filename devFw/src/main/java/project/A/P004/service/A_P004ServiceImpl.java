@@ -69,7 +69,7 @@ public class A_P004ServiceImpl implements A_P004Service {
 	
 	@Override
 	public List<Map<String, Object>> orderList2(Map<String, Object> searchMap) {
-		List<Map<String, Object>> list= activeDAO.orderList2(searchMap);	
+		List<Map<String, Object>> list= activeDAO.orderList(searchMap);	
 		
 		return list;
 		
@@ -178,25 +178,5 @@ public class A_P004ServiceImpl implements A_P004Service {
 		result.add(pageInfo);
 		return result;
 	}
-
-	@Override
-	public void confirm(Map<String, Object> dataMap) {
-		activeDAO.confirm(dataMap);
-	}
-	
-	@Override
-	public int confirmcheck(Map<String, Object> check) {
-		return activeDAO.confirmcheck(check);
-	}	
-	
-	@Override
-	public void cancle(Map<String, Object> dataMap) {
-		activeDAO.cancle(dataMap);
-	}
-	
-	@Override
-	public int canclecheck(Map<String, Object> check) {
-		return activeDAO.canclecheck(check);
-	}	
 	
 }

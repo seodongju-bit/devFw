@@ -44,6 +44,8 @@
    </definition>
 	
 	
+	
+	
 	 <definition name="itemLayout"  template="/WEB-INF/views/common/item_layout.jsp">
       <put-attribute name="title" value="" />
       <put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
@@ -228,12 +230,7 @@
    <definition name="itemManager" extends="itemLayout">
       <put-attribute name="title" value="상품관리페이지" />
       <put-attribute name="body" value="/WEB-INF/views/B/P001/D001.jsp" />
-       <put-attribute name="footer" value="" />
-   </definition> 
-   
-   <definition name="searchOrder" extends="emptyLayout">
-      <put-attribute name="title" value="상품관리페이지2" />
-      <put-attribute name="body" value="/WEB-INF/views/B/P001/D003.jsp" />
+      <put-attribute name="footer" value="" />
    </definition> 
    
     <definition name="basket" extends="baseLayout_cart">
@@ -313,7 +310,7 @@
       <put-attribute name="body" value="/WEB-INF/views/F/P001/bestSell.jsp" />
    </definition>
 
-	<definition name="eventProduct" extends="eventLayout">
+	<definition name="eventProduct" extends="baseLayout2">
       <put-attribute name="title" value="이벤트상품출력페이지" />         
       <put-attribute name="body" value="/WEB-INF/views/F/P001/D004.jsp" />
    </definition>

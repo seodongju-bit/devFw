@@ -38,8 +38,6 @@
 	  <result property="order_pointuse" column="order_pointuse"/>
 	  <result property="co_number" column="co_number"/>
 	  <result property="choice_review" column="choice_review"/>
-	  <result property="delivery_price" column="delivery_price"/>
-	  <result property="total_delivery_price" column="total_delivery_price"/>
 	  
 	  <result property="od_quantity" column="od_qunatity"/>
 	  <result property="od_size" column="od_size"/>
@@ -51,15 +49,6 @@
 	  <result property="point_save" column="point_save"/>
 	  <result property="point_save_total" column="point_save"/>
 	</resultMap>
-	
-	<resultMap id="E_P001Result02" type="activeVO">
-		<result property="co_number" column="co_number" />
-        <result property="co_name" column="co_name" />
-        <result property="co_enddate" column="co_enddate" />
-        <result property="co_stdate" column="co_stdate" />
-        <result property="co_percent" column="co_percent" />
-        <result property="mem_id" column="mem_id" />
-	</resultMap> 
 	
 	<select id="selectMyOrderList" resultMap="E_P001Result01" parameterType="E_P001VO">
 		<![CDATA[
@@ -93,7 +82,6 @@
 								order_pointuse,
 								final_order_total_price,
 								delivery_method,
-								total_delivery_price,
 								pay_method,
 								mem_id,
 								mem_name,
@@ -118,7 +106,6 @@
 							   #{order_pointuse, jdbcType=VARCHAR},
 							   #{final_order_total_price, jdbcType=VARCHAR},
 							   #{delivery_method, jdbcType=VARCHAR},
-							   #{total_delivery_price, jdbcType=VARCHAR},
 							   #{pay_method, jdbcType=VARCHAR},
 							   #{mem_id, jdbcType=VARCHAR},
 							   #{mem_name, jdbcType=VARCHAR},
@@ -142,29 +129,43 @@
 		</selectKey>
 		<![CDATA[
 			insert into orderdetail(
+							  orderdetail_seq,
 							  sell_number,
 							  order_number,
 							  od_quantity,
 							  od_size,
 							  od_color,
-							  delivery_price,
-							  delivery_payment,
-							  od_state,
-							  od_number
+							  seller_id,
+							  od_number,
+							  point_save
 							  )
 						values(
-						      #{sell_number, jdbcType=VARCHAR},
+							  #{orderdetail_seq, jdbcType=NUMERIC},
+							  #{sell_number, jdbcType=VARCHAR},
 							  #{order_number, jdbcType=VARCHAR},
 							  #{detail_quantity, jdbcType=NUMERIC},
 							  #{order_size, jdbcType=VARCHAR},
 							  #{order_color, jdbcType=VARCHAR},
-							  #{delivery_price, jdbcType=VARCHAR},
-							  #{delivery_payment, jdbcType=VARCHAR},
-							  #{od_state, jdbcType=VARCHAR},
-							  #{od_number, jdbcType=VARCHAR}
-							)
+							  #{seller_id, jdbcType=VARCHAR},
+							  #{od_number, jdbcType=VARCHAR},
+							  #{point_save, jdbcType=NUMERIC}
+								)
 		]]>
 	</insert>
+	<update id="saveMemPoint" parameterType="E_P001VO">
+		<![CDATA[
+		update members
+		set mem_point_test = mem_point_test + #{point_save_total}
+		where mem_id = #{mem_id}
+		]]>
+	</update>
+	<update id="usePoint" parameterType="E_P001VO">
+	    <![CDATA[[
+	    update members
+	    set mem_point_test = mem_point_test - #{order_pointuse}
+	    where mem_id = #{mem_id}
+	    ]]>
+	</update>
 	<select id="selectOrderDetailNumber" resultType="int">
 		<![CDATA[
 		select seq_od_number.nextval from dual
@@ -175,68 +176,4 @@
 		select seq_order_number.nextval from dual
 		]]>
 	</select>
-	<select id="couponList" resultMap="E_P001Result02">
-      <![CDATA[
-         select 
-         mc.co_number, 
-         c.co_name, 
-         to_char(c.co_enddate,'YYYY-MM-DD') co_enddate, 
-         to_char(c.co_stdate,'YYYY-MM-DD') co_stdate,
-         c.co_percent
-		 from coupon c, mycoupon mc
-		 where c.co_number = mc.co_number
-		 and mem_id = #{p_id}	
-		 and co_check = 'N'
-      ]]>
-	</select>
-	<update id="saveMemPoint" parameterType="E_P001VO">
-		<![CDATA[
-		update members
-		set mem_point = mem_point + #{point_save_total} - #{order_pointuse}
-		where mem_id = #{mem_id}
-		]]>
-	</update>
-	<insert id="point_use" parameterType="E_P001VO">
-	   <![CDATA[
-	   insert into pointuse(
-	   						point_number,
-	   						point_usedate,
-	   						point_usemoney,
-	   						point_content,
-	   						mem_id
-	   						)
-	   				values(
-	   						pointuse_number.nextval,
-	   						sysdate,
-	   						#{order_pointuse},
-	   						'사용',
-	   						#{mem_id}
-	   					  )
-	   ]]> 
-	</insert>
-	<insert id="point_add" parameterType="E_P001VO">
-	   <![CDATA[
-	   insert into pointuse(
-	   						point_number,
-	   						point_date,
-	   						point_usemoney,
-	   						point_content,
-	   						mem_id
-	   						)
-	   				values(
-	   						pointuse_number.nextval+0,
-	   						sysdate,
-	   						TRUNC(#{point_save_total}),
-	   						'적립',
-	   						#{mem_id}
-	   					  )
-	   ]]> 
-	</insert>
-	<update id="useCoupon" parameterType="activeVO">
-	  	<![CDATA[
-	  	update mycoupon
-	  	set co_check = 'Y'
-	    where co_number = #{co_number}
-	    ]]>
-	</update>
 </mapper>

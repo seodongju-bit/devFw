@@ -72,7 +72,6 @@
 	  	  <td></td>
 	  	  <td>상품 정보</td>
 	  	  <td>결제금액</td>
-	  	  <td>적립 포인트</td>
 	  	  <td>진행상태</td>
 	  	</tr>
 	  	<c:forEach var="item" items = "${orderList}" varStatus = "list_num">
@@ -94,9 +93,6 @@
 	  	    <td>
 	  	      ${item.final_order_total_price}원
 	  	    </td> 
-	  	    <td>
-	  	      ${item.point_save_total}P
-	  	    </td>
 	  	    <td>
 	  	      ${item.od_state}
 	  	    </td>

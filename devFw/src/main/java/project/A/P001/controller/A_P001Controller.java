@@ -21,4 +21,5 @@ public interface A_P001Controller {
 	public ModelAndView secessionmember(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView login(@RequestParam Map<String, String> loginMap,HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView logout(HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public String userIdSearch (@RequestParam Map<String, String> sidMap,HttpServletRequest request, HttpServletResponse response) throws Exception;
 }

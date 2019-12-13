@@ -137,7 +137,7 @@ public class A_P003ControllerImpl implements A_P003Controller {
 	@RequestMapping(value = "/Secessionmember.do", method = RequestMethod.POST)
 	public String Secessionmember(@ModelAttribute A_P001VO A_P001VO,HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session=request.getSession();	
-		ModelAndView mav = new ModelAndView();
+		String message = null;
 		boolean result = a_p003Serivce.pwCheck(A_P001VO.getMem_id(),A_P001VO.getMem_pw());
 		System.out.println(A_P001VO);
 		if(result) {
@@ -145,8 +145,9 @@ public class A_P003ControllerImpl implements A_P003Controller {
 			session.invalidate();
 		return "Secessionsuccesspage";
 		}else {
-			String message="일치하는 회원정보가 없습니다.";
-			mav.addObject("message",message);
+			message  = "<script>";
+		    message +=" alert('작업 중 오류가 발생했습니다. 다시 시도해 주세요');";
+		    message += " </script>";
 			return "membersecessionpage";
 		}
 	}

@@ -20,10 +20,8 @@ public interface C_P001Controller {
 //	public ModelAndView listEvent(PagingVO vo, HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView eventDetail(@RequestParam("no_number") String no_number, HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView eventWrite(HttpServletRequest request, HttpServletResponse response) throws Exception;
-	
+	public ModelAndView write(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView listEvent(PagingVO vo, String nowPage, String cntPerPage, HttpServletRequest request,
 			HttpServletResponse response) throws Exception;
-	ModelAndView write(Map<String, String> map, HttpServletRequest request, HttpServletResponse response)
-			throws Exception;
 
 }

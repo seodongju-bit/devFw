@@ -145,8 +145,18 @@ $(document).ready(function(){
 	          //alert("작업을완료 했습니다");
 	       }
 	    });  //end ajax
-
 	    
+// 	 var nowCtgr = '${cnum}';
+	 
+// 	 if(nowCtgr==''){
+// 		 $('[id^=H_]').css("display","block");
+// 		 $('#topCategoryName').remove();
+// 	 }else{
+// // 		 if(nowCtgr)
+// // 		$('[id^='+nowCtgr+']').css("background-color","gray");
+// 	 	nowCtgr = nowCtgr.substr(0,4);
+// 		$('[id^='+nowCtgr+']').css("display","block");
+// 	 }
 	 $('#contentDetail').load('bestReviewPlus.do',{ ctgrNum :'${ctgrNum}'});
 });
 function moveCtgr(ctgr){

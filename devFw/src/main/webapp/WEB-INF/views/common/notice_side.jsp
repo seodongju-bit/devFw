@@ -62,7 +62,7 @@ function fn_coupon(){
         <li class="nav-header">자주묻는질문</li>
         <li><a href="${contextPath}/questions2.do">Q&A</a></li>
         <li class="nav-header">문의글</li>
-        <li><a href="${contextPath}/questionwrite.do">문의글 등록</a></li>
+      <!-- <li><a href="${contextPath}/questionwrite.do">문의글 등록</a></li> -->
         <li><a href="${contextPath}/questions.do">문의내역 조회</a></li>    
         <li class="nav-header">신고글</li>
         <li><a href="${contextPath}/questionwrite3.do">신고글 작성</a></li>

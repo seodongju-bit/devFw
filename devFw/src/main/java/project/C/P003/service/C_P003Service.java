@@ -5,7 +5,7 @@ import java.util.Map;
 
 import org.springframework.dao.DataAccessException;
 
-
+import project.C.P003.vo.C_P003VO;
 import project.C.P003.vo.PageVO;
 
 public interface C_P003Service {
@@ -35,4 +35,5 @@ public interface C_P003Service {
 	public int countBoard();
 	
 	public int countBoard2();
+	public List selectOrderInfo(String mem_id) throws DataAccessException;
 }

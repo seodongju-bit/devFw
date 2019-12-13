@@ -17,7 +17,6 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import project.B.P002.vo.B_P002VO;
 import project.C.P001.dao.C_P001DAO;
 import project.C.P001.vo.C_P001VO;
 import project.C.P001.vo.PagingVO;
@@ -58,21 +57,7 @@ public class C_P001ServiceImpl implements C_P001Service {
 	public int countBoard() {
 		return eventDAO.countBoard();
 		
-	}
-
-	@Override
-	public List<Map<String, Object>> searchSale(Map<String, Object> searchMap) {
-		// TODO Auto-generated method stub
-		return eventDAO.searchSale(searchMap);
-	}
-
-	@Override
-	public void addItem(Map<String, Object> eventMap) {
-		eventDAO.addItem(eventMap);
-		
-	}
-
-	
+	}		
 			
 	
 }
