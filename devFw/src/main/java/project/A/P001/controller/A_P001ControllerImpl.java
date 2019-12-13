@@ -1,9 +1,12 @@
 package project.A.P001.controller;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Map;
 
+import javax.inject.Inject;
+import javax.mail.MessagingException;
 import javax.mail.Session;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,6 +18,7 @@ import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -26,10 +30,12 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.github.scribejava.core.model.OAuth2AccessToken;
+import com.sun.mail.util.logging.MailHandler;
 
 import project.A.P001.base.A_P001Base;
 import project.A.P001.service.A_P001Service;
 import project.A.P001.vo.A_P001VO;
+import project.A.P002.mailservice.A_P002MailHandler;
 
 @Controller("A_P001Controller")
 public class A_P001ControllerImpl implements A_P001Controller {
@@ -38,6 +44,9 @@ public class A_P001ControllerImpl implements A_P001Controller {
 	A_P001Service a_p001Service;
 	@Autowired
 	A_P001VO A_P001VO;
+	
+	@Inject
+	private JavaMailSender mailSender;
 	
 	/* NaverLoginBO */
     private NaverLoginBO naverLoginBO;
@@ -240,17 +249,46 @@ public class A_P001ControllerImpl implements A_P001Controller {
 		return mav;
 	}
 	
-	@RequestMapping(value = "/idSearch.do", method = RequestMethod.POST)
 	@ResponseBody
-	public String userIdSearch (@RequestParam Map<String, String> sidMap,HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
-		String result = a_p001Service.get_searchId(sidMap);
-				
-		System.out.println("컨트롤러 확인" + result);
-		
-		return result;
+	@RequestMapping(value = "/searchID.do", method = RequestMethod.POST)
+	public String searchID(HttpServletRequest request) {
+		String mem_email1 = request.getParameter("mem_email1");
+		String mem_email2 = request.getParameter("mem_email2");
+		System.out.println(mem_email1);
+		System.out.println(mem_email2);
+		A_P001VO A_P001VO = new A_P001VO();
+		A_P001VO.setMem_email1(mem_email1);
+		A_P001VO.setMem_email2(mem_email2);
+		A_P001VO search = a_p001Service.searchID(A_P001VO);
+		if (search != null) {
+			return search.getMem_id();
+		} else {
+			return "x";
+		}
 	}
 	
+	
+	@ResponseBody
+	@RequestMapping(value = "/searchPW.do", method = RequestMethod.POST)
+	public String searchPW(HttpServletRequest request) {
+		String mem_id = request.getParameter("mem_id");
+		String mem_email1 = request.getParameter("mem_email1");
+		String mem_email2 = request.getParameter("mem_email2");
+		System.out.println(mem_id);
+		System.out.println(mem_email1);
+		System.out.println(mem_email2);
+		A_P001VO A_P001VO = new A_P001VO();
+		A_P001VO.setMem_email1(mem_id);
+		A_P001VO.setMem_email1(mem_email1);
+		A_P001VO.setMem_email2(mem_email2);
+		A_P001VO search = a_p001Service.searchID(A_P001VO);
+		if (search != null) {
+			return search.getMem_pw();
+		} else {
+			return "x";
+		}
+	}
+
 
 	private String getViewName(HttpServletRequest request) throws Exception {
 		String contextPath = request.getContextPath();
@@ -282,6 +320,7 @@ public class A_P001ControllerImpl implements A_P001Controller {
 		}
 		return viewName;
 	}
+
 
 
 

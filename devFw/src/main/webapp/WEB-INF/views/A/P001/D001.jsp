@@ -40,8 +40,7 @@
 	
 		
 		
-        <button  class="small-btn" type="button" onclick = "javascript:idsearchpopup()">아이디 찾기</button>   
-        <button  class="small-btn" type="button" onclick = "javascript:pwsearchpopup()">비밀번호 찾기</button>      
+        <button  class="small-btn" type="button" onclick = "javascript:idsearchpopup()">회원정보 찾기</button>    
         <button  class="small-btn" type="button" onclick = "location.href='memberdivisionpage.do'">회원가입</button>
         <button  class="small-btn" type="button" onclick = "location.href='main.do'">홈페이지로</button>
         
