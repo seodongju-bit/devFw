@@ -412,7 +412,7 @@ h1{
 	  	  <td>배송비</td>
 	  	  <td>배송비 지급방법</td>
 	  	  <td>적립 포인트</td>
-	  	</tr>
+	  	</tr> 
 	  	<c:forEach var="item" items = "${orderList}" varStatus = "list_num">
 	  	  <tr>
 	  	    <td id="list_num">
