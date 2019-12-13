@@ -151,6 +151,7 @@
       SELECT COUNT(*) FROM mycoupon
       WHERE
           mem_id = #{mem_id} 
+          and co_check = 'N'
            ]]> 
 </select>
 

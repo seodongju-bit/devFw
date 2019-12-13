@@ -707,7 +707,7 @@ $(document).ready(function(){
 				<a id="pop-close">&times;</a>			
 			</div>
 			<div id="pop-search">
-				<input type="text" placeholder="새로운 유저 검색"/>
+				<input type="text" placeholder="관리자 목록 검색"/>
 				<input type="button" value="검색">
 			</div>
 			<div id="pop-list"></div>

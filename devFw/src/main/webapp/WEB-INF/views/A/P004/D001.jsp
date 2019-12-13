@@ -419,7 +419,7 @@ ul.tabs li.active, html ul.tabs li.active a:hover {
 			</c:if>
 								
 					<c:forEach var="quList" items="${quList}">
-						<tr onclick="myquestion('${quList.QU_NUMBER}')">
+						<tr onclick="myquestion('${quList.QU_NUMBER}')" style="border-bottom: 1px solid #ddd;">
 							<td>${quList.mem_id}</td>
 							<td>${quList.QU_CONTENTS}</td>
 							<td>${quList.QU_DATE}</td>
