@@ -424,6 +424,7 @@ h1{
 	  	        <a style="color:black; margin: 0 0 0 0; width:500px;" href="${contextPath}/sellItems.do?sell_no=${item.sell_number}">${item.sell_title}</a>
 	  	      	<input type="hidden" id="sell_number" name="sell_number" value="${item.sell_number}"/>
 	  	      	<input type="hidden" id="sell_title" name="sell_title" value="${item.sell_title}"/>
+	  	      	<input type="hidden" id="sell_title" name="choice_review" value="${item.choice_review}"/>
 	  	        </span>
 	  	      	<span id="option">
 		  	      ${item.order_size}&nbsp;&nbsp;&nbsp;

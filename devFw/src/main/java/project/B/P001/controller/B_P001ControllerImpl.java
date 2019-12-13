@@ -52,6 +52,21 @@ public class B_P001ControllerImpl   implements B_P001Controller {
 	}
 	
 	
+		@RequestMapping(value="/searchOrder.do" ,method = RequestMethod.GET)
+	public ModelAndView searchOrder(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = getViewName(request);
+		if(!sellerCheck(request)) {
+			ModelAndView mav = new ModelAndView(viewName);
+			mav.setViewName("redirect:main.do");
+			return mav;
+		}
+		viewName = "searchOrder";
+		ModelAndView mav = new ModelAndView(viewName);
+		return mav;
+	}
+		
+		
+		
 	private SqlSession sqlSession;
 	
 	@Autowired
@@ -85,18 +100,13 @@ public class B_P001ControllerImpl   implements B_P001Controller {
 	      request.setCharacterEncoding("utf-8");
 	      System.out.println(request.getParameterValues("sStatus")[0]);
 	      System.out.println(list);
-//	      HttpSession session = request.getSession();
-//	      session = request.getSession();
-//	      String seller_id = (String)session.getAttribute("mem_id");
-//	      
-//	      Map<String, Object> searchMap = new HashMap<String, Object>(); // 검색조건
 	      Map<String, Object> resultMap = new HashMap<String, Object>(); // 조회결과
 	      
-//	      searchMap.put("seller_id", seller_id);
-//	      List<B_P001VO> data =b_P001Service.selectItem(searchMap);
-//	      resultMap.put("Data", data);
+
 	      return resultMap;
 	   }
+	   
+
 	   
 	   @RequestMapping(value = "/itemManager/deleteList.do", method = { RequestMethod.GET, RequestMethod.POST })
 	   @ResponseBody

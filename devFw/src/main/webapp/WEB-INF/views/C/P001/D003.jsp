@@ -215,8 +215,6 @@ $(function() {
 		</td>
 		</tr>
 		
-		
-		
 </table>
 		<div id="hiddenLine" >
 			<button type="button" class="btn btn-default" onclick="searchSale()">이벤트 상품추가</button>

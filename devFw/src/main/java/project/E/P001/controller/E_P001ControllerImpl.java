@@ -62,6 +62,7 @@ public class E_P001ControllerImpl implements E_P001Controller {
 					e_P001VO.setSell_number((String)list.get(i).get("sell_number"));
 					e_P001VO.setDetail_quantity((String)list.get(i).get("detail_quantity")); 
 					e_P001VO.setOrder_size((String)list.get(i).get("order_size")); 
+					e_P001VO.setChoice_review((String)list.get(i).get("choice_review"));
 					e_P001VO.setOrder_color((String)list.get(i).get("order_color"));
 					System.out.println(BeanUtils.describe(e_P001VO));
 					result.add(e_P001VO);
@@ -297,10 +298,11 @@ public class E_P001ControllerImpl implements E_P001Controller {
 		List color = new ArrayList();
 		List quantity = new ArrayList();
 		int i=1;
-		while(true) {
+		while(true){
 			if(request.getParameter("quantity"+i)==null || request.getParameter("quantity"+i)=="") { break; }
 			resultMap = new HashMap<String, Object>();
 			resultMap.put("sell_number", request.getParameter("sell_number"));
+			resultMap.put("choice_review", request.getParameter("od_recomReview"));
 			resultMap.put("detail_quantity", request.getParameter("quantity"+i));
 			resultMap.put("order_size",request.getParameter("size"+i));
 			resultMap.put("order_color",request.getParameter("color"+i));
