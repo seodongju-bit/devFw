@@ -26,6 +26,19 @@
 	margin-right: 20px;
 }
 
+#hiddenLine{
+	position: relative;
+	left: 211px;
+	display: none;
+/* 	background-color: #f2f2f2; */
+	width: 881px;
+	min-height: 130px;
+	border: 1px solid lightgray;
+	padding: 10px;
+}
+#hiddenLine button{
+	float: right;
+}
 </style>
   <!-- SmartEditor를 사용하기 위해서 다음 js파일을 추가 (경로 확인) -->
 <script type="text/javascript" src="../devFw/resources/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
@@ -125,14 +138,21 @@ $(function() {
    		return false;
    	}
    	
-   	alert(no_stdate);
-   	alert(no_enddate);
    	
      frm.method="post"; 
      frm.action="./write.do"; 
    	 frm.submit();
    	
     }
+    
+    
+    $('#division').on('change',function(){
+		if($(this).val()=="이벤트"){
+			$('#hiddenLine').css("display", "block");
+		}else{
+			$('#hiddenLine').css("display",'none');
+		}
+    });
     
 });
 
@@ -142,6 +162,17 @@ $(function() {
   	
   }  */
 
+  function searchSale(){
+		var popupX = (window.screen.width/2) ;
+		var popupY = (window.screen.height/2) - (400);
+		window.open("searchSale.do", "판매글검색", "width=850, height=730, left="+popupX+", top="+popupY);
+	}
+  function delItem(id){
+	$("#"+id).remove();
+  }
+  
+
+  
 </script>
 <style>
 #division, #title{
@@ -183,12 +214,20 @@ $(function() {
 		<textarea name="content" id="editor"   style="width: 80%; height: 400px;"></textarea>
 		</td>
 		</tr>
-
+		
 </table>
+		<div id="hiddenLine" >
+			<button type="button" class="btn btn-default" onclick="searchSale()">이벤트 상품추가</button>
+			<div id="sellList"></div>
+			
+		</div>
+		
 		<input id="subBtn" type="button" class="btn btn-default" value="글 작성" style="float: left; margin-right: 15px;"/>
 </div>
 
   </form>
+   
+  
 <form name="uploadForm" id="uploadForm" method="post" enctype="multipart/form-data">
          <label class="uploadList"><input id="file" type="file" name="file"></label>
 </form>
