@@ -20,10 +20,6 @@
 <style>
 #contentsPage{
 /* 	border-top: 1px solid lightgray; */
-	margin-top: 10px;
-}
-#contentsPage button{
-	float: right;
 }
 #area{
 	background-color: white;
@@ -41,8 +37,8 @@
 }
 .tab{
 	background-color: white;
-	width: 160px;
-	height: 36px;
+	width: 200px;
+	height: 40px;
 	border-bottom: 0px solid black;
 /* 	border-right: 0px solid black; */
 	border-radius: 8px 8px 2px 2px;
@@ -132,107 +128,21 @@
 	}
 	/////////
 	
-	
-
-	function addProduct(){
-		var popupX = (window.screen.width/2) - (400);
-		var popupY = (window.screen.height/2) - (500);
-		window.open("itemManager/addProduct.do", "제품추가창", "width=600, height=700, left="+popupX+", top="+popupY,"resizable=no");
-	}
-	
-	function addSell(){
-		var popupX = (window.screen.width/2) - (400);
-		var popupY = (window.screen.height/2) - (500);
-		window.open("itemManager/addSell.do", "판매등록창", "width=885, height=920, left="+popupX+", top="+popupY,"resizable=no");
-	}
-
-	
 	function mergeChg(str){
 		mySheet.SetMergeSheet(eval(str));
 		doAction('search')
 		//mySheet.SetDataMerge();
 
 	}
-	
-// 	$(document).ready(function(){
-		
-		
-// // 		$('.ib_product').hover(function() {
-
-// // 			  $('body').css("overflow", "hidden");
-// // 			}, function(){
-// // 			  $('body').css("overflow", "scroll");
-
-// // 			});
-// // 	//class ib_product
-// // 	$("html").css("overflow", "hidden");
-// // 	$('.ib_product').mouseenter(function () {
-		  
-// // 	});
-// // 	$('.ib_product').mouseleave(function () {
-// // 		  $("html").css("overflow", "auto");
-// // 	});
-// 	});
-
-function pageLoad(command){
-// 	if(command=="itemsInfoLoad"){
-// 		$('#contentsPage').load('itemsInfoLoad.do');
-// 	}
-	if(command=="searchOrder"){ //주문완료
-		$('#contentsPage').load('searchOrder.do');
-	}
-	if(command=="shippingManagement"){//배송중
-		$('#contentsPage').load('shippingManagement.do');
-	}
-	if(command=="deliveryCompleted"){//배송완료
-		$('#contentsPage').load('deliveryCompleted.do');
-	}
-	if(command=="orderCancel"){//주문취소
-		$('#contentsPage').load('orderCancel.do');
-	}
-	if(command=="saleCompleted"){//판매완료
-		$('#contentsPage').load('saleCompleted.do');
-	}
-	if(command=="currentOrder"){//현재주문전체
-		$('#contentsPage').load('currentOrder.do');
-	}
-}
-
 </script>
 
 <title>Insert title here</title>
 </head>
 <body onload="LoadPage()">
-     <div id="area">
-		
-        <div class="main_content">
-  			<h1>상품관리</h1><br>
-  			
-			<button class="tab btn-default" id="saleManagement">판매상품관리</button>
-			<button class="tab btn-default" id="searchOrder" onclick="pageLoad('searchOrder')">주문완료</button>
-			<button class="tab btn-default" id="shippingManagement">배송중</button>
-			<button class="tab btn-default" id="deliveryCompleted">배송완료</button>
-			<button class="tab btn-default" id="orderCancel">주문취소</button>
-			<button class="tab btn-default" id="saleCompleted">판매완료</button>
-			<button class="tab btn-default" id="currentOrder">현재주문전체</button>
-			
-			
-			<div id="contentsPage">
-			<button class="btn btn-default" onclick="addProduct()">제품추가</button>
-  			<button class="btn btn-default" onclick="addSell()">판매등록</button>
-            	<div class="ib_function float_right">
-<!--                 <a href="javascript:doAction('reload')" class="f1_btn_gray lightgray">초기화</a> -->
-                	<a href="javascript:doAction('insert')" class="f1_btn_gray lightgray">추가</a>
-                	<a href="javascript:doAction('search')" class="f1_btn_white gray">조회</a>
-                	<a href="javascript:doAction('save')" class="f1_btn_white gray">저장</a>
-            	</div>
-			
-            	<div class="ib_product">
-					<script type="text/javascript"> createIBSheet("mySheet", "1300px", "540px"); </script>
-            	</div>
-			</div>
-        </div>
-   
+		<div id="contentsPage">
+           <div class="ib_product">
+				<script type="text/javascript"> createIBSheet("mySheet", "1300px", "540px"); </script>
+           </div>
 	</div>
 </body>
 </html>

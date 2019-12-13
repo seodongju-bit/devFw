@@ -16,17 +16,16 @@
 	#contentsBody{
 		position: relative;
 		width:1300px;
-		background-color: #FAFAFA;
 		margin:0 auto;
 		min-height:700px;
 		color: gray;
 		text-align: left;
-		background-color: lightgray;
+/* 		background-color: lightgray; */
 	}
 	#bestReview, #bestProduct {
 		width:100%;
 		height: 400px;
-		background-color: #f2f2f2;
+/* 		background-color: #f2f2f2; */
 		margin: 20px auto;
 		border-radius: 10px;
 	}
@@ -39,7 +38,7 @@
 		position:relative;
 		width: 100%;
 		min-height: 600px;
-		background-color: #f2f2f2;
+/* 		background-color: #f2f2f2; */
 		margin:0 auto;
 		font-size: 15px;
 		border-radius: 10px;
@@ -89,12 +88,11 @@
 	}
 	
 	#proImg{
-		width: 196px;
-		height: 196px;
+		width: 192px;
+		height: 192px;
 	}
 	#bestProduct .reviewBox{
 		padding: 0px;
-		width: 200px;
 		height: 250px;
 		
 	}
@@ -105,9 +103,9 @@
 	.ProdropBox{
 		position: absolute;
 		top: 0px;
-		width: 200px;
-		height: 200px;
-		padding:10px;
+		width: 192px;
+		height: 192px;
+		padding:8px;
 		display: none;
 		background-color: white;
 		opacity: 0.7;

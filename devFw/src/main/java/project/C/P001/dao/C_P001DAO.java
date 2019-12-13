@@ -17,8 +17,8 @@ public interface C_P001DAO {
 	 public void updateCNT(Map<String, Object> dataMap) throws DataAccessException;
 	 public void write(Map<String, Object> dataMap);
 	 public int countBoard();
-	 public List<Map<String, Object>> searchSale(Map<String, Object> searchMap);
-		public void addItem(Map<String, Object> eventMap);
+	public List<Map<String, Object>> searchSale(Map<String, Object> searchMap);
+	public void addItem(Map<String, Object> eventMap);
 
 }
 

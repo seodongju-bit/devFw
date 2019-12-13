@@ -88,6 +88,8 @@
 	]]>
 	</select>
 	
+	
+	
 	<select id="searchSale" parameterType="java.util.Map" resultType="java.util.HashMap">
 
       <![CDATA[
@@ -116,5 +118,6 @@
 			
 		]]>
 	</insert>
+	
 	
 	</mapper>

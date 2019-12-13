@@ -51,7 +51,8 @@ public class C_P001DAOImpl implements C_P001DAO {
 	public int countBoard() {
 		return sqlSession.selectOne("mapper.event.countBoard");
 	}
-	
+
+
 	@Override
 	public List<Map<String, Object>> searchSale(Map<String, Object> searchMap) {
 		List<Map<String, Object>> list = sqlSession.selectList("mapper.event.searchSale", searchMap);
@@ -64,5 +65,7 @@ public class C_P001DAOImpl implements C_P001DAO {
 		sqlSession.insert("mapper.event.addItem", eventMap);
 		
 	}
+	
+	
 	
 }

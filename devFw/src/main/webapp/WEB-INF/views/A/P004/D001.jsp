@@ -220,7 +220,7 @@ ul.tabs li.active, html ul.tabs li.active a:hover {
 		<tr>
 			<th id="My">My</th>
 			<th>문의 내역<br> <c:choose>
-						<c:when test="${question_count!='0' }=='0'}">
+						<c:when test="${question_count=='0' }">
 			0건
 			</c:when>
 						<c:when test="${question_count!='0'}">
@@ -270,6 +270,7 @@ ul.tabs li.active, html ul.tabs li.active a:hover {
 
 
 		<ul class="tabs">
+			<!-- <li><a href="#tab1">My</a></li> -->
 			<li><a id="tab2c" href="#tab2">전체</a></li>
 			<li><a id="tab3c" href="#tab3">문의내역</a></li>
 		</ul>
@@ -320,9 +321,8 @@ ul.tabs li.active, html ul.tabs li.active a:hover {
 							<td>
 								<p class="tdMenu"
 									onclick="reviewWrite('${orderList.SELL_NUMBER}','${orderList.SELL_TITLE}')">리뷰작성</p>
-								<input type="hidden" id="order_number" name="order_number" value="${orderList.ORDER_NUMBER}"/>
 								<p class="tdMenu">리뷰 수정</p>
-								<p class="tdMenu" onclick="questionwrite2()">문의하기</p>
+								<p class="tdMenu">교환신청</p>
 								<p class="tdMenu">구매확정</p>
 								<p class="tdMenu">주문취소</p>
 							</td>
@@ -379,7 +379,7 @@ ul.tabs li.active, html ul.tabs li.active a:hover {
 									onclick="reviewWrite('${orderList2.SELL_NUMBER}','${orderList2.SELL_TITLE}')">리뷰작성</p>
 									<input type="hidden" id="order_number" name="order_number" value="${orderList2.ORDER_NUMBER}"/>
 								<p class="tdMenu">리뷰 수정</p>
-							    <p class="tdMenu" onclick="questionwrite2()">문의하기</p>
+								<p class="tdMenu" onclick="questionwrite2()">문의하기</p>
 								<c:choose>
 								<c:when test="${orderList2.OD_STATE =='F_0006'}">
 										
@@ -524,130 +524,117 @@ ul.tabs li.active, html ul.tabs li.active a:hover {
 
 	<script>
 	
-		/*function questionwrite(sell_number, sell_title, sell_thumbnail, order_number){
-			$.ajax({
-				type:"POST",
-				url:"/devFw/questionwrite.do",
-				data:{
-					"sell_number" : sell_number,
-					"sell_title" : sell_title,
-					"sell_thumbnail" : sell_thumbnail,
-					"order_number" : order_number
-				},
-			});				
-		}*/
-		
 	function questionwrite2(){
-			var formObj = document.createElement("form");
+		var formObj = document.createElement("form");
 
-			var order_number = document.getElementById("order_number");
-			document.body.appendChild(formObj);
-			formObj.append(order_number);
-			formObj.method = "get";
-			formObj.action = "../devFw/questionwrite.do";
-			formObj.submit();
-		}
+		var order_number = document.getElementById("order_number");
+		document.body.appendChild(formObj);
+		formObj.append(order_number);
+		formObj.method = "get";
+		formObj.action = "../devFw/questionwrite.do";
+		formObj.submit();
+	}
 	
-		function confirm(order_number, sell_number, od_recomreview){
-			
-			Swal.fire({
-				  title: '구매확정',
-				  text: "구매확정을 하시겠습니까?",
-				  showCancelButton: true,
-				  confirmButtonColor: '#3085d6',
-				  cancelButtonColor: '#d33',
-				  confirmButtonText: '구매확정',
-				  cancelButtonText: '보류',
-				}).then((result) => {
-				  if (result.value) {
-					  
-					  $.ajax({
-					       type:"post",
-					       async:false,  
-					       url:"../devFw/confirm.do",
-					       data: {
-					    	   
-					    	   "order_number":order_number,
-					    	   "sell_number" : sell_number,
-					    	   "od_recomreview":od_recomreview
-					       },
-					       success: function (data) {
-					    	   if(data.check>0){
-					    		   swal("이미 확정이 된 상품입니다.");
-					               return false;
-					    	   }
-					    	   Swal.fire({
-					    			  title: '구매확정 완료',
-					    			  text: "확정완료",
-					    			  confirmButtonColor: '#3085d6',
-					    			  confirmButtonText: '확인',
-					    	   }).then((result) => {
-					    			  if (result.value) {
-					    				  location.reload();
-					    			  }
-					    			  
-					    			})
-				              
-				            },
-				            error: function () {
-				               swal("다시시도해 주세요.");
-				               return false;
-				            },
-					  });
-				  }
-		})
-		}
+	function confirm(order_number, sell_number, od_recomreview){
 		
-	function cancle(order_number, sell_number){
-			
-			Swal.fire({
-				  title: '주문취소',
-				  text: "주문취소를 하시겠습니까?",
-				  showCancelButton: true,
-				  confirmButtonColor: '#3085d6',
-				  cancelButtonColor: '#d33',
-				  confirmButtonText: '주문취소',
-				  cancelButtonText: '보류',
-				}).then((result) => {
-				  if (result.value) {
-					  
-					  $.ajax({
-					       type:"post",
-					       async:false,  
-					       url:"../devFw/cancle.do",
-					       data: {
-					    	   
-					    	   "order_number":order_number,
-					    	   "sell_number" : sell_number
-					    	   
-					       },
-					       success: function (data) {
-					    	   if(data.check>0){
-					    		   swal("이미 주문취소가 된 상품입니다.");
-					               return false;
-					    	   }
-					    	   Swal.fire({
-					    			  title: '주문취소 완료',
-					    			  text: "취소완료",
-					    			  confirmButtonColor: '#3085d6',
-					    			  confirmButtonText: '확인',
-					    	   }).then((result) => {
-					    			  if (result.value) {
-					    				  location.reload();
-					    			  }
-					    			  
-					    			})
-				              
-				            },
-				            error: function () {
-				               swal("다시시도해 주세요.");
+		Swal.fire({
+			  title: '구매확정',
+			  text: "구매확정을 하시겠습니까?",
+			  showCancelButton: true,
+			  confirmButtonColor: '#3085d6',
+			  cancelButtonColor: '#d33',
+			  confirmButtonText: '구매확정',
+			  cancelButtonText: '보류',
+			}).then((result) => {
+			  if (result.value) {
+				  
+				  $.ajax({
+				       type:"post",
+				       async:false,  
+				       url:"../devFw/confirm.do",
+				       data: {
+				    	   
+				    	   "order_number":order_number,
+				    	   "sell_number" : sell_number,
+				    	   "od_recomreview":od_recomreview
+				       },
+				       success: function (data) {
+				    	   if(data.check>0){
+				    		   swal("이미 확정이 된 상품입니다.");
 				               return false;
-				            },
-					  });
-				  }
-		})
-		}
+				    	   }
+				    	   Swal.fire({
+				    			  title: '구매확정 완료',
+				    			  text: "확정완료",
+				    			  confirmButtonColor: '#3085d6',
+				    			  confirmButtonText: '확인',
+				    	   }).then((result) => {
+				    			  if (result.value) {
+				    				  location.reload();
+				    			  }
+				    			  
+				    			})
+			              
+			            },
+			            error: function () {
+			               swal("다시시도해 주세요.");
+			               return false;
+			            },
+				  });
+			  }
+	})
+	}
+	
+function cancle(order_number, sell_number){
 		
+		Swal.fire({
+			  title: '주문취소',
+			  text: "주문취소를 하시겠습니까?",
+			  showCancelButton: true,
+			  confirmButtonColor: '#3085d6',
+			  cancelButtonColor: '#d33',
+			  confirmButtonText: '주문취소',
+			  cancelButtonText: '보류',
+			}).then((result) => {
+			  if (result.value) {
+				  
+				  $.ajax({
+				       type:"post",
+				       async:false,  
+				       url:"../devFw/cancle.do",
+				       data: {
+				    	   
+				    	   "order_number":order_number,
+				    	   "sell_number" : sell_number
+				    	   
+				       },
+				       success: function (data) {
+				    	   if(data.check>0){
+				    		   swal("이미 주문취소가 된 상품입니다.");
+				               return false;
+				    	   }
+				    	   Swal.fire({
+				    			  title: '주문취소 완료',
+				    			  text: "취소완료",
+				    			  confirmButtonColor: '#3085d6',
+				    			  confirmButtonText: '확인',
+				    	   }).then((result) => {
+				    			  if (result.value) {
+				    				  location.reload();
+				    			  }
+				    			  
+				    			})
+			              
+			            },
+			            error: function () {
+			               swal("다시시도해 주세요.");
+			               return false;
+			            },
+				  });
+			  }
+	})
+	}
+	
 		$(document).ready(function aa() {
 			$('#orderTable').rowspan(0);
 		});
