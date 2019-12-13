@@ -144,15 +144,17 @@ function selChange() {
 				<table class="table table-hover" id="evnet_td">              
 					<colgroup>
 						<col width="10%" />
-						<col width="30%" />
-						<col width="30%" />
+						<col width="15%" />
+						<col width="20%" />
+						<col width="25%" />
 						<col width="10%" />
 						<col width="20%" />
-					
+					  
 					</colgroup>
 					<thead>		
 						<tr>
 							<th>문의번호</th>
+							<th>문의상품</th>
 							<th>문의내용</th>
 							<th>문의답변</th> 
 							<th>문의회원</th>
@@ -162,7 +164,8 @@ function selChange() {
 					<c:forEach var="question2" items="${questionList}" varStatus='index' >					
 					<thead>
 					<tr align="center" onclick="location.href='${contextPath}/questionDetail1.do?qu_number=${question2.qu_number}'">            
-					<td>${question2.qu_number}</td>                      
+					<td>${question2.qu_number}</td> 
+					<td>${question2.sell_title}</td>                     
 					<td>${question2.qu_contents}</td>
 					<td>${question2.qu_answer}</td>
 					<td>${question2.mem_id}</td> 

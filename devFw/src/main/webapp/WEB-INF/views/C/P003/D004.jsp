@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" isELIgnored="false"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%
+	request.setCharacterEncoding("UTF-8");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,6 +24,7 @@ height:1000px;
 
 
 
+
 </style>
 
 
@@ -28,7 +34,7 @@ height:1000px;
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
 
 
-</head>
+</head>        
 <body>  
 
 <form name="frmch" action = "./questionwrite2.do" method="post">             
@@ -37,13 +43,22 @@ height:1000px;
 
 <div style="width: 60%; margin-left: 20%; margin-right: auto;">
 
-		<input type="text" name="mem_id" style="width: 20%;" placeholder="작성자"/><br>
+		<!--  작성자: <input type="text" name="mem_id" style="width: 20%;" placeholder="작성자"/><br>-->
+	
+		<!--<c:forEach var="orderInfo" items="${orderInfo}">
+			주문번호:<c:out value="${orderInfo.order_number}"/><br>
+			상품명:<c:out value="${orderInfo.sell_title}"/><br>
+			<img src="<c:out value="${orderInfo.sell_thumbnail}"/>">
+		</c:forEach>-->
 		
-		
-		
-		<br><br> 
-		     
-		<textarea name="qu_contents" id="editor"   style="width: 80%; height: 400px;"></textarea>
+		  
+		  <c:forEach var="orderInfo2" items="${orderInfo}">
+		<input name="order_number" value="${orderInfo2.order_number}"> 
+        <input name="sell_title" value="${orderInfo2.sell_title}"><br><br>   
+        <img src="<c:out value="${orderInfo2.sell_thumbnail}"/>"><br><br>
+        <input type="hidden" name="sell_thumbnail" value="${orderInfo2.sell_thumbnail}">
+          </c:forEach>
+       <textarea name="qu_contents" id="editor"   style="width: 80%; height: 400px;"></textarea>
 
 		
 		<input id="subBtns" type="button" value="글 작성" style="float: left;"/>
@@ -78,14 +93,14 @@ $(function() {
         obj.getById["editor"].exec("UPDATE_CONTENTS_FIELD", []);
    	 
 
-   	var mem_id = document.getElementsByName("mem_id")[0].value;
+   	var order_number = document.getElementsByName("order_number")[0].value;
    	var qu_contents = document.getElementsByName("qu_contents")[0].value;
+   	//var sell_number = document.getElementsByName("sell_number")[0].value;
+   	var sell_title = document.getElementsByName("sell_title")[0].value;
+   	var sell_thumbnail = document.getElementsByName("sell_thumbnail")[0].value;
    	
 
-   	if (mem_id.trim() == '') {
-   		alert("아이디를 입력해주세요");
-   		return false;
-   	}
+
 	if (qu_contents.trim() == '') {
    		alert("내용을 입력해주세요");
    		return false;

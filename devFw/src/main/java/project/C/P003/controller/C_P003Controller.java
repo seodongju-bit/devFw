@@ -27,16 +27,16 @@ public ModelAndView noticeDetail(@RequestParam("de_number")String de_number, Htt
 //고객센터 메인-문의사항
 public ModelAndView noticeDetail2(@RequestParam("qu_number")String qu_number, HttpServletRequest request, HttpServletResponse response) throws Exception;
 
-//신고사항 페이지
+//문의사항 페이지
 public ModelAndView questions(PageVO vo,String nowPage, String cntPerPage,HttpServletRequest request, HttpServletResponse response) throws Exception;
 
-//신고사항 상세설명
+//문의사항 상세설명
 public ModelAndView questionDetail1(@RequestParam("qu_number")String qu_number, HttpServletRequest request, HttpServletResponse response) throws Exception;
 
-//문의사항 페이지
+//신고사항 페이지
 public ModelAndView questions1(PageVO vo,String nowPage, String cntPerPage,HttpServletRequest request, HttpServletResponse response) throws Exception;
 
-//문의사항 상세설명
+//신고사항 상세설명
 public ModelAndView questionDetail(@RequestParam("de_number")String de_number, HttpServletRequest request, HttpServletResponse response) throws Exception;
 
 

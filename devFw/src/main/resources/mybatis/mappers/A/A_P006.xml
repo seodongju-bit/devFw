@@ -15,6 +15,7 @@
 	<resultMap id="membersResult" type="A_P001VO">
 		<result property="mem_id" column="mem_id" />
 		<result property="mem_nick" column="mem_nick" />
+		<result property="mem_division" column="mem_division" />
 	</resultMap>
 	
 	<select id="selectMemberList" parameterType="string" resultMap="membersResult">
@@ -36,6 +37,7 @@
 			    GROUP BY other_id
 			)  b2
 			WHERE b1.mem_id=b2.other_id
+			
 			ORDER BY max_no DESC
 	    ]]>
 	</select>
@@ -75,6 +77,7 @@
 	    	SELECT mem_id, mem_nick
 			FROM members
 			WHERE mem_id != #{mem_id}
+			AND mem_division = '2'
 			AND ( mem_id LIKE '%'||#{keyword}||'%' OR mem_nick LIKE '%'||#{keyword}||'%' )
 	    ]]>
 	</select>

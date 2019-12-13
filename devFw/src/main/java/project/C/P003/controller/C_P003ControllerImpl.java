@@ -220,7 +220,13 @@ public class C_P003ControllerImpl implements C_P003Controller {
 	@RequestMapping(value="/questionwrite.do" ,method = { RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView questionwrite(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = "questionwrite";
+		
+		HttpSession session = request.getSession();
+		String order_number = request.getParameter("order_number");
+		
+		List<C_P003VO> orderInfo = C_P003Service.selectOrderInfo(order_number);
 		ModelAndView mavw6 = new ModelAndView(viewName);
+		mavw6.addObject("orderInfo", orderInfo);
 		return mavw6;
 	}
 	
@@ -229,18 +235,28 @@ public class C_P003ControllerImpl implements C_P003Controller {
 	public ModelAndView questionwrite2(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = "redirect:/notice.do";
 		Map<String, Object> dataMap5 = new HashMap();
+		HttpSession session=request.getSession();
+		session=request.getSession(); 
+		String mem_id = (String) session.getAttribute("mem_id");
 		
 
-		String mem_id = request.getParameter("mem_id");
+		String order_number= request.getParameter("order_number");
 		String qu_contents = request.getParameter("qu_contents");
-	    
-
-		System.out.println(mem_id);
+		String sell_number = request.getParameter("sell_number");
+		String sell_title = request.getParameter("sell_title");
+		String sell_thumbnail = request.getParameter("sell_thumbnail");
+				
+	System.out.println(order_number);
 		System.out.println(qu_contents);
-	
-
+		System.out.println(sell_number);
+		System.out.println(sell_title);
+		System.out.println(sell_thumbnail);
 		dataMap5.put("mem_id", mem_id);
+		dataMap5.put("order_number", order_number);
 		dataMap5.put("qu_contents", qu_contents);
+		dataMap5.put("sell_number", sell_number);
+		dataMap5.put("sell_title", sell_title);
+		dataMap5.put("sell_thumbnail", sell_thumbnail);
 	
 		
 		System.out.println(dataMap5);

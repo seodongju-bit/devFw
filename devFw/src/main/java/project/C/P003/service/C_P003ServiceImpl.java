@@ -104,12 +104,20 @@ public class C_P003ServiceImpl implements C_P003Service {
 		questionList1 = C_P003DAO.Allquestions1(vo1);
 		return questionList1;  
 	}
-
+	
+	@Override
+	public List selectOrderInfo(String order_number) throws DataAccessException {
+		List orderInfo = null;
+		orderInfo = C_P003DAO.selectOrderInfo(order_number);
+		return orderInfo;
+	}
 	@Override
 	public void questionwrite(Map<String, Object> dataMap5) throws DataAccessException {
 		
 		C_P003DAO.writes(dataMap5);
 	}
+	
+	
 	@Override
 	public void questionwrite3(Map<String, Object> dataMap6) throws DataAccessException {
 		

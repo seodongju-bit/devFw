@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.dao.DataAccessException;
 import org.springframework.web.servlet.ModelAndView;
 
-
+import project.C.P003.vo.C_P003VO;
 import project.C.P003.vo.PageVO;
 
 
@@ -45,6 +45,8 @@ public interface C_P003DAO {
 	public int countBoard();
 	
 	public int countBoard2();
+	
+	public List selectOrderInfo(String mem_id) throws DataAccessException;
 
 	
   

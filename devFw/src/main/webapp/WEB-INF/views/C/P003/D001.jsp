@@ -270,8 +270,9 @@ $(document).ready(function(){
 				<table class="table table-hover" id="evnet_td">              
 					<colgroup>
 						<col width="10%" />
-						<col width="30%" />
-						<col width="30%" />
+						<col width="15%" />
+						<col width="20%" />
+						<col width="25%" />
 						<col width="10%" />
 						<col width="20%" />
 						
@@ -280,6 +281,7 @@ $(document).ready(function(){
 					<thead>		
 						<tr>
 							<th>문의번호</th>
+							<th>문의상품</th>
 							<th>문의내용</th>
 							<th>문의답변</th>
 							<th>문의회원</th>
@@ -290,6 +292,7 @@ $(document).ready(function(){
 					<thead>
 					<tr align="center" onclick="location.href='${contextPath}/noticeDetail2.do?qu_number=${notice2.qu_number}'">            
 					<td>${notice2.qu_number}</td>
+			        <td>${notice2.sell_title}</td>
 					<td>${notice2.qu_contents}</td>
 					<td>${notice2.qu_answer}</td>
 					<td>${notice2.mem_id}</td>

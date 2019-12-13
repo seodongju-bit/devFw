@@ -20,6 +20,12 @@ public class C_P003VO {
     private String oq_number;
     private String oq_question;
     private String oq_answer;
+    
+    
+    private String order_number;
+    private String sell_number;
+    private String sell_title;
+    private String sell_thumbnail;
 	
 	
 	public C_P003VO() {
@@ -97,6 +103,30 @@ public class C_P003VO {
 	}
 	public void setOq_answer(String oq_answer) {
 		this.oq_answer = oq_answer;
+	}
+	public String getOrder_number() {
+		return order_number;
+	}
+	public void setOrder_number(String order_number) {
+		this.order_number = order_number;
+	}
+	public String getSell_number() {
+		return sell_number;
+	}
+	public void setSell_number(String sell_number) {
+		this.sell_number = sell_number;
+	}
+	public String getSell_title() {
+		return sell_title;
+	}
+	public void setSell_title(String sell_title) {
+		this.sell_title = sell_title;
+	}
+	public String getSell_thumbnail() {
+		return sell_thumbnail;
+	}
+	public void setSell_thumbnail(String sell_thumbnail) {
+		this.sell_thumbnail = sell_thumbnail;
 	}
 	
 	   

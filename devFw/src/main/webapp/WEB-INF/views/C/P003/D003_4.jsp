@@ -43,8 +43,9 @@ caption {
 <table class="notice_view">              
 		<colgroup>
 			<col width="10%" />  
-			<col width="35%" />
 			<col width="10%" />
+		    <col width="10%" />  
+			<col width="25%" />
 			<col width="40%" />
 			<col width="5%" />
 			
@@ -55,16 +56,22 @@ caption {
 			<tr>
 				<th scope="row">문의번호</th>
 				<td>${notice4.QU_NUMBER}</td>
+				<th scope="row">문의상품</th>
+				<td>${notice4.SELL_TITLE}</td>
 		    </tr>
+		  
+		    
+		    <tr>
+				<th scope="row">문의자</th>
+				<td colspan="3">${notice4.MEM_ID}님</td>
+				
+			</tr>   
+			
 		    <tr>
 				<th scope="row">문의내용</th>
 				<td>${notice4.QU_CONTENTS}</td>
 			</tr>
-			<tr>
-				<th scope="row">문의자</th>
-				<td colspan="3">${notice4.MEM_ID}님</td>
-				
-			</tr>                
+		             
 			<tr>  
 		       	<th scope="row">답변내용</th>                                                   
 				<td colspan="4" id="contents">${notice4.QU_ANSWER}</td>

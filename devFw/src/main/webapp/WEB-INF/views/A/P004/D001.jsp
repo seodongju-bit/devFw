@@ -377,8 +377,9 @@ ul.tabs li.active, html ul.tabs li.active a:hover {
 							<td>
 								<p class="tdMenu"
 									onclick="reviewWrite('${orderList2.SELL_NUMBER}','${orderList2.SELL_TITLE}')">리뷰작성</p>
+									<input type="hidden" id="order_number" name="order_number" value="${orderList2.ORDER_NUMBER}"/>
 								<p class="tdMenu">리뷰 수정</p>
-								<p class="tdMenu">문의하기</p>
+								<p class="tdMenu" onclick="questionwrite2()">문의하기</p>
 								<c:choose>
 								<c:when test="${orderList2.OD_STATE =='F_0006'}">
 										
@@ -419,7 +420,7 @@ ul.tabs li.active, html ul.tabs li.active a:hover {
 			</c:if>
 								
 					<c:forEach var="quList" items="${quList}">
-						<tr onclick="myquestion('${quList.QU_NUMBER}')">
+						<tr onclick="myquestion('${quList.QU_NUMBER}')" style="border-bottom: 1px solid #ddd;">
 							<td>${quList.mem_id}</td>
 							<td>${quList.QU_CONTENTS}</td>
 							<td>${quList.QU_DATE}</td>
@@ -522,6 +523,17 @@ ul.tabs li.active, html ul.tabs li.active a:hover {
 	</div>
 
 	<script>
+	
+	function questionwrite2(){
+		var formObj = document.createElement("form");
+
+		var order_number = document.getElementById("order_number");
+		document.body.appendChild(formObj);
+		formObj.append(order_number);
+		formObj.method = "get";
+		formObj.action = "../devFw/questionwrite.do";
+		formObj.submit();
+	}
 	
 	function confirm(order_number, sell_number, od_recomreview){
 		
