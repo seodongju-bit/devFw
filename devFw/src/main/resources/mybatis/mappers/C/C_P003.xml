@@ -142,11 +142,11 @@
   
   <select id="Allquestions" resultMap="C_P003Result02" >                   
       <![CDATA[
-        SELECT qu_number,mem_id,qu_contents,qu_answer,qu_date
+        SELECT qu_number,mem_id,qu_contents,qu_answer,qu_date,sell_title
         FROM (
         SELECT ROWNUM RN, A.* 
 				FROM (
-				SELECT q.qu_number,q.mem_id,qu_contents,q.qu_answer,q.qu_date
+				SELECT q.qu_number,q.mem_id,qu_contents,q.qu_answer,q.qu_date,q.sell_title
                 FROM questions q, members m
                 WHERE q.mem_id = m.mem_id
 				ORDER BY q.qu_number DESC

@@ -268,70 +268,13 @@ ul.tabs li.active, html ul.tabs li.active a:hover {
 
 
 		<ul class="tabs">
-			<li><a href="#tab1">My</a></li>
+		<!--  <li><a href="#tab1">My</a></li>-->
 			<li><a id="tab2c" href="#tab2">전체</a></li>
 			<li><a id="tab3c" href="#tab3">문의내역</a></li>
 		</ul>
 
 		<div class="tab_container">
-			<div id="tab1" class="tab_content">
 
-
-				<table id="orderTable" class="table table-striped">
-					<tr>
-						<th width="150px">날짜</th>
-						<th width="600px">상품정보</th>
-						<th width="150px">상태</th>
-						<th width="250px">확인/신청</th>
-					</tr>
-
-					<c:forEach var="orderList" items="${orderList}" varStatus='index'>
-						<tr>
-							<td>
-								<p>주문번호 : ${orderList.ORDER_NUMBER}</p> <fmt:formatDate
-									value="${orderList.ORDER_DATE}" pattern="yyyy-MM-dd" /><br>
-								<fmt:formatDate value="${orderList.ORDER_DATE}" pattern="HH:mm" /><br>
-							</td>
-							<td><img class="orderImg" src="${orderList.SELL_THUMBNAIL}"
-								width="80px" height="80px"> <a
-								href="sellItems.do?sell_no=${orderList.SELL_NUMBER}">${orderList.SELL_TITLE}</a>
-								<br> <fmt:formatNumber value="${orderList.SELL_PRICE}" />원</td>
-							<td><c:choose>
-									<c:when test="${orderList.OD_STATE=='F_0001'}">
-										<p>결제준비중</p>
-									</c:when>
-									<c:when test="${orderList.OD_STATE=='F_0002'}">
-										<p>결제완료</p>
-									</c:when>
-									<c:when test="${orderList.OD_STATE=='F_0003'}">
-										<p>배송중</p>
-									</c:when>
-									<c:when test="${orderList.OD_STATE=='F_0004'}">
-										<p>배송완료</p>
-									</c:when>
-									<c:when test="${orderList.OD_STATE=='F_0005'}">
-										<p>구매확정</p>
-									</c:when>
-									<c:when test="${orderList.OD_STATE=='F_0006'}">
-										<p>취소완료</p>
-									</c:when>
-								</c:choose></td>
-							<td>
-								<p class="tdMenu"
-									onclick="reviewWrite('${orderList.SELL_NUMBER}','${orderList.SELL_TITLE}')">리뷰작성</p>
-								<input type="hidden" id="order_number" name="order_number" value="${orderList.ORDER_NUMBER}"/>
-								<p class="tdMenu">리뷰 수정</p>
-								<p class="tdMenu" onclick="questionwrite2()">문의하기</p>
-								<p class="tdMenu">구매확정</p>
-								<p class="tdMenu">주문취소</p>
-							</td>
-
-						</tr>
-					</c:forEach>
-
-
-				</table>
-			</div>
 			<div id="tab2" class="tab_content">
 
 				<table id="orderTable2" class="table table-striped">
@@ -376,6 +319,7 @@ ul.tabs li.active, html ul.tabs li.active a:hover {
 							<td>
 								<p class="tdMenu"
 									onclick="reviewWrite('${orderList2.SELL_NUMBER}','${orderList2.SELL_TITLE}')">리뷰작성</p>
+									<input type="hidden" id="order_number" name="order_number" value="${orderList2.ORDER_NUMBER}"/>
 								<p class="tdMenu">리뷰 수정</p>
 							    <p class="tdMenu" onclick="questionwrite2()">문의하기</p>
 								<p class="tdMenu">구매확정</p>
@@ -513,7 +457,7 @@ ul.tabs li.active, html ul.tabs li.active a:hover {
 				},
 			});				
 		}*/
-		
+		       
 	function questionwrite2(){
 			var formObj = document.createElement("form");
 
