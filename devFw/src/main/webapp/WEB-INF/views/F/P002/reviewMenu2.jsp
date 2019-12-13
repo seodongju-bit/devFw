@@ -28,7 +28,7 @@
 }
 
 
-.bigCtrg{
+.bigCtgr{
 	text-align: center;
 	position: relative;
 	float: left;
@@ -41,7 +41,7 @@
 	font-weight:bold;
 	display: inline;
 }
-.bigCtrg a{
+.bigCtgr a{
 	color: black;
 	cursor: pointer;
 }
@@ -118,7 +118,7 @@ $(document).ready(function(){
 	        		   biga.setAttribute("onclick", "moveCtgr('"+code+"')");
 	        		   biga.innerHTML=name;
 	        		   bigCtgr = document.createElement('div');
-	        		   bigCtgr.setAttribute("class", "bigCtrg");
+	        		   bigCtgr.setAttribute("class", "bigCtgr");
 	        		   bigCtgr.setAttribute("id", code);
 	        		  // bigCtgr.setAttribute("onclick", "location.href='/devFw/reviewRanking.do?ctgrNum="+code+"'");
 	        		   bigCtgr.append(biga);
@@ -145,12 +145,22 @@ $(document).ready(function(){
 	          //alert("작업을완료 했습니다");
 	       }
 	    });  //end ajax
-
-	    
+	
+	 $('#totalCtgr').css('background-color', 'lightgreen');
 	 $('#contentDetail').load('bestReviewPlus.do',{ ctgrNum :'${ctgrNum}'});
 });
+
 function moveCtgr(ctgr){
 	$('#contentDetail').load('bestReviewPlus.do',{ ctgrNum :ctgr});
+	$(".bigCtgr").css('background-color', '#f2f2f2');
+	if(ctgr==null){
+		$('#totalCtgr').css('background-color', 'lightgreen');
+	}else if(ctgr.length==4){
+		$('#'+ctgr).css('background-color', 'lightgreen');
+	}else if(ctgr.length==9){
+		ctgr = ctgr.substr(0,4);
+		$('#'+ctgr).css('background-color', 'lightgreen');
+	}
 }
 </script>
   <meta charset="UTF-8">
@@ -158,7 +168,7 @@ function moveCtgr(ctgr){
 </head>
 <body>
 	<div id="sideMenu">
-		<div class="bigCtrg"><a onclick="moveCtgr()">전체보기</a></div>
+		<div id="totalCtgr" class="bigCtgr"><a onclick="moveCtgr()">전체보기</a></div>
 	</div>
 
 </body>

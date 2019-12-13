@@ -94,6 +94,22 @@ public class F_P001ServiceImpl implements F_P001Service{
 		return banner;
 	}
 
+	@Override
+	public List<Map<String, String>> eventItemSearch(Map<String, Object> searchMap) {
+		List<Map<String, String>> list = f_P001DAO.eventItemSearch(searchMap);
+		return list;
+	}
+
+	@Override
+	public List<Map<String, String>> eventSearch(Map<String, Object> searchMap) {
+		List<Map<String, String>> list = f_P001DAO.eventSearch(searchMap);
+		return list;
+	}
+
+	
+
+	
+
 
 
 }

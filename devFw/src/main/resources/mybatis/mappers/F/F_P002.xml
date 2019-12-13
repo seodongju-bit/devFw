@@ -193,8 +193,6 @@
 
 
 
-
-
 	<select id="mainList" resultType="project.F.P002.vo.F_P002VO" parameterType="project.main.paging.MainPagingVO">
 	<!-- 각각의 상품을 등록일 순으로 조회 -->
 	  <![CDATA[
@@ -259,5 +257,16 @@
 		<![CDATA[
 			and sell_number > 0
 		]]>
+	</select>
+	
+	<select id="mainBanner" resultType="java.util.HashMap" parameterType="java.util.Map"> 
+	  <![CDATA[ 
+      select no_number, no_title, no_banner
+      from notice
+      where no_division = '이벤트'
+      and no_stdate <= sysdate
+      and no_enddate+1 > sysdate
+      order by writedate desc
+      ]]>  
 	</select>
 </mapper>

@@ -94,6 +94,19 @@ public class F_P001DAOImpl implements F_P001DAO {
 		return bannerList;
 	}
 
+	@Override
+	public List<Map<String, String>> eventItemSearch(Map<String, Object> searchMap) {
+		System.out.println(searchMap.get("event_no"));
+		List<Map<String, String>> list = sqlSession.selectList("mapper.product.eventItemSearch", searchMap);
+		return list;
+	}
+
+	@Override
+	public List<Map<String, String>> eventSearch(Map<String, Object> searchMap) {
+		List<Map<String, String>> list = sqlSession.selectList("mapper.product.eventSearch", searchMap);
+		return list;
+	}
+
 
 
 

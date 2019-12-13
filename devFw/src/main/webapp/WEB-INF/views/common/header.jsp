@@ -375,7 +375,29 @@ $(document).ready(function(){
 	          //alert("작업을완료 했습니다");
 	       }
 	    });  //end ajax
+	    
+	    var page = pageName(window.location.pathname);
+	    menuCheck(page);    
 });
+	function menuCheck(page){
+		var id = '#'+page;
+		if(page == 'reviewRankingMenu'){
+			$(id).css("background-color","black");
+		}else if(page == 'bestMenu'){
+			$(id).css("background-color","black");
+		}else if(page == 'eventProduct'){
+			$(id).css("background-color","black");
+		}else if(page == 'event'){
+			$(id).css("background-color","black");
+		}
+		
+	}
+	
+	function pageName(domain){
+		var arr = domain.split('/');
+		var arr2 = arr[2].split('.');
+		return arr2[0];
+	}
 
 	function fn_coupon(){
 		var _isLogOn=document.getElementById("isLogOn");
@@ -390,6 +412,8 @@ $(document).ready(function(){
 		}
 	}
 
+	
+	
 </script>           
 <body>
 	<div class="header" id="header">
@@ -448,10 +472,10 @@ $(document).ready(function(){
 
   			</div>
 		</div>
-		<div class="mainMenu"><button class="menubtn"onclick="location.href='reviewRankingMenu.do'">리뷰랭킹</button></div>
-		<div class="mainMenu"><button class="menubtn"onclick="location.href='bestMenu.do'">베스트상품</button></div>
-		<div class="mainMenu"><button class="menubtn"onclick="location.href='eventProduct.do'">이벤트상품</button></div>
-		<div class="mainMenu"><button class="menubtn"onclick="location.href='event.do'">이벤트/공지사항</button></div>
+		<div class="mainMenu"><button class="menubtn" id="reviewRankingMenu" onclick="location.href='reviewRankingMenu.do'">리뷰랭킹</button></div>
+		<div class="mainMenu"><button class="menubtn" id="bestMenu" onclick="location.href='bestMenu.do'">베스트상품</button></div>
+		<div class="mainMenu"><button class="menubtn" id="eventProduct" onclick="location.href='eventProduct.do'">이벤트상품</button></div>
+		<div class="mainMenu"><button class="menubtn" id="event"onclick="location.href='event.do'">이벤트/공지사항</button></div>
 	</div>
 	</div>
 	</div>  

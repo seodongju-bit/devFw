@@ -272,23 +272,28 @@
    <div id="wrapper">
       <div id="slider-wrap">
          <ul id="slider">
-            <li data-color="#1abc9c">
-               <div>
-               </div><img src="${contextPath}/resources/image/banner/banner1.jpg">
-            </li>
-            <li data-color="#9b59b6">
-               <div>
+<!--             <li data-color="#1abc9c"> -->
+<!--                <div> -->
+<%--                </div><img src="${contextPath}/resources/image/banner/banner1.jpg"> --%>
+<!--             </li> -->
+<!--             <li data-color="#9b59b6"> -->
+<!--                <div> -->
 
-               </div><img src="${contextPath}/resources/image/banner/banner2.jpg">
-            </li>
-            <li data-color="#34495e">
-               <div>
-               </div><img src="${contextPath}/resources/image/banner/banner3.jpg">
-            </li>
-            <li data-color="#34495e">
-               <div>
-               </div><img src="${contextPath}/resources/image/banner/banner4.jpg">
-            </li>
+<%--                </div><img src="${contextPath}/resources/image/banner/banner2.jpg"> --%>
+<!--             </li> -->
+<!--             <li data-color="#34495e"> -->
+<!--                <div> -->
+<%--                </div><img src="${contextPath}/resources/image/banner/banner3.jpg"> --%>
+<!--             </li> -->
+<!--             <li data-color="#34495e"> -->
+<!--                <div> -->
+<%--                </div><img src="${contextPath}/resources/image/banner/banner4.jpg"> --%>
+<!--             </li> -->
+            <c:forEach var="banner" items="${banner}" varStatus="index">
+            	<li data-color="#9b59b6">
+               		<a href="eventSell.do?event=${banner.NO_NUMBER }"><img src="${contextPath}/${banner.NO_BANNER}"></a>
+            	</li>
+            </c:forEach>
          </ul>
          <!--controls-->
          <div class="btns" id="next">
@@ -321,7 +326,7 @@
      </c:if>
       	<td><br>
       		<a href="${contextPath}/sellItems.do?sell_no=${main.sell_number}">
-      			<img id="itemsImg" style="width:274px;  overflow:hidden;" src="${contextPath}/${main.sell_thumbnail}">
+      			<img id="itemsImg" style="width:250px;  height:250px;overflow:hidden; margin:12px;" src="${contextPath}/${main.sell_thumbnail}">
       		</a>
 	   	<br>
 	   		<a style="text-aling:center;" href="${contextPath}/sellItems.do?sell_no=${main.sell_number}">

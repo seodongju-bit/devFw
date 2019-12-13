@@ -255,8 +255,6 @@ public class C_P001ControllerImpl implements C_P001Controller {
         return sb.toString();
     }
 
-    
-    
 	   @RequestMapping(value = "/searchSale.do", method = { RequestMethod.GET, RequestMethod.POST })
 	   @ResponseBody
 	   public ModelAndView searchSale(HttpServletRequest request, HttpServletResponse response) throws Exception  {

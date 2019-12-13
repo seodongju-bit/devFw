@@ -138,4 +138,10 @@ public class F_P002DAOImpl implements F_P002DAO {
 		return list;
 	}
 
+	@Override
+	public List<Map<String, Object>> mainBanner() {
+		List<Map<String, Object>> list = sqlSession.selectList("F.P002.mainBanner");
+		return list;
+	}
+
 }

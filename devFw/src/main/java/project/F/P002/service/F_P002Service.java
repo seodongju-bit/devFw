@@ -37,6 +37,7 @@ public interface F_P002Service {
 	public List<Map<String, Object>> searchReviewList(Map<String, Object> searchMap);
 	List<Map<String, Object>> thumbnail(List<Map<String, Object>> list);
 	public List<Map<String, Object>> bestReviewPlus(Map<String, Object> searchMap);
+	public List<Map<String, Object>> mainBanner();
 
 
 }

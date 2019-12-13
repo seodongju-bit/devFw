@@ -40,8 +40,8 @@
    </resultMap>
 
 
-  <resultMap id="F_P001_D03Result01" type="F_P001VO">
-  
+   <resultMap id="F_P001_D03Result01" type="F_P001VO">
+  		<result property="sell_shippingFee" column="DELIVERY_PRICE" />
    </resultMap>
 
 
@@ -125,7 +125,7 @@
       <![CDATA[
       select *
       from(
-      SELECT sell_thumbnail, sell_title, ps.sell_number, sell_score, sell_price, pro_price, sell_month, sell_shippingFee
+      SELECT sell_thumbnail, sell_title, ps.sell_number, sell_score, sell_price, pro_price, sell_month, DELIVERY_PRICE
       FROM productsell ps, product p
       where ps.pro_number = p.pro_number
       and pro_division like('${ctgrNum}')
@@ -182,18 +182,34 @@
 	]]>
 	</select>
 
-<select id="bannerList" resultMap="bannerList" parameterType="java.util.Map"> 
+	<select id="bannerList" resultMap="bannerList" parameterType="java.util.Map"> 
       <![CDATA[
-      
       select no_number, no_title, to_char(no_stdate,'YYYY-MM-DD')no_stdate, to_char(no_enddate, 'YYYY-MM-DD')no_enddate, no_banner
       from notice
       where no_division = '이벤트'
-          
+      and no_stdate <= sysdate
+      and no_enddate+1 > sysdate
+      order by writedate desc
       ]]>          
-                               
-      
    </select> 
 
+	  <select id="eventItemSearch" resultType="java.util.HashMap" parameterType="java.util.Map"> 
+      <![CDATA[
+      select *
+      from eventitems ei, productsell ps
+      where ei.sell_number = ps.sell_number
+      and no_number = #{event_no}
+      order by sell_month desc
+      ]]>          
+	 </select> 
 
+	
+	<select id="eventSearch" resultType="java.util.HashMap" parameterType="java.util.Map"> 
+      <![CDATA[
+      select *
+      from notice
+      where no_number = #{event_no}
+      ]]>          
+	 </select> 
   
 </mapper>         

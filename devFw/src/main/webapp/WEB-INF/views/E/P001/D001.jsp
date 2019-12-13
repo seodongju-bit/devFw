@@ -294,7 +294,7 @@ h1{
             buyer_addr : order_address1.value + "<br>" + order_address2.value,
             buyer_postcode : order_zip.value,
         }, function(rsp) {
-            if ( rsp.success ) {
+            if ( true ) {
                 var msg = '결제가 완료되었습니다.';
 				formObj.appendChild(sell_number);
 				formObj.appendChild(sell_title);
@@ -645,7 +645,7 @@ h1{
 	        </ul>
 	      </td>
 	      <td>
-	      	<input type="button" id="payment_card" name="payment_card" onClick="pay()" style="display:none;" value="카드 또는 계좌이체로 결제하기">
+	      	<input type="button" id="payment_card" name="payment_card" onClick="pay()" style="display:none;" value="카드  계좌이체로 결제하기">
 	      	<input type="hidden" id="od_state" name="od_state" value="F_0002">
 	      	<button class="btn" type="submit" id="payment_account" name="payment_account" style="display:none;">무통장 입금 방식으로 결제하기</button>
 	      </td>

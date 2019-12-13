@@ -37,27 +37,49 @@
 div.gallery{                       
     border: 1px solid #ccc;     
     }
+#imgBox{
+	width:1095px;
+	height: 160px;
+	overflow:hidden;
+	
+}
+
+#imgBox:hover{
+	overflow: visible;
+	z-index: 1;
+
+}
+#eventContent{
+	widht:100%;
+	height: 80px;
+	background-color: #2E2E2E;
+	color: white;
+}
 </style>
+<script>
+
+</script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>  
 <div class="container">
-<div class="banner" id="banner">
-<c:forEach var="banner" items="${eventbanner}">
-<div class="gallery" style=" margin-top: 35px;">
-<p align="center" style="font-size: 35px; font-style: italic; font-weight: bolder;">${banner.NO_TITLE}</p><br>
-<a href="#" style="align: center;">
-    <img src="${banner.NO_BANNER}" alt="" width="1095" height="400" >
-</a><br>
-<br>
-<p align="center" style="font-style: italic; font-weight: bolder;">이벤트 기간: ${banner.NO_STDATE}&nbsp;~&nbsp;${banner.NO_ENDDATE}</p>
+	<div class="banner" id="banner">
+	<h2>이벤트 목록</h2>
+	<c:forEach var="banner" items="${eventbanner}">
+		<div class="gallery" style=" margin-top: 35px;">
+			<div id="imgBox">
+				<a href="eventSell.do?event=${banner.no_number }" style="align: center;">
+    				<img src="${banner.NO_BANNER}" alt="" width="1095" height="400" >
+    			</a>
+			</div>
+			<div id="eventContent">
+				<p align="center" style="font-size: 30px; font-style: italic; font-weight: bolder;">${banner.NO_TITLE}</p>
+				<p align="center" style="font-style: italic; font-weight: bolder;">이벤트 기간: ${banner.NO_STDATE}&nbsp; ~ &nbsp;${banner.NO_ENDDATE}</p>
+			</div>
+		</div>
+	</c:forEach>
+	</div>
 </div>
-
-
-</c:forEach>
-</div>
-</div>
-
 </body>
 </html>        

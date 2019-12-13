@@ -1,5 +1,6 @@
 package project.main.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import java.util.List;
@@ -40,6 +41,10 @@ public class MainController {
 	public ModelAndView main(HttpServletRequest request, HttpServletResponse response, MainPagingVO mainPagingVO) throws Exception{
 		String viewName=(String)request.getAttribute("viewName");
 		MainPageMaker mainPageMaker = new MainPageMaker();
+		
+		List<Map<String, Object>> banner = new ArrayList<Map<String, Object>>();
+		banner = F_P002Service.mainBanner();
+		
 		//page와 perPageNum 세팅
 		mainPageMaker.setMainPagingVO(mainPagingVO);
 		//총 게시글의 수를 세팅
@@ -51,6 +56,7 @@ public class MainController {
 		mav.addObject("mainList", mainList);
 		//세팅된 pageMaker에는 페이징을 위한 버튼의 값들이 들어있으며 ModelAndView를 이용하여 jsp에 넘겨줌
 		mav.addObject("mainPageMaker", mainPageMaker);
+		mav.addObject("banner", banner);
 		return mav;
 	}
 																			//브라우저로 전송하는 JSON 데이터의 한글 인코딩을 지정
