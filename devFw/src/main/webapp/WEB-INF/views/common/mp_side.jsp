@@ -68,40 +68,21 @@ function profile(){
         <li><a href="#">취소/반품/교환/환불 내역</a></li>
         <li><a href="#">배송관리</a></li>
         <li class="nav-header">My 혜택</li>
+         <li><a href="givecoupon.do">쿠폰 받기</a></li>
         <li><a onclick="fn_coupon1()">할인 쿠폰</a></li>
         <li><a onclick="withdraw()">출금 신청</a></li>
         <li class="nav-header">My 활동</li>
         <li><a onclick="profile()">프로필</a></li>
         <li><a href="myReview.do">내가 작성한 리뷰</a></li>
-        <li><a href="#">문의 하기</a></li>
         <li><a href="alert.do">신고내역</a></li>
         <li><a href="usecoupon.do">사용한 쿠폰</a></li>
-        <li><a href="#">구매 리뷰</a></li>
-        <li><a href="#">찜 리스트</a></li>
         <li><a href="point.do">포인트 사용 내역</a></li>
         <li class="nav-header">My 정보</li>
         <li><a href="#">개인정보확인/수정</a></li>
-        <li><a href="#">결제수단-쿠페이 관리</a></li>
-        <li><a href="#">배송지 관리</a></li>
       </ul>
 </aside>
 	 <br>
 	 <br>
-	 <table class="table table-hover" id="cc">
-	 <tr align=center>
-	 <th><a href="#" style="color:black;">리컴문의</a></th>
-	 </tr>
-	 <tr>
-	 <th><a href="#" style="color:black;">고객의 소리<br>
-	 제안-칭찬-페이 관리</a>
-	 </th>
-	 </tr>
-	 <tr>
-	 <th>
-	 <a href="#" style="color:black;">취소/반품 안내</a>
-	 </th>
-	 </tr>
-	 </table>
 	 
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script type="text/javascript" src="../devFw/resources/js/bootstrap.js"></script>

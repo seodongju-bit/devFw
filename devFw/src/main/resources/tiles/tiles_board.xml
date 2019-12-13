@@ -310,7 +310,7 @@
       <put-attribute name="body" value="/WEB-INF/views/F/P001/bestSell.jsp" />
    </definition>
 
-	<definition name="eventProduct" extends="baseLayout2">
+	<definition name="eventProduct" extends="eventLayout">
       <put-attribute name="title" value="이벤트상품출력페이지" />         
       <put-attribute name="body" value="/WEB-INF/views/F/P001/D004.jsp" />
    </definition>
