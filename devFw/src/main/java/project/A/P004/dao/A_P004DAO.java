@@ -30,5 +30,9 @@ public interface A_P004DAO {
 	public int pointSearch(Map<String, Object> searchMap);
 	public boolean passCheck(String id, String password);
 	public void withdrawSave(Map<String, String> withdrawMap);
+	public void confirm(Map<String, Object> dataMap);
+	public int confirmcheck(Map<String, Object> check);
+	public void cancle(Map<String, Object> dataMap);
+	public int canclecheck(Map<String, Object> check);
 }
 

@@ -59,5 +59,16 @@ public class C_P001ServiceImpl implements C_P001Service {
 		
 	}		
 			
+	@Override
+	public List<Map<String, Object>> searchSale(Map<String, Object> searchMap) {
+		// TODO Auto-generated method stub
+		return eventDAO.searchSale(searchMap);
+	}
+
+	@Override
+	public void addItem(Map<String, Object> eventMap) {
+		eventDAO.addItem(eventMap);
+		
+	}
 	
 }

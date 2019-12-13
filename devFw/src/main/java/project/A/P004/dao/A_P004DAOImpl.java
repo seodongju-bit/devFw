@@ -147,4 +147,25 @@ public class A_P004DAOImpl implements A_P004DAO {
 		sqlSession.insert("mapper.active.pointUseRecord", withdrawMap);
 
 	}
+	
+	@Override
+	public void confirm(Map<String, Object> dataMap) {
+		sqlSession.update("mapper.active.confirm", dataMap);
+	}
+	
+	@Override
+	public int confirmcheck(Map<String, Object> check) throws DataAccessException {
+		return sqlSession.selectOne("mapper.active.confirmcheck", check);
+	}
+	
+	@Override
+	public void cancle(Map<String, Object> dataMap) {
+		sqlSession.update("mapper.active.cancle", dataMap);
+	}
+	
+	@Override
+	public int canclecheck(Map<String, Object> check) throws DataAccessException {
+		return sqlSession.selectOne("mapper.active.canclecheck", check);
+	}
+	
 }

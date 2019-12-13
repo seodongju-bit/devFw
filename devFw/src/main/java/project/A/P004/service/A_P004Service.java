@@ -31,5 +31,9 @@ public interface A_P004Service {
 	public boolean passCheck(String id, String password);
 	public void withdrawSave(Map<String, String> withdrawMap);
 	List<Map<String, Object>> paging(List<Map<String, Object>> list, int page);
+	public void confirm(Map<String, Object> dataMap);
+	public int confirmcheck(Map<String, Object> check) throws DataAccessException;
+	public void cancle(Map<String, Object> dataMap);
+	public int canclecheck(Map<String, Object> check) throws DataAccessException;
 
 }
