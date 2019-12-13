@@ -18,7 +18,9 @@
 <script language="javascript" src="/devFw/resources/sheet/sheet/ibsheet.js"></script>
 <script language="javascript" src="/devFw/resources/sheet/sheet/ibexcel.js"></script>
 <style>
-
+#contentsPage{
+/* 	border-top: 1px solid lightgray; */
+}
 #area{
 	background-color: white;
 	width:100%;
@@ -27,11 +29,19 @@
 .main_content{
 	width:1300px;
 	margin:0 auto;
-	background-color: #f2f2f2;
+/* 	background-color: #f2f2f2; */
 }
 #DIV_mySheet{
 	margin:0 auto;
 	
+}
+.tab{
+	background-color: white;
+	width: 200px;
+	height: 40px;
+	border-bottom: 0px solid black;
+/* 	border-right: 0px solid black; */
+	border-radius: 8px 8px 2px 2px;
 }
 </style>
 <script language="javascript">
@@ -140,6 +150,16 @@
 
 	}
 	
+// 	$(document).ready(function(){
+// 	//class ib_product
+// 	$("html").css("overflow", "hidden");
+// 	$('.ib_product').mouseenter(function () {
+		  
+// 	});
+// 	$('.ib_product').mouseleave(function () {
+// 		  $("html").css("overflow", "auto");
+// 	});
+// 	});
 </script>
 
 <title>Insert title here</title>
@@ -149,22 +169,28 @@
 		
         <div class="main_content">
   			<h1>상품관리</h1><br>
-  			<button class="btn btn-default" onclick="addProduct()">제품추가</button>
-  			<button class="btn btn-default" onclick="addSell()">판매등록</button>
-
-            <div class="ib_function float_right">
-<!--                 <a href="javascript:doAction('reload')" class="f1_btn_gray lightgray">초기화</a> -->
-                <a href="javascript:doAction('insert')" class="f1_btn_gray lightgray">추가</a>
-                <a href="javascript:doAction('search')" class="f1_btn_white gray">조회</a>
-                <a href="javascript:doAction('save')" class="f1_btn_white gray">저장</a>
-            </div>
-
-            <div class="clear hidden"></div>
+  			
+			<button class="tab btn-default" id="saleManagement">판매상품관리</button>
+			<button class="tab btn-default" id="searchOrder">주문조회</button>
+			<button class="tab btn-default" id="shippingManagement">배송중</button>
+			<button class="tab btn-default" id="deliveryCompleted">배송완료</button>
+			<button class="tab btn-default" id="saleCompleted">판매완료</button>
 			
-            <div class="ib_product">
-				<script type="text/javascript"> createIBSheet("mySheet", "1300px", "600px"); </script>
-            </div>
-
+			
+			<div id="contentsPage">
+			<button class="btn btn-default" onclick="addProduct()">제품추가</button>
+  			<button class="btn btn-default" onclick="addSell()">판매등록</button>
+            	<div class="ib_function float_right">
+<!--                 <a href="javascript:doAction('reload')" class="f1_btn_gray lightgray">초기화</a> -->
+                	<a href="javascript:doAction('insert')" class="f1_btn_gray lightgray">추가</a>
+                	<a href="javascript:doAction('search')" class="f1_btn_white gray">조회</a>
+                	<a href="javascript:doAction('save')" class="f1_btn_white gray">저장</a>
+            	</div>
+			
+            	<div class="ib_product">
+					<script type="text/javascript"> createIBSheet("mySheet", "1300px", "600px"); </script>
+            	</div>
+			</div>
         </div>
    
 	</div>

@@ -23,6 +23,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import project.E.P001.vo.E_P001VO;
 import project.A.P001.vo.A_P001VO;
 import project.A.P002.vo.A_P002VO;
+import project.A.P004.vo.A_P004VO;
 import project.E.P001.service.E_P001Service;
 
 
@@ -111,7 +112,20 @@ public class E_P001ControllerImpl implements E_P001Controller {
 		}
 	}
 	
-	@RequestMapping(value="/payToOrder.do", method = RequestMethod.POST)
+	@RequestMapping(value="/use_Coupon.do", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView use_Coupon(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = getViewName(request);
+		viewName = "useCouponList";
+		HttpSession session = request.getSession();
+		String p_id = (String)session.getAttribute("mem_id");
+		List couponList = e_P001Service.listCoupon(p_id);
+		System.out.println(couponList);
+		ModelAndView mav = new ModelAndView(viewName);
+		mav.addObject("couponList", couponList);
+		return mav;
+		
+	}
+	@RequestMapping(value="/payToOrder.do", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView payToOrder(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		response.setContentType("text/html; charset=UTF-8");
@@ -127,45 +141,38 @@ public class E_P001ControllerImpl implements E_P001Controller {
 		
 		
 		
-		String sell_number = request.getParameter("h_sell_number");
+		String sell_number = request.getParameter("sell_number");
 		System.out.println("sell_number:"+sell_number);
 		
-		String sell_title = request.getParameter("h_sell_title");
+		String sell_title = request.getParameter("sell_title");
 		System.out.println("sell_title:" + sell_title);
 		
-		String order_size = request.getParameter("h_order_size");
+		String order_size = request.getParameter("order_size");
 		System.out.println("order_size:" + order_size);
 		
-		String order_color = request.getParameter("h_order_color");
+		String order_color = request.getParameter("order_color");
 		System.out.println("order_color:" + order_color);
 		
-		String detail_quantity = request.getParameter("h_detail_quantity");
+		String detail_quantity = request.getParameter("detail_quantity");
 		System.out.println("detail_quantity:" + detail_quantity);
 		
-		String pro_price = request.getParameter("h_pro_price");
+		String pro_price = request.getParameter("pro_price");
 		System.out.println("pro_price:" + pro_price);
 		
-		String sell_price = request.getParameter("h_sell_price");
+		String sell_price = request.getParameter("sell_price");
 		System.out.println("sell_price:" + sell_price);
 		
-		String seller_id= request.getParameter("h_seller_id");
+		String seller_id= request.getParameter("seller_id");
 		System.out.println("seller_id:" + seller_id);
 		
-		String order_total_price = request.getParameter("h_order_total_price");
-		System.out.println("order_total_price:" + order_total_price);
+		String delivery_price = request.getParameter("delivery_price");
+		System.out.println("delivery_price:" + delivery_price);
 		
-		String order_total_sale_price = request.getParameter("h_order_total_sale_price");
-		System.out.println("order_total_sale_price" + order_total_sale_price);
-		
-		String final_order_total_pro_price = request.getParameter("h_final_order_total_pro_price");
-		System.out.println("final_order_total_pro_price:" + final_order_total_pro_price);
-		
-		String final_order_total_price = request.getParameter("h_final_order_total_price");
-		System.out.println("final_order_total_price:" + final_order_total_price);
-		
-		
-		String delivery_payment = request.getParameter("delivery_method");
+		String delivery_payment = request.getParameter("delivery_payment");
 		System.out.println("delivery_payment:" + delivery_payment);
+		
+		String point_save = request.getParameter("point_save");
+		System.out.println("point_save:" + point_save);
 		
 		String delivery_method = request.getParameter("delivery_method");
 		System.out.println("delivery_method:" + delivery_method);
@@ -191,31 +198,57 @@ public class E_P001ControllerImpl implements E_P001Controller {
 		String order_address2 = request.getParameter("order_address2");
 		System.out.println("order_address2:" + order_address2);
 		
-		String _order_pointuse = request.getParameter("order_pointuse");
-		System.out.println("order_pointuse:" + _order_pointuse);
-		int order_pointuse = Integer.parseInt(_order_pointuse);
-		
 		String order_request = request.getParameter("order_request");
 		System.out.println("order_request:" + order_request);
+		
+		String order_pointuse = request.getParameter("order_pointuse");
+		System.out.println("order_pointuse:" + order_pointuse);
 		
 		String pay_method = request.getParameter("pay_method");
 		System.out.println("pay_method:" + pay_method);
 		
-		String deli_number = request.getParameter("deli_number");
-		String deli_name = request.getParameter("deli_name");
 		String od_state = request.getParameter("od_state");
-		
-		String point_save = request.getParameter("h_point_save");
-		System.out.println("point_save:" + point_save);
-		
-		String point_save_total = request.getParameter("h_point_save_total");
+		System.out.println("od_state:" + od_state);
+				
+		String point_save_total = request.getParameter("point_save_total");
 		System.out.println(point_save_total);
+		
+		String order_total_price = request.getParameter("order_total_price");
+		System.out.println("order_total_price:" + order_total_price);
+		
+		String order_total_sale_price = request.getParameter("order_total_sale_price");
+		System.out.println("order_total_sale_price" + order_total_sale_price);
+		
+		String final_order_total_pro_price = request.getParameter("final_order_total_pro_price");
+		System.out.println("final_order_total_pro_price:" + final_order_total_pro_price);
+		
+		String final_order_total_price = request.getParameter("final_order_total_price");
+		System.out.println("final_order_total_price:" + final_order_total_price);
+		
+		String total_delivery_price = request.getParameter("total_delivery_price");
+		System.out.println("total_delivery_price:" + total_delivery_price);
+		
+		
+		
+		String co_number = request.getParameter("h_co_number");
+		System.out.println("co_number:" + co_number);
+		String co_name = request.getParameter("h_co_name");
+		System.out.println("co_name:" + co_name);
+		String co_enddate = request.getParameter("h_co_enddate");
+		System.out.println("co_enddate:" + co_enddate);
+		String co_percent = request.getParameter("h_co_percent");
+		System.out.println("co_percnet:" + co_percent);
+		
+		
 		
 		List<E_P001VO> orderList = (List<E_P001VO>)session.getAttribute("orderList");
 		
 		for(int i = 0; i <orderList.size(); i++) {
 			E_P001VO e_P001VO = (E_P001VO)orderList.get(i);
-			
+			e_P001VO.setCo_number(co_number);
+			e_P001VO.setCo_name(co_name);
+			e_P001VO.setCo_enddate(co_enddate);
+			e_P001VO.setCo_percent(co_percent);
 			e_P001VO.setMem_id(mem_id);
 			e_P001VO.setSell_number(sell_number);
 			e_P001VO.setSell_title(sell_title);
@@ -241,12 +274,9 @@ public class E_P001ControllerImpl implements E_P001Controller {
 			e_P001VO.setOrder_pointuse(order_pointuse);
 			e_P001VO.setOrder_request(order_request);
 			e_P001VO.setPay_method(pay_method);
-			
-			if(od_state != null || deli_name != null) {
+			e_P001VO.setDelivery_price(delivery_price);
+			e_P001VO.setTotal_delivery_price(total_delivery_price);
 			e_P001VO.setOd_state(od_state);
-			e_P001VO.setDeli_name(deli_name);
-			}
-			
 			e_P001VO.setPoint_save(point_save);
 			e_P001VO.setPoint_save_total(point_save_total);
 			

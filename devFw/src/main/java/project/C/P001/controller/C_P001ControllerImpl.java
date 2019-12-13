@@ -30,6 +30,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import project.C.P001.service.FileUploadServiceBanner;
+import project.B.P002.vo.B_P002VO;
 import project.C.P001.service.C_P001Service;
 import project.C.P001.vo.C_P001VO;
 import project.C.P001.vo.PagingVO;
@@ -107,10 +108,11 @@ public class C_P001ControllerImpl implements C_P001Controller {
 	
 	@Override
 	@RequestMapping(value="/write.do" ,method = { RequestMethod.GET, RequestMethod.POST})
-	public ModelAndView write(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public ModelAndView write(@RequestParam Map<String, String> map, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = "redirect:/event.do";
 		Map<String, Object> dataMap = new HashMap();
 		
+		String[] arr = request.getParameterValues("sell_number");
 		HttpSession session = request.getSession();
 		String mem_id = (String)session.getAttribute("mem_id");
 		String no_division = request.getParameter("division");
@@ -120,13 +122,13 @@ public class C_P001ControllerImpl implements C_P001Controller {
 		String no_enddate = request.getParameter("enddate");
 		String no_banner = request.getParameter("banner");
 		
-		System.out.println("mem_id"+mem_id);
-		System.out.println("no_division"+no_division);
-		System.out.println("no_title"+no_title);
-		System.out.println("no_contents"+no_contents);
-		System.out.println("no_stdate"+no_stdate);
-		System.out.println("no_enddate"+no_enddate);
-		System.out.println("no_banner"+no_banner);
+//		System.out.println("mem_id"+mem_id);
+//		System.out.println("no_division"+no_division);
+//		System.out.println("no_title"+no_title);
+//		System.out.println("no_contents"+no_contents);
+//		System.out.println("no_stdate"+no_stdate);
+//		System.out.println("no_enddate"+no_enddate);
+//		System.out.println("no_banner"+no_banner);
 		
 		dataMap.put("mem_id", mem_id);
 		dataMap.put("no_division", no_division);
@@ -136,9 +138,19 @@ public class C_P001ControllerImpl implements C_P001Controller {
 		dataMap.put("no_enddate", no_enddate);
 		dataMap.put("no_banner", no_banner);
 		
-		System.out.println(dataMap);
+//		System.out.println(dataMap);
+		
+		
+		
+		
 		
 		eventService.eventWrite(dataMap);
+		Map<String, Object> eventMap = new HashMap();
+		for(int i=0; i<arr.length; i++) {
+			eventMap = new HashMap();
+			eventMap.put("item", arr[i]);
+			eventService.addItem(eventMap);
+		}
 		
 		ModelAndView mav = new ModelAndView(viewName);
 		return mav;
@@ -243,6 +255,36 @@ public class C_P001ControllerImpl implements C_P001Controller {
         return sb.toString();
     }
 
+    
+    
+	   @RequestMapping(value = "/searchSale.do", method = { RequestMethod.GET, RequestMethod.POST })
+	   @ResponseBody
+	   public ModelAndView searchSale(HttpServletRequest request, HttpServletResponse response) throws Exception  {
+		   String viewName = getViewName(request);
+			viewName = "searchSale";
+			ModelAndView mav = new ModelAndView(viewName);
+			return mav;
+	   }
+	
+	   
+	   @RequestMapping(value = "/searchSaleAction.do", method = { RequestMethod.GET, RequestMethod.POST })
+	   @ResponseBody
+	   public Map<String, Object> searchSalehAction(HttpServletRequest request, HttpServletResponse response) throws Exception  {
+	      request.setCharacterEncoding("utf-8");
+	      String p_id = (String)request.getParameter("p_id");
+	      Map<String, Object> searchMap = new HashMap<String, Object>(); // 검색조건
+	      Map<String, Object> resultMap = new HashMap<String, Object>(); // 조회결과
+
+	      if(p_id=="" || p_id==null) {
+	    	  return resultMap;
+	      }
+	      
+	      searchMap.put("p_id", p_id);
+	      List<Map<String, Object>> data = eventService.searchSale(searchMap);
+	      resultMap.put("Data", data);
+	      
+	      return resultMap;
+	   }
 
 }
 

@@ -17,4 +17,5 @@ public interface E_P001Controller {
 	public ModelAndView order(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView buy(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView payToOrder(HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public ModelAndView use_Coupon(HttpServletRequest request, HttpServletResponse response) throws Exception;
 }

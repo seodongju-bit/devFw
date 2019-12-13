@@ -17,6 +17,7 @@
 <c:set var="pointuse" value="0"/>
 <c:set var="point_save" value="0"/>
 <c:set var="point_save_total" value="0"/>
+<c:set var="total_delivery_price" value="0"/>
 <!DOCTYPE html>
 
 
@@ -148,7 +149,7 @@ h1{
 	
 	 function init(){
 		  	var orderForm=document.orderForm;
-		  	var h_mem_email2=orderForm.h_mem_email2;
+		  	var h_mem_email2=orderForm.mem_email2;
 		  	var mem_email2=h_mem_email2.value;
 		  	var select_email2=orderForm.mem_email2;
 		  	select_email2.value=mem_email2;
@@ -247,58 +248,90 @@ h1{
     	
     	var formObj=document.createElement("form");
     	
-    	var e_mem_name = document.getElementById("mem_name");
-		var e_mem_tel = document.getElementById("mem_tel");
-		var e_mem_email1 = document.getElementById("mem_email1");
-		var e_mem_email2 = document.getElementById("mem_email2");
-		var e_order_zip = document.getElementById("order_zip");
-		var e_order_address1 = document.getElementById("order_address1");
-		var e_order_address2 = document.getElementById("order_address2");
-		var e_final_order_total_price = document.getElementById("p_final_order_total_price");
-		var e_sell_title = document.getElementById("h_sell_title");
+    	var sell_number = document.getElementById("sell_number");
+    	var sell_title = document.getElementById("sell_title");
+    	var order_size = document.getElementById("order_color");
+    	var order_color = document.getElementById("order_color");
+    	var detail_quantity = document.getElementById("detail_quantity");
+    	var pro_price = document.getElementById("pro_price");
+    	var sell_price = document.getElementById("sell_price");
+    	var seller_id = document.getElementById("seller_id");
+    	var delivery_price = document.getElementById("delivery_price");
+    	var delivery_payment = document.getElementById("delivery_payment");
+    	var point_save = document.getElementById("point_save");
+    	var order_total_price = document.getElementById("order_total_price");
+    	var order_total_sale_price = document.getElementById("order_total_sale_price");
+    	var point_save_total = document.getElementById("point_save_total");
+    	var total_delivery_price = document.getElementById("total_delivery_price");
+    	var delivery_method = document.getElementById("delivery_method");
+		var mem_name = document.getElementById("mem_name");
+		var mem_tel = document.getElementById("mem_tel");
+		var mem_email1 = document.getElementById("mem_email1");
+		var mem_email2 = document.getElementById("mem_email2");
+		var order_zip = document.getElementById("order_zip");
+		var order_address1 = document.getElementById("order_address1");
+		var order_address2 = document.getElementById("order_address2");
+		var order_request = document.getElementById("order_request");
+		var order_pointuse = document.getElementById("order_pointuse");
+		var final_order_total_pro_price = document.getElementById("final_order_total_pro_price");
+		var final_order_total_price = document.getElementById("final_order_total_price");
+		var pay_method = document.getElementById("pay_method");
+		var od_state = document.getElementById("od_state");
+		var co_number = document.getElementById("h_co_number");
 		
-		var h_mem_name = document.getElementById("h_mem_name");
-		var h_mem_tel = document.getElementById("h_mem_tel");
-		var h_mem_email1 = document.getElementById("h_mem_email1");
-		var h_mem_email2 = document.getElementById("h_mem_email2");
-		var h_order_zip = document.getElementById("h_order_zip");
-		var h_order_address1 = document.getElementById("h_order_address1");
-		var h_order_address2 = document.getElementById("h_order_address2");
-		var h_final_order_total_price = document.getElementById("h_final_order_total_price");
-		var h_sell_title = document.getElementById("h_sell_title");
 		
-		
-		e_mem_name.value = h_mem_name.value;
-		e_mem_tel.value = h_mem_tel.value;
-		e_mem_email1.value = h_mem_email1.value;
-		e_mem_email2.value = h_mem_email2.value;
-		e_order_zip.value = h_order_zip.value;
-		e_order_address1.value = h_order_address1.value;
-		e_order_address2.value = h_order_address2.value;
-		e_final_order_total_price.value = h_final_order_total_price.value;
-		e_sell_title.value = h_sell_title.value;
     	
         IMP.init('imp02202162');
         IMP.request_pay({
             pg : 'html5_inicis',
             pay_method : 'card',
             merchant_uid : 'merchant_' + new Date().getTime(),
-            name : e_sell_title.value,
-            amount : e_final_order_total_price.value,
-            buyer_email : e_mem_email1.value +"@" + e_mem_email2.value,
-            buyer_name : e_mem_name.value,
-            buyer_tel : e_mem_tel.value,
-            buyer_addr : e_order_address1.value + "<br>" + e_order_address2.value,
-            buyer_postcode : e_order_zip.value
+            name : sell_title.value,
+            amount : final_order_total_price.value,
+            buyer_email : mem_email1.value +"@" + mem_email2.value,
+            buyer_name : mem_name.value,
+            buyer_tel : mem_tel.value,
+            buyer_addr : order_address1.value + "<br>" + order_address2.value,
+            buyer_postcode : order_zip.value,
         }, function(rsp) {
             if ( rsp.success ) {
                 var msg = '결제가 완료되었습니다.';
-                msg += '고유ID : ' + rsp.imp_uid;
-                msg += '상점 거래ID : ' + rsp.merchant_uid;
-                msg += '결제 금액 : ' + rsp.paid_amount;
-                msg += '카드 승인번호 : ' + rsp.apply_num;
+				formObj.appendChild(sell_number);
+				formObj.appendChild(sell_title);
+				formObj.appendChild(order_size);
+				formObj.appendChild(order_color);
+				formObj.appendChild(detail_quantity);
+				formObj.appendChild(pro_price);
+				formObj.appendChild(sell_price);
+				formObj.appendChild(seller_id);
+				formObj.appendChild(order_total_price);
+				formObj.appendChild(order_total_sale_price);
+				formObj.appendChild(final_order_total_pro_price);
+				formObj.appendChild(final_order_total_price);
+				formObj.appendChild(delivery_payment);
+				formObj.appendChild(delivery_method);
+				formObj.appendChild(mem_name);
+				formObj.appendChild(mem_tel);
+				formObj.appendChild(mem_email1);
+				formObj.appendChild(mem_email2);
+				formObj.appendChild(order_zip);
+				formObj.appendChild(order_address1);
+				formObj.appendChild(order_address2);
+				formObj.appendChild(order_pointuse);
+				formObj.appendChild(order_request);
+				formObj.appendChild(pay_method);
+				formObj.appendChild(delivery_price);
+				formObj.appendChild(total_delivery_price);
+				formObj.appendChild(od_state);
+				formObj.appendChild(point_save_total);
+				formObj.appendChild(co_number);
+				
+				document.body.appendChild(formObj);
+				formObj.method="post";
+				formObj.action="${contextPath}/payToOrder.do";
+				formObj.submit();
             } else {
-                var msg = '결제에 실패하였습니다.';
+                var msg = '결제에 실패하였습니다.' + "<br>";
                 msg += '에러내용 : ' + rsp.error_msg;
             }
 
@@ -306,40 +339,60 @@ h1{
         });
         }
     
-    $(document).ready(function(){
-    	$('#all_point').change(function(){
-    		if($('#all_point').is(':checked')){
-    			$('#order_pointuse').val('${orderer.mem_point}');
-    			$("#p_order_pointuse").text($("#order_pointuse").val());
-    		}else {
-    			$('#order_pointuse').val('0');
-    			$("#p_order_pointuse").text($("#order_pointuse").val());
-    		}
-    		$("#order_pointuse").on("keyup", function(){
-        		var order_pointuse = $("#order_pointuse").val();
-        		var h_mypoint = $("#h_mypoint").val();
-        		
-        		if(Number(order_pointuse) > Number(h_mypoint)) {
-        			alert("보유 금액 이상 사용은 불가능 합니다.");
-        			$('#order_pointuse').val('0');
-        		}
-        	});
-    	});
-    });
-
-   
     
+    function selectCoupon() {
+    	var url = "${contextPath}/use_Coupon.do";
+    	var name = "쿠폰 조회";
+    	var option = "width=700px, height=500px,location=no, status=no, scrollbars=no"
+    	window.open(url, name, option);
+    }
+    
+    
+    
+
+ 
     $(document).ready(function(){
-    	$("#order_pointuse").keyup(function(){
-    		$("#p_order_pointuse").text($("#order_pointuse").val());
+    	
+    	$('#usebutton, #insert_coupon').on('click', function(){
+    		
+    		var final_order_total_pro_price = $("#final_order_total_pro_price").val();
+        	var total_delivery_price = $("#total_delivery_price").val();
+        	var order_total_sale_price = $("#order_total_sale_price").val();
+        	var order_pointuse = $("#order_pointuse").val();
+        	var co_percent  = $("#h_co_percent").val();
+        	
+        	var mem_point = $("#mypoint").val();
+        	
+        	var final_order_total_price;
+        	
+        	final_order_total_price = parseInt(final_order_total_pro_price) + parseInt(total_delivery_price) - parseInt(order_total_sale_price);
+    		
+    		//- parseInt(order_pointuse))*(1 - parseInt(co_percent)/100)
+			if(Number($('#order_pointuse').val()) > Number(final_order_total_price)) {
+				alert("입력하신 포인트가 상품 금액을 초과합니다.");
+				order_pointuse = mem_point;
+			}else if(Number($('#order_pointuse').val()) > Number(mem_point)) {
+				alert("사용가능한 포인트를 초과했습니다.");
+				order_pointuse = mem_point;
+			}
+				final_order_total_price = (parseInt(final_order_total_price) * (1-parseInt(co_percent)/100) - parseInt(order_pointuse));
+				final_order_total_price = parseInt(final_order_total_price);
+		    	$("#final_order_total_price").val(final_order_total_price);
+				$("#p_final_order_total_price").text(final_order_total_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+				$("#p_order_pointuse").text(order_pointuse.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+				$("#p_sale_coupon").text($("#h_co_percent").val());	
     	});
-    });
+    	});
+    
+	
 </script>
 <title>Insert title here</title>
 </head>
 <body>
 <div class="container" style="min-width:1000px !important;">
-  <form name="orderForm" method="post" action="${contextPath}/payToOrder.do">
+
+
+  <form name="orderForm" method="post" action="${contextPath}/payToOrder.do" id="frm">
 	<div class="order_box">
 	  <h1 style="width:1096px;">주문페이지</h1>
 	  <hr style="border: 2px solid black; width: 100%; min-width:1000px">
@@ -369,27 +422,28 @@ h1{
 	  	      <div id="prod" style="width:200px;">
 	  	      	<span id="prod_info" style="text-align:center;">
 	  	        <a style="color:black; margin: 0 0 0 0; width:500px;" href="${contextPath}/sellItems.do?sell_no=${item.sell_number}">${item.sell_title}</a>
-	  	      	<input type="hidden" id="h_sell_number" name="h_sell_number" value="${item.sell_number}"/>
-	  	      	<input type="hidden" id="h_sell_title" name="h_sell_title" value="${item.sell_title}"/>
+	  	      	<input type="hidden" id="sell_number" name="sell_number" value="${item.sell_number}"/>
+	  	      	<input type="hidden" id="sell_title" name="sell_title" value="${item.sell_title}"/>
 	  	        </span>
 	  	      	<span id="option">
 		  	      ${item.order_size}&nbsp;&nbsp;&nbsp;
-		  	      <input type="hidden" id="h_order_size" name="h_order_size" value="${item.order_size}"/>
+		  	      <input type="hidden" id="order_size" name="order_size" value="${item.order_size}"/>
 		  	      ${item.order_color}&nbsp;&nbsp;&nbsp;${item.detail_quantity}개
-		  	      <input type="hidden" id="h_order_color" name="h_order_color" value="${item.order_color}"/>
-		  	      <input type="hidden" id="h_detail_quantity" name="h_detail_quantity" value="${item.detail_quantity}"/>
+		  	      <input type="hidden" id="order_color" name="order_color" value="${item.order_color}"/>
+		  	      <input type="hidden" id="detail_quantity" name="detail_quantity" value="${item.detail_quantity}"/>
 	  	      </span>
 	  	      </div>
 	  	    </td>
 	  	    <td>
-	  	      <input type="hidden" id="h_pro_price" name="h_pro_price" value="${item.pro_price}"/>
-	  	      <input type="hidden" id="h_sell_price" name="h_sell_price" value="${item.sell_price}"/>
-	  	      <input type="hidden" id="h_seller_id" name="h_seller_id" value="${item.mem_id}"/>
+	  	      <input type="hidden" id="pro_price" name="pro_price" value="${item.pro_price}"/>
+	  	      <input type="hidden" id="sell_price" name="sell_price" value="${item.sell_price}"/>
+	  	      <input type="hidden" id="seller_id" name="seller_id" value="${item.mem_id}"/>
 	  	      <del><fmt:formatNumber value="${item.pro_price * item.detail_quantity }"/></del>원<br>
 	  	      <fmt:formatNumber value="${item.sell_price * item.detail_quantity}"/>원 (<fmt:formatNumber value="${order_sale_price + (1-(item.sell_price / item.pro_price ))*100}" pattern="#"/>%)
 	  	    </td> 
 	  	    <td>
-	  	  		배송비
+	  	  		<fmt:formatNumber value="${item.delivery_price}"/>원
+	  	  		<input type="hidden" id="delivery_price" name="delivery_price" value="${item.delivery_price}"/>
 	  	    </td>
 	  	    <td>
 	  	       <input type="hidden" id="delivery_payment" name="delivery_payment" value=""/>
@@ -399,19 +453,19 @@ h1{
 		      </select>
 	  	    </td>
 	  	    <td>
-	  	      <c:set var="point_save" value="${point_save + (item.pro_price*0.05)}"/>
-	  	      <fmt:parseNumber value="${point_save + (item.pro_price*0.05)}" var="point_save" integerOnly="true"/>P
-	  	      <input type="hidden" id="h_point_save" name="h_point_save" value="${point_save}"/>
+	  	      <c:set var="point_save" value="${point_save + ((item.pro_price*0.05)*item.detail_quantity)}"/>
+	  	      <c:set var="point_save" value="${point_save+((point_save%1>0.5)?(1-(point_save%1))%1:-(point_save%1))}"/>
+	  	      <fmt:formatNumber value="${point_save}"/>P
+	  	      <input type="hidden" id="point_save" name="point_save" value="${point_save}"/>
 	  	    </td>
 	  	  </tr>
+	  	  	<c:set var="order_total_prod_price" value="${order_total_price + item.pro_price * item.detail_quantity}"/>
 	  	  	<c:set var="order_total_price" value="${order_total_price + item.sell_price * item.detail_quantity}"/>
-	  	  	<c:set var="order_total_sale_price" value="${order_total_sale_price + (item.pro_price - item.sell_price)}"/>
+	  	  	<c:set var="order_total_sale_price" value="${order_total_sale_price + (item.pro_price - item.sell_price) * item.detail_quantity}"/>
 	  	  	<c:set var="point_save_total" value="${point_save_total + point_save}"/>
+	  	  	<c:set var="total_delivery_price" value="${total_delivery_price + item.delivery_price}"/>
 	  	</c:forEach>
 	  	</table>
-	  		<input type="hidden" id="h_order_total_price" name="h_order_total_price" value="${order_total_price}"/>
-	  		<input type="hidden" id="h_order_total_sale_price" name="h_order_total_sale_price" value="${order_total_sale_price}"/>
-	  		<input type="hidden" id="h_point_save_total" name="h_point_save_total" value="${point_save_total}"/>
 	</div>
 	<br>
 	<br>
@@ -439,14 +493,14 @@ h1{
 		    <td>받으실 분</td>
 		    <td>
 		      <input id="mem_name" name="mem_name" type="text" size="40" value="${orderer.mem_name}">
-		      <input type="hidden" id="h_mem_name" name="h_mem_name" value="${orderer.mem_name}">
+		      <input id="h_mem_name" name="h_mem_name" type="hidden" size="40" value="${orderer.mem_name}">
 		    </td>
 		  </tr>
 		  <tr>
 		    <td>연락처</td>
 		    <td>
 		      <input id="mem_tel" name="mem_tel" type="text" size="40" value="${orderer.mem_tel}">
-		      <input id="h_mem_tel" name="h_mem_tel" type="hidden" value="${orderer.mem_tel}">
+		      <input id="h_mem_tel" name="h_mem_tel" type="hidden" size="40" value="${orderer.mem_tel}">
 		    </td>
 		  </tr>
 		  <tr>
@@ -454,6 +508,8 @@ h1{
 		    <td>
 		      <input size="40" type="text" id="mem_email1" name="mem_email1" value="${orderer.mem_email1}">&nbsp;@
 		      <input size="40" type="text" id="mem_email2" name="mem_email2" value="${orderer.mem_email2}">
+		      <input size="40" type="hidden" id="h_mem_email1" name="h_mem_email1" value="${orderer.mem_email1}">
+		      <input size="40" type="hidden" id="h_mem_email2" name="h_mem_email2" value="${orderer.mem_email2}">
 		      <select name="select_order_email2" onChange="selectEmail(this)">
 		        <option value="" selected>선택하세요</option>
 		        <option value="1">직접입력</option>
@@ -464,8 +520,6 @@ h1{
 		        <option value="gmail.net">gmail.net</option>
 		        <option value="hotmail.net">hotmail.net</option>
 		      </select>
-		      <input type="hidden" id="h_mem_email1" name="h_mem_email1" value="${orderer.mem_email1}">
-		      <input type="hidden" id="h_mem_email2" name="h_mem_email2" value="${orderer.mem_email2}">
 		    </td>
 		  </tr>
 		  <tr>
@@ -477,9 +531,9 @@ h1{
 				도로명 or 지번 주소:<input type="text" id="order_address1" name="order_address1" size="50" value="${orderer.mem_address1}"><br>
 				상세 주소:<input type="text" id="order_address2" name="order_address2" size="50" value="${orderer.mem_address2}">
 		     </p>
-		     <input type="hidden" id="h_order_zip" name="h_order_zip" value="${orderer.mem_zip}">
-		     <input type="hidden" id="h_order_address1" name="h_order_address1" value="${orderer.mem_address1}">
-		     <input type="hidden" id="h_order_address2" name="h_order_address2" value="${orderer.mem_address2}">
+		     <input type="hidden" id="h_order_zip" name="h_order_zip" value="${orderer.mem_zip}"/>
+		    <input type="hidden" id="h_order_address1" name="h_order_address1" value="${orderer.mem_address1}">
+		    <input type="hidden" id="h_order_address2" name="h_order_address2" value="${orderer.mem_address2}">
 		    </td>
 		  </tr>
 		  <tr>
@@ -495,21 +549,35 @@ h1{
 	<div class="sale">
 	  <table class="table table-striped table-bordered">
 	    <tbody>
+	       <tr class="dot_line">
+	        <td>쿠폰 선택</td>
+	        <td>
+	        	<div id="selected_coupon" style="display:none;">
+	        		<ul style="list-style-type:none;">
+	        		 <li>쿠폰번호:<label id="co_number"></label></li>
+	        		  <li>쿠폰이름:<label id="co_name"></label></li>
+	        		  <li>유효기간:<label id="co_enddate"></label></li>
+	        		  <li>할인률:<label id="co_percent"></label>%</li>
+	        		</ul>
+	        		<input type="hidden" id="h_co_number" name="h_co_number" value=""/>
+	        		<input type="hidden" id="h_co_name" name="h_co_name" value=""/>
+	        		<input type="hidden" id="h_co_enddate" name="h_co_enddate" value=""/>
+	        		<input type="hidden" id="h_co_percent" name="h_co_percent" value="0"/>
+	        	</div>
+	        	&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" class="btn btn-default" value="쿠폰 선택" id="select_coupon" name="select_coupon" onClick="selectCoupon()">
+										<input type="button" class="btn btn-default" value="선택한 쿠폰 적용" id="insert_coupon" name="insert_coupon">        
+	        </td>
+	      </tr>
 	      <tr class="dot_line">
 	      <c:set var="point" value="0"/>
 	        <td>포인트</td>
 	        <td>
-	          <input id="order_pointuse" name="order_pointuse" type="text" size="10" value="${pointuse}"/> 
-	          <input id="h_order_pointuse" name="h_order_pointuse" type="hidden" value="${pointuse}"/>
+	          <input id="order_pointuse" name="order_pointuse" type="text" size="10" value="0"/> 
+	          <input type="button" class="btn btn-default" id="usebutton" name="usebutton" value="사용"/>
 	          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	          <span id="mypoint">잔여포인트: ${orderer.mem_point}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	          <input type="hidden" id="h_mypoint" name="h_mypoint" value="${orderer.mem_point}"/>
-	          <input type="checkbox" id="all_point" name="all_point" value="전액 사용하기"/> 전액 사용하기
+	          잔여포인트:<span id="remain_point"> ${orderer.mem_point}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	          <input type="hidden" id="mypoint" name="mypoint" value="${orderer.mem_point}"/>
 	        </td>
-	      </tr>
-	      <tr class="dot_line">
-	        <td>쿠폰 선택</td>
-	        <td>&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="쿠폰 선택" id="co_number" name="co_number"></td>
 	      </tr>
 	    </tbody>
 	  </table>
@@ -523,40 +591,43 @@ h1{
 	      <tr align="center" class="fixed">
 	        <td>총 상품 금액</td>
 	        <td>총 배송비</td>
-	        <td>총 할인금액</td>
+	        <td>쿠폰 할인</td>
+	        <td>판매자 할인</td>
 	        <td>사용 포인트</td>
 	        <td>최종 결제금액</td>
 	        <td>총 적립 포인트</td>
 	      </tr>
 	      <tr style="cellpadding:40px; align:center;">
-
-	        <c:set var="final_order_total_pro_price" value="${final_order_total_pro_price + order_total_price}"/> 
-	  		<c:set var="final_order_total_price" value="${final_order_total_pro_price - order_total_sale_price}"/>
-
+	        <c:set var="final_order_total_pro_price" value="${final_order_total_pro_price + order_total_prod_price}"/>
 	        <td>
 			  <p id="p_final_order_total_pro_price"><fmt:formatNumber value="${final_order_total_pro_price}"/>원</p>	  
 	        </td>
 	        <td>
-	          <p id="p_delivery_cost">배송비</p>
+	          <p id="p_total_delivery_price"><fmt:formatNumber value="${total_delivery_price}"/>원</p>
 	        </td>
 	        <td>
+	          <p><span id="p_sale_coupon">0</span>%</p>
+	        </td>
+	        <td>
+	       	  <c:set var="final_order_total_price_pre" value="${final_order_total_price_pre + final_order_total_pro_price + total_delivery_price - order_total_sale_price}"/>
 	          <p id="p_order_total_sale_price"><fmt:formatNumber value="${order_total_sale_price}"/>원</p>
 	        </td>
 	        <td>
-	          <p><span id="p_order_pointuse"></span>P</p>
+	          <p><span id="p_order_pointuse">0</span>P</p>
 	        </td>
 	        <td>
-	        <c:set var="final_order_total_price" value="${final_order_total_price - pointuse}"/>
-	          <p id="p_final_order_total_price">
-	           <fmt:formatNumber value="${final_order_total_price}"/>원
-	         </p>
-		  		<input type="hidden" id="h_order_total_price" name="h_order_total_price" value="${order_total_price}"/>
-		  		<input type="hidden" id="h_order_total_sale_price" name="h_order_total_sale_price" value="${order_total_sale_price}"/>
-		  		<input type="hidden" id="h_final_order_total_pro_price" name="h_final_order_total_pro_price" value="${final_order_total_pro_price}"/>
-	            <input type="hidden" id="h_final_order_total_price" name="h_final_order_total_price" value="${final_order_total_price}"/>
+	          <p><span id="p_final_order_total_price"><fmt:formatNumber value="${final_order_total_price_pre}"/></span>원</p>
+	          
+		  		<input type="hidden" id="order_total_price" name="order_total_price" value="${order_total_price}"/>
+		  		<input type="hidden" id="order_total_sale_price" name="order_total_sale_price" value="${order_total_sale_price}"/>
+		  		<input type="hidden" id="final_order_total_pro_price" name="final_order_total_pro_price" value="${final_order_total_pro_price}"/>
+	            <c:set var="final_order_total_price" value="${final_order_total_pro_price + total_delivery_price - order_total_sale_price}"/>
+	            <input type="hidden" id="final_order_total_price" name="final_order_total_price" value="${final_order_total_price}"/>
+	        	<input type="hidden" id="total_delivery_price" name="total_delivery_price" value="${total_delivery_price}"/>
 	        </td>
 	        <td>
 	         <p id="p_point_save_total"><fmt:formatNumber value="${point_save_total}" type="number"/>P</p>
+	         <input type="hidden" id="point_save_total" name="point_save_total" value="${point_save_total}"/>
 	        </td>
 	      </tr>
 	    </tbody>
@@ -574,7 +645,7 @@ h1{
 	      </td>
 	      <td>
 	      	<input type="button" id="payment_card" name="payment_card" onClick="pay()" style="display:none;" value="카드 또는 계좌이체로 결제하기">
-	      	<input type="hidden" id="od_state" name="od_state" value="결제완료">
+	      	<input type="hidden" id="od_state" name="od_state" value="F_0002">
 	      	<button class="btn" type="submit" id="payment_account" name="payment_account" style="display:none;">무통장 입금 방식으로 결제하기</button>
 	      </td>
 	    </tr>
