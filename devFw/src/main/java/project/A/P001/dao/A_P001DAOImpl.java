@@ -1,5 +1,6 @@
 package project.A.P001.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -23,12 +24,15 @@ public class A_P001DAOImpl implements A_P001DAO {
 	
 	}
 	
-	@Override
-	public String searchId(Map sidMap)throws DataAccessException {
-		String result = sqlSession.selectOne("A.A_P001.idsearch",sidMap);
-		return result;
+	public A_P001VO searchID(A_P001VO A_P001VO){
+		System.out.println("---> mybatis로 searchID() 기능 처리");
+		return (A_P001VO) sqlSession.selectOne("A.A_P001.searchID",A_P001VO);
 	}
 
+	public A_P001VO searchPW(A_P001VO A_P001VO){
+		System.out.println("---> mybatis로 searchID() 기능 처리");
+		return (A_P001VO) sqlSession.selectOne("A.A_P001.searchPW",A_P001VO);
+	}
 	
 
 }

@@ -30,17 +30,18 @@
 		]]>
 	</select>
 	
-	<select id="idsearch" resultType="String" parameterType="String"  >
-			select nvl(mem_id, 0)
+	
+	<select id="searchPW" resultType="A_P001VO" parameterType="A_P001VO">
+			select * 
 			from members
-			where mem_email1 ='baetuk60' and mem_email2 = 'gmail.com';			
+			where mem_id=#{mem_id} and mem_email1=#{mem_email1} and mem_email2=#{mem_email2}	
 	</select>
 	
-	<select id="pwsearch" resultType="String" parameterType="String"  >
-	    <![CDATA[
-			select mem_pw
+	<select id="searchID" resultType="A_P001VO" parameterType="A_P001VO">
+			select * 
 			from members
-			where mem_id = #{mem_id} and mem_email1 = #{mem_email1} and mem_email2 = #{mem_email2};			
-		]]>
-	</select>
+			where mem_email1=#{mem_email1} and mem_email2=#{mem_email2}	
+	</select>	
+	
+	
 </mapper>

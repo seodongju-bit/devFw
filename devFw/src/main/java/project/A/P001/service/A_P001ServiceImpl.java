@@ -20,9 +20,7 @@ import project.A.P001.vo.A_P001VO;
 public class A_P001ServiceImpl implements A_P001Service {
 	@Autowired
 	A_P001DAO a_p001DAO;
-	
-	@Autowired
-	private SqlSession sqlSession;	
+
 	
 	
 	@Override
@@ -31,21 +29,14 @@ public class A_P001ServiceImpl implements A_P001Service {
 	}
 	
 	
-	public String get_searchId(Map sidMap)throws Exception {
-
-		a_p001DAO = sqlSession.getMapper(A_P001DAO.class);
-	
-		System.out.println("서비스 확인" + a_p001DAO.searchId(sidMap));
-		String result = "";
-
-		try {
-			result = a_p001DAO.searchId(sidMap);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		System.out.println("서비스 확인 :" + a_p001DAO);
-		return result;
+	@Override
+	public A_P001VO searchID(A_P001VO A_P001VO) {
+		return a_p001DAO.searchID(A_P001VO);
 	}
 
+	@Override
+	public A_P001VO searchPW(A_P001VO A_P001VO) {
+		return a_p001DAO.searchPW(A_P001VO);
+	}
+	
 }
