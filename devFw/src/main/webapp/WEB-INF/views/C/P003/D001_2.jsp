@@ -54,6 +54,8 @@ caption {
 			<tr>
 				<th scope="row">문의번호</th>
 				<td>${notice3.QU_NUMBER}</td>
+				<th scope="row">상품문의</th>
+				<td>${notice3.SELL_TITLE}</td>
 		    </tr>
 		    <tr>
 				<th scope="row">문의내용</th>

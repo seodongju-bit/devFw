@@ -93,7 +93,7 @@
   <select id="noticeDetail2" parameterType="java.util.Map" resultType="java.util.HashMap"> 
     <![CDATA[
         
-   SELECT qu_number,qu_contents,qu_answer,mem_id,qu_date
+   SELECT qu_number,qu_contents,qu_answer,mem_id,qu_date,sell_title
    FROM questions 
    WHERE qu_number=#{qu_number}
            
@@ -118,7 +118,7 @@
      <select id="questionDetail1" parameterType="java.util.Map" resultType="java.util.HashMap"> 
     <![CDATA[
         
-   SELECT qu_number,qu_contents,qu_answer,mem_id,qu_date
+   SELECT qu_number,qu_contents,qu_answer,mem_id,qu_date,sell_title
    FROM questions 
    WHERE qu_number=#{qu_number}
            
