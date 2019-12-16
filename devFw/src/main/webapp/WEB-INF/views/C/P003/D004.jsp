@@ -21,6 +21,10 @@ form{
 height:1000px;
 }
 
+img#s{
+width:200px;
+height:200px;
+}
 
 
 
@@ -53,9 +57,9 @@ height:1000px;
 		
 		  
 		  <c:forEach var="orderInfo2" items="${orderInfo}">
-		<input name="order_number" value="${orderInfo2.order_number}"> 
+		<input name="order_number" value="${orderInfo2.order_number}"> <br><br>
         <input name="sell_title" value="${orderInfo2.sell_title}"><br><br>   
-        <img src="<c:out value="${orderInfo2.sell_thumbnail}"/>"><br><br>
+        <img id="s" src="<c:out value="${orderInfo2.sell_thumbnail}"/>"><br><br>
         <input type="hidden" name="sell_thumbnail" value="${orderInfo2.sell_thumbnail}">
           </c:forEach>
        <textarea name="qu_contents" id="editor"   style="width: 80%; height: 400px;"></textarea>
@@ -66,7 +70,7 @@ height:1000px;
 </div>              
 
   </form>
- 
+       
  <script>
 
 $(function() {

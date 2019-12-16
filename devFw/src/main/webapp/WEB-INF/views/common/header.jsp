@@ -21,8 +21,8 @@
 
 
 #header{
-   background: #ecf0f1;
    font-family: 'Anton', sans-serif; 
+   background-color: white;
 }
 #header{
    margin: 0;
@@ -31,13 +31,13 @@
    font-family: 'Noto Sans KR', sans-serif;
 }
 
-
+ 
 
 /*---------------------------------------------상단 로고 및 검색바 ------------------------------------------------*/
 	
 	/*header*/
 	#header {
-		border-bottom: 1px solid black;
+		border-bottom: 1px solid lightgray;
 		height:200px;
 	}
 	/*header container*/
@@ -48,10 +48,10 @@
 	}
 	/*로고*/
 	#toplogo {
-		width: 250px;
+		width: 275px;
 		height: 95px;
 		float:left;
-		margin: 30px 0 0 0;
+		margin: 20px 0 0 0;
 		position:relative;
 		clear:both;
 	}
@@ -71,7 +71,7 @@
 	}
 	/*네비게이션 바*/
 	#navbar {
-		background-color:#DDDDDD; 
+		background-color: #F2F2F2; 
 		width:100%;
 		min-width:1000px;
 	}
@@ -152,8 +152,8 @@
 	  display: inline-block;
 	}
 	.mainMenu >.menubtn {
-	  background-color:rgb(94, 94, 94);
-	  color:white;
+ 	  background-color: white; 
+	  color:  gray;
 	  width:216.5px;
 	  height:30px;
 	  margin:0px;
@@ -161,9 +161,14 @@
 	  font-size:16px;
 	  border: none;
 	  cursor: pointer;
+	  border-bottom: 1px solid #f2f2f2;
+	}
+	.mainMenu >.menubtn:hover {
+ 	  background-color: lightgray; 
+	  color:  white;
 	}
 	#dropMenu >.menubtn {
-	  background-color:#9E9E9E;
+	  background-color: #424242;
 	  color:white;
 	  width:216.5px;
 	  height:31px;
@@ -239,6 +244,14 @@
 		color: white;
 		padding:5px 50px;
 	}
+	.namec{
+		color : black;
+		display: block;
+		font-size: 20px;
+		margin: 10px 20px;
+		padding: 5px 5px 10px 20px;
+		border-bottom: 1px solid gray;
+	}
 /*---------------------------------------------------------------------------------------------------------*/
 </style>
 <title>Insert title here</title>
@@ -284,20 +297,17 @@
 		    hide('suggest');
 		} 
 	}
-	
 	function select(selectedKeyword) {
 		 document.frmSearch.searchWord.value=selectedKeyword;
 		 loopSearch = false;
 		 hide('suggest');
 	}
-		
 	function show(elementId) {
 		 var element = document.getElementById(elementId);
 		 if(element) {
 		  element.style.display = 'block';
 		 }
 		}
-	
 	function hide(elementId){
 	   var element = document.getElementById(elementId);
 	   if(element){
@@ -316,7 +326,6 @@
 		document.getElementById("header").append(form);
 		form.submit();
 	}
-	
 	$(function(){
 		$('#search').click(function(){
 			self.location = "searchProd"
@@ -327,8 +336,6 @@
 			+ endcodeURIComponent($('#SearchWordInput').val());
 		});
 	});
-	
-
 //드롭메뉴 불러오기
 $(document).ready(function(){
 	 $.ajax({
@@ -347,37 +354,29 @@ $(document).ready(function(){
 	           for(var i=0;i<jsonInfo.length;i++){
 	        	   var name = jsonInfo[i].common_name;
 	        	   var code = jsonInfo[i].common_code;
-	        	   
 	        	   if(code.length==4){
 	        			bigCtgr = document.createElement('div'); 	
 	        	   		bigCtgr.setAttribute("class", "menu1");
 	        	   		smallCtgrBox = document.createElement('div');
-
 	        	  		bigCtgrLink = document.createElement('a');
 	        	  		bigCtgrLink.setAttribute("href", "/devFw/category.do?ctgrNum="+code);
 	        	  		bigCtgrLink.append(name);
 	        	  		bigCtgr.appendChild(bigCtgrLink);
 	        	   		document.getElementById("dropBox").appendChild(bigCtgr);
 	        	   		bigCtgr.appendChild(smallCtgrBox);
-	        	   		
+	        	   		var namec = document.createElement('span'); 
+	        	   		namec.append(name);
+	        	   		namec.setAttribute("class", "namec")
+	        	   		smallCtgrBox.appendChild(namec);
 	        	   }else{
-	        		   // link=document.createElement('a');
-	        		   // link.setAttribute("href", "/devFw/category?code"+code);
-	        		    //link.append(name);
-	        		    
 	        	   		smallCtgr = document.createElement('div');
-	        	   		
 	        	   		smallCtgrBox.setAttribute("class", "dropdown-content2");
 	        	  		smallCtgr.setAttribute("onclick", "location.href='/devFw/category.do?ctgrNum="+code+"'");
 	        	  		smallCtgr.setAttribute("class", "headerSmallCtgr");
 	        	  		smallCtgr.append(name);
 	        	  		smallCtgrBox.appendChild(smallCtgr);
-	        	  		//smallCtgr.appendChild(link);               
-	        	  		
 	        	   }
-	        	   //document.getElementById("sideMenu").innerHTML += code+name   +"<br>";
 	           }
-      
 	       },
 	       error:function(request,textStatus,error){
 	          alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -393,15 +392,14 @@ $(document).ready(function(){
 	function menuCheck(page){
 		var id = '#'+page;
 		if(page == 'reviewRankingMenu'){
-			$(id).css("background-color","black");
+			$(id).css("color","#01DF74");
 		}else if(page == 'bestMenu'){
-			$(id).css("background-color","black");
+			$(id).css("color","#01DF74");
 		}else if(page == 'eventProduct'){
-			$(id).css("background-color","black");
+			$(id).css("color","#01DF74");
 		}else if(page == 'event'){
-			$(id).css("background-color","black");
-		}
-		
+			$(id).css("color","#01DF74");
+		}	
 	}
 	
 	function pageName(domain){
@@ -418,7 +416,6 @@ $(document).ready(function(){
 			alert("로그인 후 조회가 가능합니다.");
 			location.href="${contextPath}/signinpage.do";
 		}else{
-			
 			location.href="${contextPath}/givecoupon.do";
 		}
 	}

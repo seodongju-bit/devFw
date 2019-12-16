@@ -16,20 +16,20 @@
 
 
 #topCategoryName{
-	display:block;
-	padding:5px 20px;
+	position: relative;
+	left: 230px;
+	display: block;
+	padding:3px 10px;
 	text-align: center;
-	float:right;
-	width:250px;
-	font-size:15px;
-	background-color:lightgray;
-	margin:5px 0;
-	border-radius: 10px;
-	
+	width:130px;
+	font-size:13px;
+/* 	background-color: lightgray; */
+	margin:20px 0px 8px 0px;
+	border:1px solid gray;
+ 	border-radius: 10px; 
 }                
 #topCategoryName:hover{
-	background-color:lightgreen;
-	cursor:pointer;
+	cursor: pointer;
 }
 
 #sideMenu{
@@ -42,32 +42,39 @@
 	text-align:center;
 }
 .bigCtrg{
-	padding:5px;
-	height:45px;
-	background-color: #E0E6F8;
-	font-size:20px;
-	color: #5E59B5;
-	border-radius: 10px;
+	padding:8px;
+	height:40px;
+	background-color: #f2f2f2;
+	font-size:19px;
+	color: #424242;
+ 	border-radius: 2px 3px 4px 5px; 
 	margin-top:3px;
-	font-weight:bold;
-	display:none;
+	font-weight: 540;
+/* 	display:none; */
+	border-bottom: 1px solid gray;
 }
 .smallCtgr{
-	background-color: #F2F2F2;
-	font-size:15px;
+/* 	background-color: #F2F2F2; */
+	position: relative;
+	font-size: 17px;
 	color: gray;
-	border-radius: 5px;
-	margin:5px 0;
-	border:1px solid lightgray;
+ 	border-radius: 5px; 
+	padding: 5px;
+/* 	margin:5px 0; */
+/* 	border:1px solid lightgray; */
 	display:none;
+
 }
+
 .bigCtrg:hover{
-	background-color: #A9D0F5;
+	background-color: #fafafa;
 	cursor:pointer;
 }
 .smallCtgr:hover{
-	background-color: #A9D0F5;
+	background-color: #fafafa;
 	cursor:pointer;
+	font-size:18px;
+	font-weight: border;
 }
 
  </style>
@@ -134,11 +141,13 @@ $(document).ready(function(){
 	 var nowCtgr = '${cnum}';
 	 
 	 if(nowCtgr==''){
-		 $('[id^=H_]').css("display","block");
-		 $('#topCategoryName').remove();
+		 $('.bigCtrg').css("display","block");
+// 		 $('#topCategoryName').remove();
 	 }else{
 // 		 if(nowCtgr)
 // 		$('[id^='+nowCtgr+']').css("background-color","gray");
+		$('[id='+nowCtgr+']').css("background","linear-gradient( to right,#fafafa, white, #f2f2f2)");
+		$('[id='+nowCtgr+']').css("font-weight","bolder");
 	 	nowCtgr = nowCtgr.substr(0,4);
 		$('[id^='+nowCtgr+']').css("display","block");
 	 }
@@ -146,17 +155,20 @@ $(document).ready(function(){
 });
 
 function totalMenu(){
-	$('[id^=H_]').toggle('fast');
+// 	$('.bigCtrg').toggle('fast');
+// 	$('.smallCtgr').toggle('fast');
 	
 	var tic = $('#topCategoryName').attr("value");
 	if(tic=='on'){
 		$('#topCategoryName').attr("value","off");
-		$('#topCategoryName').css("background-color","lightgray");
-		$('#topCategoryName').html("다른카테고리");
+		$('#topCategoryName').css("background-color","lightgreen");
+		$('#topCategoryName').html("전체닫기");
+		$('.smallCtgr').css("display","block");
 	}else{
 		$('#topCategoryName').attr("value","on");
-		$('#topCategoryName').css("background-color","lightgreen");
-		$('#topCategoryName').html("이전카테고리");
+		$('#topCategoryName').css("background-color","white");
+		$('#topCategoryName').html("전체펴기");
+		$('.smallCtgr').css("display","none");
 	}
 }
 </script>
@@ -164,7 +176,7 @@ function totalMenu(){
   <title>사이드 메뉴</title>
 </head>
 <body>
-<div id="topCategoryName" onclick="totalMenu()" value="">다른카테고리</div>
+<div id="topCategoryName" onclick="totalMenu()" value="on">전체펴기</div>
 	<div id="sideMenu">
 	</div>
 

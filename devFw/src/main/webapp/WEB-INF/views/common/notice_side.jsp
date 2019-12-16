@@ -73,21 +73,7 @@ function fn_coupon(){
     </aside>
 	 <br>
 	 <br>
-	 <table class="table table-hover" id="cc">
-	 <tr align=center>
-	 <th><a href="#" style="color:black;">리컴문의</a></th>
-	 </tr>
-	 <tr>
-	 <th><a href="#" style="color:black;">고객의 소리<br>
-	 제안-칭찬-페이 관리</a>
-	 </th>
-	 </tr>
-	 <tr>
-	 <th>
-	 <a href="#" style="color:black;">취소/반품 안내</a>
-	 </th>
-	 </tr>
-	 </table>
+	 
 	 
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script type="text/javascript" src="../devFw/resources/js/bootstrap.js"></script>

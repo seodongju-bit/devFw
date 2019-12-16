@@ -251,6 +251,8 @@ public class C_P003ControllerImpl implements C_P003Controller {
 		System.out.println(sell_number);
 		System.out.println(sell_title);
 		System.out.println(sell_thumbnail);
+		
+		
 		dataMap5.put("mem_id", mem_id);
 		dataMap5.put("order_number", order_number);
 		dataMap5.put("qu_contents", qu_contents);
