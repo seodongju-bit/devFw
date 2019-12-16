@@ -16,6 +16,16 @@
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <style>
 
+@font-face {
+   src: url("../devFw/resources/font/NanumSquare_acR.ttf");
+   font-family: "NanumSquare";
+}
+
+#main, #write{
+font-family:"NanumSquare";
+font-weight: 700;
+}
+
 .event{
 max-width: 1300px;
 margin-left: auto;
@@ -62,6 +72,7 @@ margin-top: 50px;
 
 </head>
 <body>
+<div id="main">
 <form name="frm" method="post" encType="UTF-8">
 <h1 align="center" style="margin-top: 6%;">이벤트-공지사항</h1>
 <div class="event">
@@ -69,7 +80,7 @@ margin-top: 50px;
 <div style="float: right;">
 	<c:choose>
 		<c:when test="${memberInfo.mem_division==2 }" >
-       		 <a href='eventWrite.do' class="btn btn-default" style="margin-bottom: 3px;" >글쓰기</a>
+       		 <a href='eventWrite.do' class="btn btn-default" id="write" style="margin-bottom: 3px;" >글쓰기</a>
        	</c:when>
     </c:choose>
 		<%-- 사용하지 않기로 --%>
@@ -136,5 +147,6 @@ margin-top: 50px;
 
 </div>
 </form>
+</div>
 </body>
 </html>

@@ -18,17 +18,27 @@
 <link href="../devFw/resources/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">                          
 <style>   
 
+@font-face {
+   src: url("../devFw/resources/font/NanumSquare_acR.ttf");
+   font-family: "NanumSquare";
+}
 
+#search{
+font-family:"NanumSquare";
+font-weight: 700;
+}
 
 #header{
-   font-family: 'Anton', sans-serif; 
+   font-family:"NanumSquare"; 
    background-color: white;
+   font-weight: 700;
 }
 #header{
    margin: 0;
    padding: 0;
    list-style: none;
-   font-family: 'Noto Sans KR', sans-serif;
+   font-family:"NanumSquare";
+   font-weight: 700;
 }
 
  

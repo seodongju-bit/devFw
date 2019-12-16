@@ -64,6 +64,7 @@
          SELECT * 
          FROM pointuse
          WHERE mem_id=#{mem_id}
+         order by point_number desc
          
        ]]>
           

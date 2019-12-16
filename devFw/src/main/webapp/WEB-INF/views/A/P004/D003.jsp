@@ -17,12 +17,22 @@
 
 <style>
 
+@font-face {
+   src: url("../devFw/resources/font/NanumSquare_acR.ttf");
+   font-family: "NanumSquare";
+}
+
+#main, #btn1, #btn2{
+font-family:"NanumSquare";
+font-weight: 700;
+}
+
 page_title{
 text-align:center;
 }
 
 .content-sheet{
-max-width:670px;
+max-width:1000px;
 margin-left:auto;
 margin-right: auto;
 }
@@ -71,13 +81,12 @@ color: red;
 		initSheet.Cfg = {SearchMode:smLazyLoad,ToolTip:1};
 		initSheet.HeaderMode = {Sort:1,ColMove:1,ColResize:1,HeaderCheck:1};
 		initSheet.Cols = [
-			{Header:"상태",Type:"Status",SaveName:"STATUS",MinWidth:30, Align:"Center",Edit:0},
-			{Header:"번호",Type:"Text",SaveName:"point_number",MinWidth:80,Align:"Center",Edit:0},
-			{Header:"지급날자",Type:"Date",SaveName:"point_date",MinWidth:150,KeyField:1 ,MultiLineText:1,Align:"Center",Edit:0},			
-			{Header:"사용날자",Type:"Date",SaveName:"point_usedate",MinWidth:150,KeyField:1 ,MultiLineText:1, Wrap:1,Align:"Center",Edit:0},
-			{Header:"사용금액",Type:"Text",SaveName:"point_usemoney",MinWidth:105,Align:"Center",Edit:0},
-			{Header:"주문번호",Type:"Text",SaveName:"order_number",MinWidth:90,Align:"Center",Edit:0},
-			{Header:"사용메모",Type:"Text",SaveName:"point_content",MinWidth:60,Align:"Center",Edit:0}
+			{Header:"상태",Type:"Status",SaveName:"STATUS",MinWidth:100, Align:"Center",Edit:0},
+			{Header:"번호",Type:"Text",SaveName:"point_number",MinWidth:130,Align:"Center",Edit:0},
+			{Header:"지급날자",Type:"Date",SaveName:"point_date",MinWidth:200,KeyField:1 ,MultiLineText:1,Align:"Center",Edit:0},			
+			{Header:"사용날자",Type:"Date",SaveName:"point_usedate",MinWidth:200,KeyField:1 ,MultiLineText:1, Wrap:1,Align:"Center",Edit:0},
+			{Header:"사용금액",Type:"Text",SaveName:"point_usemoney",MinWidth:160,Align:"Center",Edit:0},
+			{Header:"사용메모",Type:"Text",SaveName:"point_content",MinWidth:160,Align:"Center",Edit:0}
 			
 		];    
 		IBS_InitSheet( mySheet , initSheet);
@@ -123,12 +132,13 @@ color: red;
 </script>
 </head>
 <body onload="LoadPage()">
+<div id="main">
   <div class="page_title" style="text-align: center;">
     <span class="title"><h1>포인트 사용 내역</h1></span>
   </div>
   <br>
   <div class="content-sheet">
-    <div class="exp_product">
+    <div class="exp_product" style="max-width: 970px;">
       <form name='frm'>
       <select name="division" id="division" style="width: 150px;">
 		<option value="">==선택==</option>
@@ -144,8 +154,9 @@ color: red;
       <br>
     </div>
 	<div class="clear hidden"></div>
-	<script>createIBSheet("mySheet", "670px", "500px");</script>
+	<script>createIBSheet("mySheet", "1000px", "700px");</script>
   </div>
-<p align="center">[주의]-하나라도 빈칸일시 전체조회가 됩니다.-[주의]</p>
+<p align="center" style="margin-top: 3%;">[주의]-하나라도 빈칸일시 전체조회가 됩니다.-[주의]</p>
+</div>
 </body>
 </html>

@@ -14,6 +14,16 @@
 <link href="resources/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
   <style>
 
+@font-face {
+   src: url("../devFw/resources/font/NanumSquare_acR.ttf");
+   font-family: "NanumSquare";
+}
+
+#main{
+font-family:"NanumSquare";
+font-weight: 700;
+}
+
 #a{
 width:250px;
 height:800px;
@@ -54,7 +64,7 @@ function profile(){
 </script>
 </head>
 <body>
-
+<div id="main">
 <aside class="well span3 oc" id="a" role="navigation" style="margin-top: 110px;">
       <ul class="nav nav-list">
         <li class="nav-header">My 쇼핑</li>
@@ -79,7 +89,7 @@ function profile(){
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script type="text/javascript" src="../devFw/resources/js/bootstrap.js"></script>
 	<script src="../devFw/resources/js/bootstrap.min.js"></script>
-
+</div>
 </body>
 <input type="hidden" name="isLogOn" id="isLogOn" value="${isLogOn}"/>
 </html>

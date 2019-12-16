@@ -17,7 +17,15 @@
 <title>Insert title here</title>
 
 <style>
+@font-face {
+   src: url("../devFw/resources/font/NanumSquare_acR.ttf");
+   font-family: "NanumSquare";
+}
 
+.view, #list{
+font-family:"NanumSquare";
+font-weight: 700;
+}
 </style>
 
 <script src="http://code.jquery.com/jquery-latest.js"></script>
@@ -61,7 +69,7 @@
 		</tbody>
 		
 	</table>
-	<button class="btn btn-default"  onclick="location.href='${contextPath}/event.do'" style="margin-left: 72.3%; margin-top: 1%;">목록</button>
+	<button class="btn btn-default" id="list" onclick="location.href='${contextPath}/event.do'" style="margin-left: 72.3%; margin-top: 1%;">목록</button>
 </div>
 </body>
 </html>
