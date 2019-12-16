@@ -18,13 +18,13 @@
 	position: relative;
 	top: 10px;
 	margin: 0 auto;
-	width: 1020px;
+	width: 1040px;
 	height: 135px;
-	background-color: white;
+/* 	background-color: #fafafa; */
 	padding: 7px 20px;
 	display: block;
-	border: 1px solid lightgray;
-	border-radius: 15px;
+/* 	border: 1px solid lightgray; */
+/* 	border-radius: 15px; */
 }
 
 
@@ -33,25 +33,29 @@
 	position: relative;
 	float: left;
 	padding: 10px 0 ;
-	margin: 10px;
-	width: 175px;
-	height:40px;
-	background-color: #f2f2f2;
+/* 	margin: 10px; */
+	width: 200px;
+	height:48px;
+/* 	background-color: #f2f2f2; */
+	border:1px solid #f2f2f2;
 	font-size:15px;
 	font-weight:bold;
 	display: inline;
 }
+/* .bigCtgr:hover{ */
+/* 	background-color: #f2f2f2; */
+/* } */
 .bigCtgr a{
 	color: black;
 	cursor: pointer;
 }
 .smallCtgr{
 	position: relative;
-	top: 5px;
-	left:-150px;
+	top: 2px;
+	left:-173px;
 	background-color: black;
 	font-size:14px;
-	width: 175px;
+	width: 200px;
 	height:40px;
 	padding:6px;
 	color: white;
@@ -61,15 +65,16 @@
 }
 .glyphicon{
 	float: right;
-	margin: 10x;
-	font-size: 20px;
+	margin-top: 8px;
+	font-size: 22px;
+	font-weight: bold;
 	width: 25px;
 	height: 25px;
 	border-radius: 4px;
 }
 
 .glyphicon:hover{
-	background-color: white;
+	background-color: #f2f2f2;
 	
 }
 .glyphicon:hover .smallCtgr{
@@ -152,7 +157,7 @@ $(document).ready(function(){
 });
 function moveCtgr(ctgr){
 	$('#contentDetail').load('bestProduct.do',{ ctgrNum :ctgr});
-	$(".bigCtgr").css('background-color', '#f2f2f2');
+	$(".bigCtgr").css('background-color', 'white');
 	if(ctgr==null){
 		$('#totalCtgr').css('background-color', 'lightgreen');
 	}else if(ctgr.length==4){

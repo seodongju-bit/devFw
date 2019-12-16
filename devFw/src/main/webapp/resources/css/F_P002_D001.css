@@ -57,9 +57,13 @@
 	min-height:600px;
 	/*background-color:pink;*/
 }
-#sellerInfo{
-	font-size:20px;
-	
+
+#sellerInfo .infoPan{
+	font-size: 24px;;
+	}
+.infoPan{
+	font-weight: 600;
+	text-align: left;
 }
 .sellInfo{
 	box-sizing:content-box;
@@ -68,6 +72,7 @@
 	margin-bottom:8px;
 	min-height:60px;
 	text-align:center;
+	padding: 5px;
 }
 
 #orderOption{
