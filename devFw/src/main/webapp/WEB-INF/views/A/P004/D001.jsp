@@ -328,7 +328,7 @@ ul.tabs li.active, html ul.tabs li.active a:hover {
 							</td>
 
 						</tr>
-					</c:forEach>
+					</c:forEach>     
 
 
 				</table>
