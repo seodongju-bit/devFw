@@ -10,9 +10,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script src = " https://unpkg.com/sweetalert/dist/sweetalert.min.js " ></script>
 <style>
-#start, #end{
+#start, #end, #name, #percent{
 	height: 34px;
 	padding: 6px 12px;
 	font-size: 14px;
@@ -42,24 +43,24 @@ function make(){
 	var percent = $('#percent').val();
 	
 	if(end<start){
-		alert("날짜를 제대로 입력해주세요");
+		swal("날짜를 제대로 입력해주세요");
 		return false;
 	}
 	
 	if (name.trim() == '') {
-   		alert("제목을 입력해주세요");
+		swal("제목을 입력해주세요");
    		return false;
    	}
    	if (start.trim() == '') {
-   		alert("시작 일자를 입력해주세요");
+   		swal("시작 일자를 입력해주세요");
    		return false;
    	}
 	if (end.trim() == '') {
-   		alert("마감 일자를 선택해주세요");
+		swal("마감 일자를 선택해주세요");
    		return false;
    	}
    	if (percent.trim() == '') {
-   		alert("%를 입력해 주세요.");
+   		swal("%를 입력해 주세요.");
    		return false;
    	}
 	
@@ -73,11 +74,11 @@ function make(){
 				"co_percent" : percent
 			},
 			success : function() {
-				alert('쿠폰이 발급되었습니다.');
+				swal('쿠폰이 발급되었습니다.');
 				window.close();
 			},
 			error : function() {
-				alert('쿠폰 생성 에러');
+				swal('쿠폰 생성 에러');
 			}
 		}); 
 
@@ -97,13 +98,13 @@ function make(){
 <div id="contactForm">
 
 <input type="text" id="name" placeholder="쿠폰이름"> <br><br>
-<input type="date" id="start" style="width: 150px;" placeholder="시작날짜"><br><br>
-<input type="date" id="end" style="width: 150px;" placeholder="마감날짜"><br><br>
-<input type="text" id="percent" placeholder="세일퍼센트"> <br><br>
+<input type="date" id="start" style="width: 195px;" placeholder="시작날짜"><br><br>
+<input type="date" id="end" style="width: 195px;" placeholder="마감날짜"><br><br>
+<input type="text" id="percent" placeholder="세일퍼센트">
 </div>
 <br><br>
 <input type="button" class="btn btn-default" value="쿠폰생성" onclick="make()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<input type="reset" class="btn btn-default" value="Reset">
+<input type="reset" class="btn btn-default" value="Reset"><br><br><br>
 <script src="../devFw/resources/js/bootstrap.min.js"></script>
 </form>
 </body>

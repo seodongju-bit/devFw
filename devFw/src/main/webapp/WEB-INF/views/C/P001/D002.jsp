@@ -15,13 +15,18 @@
 
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<style>
+
+</style>
+
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <link rel="stylesheet" type="text/css" href="<c:url value='../devFw/resources/css/event.css'/>" />
 
 </head>
 <body>
 
-
+<div class="view">
 	<table class="board_view">
 		<colgroup>
 			<col width="15%" />
@@ -48,17 +53,15 @@
 				<th scope="row">제목</th>
 				<td colspan="3">${detail.NO_TITLE}</td>
 			</tr>
-			<tr>
-				<td colspan="4">${detail.NO_CONTENTS}</td>
+			<tr class="NO_CONTENTS1">
+				<td class="NO_CONTENTS" colspan="4"><div style="overflow-y:scroll; height: 500px;">${detail.NO_CONTENTS}</div></td>
 			</tr>
-			<button class="btn btn-default"  onclick="location.href='${contextPath}/event.do'">목록</button>
-			<tr></tr>
 			
 			
 		</tbody>
 		
 	</table>
-
-
+	<button class="btn btn-default"  onclick="location.href='${contextPath}/event.do'" style="margin-left: 72.3%; margin-top: 1%;">목록</button>
+</div>
 </body>
 </html>

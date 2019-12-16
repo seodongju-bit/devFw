@@ -661,11 +661,15 @@ $(document).ready(function(){
 		border-radius:5px;
 		background-color:#B9C9F8;
 	}	
+	.hole{
+	padding-left: 150px;
+	}
 </style>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>   
 <body>
+<div class="hole">
    <div class="msg-container">
       <div id="people">
          <div id="people-search">
@@ -716,5 +720,6 @@ $(document).ready(function(){
 			</div>
 		</div>
 	</div>
+</div>
 </body>
 </html>

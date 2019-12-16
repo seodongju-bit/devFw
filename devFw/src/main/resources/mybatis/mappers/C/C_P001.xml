@@ -33,7 +33,7 @@
 			SELECT ROWNUM RN, A.* 
 				FROM (
 						SELECT * 
-						FROM notice 
+						FROM notice
 						ORDER BY no_number DESC 
 						) A
 				)

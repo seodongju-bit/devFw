@@ -23,7 +23,7 @@ color: red;
 <meta name="viewport" content="width=divice-width, initial-scale=1.0">
 </head>
 <body>
-<h1 id="alert" align="center">신고내역</h1>
+<h1 id="alert" align="center"  style="margin-bottom: 3%; margin-right: 6%;">신고내역</h1>
 <table id="bottom" class="table table-hover">
 <tr>
 <th>신고번호</th>

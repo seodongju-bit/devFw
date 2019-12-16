@@ -40,6 +40,8 @@
 	float: right;
 }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script src = " https://unpkg.com/sweetalert/dist/sweetalert.min.js " ></script>
   <!-- SmartEditor를 사용하기 위해서 다음 js파일을 추가 (경로 확인) -->
 <script type="text/javascript" src="../devFw/resources/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
 <!-- jQuery를 사용하기위해 jQuery라이브러리 추가 -->
@@ -110,31 +112,31 @@ $(function() {
    	if(division == '이벤트'){
    		
    		if(stdate == ''){
-   			alert("이벤트 시작 기간을 정확히 입력해주세요.");
+   			swal("이벤트 시작 기간을 정확히 입력해주세요.");
    			return false;
    		}
    		if(enddate == ''){
-   			alert("이벤트 종료 기간을 정확히 입력해주세요.");
+   			swal("이벤트 종료 기간을 정확히 입력해주세요.");
    			return false;
    		}
    		
    		if(stdate > enddate){
-   			alert("입력된 기간을 확인해 주세요.");
+   			swal("입력된 기간을 확인해 주세요.");
    			return false;
    		}
    	}
    	
    	if (title.trim() == '') {
-   		alert("제목을 입력해주세요");
+   		swal("제목을 입력해주세요");
    		return false;
    	}
 
 	if (division.trim() == '') {
-   		alert("구분을 선택해주세요");
+		swal("구분을 선택해주세요");
    		return false;
    	}
    	if (content.trim() == '') {
-   		alert("내용을 입력해주세요");
+   		swal("내용을 입력해주세요");
    		return false;
    	}
    	

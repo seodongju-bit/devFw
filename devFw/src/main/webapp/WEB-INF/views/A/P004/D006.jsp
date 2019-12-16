@@ -19,7 +19,7 @@
 
 </head>
 <body>
-<h1 align="center">쿠폰 사용내역 조회</h1>
+<h1 align="center"  style="margin-bottom: 3%; margin-right: 6%;">쿠폰 사용내역 조회</h1>
 <table class="table table-hover">
 <tr>
 <th>쿠폰번호</th>

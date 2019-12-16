@@ -43,8 +43,19 @@ margin-bottom: 100px;
 				<td>${question.mem_id}</td>
 			</tr>
 			<tr>
+				<th scope="row">판매번호</th>
+				<td>${question.SELL_NUMBER}</td>
+				<th scope="row">상품이름</th>
+				<td>${question.SELL_TITLE}</td>
+			</tr>
+			<tr>
 				<th scope="row">문의날짜</th>
 				<td colspan="3" align="center">${question.QU_DATE}</td>
+			</tr>
+			<tr>
+				<th scope="row">문의날짜</th>
+				<td colspan="3" align="center"><img class="orderImg" src="${question.SELL_THUMBNAIL}"
+								width="80px" height="80px"></td>
 			</tr>
 			<tr>
 				<th scope="row">문의내용</th>

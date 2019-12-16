@@ -12,6 +12,21 @@
 <head>
 
 <style>
+
+@font-face {
+   src: url("../devFw/resources/font/NanumSquare_acR.ttf");
+   font-family: "NanumSquare";
+}
+
+#main{
+font-family:"NanumSquare";
+font-weight: 700;
+}
+/* body{
+font-family: "Nanum Gothic", sans-serif;
+font-weight: 400;
+} */
+
 #f {
 	text-align: left;
 	margin: 0px;
@@ -212,12 +227,12 @@ ul.tabs li.active, html ul.tabs li.active a:hover {
 <meta name="viewport" content="width=divice-width, initial-scale=1.0">
 </head>
 <body>
-
-	<h1 align="center">마이페이지</h1>
+<div id="main">
+	<h1 align="center" style="margin-bottom: 3%;">마이페이지</h1>
 
 	<table class="table table-hover">
 
-		<tr>
+		<tr style="border-bottom: 1px solid #ddd;">
 			<th id="My">My</th>
 			<th>문의 내역<br> <c:choose>
 						<c:when test="${question_count=='0' }">
@@ -251,15 +266,8 @@ ul.tabs li.active, html ul.tabs li.active a:hover {
 			${mem_point}P
 			</c:when>
 					</c:choose> </a></th>
-		</tr>
-		<tr>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-		</tr>
-
+				<th> <span><a onclick="withdraw()" style="color: red; cursor: pointer;"><img src="../devFw/resources/image/icon/withdraw.png"  alt="출금" style="width:30px; margin-bottom: 2%;">출금 신청</a></span> </th>
+			</tr>	
 	</table>
 
 
@@ -270,69 +278,11 @@ ul.tabs li.active, html ul.tabs li.active a:hover {
 
 
 		<ul class="tabs">
-			<!-- <li><a href="#tab1">My</a></li> -->
 			<li><a id="tab2c" href="#tab2">전체</a></li>
 			<li><a id="tab3c" href="#tab3">문의내역</a></li>
 		</ul>
 
 		<div class="tab_container">
-			<%-- <div id="tab1" class="tab_content">
-
-
-				<table id="orderTable" class="table table-striped">
-					<tr>
-						<th width="150px">날짜</th>
-						<th width="600px">상품정보</th>
-						<th width="150px">상태</th>
-						<th width="250px">확인/신청</th>
-					</tr>
-
-					<c:forEach var="orderList" items="${orderList}" varStatus='index'>
-						<tr>
-							<td>
-								<p>주문번호 : ${orderList.ORDER_NUMBER}</p> <fmt:formatDate
-									value="${orderList.ORDER_DATE}" pattern="yyyy-MM-dd" /><br>
-								<fmt:formatDate value="${orderList.ORDER_DATE}" pattern="HH:mm" /><br>
-							</td>
-							<td><img class="orderImg" src="${orderList.SELL_THUMBNAIL}"
-								width="80px" height="80px"> <a
-								href="sellItems.do?sell_no=${orderList.SELL_NUMBER}">${orderList.SELL_TITLE}</a>
-								<br> <fmt:formatNumber value="${orderList.SELL_PRICE}" />원</td>
-							<td><c:choose>
-									<c:when test="${orderList.OD_STATE=='F_0001'}">
-										<p>결제준비중</p>
-									</c:when>
-									<c:when test="${orderList.OD_STATE=='F_0002'}">
-										<p>결제완료</p>
-									</c:when>
-									<c:when test="${orderList.OD_STATE=='F_0003'}">
-										<p>배송중</p>
-									</c:when>
-									<c:when test="${orderList.OD_STATE=='F_0004'}">
-										<p>배송완료</p>
-									</c:when>
-									<c:when test="${orderList.OD_STATE=='F_0005'}">
-										<p>구매확정</p>
-									</c:when>
-									<c:when test="${orderList.OD_STATE=='F_0006'}">
-										<p>취소완료</p>
-									</c:when>
-								</c:choose></td>
-							<td>
-								<p class="tdMenu"
-									onclick="reviewWrite('${orderList.SELL_NUMBER}','${orderList.SELL_TITLE}')">리뷰작성</p>
-								<p class="tdMenu">리뷰 수정</p>
-								<p class="tdMenu">교환신청</p>
-								<p class="tdMenu">구매확정</p>
-								<p class="tdMenu">주문취소</p>
-							</td>
-
-						</tr>
-					</c:forEach>
-
-
-				</table>
-			</div> --%>
 			<div id="tab2" class="tab_content">
 
 				<table id="orderTable2" class="table table-striped">
@@ -344,7 +294,7 @@ ul.tabs li.active, html ul.tabs li.active a:hover {
 					</tr>
 
 					<c:forEach var="orderList2" items="${orderList2}" varStatus='index'>
-						<tr>
+						<tr style="border-bottom: 1px solid #ddd;">
 							<td>
 								<p>주문번호 : ${orderList2.ORDER_NUMBER}</p> <fmt:formatDate
 									value="${orderList2.ORDER_DATE}" pattern="yyyy-MM-dd" /><br>
@@ -407,8 +357,9 @@ ul.tabs li.active, html ul.tabs li.active a:hover {
 			<div id="tab3" class="tab_content">
 				<table id="questions" class="table table-hover">
 					<tr>
-						<th>ID</th>
-						<th>내용</th>
+						<th>글 번호</th>
+						<th>주문번호</th>
+						<th>상품이름</th>
 						<th>문의날짜</th>
 						<th>답변상태</th>
 					</tr>
@@ -420,9 +371,10 @@ ul.tabs li.active, html ul.tabs li.active a:hover {
 			</c:if>
 								
 					<c:forEach var="quList" items="${quList}">
-						<tr onclick="myquestion('${quList.QU_NUMBER}')" style="border-bottom: 1px solid #ddd;">
-							<td>${quList.mem_id}</td>
-							<td>${quList.QU_CONTENTS}</td>
+						<tr onclick="myquestion('${quList.QU_NUMBER}')" style="border-bottom: 1px solid #ddd; cursor: pointer;">
+							<td>${quList.QU_NUMBER}</td>
+							<td>${quList.ORDER_NUMBER}</td>
+							<td>${quList.SELL_TITLE}</td>
 							<td>${quList.QU_DATE}</td>
 							<c:set var="questionList" value="${quList}"/>
 								<c:if test="${questionList.QU_ANSWER ne null}">
@@ -521,8 +473,14 @@ ul.tabs li.active, html ul.tabs li.active a:hover {
 
 		</table>
 	</div>
-
+</div>
 	<script>
+	
+	function withdraw(){
+		   var popupX = (window.screen.width/2) - (400);
+		   var popupY = (window.screen.height/2) - (500);
+		   window.open("initWithdraw.do", "창", "width=400, height=250, left="+popupX+", top="+popupY);
+		}
 	
 	function questionwrite2(){
 		var formObj = document.createElement("form");

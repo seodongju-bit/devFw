@@ -110,12 +110,12 @@ margin-left: 5px;
 
 </head>
 <body onload="LoadPage()">
-<h1 align="center">쿠폰 발급 현황</h1>
+<h1 align="center" style="margin-bottom: 3%; margin-top: 5%;">쿠폰 발급 현황</h1>
 
 
   <div class="content-sheet">
     <div class="exp_product">
-      <form name='frm'>
+      <form name='frm' style="margin-bottom: 3%;">
       <button type="button" class="btn btn-default" id="btn3" onclick="doAction('search')">조회</button>
       <button type="button" class="btn btn-default" id="btn2" onclick="doAction('save')">저장</button>
    <input type="button" class="btn btn-default" id="btn1" onclick="showPopup();" value="쿠폰생성"><br>

@@ -11,7 +11,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script src = " https://unpkg.com/sweetalert/dist/sweetalert.min.js " ></script>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <link href="../devFw/resources/css/bootstrap.min.css" rel="stylesheet">
 <style>
@@ -19,6 +20,9 @@
 height:1000px;
 }
 
+.percent::after { 
+  content: " %";
+}
 </style>
 <script>
 function takecoupon(co_number, stdate, enddate){
@@ -46,18 +50,18 @@ function takecoupon(co_number, stdate, enddate){
 				},
 				success : function(data) {
 					if(data.cnt>0){
-					alert('이미 발급 받은 쿠폰입니다.');
+					swal('이미 발급 받은 쿠폰입니다.');
 					return false;
 					}else{
-						alert("쿠폰이 발급 되었습니다.");
+						swal("쿠폰이 발급 되었습니다.");
 					}
 				},
 				error : function() {
-					alert('등록 실패');
+					swal('등록 실패');
 				}
 			});
 	}else{
-	alert("발급기간이 종료된 쿠폰 입니다.");
+	swal("쿠폰발급 기간이 아닙니다.");
 	return false;
 	}
 	
@@ -67,7 +71,7 @@ function takecoupon(co_number, stdate, enddate){
 
 </head>
 <body>
-<h1 align="center">쿠폰 발급기</h1>
+<h1 align="center" style="margin-bottom: 3%; margin-right: 6%;">쿠폰 발급기</h1>
 <table class="table table-hover">
 <tr>
 <th>쿠폰이름</th>
@@ -80,8 +84,8 @@ function takecoupon(co_number, stdate, enddate){
 <tr align="center">
 <td>${coupon.co_name}</td>
 <td>${coupon.co_stdate}&nbsp;~&nbsp;${coupon.co_enddate}</td>
-<td>${coupon.co_percent}</td>
-<td><input type="button" class="btn btn-default" value="발급" onclick="takecoupon('${coupon.co_number}','${coupon.co_stdate}','${coupon.co_enddate}')"></td>
+<td class="percent">${coupon.co_percent}</td>
+<td><button class="btn btn-default" onclick="takecoupon('${coupon.co_number}','${coupon.co_stdate}','${coupon.co_enddate}')"><img src="../devFw/resources/image/icon/coupondown.png"  alt="쿠폰다운" style="width:30px;"></button></td>
 </tr>
 </c:forEach>
 

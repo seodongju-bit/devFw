@@ -200,7 +200,7 @@
       <put-attribute name="body" value="/WEB-INF/views/A/P004/D008.jsp" />
    </definition>
    
-   <definition name="makecoupon" extends="baseLayout">
+   <definition name="makecoupon" extends="eventLayout">
       <put-attribute name="title" value="쿠폰생성" />
       <put-attribute name="body" value="/WEB-INF/views/A/P007/D001.jsp" />
    </definition>
@@ -236,7 +236,7 @@
       <put-attribute name="body" value="/WEB-INF/views/B/P001/D003.jsp" />
    </definition> 
    
-    <definition name="basket" extends="baseLayout_cart">
+    <definition name="basket" extends="eventLayout">
       <put-attribute name="title" value="장바구니" />
       <put-attribute name="body" value="/WEB-INF/views/A/P005/D001.jsp" />
 <!--       <put-attribute name="body" value="/WEB-INF/views/A/P005/D001.jsp" /> -->

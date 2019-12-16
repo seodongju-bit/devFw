@@ -17,6 +17,9 @@
 <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 <link href="../devFw/resources/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">                          
 <style>   
+
+
+
 #header{
    background: #ecf0f1;
    font-family: 'Anton', sans-serif; 
@@ -89,13 +92,21 @@
 		text-decoration: none;
 		color: #666;
 	}
-	#navright #itemManagerlink{
+	/* #navright #itemManagerlink{
 		color:white;
 		background-color:#6E6E6E;
+	} */
+	#navright #itemManagerlink{
+		color:#666;
+		background-color:#DDDDDD;
 	}
-	#navright #siteManagerlink{
+	/* #navright #siteManagerlink{
 		color:white;
 		background-color:#A5C3FC;
+	} */
+	#navright #siteManagerlink{
+		color:#666;
+		background-color:#DDDDDD;
 	}
 	#navright a:hover {
 	   color: #1bc1a3;
@@ -420,14 +431,14 @@ $(document).ready(function(){
 	
 	 	 <div class="collapse navbar-collapse justify-content-between" id="navbar" >
         	<div class="navbar-nav" id="navleft"style="font-size:0.9em; float:left; margin: 6px 0 6px 0; color:#BBBBBB;">
-        	  <a class="nav-item nav-link" href="./main.do">홈으로 이동</a>
-        	  <a class="nav-item nav-link" href="./event.html">이 사이트를 시작 페이지로</a>
-        	  <a class="nav-item nav-link" href="./blog.html">즐겨찾기</a>
+        	  <a class="nav-item nav-link" href="./main.do"><img src="../devFw/resources/image/icon/home.png"  alt="홈" style="width: 16px;">&nbsp;홈으로 이동</a>
+        	  <!-- <a class="nav-item nav-link" href="./event.html">이 사이트를 시작 페이지로</a>
+        	  <a class="nav-item nav-link" href="./blog.html">즐겨찾기</a> -->
        	 </div>
        	 <div class="navbar-nav mr-sm-2" id="navright" style="font-size:0.9em; float:right; margin: 6px 0 0 0; color:#BBBBBB;">
        	 <c:choose>
        		 <c:when test="${isLogOn==true and not empty memberInfo }" >
-       		 	<a class="nav-item nav-link" href="#" onclick="logout(); return false;">로그아웃</a>
+       		 	<a class="nav-item nav-link" href="#" onclick="logout(); return false;"><img src="../devFw/resources/image/icon/logout.png"  alt="로그아웃" style="width: 16px;">&nbsp;로그아웃</a>
        		 	
        		 	<c:choose>
        		 		<c:when test="${memberInfo.mem_division==0 }" >
@@ -436,17 +447,17 @@ $(document).ready(function(){
        		 			<a class="nav-item nav-link" href="${contextPath}/myPage.do"><img src="../devFw/resources/image/icon/user1.png"  alt="마이페이지" style="width: 16px;">&nbsp;마이페이지</a>
        		 		</c:when>
        		 		<c:when test="${memberInfo.mem_division==1 }" >
-       		 			<a class="nav-item nav-link" id="itemManagerlink" href="${contextPath}/itemManager.do">상품관리</a>
-       		 			<a class="nav-item nav-link" id="itemManagerlink" href="${contextPath}/questionwrite5.do">문의사항 답변</a>
+       		 			<a class="nav-item nav-link" id="itemManagerlink" href="${contextPath}/itemManager.do"><img src="../devFw/resources/image/icon/product_management.png"  alt="상품관리" style="width: 18px;">&nbsp;상품관리</a>
+       		 			<a class="nav-item nav-link" id="itemManagerlink" href="${contextPath}/questionwrite5.do"><img src="../devFw/resources/image/icon/question_answer.png"  alt="문의사항 답변" style="width: 18px;">&nbsp;문의사항 답변</a>
        		 		</c:when>
        		 		<c:when test="${memberInfo.mem_division==2 }" >
-       		 			<a class="nav-item nav-link" id="siteManagerlink" href="${contextPath}/adminPage.do">사이트관리</a>
-       		 			<a class="nav-item nav-link" id="siteManagerlink" href="${contextPath}/makecoupon.do">쿠폰관리</a>
+       		 			<a class="nav-item nav-link" id="siteManagerlink" href="${contextPath}/adminPage.do"><img src="../devFw/resources/image/icon/site_management.png"  alt="사이트관리" style="width: 18px;">&nbsp;사이트관리</a>
+       		 			<a class="nav-item nav-link" id="siteManagerlink" href="${contextPath}/makecoupon.do"><img src="../devFw/resources/image/icon/coupon_management.png"  alt="쿠폰관리" style="width: 18px;">&nbsp;쿠폰관리</a>
        		 		</c:when>
        		 	</c:choose>
 			</c:when>
 			<c:otherwise>
-				 <a class="nav-item nav-link" href="${contextPath}/signinpage.do">로그인</a>
+				 <a class="nav-item nav-link" href="${contextPath}/signinpage.do"><img src="../devFw/resources/image/icon/login.png"  alt="로그인" style="width: 16px;">&nbsp;로그인</a>
 			</c:otherwise>
        	  </c:choose>
         	  <a class="nav-item nav-link" href="${contextPath}/notice.do"><img src="../devFw/resources/image/icon/call-center-operator1.png"  alt="고객센터" style="width: 16px;">&nbsp;고객센터</a>
@@ -474,7 +485,7 @@ $(document).ready(function(){
 		</div>
 		<div class="mainMenu"><button class="menubtn" id="reviewRankingMenu" onclick="location.href='reviewRankingMenu.do'">리뷰랭킹</button></div>
 		<div class="mainMenu"><button class="menubtn" id="bestMenu" onclick="location.href='bestMenu.do'">베스트상품</button></div>
-		<div class="mainMenu"><button class="menubtn" id="eventProduct" onclick="location.href='eventProduct.do'">이벤트상품</button></div>
+		<div class="mainMenu"><button class="menubtn" id="eventProduct" onclick="location.href='eventProduct.do'"><!-- <img src="../devFw/resources/image/icon/-.png"  alt="이벤트" style="width: 20px; color: white;" > -->이벤트상품</button></div>
 		<div class="mainMenu"><button class="menubtn" id="event"onclick="location.href='event.do'">이벤트/공지사항</button></div>
 	</div>
 	</div>

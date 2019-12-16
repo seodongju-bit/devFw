@@ -137,16 +137,12 @@ public class F_P001ControllerImpl implements F_P001Controller {
 	@Override
 	@RequestMapping(value="/eventProduct.do" ,method = RequestMethod.GET)
 	public ModelAndView eventProduct(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String viewName1 = getViewName(request);
-		viewName1 = "eventProduct";
-		List productlist1 = f_P001Service.searchItem1();
-		System.out.println(productlist1);
-		ModelAndView mav1 = new ModelAndView(viewName1);
-		mav1.addObject("List",productlist1);
-		
+		String viewName = getViewName(request);
+		viewName = "eventProduct";
+		ModelAndView mav = new ModelAndView(viewName);
 		List eventbanner = f_P001Service.bannerList();
-		mav1.addObject("eventbanner",eventbanner);
-		return mav1;
+		mav.addObject("eventbanner",eventbanner);
+		return mav;
 	}
 
 	      

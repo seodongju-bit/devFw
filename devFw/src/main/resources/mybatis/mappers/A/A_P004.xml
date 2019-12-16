@@ -108,7 +108,7 @@
 	
 	<select id="quList" resultMap="orderListResult" parameterType="java.util.Map">
       <![CDATA[
-         select MEM_ID, QU_CONTENTS, QU_NUMBER, QU_ANSWER,  to_char(qu_date, 'YYYY-MM-DD') QU_DATE
+         select MEM_ID, QU_CONTENTS, QU_NUMBER, QU_ANSWER,  to_char(qu_date, 'YYYY-MM-DD') QU_DATE, ORDER_NUMBER, SELL_NUMBER, SELL_TITLE
          from QUESTIONS
          where mem_id = #{mem_id}
          
@@ -192,7 +192,7 @@
 
 <select id="listquestion" resultMap="orderListResult" parameterType="java.util.Map">
       <![CDATA[
-         select MEM_ID, QU_CONTENTS, QU_NUMBER, QU_ANSWER,  to_char(qu_date, 'YYYY-MM-DD') QU_DATE
+         select MEM_ID, QU_CONTENTS, QU_NUMBER, QU_ANSWER,  to_char(qu_date, 'YYYY-MM-DD') QU_DATE, ORDER_NUMBER, SELL_THUMBNAIL, SELL_NUMBER, SELL_TITLE
          from QUESTIONS
          where mem_id = #{mem_id}
          and qu_number = #{qu_number}
