@@ -24,15 +24,16 @@ public class A_P003ServiceImpl implements A_P003Service {
 	A_P003DAO a_p003DAO;
 	
 	
-	public A_P001VO  modifyMyInfo(Map memberMap) throws Exception{
-		 String mem_id=(String)memberMap.get("mem_id");
-		 a_p003DAO.updateMyInfo(memberMap);
-		 return a_p003DAO.selectMyDetailInfo(mem_id);
+	@Override
+	public void updateMyInfo(A_P001VO A_P001VO){
+		a_p003DAO.updateMyInfo(A_P001VO);
 	}
+		
 	
 	public A_P001VO myDetailInfo(String mem_id) throws Exception{
 		return a_p003DAO.selectMyDetailInfo(mem_id);
 	}
+
 
 	public A_P001VO Secessionmember(A_P001VO A_P001VO) throws Exception {
 		a_p003DAO.Secessionmember(A_P001VO);

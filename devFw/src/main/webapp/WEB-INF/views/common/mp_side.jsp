@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     isELIgnored="false" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
@@ -56,6 +56,19 @@ function fn_coupon1(){
 	}
 }
 
+function fn_memberupdate(){
+	
+	var _isLogOn=document.getElementById("isLogOn");
+	var isLogOn=_isLogOn.value;
+	
+	if(isLogOn=="false" || isLogOn=='') {
+		alert("로그인 후 조회가 가능합니다.");
+		location.href="${contextPath}/signinpage.do";
+	}else{
+		location.href="${contextPath}/memberupdatepage.do";
+	}
+}
+
 function profile(){
 	   var popupX = (window.screen.width/2) - (400);
 	   var popupY = (window.screen.height/2) - (500);
@@ -80,7 +93,7 @@ function profile(){
         <li><a href="usecoupon.do"><img src="../devFw/resources/image/icon/icon.png"  alt="쿠폰" style="width:30px;">&nbsp;&nbsp;&nbsp;사용한 쿠폰</a></li>
         <li><a href="point.do"><img src="../devFw/resources/image/icon/point.png"  alt="포인트" style="width:30px;">&nbsp;&nbsp;&nbsp;포인트 사용 내역</a></li>
         <li class="nav-header">My 정보</li>
-        <li><a href="#"><img src="../devFw/resources/image/icon/personal_data.png"  alt="개인정보" style="width:30px;">&nbsp;&nbsp;&nbsp;개인정보확인/수정</a></li>
+        <li><a onclick="fn_memberupdate()"><img src="../devFw/resources/image/icon/personal_data.png"  alt="개인정보" style="width:30px;">&nbsp;&nbsp;&nbsp;개인정보확인/수정</a></li>
       </ul>
 </aside>
 	 <br>

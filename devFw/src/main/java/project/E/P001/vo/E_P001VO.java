@@ -25,6 +25,9 @@ public class E_P001VO {
 	private String order_total_sale_price;
 	private String final_order_total_pro_price;
 	private String final_order_total_price;
+	private String od_recomReview;
+	
+	
 	private String delivery_payment;
 	private String delivery_method;
 	private String mem_name;
@@ -51,6 +54,7 @@ public class E_P001VO {
 	
 	private String point_save;
 	private String point_save_total;
+	
 	
 	public E_P001VO() {
 		System.out.println("E_P001VO 호출");
@@ -139,42 +143,6 @@ public class E_P001VO {
 
 	public void setDetail_quantity(String detail_quantity) {
 		this.detail_quantity = detail_quantity;
-	}
-
-
-
-	public String getCo_name() {
-		return co_name;
-	}
-
-
-
-	public void setCo_name(String co_name) {
-		this.co_name = co_name;
-	}
-
-
-
-	public String getCo_enddate() {
-		return co_enddate;
-	}
-
-
-
-	public void setCo_enddate(String co_enddate) {
-		this.co_enddate = co_enddate;
-	}
-
-
-
-	public String getCo_percent() {
-		return co_percent;
-	}
-
-
-
-	public void setCo_percent(String co_percent) {
-		this.co_percent = co_percent;
 	}
 
 
@@ -520,7 +488,7 @@ public class E_P001VO {
 		this.point_save_total = point_save_total;
 	}
 
-	
+
 
 	public String getDelivery_price() {
 		return delivery_price;
@@ -534,6 +502,42 @@ public class E_P001VO {
 
 
 
+	public String getCo_name() {
+		return co_name;
+	}
+
+
+
+	public void setCo_name(String co_name) {
+		this.co_name = co_name;
+	}
+
+
+
+	public String getCo_enddate() {
+		return co_enddate;
+	}
+
+
+
+	public void setCo_enddate(String co_enddate) {
+		this.co_enddate = co_enddate;
+	}
+
+
+
+	public String getCo_percent() {
+		return co_percent;
+	}
+
+
+
+	public void setCo_percent(String co_percent) {
+		this.co_percent = co_percent;
+	}
+
+
+
 	public String getTotal_delivery_price() {
 		return total_delivery_price;
 	}
@@ -543,6 +547,19 @@ public class E_P001VO {
 	public void setTotal_delivery_price(String total_delivery_price) {
 		this.total_delivery_price = total_delivery_price;
 	}
+
+
+
+	public String getOd_recomReview() {
+		return od_recomReview;
+	}
+
+
+
+	public void setOd_recomReview(String od_recomReview) {
+		this.od_recomReview = od_recomReview;
+	}
+	
 	
 	
 }

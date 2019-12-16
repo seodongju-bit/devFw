@@ -54,6 +54,24 @@ public class B_P002ServiceImpl implements B_P002Service {
 		
 	}
 	
+	@Override
+	public List orderRequestList(String p_id) throws DataAccessException {
+		List orderRequestList = null;
+		orderRequestList = b_P002DAO.orderRequestList(p_id);
+		return orderRequestList;
+	}
+	
+	@Override
+	public List<Map<String,Object>> ordererInfoList(Map<String, Object> ordererInfoList) throws DataAccessException {
+		List<Map<String,Object>> list = b_P002DAO.ordererInfoList(ordererInfoList);
+		return list;
+	}
+	@Override
+	public List<Map<String,Object>> changeState(Map<String, Object> dataMap) throws DataAccessException {
+		List<Map<String,Object>> list = b_P002DAO.changeState(dataMap);
+		return list;
+	}
+	
 
 	
 

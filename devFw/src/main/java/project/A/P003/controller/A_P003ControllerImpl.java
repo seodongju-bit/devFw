@@ -95,43 +95,17 @@ public class A_P003ControllerImpl implements A_P003Controller {
 	}
 	
 	
-	@Override
-	@RequestMapping(value="/modifyMyInfo.do" ,method = RequestMethod.POST)
-	public ResponseEntity modifyMyInfo(@RequestParam("attribute")  String attribute,
-			                 @RequestParam("value")  String value,
-			               HttpServletRequest request, HttpServletResponse response)  throws Exception {
-		Map<String,String> memberMap=new HashMap<String,String>();
-		String val[]=null;
+	@RequestMapping(value = "/update.do", method = RequestMethod.POST)
+	public String updateMeminfo(@ModelAttribute A_P001VO A_P001VO,HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session=request.getSession();
-		A_P001VO=(A_P001VO)session.getAttribute("memberInfo");
-		String mem_id=A_P001VO.getMem_id();
-		if(attribute.equals("mem_email")){
-			val=value.split(",");
-			memberMap.put("mem_email1",val[0]);
-			memberMap.put("mem_email2",val[1]);
-		}else if(attribute.equals("mem_address")){
-			val=value.split(",");
-			memberMap.put("mem_zip",val[0]);
-			memberMap.put("mem_address1",val[1]);
-			memberMap.put("mem_address2", val[2]);
-		}else {
-			memberMap.put(attribute,value);	
-		}
-		
-		memberMap.put("mem_id", mem_id);
-		
-		//수정된 회원 정보를 다시 세션에 저장한다.
-		A_P001VO=(A_P001VO)a_p003Serivce.modifyMyInfo(memberMap);
-		session.removeAttribute("memberInfo");
-		session.setAttribute("memberInfo", A_P001VO);
-		
-		String message = null;
-		ResponseEntity resEntity = null;
-		HttpHeaders responseHeaders = new HttpHeaders();
-		message  = "mod_success";
-		resEntity =new ResponseEntity(message, responseHeaders, HttpStatus.OK);
-		return resEntity;
-	}	
+		a_p003Serivce.updateMyInfo(A_P001VO);
+		session.setAttribute("isLogOn", true);
+		session.setAttribute("mem_division", A_P001VO.getMem_division());
+		session.setAttribute("mem_id", A_P001VO.getMem_id());
+		session.setAttribute("memberInfo",A_P001VO);;
+		return "memberupdatepage";
+	}
+	
 	
 	
 	@RequestMapping(value = "/Secessionmember.do", method = RequestMethod.POST)
@@ -186,6 +160,7 @@ public class A_P003ControllerImpl implements A_P003Controller {
 		}
 		return viewName;
 	}
+
 
 
 

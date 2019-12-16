@@ -116,6 +116,29 @@
 .ib_function {
 	float:right;
 }
+
+.btn {
+	border-radius:10px !important;
+ 	border: 1px solid #AAAAAA !important;
+ 	font-color:white;
+	
+}
+
+.btn:hover {
+ 	background-color:#BBBBBB;
+ }
+ 
+ .btn:active {
+
+        transform: translateY(4px);
+ }
+
+body, html {
+	font-family:"NanumSquare";
+	font-weight: 700;
+}
+
+
 </style>
 </head>
 <body onload="LoadPage()">
@@ -126,10 +149,10 @@
 	        	아이디: <input type='text' id="mem_id" name="mem_id" />
 	      <a href="javascript:doAction('searchID')" class="btn btn-default">검색</a>
 	      <div class="ib_function">
-	      <a href="javascript:doAction('search')" class="btn btn-default">전체조회</a>
-		  <a href="javascript:doAction('insert')" class="btn btn-default">추가</a>
-		  <a href="javascript:doAction('reload')" class="btn btn-default">초기화</a>
-		  <a href="javascript:doAction('save')" class="btn btn-default">저장</a>
+	      <a href="javascript:doAction('search')" class="btn">전체조회</a>
+		  <a href="javascript:doAction('insert')" class="btn">추가</a>
+		  <a href="javascript:doAction('reload')" class="btn">초기화</a>
+		  <a href="javascript:doAction('save')" class="btn">저장</a>
 		</div>
 	      </form>
 		<div class="clear hidden"></div>

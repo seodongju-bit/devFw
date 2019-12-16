@@ -1,3 +1,14 @@
+@font-face {
+   src: url("../devFw/resources/font/NanumSquare_acR.ttf");
+   font-family: "NanumSquare";
+}
+
+#main, #subBtn, #file, #notice, #division, #choice{
+font-family:"NanumSquare";
+font-weight: 700;
+}
+
+
 .w{
 
 font-size: 15px;
