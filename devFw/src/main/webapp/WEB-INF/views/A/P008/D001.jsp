@@ -12,17 +12,20 @@
 <script type="text/javascript" src="/devFw/resources/maskedit/js/jquery-1.7.0.min.js"></script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
 <script language="javascript" src="/devFw/resources/sheet/sheet/ibsheetinfo.js"></script>
 <script language="javascript" src="/devFw/resources/sheet/sheet/ibsheet.js"></script>
 <script language="javascript" src="/devFw/resources/sheet/sheet/ibexcel.js"></script>
 <style>
 
+body, html {
+	font-family:"NanumSquare";
+	font-weight: 700;
+}
+
+
 #area{
-	background-color: white;
 	width:100%;
 	height:700px;
 }
@@ -30,7 +33,6 @@
 	
 	width:1250px;
 	margin:0 auto;
-	background-color: white;
 }
 #DIV_mySheet{
 	margin:0 auto;
@@ -40,6 +42,23 @@
 .ib_function {
 	float:right;
 }
+
+.btn {
+	border-radius:10px !important;
+ 	border: 1px solid #AAAAAA !important;
+ 	font-color:white;
+	
+}
+
+.btn:hover {
+ 	background-color:#BBBBBB;
+ }
+ 
+ .btn:active {
+
+        transform: translateY(4px);
+ }
+
 </style>
 <script language="javascript">
 	
@@ -157,17 +176,17 @@
 </head>
 <body onload="LoadPage()">
      <div id="area">
-		
+		<br>
         <div class="main_content">
   			<h1>회원관리</h1><br>
 		<form name='frm' method="post" action="${contextPath}/searchMember.do">
 		  아이디 : <input type="text" id="mem_id" name="mem_id"/>
 		  <a href="javascript:doAction('searchID')" class="btn btn-default">검색</a>
 		  <div class="ib_function">
-            <a href="javascript:doAction('search')" class="btn btn-default">전체조회</a>
-            <a href="javascript:doAction('insert')" class="btn btn-default">추가</a>
-            <a href="javascript:doAction('reload')" class="btn btn-default">초기화</a>
-            <a href="javascript:doAction('save')" class="btn btn-default">저장</a>
+            <a href="javascript:doAction('search')" class="btn">전체조회</a>
+            <a href="javascript:doAction('insert')" class="btn">추가</a>
+            <a href="javascript:doAction('reload')" class="btn">초기화</a>
+            <a href="javascript:doAction('save')" class="btn">저장</a>
            </div>
 		</form>
 		<br>

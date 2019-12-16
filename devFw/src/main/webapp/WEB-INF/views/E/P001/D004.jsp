@@ -12,6 +12,12 @@
 <html>
 <head>
 <style>
+body, html {
+	font-family:"NanumSquare";
+	font-weight: 700;
+}
+
+
 .couponList {
 	float:left;
 	width:100%;

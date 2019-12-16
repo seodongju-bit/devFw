@@ -41,4 +41,24 @@ public class B_P002DAOImpl implements B_P002DAO {
 		
 	}
 	
+	@Override
+	public List orderRequestList(String p_id) throws DataAccessException {
+		List<B_P002VO> orderRequestList = null;
+		orderRequestList = sqlSession.selectList("B.P002.orderRequestList", p_id);
+		return orderRequestList;
+	}
+	
+	@Override
+	public List<Map<String,Object>> ordererInfoList(Map<String, Object> ordererInfoList) throws DataAccessException {
+		List<Map<String,Object>> list = sqlSession.selectList("B.P002.ordererInfoList", ordererInfoList);
+		System.out.println(list);
+		return list;
+	}
+	
+	@Override
+	public List<Map<String,Object>> changeState(Map<String, Object> dataMap) throws DataAccessException {
+		List<Map<String,Object>> list = sqlSession.selectList("B.P002.changeState", dataMap);
+		return list;
+	}
+
 }

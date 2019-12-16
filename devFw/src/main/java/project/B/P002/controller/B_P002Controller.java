@@ -35,7 +35,11 @@ public interface B_P002Controller {
 	Map<String, Object> proNumSearchAction(HttpServletRequest request, HttpServletResponse response)
 			throws Exception;
 
+	public ModelAndView orderRequestList(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	
+	public ModelAndView ordererInfo(HttpServletRequest request, HttpServletResponse response) throws Exception;
+	 
+	public Map<String, Object> changeState(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	 
 	
 }

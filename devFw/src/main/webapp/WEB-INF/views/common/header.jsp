@@ -18,6 +18,11 @@
 <link href="../devFw/resources/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">                          
 <style>   
 
+body, html {
+	font-family:"NanumSquare";
+	font-weight: 700;
+}
+
 
 
 #header{
@@ -444,7 +449,7 @@ $(document).ready(function(){
        		 			<a class="nav-item nav-link" href="${contextPath}/myPage.do"><img src="../devFw/resources/image/icon/user1.png"  alt="마이페이지" style="width: 16px;">&nbsp;마이페이지</a>
        		 		</c:when>
        		 		<c:when test="${memberInfo.mem_division==1 }" >
-       		 			<a class="nav-item nav-link" id="itemManagerlink" href="${contextPath}/itemManager.do"><img src="../devFw/resources/image/icon/product_management.png"  alt="상품관리" style="width: 18px;">&nbsp;상품관리</a>
+       		 			<a class="nav-item nav-link" id="itemManagerlink" href="${contextPath}/sellerPage.do"><img src="../devFw/resources/image/icon/product_management.png"  alt="상품관리" style="width: 18px;">&nbsp;상품관리</a>
        		 			<a class="nav-item nav-link" id="itemManagerlink" href="${contextPath}/questionwrite5.do"><img src="../devFw/resources/image/icon/question_answer.png"  alt="문의사항 답변" style="width: 18px;">&nbsp;문의사항 답변</a>
        		 		</c:when>
        		 		<c:when test="${memberInfo.mem_division==2 }" >
