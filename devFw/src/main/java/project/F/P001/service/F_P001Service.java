@@ -23,17 +23,15 @@ public interface F_P001Service {
 	public int countBoard();
 
 	public List searchoption(Map<String, Object> searchMap) throws DataAccessException;
-	
 
 	public List bannerList() throws DataAccessException;
-	
 
-	
+	public List<Map<String, String>> eventItemSearch(Map<String, Object> searchMap);
+
+	public List<Map<String, String>> eventSearch(Map<String, Object> searchMap);
 
 
-
-
-                                                                
+	                                    
 
 
 }

@@ -151,7 +151,6 @@ $(document).ready(function(){
 	 $('#contentDetail').load('bestProduct.do',{ ctgrNum :'${ctgrNum}'});
 });
 function moveCtgr(ctgr){
-	
 	$('#contentDetail').load('bestProduct.do',{ ctgrNum :ctgr});
 	$(".bigCtgr").css('background-color', '#f2f2f2');
 	if(ctgr==null){

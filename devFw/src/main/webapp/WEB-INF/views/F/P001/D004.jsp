@@ -13,145 +13,73 @@
 <head>
 <style>
 
-/* 
-div.name{
-font-size:30px;
-margin-top:50px;
-margin-right:180px;
-font-style: italic;
-font-weight: bolder;
+	.container {
+			width:1120px;
+	max-width:none !important;
+	}
+	
+	body, html {
+	height:100%;
+	}
+    #banner{
+    /* margin-left: auto;
+    margin-right: auto; */
+    width: 1095px;
+    height: 100%;
+    margin-right: 0; 
+    
+    }                               
 
-}
-div.gallery{
-
-   position:relative;
-background-color:#848484;
-    margin: 5px;                        
-    border: 1px solid #ccc;
-    float: left;
-    width: 300px;
-    height:450px;              
-    }
   div.gallery:hover {         
   border: 1px solid #777;
 }   
 
-div.gallery img {
-  width: 100%;
-  height: 378.39px;
-
-}
-
-div.desc {
-position:initial;
-bottom:8px;                               
-left:16px;
-font-size:15px;
-  padding: 15px;
-  text-align: center;
-}                                                                 
-div.desc1{
-color:white; 
-}     
-     
-    
-      
-#paging {
-postion:fixed;
-width:580px; 
-text-align:center; 
-float:center; 
-line-height:15px;
-}
-#paging a.prev{
-font:8pt verdana; 
-color:#555555;
-
-}
-#paging .selected {
-font-weight:bolder; 
-color:#555555;
-}
-#paging a.num{
-border:#AAAAAA 1px solid;
- background-color:#FFFFFF; 
- color:#555555;
-  padding:3px 6px;                               
-   margin:3px;
-    font:8pt verdana;
+div.gallery{                       
+    border: 1px solid #ccc;     
     }
-#paging a:hover.num{
-border:#555555 1px solid;
+#imgBox{
+	width:1095px;
+	height: 160px;
+	overflow:hidden;
+	
 }
 
-#page{                                        
-position:relative;
-left:335px;
-}
-       */              
-    #banner{
-    /* margin-left: auto;
-    margin-right: auto; */
-    width: 650px;
-    height: 470px;
-    margin-right: 0; 
-    }                               
+#imgBox:hover{
+	overflow: visible;
+	z-index: 1;
 
+}
+#eventContent{
+	widht:100%;
+	height: 80px;
+	background-color: #2E2E2E;
+	color: white;
+}
 </style>
+<script>
+
+</script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>  
-
-<div class="banner" id="banner">
-<c:forEach var="banner" items="${eventbanner}">
-<div style="max-width: 650px;">
-<p align="center">${banner.NO_TITLE}</p><br>
-<a href="#" style="align: center;">
-    <img src="${banner.NO_BANNER}" alt="" width="400" height="400" style="margin-left: 100px;">
-</a><br>
-<p align="center">이벤트 기간: ${banner.NO_STDATE}&nbsp;~&nbsp;${banner.NO_ENDDATE}</p>
+<div class="container">
+	<div class="banner" id="banner">
+	<h2>이벤트 목록</h2>
+	<c:forEach var="banner" items="${eventbanner}">
+		<div class="gallery" style=" margin-top: 35px;">
+			<div id="imgBox">
+				<a href="eventSell.do?event=${banner.no_number }" style="align: center;">
+    				<img src="${banner.NO_BANNER}" alt="" width="1095" height="400" >
+    			</a>
+			</div>
+			<div id="eventContent">
+				<p align="center" style="font-size: 30px; font-style: italic; font-weight: bolder;">${banner.NO_TITLE}</p>
+				<p align="center" style="font-style: italic; font-weight: bolder;">이벤트 기간: ${banner.NO_STDATE}&nbsp; ~ &nbsp;${banner.NO_ENDDATE}</p>
+			</div>
+		</div>
+	</c:forEach>
+	</div>
 </div>
-</c:forEach>
-</div>
-
-<%-- 
-<div class="name">
-event product
-</div>
- <c:forEach var="productlist1" items="${List}" >   
-<div class="gallery">
-
-  
-<a href="${contextPath}/sellItems.do?sell_no=${productlist1.sell_number}">
-    <img src="${productlist1.sell_thumbnail}" alt="1" width="400" height="400">
-</a>
-<a href="${contextPath}/sellItems.do?sell_no=${productlist1.sell_number}">
-  <div class="desc"><div class="desc1">${productlist1.sell_title}<br></div>
-<fmt:formatNumber value="${productlist1.sell_price}" pattern="#,###"/>원 
-   ${productlist1.event_explain}    
-   </div>        
-   </a>           
-                                                            
-</div>                                                  
-     
-</c:forEach> 
-
-
-<div id="paging">
-<s_paging id="page"> 
-                             
-    <a href="#">Prev</a>
-    <strong>1</strong>   
-     <a href="#">2</a>
-    <a href="#">3</a>
-    <a href="#">4</a>
-    <a href="#">5</a>
-    <a href="#">Next</a>                              
-
-</s_paging>
-</div>
-
- --%>
 </body>
 </html>        

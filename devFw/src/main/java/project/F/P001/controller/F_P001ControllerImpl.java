@@ -115,6 +115,24 @@ public class F_P001ControllerImpl implements F_P001Controller {
 		return mav;
 	}
 
+	@RequestMapping(value="/eventSell.do" ,method =  { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView eventSell(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = getViewName(request);
+		viewName = "eventSell";
+		String event_no = request.getParameter("event");
+		Map<String, Object> searchMap = new HashMap<String, Object>();
+		searchMap.put("event_no", event_no);
+		List<Map<String, String>> itemList = f_P001Service.eventItemSearch(searchMap);
+		List<Map<String, String>> event = f_P001Service.eventSearch(searchMap); 
+		
+		
+		ModelAndView mav = new ModelAndView(viewName);
+		mav.addObject("List",itemList);
+		mav.addObject("eventContent", event.get(0));
+		
+		System.out.println(event.get(0));
+		return mav;
+	}
 	
 	@Override
 	@RequestMapping(value="/eventProduct.do" ,method = RequestMethod.GET)
@@ -185,8 +203,6 @@ public class F_P001ControllerImpl implements F_P001Controller {
 	}
 	
 	
-	
-
 
 	private String getViewName(HttpServletRequest request) throws Exception {
 		String contextPath = request.getContextPath();

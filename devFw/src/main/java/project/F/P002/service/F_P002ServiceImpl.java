@@ -177,4 +177,10 @@ public class F_P002ServiceImpl implements F_P002Service {
 		list = thumbnail(list);
 		return list;
 	}
+
+	@Override
+	public List<Map<String, Object>> mainBanner() {
+		List<Map<String, Object>> list = f_P002DAO.mainBanner();
+		return list;
+	}
 }

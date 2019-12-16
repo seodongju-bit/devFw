@@ -143,7 +143,7 @@
 	.mainMenu >.menubtn {
 	  background-color:rgb(94, 94, 94);
 	  color:white;
-	  width:180px;
+	  width:216.5px;
 	  height:30px;
 	  margin:0px;
 	  padding:0px;
@@ -154,7 +154,7 @@
 	#dropMenu >.menubtn {
 	  background-color:#9E9E9E;
 	  color:white;
-	  width:180px;
+	  width:216.5px;
 	  height:31px;
 	  margin:0px;
 	  padding:0px;
@@ -375,8 +375,30 @@ $(document).ready(function(){
 	          //alert("작업을완료 했습니다");
 	       }
 	    });  //end ajax
+	    
+	    var page = pageName(window.location.pathname);
+	    menuCheck(page);    
 });
-
+	function menuCheck(page){
+		var id = '#'+page;
+		if(page == 'reviewRankingMenu'){
+			$(id).css("background-color","black");
+		}else if(page == 'bestMenu'){
+			$(id).css("background-color","black");
+		}else if(page == 'eventProduct'){
+			$(id).css("background-color","black");
+		}else if(page == 'event'){
+			$(id).css("background-color","black");
+		}
+		
+	}
+	
+	function pageName(domain){
+		var arr = domain.split('/');
+		var arr2 = arr[2].split('.');
+		return arr2[0];
+	}
+  
 	function fn_coupon(){
 		var _isLogOn=document.getElementById("isLogOn");
 		var isLogOn=_isLogOn.value;
@@ -390,6 +412,8 @@ $(document).ready(function(){
 		}
 	}
 
+	
+	
 </script>           
 <body>
 	<div class="header" id="header">
@@ -404,10 +428,11 @@ $(document).ready(function(){
        	 <c:choose>
        		 <c:when test="${isLogOn==true and not empty memberInfo }" >
        		 	<a class="nav-item nav-link" href="#" onclick="logout(); return false;">로그아웃</a>
-       		 	<a class="nav-item nav-link" onclick="location.href='${contextPath}/chatInit.do'" ><img src="../devFw/resources/image/icon/chat.png"  alt="채팅" style="width: 16px;">&nbsp;채팅</a>
+       		 	
        		 	<c:choose>
        		 		<c:when test="${memberInfo.mem_division==0 }" >
-       		 			<a class="nav-item nav-link"  href="${contextPath}/basket.do"><img src="../devFw/resources/image/icon/shopping-cart.png"  alt="장바구니" style="width: 16px;">&nbsp;장바구니</a>
+       		 			<a class="nav-item nav-link" href='${contextPath}/chatInit.do' ><img src="../devFw/resources/image/icon/chat.png"  alt="채팅" style="width: 16px;">&nbsp;관리자와 채팅</a>
+       		 			<a class="nav-item nav-link" href="${contextPath}/basket.do"><img src="../devFw/resources/image/icon/shopping-cart.png"  alt="장바구니" style="width: 16px;">&nbsp;장바구니</a>
        		 			<a class="nav-item nav-link" href="${contextPath}/myPage.do"><img src="../devFw/resources/image/icon/user1.png"  alt="마이페이지" style="width: 16px;">&nbsp;마이페이지</a>
        		 		</c:when>
        		 		<c:when test="${memberInfo.mem_division==1 }" >
@@ -416,6 +441,7 @@ $(document).ready(function(){
        		 		</c:when>
        		 		<c:when test="${memberInfo.mem_division==2 }" >
        		 			<a class="nav-item nav-link" id="siteManagerlink" href="${contextPath}/adminPage.do">사이트관리</a>
+       		 			<a class="nav-item nav-link" id="siteManagerlink" href="${contextPath}/makecoupon.do">쿠폰관리</a>
        		 		</c:when>
        		 	</c:choose>
 			</c:when>
@@ -446,20 +472,10 @@ $(document).ready(function(){
 
   			</div>
 		</div>
-		<div class="mainMenu"><button class="menubtn"onclick="location.href='reviewRankingMenu.do'">리뷰랭킹</button></div>
-		<div class="mainMenu"><button class="menubtn"onclick="location.href='bestMenu.do'">베스트상품</button></div>
-		<div class="mainMenu"><button class="menubtn"onclick="location.href='eventProduct.do'">이벤트상품</button></div>
-				<c:choose>
-					<c:when test="${memberInfo.mem_division==2 }">
-						<div class="mainMenu"><button class="menubtn" onclick="location.href='${contextPath}/makecoupon.do'">쿠폰발급</button></div>
-					</c:when>
-					<c:otherwise>
-						<div class="mainMenu">
-							<div class="mainMenu"><button class="menubtn" onclick="fn_coupon()">쿠폰</button></div>
-						</div>
-					</c:otherwise>
-				</c:choose>
-				<div class="mainMenu"><button class="menubtn"onclick="location.href='event.do'">이벤트/공지사항</button></div>
+		<div class="mainMenu"><button class="menubtn" id="reviewRankingMenu" onclick="location.href='reviewRankingMenu.do'">리뷰랭킹</button></div>
+		<div class="mainMenu"><button class="menubtn" id="bestMenu" onclick="location.href='bestMenu.do'">베스트상품</button></div>
+		<div class="mainMenu"><button class="menubtn" id="eventProduct" onclick="location.href='eventProduct.do'">이벤트상품</button></div>
+		<div class="mainMenu"><button class="menubtn" id="event"onclick="location.href='event.do'">이벤트/공지사항</button></div>
 	</div>
 	</div>
 	</div>  

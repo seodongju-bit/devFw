@@ -88,4 +88,36 @@
 	]]>
 	</select>
 	
+	
+	
+	<select id="searchSale" parameterType="java.util.Map" resultType="java.util.HashMap">
+
+      <![CDATA[
+         select *
+         from productsell ps, product p
+       	 where ps.pro_number = p.pro_number
+            and( sell_number like '%${p_id}%'
+        	or sell_title like '%${p_id}%'
+         	or pro_brand like '%${p_id}%'
+         	or pro_vendor like '%${p_id}%'
+         	or ps.mem_id like '%${p_id}%')
+         order by sell_number
+        
+      ]]>
+	</select>
+	
+	
+	<insert id="addItem" parameterType="java.util.HashMap">
+		<![CDATA[
+			insert into eventitems (no_number, sell_number) 
+			values((select max(no_number)
+				from notice
+				where no_division = '이벤트')
+				, #{item}
+			)
+			
+		]]>
+	</insert>
+	
+	
 	</mapper>

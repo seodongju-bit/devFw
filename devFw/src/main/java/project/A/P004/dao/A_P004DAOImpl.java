@@ -118,7 +118,7 @@ public class A_P004DAOImpl implements A_P004DAO {
 	public List<Map<String,Object>> listquestion(Map<String, Object> searchMap) {
 		List list =sqlSession.selectList("mapper.active.listquestion",searchMap);
 		System.out.println(">>>"+ list);
-		return list;
+		return list; 
 	}
 	@Override
 	public List alert(String p_id) throws DataAccessException {
@@ -146,5 +146,25 @@ public class A_P004DAOImpl implements A_P004DAO {
 		sqlSession.update("mapper.active.pointDeduction", withdrawMap);
 		sqlSession.insert("mapper.active.pointUseRecord", withdrawMap);
 
+	}
+
+	@Override
+	public void confirm(Map<String, Object> dataMap) {
+		sqlSession.update("mapper.active.confirm", dataMap);
+	}
+	
+	@Override
+	public int confirmcheck(Map<String, Object> check) throws DataAccessException {
+		return sqlSession.selectOne("mapper.active.confirmcheck", check);
+	}
+	
+	@Override
+	public void cancle(Map<String, Object> dataMap) {
+		sqlSession.update("mapper.active.cancle", dataMap);
+	}
+	
+	@Override
+	public int canclecheck(Map<String, Object> check) throws DataAccessException {
+		return sqlSession.selectOne("mapper.active.canclecheck", check);
 	}
 }

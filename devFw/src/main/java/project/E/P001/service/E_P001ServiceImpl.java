@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import project.A.P004.vo.A_P004VO;
 import project.E.P001.dao.E_P001DAO;
 import project.E.P001.vo.E_P001VO;
 
@@ -25,6 +26,15 @@ public class E_P001ServiceImpl implements E_P001Service {
 		System.out.println("service:"+list);
 		return list;
 	}
+	
+	@Override
+	public List listCoupon(String p_id) throws DataAccessException {
+		List couponList = null;
+		couponList = e_P001DAO.selectAllCouponList(p_id);
+		return couponList;
+	}	
+	
+	@Override
 	
 	public void addNewOrder(List<E_P001VO> orderList) throws Exception {
 		e_P001DAO.insertNewOrder(orderList);
