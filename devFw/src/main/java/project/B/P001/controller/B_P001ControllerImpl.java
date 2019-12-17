@@ -155,7 +155,7 @@ public class B_P001ControllerImpl   implements B_P001Controller {
 		   return mav;
 	   }
 
-	
+	 
 
 	   
 	public boolean sellerCheck(HttpServletRequest request) {
