@@ -96,9 +96,9 @@
 
 	<insert id="addReview" parameterType="java.util.Map" >
 		<![CDATA[
-			insert into review(review_number,review_title, sell_number, pro_number, mem_id, review_stdate, review_pdscore, review_content, review_sellscore, REVIEW_URL, REVIEW_YOUTUBE)
-			values(review_number.nextval,'${review_title}','${sell_number}','${pro_number}','${mem_id}',sysdate,'${review_pdscore}','${review_content}','${review_sellscore}', '${review_url}', '${review_youtube}')
-		]]>
+			insert into review(review_number,order_number,review_title, sell_number, pro_number, mem_id, review_stdate, review_pdscore, review_content, review_sellscore, REVIEW_URL, REVIEW_YOUTUBE)
+			values(review_number.nextval,'${order_number}','${review_title}','${sell_number}','${pro_number}','${mem_id}',sysdate,'${review_pdscore}','${review_content}','${review_sellscore}', '${review_url}', '${review_youtube}')
+		]]> 
 	</insert>
 	
 	<update id="updateProScore" parameterType="java.util.Map">

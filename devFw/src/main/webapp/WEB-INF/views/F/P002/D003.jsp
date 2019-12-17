@@ -9,7 +9,7 @@
 
 <head>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
-<link href="../devFw/resources/css/bootstrap.min.css" rel="stylesheet">
+
 <meta name="viewport" content="width=divice-width, initial-scale=1.0">
 <!DOCTYPE html>
 <style>

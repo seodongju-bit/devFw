@@ -14,19 +14,18 @@
 <head>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script><!-- 팝업 관련 -->
 
-<link rel="stylesheet" type="text/css" href="resources/css/F_P002_D001.css?ver=1.8">
+<link rel="stylesheet" type="text/css" href="resources/css/F_P002_D001.css?ver=2.0">
 
 <script src="http://code.jquery.com/jquery-latest.min.js"></script><!-- jquery -->
 <script type="text/javascript">
 
 
 $(document).ready(function(){
-	$('#contentDetail').load('itemsInfoLoad.do',{ contents : '${item.sell_contents}'});
+	$('#contentDetail').load('itemsInfoLoad.do',{ contents : '${item.sell_contents}', brand : '${item.pro_brand}'});
 	
 	$('#itemsImg').attr('src','${item.sell_thumbnail}');
 	
 	if('${item.option_yn}'=='y'){
-	/////ajax
 	 var p_id = '${item.sell_number}';
 	 $.ajax({
 	       type:"post",
@@ -81,16 +80,12 @@ $(document).ready(function(){
 	       }
 	    });  //end ajax
 	}
-	
 	var prog = ${item.pro_score};
 	var sellg = ${item.sell_score};
 	prog = Math.round(prog);
 	sellg = Math.round(sellg);
 	$("#product_grade :nth-child("+prog+")").addClass("on").prevAll("a").addClass("on");
 	$("#seller_grade :nth-child("+sellg+")").addClass("on").prevAll("a").addClass("on");
-		 
-
-	
 });
 
 var option_kinds=[];
@@ -273,8 +268,9 @@ function basket(){
 	})
 }
 function removeRef(){
-	var url = "sellItems.do?sell_no="+${item.sell_number};
- 	window.location.href=url;	
+
+	var url = "sellItems.do?sell_no="+'${item.sell_number}';
+ 	location.href=url;	
 }
 
 function fn_order(){
@@ -286,7 +282,7 @@ function fn_order(){
 }
 function pageLoad(command){
 	if(command=="itemsInfoLoad"){
-		$('#contentDetail').load('itemsInfoLoad.do',{ contents : '${item.sell_contents}'});
+		$('#contentDetail').load('itemsInfoLoad.do',{ contents : '${item.sell_contents}', brand : '${item.pro_brand}'});
 	}
 	if(command=="sellItemsReview"){
 		$('#contentDetail').load('sellItemsReview.do',{ sell_number :'${item.sell_number}', page :1});
@@ -348,23 +344,23 @@ function pageLoad(command){
 	<div id="selectBox"> 
 		<div id="sellerInfo" class="sellInfo">
 			<span class="infoPan">${item.sell_title}</span>
-			<p>${item.pro_name}</p>
+			<p style="position: relative; top:3px;">${item.pro_name}</p>
 		</div> 
 		<div class="sellInfo"><span class="infoPan">혜택/이벤트 정보</span>
 			<a href="eventSell.do?event=${item.no_number}"><p id="addInfo">${item.no_title}</p></a>
 		</div>
 		<div  class="sellInfo"><span class="infoPan">제품가격</span>
-			<br><span style="text-decoration:line-through; color:gray;font-size:14px;">
+			<br><span style="position: relative; top:3px;text-decoration:line-through; color:gray;font-size:14px;">
 			<fmt:setLocale value="ko_KR"/><fmt:formatNumber type="currency" value="${item.pro_price}" /></span>
-			<span id="itemPrice"><fmt:setLocale value="ko_KR"/><fmt:formatNumber type="currency" value="${item.sell_price}" /></span>
+			<span id="itemPrice" style="position: relative; top:3px;" ><fmt:setLocale value="ko_KR"/><fmt:formatNumber type="currency" value="${item.sell_price}" /></span>
 		</div>
 		<div  class="sellInfo"><span class="infoPan">배송정보</span>
 			<c:choose>
 				<c:when test="${item.delivery_price=='0'}">
-					<p id="itemDelivery">무료배송</p>
+					<p id="itemDelivery" style="position: relative; top:3px;">무료배송</p>
 				</c:when>
 				<c:otherwise>
-					<p id="itemDelivery">배송비 : <fmt:setLocale value="ko_KR"/><fmt:formatNumber type="currency" value="${item.delivery_price}" /></p>
+					<p id="itemDelivery" style="position: relative; top:3px;">배송비 : <fmt:setLocale value="ko_KR"/><fmt:formatNumber type="currency" value="${item.delivery_price}" /></p>
 				</c:otherwise>
 			</c:choose>
 		</div>
@@ -384,8 +380,8 @@ function pageLoad(command){
 				<c:when test='${reiewer.REVIEW_NUMBER!=null }'>
 					<input type="hidden" name="od_recomReview" value='${reiewer.REVIEW_NUMBER}'>
 					<div class="selectItem" id="reviewerBox">
-						추천리뷰 : ${reiewer.REVIEW_TITLE}
-						by ${reiewer.MEM_ID}
+						추천리뷰 : ${reiewer.REVIEW_TITLE} &nbsp;&nbsp;&nbsp;
+						리뷰어 : ${reiewer.MEM_NICK}
 						<button type="button" class="btn btn-default" onclick="removeRef()">취소</button>
 					</div>
 				</c:when>

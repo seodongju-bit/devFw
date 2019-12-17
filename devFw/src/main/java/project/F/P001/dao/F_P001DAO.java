@@ -22,6 +22,8 @@ public interface F_P001DAO {
     public List bannerList() throws DataAccessException;
 	public List<Map<String, String>> eventItemSearch(Map<String, Object> searchMap);
 	public List<Map<String, String>> eventSearch(Map<String, Object> searchMap);
+	public List preBannerList();
+	public List endBannerList();
     
 
     

@@ -65,7 +65,7 @@ $(document).ready(function(){
     	</tr>
     	<tr>
     		<td class="tableTd">브랜드</td>
-    		<td>폴햄</td>
+    		<td>${brand}</td>
     		<td></td><td></td>
     	</tr>
     	<tr>

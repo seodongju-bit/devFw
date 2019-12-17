@@ -33,6 +33,7 @@ public class F_P002VO {
 	private String delivery_price="";
 	private String no_number="";
 	private String no_title="";
+	private String pro_brand="";
 	
 	
 	
@@ -240,6 +241,14 @@ public class F_P002VO {
 
 	public void setPro_price(String pro_price) {
 		this.pro_price = pro_price;
+	}
+
+	public String getPro_brand() {
+		return pro_brand;
+	}
+
+	public void setPro_brand(String pro_brand) {
+		this.pro_brand = pro_brand;
 	}
 	
 

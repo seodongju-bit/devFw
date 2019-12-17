@@ -24,20 +24,25 @@
 	}
 	#bestReview, #bestProduct {
 		width:100%;
-		height: 400px;
+		height: 420px;
 /* 		background-color: #f2f2f2; */
 		margin: 20px auto;
-		border-radius: 10px;
+/* 		border-radius: 10px; */
+		border-bottom: 1px solid lightgray;
 	}
+	#bestProduct .reviewBox{
+		height: 250px;
+		padding: 0px;
+	}
+	
 	#reviewListBox{
 		width: 100%;
-		height: 650px;
+		height: 760px;
 	}
 	
 	.reviewList{
 		position:relative;
 		width: 100%;
-		min-height: 600px;
 /* 		background-color: #f2f2f2; */
 		margin:0 auto;
 		font-size: 15px;
@@ -67,7 +72,7 @@
 	.reviewBox{
 		position: relative;
 		width: 195px;
-		height: 250px;
+		height: 295px;
 		float: left;
 		display: inline-block;
 		background-color: white;;
@@ -75,6 +80,7 @@
 		padding: 5px;
 		border: 1px solid lightgray;
 	}
+	
 	.reviewNum{
 		font-size: 18px;
 		font-weight: 500;
@@ -91,9 +97,9 @@
 		width: 192px;
 		height: 192px;
 	}
-	#bestProduct .reviewBox{
-		padding: 0px;
-		height: 250px;
+	.reviewList .reviewBox{
+		padding: 5px;
+		height: 260px;
 		
 	}
 	#bestProduct .reviewBox:hover .ProdropBox{
@@ -152,28 +158,29 @@
 		cursor: pointer;
 	}
 	
-	
-	
-	#totalReviewBox{
-		position: relative;
-		width: 1170px;
-		height: 700px;
-		text-align: center;
-		display: block;
-	}
+
 	#totalReview{
 		width: 1000px;
 		margin: 0 auto;
 	}
-	.reviewTag:hover{
-		font-weight: bold;
+	.reviewer:hover{
 		cursor: pointer;
 	}
 	
-
+	.reviewTag:hover{
+		font-weight: bold;
+		cursor: pointer;
+	} 
+	.reviewList .youtubeBox{
+		position: absolute;
+		top:225px;
+		right:5px;
+		width:50px;
+		height:30px;
+	}
 	.youtubeBox{
 		position: absolute;
-		top:210px;
+		top:255px;
 		right:5px;
 		width:50px;
 		height:30px;
@@ -189,6 +196,11 @@
 	.youtubeBox img{
 		width:40px;
 		height:30px;
+	}
+	h3{
+		padding:15px;
+		background-color: #f2f2f2;
+		border-radius: 4px;
 	}
 </style>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
@@ -287,19 +299,21 @@ function moveReviewer(id){
 <body>
     <div id="contentsBody">
     
-		<h2>리뷰랭킹</h2>
+		<h2 style="font-weight: 600;">RECOM REVIEW</h2>
 		<div id="bestReview">
-			<h3>Best Review</h3><a href="bestReviewPlusMenu.do">더보기</a> (월간추천수 기준 정렬)<br>
+			<h3 style="font-weight: 550;" data-toggle="tooltip" title="한달동안 가장 인기있던 리뷰들을 보여줍니다">Best Review</h3>
+			<a style="float: right;"href="bestReviewPlusMenu.do">< 더보기 ></a> 
 			<c:forEach var="bestReview" items="${bestReview}" varStatus="index">
 				<div class="reviewBox">
 					<span class="reviewNum">${index.count }</span>
 					<div class="imgBox" onclick="readReview(${bestReview.REVIEW_NUMBER })">${bestReview.REVIEW_THUMNAIL }</div>
 					<a onclick="readReview(${bestReview.REVIEW_NUMBER })">${bestReview.REVIEW_TITLE }</a><br>
-					<p style='text-align: right;' onclick="moveReviewer('${bestReview.MEM_ID }')">${bestReview.MEM_ID } </p>
+					<p style='text-align: right;' class="reviewer" onclick="moveReviewer('${bestReview.MEM_ID }')">${bestReview.MEM_NICK } </p>
 					추천수 ${bestReview.REVIEW_MONTHPOINT }
+					<br>등록일 : <fmt:formatDate value="${bestReview.REVIEW_STDATE}" pattern="yyyy-MM-dd" /><br>
 					<c:choose>
     					<c:when test='${bestReview.REVIEW_URL!=null }' >
-    						<button class="btn btn-default" style="height:32px;"onclick="reviewLink('${bestReview.REVIEW_URL}')">Link</button>
+    						<button class="btn btn-default" style="font-size:13px;height:28px;" onclick="reviewLink('${bestReview.REVIEW_URL}')">Link</button>
     					</c:when>
     				</c:choose>
 					<c:choose>
@@ -312,10 +326,9 @@ function moveReviewer(id){
 		</div>
 		
 		<div id="bestProduct">
-			<h3>Best product</h3> (제품추천 높으것들중 각 3개의 리뷰)<br>
+			<h3 style="font-weight: 550;" data-toggle="tooltip" title="인기제품들 중에서 가장 인기있는 3개의 리뷰를 보여줍니다">Best Product</h3>
 			<c:forEach var="bestProduct" items="${bestProduct}" varStatus="index">
 				<div class="reviewBox">
-					<span class="prReviewNum">${index.count }</span>
 					<img id="proImg" src="${bestProduct.SELL_THUMBNAIL }">
 						<div class="ProdropBox">
 							<div class="threeReview" >
@@ -338,18 +351,23 @@ function moveReviewer(id){
 		</div>
 		
 		<div id="reviewListBox">
-			<h3>Recent Recommendation</h3>(전체추천수 3개이상인 최근 등록된 리뷰)
+			<h3 style="font-weight: 550;" data-toggle="tooltip" title="최근 등록된 리뷰들중에서 3번 이상의 추천을 받은 리뷰를 보여줍니다">Recent Recommendation Review</h3>
 			<div class="reviewList">
     			<c:forEach var="reviewList" items="${reviewList}">
     			<div class="reviewBox">
-					
 					<a class="reviewTag" onclick="readReview(${reviewList.REVIEW_NUMBER })">${reviewList.REVIEW_THUMNAIL }</a>
 					<a class="reviewTag" onclick="readReview(${reviewList.REVIEW_NUMBER })">${reviewList.REVIEW_TITLE }</a>
-					<br>by ${reviewList.MEM_ID }
-					<br>추천수 ${reviewList.REVIEW_MONTHPOINT }
+					<br><p style='text-align: right;' class="reviewer" onclick="moveReviewer('${reviewList.MEM_ID }')">${reviewList.MEM_NICK } </p>
+					추천수 ${reviewList.REVIEW_MONTHPOINT }
+					<br>등록일 : <fmt:formatDate value="${reviewList.REVIEW_STDATE}" pattern="yyyy-MM-dd" /><br>
     				<c:choose>
     					<c:when test='${reviewList.REVIEW_URL!=null }' >
-    						<button onclick="reviewLink('${reviewList.REVIEW_URL}')">link</button>
+    						<button class="btn btn-default"  onclick="reviewLink('${reviewList.REVIEW_URL}')" style="font-size:13px;height:28px;">link</button>
+    					</c:when>
+    				</c:choose>
+    				<c:choose>
+    					<c:when test='${reviewList.REVIEW_YOUTUBE!=null }' >
+    						<div class="youtubeBox" value='${reviewList.REVIEW_YOUTUBE}'><img src="resources/image/youtubeIcon.png" ></div>
     					</c:when>
     				</c:choose>
 <%-- 					<button class="btn btn-default" onclick="recommendation('${reviewList.REVIEW_NUMBER }','${reviewList.SELL_NUMBER }')">추천 구매</button> --%>
