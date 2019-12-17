@@ -445,6 +445,15 @@
       <put-attribute name="title" value="신고회원관리페이지"/>
       <put-attribute name="body" value="/WEB-INF/views/A/P009/D001.jsp"/>
    </definition>
+   
+   
+   <definition name="questionresponse" extends="noticeLayout">
+      <put-attribute name="title" value="문의사항답변페이지" /> 
+      <put-attribute name="body" value="/WEB-INF/views/C/P003/D008.jsp" />
+   </definition> 
+
+   
+
 
 
 </tiles-definitions>

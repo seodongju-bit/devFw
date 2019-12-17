@@ -182,10 +182,10 @@
         
 <insert id="insertquestion" parameterType="java.util.Map">
 		<![CDATA[
-			insert into questions (qu_number,mem_id, order_number, qu_contents, qu_date,sell_title) 
+			insert into questions (qu_number,mem_id, order_number, qu_contents, qu_date,sell_title,sell_thumbnail) 
 			values
-			 (qu_number.nextval,#{mem_id}, #{order_number}, #{qu_contents}, sysdate, #{sell_title})   
-		]]>     
+			 (qu_number.nextval,#{mem_id}, #{order_number}, #{qu_contents}, sysdate, #{sell_title},#{sell_thumbnail})   
+		]]>                 
 	</insert>          	
 	   
      
@@ -252,4 +252,29 @@
    		 and o.order_number = #{order_number}
    		]]>
    </select>   
+   
+   
+   
+
+   <insert id="responseInfo2" parameterType="java.util.Map">
+		<![CDATA[
+			insert into questions (qu_number,mem_id, qu_contents, qu_answer,sell_title,sell_thumbnail) 
+			values
+			 (qu_number.nextval,#{mem_id}, #{qu_contents}, #{qu_answer}, #{sell_title}, #{sell_thumbnail})   
+		]]>                 
+	</insert> 
+	
+	
+	
+	  <select id="responseInfo" resultMap="C_P003Result04" parameterType="C_P003VO">
+   		<![CDATA[
+            SELECT qu_number,mem_id, qu_contents,qu_answer,sell_title,sell_thumbnail
+            FROM questions 
+           
+            
+   		]]>
+   </select>
+   
+   
+   
   </mapper>
