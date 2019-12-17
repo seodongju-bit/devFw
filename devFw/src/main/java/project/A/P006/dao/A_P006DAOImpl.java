@@ -44,4 +44,16 @@ public class A_P006DAOImpl implements A_P006DAO{
 		return list;
 	}
 
+	@Override
+	public List<A_P001VO> selectSeller(Map<String, Object> searchMap) {
+		List<A_P001VO> list = sqlSession.selectList("Customers.chat.selectSeller",searchMap);
+		return list;
+	}
+	
+	@Override
+	public List<A_P001VO> selectprod(Map<String, Object> searchMap) {
+		List<A_P001VO> list = sqlSession.selectList("Customers.chat.selectprod",searchMap);
+		return list;
+	}
+
 }

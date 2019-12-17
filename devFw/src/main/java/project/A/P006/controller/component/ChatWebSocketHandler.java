@@ -93,8 +93,6 @@ private static final Map<WebSocketSession, A_P001VO> sessionList = new HashMap<W
 		HashMap<String,Object> body = C_P002_D005FormVO.getBody();
 		String mem_id= (String) body.get("mem_id");
 		
-		System.out.println("handler memberId :: ++++ " + mem_id + ", sender :: " + c_p001_d001vo.getMem_id());
-
 		A_P006VO c_p002_d005vo = c_p002_d005Provider.get();
 		c_p002_d005vo.setSender(c_p001_d001vo.getMem_id());
 		c_p002_d005vo.setReceiver(mem_id);
@@ -126,7 +124,7 @@ private static final Map<WebSocketSession, A_P001VO> sessionList = new HashMap<W
 				c_p002_d005vo.setMe_at("false");				
 				body.clear();
 				body.put("result", c_p002_d005vo);
-				body.put("sender_id", c_p001_d001vo.getMem_id());
+				body.put("sender_info", c_p001_d001vo.getMem_id());
 				String result=mapper.writeValueAsString(C_P002_D005FormVO);
 				recSession.sendMessage(new TextMessage(result));
 			}
@@ -152,7 +150,6 @@ private static final Map<WebSocketSession, A_P001VO> sessionList = new HashMap<W
 		body.clear();
 		body.put("result",searchResult);
 		String result=mapper.writeValueAsString(C_P002_D005FormVO);
-		System.out.println("result!!!!!!!!!="+result);
 		session.sendMessage(new TextMessage(result));
 	}
 

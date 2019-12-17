@@ -76,6 +76,9 @@ $(document).ready(function(){
 		//유저목록 클릭이벤트
 		$(document).on("click",".discussion",function(){
 			if(!$(this).hasClass("clicked")){
+				
+				
+				
 				//채팅 header에 유저 정보 표시
 				$('#user-info').empty();
 				var information = $(this).children();
@@ -206,9 +209,9 @@ $(document).ready(function(){
 		var divData;
 		
 		if(res.me_at=='true'){//보낸사람이 나면
-			divData = new memberDivForm('discussion',null,null,res.receiver);
+			divData = new memberDivForm('discussion',null,res.receiver);
 		}else{
-			divData = new memberDivForm('discussion',recData.body.sender_info.mem_id,recData.body.sender_info.mem_nick,res.sender);
+			divData = new memberDivForm('discussion',recData.body.sender_info.mem_nick,res.sender);
 		}
 		
 		prependMember(divData);
@@ -291,7 +294,7 @@ $(document).ready(function(){
         var msgBox = document.createElement("div");
         var msgPre = document.createElement("pre"); 
         var msgDate = document.createElement("div");
-        
+        var today = new Date();
         
         if(meCheck=="true"){
 			$(msgBox).addClass("message-right");        	
@@ -299,7 +302,7 @@ $(document).ready(function(){
 			$(msgBox).addClass("message-left");
         }
         
-        $(msgDate).text(date.toLocaleString('ko-KR'));        
+        $(msgDate).text(today.toLocaleString('ko-KR'));        
         $(msgPre).text(inputText);
         
         $(msgBox).append(msgPre);
@@ -319,10 +322,6 @@ $(document).ready(function(){
 
 @charset "UTF-8";
 
-@font-face{
-	font-family:"nanumEB";	
-}
-	
 	@font-face {
    src: url("../devFw/resources/font/NanumSquare_acR.ttf");
    font-family: "NanumSquare";
@@ -357,7 +356,7 @@ font-weight: 700;
 	width: 80%;
 	min-width: 1000px;/**/
 	height: 800px;/**/		
-	background: #6780cc;
+	background: gray;
 	box-shadow: 0 10px 10px rgba(0,0,0,0.19);	
    }   
    
@@ -400,11 +399,13 @@ font-weight: 700;
       height:80px;
       padding:20px;
       cursor: pointer;
+      color: white;
    }
 
 	#people-list .clicked,#search-list .clicked{
-		background:#8FA4E1;
-		border-right:5px solid #C1CEF3
+		background:white;
+		border-right:5px solid black;
+		color:black;
 	}
 
 	#search-list{
@@ -480,9 +481,8 @@ font-weight: 700;
 		display:flex;
 		justify-content : center;
 		align-items:center;
-		font-family : nanumEB;
+		font-family : NanumSquare;
 		font-size:1.5em;
-		color:grey;
 	}
    
    #chat-message>*{
@@ -508,11 +508,11 @@ font-weight: 700;
    }
    
    .message-left pre{
-      background-color:#c6ed94;   
+      background-color:#b9c0c1;   
    }
    
    .message-right pre{
-      background-color:#94C2ED;   
+      background-color:white;   
    }
    
    .message-left div, .message-right div{
@@ -541,7 +541,7 @@ font-weight: 700;
       margin-left : 1%;
       width : 14%;
       height : 100%;
-      color: #94C2ED;
+      color: black;
        border: none;
        cursor: pointer;
        font-weight: bold;
@@ -586,7 +586,7 @@ font-weight: 700;
 	#pop-header>div{
 		display:inline-block;
 		width:initial;
-		font-family : nanumEB;
+		font-family : NanumSquare;
 		font-size:1.5em;	
 	}
 	
@@ -621,11 +621,12 @@ font-weight: 700;
 		margin-left: 10px;
 		border-radius : 20px;
 		border :none;
-		background-color:#B9C9F8;
+		background-color:gray;
+		color: white;
 	}
 	
 	#pop-search>input[type=button]:hover,#pop-footer>input:hover{
-		background-color:#8da5ee;	
+		background-color:black;	
 	}	
 		
 	/*pop-list*/
@@ -638,7 +639,7 @@ font-weight: 700;
 	#pop-list>.no-result{
 		margin-top:10	px;
 		text-align:center;
-		font-family : nanumEB;
+		font-family : NanumSquare;
 		font-size:1.5em;
 		color:grey
 	}
@@ -655,8 +656,15 @@ font-weight: 700;
 		background-color : rgba(100, 100, 100, 0.1);	
 	}
 	
+	@-webkit-keyframes blinker { 0% { opacity: 0; } 50% { opacity: 1; } 100% { opacity: 0; } }
+
+	
 	#pop-list .selected{
-		background-color : rgba(185, 201, 248, 0.5);
+		-webkit-animation-name: blinker;
+		-webkit-animation-iteration-count: infinite;
+		-webkit-animation-duration: 1s;
+
+		color: black;
 	}	
 	
 	/*pop-fooer*/
@@ -671,7 +679,8 @@ font-weight: 700;
 		width:20%;
 		height:35px;
 		border-radius:5px;
-		background-color:#B9C9F8;
+		background-color:gray;
+		color:white;
 	}	
 	.hole{
 	padding-left: 150px;
@@ -703,11 +712,11 @@ font-weight: 700;
       <div id="chat">
          <div id="chat-header">
 			<div id="user-info"></div>
-			<i class="fas fa-user-plus fa-2x"></i>
+		 <i class="fas fa-user-plus fa-2x" style="color: black;"></i>
          </div>
          <div id="chat-message">
 			<div id="chat-main">
-				쪽지를 확인할 대상을 선택해주세요
+				문의를 확인할 대상을 선택해주세요
 			</div>
          </div>
          <div id="chat-footer">
@@ -719,7 +728,7 @@ font-weight: 700;
    	<div id="user-add">
 		<div id="pop-up">
 			<div id="pop-header">
-				<div>새	쪽지</div>
+				<div>새로운 문의</div>
 				<a id="pop-close" style="cursor: pointer;">&times;</a>			
 			</div>
 			<div id="pop-search">

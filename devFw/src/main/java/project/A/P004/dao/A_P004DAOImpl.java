@@ -21,7 +21,6 @@ public class A_P004DAOImpl implements A_P004DAO {
 	public List selectAllCouponList(String p_id) throws DataAccessException {
 		List<A_P004VO> couponList = null;
 		couponList = sqlSession.selectList("mapper.active.selectAllCouponList", p_id);
-		System.out.println(couponList);
 		return couponList;
 	}
 	
@@ -29,7 +28,6 @@ public class A_P004DAOImpl implements A_P004DAO {
 	public List usecoupon(String mem_id) throws DataAccessException {
 		List<A_P004VO> usecouponList = null;
 		usecouponList = sqlSession.selectList("mapper.active.usecoupon", mem_id);
-		System.out.println(usecouponList);
 		return usecouponList;
 	}
 	
@@ -42,33 +40,24 @@ public class A_P004DAOImpl implements A_P004DAO {
 
 	@Override
 	public List<Map<String, Object>> orderList(Map<String, Object> searchMap) {
-		System.out.println("mypage dao도착"+searchMap);
-		//orders 테이블 정리되면 수정,  일단 orderdetail 다 뽑아서 감
 		return sqlSession.selectList("mapper.active.orderList",searchMap);
 	}
 	
 	@Override
 	public List<Map<String, Object>> orderList2(Map<String, Object> searchMap) {
-		System.out.println("mypage dao도착"+searchMap);
-		//orders 테이블 정리되면 수정,  일단 orderdetail 다 뽑아서 감
-		return sqlSession.selectList("mapper.active.orderList2",searchMap);
+		List<Map<String, Object>> list = sqlSession.selectList("mapper.active.orderList2",searchMap);
+		return list;
 	}
 	
 	@Override
 	public List<Map<String, Object>> orderList3(Map<String, Object> searchMap) {
-		System.out.println("mypage dao도착"+searchMap);
-		//orders 테이블 정리되면 수정,  일단 orderdetail 다 뽑아서 감
 		List<Map<String, Object>> list =sqlSession.selectList("mapper.active.orderList3",searchMap);
-		System.out.println(">>>"+ list);
 		return list;
 	}
 	
 	@Override
 	public List<Map<String, Object>> quList(Map<String, Object> searchMap) {
-		System.out.println("mypage dao도착"+searchMap);
-		//orders 테이블 정리되면 수정,  일단 orderdetail 다 뽑아서 감
 		List<Map<String, Object>> list =sqlSession.selectList("mapper.active.quList",searchMap);
-		System.out.println(">>>"+ list);
 		return list;
 	}
 	
@@ -83,7 +72,6 @@ public class A_P004DAOImpl implements A_P004DAO {
 	public List givecoupon() throws DataAccessException {
 		List<A_P004VO> couponList = null;
 		couponList = sqlSession.selectList("mapper.active.givecoupon");
-		System.out.println(couponList);
 		return couponList;
 	}
 
@@ -117,14 +105,12 @@ public class A_P004DAOImpl implements A_P004DAO {
 	@Override
 	public List<Map<String,Object>> listquestion(Map<String, Object> searchMap) {
 		List list =sqlSession.selectList("mapper.active.listquestion",searchMap);
-		System.out.println(">>>"+ list);
 		return list; 
 	}
 	@Override
 	public List alert(String p_id) throws DataAccessException {
 		List alertList = null;
 		alertList = sqlSession.selectList("mapper.active.alert", p_id);
-		System.out.println(alertList);
 		return alertList;
 	}
 	@Override
@@ -141,7 +127,6 @@ public class A_P004DAOImpl implements A_P004DAO {
 
 	@Override
 	public void withdrawSave(Map<String, String> withdrawMap) {
-		// TODO Auto-generated method stub
 		sqlSession.insert("mapper.active.withdrawSave", withdrawMap);
 		sqlSession.update("mapper.active.pointDeduction", withdrawMap);
 		sqlSession.insert("mapper.active.pointUseRecord", withdrawMap);

@@ -324,10 +324,16 @@ ul.tabs li.active, html ul.tabs li.active a:hover {
 							<td>
 								<c:choose>
 								<c:when test="${orderList2.OD_STATE =='F_0005'}">
+								<c:choose>
+								<c:when test="${orderList2.REVIEW_NUMBER ==0}">
 								<p class="tdMenu"
-									onclick="reviewWrite('${orderList2.SELL_NUMBER}','${orderList2.SELL_TITLE}')">리뷰작성</p>
+									onclick="reviewWrite('${orderList2.SELL_NUMBER}','${orderList2.SELL_TITLE}','${orderList2.REVIEW_NUMBER}')">리뷰작성</p>
 									<input type="hidden" id="order_number" name="order_number" value="${orderList2.ORDER_NUMBER}"/>
+								</c:when>
+								<c:otherwise>	
 								<p class="tdMenu">리뷰 수정</p>
+								</c:otherwise>
+								</c:choose>
 								</c:when>
 								<c:when test="${orderList2.OD_STATE !='F_0005'}">
 								</c:when>
@@ -702,37 +708,10 @@ function cancle(order_number, sell_number){
 					});
 		};
 
-		function reviewWrite(sell_number, title) {
-			
-			/* $.ajax({
-			       type:"post",
-			       async:false,  
-			       url:"../devFw/reviewwrite.do",
-			       data: {
-			    	   
-			    	   "sell_number" : sell_number,
-			    	   "sell_title":title
-			       },
-			       success: function (data) {
-			    	   if(data.check>0){
-			    		   swal("이미 확정이 된 상품입니다.");
-			               return false;
-			    	   }else{
-			    		   window.open("reviewwrite.do?sell_number=" + sell_number
-			   					+ "&sell_title=" + title, "제품번호 검색",
-			   					"width=850, height=800, left=600, top400", "resizable=no");
-			    	   }
-		            },
-		            error: function () {
-		               swal("다시시도해 주세요.");
-		               return false;
-		            },
-			  }); */
-			
-			window.open("reviewwrite.do?sell_number=" + sell_number
-					+ "&sell_title=" + title, "제품번호 검색",
-					"width=850, height=800, left=600, top400", "resizable=no");
-			
+		function reviewWrite(sell_number, title, review_number) {
+				window.open("reviewwrite.do?sell_number=" + sell_number
+						+ "&sell_title=" + title, "제품번호 검색",
+						"width=850, height=800, left=600, top400", "resizable=no");
 		}
 		
 		function myquestion(qu_number) {
@@ -741,12 +720,6 @@ function cancle(order_number, sell_number){
 					"width=850, height=800, left=600, top400", "resizable=no");
 		}
 		
-		/* function reviewWrite(sell_number, title) {
-			window.open("reviewwrite.do?sell_number=" + sell_number
-					+ "&sell_title=" + title, "제품번호 검색",
-					"width=850, height=800, left=600, top400", "resizable=no");
-		} */
-
 		$(document).ready(function() {
 
 			//When page loads...
