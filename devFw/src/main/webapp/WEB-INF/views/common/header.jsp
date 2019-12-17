@@ -461,8 +461,8 @@ $(document).ready(function(){
        		 		</c:when>
        		 		<c:when test="${memberInfo.mem_division==1 }" >
 
-       		 			<a class="nav-item nav-link" id="itemManagerlink" href="${contextPath}/itemManager.do">상품관리</a>
-       		 			<a class="nav-item nav-link" id="itemManagerlink" href="${contextPath}/questionwrite5.do">문의사항 답변</a>
+       		 		<!-- 	<a class="nav-item nav-link" id="itemManagerlink" href="${contextPath}/itemManager.do">상품관리</a>
+       		 			<a class="nav-item nav-link" id="itemManagerlink" href="${contextPath}/questionwrite5.do">문의사항 답변</a> -->
        		 			
 
        		 			<a class="nav-item nav-link" id="itemManagerlink" href="${contextPath}/sellerPage.do"><img src="../devFw/resources/image/icon/product_management.png"  alt="상품관리" style="width: 18px;">&nbsp;판매자페이지</a>
