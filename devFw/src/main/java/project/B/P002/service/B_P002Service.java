@@ -28,6 +28,10 @@ public interface B_P002Service {
 
 	void addOption(Map<String, Object> optionMap);
 
+	public List orderRequestList(String p_id) throws DataAccessException;
 
+	public List<Map<String,Object>> ordererInfoList(Map<String, Object> ordererInfoList) throws DataAccessException;
+
+	public List<Map<String,Object>> changeState(Map<String, Object> dataMap) throws DataAccessException;
 
 }

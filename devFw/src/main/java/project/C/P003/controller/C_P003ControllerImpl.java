@@ -223,6 +223,7 @@ public class C_P003ControllerImpl implements C_P003Controller {
 		
 		HttpSession session = request.getSession();
 		String order_number = request.getParameter("order_number");
+		System.out.println("2222222222222222222222"+order_number);
 		
 		List<C_P003VO> orderInfo = C_P003Service.selectOrderInfo(order_number);
 		ModelAndView mavw6 = new ModelAndView(viewName);

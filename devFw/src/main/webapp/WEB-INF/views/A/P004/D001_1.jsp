@@ -16,6 +16,17 @@
 <link rel="stylesheet" type="text/css" href="<c:url value='../devFw/resources/css/event2.css'/>" />
 
 <style>
+
+@font-face {
+   src: url("../devFw/resources/font/NanumSquare_acR.ttf");
+   font-family: "NanumSquare";
+}
+
+#main, #popclose{
+font-family:"NanumSquare";
+font-weight: 700;
+}
+
 #close{
 margin-left: auto;
 margin-right: auto;
@@ -25,7 +36,7 @@ margin-bottom: 100px;
 
 </head>
 <body>
-
+<div id="main">
 <table class="board_view">
 		<colgroup>
 			<col width="15%" />
@@ -43,8 +54,19 @@ margin-bottom: 100px;
 				<td>${question.mem_id}</td>
 			</tr>
 			<tr>
+				<th scope="row">판매번호</th>
+				<td>${question.SELL_NUMBER}</td>
+				<th scope="row">상품이름</th>
+				<td>${question.SELL_TITLE}</td>
+			</tr>
+			<tr>
 				<th scope="row">문의날짜</th>
 				<td colspan="3" align="center">${question.QU_DATE}</td>
+			</tr>
+			<tr>
+				<th scope="row">이미지</th>
+				<td colspan="3" align="center"><img class="orderImg" src="${question.SELL_THUMBNAIL}"
+								width="80px" height="80px"></td>
 			</tr>
 			<tr>
 				<th scope="row">문의내용</th>
@@ -72,7 +94,8 @@ margin-bottom: 100px;
 	<br>
 	
 			<div id="close" style="max-width: 70%; text-align: end;">
-			<input type="button" class="btn btn-default" value="닫기" onclick="window.close()">
+			<input type="button" id="popclose" class="btn btn-default" value="닫기" onclick="window.close()">
+			</div>
 			</div>
 </body>
 </html>

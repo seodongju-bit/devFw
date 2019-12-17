@@ -12,6 +12,17 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+
+@font-face {
+   src: url("../devFw/resources/font/NanumSquare_acR.ttf");
+   font-family: "NanumSquare";
+}
+
+#main{
+font-family:"NanumSquare";
+font-weight: 700;
+}
+
 #alert{
 color: red;
 }
@@ -23,7 +34,8 @@ color: red;
 <meta name="viewport" content="width=divice-width, initial-scale=1.0">
 </head>
 <body>
-<h1 id="alert" align="center">신고내역</h1>
+<div id="main">
+<h1 id="alert" align="center"  style="margin-bottom: 3%; margin-right: 6%;">신고내역</h1>
 <table id="bottom" class="table table-hover">
 <tr>
 <th>신고번호</th>
@@ -40,5 +52,6 @@ color: red;
 						</tr>
 </c:forEach>
 </table>
+</div>
 </body>
 </html>

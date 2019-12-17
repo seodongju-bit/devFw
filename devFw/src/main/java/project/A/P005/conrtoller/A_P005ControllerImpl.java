@@ -98,7 +98,7 @@ public class A_P005ControllerImpl   implements A_P005Controller {
 			resultMap.put("error_yn", "Y");
 			resultMap.put("error_text", "�����߻�");
 			e.printStackTrace();
-		}		
+		}
 		return resultMap;
 	}
 		

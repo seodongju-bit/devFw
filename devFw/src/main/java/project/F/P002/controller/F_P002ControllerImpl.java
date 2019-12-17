@@ -185,7 +185,7 @@ public class F_P002ControllerImpl   implements F_P002Controller {
 		result = f_P002Service.searchReviewInfo(searchMap);
 		//Map<String, Object> searchMap = new HashMap<String, Object>();
 		ModelAndView mav = new ModelAndView(viewName);
-		mav.addObject("reviewInfo",result.get(0));
+		mav.addObject("reviewInfo", result.get(0));
 		return mav;
 	}
 	

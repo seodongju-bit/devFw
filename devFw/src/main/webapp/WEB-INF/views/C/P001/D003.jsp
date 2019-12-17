@@ -6,6 +6,17 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+
+@font-face {
+   src: url("../devFw/resources/font/NanumSquare_acR.ttf");
+   font-family: "NanumSquare";
+}
+
+#main, #subBtn, #file, #notice, #division, #choice{
+font-family:"NanumSquare";
+font-weight: 700;
+}
+
 #division, #title, #file, #stdate, #enddate{
 	height: 34px;
 	padding: 6px 12px;
@@ -40,6 +51,8 @@
 	float: right;
 }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script src = " https://unpkg.com/sweetalert/dist/sweetalert.min.js " ></script>
   <!-- SmartEditor를 사용하기 위해서 다음 js파일을 추가 (경로 확인) -->
 <script type="text/javascript" src="../devFw/resources/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
 <!-- jQuery를 사용하기위해 jQuery라이브러리 추가 -->
@@ -110,31 +123,31 @@ $(function() {
    	if(division == '이벤트'){
    		
    		if(stdate == ''){
-   			alert("이벤트 시작 기간을 정확히 입력해주세요.");
+   			swal("이벤트 시작 기간을 정확히 입력해주세요.");
    			return false;
    		}
    		if(enddate == ''){
-   			alert("이벤트 종료 기간을 정확히 입력해주세요.");
+   			swal("이벤트 종료 기간을 정확히 입력해주세요.");
    			return false;
    		}
    		
    		if(stdate > enddate){
-   			alert("입력된 기간을 확인해 주세요.");
+   			swal("입력된 기간을 확인해 주세요.");
    			return false;
    		}
    	}
    	
    	if (title.trim() == '') {
-   		alert("제목을 입력해주세요");
+   		swal("제목을 입력해주세요");
    		return false;
    	}
 
 	if (division.trim() == '') {
-   		alert("구분을 선택해주세요");
+		swal("구분을 선택해주세요");
    		return false;
    	}
    	if (content.trim() == '') {
-   		alert("내용을 입력해주세요");
+   		swal("내용을 입력해주세요");
    		return false;
    	}
    	
@@ -181,19 +194,19 @@ $(function() {
 </style>
 </head>
 <body>
-
+<div id="main">
 <form name="frmch" action = "./write.do" method="post">
  <input type="hidden" id="banner" name="banner" />
- <h2 style="text-align: center;">이벤트/공지사항 작성</h2><br><br><br>
+ <h2 style="text-align: center; margin-top: 4%;">이벤트/공지사항 작성</h2><br><br><br>
 
 <div style="width: 60%; margin-left: 20%; margin-right: auto;">
 
 <table class="table">
 		<tr><th>분류</th><td>
 		<select id="division" name="division" >
-		<option value="none">===선택===</option>
-		<option value="공지">공지</option>
-		<option value="이벤트">이벤트</option>
+		<option id= "choice" value="none">===선택===</option>
+		<option id="notice" value="공지">공지</option>
+		<option id="division" value="이벤트">이벤트</option>
 		</select>
 		</td>
 		</tr>
@@ -231,6 +244,6 @@ $(function() {
 <form name="uploadForm" id="uploadForm" method="post" enctype="multipart/form-data">
          <label class="uploadList"><input id="file" type="file" name="file"></label>
 </form>
-  
+  </div>
 </body>
 </html>  

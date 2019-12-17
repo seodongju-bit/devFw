@@ -21,35 +21,17 @@
 	</resultMap>	
 
 	
-	<update id="updateMyInfo" parameterType="java.util.HashMap">
-	   <![CDATA[
-	   update members
-			   <set>
-			      <if test=" mem_pw!='' and mem_pw!=null">
-			        mem_pw=#{mem_pw},
-			      </if>
-			      <if test=" mem_tel!='' and mem_tel!=null">
-			         mem_tel=#{mem_tel},
-			      </if>
-			      <if test=" mem_email1!='' and mem_email1!=!=null">
-			         mem_email1!=#{mem_email1!},
-			      </if>
-			      <if test=" mem_email2!='' and mem_email2!=!=null">
-			         mem_email2!=#{mem_email2!},
-			      </if>
-			      <if test=" mem_zip!='' and mem_zip!=null">
-			         mem_zip=#{mem_zip},
-			      </if>    
-			      <if test=" mem_address1!='' and mem_address1!=null">
-			         mem_address1=#{mem_address1},
-			      </if>
-			      <if test=" mem_address2!='' and mem_address2!=null">
-			         mem_address2=#{mem_address2}
-			      </if>
-			   </set>
-		where 
-		mem_id=#{mem_id}
-		]]>
+
+	
+	<update id="updateMyInfo" parameterType="A_P001VO" >
+	    update members
+		set 
+		mem_pw = #{mem_pw} ,
+		mem_tel = #{mem_tel} ,
+		mem_zip = #{mem_zip} ,
+		mem_address1 = #{mem_address1} ,
+		mem_address2 = #{mem_address2}
+		where mem_id = #{mem_id}
 	</update>
   	
   	<select id="selectMyDetailInfo" resultType="A_P001VO"   parameterType="String"  >

@@ -28,6 +28,7 @@ public class F_P002VO {
 	private String smallCtgrCode="";
 	private String bigCtgrName="";
 	private String smallCtgrName="";
+	private String delivery_price="";
 	
 	
 	
@@ -197,6 +198,14 @@ public class F_P002VO {
 		this.smallCtgrName = smallCtgrName;
 	}
 
+	public String getDelivery_price() {
+		return delivery_price;
+	}
+
+	public void setDelivery_price(String delivery_price) {
+		this.delivery_price = delivery_price;
+	}
+	
 
 
 }

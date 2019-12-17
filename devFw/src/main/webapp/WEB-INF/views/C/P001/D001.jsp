@@ -16,6 +16,16 @@
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <style>
 
+@font-face {
+   src: url("../devFw/resources/font/NanumSquare_acR.ttf");
+   font-family: "NanumSquare";
+}
+
+#main, #write{
+font-family:"NanumSquare";
+font-weight: 700;
+}
+
 .event{
 max-width: 1300px;
 margin-left: auto;
@@ -54,26 +64,27 @@ margin-top: 50px;
 <title>Insert title here</title>
 
 <script>
-function selChange() {
+/* function selChange() {
 	var sel = document.getElementById('cntPerPage').value;
 	location.href="${contextPath}/event.do?nowPage=${paging.nowPage}&cntPerPage="+sel;
-}
+} */
 </script>
 
 </head>
 <body>
+<div id="main">
 <form name="frm" method="post" encType="UTF-8">
-<h1 align="center">이벤트-공지사항</h1>
+<h1 align="center" style="margin-top: 6%;">이벤트-공지사항</h1>
 <div class="event">
 
 <div style="float: right;">
 	<c:choose>
 		<c:when test="${memberInfo.mem_division==2 }" >
-       		 <a href='eventWrite.do' class="btn btn-default" style="margin-bottom: 3px;" >글쓰기</a>
+       		 <a href='eventWrite.do' class="btn btn-default" id="write" style="margin-bottom: 3px;" >글쓰기</a>
        	</c:when>
     </c:choose>
-		
-		<select id="cntPerPage" name="sel" onchange="selChange()">
+		<%-- 사용하지 않기로 --%>
+		<%-- <select id="cntPerPage" name="sel" onchange="selChange()">
 			<option value="5"
 				<c:if test="${paging.cntPerPage == 5}">selected</c:if>>5줄 보기</option>
 			<option value="10"
@@ -82,7 +93,7 @@ function selChange() {
 				<c:if test="${paging.cntPerPage == 15}">selected</c:if>>15줄 보기</option>
 			<option value="20"
 				<c:if test="${paging.cntPerPage == 20}">selected</c:if>>20줄 보기</option>
-		</select>
+		</select> --%>
 	</div> <!-- 옵션선택 끝 -->
 <table class="table table-hover" id="evnet_td">
 <tr style="background-color: gray; color: white;">
@@ -102,7 +113,11 @@ function selChange() {
  <c:if test="${event.view_cnt >= 10}">
                            <span class="hit">Hot!</span>
                         </c:if></td>
-<td>${event.mem_id}</td>
+<c:choose>
+<c:when test="${evnet.mem_id != ''}">
+<td>운영자</td>
+</c:when>
+</c:choose>
 <td>${event.view_cnt}</td>
 <td>${event.writedate}</td>
 </tr>
@@ -132,5 +147,6 @@ function selChange() {
 
 </div>
 </form>
+</div>
 </body>
 </html>

@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -63,11 +64,11 @@ public class C_P001ControllerImpl implements C_P001Controller {
 		System.out.println("33333333333333333333333333333333333333333"+total);
 		if (nowPage == null && cntPerPage == null) {
 			nowPage = "1";
-			cntPerPage = "5";
+			cntPerPage = "10";
 		} else if (nowPage == null) {
 			nowPage = "1";
 		} else if (cntPerPage == null) { 
-			cntPerPage = "5";
+			cntPerPage = "10";
 		}
 
 		
@@ -121,35 +122,21 @@ public class C_P001ControllerImpl implements C_P001Controller {
 		String no_stdate = request.getParameter("stdate");
 		String no_enddate = request.getParameter("enddate");
 		String no_banner = request.getParameter("banner");
+			
+			dataMap.put("mem_id", mem_id);
+			dataMap.put("no_division", no_division);
+			dataMap.put("no_title", no_title);
+			dataMap.put("no_contents", no_contents);
+			dataMap.put("no_stdate", no_stdate);
+			dataMap.put("no_enddate", no_enddate);
+			dataMap.put("no_banner", no_banner);
+			eventService.eventWrite(dataMap);
 		
-//		System.out.println("mem_id"+mem_id);
-//		System.out.println("no_division"+no_division);
-//		System.out.println("no_title"+no_title);
-//		System.out.println("no_contents"+no_contents);
-//		System.out.println("no_stdate"+no_stdate);
-//		System.out.println("no_enddate"+no_enddate);
-//		System.out.println("no_banner"+no_banner);
-		
-		dataMap.put("mem_id", mem_id);
-		dataMap.put("no_division", no_division);
-		dataMap.put("no_title", no_title);
-		dataMap.put("no_contents", no_contents);
-		dataMap.put("no_stdate", no_stdate);
-		dataMap.put("no_enddate", no_enddate);
-		dataMap.put("no_banner", no_banner);
-		
-//		System.out.println(dataMap);
-		
-		
-		
-		
-		
-		eventService.eventWrite(dataMap);
 		Map<String, Object> eventMap = new HashMap();
 		for(int i=0; i<arr.length; i++) {
 			eventMap = new HashMap();
-			eventMap.put("item", arr[i]);
-			eventService.addItem(eventMap);
+				eventMap.put("item", arr[i]);
+				eventService.addItem(eventMap);
 		}
 		
 		ModelAndView mav = new ModelAndView(viewName);

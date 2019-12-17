@@ -14,7 +14,7 @@
 <head>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script><!-- 팝업 관련 -->
 
-<link rel="stylesheet" type="text/css" href="resources/css/F_P002_D001.css?ver=1.5">
+<link rel="stylesheet" type="text/css" href="resources/css/F_P002_D001.css?ver=1.6">
 
 <script src="http://code.jquery.com/jquery-latest.min.js"></script><!-- jquery -->
 <script type="text/javascript">
@@ -320,18 +320,25 @@ function pageLoad(command){
 	</div>
 	<div id="selectBox"> 
 		<div id="sellerInfo" class="sellInfo">
-			<h2>${item.sell_title}</h2>
+			<span class="infoPan">${item.sell_title}</span>
+		</div> 
+		<div class="sellInfo"><span class="infoPan">혜택/이벤트 정보</span>
+			<p id="addInfo"></p>
 		</div>
-		<div class="sellInfo">
-			<p id="addInfo">혜택/이벤트 정보를 넣어주세요</p>
-		</div>
-		<div  class="sellInfo">
+		<div  class="sellInfo"><span class="infoPan">제품가격</span>
 			<p id="itemPrice">${item.sell_price}원</p>
 		</div>
-		<div  class="sellInfo">
-			<p id="itemDelivery">배송정보를 넣어주세요</p>
+		<div  class="sellInfo"><span class="infoPan">배송정보</span>
+			<c:choose>
+				<c:when test="${item.delivery_price=='0'}">
+					<p id="itemDelivery">무료배송</p>
+				</c:when>
+				<c:otherwise>
+					<p id="itemDelivery">${item.delivery_price}원</p>
+				</c:otherwise>
+			</c:choose>
 		</div>
-		<div id="orderOption" class="sellInfo">옵션선택
+		<div id="orderOption" class="sellInfo"><span class="infoPan">옵션선택</span>
 			<select id="sizeOption" name="option_size" class="form-control">
 				<option value="">사이즈 선택</option>
 			</select>

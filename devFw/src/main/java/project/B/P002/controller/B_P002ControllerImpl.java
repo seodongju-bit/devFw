@@ -38,8 +38,8 @@ public class B_P002ControllerImpl   implements B_P002Controller {
 		
 	@Autowired
 	B_P002Service b_P002Service;
-//	@Autowired
-//	B_P002VO b_P002VO;
+	@Autowired
+	B_P002VO b_P002VO;
 	
 
 	   @Override
@@ -146,7 +146,86 @@ public class B_P002ControllerImpl   implements B_P002Controller {
 		   }   
 		   return resultMap;
 	   }
-	
+	   @RequestMapping(value="/orderRequestList.do", method = {RequestMethod.GET, RequestMethod.POST})
+	   @ResponseBody
+	   public ModelAndView orderRequestList(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		   String viewName = getViewName(request);
+		   viewName = "orderRequestList";
+		   HttpSession session = request.getSession();
+		   String p_id = (String)session.getAttribute("mem_id");
+		   if(p_id == null) {
+			   ModelAndView mav = new ModelAndView();
+			   mav.setViewName("redirect:main.do");
+			   return mav;
+		   }
+		   List orderRequestList = b_P002Service.orderRequestList(p_id);
+		   
+		   for(int i = 0; i < orderRequestList.size(); i++) {
+			   b_P002VO.getSell_number();
+			   System.out.println(b_P002VO.getSell_number());
+		   }
+		   
+		   ModelAndView mav = new ModelAndView(viewName);
+		   mav.addObject("orderRequestList", orderRequestList);
+		   return mav;
+	   }
+	   
+	   @RequestMapping(value="/ordererInfo.do", method = {RequestMethod.GET, RequestMethod.POST})
+	   @ResponseBody
+	   public ModelAndView ordererInfo(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		   String viewName = getViewName(request);
+		   viewName = "ordererInfo";
+		   
+		   String pro_name = request.getParameter("pro_name");
+		   System.out.println("pro_name:" + pro_name);
+		   String od_quantity = request.getParameter("od_quantity");
+		   System.out.println("od_quantity:" + od_quantity);
+		   String order_number = request.getParameter("order_number");
+		   System.out.println("order_number:" + order_number);
+		   
+		   Map<String, Object> selectOrderInfo = new HashMap<String, Object>();
+		   
+		   selectOrderInfo.put("pro_name", pro_name);
+		   selectOrderInfo.put("od_quantity", od_quantity);
+		   selectOrderInfo.put("order_number", order_number);
+		   
+		   
+		   List<Map<String,Object>> ordererInfoList = b_P002Service.ordererInfoList(selectOrderInfo);
+		   
+
+		   ModelAndView mav = new ModelAndView(viewName);
+		   mav.addObject("ordererInfo", ordererInfoList);
+		   return mav;
+	   }
+	   
+	   @RequestMapping(value="/changeState.do", method = {RequestMethod.GET, RequestMethod.POST})
+	   @ResponseBody
+	   public Map<String, Object> changeState(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		 
+		   
+		  String order_number = request.getParameter("order_number");
+		  System.out.println("order_number: " + order_number);
+		  String od_size = request.getParameter("od_size");
+		  System.out.println("od_size: " + od_size);
+		  String od_color = request.getParameter("od_color");
+		  System.out.println("od_color: " + od_color);
+		  String pro_name = request.getParameter("pro_name");
+		  System.out.println("pro_name: " + pro_name);
+		  String od_state = request.getParameter("od_state");
+		  System.out.println("od_state:" + od_state);
+		  
+		  Map<String, Object> dataMap = new HashMap<String, Object>();
+		  
+		  dataMap.put("order_number", order_number);
+		  dataMap.put("od_size", od_size);
+		  dataMap.put("od_color", od_color);
+		  dataMap.put("pro_name", pro_name);
+		  dataMap.put("od_state", od_state);
+		  
+		  List<Map<String, Object>> list = b_P002Service.changeState(dataMap);		  
+		  
+		  return dataMap;
+		}
 	
 	
 	private String getViewName(HttpServletRequest request) throws Exception {

@@ -36,16 +36,15 @@
     
     <div id="info">
     <div id="meminfo">
-    <form name="frm_mod_member" method="post" >	
+    <form name="form1" method="post">	
 
-	
 	<table class="table table-hover">
 	
 
 			<tr class="dot_line">
-					<td class="fixed_join">아이디</td>
+					<td class="fixed_join" style="font-weight:bold;">아이디</td>
 					<td>
-						<input id="mem_id" name="mem_id" type="text" size="20" value="${memberInfo.mem_id }"  disabled/>
+						<input id="mem_id" name="mem_id" type="text" size="20" value="${memberInfo.mem_id }" readonly="readonly"/>
 					</td>
 					 <td>
 					</td>
@@ -53,31 +52,30 @@
 				<tr class="dot_line">
 					<td class="fixed_join">비밀번호</td>
 					<td>
-					  <input id="mem_pw" name="mem_pw" type="password" maxlength="20"  style="float:left;" value="${memberInfo.mem_pw }" />&nbsp;&nbsp;&nbsp;&nbsp;
-					  <input type="button" value="수정하기" onClick="fn_modify_member_info('mem_pw')" />
+					  <input id="mem_pw" name="mem_pw" type="password" maxlength="20"  style="float:left;" value="${memberInfo.mem_pw }" />
 					</td>
 				</tr>
 				<tr class="dot_line">
-					<td class="fixed_join">이름</td>
+					<td class="fixed_join" style="font-weight:bold;">이름</td>
 					<td>
-						<input id="mem_name" name="mem_name" type="text" size="20" value="${memberInfo.mem_name }"  disabled/>
+						<input id="mem_name" name="mem_name" type="text" size="20" value="${memberInfo.mem_name }"  readonly="readonly"/>
 					</td>
 					 <td>
 					</td>
 				</tr>
 				<tr class="dot_line">
-					<td class="fixed_join">닉네임</td>
+					<td class="fixed_join" style="font-weight:bold;">닉네임</td>
 					<td>
-						<input id="mem_nick" name="mem_nick" type="text" size="20" value="${memberInfo.mem_nick }"  disabled/>
+						<input id="mem_nick" name="mem_nick" type="text" size="20" value="${memberInfo.mem_nick }"  readonly="readonly"/>
 					</td>
 					 <td>
 					</td>
 				</tr>
 				<tr class="dot_line">
-					<td class="fixed_join">이메일</td>
+					<td class="fixed_join" style="font-weight:bold;">이메일</td>
 					<td>
-						<input id="mem_email1" name="mem_email1" type="text" size="20" value="${memberInfo.mem_email1 }"  disabled/>@
-						<input id="mem_email2" name="mem_email2" type="text" size="20" value="${memberInfo.mem_email2 }"  disabled/>
+						<input id="mem_email1" name="mem_email1" type="text" size="20" value="${memberInfo.mem_email1 }"  readonly="readonly"/>@
+						<input id="mem_email2" name="mem_email2" type="text" size="20" value="${memberInfo.mem_email2 }"  readonly="readonly"/>
 					</td>
 					 <td>
 					</td>
@@ -86,7 +84,6 @@
 					<td class="fixed_join">연락처</td>
 					<td>
 						<input id="mem_tel" name="mem_tel" type="text" maxlength="13" value="${memberInfo.mem_tel }" />
-					  <input type="button" value="수정하기" onClick="fn_modify_member_info('mem_tel')" />
 					</td>
 					 <td>
 					</td>
@@ -94,26 +91,27 @@
 				<tr class="dot_line">
 					<td class="fixed_join">주소</td>
 					<td>
-					<br><input type="text" class="zipbox" id="mem_zip"  name="mem_zip"  value="${memberInfo.mem_zip }" disabled> <a href="javascript:execPostCode()">우편번호검색</a>
+					<br><input type="text" class="zipbox" id="mem_zip"  name="mem_zip"  value="${memberInfo.mem_zip }" readonly="readonly"> <a href="javascript:execPostCode()">우편번호검색</a>
 					  <br>
 					  <br>
 					<p> 
-					<input type="text" class="addressbox1" id="mem_address1" name="mem_address1"  value="${memberInfo.mem_address1 }" disabled><br><br>
+					<input type="text" class="addressbox1" id="mem_address1" name="mem_address1"  value="${memberInfo.mem_address1 }" readonly="readonly" ><br><br>
 					<input type="text" class="addressbox2" id="mem_address2" name="mem_address2"  value="${memberInfo.mem_address2 }" /><br><br>
-					<input type="button" value="수정하기" onClick="fn_modify_member_info('mem_address')" />
 					   </p>
 					</td>
 					<td>
+					
 				</td>
 				</tr>
 		</tbody>
 	</table>
+	<input type="button" value="수정"  id="btnUpdate">
     </form>
 		</div>
 		</div>		
 		
 		
-	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+			<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 		<script type="text/javascript"> 
  function execPostCode() {
@@ -197,54 +195,17 @@ phoneNum.onkeyup = function(){
 }
 
  
- 
-	function fn_modify_member_info(attribute){
-		var value;
-		// alert(member_id);
-		// alert("mod_type:"+mod_type);
-			var frm_mod_member=document.frm_mod_member;
-			if(attribute=='mem_pw'){
-				value=frm_mod_member.mem_pw.value;
-				//alert("member_pw:"+value);
-			}else if(attribute=='mem_tel'){
-				value=frm_mod_member.mem_tel.value;
-			}else if(attribute=='mem_address'){
-				var mem_zip=frm_mod_member.mem_zip;
-				var mem_address1=frm_mod_member.mem_address1;
-				var mem_address2=frm_mod_member.mem_address2;
-				
-				value_mem_zip=mem_zip.value;
-				value_mem_address1=mem_address1.value;
-				value_mem_address2=mem_address2.value;
-				value=value_mem_zip+","+value_mem_address1+","+value_mem_address2;
-			}
-			console.log(attribute);
-		 
-			$.ajax({
-				type : "post",
-				async : false, //false인 경우 동기식으로 처리한다.
-				url : "${contextPath}/modifyMyInfo.do",	
-				data : {
-					attribute:attribute,
-					value:value,
-				},
-				success : function(data, textStatus) {
-					if(data.trim()=='mod_success'){
-						alert("회원 정보를 수정했습니다.");
-					}else if(data.trim()=='failed'){
-						alert("다시 시도해 주세요.");	
-					}
-					
-				},
-				error : function(data, textStatus) {
-					alert("에러가 발생했습니다."+data);
-				},
-				complete : function(data, textStatus) {
-					//alert("작업을완료 했습니다");
-					
-				}
-			}); //end ajax
-	}
+	$(document).ready(function(){
+    	$("#btnUpdate").click(function(){
+    		if(confirm("수정하시겠습니까?")){
+       	 document.form1.action = "${contextPath}/update.do";
+        	document.form1.submit();
+    		}
+   	 });
+	});
+
+
+
 </script>
 </body>
 </html>
