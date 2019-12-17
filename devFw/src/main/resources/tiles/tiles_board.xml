@@ -280,6 +280,11 @@
       <put-attribute name="bodyDetail" value="" />
    </definition>
 
+	<definition name="reviewProfile2" extends="baseLayout">
+      <put-attribute name="title" value="나의리뷰프로필" />  
+      <put-attribute name="body" value="/WEB-INF/views/A/P010/reviewProfile2.jsp" /> 
+   </definition>
+
 	<definition name="reviewRanking" extends="emptyLayout">
       <put-attribute name="title" value="리뷰랭킹 페이지" />  
       <put-attribute name="body" value="/WEB-INF/views/F/P002/reviewRanking.jsp" />

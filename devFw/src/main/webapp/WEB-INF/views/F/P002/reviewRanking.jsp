@@ -137,7 +137,6 @@
    		float: left;
    		padding: 8px 16px;
 		text-decoration: none;
-   		transition: background-color .3s;
 		border: 1px solid #ddd;
 	}
 
@@ -297,7 +296,12 @@ function moveReviewer(id){
 					<div class="imgBox" onclick="readReview(${bestReview.REVIEW_NUMBER })">${bestReview.REVIEW_THUMNAIL }</div>
 					<a onclick="readReview(${bestReview.REVIEW_NUMBER })">${bestReview.REVIEW_TITLE }</a><br>
 					<p style='text-align: right;' onclick="moveReviewer('${bestReview.MEM_ID }')">${bestReview.MEM_ID } </p>
-					<br>추천수 ${bestReview.REVIEW_MONTHPOINT }
+					추천수 ${bestReview.REVIEW_MONTHPOINT }
+					<c:choose>
+    					<c:when test='${bestReview.REVIEW_URL!=null }' >
+    						<button class="btn btn-default" style="height:32px;"onclick="reviewLink('${bestReview.REVIEW_URL}')">Link</button>
+    					</c:when>
+    				</c:choose>
 					<c:choose>
     					<c:when test='${bestReview.REVIEW_YOUTUBE!=null }' >
     						<div class="youtubeBox" value='${bestReview.REVIEW_YOUTUBE}'><img src="resources/image/youtubeIcon.png" ></div>

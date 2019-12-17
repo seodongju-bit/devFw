@@ -71,7 +71,7 @@ $(document).ready(function(){
 		
 		//Add Event
 		//유저 선택전  막기
-	   // $("#chat-footer>input[type=button]").prop('disabled',true);
+	    $("#chat-footer>input[type=button]").prop('disabled',true);
 	    
 		//유저목록 클릭이벤트
 		$(document).on("click",".discussion",function(){
@@ -115,7 +115,7 @@ $(document).ready(function(){
 	    	if(textMessage!==''){
 	    		var contents={
 	    			message : textMessage,
-	    			receiver : "${seller}"
+	    			receiver : other
 	    		}
 		    	sendText(ws,"send_message",contents);
 	    	}
@@ -661,11 +661,15 @@ $(document).ready(function(){
 		border-radius:5px;
 		background-color:#B9C9F8;
 	}	
+	.hole{
+	padding-left: 150px;
+	}
 </style>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>   
 <body>
+<div class="hole">
    <div class="msg-container">
       <div id="people">
          <div id="people-search">
@@ -707,7 +711,7 @@ $(document).ready(function(){
 				<a id="pop-close">&times;</a>			
 			</div>
 			<div id="pop-search">
-				<input type="text" placeholder="새로운 유저 검색"/>
+				<input type="text" placeholder="관리자 목록 검색"/>
 				<input type="button" value="검색">
 			</div>
 			<div id="pop-list"></div>
@@ -716,5 +720,6 @@ $(document).ready(function(){
 			</div>
 		</div>
 	</div>
+</div>
 </body>
 </html>

@@ -131,14 +131,15 @@ public class C_P001ControllerImpl implements C_P001Controller {
 			dataMap.put("no_enddate", no_enddate);
 			dataMap.put("no_banner", no_banner);
 			eventService.eventWrite(dataMap);
-		
+
+		if(arr!=null) {
 		Map<String, Object> eventMap = new HashMap();
-		for(int i=0; i<arr.length; i++) {
-			eventMap = new HashMap();
+			for(int i=0; i<arr.length; i++) {
+				eventMap = new HashMap();
 				eventMap.put("item", arr[i]);
 				eventService.addItem(eventMap);
+			}
 		}
-		
 		ModelAndView mav = new ModelAndView(viewName);
 		return mav;
 	}

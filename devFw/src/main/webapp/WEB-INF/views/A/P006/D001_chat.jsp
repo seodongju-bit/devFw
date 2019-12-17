@@ -198,7 +198,7 @@ $(document).ready(function(){
 		}
 		
 		var newDiscussion=makeMemberDiv(data);
-		$('#people-list').prepend(newDiscussion);
+		//$('#people-list').prepend(newDiscussion);
 	}
 	
 	function updateChat(recData){

@@ -226,7 +226,7 @@ RECOM에 등록되어 있지 않은 제품정보를 추가해주세요
 	</div>
 	<div class="form-group">
 		<label class="productLabel"><a class="innerDiv" >브랜드명</a>
-		<input type="text" class="form-control"  name="pro_brand"/></label>
+		<input type="text" class="form-control" name="pro_brand"/></label>
 	</div>
 	<div class="form-group">
 		<label class="productLabel" id="tagLabel"><a class="innerDiv" >제품상세</a>

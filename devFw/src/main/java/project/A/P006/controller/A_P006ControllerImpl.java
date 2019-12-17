@@ -57,7 +57,7 @@ public class A_P006ControllerImpl implements A_P006Controller{
 		public ModelAndView sellerChat(HttpServletRequest request, HttpServletResponse response) throws Exception {
 			String viewName = "sellerChat";
 			HttpSession session = request.getSession();
-			String seller = "홍길동1";
+			String seller = request.getParameter("seller");
 			A_P001VO memberInfo = (A_P001VO) session.getAttribute("memberInfo");
 			String mem_id = memberInfo.getMem_id();
 			System.out.println("memberId :: " + mem_id);
@@ -65,13 +65,11 @@ public class A_P006ControllerImpl implements A_P006Controller{
 			initList = c_p002_d005_Service.selectMemberList(mem_id);	*/
 			
 			List initList = p006_Service.selectMemberList(mem_id);
-			
 			ModelAndView mav = new ModelAndView(viewName);
 			mav.addObject("memberList", initList);
 			mav.addObject("seller", seller);
 			
 			return mav;
-		
 		}
 		
 		private String getViewName(HttpServletRequest request) throws Exception {

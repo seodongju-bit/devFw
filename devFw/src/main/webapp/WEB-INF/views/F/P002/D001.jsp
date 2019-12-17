@@ -14,18 +14,16 @@
 <head>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script><!-- 팝업 관련 -->
 
-<link rel="stylesheet" type="text/css" href="resources/css/F_P002_D001.css?ver=1.6">
+<link rel="stylesheet" type="text/css" href="resources/css/F_P002_D001.css?ver=1.8">
 
 <script src="http://code.jquery.com/jquery-latest.min.js"></script><!-- jquery -->
 <script type="text/javascript">
 
 
 $(document).ready(function(){
-	//시작시 상세설명페이지 로드
 	$('#contentDetail').load('itemsInfoLoad.do',{ contents : '${item.sell_contents}'});
 	
 	$('#itemsImg').attr('src','${item.sell_thumbnail}');
-	//$('.miniImg').attr('src', 'resources/image/items/10.JPG' );
 	
 	if('${item.option_yn}'=='y'){
 	/////ajax
@@ -83,7 +81,16 @@ $(document).ready(function(){
 	       }
 	    });  //end ajax
 	}
+	
+	var prog = ${item.pro_score};
+	var sellg = ${item.sell_score};
+	prog = Math.round(prog);
+	sellg = Math.round(sellg);
+	$("#product_grade :nth-child("+prog+")").addClass("on").prevAll("a").addClass("on");
+	$("#seller_grade :nth-child("+sellg+")").addClass("on").prevAll("a").addClass("on");
+		 
 
+	
 });
 
 var option_kinds=[];
@@ -285,7 +292,7 @@ function pageLoad(command){
 		$('#contentDetail').load('sellItemsReview.do',{ sell_number :'${item.sell_number}', page :1});
 	}
 	if(command=="sellerChat"){
-		$('#contentDetail').load('sellerChat.do');
+		$('#contentDetail').load('sellerChat.do', { seller :'${item.mem_ID}'});
 	}
 	if(command=="proOpinion"){
 		$('#contentDetail').load('proOpinion.do');
@@ -317,16 +324,39 @@ function pageLoad(command){
 <!-- 		<div id="imgList"> -->
 <!-- 			<img class="miniImg" src="" width="60px" height="60px" /> -->
 <!-- 		</div> -->
+		<div id="gradeBox">
+			<div  class="titleBox" ><span class="grade" data-toggle="tooltip" title="해당 제품의 품질, 판매가격대, 성능, 기능 등에 대한 만족도를 평가입니다">제품 만족도 : &nbsp;&nbsp;</span>
+			<span id="product_grade">
+       			<a >★</a>
+        		<a >★</a>
+        		<a >★</a>
+        		<a >★</a>
+        		<a >★</a>
+			</span>
+			</div>
+			<div  class="titleBox" ><span class="grade" data-toggle="tooltip" title="해당 판매자의  질의답변, 배송, 포장상태, 교환처리 등에 대한 만족도를 평가입니다">판매 만족도 : &nbsp;&nbsp;</span>
+			<span id="seller_grade">
+       			<a >★</a>
+        		<a >★</a>
+        		<a >★</a>
+        		<a >★</a>
+        		<a >★</a>
+			</span>
+			</div>
+		</div>
 	</div>
 	<div id="selectBox"> 
 		<div id="sellerInfo" class="sellInfo">
 			<span class="infoPan">${item.sell_title}</span>
+			<p>${item.pro_name}</p>
 		</div> 
 		<div class="sellInfo"><span class="infoPan">혜택/이벤트 정보</span>
-			<p id="addInfo"></p>
+			<a href="eventSell.do?event=${item.no_number}"><p id="addInfo">${item.no_title}</p></a>
 		</div>
 		<div  class="sellInfo"><span class="infoPan">제품가격</span>
-			<p id="itemPrice">${item.sell_price}원</p>
+			<br><span style="text-decoration:line-through; color:gray;font-size:14px;">
+			<fmt:setLocale value="ko_KR"/><fmt:formatNumber type="currency" value="${item.pro_price}" /></span>
+			<span id="itemPrice"><fmt:setLocale value="ko_KR"/><fmt:formatNumber type="currency" value="${item.sell_price}" /></span>
 		</div>
 		<div  class="sellInfo"><span class="infoPan">배송정보</span>
 			<c:choose>
@@ -334,7 +364,7 @@ function pageLoad(command){
 					<p id="itemDelivery">무료배송</p>
 				</c:when>
 				<c:otherwise>
-					<p id="itemDelivery">${item.delivery_price}원</p>
+					<p id="itemDelivery">배송비 : <fmt:setLocale value="ko_KR"/><fmt:formatNumber type="currency" value="${item.delivery_price}" /></p>
 				</c:otherwise>
 			</c:choose>
 		</div>
@@ -360,8 +390,9 @@ function pageLoad(command){
 					</div>
 				</c:when>
 			</c:choose>
+			<div id="line">
 				<button type="button" class="btn-default" id="basketbtn" onclick="basket()" >장바구니</button>
-				<button type="submit" class="btn btn-primary" id="orderbtn" formaction="/devFw/order.do" onclick="fn_order()">바로구매</button>
+				<button type="submit" class="btn btn-primary" id="orderbtn" formaction="/devFw/order.do" onclick="fn_order()">바로구매</button></div>
 			</div>
 		</form>
 	</div>
@@ -369,7 +400,7 @@ function pageLoad(command){
 <div id="itemsInfoSelect">
 	<button class="btn btn-primary" onclick="pageLoad('itemsInfoLoad')">상품정보</button>
 	<button class="btn btn-primary" onclick="pageLoad('sellItemsReview')">리뷰</button>
-	<button class="btn btn-primary" onclick="pageLoad('proOpinion')">상품의견</button>
+<!-- 	<button class="btn btn-primary" onclick="pageLoad('proOpinion')">상품의견</button> -->
 	<button class="btn btn-primary" onclick="pageLoad('sellerChat')">QnA</button>
 	<button class="btn btn-primary" onclick="pageLoad('exchangeInfo')">반품/교환정보</button>
 </div>

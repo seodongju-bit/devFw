@@ -21,7 +21,7 @@
 #sellBox{
 	position:relative;
 	width:1250px;
-	min-height:750px;
+	min-height:650px;
 	margin:5px auto;
 	padding:10px;
 /* 	background-color:#F8EFFB; */
@@ -103,6 +103,7 @@
 	height:30px;
 	text-align:center;
 	border-radius: 8px;
+	
 }
 .selectItem{
 	color: gray;
@@ -160,4 +161,42 @@
 #reviewerBox{
 	height: 35px;
 	padding: 4px;
+}
+
+.titleBox{
+	width:90%;
+	height:35px;
+	margin:5px auto;
+	padding:3px 0;
+	background-color: #fafafa;
+	border:1px solid lightgray;
+	border-radius:5px;
+}
+#product_grade a{
+      text-decoration: none;
+      color: gray;
+}
+#product_grade a.on{
+      color: #FFBF00;
+}
+
+#seller_grade a{
+      text-decoration: none;
+      color: gray;
+}
+#seller_grade a.on{
+      color: #FFBF00;
+}
+.grade{
+	left: -200px;
+}
+#gradeBox{
+	position:relative;
+	top: 450px;
+}
+#line{
+	width: 660px;
+	height: 60px;
+/* 	background-color: blue; */
+	border-top: 1px solid lightgray;
 }
