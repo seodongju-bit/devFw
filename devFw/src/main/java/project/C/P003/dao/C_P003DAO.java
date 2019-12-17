@@ -47,7 +47,11 @@ public interface C_P003DAO {
 	public int countBoard2();
 	
 	public List selectOrderInfo(String mem_id) throws DataAccessException;
+	
+	public List responseInfo(String qu_number) throws DataAccessException;
 
+	public void responseInfo2(Map<String, Object> dataMap10);
+	
 	
   
 }

@@ -460,9 +460,18 @@ $(document).ready(function(){
        		 			<a class="nav-item nav-link" href="${contextPath}/myPage.do"><img src="../devFw/resources/image/icon/user1.png"  alt="마이페이지" style="width: 16px;">&nbsp;마이페이지</a>
        		 		</c:when>
        		 		<c:when test="${memberInfo.mem_division==1 }" >
+<<<<<<< HEAD
        		 			<a class="nav-item nav-link" href='${contextPath}/chatInit.do' ><img src="../devFw/resources/image/icon/chat.png"  alt="채팅" style="width: 16px;">&nbsp;상품문의 내용</a>
+=======
+
+       		 		<!-- 	<a class="nav-item nav-link" id="itemManagerlink" href="${contextPath}/itemManager.do">상품관리</a>
+       		 			<a class="nav-item nav-link" id="itemManagerlink" href="${contextPath}/questionwrite5.do">문의사항 답변</a> -->
+       		 			
+
+>>>>>>> refs/remotes/origin/master
        		 			<a class="nav-item nav-link" id="itemManagerlink" href="${contextPath}/sellerPage.do"><img src="../devFw/resources/image/icon/product_management.png"  alt="상품관리" style="width: 18px;">&nbsp;판매자페이지</a>
        		 			<a class="nav-item nav-link" id="itemManagerlink" href="${contextPath}/questionwrite5.do"><img src="../devFw/resources/image/icon/question_answer.png"  alt="문의사항 답변" style="width: 18px;">&nbsp;문의사항 답변</a>
+
        		 		</c:when>
        		 		<c:when test="${memberInfo.mem_division==2 }" >
        		 			<a class="nav-item nav-link" href='${contextPath}/chatInit.do' ><img src="../devFw/resources/image/icon/chat.png"  alt="채팅" style="width: 16px;">&nbsp;문의 내용</a>

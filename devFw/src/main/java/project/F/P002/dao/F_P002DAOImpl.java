@@ -24,7 +24,13 @@ public class F_P002DAOImpl implements F_P002DAO {
 	@Override
 	public List<F_P002VO> selectItem(Map<String, Object> searchMap) throws DataAccessException { //상품검색해서 상세페이지로
 		List<F_P002VO> list = sqlSession.selectList("F.P002.searchItem", searchMap);
-		System.out.println(list);
+		List<F_P002VO> list2 =sqlSession.selectList("F.P002.searchEvent", searchMap);
+//		System.out.println(list2.get(0).get("NO_NUMBER").getClass());
+		if(list2.size()>0) {
+			list.get(0).setNo_number(list2.get(0).getNo_number());
+			list.get(0).setNo_title(list2.get(0).getNo_title());
+		} 
+//		System.out.println(">>>>"+list2);
 		return list;
 	}
 	

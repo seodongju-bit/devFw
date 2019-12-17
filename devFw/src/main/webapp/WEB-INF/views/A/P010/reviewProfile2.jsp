@@ -157,6 +157,9 @@
 	text-align: center;
 	background-color: #f2f2f2;
 }
+.title:hover {
+	cursor: pointer;
+}
 
 .reviewTag:hover {
 	font-weight: bold;
@@ -285,7 +288,7 @@ $(".youtubeBox").mouseleave(function(){
 			<textarea id="introduce" disabled>${profile.MEM_CONTENT}</textarea>
 		</div>
 		<div id="addInfo">
-			<span style="font-weight: 600;font-size:16px;">경력</span><br>
+			<span style="font-weight:600;font-size:16px;">경력</span><br>
 			<span>리뷰수: ${profile.reviewCount}</span><br>
 			<span>리뷰어 점수: ${profile.MEM_TOTALRC }</span>
 		</div>
@@ -301,6 +304,8 @@ $(".youtubeBox").mouseleave(function(){
 <%-- 				<p style="text-align: right">by ${reviewList.MEM_ID }<p> --%>
 				<br>추천수 ${reviewList.REVIEW_MONTHPOINT } 
 				<br>등록일: <fmt:formatDate value="${reviewList.REVIEW_STDATE }" pattern="yyyy/MM/dd HH:mm" />
+				<br>판매글 : <a href="sellItems.do?sell_no='${reviewList.SELL_NUMBER }'">${reviewList.SELL_TITLE }</a> 
+				
 				<c:choose>
     				<c:when test='${reviewList.REVIEW_YOUTUBE!=null }' >
     					<div class="youtubeBox" value='${reviewList.REVIEW_YOUTUBE}'><img src="resources/image/youtubeIcon.png" ></div>

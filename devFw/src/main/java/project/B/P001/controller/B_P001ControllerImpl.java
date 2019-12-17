@@ -143,6 +143,9 @@ public class B_P001ControllerImpl   implements B_P001Controller {
 		   //System.out.println(b_P001VO.getRelease_date());
 		   //System.out.println(b_P001VO.getPro_vendor());
 		   String viewName = getViewName(request);
+		   HttpSession session = request.getSession();
+		   String mem_id = (String)session.getAttribute("mem_id");
+		   b_P001VO.setMem_id(mem_id);
 		   b_P001Service.addProduct(b_P001VO);
 		   viewName = "addProduct";
 		   //Map<String, Object> resultMap = new HashMap<String, Object>();
@@ -152,7 +155,7 @@ public class B_P001ControllerImpl   implements B_P001Controller {
 		   return mav;
 	   }
 
-	
+	 
 
 	   
 	public boolean sellerCheck(HttpServletRequest request) {

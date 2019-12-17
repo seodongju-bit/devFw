@@ -399,6 +399,59 @@ public class C_P003ControllerImpl implements C_P003Controller {
 	}
 
 
+	@Override
+	@RequestMapping(value="/questionresponse.do" ,method = { RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView questionresponse(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = "questionresponse";
+		
+		HttpSession session = request.getSession();
+		String qu_number = request.getParameter("qu_number");
+		
+		List<C_P003VO> responseInfo= C_P003Service.responseInfo(qu_number);
+		ModelAndView mavw10 = new ModelAndView(viewName);
+		mavw10.addObject("responseInfo", responseInfo);
+		return mavw10;
+	}
+	
+	@Override
+	@RequestMapping(value="/questionresponse2.do" ,method = { RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView questionresponse2(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = "redirect:/notice.do";
+		Map<String, Object> dataMap10 = new HashMap();
+		HttpSession session=request.getSession();
+		session=request.getSession(); 
+		String mem_id = (String) session.getAttribute("mem_id");
+		
+
+		String qu_number= request.getParameter("qu_number");
+		String qu_contents = request.getParameter("qu_contents");
+		String qu_answer= request.getParameter("qu_answer");
+		String sell_title = request.getParameter("sell_title");
+		String sell_thumbnail = request.getParameter("sell_thumbnail");
+				
+	System.out.println(qu_number);
+		System.out.println(qu_contents);
+		System.out.println(qu_answer);
+		System.out.println(sell_title);
+		System.out.println(sell_thumbnail);
+		
+		
+		dataMap10.put("mem_id", mem_id);
+		dataMap10.put("qu_number", qu_number);
+		dataMap10.put("qu_contents", qu_contents);
+		dataMap10.put("qu_answer", qu_answer);
+		dataMap10.put("sell_title", sell_title);
+		dataMap10.put("sell_thumbnail", sell_thumbnail);
+	
+		
+		System.out.println(dataMap10);
+		
+		C_P003Service.responseInfo2(dataMap10);
+		
+		ModelAndView mavw10 = new ModelAndView(viewName);
+		return mavw10;
+	}
+
 
 
 	

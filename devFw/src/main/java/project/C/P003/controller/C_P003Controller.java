@@ -60,4 +60,9 @@ public ModelAndView questions2(PageVO vo2,String nowPage, String cntPerPage,Http
 //자주 묻는 질문 상세페이지
 public ModelAndView questionDetail2(@RequestParam("oq_number")String qu_number, HttpServletRequest request, HttpServletResponse response) throws Exception;
 
+
+public ModelAndView questionresponse(HttpServletRequest request, HttpServletResponse response) throws Exception;
+public ModelAndView questionresponse2(HttpServletRequest request, HttpServletResponse response) throws Exception;
+
+
 }                      

@@ -708,10 +708,19 @@ function cancle(order_number, sell_number){
 					});
 		};
 
+<<<<<<< HEAD
 		function reviewWrite(sell_number, title, review_number) {
 				window.open("reviewwrite.do?sell_number=" + sell_number
 						+ "&sell_title=" + title, "제품번호 검색",
 						"width=850, height=800, left=600, top400", "resizable=no");
+=======
+		function reviewWrite(sell_number, title, order_number) {
+	
+			window.open("reviewwrite.do?sell_number=" + sell_number
+					+ "&sell_title=" + title + "&order_number=" + order_number, "제품번호 검색",
+					"width=850, height=800, left=600, top400", "resizable=no");
+			
+>>>>>>> refs/remotes/origin/master
 		}
 		
 		function myquestion(qu_number) {

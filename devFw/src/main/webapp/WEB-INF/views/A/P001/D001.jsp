@@ -37,12 +37,16 @@
           <br></br>
           <script type = "text/javascript" src = "https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
           <div id = "naver_id_login"></div>
+          <img src="../devFw/resources/image/kkao.png" style="width:205px; margin-bottom: 2%;" onclick="location.href='signinpage.do'">
 	
+		<br>
 		
 		
-        <button  class="small-btn" type="button" onclick = "javascript:idsearchpopup()">회원정보 찾기</button>    
-        <button  class="small-btn" type="button" onclick = "location.href='memberdivisionpage.do'">회원가입</button>
-        <button  class="small-btn" type="button" onclick = "location.href='main.do'">홈페이지로</button>
+        <img src="../devFw/resources/image/searchmember.png" style="width:75px; margin-bottom: 2%;" onclick = "javascript:idsearchpopup()">   
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <img src="../devFw/resources/image/signin.png" style="width:75px; margin-bottom: 2%;" onclick = "location.href='memberdivisionpage.do'">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <img src="../devFw/resources/image/maingo.png" style="width:75px; margin-bottom: 2%;"onclick = "location.href='main.do'">
         
         <br></br>
        

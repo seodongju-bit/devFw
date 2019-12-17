@@ -12,6 +12,7 @@ public class F_P002VO {
 	private String pro_number="";
 	private String pro_name="";
 	private String sell_price="";
+	private String pro_price="";
 	private String sell_score="";
 	private String sell_contents="";
 	private String sell_total="";
@@ -19,6 +20,7 @@ public class F_P002VO {
 	private String sell_title="";
 	private String sell_thumbnail="";
 	private String sell_quantity="";
+	private String pro_score="";
 	private String mem_ID="";
 	private String option_yn="";
 	private String option_size="";
@@ -29,6 +31,9 @@ public class F_P002VO {
 	private String bigCtgrName="";
 	private String smallCtgrName="";
 	private String delivery_price="";
+	private String no_number="";
+	private String no_title="";
+	private String pro_brand="";
 	
 	
 	
@@ -204,6 +209,46 @@ public class F_P002VO {
 
 	public void setDelivery_price(String delivery_price) {
 		this.delivery_price = delivery_price;
+	}
+
+	public String getNo_number() {
+		return no_number;
+	}
+
+	public void setNo_number(String no_number) {
+		this.no_number = no_number;
+	}
+
+	public String getNo_title() {
+		return no_title;
+	}
+
+	public void setNo_title(String no_title) {
+		this.no_title = no_title;
+	}
+
+	public String getPro_score() {
+		return pro_score;
+	}
+
+	public void setPro_score(String pro_score) {
+		this.pro_score = pro_score;
+	}
+
+	public String getPro_price() {
+		return pro_price;
+	}
+
+	public void setPro_price(String pro_price) {
+		this.pro_price = pro_price;
+	}
+
+	public String getPro_brand() {
+		return pro_brand;
+	}
+
+	public void setPro_brand(String pro_brand) {
+		this.pro_brand = pro_brand;
 	}
 	
 

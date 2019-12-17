@@ -72,7 +72,7 @@ $(document).ready(function(){
 		//Add Event
 		//유저 선택전  막기
 	   $("#chat-footer>input[type=button]").prop('disabled',true);
-	    
+    
 		//유저목록 클릭이벤트
 		$(document).on("click",".discussion",function(){
 			if(!$(this).hasClass("clicked")){
@@ -698,7 +698,11 @@ font-weight: 700;
 <title>Insert title here</title>
 </head>   
 <body>
+<<<<<<< HEAD
 <div class="hole" id="main">
+=======
+<div class="hole">
+>>>>>>> refs/remotes/origin/master
    <div class="msg-container">
       <div id="people">
          <div id="people-search">
@@ -745,7 +749,11 @@ font-weight: 700;
 				<a id="pop-close" style="cursor: pointer;">&times;</a>			
 			</div>
 			<div id="pop-search">
+<<<<<<< HEAD
 				<input type="text" placeholder="판매자 목록 검색"/>
+=======
+				<input type="text" placeholder="관리자 목록 검색"/>
+>>>>>>> refs/remotes/origin/master
 				<input type="button" value="검색">
 			</div>
 			<div id="pop-list"></div>

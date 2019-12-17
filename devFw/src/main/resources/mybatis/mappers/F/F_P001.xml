@@ -191,8 +191,28 @@
       and no_enddate+1 > sysdate
       order by writedate desc
       ]]>          
-   </select> 
-
+   	</select> 
+	
+	<select id="preBannerList" resultType="java.util.HashMap" parameterType="java.util.Map"> 
+      <![CDATA[
+      select no_number, no_title, to_char(no_stdate,'YYYY-MM-DD')no_stdate, to_char(no_enddate, 'YYYY-MM-DD')no_enddate, no_banner
+      from notice
+      where no_division = '이벤트'
+      and no_stdate >= sysdate
+      order by writedate desc
+      ]]>          
+	 </select> 
+	 
+	 <select id="endBannerList" resultType="java.util.HashMap" parameterType="java.util.Map"> 
+      <![CDATA[
+      select no_number, no_title, to_char(no_stdate,'YYYY-MM-DD')no_stdate, to_char(no_enddate, 'YYYY-MM-DD')no_enddate, no_banner
+      from notice
+      where no_division = '이벤트'
+      and no_enddate+1 < sysdate
+      order by writedate desc
+      ]]>          
+	 </select> 
+	
 	  <select id="eventItemSearch" resultType="java.util.HashMap" parameterType="java.util.Map"> 
       <![CDATA[
       select *

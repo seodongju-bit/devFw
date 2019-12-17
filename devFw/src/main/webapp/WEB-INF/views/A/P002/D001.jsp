@@ -19,10 +19,11 @@
     <body>
 
       <form>
-        <h1>회원 가입 분류</h1>
+        <h1>회원 타입 선택 </h1>
         <br></br>
-        <button class="btn-default" name="default-btn" type="button" onclick="location.href='signuppage.do'"> 구매자 회원가입</button>
-        <button class="btn-default" name="default-btn" type="button" onclick="location.href='signuppage2.do'"> 판매자 회원가입</button>
+        <img src="../devFw/resources/image/buyer.png" style="width:130px; margin-bottom: 2%;" onclick="location.href='signuppage.do'">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <img src="../devFw/resources/image/seller.png" style="width:130px; margin-bottom: 2%;" onclick="location.href='signuppage2.do'">
         
          <br></br>
          

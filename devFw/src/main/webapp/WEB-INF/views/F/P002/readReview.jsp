@@ -80,6 +80,7 @@ function recomMove(){
 <html>
 <body>
    <h3>리뷰보기</h3>
+ 
    <div id="prodInfo">
       <img id="prodImg" src="${reviewInfo.SELL_THUMBNAIL }" >
       <div id="reviewBox"><span id="reviewer">판매글</span>

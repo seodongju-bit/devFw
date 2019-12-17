@@ -280,6 +280,11 @@
       <put-attribute name="bodyDetail" value="" />
    </definition>
 
+	<definition name="reviewProfile2" extends="baseLayout">
+      <put-attribute name="title" value="나의리뷰프로필" />  
+      <put-attribute name="body" value="/WEB-INF/views/A/P010/reviewProfile2.jsp" /> 
+   </definition>
+
 	<definition name="reviewRanking" extends="emptyLayout">
       <put-attribute name="title" value="리뷰랭킹 페이지" />  
       <put-attribute name="body" value="/WEB-INF/views/F/P002/reviewRanking.jsp" />
@@ -453,6 +458,11 @@
       <put-attribute name="title" value="신고회원관리페이지"/>
       <put-attribute name="body" value="/WEB-INF/views/A/P009/D001.jsp"/>
    </definition>
+
+   <definition name="questionresponse" extends="noticeLayout">
+      <put-attribute name="title" value="문의사항답변페이지" /> 
+      <put-attribute name="body" value="/WEB-INF/views/C/P003/D008.jsp" />
+   </definition> 
 	
 	<definition name="sellerPage" extends="sellerLayout">
       <put-attribute name="title" value="주문관리"/>
@@ -470,5 +480,6 @@
    	  <put-attribute name="body" value="/WEB-INF/views/B/P002/D003.jsp"/>
    	  <put-attribute name="footer" value=""/>
    </definition>
+
 
 </tiles-definitions>
