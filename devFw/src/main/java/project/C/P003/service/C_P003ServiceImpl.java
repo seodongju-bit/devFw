@@ -156,5 +156,20 @@ public class C_P003ServiceImpl implements C_P003Service {
 	}
 
 
+	
+	@Override
+	public List responseInfo(String qu_number) throws DataAccessException {
+		List responseInfo = null;
+		responseInfo = C_P003DAO.responseInfo(qu_number);
+		return responseInfo;
+	}
+	@Override
+	public void responseInfo2(Map<String, Object> dataMap10) throws DataAccessException {
+		
+		C_P003DAO.responseInfo2(dataMap10);
+	}
+	
+	
+	
 
 }

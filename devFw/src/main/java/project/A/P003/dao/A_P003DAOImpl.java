@@ -18,8 +18,9 @@ public class A_P003DAOImpl implements A_P003DAO {
 	@Autowired
 	private SqlSession sqlSession;	
 	
-	public void updateMyInfo(Map memberMap) throws DataAccessException{
-		sqlSession.update("A.A_P003.updateMyInfo",memberMap);
+	@Override
+	public void updateMyInfo(A_P001VO A_P001VO) throws DataAccessException{
+		sqlSession.update("A.A_P003.updateMyInfo",A_P001VO);
 	}
 	
 	public A_P001VO selectMyDetailInfo(String mem_id) throws DataAccessException{

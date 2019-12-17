@@ -12,6 +12,12 @@
 <html>
 <head>
 <style>
+body, html {
+	font-family:"NanumSquare";
+	font-weight: 700;
+}
+
+
 .order_Box{
 	width:1140px;
 	margin:0 0 0 28px;
@@ -60,7 +66,8 @@
 	  <br>
 	  <br>
 	  <br>
-	  <butten id="order_info">주문정보 확인</butten>
+	  <h4>주문정보 확인</h4>
+	  <br>
 	    <table class="table table-striped table-bordered">
 	      <col width="30px"/>
 	      <col width="200px"/>
@@ -92,10 +99,10 @@
 	  	      </div>
 	  	    </td>
 	  	    <td>
-	  	      ${item.final_order_total_price}원
+	  	      <fmt:formatNumber value="${item.final_order_total_price}" type="number"/>원
 	  	    </td> 
 	  	    <td>
-	  	      ${item.point_save_total}P
+	  	      <fmt:formatNumber value="${item.point_save_total}" type="number"/>P
 	  	    </td>
 	  	    <td>
 	  	      ${item.od_state}

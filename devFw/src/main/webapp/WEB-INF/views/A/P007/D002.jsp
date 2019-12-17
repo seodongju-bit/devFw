@@ -13,6 +13,17 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script src = " https://unpkg.com/sweetalert/dist/sweetalert.min.js " ></script>
 <style>
+
+@font-face {
+   src: url("../devFw/resources/font/NanumSquare_acR.ttf");
+   font-family: "NanumSquare";
+}
+
+#main, #make, #reset{
+font-family:"NanumSquare";
+font-weight: 700;
+}
+
 #start, #end, #name, #percent{
 	height: 34px;
 	padding: 6px 12px;
@@ -94,18 +105,19 @@ function make(){
 <body>
 <h1 align="center">쿠폰 발급</h1>
 <form name= frm>
-
+<div id="main">
 <div id="contactForm">
 
-<input type="text" id="name" placeholder="쿠폰이름"> <br><br>
+<input type="text" id="name" placeholder="쿠폰이름" style="width: 195px;"> <br><br>
 <input type="date" id="start" style="width: 195px;" placeholder="시작날짜"><br><br>
 <input type="date" id="end" style="width: 195px;" placeholder="마감날짜"><br><br>
-<input type="text" id="percent" placeholder="세일퍼센트">
+<input type="text" id="percent" placeholder="세일퍼센트" style="width: 195px;">
 </div>
 <br><br>
-<input type="button" class="btn btn-default" value="쿠폰생성" onclick="make()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<input type="reset" class="btn btn-default" value="Reset"><br><br><br>
+<input type="button" id="make" class="btn btn-default" value="쿠폰생성" onclick="make()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="reset" id="reset" class="btn btn-default" value="Reset"><br><br><br>
 <script src="../devFw/resources/js/bootstrap.min.js"></script>
+</div>
 </form>
 </body>
 </html>

@@ -436,6 +436,14 @@
       <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
    </definition>    
    
+   <definition name="sellerLayout"  template="/WEB-INF/views/common/admin_layout.jsp">
+      <put-attribute name="title" value="" />
+      <put-attribute name="header" value="/WEB-INF/views/seller/header_seller.jsp" />
+      <put-attribute name="body" value="" />
+      <put-attribute name="bodyDetail" value="" />
+      <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
+   </definition>
+   
    <definition name="adminPage" extends="adminLayout">
       <put-attribute name="title" value="관리메뉴"/>
       <put-attribute name="body" value="/WEB-INF/views/admin/main.jsp"/>
@@ -449,6 +457,28 @@
    <definition name="declarationsManager" extends="adminLayout">
       <put-attribute name="title" value="신고회원관리페이지"/>
       <put-attribute name="body" value="/WEB-INF/views/A/P009/D001.jsp"/>
+   </definition>
+
+   <definition name="questionresponse" extends="noticeLayout">
+      <put-attribute name="title" value="문의사항답변페이지" /> 
+      <put-attribute name="body" value="/WEB-INF/views/C/P003/D008.jsp" />
+   </definition> 
+	
+	<definition name="sellerPage" extends="sellerLayout">
+      <put-attribute name="title" value="주문관리"/>
+      <put-attribute name="body" value="/WEB-INF/views/seller/sellerManagement.jsp"/>
+   </definition>
+   
+   <definition name="orderRequestList" extends="sellerLayout">
+      <put-attribute name="title" value="주문관리"/>
+      <put-attribute name="body" value="/WEB-INF/views/B/P002/D002.jsp"/>
+   </definition>
+   
+   <definition name="ordererInfo" template="/WEB-INF/views/common/popup_layout.jsp">
+   	  <put-attribute name="title" value="구매자 정보"/>
+   	  <put-attribute name="header" value=""/>
+   	  <put-attribute name="body" value="/WEB-INF/views/B/P002/D003.jsp"/>
+   	  <put-attribute name="footer" value=""/>
    </definition>
 
 

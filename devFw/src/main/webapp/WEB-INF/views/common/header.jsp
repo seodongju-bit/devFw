@@ -18,17 +18,33 @@
 <link href="../devFw/resources/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">                          
 <style>   
 
+@font-face {
+   src: url("../devFw/resources/font/NanumSquare_acR.ttf");
+   font-family: "NanumSquare";
+}
 
+body, html {
+	font-family:"NanumSquare";
+	font-weight: 700;
+}
+
+
+#search{
+font-family:"NanumSquare";
+font-weight: 700;
+}
 
 #header{
-   font-family: 'Anton', sans-serif; 
+   font-family:"NanumSquare"; 
    background-color: white;
+   font-weight: 700;
 }
 #header{
    margin: 0;
    padding: 0;
    list-style: none;
-   font-family: 'Noto Sans KR', sans-serif;
+   font-family:"NanumSquare";
+   font-weight: 700;
 }
 
  
@@ -444,8 +460,14 @@ $(document).ready(function(){
        		 			<a class="nav-item nav-link" href="${contextPath}/myPage.do"><img src="../devFw/resources/image/icon/user1.png"  alt="마이페이지" style="width: 16px;">&nbsp;마이페이지</a>
        		 		</c:when>
        		 		<c:when test="${memberInfo.mem_division==1 }" >
-       		 			<a class="nav-item nav-link" id="itemManagerlink" href="${contextPath}/itemManager.do"><img src="../devFw/resources/image/icon/product_management.png"  alt="상품관리" style="width: 18px;">&nbsp;상품관리</a>
+
+       		 		<!-- 	<a class="nav-item nav-link" id="itemManagerlink" href="${contextPath}/itemManager.do">상품관리</a>
+       		 			<a class="nav-item nav-link" id="itemManagerlink" href="${contextPath}/questionwrite5.do">문의사항 답변</a> -->
+       		 			
+
+       		 			<a class="nav-item nav-link" id="itemManagerlink" href="${contextPath}/sellerPage.do"><img src="../devFw/resources/image/icon/product_management.png"  alt="상품관리" style="width: 18px;">&nbsp;판매자페이지</a>
        		 			<a class="nav-item nav-link" id="itemManagerlink" href="${contextPath}/questionwrite5.do"><img src="../devFw/resources/image/icon/question_answer.png"  alt="문의사항 답변" style="width: 18px;">&nbsp;문의사항 답변</a>
+
        		 		</c:when>
        		 		<c:when test="${memberInfo.mem_division==2 }" >
        		 			<a class="nav-item nav-link" id="siteManagerlink" href="${contextPath}/adminPage.do"><img src="../devFw/resources/image/icon/site_management.png"  alt="사이트관리" style="width: 18px;">&nbsp;사이트관리</a>

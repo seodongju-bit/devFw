@@ -132,12 +132,18 @@ public class E_P001ControllerImpl implements E_P001Controller {
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		
+		
+		
 		String viewName = (String)request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);
 		HttpSession session = request.getSession();
+		Boolean isLogOn = (Boolean)session.getAttribute("isLogOn");
+		if(isLogOn==null || isLogOn == false) {
+			return new ModelAndView("redirect:../devFw/signinpage.do");
+		}else {
+		
 		A_P001VO a_P001VO = (A_P001VO)session.getAttribute("orderer");
 		String mem_id = a_P001VO.getMem_id();
-		int mem_point = a_P001VO.getMem_point();
 		System.out.println("mem_id:" +mem_id);
 		
 		
@@ -229,6 +235,9 @@ public class E_P001ControllerImpl implements E_P001Controller {
 		String total_delivery_price = request.getParameter("total_delivery_price");
 		System.out.println("total_delivery_price:" + total_delivery_price);
 		
+		String choice_review = request.getParameter("od_recomReview");
+		System.out.println("choice_review:" + choice_review);
+		
 		
 		
 		String co_number = request.getParameter("h_co_number");
@@ -280,6 +289,7 @@ public class E_P001ControllerImpl implements E_P001Controller {
 			e_P001VO.setOd_state(od_state);
 			e_P001VO.setPoint_save(point_save);
 			e_P001VO.setPoint_save_total(point_save_total);
+			e_P001VO.setChoice_review(choice_review);
 			
 			orderList.set(i, e_P001VO);
 		}
@@ -287,6 +297,7 @@ public class E_P001ControllerImpl implements E_P001Controller {
 		mav.addObject("orderList", orderList);
 		return mav;
 		}
+	}
 	
 	
 	

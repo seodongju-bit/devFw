@@ -323,6 +323,16 @@ $(document).ready(function(){
 	font-family:"nanumEB";	
 }
 	
+	@font-face {
+   src: url("../devFw/resources/font/NanumSquare_acR.ttf");
+   font-family: "NanumSquare";
+}
+
+#main{
+font-family:"NanumSquare";
+font-weight: 700;
+}
+	
 	.msg-container,.msg-container *{
 		box-sizing: border-box;
 	}
@@ -389,6 +399,7 @@ $(document).ready(function(){
    .discussion{
       height:80px;
       padding:20px;
+      cursor: pointer;
    }
 
 	#people-list .clicked,#search-list .clicked{
@@ -637,6 +648,7 @@ $(document).ready(function(){
 		width:100%;
 		margin-top : 10px;
 		display:inline-block;
+		cursor: pointer;
 	}
 	
 	.pop-member:hover{
@@ -669,7 +681,7 @@ $(document).ready(function(){
 <title>Insert title here</title>
 </head>   
 <body>
-<div class="hole">
+<div class="hole" id="main">
    <div class="msg-container">
       <div id="people">
          <div id="people-search">
@@ -708,15 +720,15 @@ $(document).ready(function(){
 		<div id="pop-up">
 			<div id="pop-header">
 				<div>새	쪽지</div>
-				<a id="pop-close">&times;</a>			
+				<a id="pop-close" style="cursor: pointer;">&times;</a>			
 			</div>
 			<div id="pop-search">
 				<input type="text" placeholder="관리자 목록 검색"/>
 				<input type="button" value="검색">
 			</div>
 			<div id="pop-list"></div>
-			<div id="pop-footer">
-				<input type="button" value="선택">			
+			<div id="pop-footer" >
+				<input type="button" value="선택" style="cursor: pointer;">			
 			</div>
 		</div>
 	</div>

@@ -24,6 +24,12 @@
 <html>
 <head>
 <style>
+body, html {
+	font-family:"NanumSquare";
+	font-weight: 700;
+}
+
+
 h1{
 	text-align:center;
 }
@@ -85,6 +91,57 @@ h1{
 	 list-style:none;
 }
 
+
+#mem_name {
+	width:100px;
+}
+
+#mem_tel {
+	width:140px;
+}
+
+#mem_email1 {
+	width:200px;
+	display:inline;
+}
+
+#mem_email2 {
+	width:200px;
+	display:inline;
+}
+
+#order_zip {
+	width:80px;
+	display:inline;
+}
+
+#order_address1 {
+	margin: 5px 0 0 0;
+	width:400px;
+	display:inline;
+}
+
+#order_address2 {
+    margin: 5px 0 0 0;
+	width:300px;
+	display:inline;
+}
+
+#order_request {
+	width:500px;
+}
+
+#order_pointuse {
+	margin: 0 0 0 15px;
+	width:100px;
+	display:inline;
+}
+
+#select_order_email2 {
+	width:150px;
+	display:inline;
+}
+
 </style>
 <meta charset="UTF-8">
 <link href="../devFw/resources/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> 
@@ -121,30 +178,12 @@ h1{
 	            }
 	
 	            // 우편번호와 주소 정보를 해당 필드에 넣는다.
-	            document.getElementById('mem_zip').value = data.zonecode; //5자리 새우편번호 사용
-	            document.getElementById('mem_address1').value = fullRoadAddr;
-	            document.getElementById('mem_address2').value = data.jibunAddress;
+	            document.getElementById('order_zip').value = data.zonecode; //5자리 새우편번호 사용
+	            document.getElementById('order_address1').value = fullRoadAddr;
+	            document.getElementById('order_address2').value = data.jibunAddress;
 	
-	            // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
-	            if(data.autoRoadAddress) {
-	                //예상되는 도로명 주소에 조합형 주소를 추가한다.
-	                var expRoadAddr = data.autoRoadAddress + extraRoadAddr;
-	                document.getElementById('guide').innerHTML = '(예상 도로명 주소 : ' + expRoadAddr + ')';
-	
-	            } else if(data.autoJibunAddress) {
-	                var expJibunAddr = data.autoJibunAddress;
-	                document.getElementById('guide').innerHTML = '(예상 지번 주소 : ' + expJibunAddr + ')';
-	
-	            } else {
-	                document.getElementById('guide').innerHTML = '';
-	            }
 	        }
 	    }).open();
-	}
-	
-	window.onload=function()
-	{
-	  init();
 	}
 	
 	 function init(){
@@ -294,7 +333,7 @@ h1{
             buyer_addr : order_address1.value + "<br>" + order_address2.value,
             buyer_postcode : order_zip.value,
         }, function(rsp) {
-            if ( true ) {
+            if ( rsp.success ) {
                 var msg = '결제가 완료되었습니다.';
 				formObj.appendChild(sell_number);
 				formObj.appendChild(sell_title);
@@ -331,8 +370,8 @@ h1{
 				formObj.action="${contextPath}/payToOrder.do";
 				formObj.submit();
             } else {
-                var msg = '결제에 실패하였습니다.' + "<br>";
-                msg += '에러내용 : ' + rsp.error_msg;
+                var msg = '결제에 실패하였습니다.';
+                msg +='\n에러내용 : ' + rsp.error_msg;
             }
 
             alert(msg);
@@ -412,19 +451,19 @@ h1{
 	  	  <td>배송비</td>
 	  	  <td>배송비 지급방법</td>
 	  	  <td>적립 포인트</td>
-	  	</tr> 
+	  	  <td>선택 리뷰</td>
+	  	</tr>
 	  	<c:forEach var="item" items = "${orderList}" varStatus = "list_num">
 	  	  <tr>
 	  	    <td id="list_num">
 	  	      <c:out value="${list_num.count}"/>
 	  	    </td>
 	  	    <td>
-	  	      <div id="prod" style="width:200px;">
+	  	      <div id="prod" style="width:400px;">
 	  	      	<span id="prod_info" style="text-align:center;">
 	  	        <a style="color:black; margin: 0 0 0 0; width:500px;" href="${contextPath}/sellItems.do?sell_no=${item.sell_number}">${item.sell_title}</a>
 	  	      	<input type="hidden" id="sell_number" name="sell_number" value="${item.sell_number}"/>
 	  	      	<input type="hidden" id="sell_title" name="sell_title" value="${item.sell_title}"/>
-	  	      	<input type="hidden" id="sell_title" name="choice_review" value="${item.choice_review}"/>
 	  	        </span>
 	  	      	<span id="option">
 		  	      ${item.order_size}&nbsp;&nbsp;&nbsp;
@@ -460,6 +499,12 @@ h1{
 	  	      <input type="hidden" id="point_save" name="point_save" value="${point_save}"/>
 	  	    </td>
 	  	  </tr>
+	  	  <tr>
+	  	   <td>
+	  	   	${item.od_recomReview}
+	  	    <input type="hidden" id="od_recomReview" name="od_recomReview" value="${item.od_recomReview}"/>
+	  	    </td>
+	  	  </tr>
 	  	  	<c:set var="order_total_prod_price" value="${order_total_price + item.pro_price * item.detail_quantity}"/>
 	  	  	<c:set var="order_total_price" value="${order_total_price + item.sell_price * item.detail_quantity}"/>
 	  	  	<c:set var="order_total_sale_price" value="${order_total_sale_price + (item.pro_price - item.sell_price) * item.detail_quantity}"/>
@@ -493,25 +538,25 @@ h1{
 		  <tr>
 		    <td>받으실 분</td>
 		    <td>
-		      <input id="mem_name" name="mem_name" type="text" size="40" value="${orderer.mem_name}">
+		      <input id="mem_name" name="mem_name" class="form-control" type="text" size="40" value="${orderer.mem_name}">
 		      <input id="h_mem_name" name="h_mem_name" type="hidden" size="40" value="${orderer.mem_name}">
 		    </td>
 		  </tr>
 		  <tr>
 		    <td>연락처</td>
 		    <td>
-		      <input id="mem_tel" name="mem_tel" type="text" size="40" value="${orderer.mem_tel}">
+		      <input id="mem_tel" name="mem_tel" class="form-control" type="text" size="40" value="${orderer.mem_tel}">
 		      <input id="h_mem_tel" name="h_mem_tel" type="hidden" size="40" value="${orderer.mem_tel}">
 		    </td>
 		  </tr>
 		  <tr>
 		    <td>이메일</td>
 		    <td>
-		      <input size="40" type="text" id="mem_email1" name="mem_email1" value="${orderer.mem_email1}">&nbsp;@
-		      <input size="40" type="text" id="mem_email2" name="mem_email2" value="${orderer.mem_email2}">
+		      <input size="40" type="text" id="mem_email1" class="form-control" name="mem_email1" value="${orderer.mem_email1}">&nbsp;
+		      @&nbsp;&nbsp;<input size="40" type="text" id="mem_email2" class="form-control" name="mem_email2" value="${orderer.mem_email2}">
 		      <input size="40" type="hidden" id="h_mem_email1" name="h_mem_email1" value="${orderer.mem_email1}">
 		      <input size="40" type="hidden" id="h_mem_email2" name="h_mem_email2" value="${orderer.mem_email2}">
-		      <select name="select_order_email2" onChange="selectEmail(this)">
+		      <select class="form-control" id="select_order_email2" name="select_order_email2" onChange="selectEmail(this)">
 		        <option value="" selected>선택하세요</option>
 		        <option value="1">직접입력</option>
 		        <option value="daum.net">daum.net</option>
@@ -526,11 +571,11 @@ h1{
 		  <tr>
 		    <td>주소</td>
 		    <td>
-		                우편번호:<input type="text" id="order_zip" name="order_zip" size="5" value="${orderer.mem_zip}"/>
-		             <a href="javascript:execDaumPostcode()">우편번호 검색</a><br>
+		                우&nbsp;&nbsp;&nbsp;&nbsp;편&nbsp;&nbsp;&nbsp;&nbsp;번&nbsp;&nbsp;&nbsp;&nbsp;호&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="order_zip" class="form-control" name="order_zip" size="5" value="${orderer.mem_zip}"/>
+		             <a href="javascript:execDaumPostcode()" class="btn btn-default">우편번호 검색</a><br>
 		     <p>
-				도로명 or 지번 주소:<input type="text" id="order_address1" name="order_address1" size="50" value="${orderer.mem_address1}"><br>
-				상세 주소:<input type="text" id="order_address2" name="order_address2" size="50" value="${orderer.mem_address2}">
+				주&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;소&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="order_address1" class="form-control" name="order_address1" size="50" value="${orderer.mem_address1}"><br>
+				지번 및 상세 주소&nbsp;&nbsp;<input type="text" id="order_address2" class="form-control" name="order_address2" size="50" value="${orderer.mem_address2}">
 		     </p>
 		     <input type="hidden" id="h_order_zip" name="h_order_zip" value="${orderer.mem_zip}"/>
 		    <input type="hidden" id="h_order_address1" name="h_order_address1" value="${orderer.mem_address1}">
@@ -540,7 +585,7 @@ h1{
 		  <tr>
 		    <td>배송시 요청사항</td>
 		    <td>
-		      <input id="order_request" name="order_request" type="text" size="50" placeholder="택배 기사님께 전달할 메시지를 남겨주세요."/>
+		      <input id="order_request" class="form-control" name="order_request" type="text" size="50" placeholder="택배 기사님께 전달할 메시지를 남겨주세요."/>
 		    </td>
 		  </tr>
 		  <tr>
@@ -573,7 +618,7 @@ h1{
 	      <c:set var="point" value="0"/>
 	        <td>포인트</td>
 	        <td>
-	          <input id="order_pointuse" name="order_pointuse" type="text" size="10" value="0"/> 
+	          <input id="order_pointuse" name="order_pointuse" class="form-control" type="text" size="10" value="0"/> 
 	          <input type="button" class="btn btn-default" id="usebutton" name="usebutton" value="사용"/>
 	          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	          잔여포인트:<span id="remain_point"> ${orderer.mem_point}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -645,7 +690,7 @@ h1{
 	        </ul>
 	      </td>
 	      <td>
-	      	<input type="button" id="payment_card" name="payment_card" onClick="pay()" style="display:none;" value="카드  계좌이체로 결제하기">
+	      	<input type="button" id="payment_card" name="payment_card" onClick="pay()" style="display:none;" value="카드 또는 계좌이체로 결제하기">
 	      	<input type="hidden" id="od_state" name="od_state" value="F_0002">
 	      	<button class="btn" type="submit" id="payment_account" name="payment_account" style="display:none;">무통장 입금 방식으로 결제하기</button>
 	      </td>
