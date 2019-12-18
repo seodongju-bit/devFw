@@ -13,4 +13,5 @@ public interface A_P009Controller {
 	public Map declarationsList(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public String declarationsList2(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public Map saveDeclarations(HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public Map ConditionDeclaration(HttpServletRequest request, HttpServletResponse response) throws Exception;
 }

@@ -28,9 +28,16 @@ float: right;
 margin-left: 5px;
 }
 
+.btn {
+	border-radius:10px !important;
+ 	border: 1px solid #AAAAAA !important;
+ 	font-color:white;
+	
+}
+
+
 </style>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
-<link href="../devFw/resources/css/bootstrap.min.css" rel="stylesheet">
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="../devFw/resources/ibsheet/ibsheetinfo.js"></script>
 <script src="../devFw/resources/ibsheet/ibsheet.js"></script>

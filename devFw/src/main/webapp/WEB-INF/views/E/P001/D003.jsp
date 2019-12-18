@@ -105,7 +105,11 @@ body, html {
 	  	      <fmt:formatNumber value="${item.point_save_total}" type="number"/>P
 	  	    </td>
 	  	    <td>
-	  	      ${item.od_state}
+	  	    <c:choose>
+		    <c:when test="${item.od_state=='F_0002'}">
+			  <p>결제완료</p>
+			</c:when>
+			</c:choose>
 	  	    </td>
 	  	  </tr>
 	  	</c:forEach>

@@ -12,4 +12,5 @@ public interface A_P008Controller {
 	public String searchMember2(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public Map saveData(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public Map searchMember(HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public Map ConditionMember(HttpServletRequest request, HttpServletResponse response) throws Exception;
 }

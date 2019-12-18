@@ -19,7 +19,7 @@
 #foot {
 	width:100%;
 	height:30px;
-	min-width:1000px;
+	min-width:1120px;
 	padding:5px;
 	max-width:none !important;
 	background-color: #A4A4A4;

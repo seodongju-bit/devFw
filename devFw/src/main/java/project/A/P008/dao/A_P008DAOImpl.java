@@ -9,6 +9,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
 import project.A.P008.vo.A_P008VO;
+import project.B.P001.vo.B_P001VO;
 
 @Repository("A_P008DAO")
 public class A_P008DAOImpl implements A_P008DAO {
@@ -18,6 +19,13 @@ public class A_P008DAOImpl implements A_P008DAO {
 	@Override
 	public List<A_P008VO> searchMember(Map<String, Object> searchMap) throws DataAccessException {
 		List<A_P008VO> list = sqlSession.selectList("A.P008.searchMember", searchMap);
+		return list;
+	}
+	
+	@Override
+	public List<A_P008VO> conditionMember(Map<String, Object> searchMap) throws DataAccessException {
+		List<A_P008VO> list = sqlSession.selectList("A.P008.conditionMember", searchMap);
+		System.out.println(list);
 		return list;
 	}
 	

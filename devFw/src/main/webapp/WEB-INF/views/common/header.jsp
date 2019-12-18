@@ -131,7 +131,8 @@ body, html {
 	
 	/*검색어 자동완성창*/
 	#suggest {
-		display:none; position: absolute; left: 830px; top:80px; border: 0.1px  solid #87cb42; z-index:3;font-weight: bold;background-color:#ffffff; 	
+		display:none; position:absolute; left: 830px; top:80px; border: 0.1px  solid #87cb42; z-index:3;font-weight: bold;background-color:#ffffff; 	
+		width:300px; margin: 12px 0 0 -434px;
 	}
 	
 	
@@ -453,8 +454,7 @@ $(document).ready(function(){
        		 			<a class="nav-item nav-link" id="itemManagerlink" href="${contextPath}/questionwrite5.do"><img src="../devFw/resources/image/icon/question_answer.png"  alt="문의사항 답변" style="width: 18px;">&nbsp;문의사항 답변</a>
        		 		</c:when>
        		 		<c:when test="${memberInfo.mem_division==2 }" >
-       		 			<a class="nav-item nav-link" id="siteManagerlink" href="${contextPath}/adminPage.do"><img src="../devFw/resources/image/icon/site_management.png"  alt="사이트관리" style="width: 18px;">&nbsp;사이트관리</a>
-       		 			<a class="nav-item nav-link" id="siteManagerlink" href="${contextPath}/makecoupon.do"><img src="../devFw/resources/image/icon/coupon_management.png"  alt="쿠폰관리" style="width: 18px;">&nbsp;쿠폰관리</a>
+       		 			<a class="nav-item nav-link" id="siteManagerlink" href="${contextPath}/adminPage.do"><img src="../devFw/resources/image/icon/site_management.png"  alt="관리자 페이지" style="width: 18px;">&nbsp;관리자 페이지</a>
        		 		</c:when>
        		 	</c:choose>
 			</c:when>

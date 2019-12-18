@@ -32,6 +32,8 @@ public interface F_P002DAO {
 	//불러온 게시물 총 갯수
 	public int countList() throws Exception;
 	
+	public int countProd(SearchVO searchVO) throws Exception;
+	
 	//키워드 자동완성
 	public List<String> predictive(String keyword) throws DataAccessException;
 	

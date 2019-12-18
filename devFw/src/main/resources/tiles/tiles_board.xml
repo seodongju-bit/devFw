@@ -200,7 +200,7 @@
       <put-attribute name="body" value="/WEB-INF/views/A/P004/D008.jsp" />
    </definition>
    
-   <definition name="makecoupon" extends="eventLayout">
+   <definition name="makecoupon" extends="adminLayout">
       <put-attribute name="title" value="쿠폰생성" />
       <put-attribute name="body" value="/WEB-INF/views/A/P007/D001.jsp" />
    </definition>
@@ -225,7 +225,7 @@
       <put-attribute name="body" value="/WEB-INF/views/C/P001/D004.jsp" />
    </definition>
    
-   <definition name="itemManager" extends="itemLayout">
+   <definition name="itemManager" extends="sellerLayout">
       <put-attribute name="title" value="상품관리페이지" />
       <put-attribute name="body" value="/WEB-INF/views/B/P001/D001.jsp" />
        <put-attribute name="footer" value="" />
@@ -462,6 +462,13 @@
    <definition name="orderRequestList" extends="sellerLayout">
       <put-attribute name="title" value="주문관리"/>
       <put-attribute name="body" value="/WEB-INF/views/B/P002/D002.jsp"/>
+   </definition>
+   
+   <definition name="useCouponList" template="/WEB-INF/views/common/popup_layout.jsp">
+   	  <put-attribute name="title" value="쿠폰 조회"/>
+   	  <put-attribute name="header" value=""/>
+   	  <put-attribute name="body" value="/WEB-INF/views/E/P001/D004.jsp"/>
+   	  <put-attribute name="footer" value=""/>
    </definition>
    
    <definition name="ordererInfo" template="/WEB-INF/views/common/popup_layout.jsp">

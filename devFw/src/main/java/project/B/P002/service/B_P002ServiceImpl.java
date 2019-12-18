@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartRequest;
 
 import project.B.P002.dao.B_P002DAO;
 import project.B.P002.vo.B_P002VO;
+import project.main.paging.MainPagingVO;
 
 
 @Service("B_P002Service")
@@ -55,10 +56,15 @@ public class B_P002ServiceImpl implements B_P002Service {
 	}
 	
 	@Override
-	public List orderRequestList(String p_id) throws DataAccessException {
+	public List orderRequestList(MainPagingVO mainPagingVO) throws DataAccessException {
 		List orderRequestList = null;
-		orderRequestList = b_P002DAO.orderRequestList(p_id);
+		orderRequestList = b_P002DAO.orderRequestList(mainPagingVO);
 		return orderRequestList;
+	}
+	
+	@Override
+	public int countOrdererList(String p_id) throws Exception {
+		return b_P002DAO.countOrdererList(p_id);
 	}
 	
 	@Override

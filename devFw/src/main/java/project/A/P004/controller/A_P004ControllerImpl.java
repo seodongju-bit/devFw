@@ -165,12 +165,12 @@ public class A_P004ControllerImpl   implements A_P004Controller {
 		
 		String order_number = request.getParameter("order_number");
 		String sell_number = request.getParameter("sell_number");
-		String od_recomreview = request.getParameter("od_recomreview");
+		String choice_review= request.getParameter("choice_review");
 		
 		check.put("order_number", order_number);
 		check.put("sell_number", sell_number);
 		
-		System.out.println("채택리뷰어"+od_recomreview);
+		System.out.println("채택리뷰어"+choice_review);
 		
 		int count = 0;
 		count = activeService.confirmcheck(check);

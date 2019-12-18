@@ -14,12 +14,28 @@ public class sellerController {
 	@RequestMapping(value="/sellerPage.do", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView sellerPage(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = getViewName(request);
-		HttpSession session = request.getSession();
-		String p_id = (String)session.getAttribute("mem_id");
+		if(!sellerCheck(request)) {
+			ModelAndView mav = new ModelAndView(viewName);
+			mav.setViewName("redirect:main.do");
+			return mav;
+		}
 		
 		viewName = "sellerPage";
 		ModelAndView mav = new ModelAndView(viewName);
 		return mav;
+	}
+	
+	public boolean sellerCheck(HttpServletRequest request) {
+		boolean result = false;
+		HttpSession session = request.getSession();
+		Boolean isLogOn = (Boolean)session.getAttribute("isLogOn");
+		String mem_division = (String)session.getAttribute("mem_division");
+		try {
+			if(isLogOn && mem_division.equals("1")) {
+				result = true;
+			}
+		}catch(Exception e) {}
+		return result;
 	}
 	
 	private String getViewName(HttpServletRequest request) throws Exception {

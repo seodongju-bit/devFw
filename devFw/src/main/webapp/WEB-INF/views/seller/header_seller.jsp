@@ -63,7 +63,7 @@
         <div class="navbar-nav">
 		  <a class="nav-item nav-link" id="itemManagerlink" href="${contextPath}/itemManager.do">상품관리</a>
           <a class="nav-item nav-link" id="orderRequestList" href="${contextPath}/orderRequestList.do">주문관리</a>
-          <a class="nav-item nav-link" id="questionslink" href="${contextPath}/questions.do">주문관리</a>
+          <a class="nav-item nav-link" id="questionslink" href="${contextPath}/questions.do">구매자 문의사항 관리</a>
         </div>
         <div class="navbar-nav mr-sm-2">
           <c:choose>
@@ -72,7 +72,6 @@
 		    </c:when>
           </c:choose>  
           <a class="nav-item nav-link" href="${contextPath}/main.do">메인페이지로</a>
-          <a class="nav-item nav-link" href="./userEdit.html">관리자 정보 수정</a>
         </div>
       </div>
     </nav>

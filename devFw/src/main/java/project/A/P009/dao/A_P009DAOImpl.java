@@ -23,6 +23,12 @@ public class A_P009DAOImpl implements A_P009DAO{
 	}
 	
 	@Override
+	public List<A_P009VO> conditionDeclaration(Map<String, Object> searchMap) throws DataAccessException {
+		List<A_P009VO> list = sqlSession.selectList("A.P009.conditionDeclaration", searchMap);
+		return list;
+	}
+	
+	@Override
 	public void insertData(Map<String, String> row) throws DataAccessException {
 		sqlSession.update("A.P009.insertData", row);
 	}

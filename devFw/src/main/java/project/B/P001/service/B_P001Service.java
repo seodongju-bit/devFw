@@ -20,6 +20,6 @@ public interface B_P001Service {
 
 	 void addProduct(B_P001VO b_P001VO) throws DataAccessException;
 
-
+	 public List<B_P001VO> conditionSearch(Map<String, Object> searchMap) throws DataAccessException;
 
 }

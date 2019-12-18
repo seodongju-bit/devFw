@@ -335,7 +335,7 @@ ul.tabs li.active, html ul.tabs li.active a:hover {
 										
 								</c:when>
 								<c:when test="${orderList2.OD_STATE !='F_0006'}">
-										<p class="tdMenu" onclick="confirm('${orderList2.ORDER_NUMBER}', '${orderList2.SELL_NUMBER}','${orderList2.OD_RECOMREVIEW}')">구매확정</p>
+										<p class="tdMenu" onclick="confirm('${orderList2.ORDER_NUMBER}', '${orderList2.SELL_NUMBER}','${orderList2.CHOICE_REVIEW}')">구매확정</p>
 								</c:when>
 								</c:choose>
 								<c:choose>
@@ -493,7 +493,7 @@ ul.tabs li.active, html ul.tabs li.active a:hover {
 		formObj.submit();
 	}
 	
-	function confirm(order_number, sell_number, od_recomreview){
+	function confirm(order_number, sell_number, choice_review){
 		
 		Swal.fire({
 			  title: '구매확정',
@@ -514,7 +514,7 @@ ul.tabs li.active, html ul.tabs li.active a:hover {
 				    	   
 				    	   "order_number":order_number,
 				    	   "sell_number" : sell_number,
-				    	   "od_recomreview":od_recomreview
+				    	   "choice_review":choice_review
 				       },
 				       success: function (data) {
 				    	   if(data.check>0){

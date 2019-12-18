@@ -287,9 +287,10 @@ h1{
     	
     	var formObj=document.createElement("form");
     	
+    	
     	var sell_number = document.getElementById("sell_number");
     	var sell_title = document.getElementById("sell_title");
-    	var order_size = document.getElementById("order_color");
+    	var order_size = document.getElementById("order_size");
     	var order_color = document.getElementById("order_color");
     	var detail_quantity = document.getElementById("detail_quantity");
     	var pro_price = document.getElementById("pro_price");
@@ -317,9 +318,10 @@ h1{
 		var pay_method = document.getElementById("pay_method");
 		var od_state = document.getElementById("od_state");
 		var co_number = document.getElementById("h_co_number");
+		var choice_review = document.getElementById("choice_review");
 		
 		
-    	
+		
         IMP.init('imp02202162');
         IMP.request_pay({
             pg : 'html5_inicis',
@@ -364,6 +366,7 @@ h1{
 				formObj.appendChild(od_state);
 				formObj.appendChild(point_save_total);
 				formObj.appendChild(co_number);
+				formObj.appendChild(choice_review);
 				
 				document.body.appendChild(formObj);
 				formObj.method="post";
@@ -451,7 +454,7 @@ h1{
 	  	  <td>배송비</td>
 	  	  <td>배송비 지급방법</td>
 	  	  <td>적립 포인트</td>
-	  	  <td>선택 리뷰</td>
+	  	  <td>선택한 리뷰 코드</td>
 	  	</tr>
 	  	<c:forEach var="item" items = "${orderList}" varStatus = "list_num">
 	  	  <tr>
@@ -498,11 +501,9 @@ h1{
 	  	      <fmt:formatNumber value="${point_save}"/>P
 	  	      <input type="hidden" id="point_save" name="point_save" value="${point_save}"/>
 	  	    </td>
-	  	  </tr>
-	  	  <tr>
-	  	   <td>
-	  	   	${item.od_recomReview}
-	  	    <input type="hidden" id="od_recomReview" name="od_recomReview" value="${item.od_recomReview}"/>
+	  	    <td>
+	  	   	${item.choice_review}
+	  	    <input type="hidden" id="choice_review" name="choice_review" value="${item.choice_review}"/>
 	  	    </td>
 	  	  </tr>
 	  	  	<c:set var="order_total_prod_price" value="${order_total_price + item.pro_price * item.detail_quantity}"/>

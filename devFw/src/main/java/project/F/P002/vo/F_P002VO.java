@@ -19,6 +19,7 @@ public class F_P002VO {
 	private String sell_title="";
 	private String sell_thumbnail="";
 	private String sell_quantity="";
+	private String pro_price="";
 	private String mem_ID="";
 	private String option_yn="";
 	private String option_size="";
@@ -29,6 +30,8 @@ public class F_P002VO {
 	private String bigCtgrName="";
 	private String smallCtgrName="";
 	private String delivery_price="";
+	
+	private String count_prod="";
 	
 	
 	
@@ -70,6 +73,15 @@ public class F_P002VO {
 
 	public String getSell_contents() {
 		return sell_contents;
+	}
+
+	
+	public String getPro_price() {
+		return pro_price;
+	}
+
+	public void setPro_price(String pro_price) {
+		this.pro_price = pro_price;
 	}
 
 	public void setSell_contents(String sell_contents) {
@@ -204,6 +216,14 @@ public class F_P002VO {
 
 	public void setDelivery_price(String delivery_price) {
 		this.delivery_price = delivery_price;
+	}
+
+	public String getCount_prod() {
+		return count_prod;
+	}
+
+	public void setCount_prod(String count_prod) {
+		this.count_prod = count_prod;
 	}
 	
 
