@@ -50,7 +50,7 @@ public class E_P001ControllerImpl implements E_P001Controller {
 			String viewName = (String)request.getAttribute("viewName");
 			ModelAndView mav = new ModelAndView(viewName);
 			List<Map<String, Object>> list = createModel(request);
-			
+			System.out.println("ASDFSADFDSA"+list);
 			Map<String, Object> searchMap = new HashMap<String, Object>();
 			List<E_P001VO> result = new ArrayList<E_P001VO>();
 			
@@ -317,7 +317,6 @@ public class E_P001ControllerImpl implements E_P001Controller {
 			resultMap.put("detail_quantity", request.getParameter("quantity"+i));
 			resultMap.put("order_size",request.getParameter("size"+i));
 			resultMap.put("order_color",request.getParameter("color"+i));
-			resultMap.put("order_color",request.getParameter("od_recomReview"));
 			result.add(resultMap);
 			i++;
 		}

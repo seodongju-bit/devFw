@@ -71,7 +71,6 @@ public class A_P004ControllerImpl   implements A_P004Controller {
 		resultList3 = activeService.orderList3(searchMap);
 		resultList4 = activeService.quList(searchMap);
 		
-		System.out.println("33333333333333="+resultList3);
 		ModelAndView mav = new ModelAndView(viewName);
 		
 		String p = request.getParameter("page");
@@ -119,7 +118,7 @@ public class A_P004ControllerImpl   implements A_P004Controller {
 			return mav;
 		}
 		List couponsList = activeService.listCoupon(p_id);
-		System.out.println(couponsList);
+		
 		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("couponsList", couponsList);
 		return mav;
@@ -138,7 +137,7 @@ public class A_P004ControllerImpl   implements A_P004Controller {
 			return mav;
 		}
 		List usecoupon = activeService.usecoupon(mem_id);
-		System.out.println(usecoupon);
+
 		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("usecoupon", usecoupon);
 		return mav;
@@ -167,12 +166,10 @@ public class A_P004ControllerImpl   implements A_P004Controller {
 		String sell_number = request.getParameter("sell_number");
 		String od_recomreview = request.getParameter("od_recomreview");
 		String sell_price = request.getParameter("sell_price");
-		System.out.println(123);
 		check.put("order_number", order_number);
 		check.put("sell_number", sell_number);
 		check.put("od_recomreview", od_recomreview);
 		
-		System.out.println("채택리뷰어"+ od_recomreview);
 		
 		int count = 0;
 		count = activeService.confirmcheck(check);
@@ -245,7 +242,6 @@ public class A_P004ControllerImpl   implements A_P004Controller {
 		searchMap.put("qu_number", request.getParameter("qu_number"));
 		List<Map<String,Object>> myquestionList = activeService.listquestion(searchMap);
 		resultMap = (Map<String, Object>) myquestionList.get(0);
-		System.out.println(myquestionList);
 		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("myquestionList", resultMap);
 		return mav;
@@ -262,18 +258,17 @@ public class A_P004ControllerImpl   implements A_P004Controller {
 		String division = request.getParameter("division");
 		String start = request.getParameter("start");
 		String end = request.getParameter("end");
-		System.out.println(start);
-		System.out.println(end);
+		
 		if("point_date".equals(division)) {
 			searchMap.put("date", division);
 		}else {
 			searchMap.put("date", division);
 		}
 		// 검색조건설정
-		System.out.println("####333333333333333333333333333333333333"+searchMap);
+		
 		HttpSession session = request.getSession();
 		String mem_id = (String)session.getAttribute("mem_id");
-		System.out.println("session="+mem_id);
+		
 		searchMap.put("mem_id", mem_id);
 		searchMap.put("start", start);
 		searchMap.put("end", end);
@@ -297,7 +292,7 @@ public class A_P004ControllerImpl   implements A_P004Controller {
 			return mav;
 		}
 		List couponsList = activeService.givecoupon();
-		System.out.println(couponsList);
+		
 		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("couponsList", couponsList);
 		return mav;
@@ -346,7 +341,7 @@ public class A_P004ControllerImpl   implements A_P004Controller {
 			return mav;
 		}
 		List alertList = activeService.alert(p_id);
-		System.out.println(alertList);
+		
 		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("alertList", alertList);
 		return mav;

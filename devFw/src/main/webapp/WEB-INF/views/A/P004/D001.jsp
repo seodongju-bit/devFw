@@ -301,7 +301,7 @@ ul.tabs li.active, html ul.tabs li.active a:hover {
 								width="80px" height="80px"> <a
 								href="sellItems.do?sell_no=${orderList2.SELL_NUMBER}">${orderList2.SELL_TITLE}</a>
 								<br> <fmt:formatNumber value="${orderList2.SELL_PRICE}" />원
-								<br> 추천리뷰 : ${orderList2.OD_RECOMREVIEW}
+								
 								</td>
 							<td><c:choose>
 									<c:when test="${orderList2.OD_STATE=='F_0001'}">
@@ -326,10 +326,16 @@ ul.tabs li.active, html ul.tabs li.active a:hover {
 							<td>
 								<c:choose>
 								<c:when test="${orderList2.OD_STATE =='F_0005'}">
+								<c:choose>
+								<c:when test="${orderList2.REVIEW_NUMBER ==0}">
 								<p class="tdMenu"
-									onclick="reviewWrite('${orderList2.SELL_NUMBER}','${orderList2.SELL_TITLE}' ,'${orderList2.ORDER_NUMBER}')">리뷰작성</p>
+									onclick="reviewWrite('${orderList2.SELL_NUMBER}','${orderList2.SELL_TITLE}','${orderList2.REVIEW_NUMBER}')">리뷰작성</p>
 									<input type="hidden" id="order_number" name="order_number" value="${orderList2.ORDER_NUMBER}"/>
+								</c:when>
+								<c:otherwise>	
 								<p class="tdMenu">리뷰 수정</p>
+								</c:otherwise>
+								</c:choose>
 								</c:when>
 								<c:when test="${orderList2.OD_STATE !='F_0005'}">
 								</c:when>
@@ -705,6 +711,7 @@ function cancle(order_number, sell_number){
 					});
 		};
 
+
 		function reviewWrite(sell_number, title, order_number) {
 	
 			window.open("reviewwrite.do?sell_number=" + sell_number
@@ -719,12 +726,6 @@ function cancle(order_number, sell_number){
 					"width=850, height=800, left=600, top400", "resizable=no");
 		}
 		
-		/* function reviewWrite(sell_number, title) {
-			window.open("reviewwrite.do?sell_number=" + sell_number
-					+ "&sell_title=" + title, "제품번호 검색",
-					"width=850, height=800, left=600, top400", "resizable=no");
-		} */
-
 		$(document).ready(function() {
 
 			//When page loads...

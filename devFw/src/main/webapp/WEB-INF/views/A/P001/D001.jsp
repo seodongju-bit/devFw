@@ -22,7 +22,7 @@
     		
       <form action="${contextPath}/login.do" method="post" accept-charset="UTF-8"> 
 		
-			
+		<img src="../devFw/resources/image/logo.png"  style="width:300px; margin-bottom: 2%;">
       
         <h1>로그인</h1>
         

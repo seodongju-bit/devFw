@@ -61,7 +61,6 @@ public class C_P001ControllerImpl implements C_P001Controller {
 		String viewName = "event";
 		
 		int total = eventService.countBoard();
-		System.out.println("33333333333333333333333333333333333333333"+total);
 		if (nowPage == null && cntPerPage == null) {
 			nowPage = "1";
 			cntPerPage = "10";
@@ -93,7 +92,6 @@ public class C_P001ControllerImpl implements C_P001Controller {
 		dataMap.put("no_number", no_number);
 		List<Map<String,Object>> dataList = eventService.selectBoardDetail(dataMap);
 		resultMap = dataList.get(0);
-		System.out.println("고객번호111111111111111111111111111111111111"+dataList);
 		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("resultMap", resultMap);
 		return mav;
@@ -154,7 +152,6 @@ public class C_P001ControllerImpl implements C_P001Controller {
 		   Map<String, Object> resultMap = new HashMap<String, Object>();
 		  try {
 			   String url = fileUploadService.restore(file);
-			   System.out.println("222222222222222222222222222222222222222"+url);
 			   resultMap.put("path", url);
 		  }catch(Exception e) {
 			   System.out.println("이미지 업로드 오류");

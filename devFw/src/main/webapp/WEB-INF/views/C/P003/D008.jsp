@@ -92,6 +92,9 @@ $(function() {
        } 
     });
     
+
+
+    
     $("#subBtns").click(function(){
     	var frm = document.frmch;
     	 //id가 smarteditor인 textarea에 에디터에서 대입

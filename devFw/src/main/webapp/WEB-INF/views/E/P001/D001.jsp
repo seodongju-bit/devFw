@@ -469,10 +469,7 @@ h1{
 		  	      <input type="hidden" id="order_size" name="order_size" value="${item.order_size}"/>
 		  	      ${item.order_color}&nbsp;&nbsp;&nbsp;${item.detail_quantity}개
 		  	      <input type="hidden" id="order_color" name="order_color" value="${item.order_color}"/>
-		  	      <input type="hidden" id="detail_quantity" name="detail_quantity" value="${item.detail_quantity}"/>
-		  	      ${item.od_recomReview}
-	  	    <input type="text" id="od_recomReview" name="od_recomReview" value="${item.od_recomReview}"/>
-		  	      
+		  	      <input type="hidden" id="detail_quantity" name="detail_quantity" value="${item.detail_quantity}"/>  
 	  	      </span>
 	  	      </div>
 	  	    </td>
@@ -499,6 +496,9 @@ h1{
 	  	      <c:set var="point_save" value="${point_save+((point_save%1>0.5)?(1-(point_save%1))%1:-(point_save%1))}"/>
 	  	      <fmt:formatNumber value="${point_save}"/>P
 	  	      <input type="hidden" id="point_save" name="point_save" value="${point_save}"/>
+	  	    </td>
+	  	    <td>
+	  	    	
 	  	    </td>
 	  	  </tr>
 	  	   	

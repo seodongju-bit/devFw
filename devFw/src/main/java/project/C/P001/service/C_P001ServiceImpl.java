@@ -43,7 +43,6 @@ public class C_P001ServiceImpl implements C_P001Service {
 //		eventDAO.updateViewCnt(param); //게시글 조횟수 늘리기가 선행되어야 한다. 
 		List dataList = null;
 		dataList=eventDAO.selectBoardDetail(dataMap); 
-		System.out.println("service22222222222222222222222222"+dataMap);
 		return dataList; 
 	}
 	

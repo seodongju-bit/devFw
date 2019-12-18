@@ -288,7 +288,7 @@ function pageLoad(command){
 		$('#contentDetail').load('sellItemsReview.do',{ sell_number :'${item.sell_number}', page :1});
 	}
 	if(command=="sellerChat"){
-		$('#contentDetail').load('sellerChat.do', { seller :'${item.mem_ID}'});
+		$('#contentDetail').load('chatInit.do' ,{ sell_title :'${item.sell_title}', sell_id :'${item.mem_ID}', sell_number :'${item.sell_number}'});
 	}
 	if(command=="proOpinion"){
 		$('#contentDetail').load('proOpinion.do');

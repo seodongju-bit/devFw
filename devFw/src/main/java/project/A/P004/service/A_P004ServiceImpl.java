@@ -47,7 +47,6 @@ public class A_P004ServiceImpl implements A_P004Service {
 	@Override
 	public List<A_P004VO> listPoint(Map<String, Object> searchMap) throws DataAccessException{
 		List<A_P004VO> list = activeDAO.selectAllPointList(searchMap);
-		System.out.println("22222222222222222222222222"+list);
 		return list;
 	}
 	
@@ -57,7 +56,6 @@ public class A_P004ServiceImpl implements A_P004Service {
 		List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
 		
 		for(int i=0; i<list.size();i++) {
-			System.out.println(list.get(i).get("ROWNUMS").getClass().getName());
 			BigDecimal big = (BigDecimal)list.get(i).get("ROWNUMS");
 			int val = big.intValue();
 			if(val > 2 ){ break;}
@@ -137,17 +135,14 @@ public class A_P004ServiceImpl implements A_P004Service {
 	}
 
 	public int pointSearch(Map<String, Object> searchMap) {
-		// TODO Auto-generated method stub
 		return activeDAO.pointSearch(searchMap);
 	}
 	@Override
 	public boolean passCheck(String id, String password) {
-		// TODO Auto-generated method stub
 		return activeDAO.passCheck(id, password);
 	}
 	@Override
 	public void withdrawSave(Map<String, String> withdrawMap) {
-		// TODO Auto-generated method stub
 		activeDAO.withdrawSave(withdrawMap);
 		
 	}
