@@ -39,11 +39,6 @@ public class A_P004DAOImpl implements A_P004DAO {
 	}
 
 	@Override
-	public List<Map<String, Object>> orderList(Map<String, Object> searchMap) {
-		return sqlSession.selectList("mapper.active.orderList",searchMap);
-	}
-	
-	@Override
 	public List<Map<String, Object>> orderList2(Map<String, Object> searchMap) {
 		List<Map<String, Object>> list = sqlSession.selectList("mapper.active.orderList2",searchMap);
 		return list;

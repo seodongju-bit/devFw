@@ -49,7 +49,7 @@ public class A_P004ControllerImpl   implements A_P004Controller {
 		
 		
 		Map<String, Object> searchMap = new HashMap<String, Object>();
-		List<Map<String, Object>> resultList = new ArrayList<Map<String, Object>>();
+
 		List<Map<String, Object>> resultList2 = new ArrayList<Map<String, Object>>();
 		List<Map<String, Object>> resultList3 = new ArrayList<Map<String, Object>>();
 		List<Map<String, Object>> resultList4 = new ArrayList<Map<String, Object>>();
@@ -66,7 +66,7 @@ public class A_P004ControllerImpl   implements A_P004Controller {
 		basket_count = activeService.baslist(p_id);
 		coupon_count = activeService.coulist(p_id);
 		question_count = activeService.question(p_id);
-		resultList = activeService.orderList(searchMap);
+
 		resultList2 = activeService.orderList2(searchMap);
 		resultList3 = activeService.orderList3(searchMap);
 		resultList4 = activeService.quList(searchMap);
@@ -93,7 +93,7 @@ public class A_P004ControllerImpl   implements A_P004Controller {
 		mav.addObject("pageInfo2", resultList4.get(resultList4.size()-1));
 		resultList4.remove(resultList4.size()-1);
 		
-		mav.addObject("orderList", resultList);
+
 		mav.addObject("orderList2", resultList2);
 		mav.addObject("coupon_count",coupon_count);
 		mav.addObject("basket_count",basket_count);

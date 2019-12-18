@@ -328,7 +328,6 @@ ul.tabs li.active, html ul.tabs li.active a:hover {
 								<c:when test="${orderList2.REVIEW_NUMBER ==0}">
 								<p class="tdMenu"
 									onclick="reviewWrite('${orderList2.SELL_NUMBER}','${orderList2.SELL_TITLE}','${orderList2.REVIEW_NUMBER}')">리뷰작성</p>
-									<input type="hidden" id="order_number" name="order_number" value="${orderList2.ORDER_NUMBER}"/>
 								</c:when>
 								<c:otherwise>	
 								<p class="tdMenu">리뷰 수정</p>
@@ -339,6 +338,7 @@ ul.tabs li.active, html ul.tabs li.active a:hover {
 								</c:when>
 								</c:choose>
 								<p class="tdMenu" onclick="questionwrite2()">문의하기</p>
+								<input type="hidden" id="order_number" name="order_number" value="${orderList2.ORDER_NUMBER}"/>
 								<c:choose>
 								<c:when test="${orderList2.OD_STATE =='F_0006'}">
 										

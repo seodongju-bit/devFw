@@ -75,21 +75,10 @@
     		</when>
 		</choose>
 	</select>
-	  
-
-	<select id="orderList" resultMap="orderListResult" parameterType="java.util.Map">
-      <![CDATA[
-         select (DENSE_RANK() OVER(order by order_date DESC, od.order_number DESC)) rownums, o.order_number,od.sell_number, order_date ,sell_price, sell_title, sell_thumbnail, od_state, od_recomreview
-         from orders o, orderdetail od, productsell ps
-         where od.sell_number = ps.sell_number
-         and o.order_number = od.order_number
-         and o.mem_id = #{mem_id}
-      ]]>
-	</select>
 	
 	<select id="orderList2" resultMap="orderListResult" parameterType="java.util.Map">
       <![CDATA[
-         select (DENSE_RANK() OVER(order by order_date DESC, od.order_number DESC)) rownums, o.order_number,od.sell_number, order_date ,sell_price, sell_title, sell_thumbnail, od_state, od_recomreview, NVL(review_number, 0) review_number
+         select (DENSE_RANK() OVER(order by order_date DESC, od.order_number DESC)) rownums, o.order_number,od.sell_number, order_date ,sell_price, sell_title, sell_thumbnail, od_state, o.choice_review, NVL(review_number, 0) review_number
          from orders o, orderdetail od, productsell ps, review r
          where od.sell_number = ps.sell_number
          and o.order_number = od.order_number
