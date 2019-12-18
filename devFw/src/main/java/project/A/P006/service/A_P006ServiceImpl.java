@@ -40,4 +40,16 @@ public class A_P006ServiceImpl implements A_P006Service {
 		List<A_P001VO> list=c_p002_d005_DAO.selectSearchList(searchMap);		
 		return list;
 	}
+
+	@Override
+	public List selectSeller(Map<String, Object> searchMap) {
+		List<A_P001VO> list=c_p002_d005_DAO.selectSeller(searchMap);		
+		return list;
+	}
+	
+	@Override
+	public List selectprod(Map<String, Object> searchMap) {
+		List<A_P001VO> list=c_p002_d005_DAO.selectprod(searchMap);		
+		return list;
+	}
 }

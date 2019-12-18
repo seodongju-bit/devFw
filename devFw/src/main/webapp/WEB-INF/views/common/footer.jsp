@@ -8,6 +8,17 @@
   <meta charset="UTF-8">
   <title>하단 부분</title>
 <style>
+
+@font-face {
+   src: url("../devFw/resources/font/NanumSquare_acR.ttf");
+   font-family: "NanumSquare";
+}
+
+#main{
+font-family:"NanumSquare";
+font-weight: 700;
+}
+
 #com {
 	text-align: center;
 	width: 100%;
@@ -51,7 +62,7 @@
 </style>
 </head>
 <body>
-
+<div id="main">
 <ul id="foot" align="center">
 	  <li class="g"><a href="#">회사소개</a></li>
 	  <li class="g"><a href="#">이용약관</a></li>
@@ -71,6 +82,7 @@
 	 대표전화 : 1544-1544 (발신자 부담전화)   팩스 : 0502-977-7777 (지역번호공통) <br>
 	 COPYRIGHT(C) 북토피아 BOOK CENTRE ALL RIGHTS RESERVED
 
+</div>
 </div>
 </body>
 </html>

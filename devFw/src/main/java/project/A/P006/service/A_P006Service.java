@@ -14,5 +14,7 @@ public interface A_P006Service {
 	public void insertMessage(A_P006VO c_p002_d005vo) throws Exception;
 	public List<A_P001VO> selectMemberList(String mem_id) throws Exception;
 	public List<A_P001VO> selectSearchList(Map<String, String> searchMap) throws Exception;
+	public List selectSeller(Map<String, Object> searchMap);
+	public List selectprod(Map<String, Object> searchMap);
 
 }

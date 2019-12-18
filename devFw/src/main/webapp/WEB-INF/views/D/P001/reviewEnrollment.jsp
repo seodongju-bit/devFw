@@ -141,6 +141,7 @@ $(function() {
 $(document).ready(function(){
 	$('[data-toggle="tooltip"]').tooltip();
 	$('#sell_number').val('${sell_number}');
+	$('#order_number').val('${order_number}');
 	
 	$("#product_grade a").click(function(){
 		 var grade = $(this).prevAll("a").length;
@@ -199,6 +200,7 @@ ${sell_title }
 		</span>
 		</div>
 		<input type="hidden" name="sell_number" id="sell_number" >
+		<input type="hidden" name="order_number" id="order_number" >
 <!-- 		<input type="hidden" name="pro_number" id="pro_number" > -->
 		<input type="hidden" name="review_pdscore" id="review_pdscore" value="3">
 		<input type="hidden" name="review_sellscore" id="review_sellscore" value="3">

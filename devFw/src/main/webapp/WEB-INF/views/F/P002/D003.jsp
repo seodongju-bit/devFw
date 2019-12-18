@@ -9,7 +9,7 @@
 
 <head>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
-<link href="../devFw/resources/css/bootstrap.min.css" rel="stylesheet">
+
 <meta name="viewport" content="width=divice-width, initial-scale=1.0">
 <!DOCTYPE html>
 <style>
@@ -159,7 +159,7 @@ $(document).ready(function(){
     			<a class="reviewTag" onclick="readReview(${reviewMonthList.REVIEW_NUMBER })">${reviewMonthList.REVIEW_TITLE }</a>
     			<c:choose>
     				<c:when test='${reviewMonthList.REVIEW_URL!=null }' >
-    					<button onclick="reviewLink('${reviewMonthList.REVIEW_URL}')">link</button>
+    					<button class="btn btn-default" onclick="reviewLink('${reviewMonthList.REVIEW_URL}')">link</button>
     				</c:when>
     			</c:choose>
     		</td>
@@ -186,7 +186,7 @@ $(document).ready(function(){
     			<a class="reviewTag" onclick="readReview(${reviewTotalList.REVIEW_NUMBER })">${reviewTotalList.REVIEW_TITLE }</a>
     			<c:choose>
     				<c:when test='${reviewTotalList.REVIEW_URL!=null }' >
-    					<button onclick="reviewLink('${reviewTotalList.REVIEW_URL}')">link</button>
+    					<button class="btn btn-default" onclick="reviewLink('${reviewTotalList.REVIEW_URL}')">link</button>
     				</c:when>
     			</c:choose>
     		</td>
@@ -214,9 +214,9 @@ $(document).ready(function(){
     		<td > <fmt:formatDate value="${reviewList.REVIEW_STDATE }" pattern="yyyy/MM/dd HH:mm" /> </td>
     		<td>
     			<a class="reviewTag" onclick="readReview(${reviewList.REVIEW_NUMBER })">${reviewList.REVIEW_TITLE }</a>
-    			<c:choose>
+    			<c:choose> 
     				<c:when test='${reviewList.REVIEW_URL!=null }' >
-    					<button onclick="reviewLink('${reviewList.REVIEW_URL}')">link</button>
+    					<button class="btn btn-default" onclick="reviewLink('${reviewList.REVIEW_URL}')" >link</button>
     				</c:when>
     			</c:choose>
     		</td>

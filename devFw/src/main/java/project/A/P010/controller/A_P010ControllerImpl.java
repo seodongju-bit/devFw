@@ -56,16 +56,21 @@ public class A_P010ControllerImpl implements A_P010Controller{
 	@RequestMapping(value="/reviewProfile.do", method = RequestMethod.GET)
 	public ModelAndView reviewProfile(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("utf-8");
+		String viewName ="reviewProfile";
 		String mem_id = request.getParameter("mem_id");
+		HttpSession session = request.getSession();
+		if(mem_id.equals("me")) {
+			mem_id = (String)session.getAttribute("mem_id");
+			viewName = "reviewProfile2";
+		}
 		Map<String, Object> searchMap = new HashMap<String, Object>();
 		searchMap.put("mem_id", mem_id);
 		List<Map<String, Object>> profile = a_P010Service.searchProfile(searchMap);
 		List<Map<String, Object>> reviewList = a_P010Service.searchReview(searchMap);
 		profile.get(0).put("reviewCount", reviewList.size());
-		
 		reviewList = f_P002Service.thumbnail(reviewList);
 
-		ModelAndView mav = new ModelAndView("reviewProfile");
+		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("profile", profile.get(0));
 		mav.addObject("reviewList", reviewList);
 		return mav;

@@ -35,8 +35,6 @@ public class F_P001DAOImpl implements F_P001DAO {
 		return productlist;
 	}
 
-	
-
 	@Override
 	public List selectItem1() throws DataAccessException {
 		List<F_P001VO> productlist1 = null;  
@@ -105,6 +103,18 @@ public class F_P001DAOImpl implements F_P001DAO {
 	public List<Map<String, String>> eventSearch(Map<String, Object> searchMap) {
 		List<Map<String, String>> list = sqlSession.selectList("mapper.product.eventSearch", searchMap);
 		return list;
+	}
+
+	@Override
+	public List preBannerList() {
+		List bannerList = sqlSession.selectList("mapper.product.preBannerList");
+		return bannerList;
+	}
+
+	@Override
+	public List endBannerList() {
+		List bannerList = sqlSession.selectList("mapper.product.endBannerList");
+		return bannerList;
 	}
 
 

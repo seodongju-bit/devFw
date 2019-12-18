@@ -12,6 +12,21 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
+<style>
+
+@font-face {
+   src: url("../devFw/resources/font/NanumSquare_acR.ttf");
+   font-family: "NanumSquare";
+}
+
+#main{
+font-family:"NanumSquare";
+font-weight: 700;
+}
+
+</style>
+
+
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <link href="../devFw/resources/css/bootstrap.min.css" rel="stylesheet">
 
@@ -19,6 +34,7 @@
 
 </head>
 <body>
+<div id="main">
 <h1 align="center"  style="margin-bottom: 3%; margin-right: 6%;">쿠폰 사용내역 조회</h1>
 <table class="table table-hover">
 <tr>
@@ -38,7 +54,7 @@
 </c:forEach>
 
 </table>
-
+</div>
 <script src="../devFw/resources/js/bootstrap.min.js"></script>
 </body>
 </html>

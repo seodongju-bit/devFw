@@ -106,6 +106,18 @@ public class F_P001ServiceImpl implements F_P001Service{
 		return list;
 	}
 
+	@Override
+	public List preBannerList() {
+		List banner = f_P001_D04DAO.preBannerList();
+		return banner;
+	}
+
+	@Override
+	public List endBannerList() {
+		List banner = f_P001_D04DAO.endBannerList();
+		return banner;
+	}
+
 	
 
 	

@@ -14,6 +14,16 @@
 <link href="resources/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
   <style>
 
+@font-face {
+   src: url("../devFw/resources/font/NanumSquare_acR.ttf");
+   font-family: "NanumSquare";
+}
+
+#main{
+font-family:"NanumSquare";
+font-weight: 700;
+}
+
 #a{
 width:250px;
 height:800px;
@@ -67,7 +77,7 @@ function profile(){
 </script>
 </head>
 <body>
-
+<div id="main">
 <aside class="well span3 oc" id="a" role="navigation" style="margin-top: 110px;">
       <ul class="nav nav-list">
         <li class="nav-header">My 쇼핑</li>
@@ -78,7 +88,7 @@ function profile(){
         <li><a onclick="fn_coupon1()" style=" cursor: pointer;"><img src="../devFw/resources/image/icon/icon.png"  alt="쿠폰" style="width:30px;">&nbsp;&nbsp;&nbsp;할인 쿠폰</a></li>
         <li class="nav-header">My 활동</li>
         <li><a onclick="profile()" style=" cursor: pointer;"><img src="../devFw/resources/image/icon/profile.png"  alt="프로필" style="width:30px;">&nbsp;&nbsp;&nbsp;프로필</a></li>
-        <li><a href="myReview.do"><img src="../devFw/resources/image/icon/review.png"  alt="리뷰" style="width:30px;">&nbsp;&nbsp;&nbsp;내가 작성한 리뷰</a></li>
+        <li><a href="reviewProfile.do?mem_id=me"><img src="../devFw/resources/image/icon/review.png"  alt="리뷰" style="width:30px;">&nbsp;&nbsp;&nbsp;내가 작성한 리뷰</a></li>
         <li><a href="alert.do"><img src="../devFw/resources/image/icon/alert.png"  alt="신고" style="width:30px;">&nbsp;&nbsp;&nbsp;신고내역</a></li>
         <li><a href="usecoupon.do"><img src="../devFw/resources/image/icon/icon.png"  alt="쿠폰" style="width:30px;">&nbsp;&nbsp;&nbsp;사용한 쿠폰</a></li>
         <li><a href="point.do"><img src="../devFw/resources/image/icon/point.png"  alt="포인트" style="width:30px;">&nbsp;&nbsp;&nbsp;포인트 사용 내역</a></li>
@@ -92,7 +102,7 @@ function profile(){
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script type="text/javascript" src="../devFw/resources/js/bootstrap.js"></script>
 	<script src="../devFw/resources/js/bootstrap.min.js"></script>
-
+</div>
 </body>
 <input type="hidden" name="isLogOn" id="isLogOn" value="${isLogOn}"/>
 </html>

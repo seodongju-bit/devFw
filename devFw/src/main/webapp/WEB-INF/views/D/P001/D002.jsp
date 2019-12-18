@@ -182,46 +182,21 @@ img {
 
 
 
-	<h1 align="center" >마이페이지</h1>
-
-	<table class="table table-hover" >
-		<tr>
-
-			<th id="My" >My</th>
-			<th>미사용 티켓<br> <a href="#" style="">0장</a></th>
-			<th>배송중<br> <a href="#" style="">0건</a></th>
-			<th>할인쿠폰<br> <a href="#" style="">0장</a></th>
-			<th>포인트<br> <a href="#" style="">0 P </a></th>
-		</tr>
-		<tr>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-		</tr>
-	</table>
-
-
-	<p id="f" style=" margin-right: 0px;">내가 작성한 리뷰 목록</p>
+	<h1 align="center" >내가 작성한 리뷰 목록</h1>
+           
 
 	<table class="table table-hover">
 
 		<tr>
 			<!-- <th colspan="3"> <input type="button" class="btn btn-default" value="전체"> </th> -->
 			<th colspan="3">
-				<div class="container">
-					<ul class="nav nav-tabs">
-						<li class="active"><a href="myReview.do">My</a></li>
-
-					</ul>
-				</div>
+				
 			</th>
 		</tr>
 
 		<tr>
 			<th colspan="1" align=left>주문상품</th>
-		
+		   
 			
 		</tr>
 

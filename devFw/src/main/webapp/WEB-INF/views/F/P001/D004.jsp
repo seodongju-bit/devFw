@@ -46,14 +46,27 @@ div.gallery{
 
 #imgBox:hover{
 	overflow: visible;
-	z-index: 1;
-
+	height:400px;
+	animation-name: eventView;
+    animation-duration: 0.4s;
 }
+
+
+@keyframes eventView {
+  0%   {height:300px;}
+  100% {height:400px;}
+}
+
 #eventContent{
-	widht:100%;
+	width:100%;
 	height: 80px;
 	background-color: #2E2E2E;
 	color: white;
+}
+.eventState{
+/* 	background-color: lightgray; */
+	padding: 10px;
+	border-bottom: 1px solid gray;
 }
 </style>
 <script>
@@ -65,7 +78,8 @@ div.gallery{
 <body>  
 <div class="container">
 	<div class="banner" id="banner">
-	<h2>이벤트 목록</h2>
+	<h2>RECOM 이벤트</h2>
+	<h3 class="eventState"> < 진행중인 이벤트 > </h3>
 	<c:forEach var="banner" items="${eventbanner}">
 		<div class="gallery" style=" margin-top: 35px;">
 			<div id="imgBox">
@@ -79,6 +93,38 @@ div.gallery{
 			</div>
 		</div>
 	</c:forEach>
+	
+	<h3 class="eventState"> < 진행예정 이벤트 > </h3>
+	<c:forEach var="banner" items="${preEventbanner}">
+		<div class="gallery" style=" margin-top: 35px;">
+			<div id="imgBox">
+				<a href="eventSell.do?event=${banner.NO_NUMBER }" style="align: center;">
+    				<img src="${banner.NO_BANNER}" alt="" width="1095" height="400" >
+    			</a>
+			</div>
+			<div id="eventContent">
+				<p align="center" style="font-size: 30px; font-style: italic; font-weight: bolder;">${banner.NO_TITLE}</p>
+				<p align="center" style="font-style: italic; font-weight: bolder;">이벤트 기간: ${banner.NO_STDATE}&nbsp; ~ &nbsp;${banner.NO_ENDDATE}</p>
+			</div>
+		</div>
+	</c:forEach>
+	
+	<h3 class="eventState"> < 종료 이벤트 > </h3>
+	<c:forEach var="banner" items="${endEventbanner}">
+		<div class="gallery" style=" margin-top: 35px;">
+			<div id="imgBox">
+<%-- 				<a href="eventSell.do?event=${banner.NO_NUMBER }" style="align: center;"> --%>
+    				<img src="${banner.NO_BANNER}" alt="" width="1095" height="400" >
+<!--     			</a> -->
+			</div>
+			<div id="eventContent">
+				<p align="center" style="font-size: 30px; font-style: italic; font-weight: bolder;">${banner.NO_TITLE}</p>
+				<p align="center" style="font-style: italic; font-weight: bolder;">이벤트 기간: ${banner.NO_STDATE}&nbsp; ~ &nbsp;${banner.NO_ENDDATE}</p>
+			</div>
+		</div>
+	</c:forEach>
+	
+	
 	</div>
 </div>
 </body>

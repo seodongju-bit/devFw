@@ -18,22 +18,33 @@
 <link href="../devFw/resources/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">                          
 <style>   
 
+@font-face {
+   src: url("../devFw/resources/font/NanumSquare_acR.ttf");
+   font-family: "NanumSquare";
+}
+
 body, html {
 	font-family:"NanumSquare";
 	font-weight: 700;
 }
 
 
+#search{
+font-family:"NanumSquare";
+font-weight: 700;
+}
 
 #header{
-   font-family: 'Anton', sans-serif; 
+   font-family:"NanumSquare"; 
    background-color: white;
+   font-weight: 700;
 }
 #header{
    margin: 0;
    padding: 0;
    list-style: none;
-   font-family: 'Noto Sans KR', sans-serif;
+   font-family:"NanumSquare";
+   font-weight: 700;
 }
 
  
@@ -445,16 +456,22 @@ $(document).ready(function(){
        		 	
        		 	<c:choose>
        		 		<c:when test="${memberInfo.mem_division==0 }" >
-       		 			<a class="nav-item nav-link" href='${contextPath}/chatInit.do' ><img src="../devFw/resources/image/icon/chat.png"  alt="채팅" style="width: 16px;">&nbsp;관리자와 채팅</a>
+       		 			<a class="nav-item nav-link" href='${contextPath}/chatInit.do' ><img src="../devFw/resources/image/icon/chat.png"  alt="채팅" style="width: 16px;">&nbsp;문의</a>
        		 			<a class="nav-item nav-link" href="${contextPath}/basket.do"><img src="../devFw/resources/image/icon/shopping-cart.png"  alt="장바구니" style="width: 16px;">&nbsp;장바구니</a>
        		 			<a class="nav-item nav-link" href="${contextPath}/myPage.do"><img src="../devFw/resources/image/icon/user1.png"  alt="마이페이지" style="width: 16px;">&nbsp;마이페이지</a>
        		 		</c:when>
        		 		<c:when test="${memberInfo.mem_division==1 }" >
+       		 			<a class="nav-item nav-link" href='${contextPath}/chatInit.do' ><img src="../devFw/resources/image/icon/chat.png"  alt="채팅" style="width: 16px;">&nbsp;상품문의 내용</a>
+
+       		 		<!-- 	<a class="nav-item nav-link" id="itemManagerlink" href="${contextPath}/itemManager.do">상품관리</a>
+       		 			<a class="nav-item nav-link" id="itemManagerlink" href="${contextPath}/questionwrite5.do">문의사항 답변</a> -->
        		 			<a class="nav-item nav-link" id="itemManagerlink" href="${contextPath}/sellerPage.do"><img src="../devFw/resources/image/icon/product_management.png"  alt="상품관리" style="width: 18px;">&nbsp;판매자페이지</a>
        		 			<a class="nav-item nav-link" id="itemManagerlink" href="${contextPath}/questionwrite5.do"><img src="../devFw/resources/image/icon/question_answer.png"  alt="문의사항 답변" style="width: 18px;">&nbsp;문의사항 답변</a>
+
        		 		</c:when>
        		 		<c:when test="${memberInfo.mem_division==2 }" >
        		 			<a class="nav-item nav-link" id="siteManagerlink" href="${contextPath}/adminPage.do"><img src="../devFw/resources/image/icon/site_management.png"  alt="관리자 페이지" style="width: 18px;">&nbsp;관리자 페이지</a>
+       		 			<a class="nav-item nav-link" href='${contextPath}/chatInit.do' ><img src="../devFw/resources/image/icon/chat.png"  alt="채팅" style="width: 16px;">&nbsp;문의 내용</a>
        		 		</c:when>
        		 	</c:choose>
 			</c:when>
@@ -487,7 +504,7 @@ $(document).ready(function(){
 		</div>
 		<div class="mainMenu"><button class="menubtn" id="reviewRankingMenu" onclick="location.href='reviewRankingMenu.do'">리뷰랭킹</button></div>
 		<div class="mainMenu"><button class="menubtn" id="bestMenu" onclick="location.href='bestMenu.do'">베스트상품</button></div>
-		<div class="mainMenu"><button class="menubtn" id="eventProduct" onclick="location.href='eventProduct.do'"><!-- <img src="../devFw/resources/image/icon/-.png"  alt="이벤트" style="width: 20px; color: white;" > -->이벤트상품</button></div>
+		<div class="mainMenu"><button class="menubtn" id="eventProduct" onclick="location.href='eventProduct.do'">이벤트상품</button></div>
 		<div class="mainMenu"><button class="menubtn" id="event"onclick="location.href='event.do'">이벤트/공지사항</button></div>
 	</div>
 	</div>

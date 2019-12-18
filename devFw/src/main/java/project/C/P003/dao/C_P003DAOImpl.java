@@ -145,6 +145,22 @@ public class C_P003DAOImpl implements C_P003DAO{
 		return sqlSession.selectOne("mapper.notice.countBoard2");
 	}
 		
+	@Override
+	public List responseInfo(String qu_number) throws DataAccessException {
+		List<C_P003VO> responseInfo= null;
+		responseInfo = sqlSession.selectList("mapper.notice.responseInfo", qu_number);
+		return responseInfo;
+	}
+	@Override
+	public void  responseInfo2(Map<String, Object> dataMap10) throws DataAccessException {
+	    System.out.println(dataMap10);
+		sqlSession.insert("mapper.notice.responseInfo2", dataMap10);
+	}
+
+	
+	
+	
+	
 	}
 
 

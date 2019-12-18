@@ -23,7 +23,6 @@ public class C_P001DAOImpl implements C_P001DAO {
 	public List selectAllEventList(PagingVO vo) throws DataAccessException {
 		List<C_P001VO> eventList = null;
 		eventList = sqlSession.selectList("mapper.event.selectAllEventList", vo);
-		System.out.println("eventList"+eventList);
 		return eventList;
 	}
 	
@@ -37,7 +36,6 @@ public class C_P001DAOImpl implements C_P001DAO {
 	public List selectBoardDetail(Map<String, Object> dataMap) {
 		List dataList = null;
 		dataList = sqlSession.selectList("mapper.event.selectBoardDetail", dataMap);
-		System.out.println("da0333333333333333333333333333333333"+dataList);
 		return dataList;
 	}
 	

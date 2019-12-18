@@ -16,6 +16,17 @@
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <link href="../devFw/resources/css/bootstrap.min.css" rel="stylesheet">
 <style>
+
+@font-face {
+   src: url("../devFw/resources/font/NanumSquare_acR.ttf");
+   font-family: "NanumSquare";
+}
+
+#main{
+font-family:"NanumSquare";
+font-weight: 700;
+}
+
 #content{
 height:1000px;
 }
@@ -71,6 +82,7 @@ function takecoupon(co_number, stdate, enddate){
 
 </head>
 <body>
+<div id="main">
 <h1 align="center" style="margin-bottom: 3%; margin-right: 6%;">쿠폰 발급기</h1>
 <table class="table table-hover">
 <tr>
@@ -90,7 +102,7 @@ function takecoupon(co_number, stdate, enddate){
 </c:forEach>
 
 </table>
-
+</div>
 <script src="../devFw/resources/js/bootstrap.min.js"></script>
 </body>
 </html>

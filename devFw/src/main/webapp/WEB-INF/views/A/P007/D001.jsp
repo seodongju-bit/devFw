@@ -13,6 +13,16 @@
 <title>Insert title here</title>
 <style>
 
+@font-face {
+   src: url("../devFw/resources/font/NanumSquare_acR.ttf");
+   font-family: "NanumSquare";
+}
+
+#main, #btn1, #btn2, #btn3{
+font-family:"NanumSquare";
+font-weight: 700;
+}
+
 page_title{
 text-align:center;
 }
@@ -117,6 +127,7 @@ margin-left: 5px;
 
 </head>
 <body onload="LoadPage()">
+<div id="main">
 <h1 align="center" style="margin-bottom: 3%; margin-top: 5%;">쿠폰 발급 현황</h1>
 
 
@@ -132,6 +143,7 @@ margin-left: 5px;
 	<div class="clear hidden"></div>
 	<script>createIBSheet("mySheet", "800px", "500px");</script>
   </div>
+  </div>s
 <script src="../devFw/resources/js/bootstrap.min.js"></script>
 </body>
 </html>

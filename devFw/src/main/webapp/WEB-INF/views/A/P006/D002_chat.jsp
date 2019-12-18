@@ -71,11 +71,15 @@ $(document).ready(function(){
 		
 		//Add Event
 		//유저 선택전  막기
-	   // $("#chat-footer>input[type=button]").prop('disabled',true);
-	    
+	   $("#chat-footer>input[type=button]").prop('disabled',true);
+    
 		//유저목록 클릭이벤트
 		$(document).on("click",".discussion",function(){
 			if(!$(this).hasClass("clicked")){
+				
+				var title = document.getElementById("prodTitle").value;
+		        
+		        $("#chat-footer>textarea").val('['+title+']'+'(문의)\r\n')
 				//채팅 header에 유저 정보 표시
 				$('#user-info').empty();
 				var information = $(this).children();
@@ -115,7 +119,7 @@ $(document).ready(function(){
 	    	if(textMessage!==''){
 	    		var contents={
 	    			message : textMessage,
-	    			receiver : "${seller}"
+	    			receiver : other
 	    		}
 		    	sendText(ws,"send_message",contents);
 	    	}
@@ -163,7 +167,7 @@ $(document).ready(function(){
 			"mem_nick" : mem_nick,
 			"mem_id" : mem_id
 		}
-		console.log(result.mem_id);
+		/* console.log(result.sellerId); */
 		return result;
 	}
 	
@@ -206,9 +210,9 @@ $(document).ready(function(){
 		var divData;
 		
 		if(res.me_at=='true'){//보낸사람이 나면
-			divData = new memberDivForm('discussion',null,null,res.receiver);
+			divData = new memberDivForm('discussion',null,res.receiver);
 		}else{
-			divData = new memberDivForm('discussion',recData.body.sender_info.mem_id,recData.body.sender_info.mem_nick,res.sender);
+			divData = new memberDivForm('discussion',recData.body.sender_info.mem_nick,res.sender);
 		}
 		
 		prependMember(divData);
@@ -292,6 +296,12 @@ $(document).ready(function(){
         var msgPre = document.createElement("pre"); 
         var msgDate = document.createElement("div");
         
+        var today = new Date();
+        
+        var title = document.getElementById("prodTitle").value;
+        
+        $("#chat-footer>textarea").val(title + '[문의]'+'\n')
+        
         
         if(meCheck=="true"){
 			$(msgBox).addClass("message-right");        	
@@ -299,14 +309,14 @@ $(document).ready(function(){
 			$(msgBox).addClass("message-left");
         }
         
-        $(msgDate).text(date.toLocaleString('ko-KR'));        
+        $(msgDate).text(today.toLocaleString('ko-KR'));        
         $(msgPre).text(inputText);
         
         $(msgBox).append(msgPre);
         $(msgBox).append(msgDate);
         $("#chat-message").append(msgBox);
         
-        $("#chat-footer>textarea").val('')
+        //$("#chat-footer>textarea").val('')
         
         //스크롤 밑으로 내리기
         var height=document.getElementById('chat-message').scrollHeight;
@@ -319,8 +329,14 @@ $(document).ready(function(){
 
 @charset "UTF-8";
 
-@font-face{
-	font-family:"nanumEB";	
+	@font-face {
+   src: url("../devFw/resources/font/NanumSquare_acR.ttf");
+   font-family: "NanumSquare";
+}
+
+#main{
+font-family:"NanumSquare";
+font-weight: 700;
 }
 	
 	.msg-container,.msg-container *{
@@ -347,7 +363,7 @@ $(document).ready(function(){
 	width: 80%;
 	min-width: 1000px;/**/
 	height: 800px;/**/		
-	background: #6780cc;
+	background: gray;
 	box-shadow: 0 10px 10px rgba(0,0,0,0.19);	
    }   
    
@@ -389,11 +405,14 @@ $(document).ready(function(){
    .discussion{
       height:80px;
       padding:20px;
+      cursor: pointer;
+      color: white;
    }
 
 	#people-list .clicked,#search-list .clicked{
-		background:#8FA4E1;
-		border-right:5px solid #C1CEF3
+		background:white;
+		border-right:5px solid black;
+		color: black;
 	}
 
 	#search-list{
@@ -469,9 +488,9 @@ $(document).ready(function(){
 		display:flex;
 		justify-content : center;
 		align-items:center;
-		font-family : nanumEB;
+		font-family : NanumSquare;
 		font-size:1.5em;
-		color:grey;
+		
 	}
    
    #chat-message>*{
@@ -497,11 +516,11 @@ $(document).ready(function(){
    }
    
    .message-left pre{
-      background-color:#c6ed94;   
+      background-color:#b9c0c1;   
    }
    
    .message-right pre{
-      background-color:#94C2ED;   
+      background-color:white;   
    }
    
    .message-left div, .message-right div{
@@ -530,7 +549,7 @@ $(document).ready(function(){
       margin-left : 1%;
       width : 14%;
       height : 100%;
-      color: #94C2ED;
+      color: black;
        border: none;
        cursor: pointer;
        font-weight: bold;
@@ -575,7 +594,7 @@ $(document).ready(function(){
 	#pop-header>div{
 		display:inline-block;
 		width:initial;
-		font-family : nanumEB;
+		font-family : NanumSquare;
 		font-size:1.5em;	
 	}
 	
@@ -610,11 +629,12 @@ $(document).ready(function(){
 		margin-left: 10px;
 		border-radius : 20px;
 		border :none;
-		background-color:#B9C9F8;
+		background-color:gray;
+		color: white;
 	}
 	
 	#pop-search>input[type=button]:hover,#pop-footer>input:hover{
-		background-color:#8da5ee;	
+		background-color:black;	
 	}	
 		
 	/*pop-list*/
@@ -627,7 +647,7 @@ $(document).ready(function(){
 	#pop-list>.no-result{
 		margin-top:10	px;
 		text-align:center;
-		font-family : nanumEB;
+		font-family : NanumSquare;
 		font-size:1.5em;
 		color:grey
 	}
@@ -637,14 +657,22 @@ $(document).ready(function(){
 		width:100%;
 		margin-top : 10px;
 		display:inline-block;
+		cursor: pointer;
 	}
 	
 	.pop-member:hover{
 		background-color : rgba(100, 100, 100, 0.1);	
 	}
 	
+	@-webkit-keyframes blinker { 0% { opacity: 0; } 50% { opacity: 1; } 100% { opacity: 0; } }
+
+	
 	#pop-list .selected{
-		background-color : rgba(185, 201, 248, 0.5);
+		-webkit-animation-name: blinker;
+		-webkit-animation-iteration-count: infinite;
+		-webkit-animation-duration: 1s;
+
+		color: black;
 	}	
 	
 	/*pop-fooer*/
@@ -659,13 +687,18 @@ $(document).ready(function(){
 		width:20%;
 		height:35px;
 		border-radius:5px;
-		background-color:#B9C9F8;
+		background-color:gray;
+		color: white;
 	}	
+	.hole{
+	padding-left: 150px;
+	}
 </style>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>   
 <body>
+<div class="hole">
    <div class="msg-container">
       <div id="people">
          <div id="people-search">
@@ -687,34 +720,44 @@ $(document).ready(function(){
       <div id="chat">
          <div id="chat-header">
 			<div id="user-info"></div>
-			<i class="fas fa-user-plus fa-2x"></i>
+			
          </div>
          <div id="chat-message">
 			<div id="chat-main">
-				쪽지를 확인할 대상을 선택해주세요
+				문의를 확인할 대상을 선택해주세요
 			</div>
          </div>
          <div id="chat-footer">
             <textarea></textarea>
             <input type="button" value="전송">
          </div>
+         
+         <c:forEach var="prodlist" items="${prodList }">
+               <input type="hidden" id="prodTitle" value="${prodlist.sell_title }"/>
+          </c:forEach>
+         
       </div>
    </div>
    	<div id="user-add">
 		<div id="pop-up">
 			<div id="pop-header">
-				<div>새	쪽지</div>
-				<a id="pop-close">&times;</a>			
+				<div>새로운 문의</div>
+				<a id="pop-close" style="cursor: pointer;">&times;</a>			
 			</div>
 			<div id="pop-search">
-				<input type="text" placeholder="새로운 유저 검색"/>
+<<<<<<< HEAD
+				<input type="text" placeholder="판매자 목록 검색"/>
+=======
+				<input type="text" placeholder="관리자 목록 검색"/>
+>>>>>>> refs/remotes/origin/master
 				<input type="button" value="검색">
 			</div>
 			<div id="pop-list"></div>
-			<div id="pop-footer">
-				<input type="button" value="선택">			
+			<div id="pop-footer" >
+				<input type="button" value="선택" style="cursor: pointer;">			
 			</div>
 		</div>
 	</div>
+</div>
 </body>
 </html>
