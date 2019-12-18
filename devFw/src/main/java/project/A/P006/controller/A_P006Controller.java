@@ -7,6 +7,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 public interface A_P006Controller {
 	public ModelAndView chatInit(HttpServletRequest request, HttpServletResponse response) throws Exception;
-
-	ModelAndView sellerChat(HttpServletRequest request, HttpServletResponse response) throws Exception;
+/*
+	ModelAndView sellerChat(HttpServletRequest request, HttpServletResponse response) throws Exception;*/
 }

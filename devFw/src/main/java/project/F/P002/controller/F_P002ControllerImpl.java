@@ -79,6 +79,7 @@ public class F_P002ControllerImpl   implements F_P002Controller {
 
 		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("content", request.getParameter("contents"));
+		mav.addObject("brand", request.getParameter("brand"));
 		return mav;
 	}
 	

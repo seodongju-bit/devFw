@@ -30,6 +30,10 @@ public interface F_P001Service {
 
 	public List<Map<String, String>> eventSearch(Map<String, Object> searchMap);
 
+	public List preBannerList();
+
+	public List endBannerList();
+
 
 	                                    
 

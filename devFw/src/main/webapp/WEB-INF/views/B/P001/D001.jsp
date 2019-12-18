@@ -209,12 +209,12 @@ function pageLoad(command){
   			<h1>상품관리</h1><br>
   			
 			<button class="tab btn-default" id="saleManagement">판매상품관리</button>
-			<button class="tab btn-default" id="searchOrder" onclick="pageLoad('searchOrder')">주문완료</button>
-			<button class="tab btn-default" id="shippingManagement">배송중</button>
-			<button class="tab btn-default" id="deliveryCompleted">배송완료</button>
-			<button class="tab btn-default" id="orderCancel">주문취소</button>
-			<button class="tab btn-default" id="saleCompleted">판매완료</button>
-			<button class="tab btn-default" id="currentOrder">현재주문전체</button>
+<!-- 			<button class="tab btn-default" id="searchOrder" onclick="pageLoad('searchOrder')">주문완료</button> -->
+<!-- 			<button class="tab btn-default" id="shippingManagement">배송중</button> -->
+<!-- 			<button class="tab btn-default" id="deliveryCompleted">배송완료</button> -->
+<!-- 			<button class="tab btn-default" id="orderCancel">주문취소</button> -->
+<!-- 			<button class="tab btn-default" id="saleCompleted">판매완료</button> -->
+<!-- 			<button class="tab btn-default" id="currentOrder">현재주문전체</button> -->
 			
 			
 			<div id="contentsPage">

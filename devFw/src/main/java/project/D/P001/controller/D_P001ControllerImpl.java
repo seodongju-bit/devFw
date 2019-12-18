@@ -102,7 +102,9 @@ public class D_P001ControllerImpl   implements D_P001Controller {
 	public ModelAndView reviewwrite(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = getViewName(request);
 		String sell_number = request.getParameter("sell_number");
+		String order_number = request.getParameter("order_number");
 		String sell_title = request.getParameter("sell_title");
+		request.setAttribute("order_number", order_number);
 		request.setAttribute("sell_number", sell_number);
 		request.setAttribute("sell_title", sell_title);
 		viewName = "reviewwrite";
@@ -123,6 +125,7 @@ public class D_P001ControllerImpl   implements D_P001Controller {
 		resultMap.put("mem_id", mem_id);
 		resultMap.put("review_title", request.getParameter("review_title"));
 		resultMap.put("sell_number", request.getParameter("sell_number"));
+		resultMap.put("order_number", request.getParameter("order_number"));
 		//resultMap.put("pro_number", request.getParameter("pro_number"));
 		resultMap.put("review_pdscore", request.getParameter("review_pdscore"));
 		resultMap.put("review_sellscore", request.getParameter("review_sellscore"));

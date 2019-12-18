@@ -61,17 +61,12 @@
 		];
 		IBS_InitSheet(mySheet , initSheet);
 		
-		
-		
-		
 	}
 	function search(value){
 		//alert(value);
 		var json = mySheet.GetSearchData("searchSaleAction.do?p_id="+value);
 		mySheet.LoadSearchData(json);
 	}
-
-	
 
 	var num = 0;
 	function mySheet_OnDblClick(row, col, cellx, celly, cellw, cellh) {

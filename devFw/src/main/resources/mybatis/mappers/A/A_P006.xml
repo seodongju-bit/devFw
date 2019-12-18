@@ -18,6 +18,10 @@
 		<result property="mem_division" column="mem_division" />
 	</resultMap>
 	
+	<resultMap id="prodResult" type="F_P002VO">
+		<result property="sell_title" column="sell_title" />
+	</resultMap>
+	
 	<select id="selectMemberList" parameterType="string" resultMap="membersResult">
 	    <![CDATA[
 			SELECT  mem_id, mem_name, mem_nick
@@ -81,4 +85,25 @@
 			AND ( mem_id LIKE '%'||#{keyword}||'%' OR mem_nick LIKE '%'||#{keyword}||'%' )
 	    ]]>
 	</select>
+	
+	<select id="selectSeller" parameterType="string" resultMap="membersResult">
+	    <![CDATA[
+			select p.mem_id, m.mem_nick, m.mem_name
+			from members m, productsell p
+			where m.mem_id = p.mem_id
+			and p.mem_id = #{mem_id}
+			and p.sell_number = #{sell_number}
+	    ]]>
+	</select>
+	
+	<select id="selectprod" parameterType="string" resultMap="prodResult">
+	    <![CDATA[
+			select sell_title
+			from productsell
+			where sell_number = #{sell_number}
+			and mem_id = #{mem_id}
+	    ]]>
+	</select>
+	
+	
 </mapper>

@@ -16,4 +16,8 @@ public interface A_P006DAO {
 
 	List<A_P001VO> selectSearchList(Map<String, String> searchMap) throws Exception;
 
+	List<A_P001VO> selectSeller(Map<String, Object> searchMap);
+
+	List<A_P001VO> selectprod(Map<String, Object> searchMap);
+
 }
