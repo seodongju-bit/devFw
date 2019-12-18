@@ -21,7 +21,7 @@
       <form>
         <h1>회원가입시 등록한 이메일을 확인해주세요</h1>
         <br></br>
-        <button class="sign-upbtn" type="button" onclick="location.href='signinpage.do'"> 로그인 페이지 이동</button>
+        <img src="../devFw/resources/image/gologinpage.png" style="width:300px;" onclick="location.href='signinpage.do'">     
       	<br></br>
       	
       </form>

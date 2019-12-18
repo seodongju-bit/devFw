@@ -21,8 +21,8 @@
       <form>
         <h1>회원 가입에 성공했습니다</h1>
         <br></br>
-        <button class="sign-upbtn" type="button" onclick="location.href='signinpage.do'"> 로그인 페이지 이동</button>
-      	<br></br>
+        <img src="../devFw/resources/image/gologinpage.png" style="width:75px;" onclick="location.href='signinpage.do'">      	
+        <br></br>
       	
       </form>
 
