@@ -300,7 +300,9 @@ ul.tabs li.active, html ul.tabs li.active a:hover {
 							<td><img class="orderImg" src="${orderList2.SELL_THUMBNAIL}"
 								width="80px" height="80px"> <a
 								href="sellItems.do?sell_no=${orderList2.SELL_NUMBER}">${orderList2.SELL_TITLE}</a>
-								<br> <fmt:formatNumber value="${orderList2.SELL_PRICE}" />원</td>
+								<br> <fmt:formatNumber value="${orderList2.SELL_PRICE}" />원
+								<br> 추천리뷰 : ${orderList2.OD_RECOMREVIEW}
+								</td>
 							<td><c:choose>
 									<c:when test="${orderList2.OD_STATE=='F_0001'}">
 										<p>결제준비중</p>
@@ -338,7 +340,7 @@ ul.tabs li.active, html ul.tabs li.active a:hover {
 										
 								</c:when>
 								<c:when test="${orderList2.OD_STATE !='F_0006'}">
-										<p class="tdMenu" onclick="confirm('${orderList2.ORDER_NUMBER}', '${orderList2.SELL_NUMBER}','${orderList2.OD_RECOMREVIEW}')">구매확정</p>
+										<p class="tdMenu" onclick="confirm('${orderList2.ORDER_NUMBER}', '${orderList2.SELL_NUMBER}','${orderList2.OD_RECOMREVIEW}','${orderList2.SELL_PRICE}')">구매확정</p>
 								</c:when>
 								</c:choose>
 								<c:choose>
@@ -496,7 +498,7 @@ ul.tabs li.active, html ul.tabs li.active a:hover {
 		formObj.submit();
 	}
 	
-	function confirm(order_number, sell_number, od_recomreview){
+	function confirm(order_number, sell_number, od_recomreview, sell_price){
 		
 		Swal.fire({
 			  title: '구매확정',
@@ -517,7 +519,8 @@ ul.tabs li.active, html ul.tabs li.active a:hover {
 				    	   
 				    	   "order_number":order_number,
 				    	   "sell_number" : sell_number,
-				    	   "od_recomreview":od_recomreview
+				    	   "od_recomreview":od_recomreview,
+				    	   "sell_price":sell_price
 				       },
 				       success: function (data) {
 				    	   if(data.check>0){

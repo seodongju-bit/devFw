@@ -250,7 +250,7 @@
 	]]>
 	</insert>
 
-<update id="confirm" parameterType="java.util.Map">
+	<update id="confirm" parameterType="java.util.Map">
 	<![CDATA[
 		update orderdetail
 		set od_state = 'F_0005'

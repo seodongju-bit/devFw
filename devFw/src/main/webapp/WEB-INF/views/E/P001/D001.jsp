@@ -393,7 +393,6 @@ h1{
     $(document).ready(function(){
     	
     	$('#usebutton, #insert_coupon').on('click', function(){
-    		
     		var final_order_total_pro_price = $("#final_order_total_pro_price").val();
         	var total_delivery_price = $("#total_delivery_price").val();
         	var order_total_sale_price = $("#order_total_sale_price").val();
@@ -471,6 +470,9 @@ h1{
 		  	      ${item.order_color}&nbsp;&nbsp;&nbsp;${item.detail_quantity}개
 		  	      <input type="hidden" id="order_color" name="order_color" value="${item.order_color}"/>
 		  	      <input type="hidden" id="detail_quantity" name="detail_quantity" value="${item.detail_quantity}"/>
+		  	      ${item.od_recomReview}
+	  	    <input type="text" id="od_recomReview" name="od_recomReview" value="${item.od_recomReview}"/>
+		  	      
 	  	      </span>
 	  	      </div>
 	  	    </td>
@@ -499,12 +501,7 @@ h1{
 	  	      <input type="hidden" id="point_save" name="point_save" value="${point_save}"/>
 	  	    </td>
 	  	  </tr>
-	  	  <tr>
-	  	   <td>
-	  	   	${item.od_recomReview}
-	  	    <input type="hidden" id="od_recomReview" name="od_recomReview" value="${item.od_recomReview}"/>
-	  	    </td>
-	  	  </tr>
+	  	   	
 	  	  	<c:set var="order_total_prod_price" value="${order_total_price + item.pro_price * item.detail_quantity}"/>
 	  	  	<c:set var="order_total_price" value="${order_total_price + item.sell_price * item.detail_quantity}"/>
 	  	  	<c:set var="order_total_sale_price" value="${order_total_sale_price + (item.pro_price - item.sell_price) * item.detail_quantity}"/>

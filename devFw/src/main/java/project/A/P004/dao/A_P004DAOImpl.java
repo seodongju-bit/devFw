@@ -150,7 +150,9 @@ public class A_P004DAOImpl implements A_P004DAO {
 
 	@Override
 	public void confirm(Map<String, Object> dataMap) {
+		
 		sqlSession.update("mapper.active.confirm", dataMap);
+		//sqlSession.update("mapper.active.givePoint", dataMap);
 	}
 	
 	@Override
