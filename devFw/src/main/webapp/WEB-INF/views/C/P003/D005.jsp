@@ -37,7 +37,7 @@ height:1000px;
 
 		<input type="text" name="mem_id" style="width: 20%;" placeholder="작성자"/><br><br><br>
 		
-		<input type="text" name="de_division" style="width: 20%;" placeholder="분류"/><br>
+		<input id="subdivision" type="text" name="de_division" style="width: 20%;" placeholder="분류"/><br>
 		
 		
 		<br><br> 
@@ -70,6 +70,7 @@ $(function() {
           bUseModeChanger : true,
        }
     });
+
     
     $("#subBtns").click(function(){
     	var frm = document.frmch;
@@ -103,6 +104,12 @@ $(function() {
     });
     
 });
+
+
+
+
+
+
 
 /* function goWrite(frm) {      
     //전역변수
