@@ -27,5 +27,11 @@ public class B_P001DAOImpl implements B_P001DAO {
 	public void addProduct(B_P001VO b_P001VO) throws DataAccessException {
 		sqlSession.insert("B.P001.addProduct", b_P001VO);
 	}
-
+	
+	@Override
+	public List<B_P001VO> conditionSearch(Map<String, Object> searchMap) throws DataAccessException {
+		List<B_P001VO> list = sqlSession.selectList("B.P001.conditionSearch", searchMap);
+		System.out.println(list);
+		return list;
+	}
 }

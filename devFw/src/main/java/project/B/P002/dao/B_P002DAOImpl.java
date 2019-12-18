@@ -9,6 +9,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
 import project.B.P002.vo.B_P002VO;
+import project.main.paging.MainPagingVO;
 
 
 @Repository("B_P002DAO") 
@@ -42,10 +43,15 @@ public class B_P002DAOImpl implements B_P002DAO {
 	}
 	
 	@Override
-	public List orderRequestList(String p_id) throws DataAccessException {
+	public List orderRequestList(MainPagingVO mainPagingVO) throws DataAccessException {
 		List<B_P002VO> orderRequestList = null;
-		orderRequestList = sqlSession.selectList("B.P002.orderRequestList", p_id);
+		orderRequestList = sqlSession.selectList("B.P002.orderRequestList", mainPagingVO);
 		return orderRequestList;
+	}
+	
+	@Override
+	public int countOrdererList(String p_id) throws Exception {
+		return sqlSession.selectOne("B.P002.countOrdererList", p_id);
 	}
 	
 	@Override

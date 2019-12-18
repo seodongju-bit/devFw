@@ -30,6 +30,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import project.B.P002.service.B_P002Service;
 import project.B.P002.service.FileUploadService;
 import project.B.P002.vo.B_P002VO;
+import project.main.paging.MainPageMaker;
+import project.main.paging.MainPagingVO;
+import project.search.paging.SearchPageMaker;
  
 
 
@@ -148,7 +151,7 @@ public class B_P002ControllerImpl   implements B_P002Controller {
 	   }
 	   @RequestMapping(value="/orderRequestList.do", method = {RequestMethod.GET, RequestMethod.POST})
 	   @ResponseBody
-	   public ModelAndView orderRequestList(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	   public ModelAndView orderRequestList(HttpServletRequest request, HttpServletResponse response, MainPagingVO mainPagingVO) throws Exception {
 		   String viewName = getViewName(request);
 		   viewName = "orderRequestList";
 		   HttpSession session = request.getSession();
@@ -158,16 +161,19 @@ public class B_P002ControllerImpl   implements B_P002Controller {
 			   mav.setViewName("redirect:main.do");
 			   return mav;
 		   }
-		   List orderRequestList = b_P002Service.orderRequestList(p_id);
+		  mainPagingVO.setP_id(p_id);
 		   
-		   for(int i = 0; i < orderRequestList.size(); i++) {
-			   b_P002VO.getSell_number();
-			   System.out.println(b_P002VO.getSell_number());
-		   }
+		  ModelAndView mav = new ModelAndView(viewName);
+		  
+		  MainPageMaker mainPageMaker = new MainPageMaker();
+		  mainPageMaker.setMainPagingVO(mainPagingVO);
+		  mainPageMaker.setTotalCount(b_P002Service.countOrdererList(p_id));
+		  
 		   
-		   ModelAndView mav = new ModelAndView(viewName);
-		   mav.addObject("orderRequestList", orderRequestList);
-		   return mav;
+		  List orderRequestList = b_P002Service.orderRequestList(mainPagingVO);
+		  mav.addObject("orderRequestList", orderRequestList);
+		  mav.addObject("mainPageMaker", mainPageMaker);
+		  return mav;
 	   }
 	   
 	   @RequestMapping(value="/ordererInfo.do", method = {RequestMethod.GET, RequestMethod.POST})

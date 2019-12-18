@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import project.B.P002.vo.B_P002VO;
+import project.main.paging.MainPagingVO;
 
 
 
@@ -35,7 +36,7 @@ public interface B_P002Controller {
 	Map<String, Object> proNumSearchAction(HttpServletRequest request, HttpServletResponse response)
 			throws Exception;
 
-	public ModelAndView orderRequestList(HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public ModelAndView orderRequestList(HttpServletRequest request, HttpServletResponse response, MainPagingVO mainPagingVO) throws Exception;
 	
 	public ModelAndView ordererInfo(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	 

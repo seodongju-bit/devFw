@@ -62,6 +62,9 @@ public class F_P002DAOImpl implements F_P002DAO {
 	public int countSearch(SearchVO searchVO) throws Exception {
 		return sqlSession.selectOne("F.P002.countSearch", searchVO);
 	}
+	public int countProd(SearchVO searchVO) throws Exception {
+		return sqlSession.selectOne("F.P002.countProd", searchVO);
+	}
 	
 	@Override
 	public void addBasket(Map<String, Object> searchMap) throws DataAccessException { //상품 옵션검색

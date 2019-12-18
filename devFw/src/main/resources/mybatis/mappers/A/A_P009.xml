@@ -24,6 +24,20 @@
           </if>
         </where>
 	</select>
+	<select id="conditionDeclaration" resultMap="A_P009Result01" parameterType="java.util.Map"> 
+      <![CDATA[
+      	select de_number, mem_id, de_division, de_date, de_contents
+      	from declarations
+      ]]>
+       <where>
+          <if test="condition == 'de_number'">
+            de_number like '%' ||#{search} || '%'
+          </if>
+          <if test="condition == 'mem_id'">
+            mem_id like '%' ||#{search} || '%'
+          </if>
+        </where>
+	</select>
 	
 	<update id="updateData" parameterType="java.util.Map">
 	  <![CDATA[

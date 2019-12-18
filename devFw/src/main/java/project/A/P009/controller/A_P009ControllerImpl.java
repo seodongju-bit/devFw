@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 import project.A.P008.vo.A_P008VO;
 import project.A.P009.service.A_P009Service;
 import project.A.P009.vo.A_P009VO;
+import project.B.P001.vo.B_P001VO;
 
 @Controller("A_P009Controller")
 public class A_P009ControllerImpl implements A_P009Controller{
@@ -34,7 +36,11 @@ public class A_P009ControllerImpl implements A_P009Controller{
 	@Override
 	@RequestMapping(value="/declarationsManager.do", method = RequestMethod.GET)
 	public ModelAndView declarationsManager(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		request.setCharacterEncoding("utf-8");
+		if(!adminCheck(request)) {
+			ModelAndView mav = new ModelAndView("declarationsManager");
+			mav.setViewName("redirect:main.do");
+			return mav;
+		}
 		ModelAndView mav = new ModelAndView("declarationsManager");
 		return mav;
 	}
@@ -54,6 +60,25 @@ public class A_P009ControllerImpl implements A_P009Controller{
 		
 		return resultMap;
 	}
+	
+	@Override
+	@RequestMapping(value = "/ConditionDeclaration.do", method = {RequestMethod.GET, RequestMethod.POST})
+	@ResponseBody
+	public Map ConditionDeclaration(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		request.setCharacterEncoding("utf-8");
+		Map<String, Object> searchMap = new HashMap<String, Object>();
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		
+		String search = request.getParameter("search");
+		String condition = request.getParameter("condition");
+		searchMap.put("condition", condition);
+		searchMap.put("search", search);
+		List<A_P009VO> data = a_P009Service.conditionDeclaration(searchMap);
+		resultMap.put("Data", data);
+		
+		return resultMap;
+	}
+	
 	
 	@Override 
 	@RequestMapping(value = "/declarationsList2.do", method = { RequestMethod.GET, RequestMethod.POST })
@@ -93,5 +118,18 @@ public class A_P009ControllerImpl implements A_P009Controller{
 		}
 		resultMap.put("Result", result);
 		return resultMap;
+	}
+	
+	public boolean adminCheck(HttpServletRequest request) {
+		boolean result = false;
+		HttpSession session = request.getSession();
+		Boolean isLogOn = (Boolean)session.getAttribute("isLogOn");
+		String mem_division = (String)session.getAttribute("mem_division");
+		try {
+			if(isLogOn && mem_division.equals("2")) {
+				result = true;
+			}
+		}catch(Exception e) {}
+		return result;
 	}
 }

@@ -287,9 +287,10 @@ h1{
     	
     	var formObj=document.createElement("form");
     	
+    	
     	var sell_number = document.getElementById("sell_number");
     	var sell_title = document.getElementById("sell_title");
-    	var order_size = document.getElementById("order_color");
+    	var order_size = document.getElementById("order_size");
     	var order_color = document.getElementById("order_color");
     	var detail_quantity = document.getElementById("detail_quantity");
     	var pro_price = document.getElementById("pro_price");
@@ -317,9 +318,10 @@ h1{
 		var pay_method = document.getElementById("pay_method");
 		var od_state = document.getElementById("od_state");
 		var co_number = document.getElementById("h_co_number");
+		var choice_review = document.getElementById("choice_review");
 		
 		
-    	
+		
         IMP.init('imp02202162');
         IMP.request_pay({
             pg : 'html5_inicis',
@@ -333,7 +335,7 @@ h1{
             buyer_addr : order_address1.value + "<br>" + order_address2.value,
             buyer_postcode : order_zip.value,
         }, function(rsp) {
-            if ( rsp.success ) {
+            if ( true ) {
                 var msg = '결제가 완료되었습니다.';
 				formObj.appendChild(sell_number);
 				formObj.appendChild(sell_title);
@@ -364,6 +366,7 @@ h1{
 				formObj.appendChild(od_state);
 				formObj.appendChild(point_save_total);
 				formObj.appendChild(co_number);
+				formObj.appendChild(choice_review);
 				
 				document.body.appendChild(formObj);
 				formObj.method="post";
@@ -393,7 +396,6 @@ h1{
     $(document).ready(function(){
     	
     	$('#usebutton, #insert_coupon').on('click', function(){
-    		
     		var final_order_total_pro_price = $("#final_order_total_pro_price").val();
         	var total_delivery_price = $("#total_delivery_price").val();
         	var order_total_sale_price = $("#order_total_sale_price").val();
@@ -451,7 +453,7 @@ h1{
 	  	  <td>배송비</td>
 	  	  <td>배송비 지급방법</td>
 	  	  <td>적립 포인트</td>
-	  	  <td>선택 리뷰</td>
+	  	  <td>선택한 리뷰 코드</td>
 	  	</tr>
 	  	<c:forEach var="item" items = "${orderList}" varStatus = "list_num">
 	  	  <tr>
@@ -470,7 +472,7 @@ h1{
 		  	      <input type="hidden" id="order_size" name="order_size" value="${item.order_size}"/>
 		  	      ${item.order_color}&nbsp;&nbsp;&nbsp;${item.detail_quantity}개
 		  	      <input type="hidden" id="order_color" name="order_color" value="${item.order_color}"/>
-		  	      <input type="hidden" id="detail_quantity" name="detail_quantity" value="${item.detail_quantity}"/>
+		  	      <input type="hidden" id="detail_quantity" name="detail_quantity" value="${item.detail_quantity}"/>  
 	  	      </span>
 	  	      </div>
 	  	    </td>
@@ -498,13 +500,14 @@ h1{
 	  	      <fmt:formatNumber value="${point_save}"/>P
 	  	      <input type="hidden" id="point_save" name="point_save" value="${point_save}"/>
 	  	    </td>
-	  	  </tr>
-	  	  <tr>
-	  	   <td>
-	  	   	${item.od_recomReview}
-	  	    <input type="hidden" id="od_recomReview" name="od_recomReview" value="${item.od_recomReview}"/>
+	  	    <td>
+
+	  	   	${item.choice_review}
+	  	    <input type="hidden" id="choice_review" name="choice_review" value="${item.choice_review}"/>
+
 	  	    </td>
 	  	  </tr>
+	  	   	
 	  	  	<c:set var="order_total_prod_price" value="${order_total_price + item.pro_price * item.detail_quantity}"/>
 	  	  	<c:set var="order_total_price" value="${order_total_price + item.sell_price * item.detail_quantity}"/>
 	  	  	<c:set var="order_total_sale_price" value="${order_total_sale_price + (item.pro_price - item.sell_price) * item.detail_quantity}"/>

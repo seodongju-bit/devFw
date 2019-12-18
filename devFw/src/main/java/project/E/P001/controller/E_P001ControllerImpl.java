@@ -38,7 +38,6 @@ public class E_P001ControllerImpl implements E_P001Controller {
 	
 	@RequestMapping(value = "/order.do", method = { RequestMethod.POST })
 	public ModelAndView order(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
 		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
 		session = request.getSession();
@@ -51,6 +50,7 @@ public class E_P001ControllerImpl implements E_P001Controller {
 			String viewName = (String)request.getAttribute("viewName");
 			ModelAndView mav = new ModelAndView(viewName);
 			List<Map<String, Object>> list = createModel(request);
+			System.out.println("ASDFSADFDSA"+list);
 			Map<String, Object> searchMap = new HashMap<String, Object>();
 			List<E_P001VO> result = new ArrayList<E_P001VO>();
 			
@@ -130,9 +130,6 @@ public class E_P001ControllerImpl implements E_P001Controller {
 	public ModelAndView payToOrder(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		response.setContentType("text/html; charset=UTF-8");
-		PrintWriter out = response.getWriter();
-		
-		
 		
 		String viewName = (String)request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);
@@ -235,7 +232,7 @@ public class E_P001ControllerImpl implements E_P001Controller {
 		String total_delivery_price = request.getParameter("total_delivery_price");
 		System.out.println("total_delivery_price:" + total_delivery_price);
 		
-		String choice_review = request.getParameter("od_recomReview");
+		String choice_review = request.getParameter("choice_review");
 		System.out.println("choice_review:" + choice_review);
 		
 		
@@ -317,7 +314,6 @@ public class E_P001ControllerImpl implements E_P001Controller {
 			resultMap.put("detail_quantity", request.getParameter("quantity"+i));
 			resultMap.put("order_size",request.getParameter("size"+i));
 			resultMap.put("order_color",request.getParameter("color"+i));
-			resultMap.put("order_color",request.getParameter("od_recomReview"));
 			result.add(resultMap);
 			i++;
 		}

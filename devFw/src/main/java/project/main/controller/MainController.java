@@ -88,17 +88,108 @@ public class MainController {
 	public ModelAndView searchProd(@RequestParam("searchWord") String searchWord,
 			                       HttpServletRequest request, HttpServletResponse response, SearchVO searchVO) throws Exception{
 		String viewName=(String)request.getAttribute("viewName");
-		ModelAndView mav = new ModelAndView();
+		ModelAndView mav = new ModelAndView(viewName);
+		
+		
+		if(searchWord.equals("")) {
+			ModelAndView mav2 = new ModelAndView("searchNull");
+			mav2.addObject("searchWord", searchWord);
+			return mav2;
+		}
+		
+		
 		List<F_P002VO> searchList = F_P002Service.searchList(searchVO);
+		/*List<F_P002VO> searchListCnt = F_P002Service.searchListCnt(searchVO);*/
+		
+		/*String searchWord2 = F_P002VO.getSell_number();
+		if(searchWord2.equals("0") || searchWord2.equals("") || searchWord2 == null ) {
+			ModelAndView mav2 = new ModelAndView("searchNull");
+			mav2.addObject("searchWord", searchWord);
+			return mav2;
+		}*/
 		mav.addObject("searchList", searchList);
+		mav.addObject("searchWord", searchWord);
 		
 		
 		SearchPageMaker searchPageMaker = new SearchPageMaker();
 		searchPageMaker.setSearchPagingVO(searchVO);
-		searchPageMaker.setTotalCount(F_P002Service.countList());
+		searchPageMaker.setTotalCount(F_P002Service.countProd(searchVO));
+		
+		if(searchPageMaker.getTotalCount() == 0) {
+			ModelAndView mav2 = new ModelAndView("searchNull");
+			mav2.addObject("searchWord", searchWord);
+			return mav2;
+		}
+		
 		mav.addObject("searchPageMaker", searchPageMaker);
 		System.out.println("정보:" + mav);
 		return mav;
 		
+	}
+	
+	@RequestMapping(value="/searchNull.do", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView searchNull(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = getViewName(request);
+		ModelAndView mav = new ModelAndView(viewName);
+		mav.setViewName("searchNull");
+		return mav;
+	}
+	
+	
+	@RequestMapping(value="/searchSort.do" ,method = RequestMethod.GET)
+	@ResponseBody
+	public ModelAndView searchSort(@RequestParam("searchKeyword") String searchKeyword, @RequestParam("sort") String sort,
+			                       HttpServletRequest request, HttpServletResponse response, SearchVO searchVO) throws Exception{
+		String viewName=(String)request.getAttribute("searchProd");
+		ModelAndView mav = new ModelAndView(viewName);
+		
+		
+		
+		List<F_P002VO> searchList = F_P002Service.searchList(searchVO);
+		mav.addObject("searchList", searchList);
+		mav.addObject("searchWord", searchKeyword);
+		mav.addObject("sort", sort);
+		
+		
+		SearchPageMaker searchPageMaker = new SearchPageMaker();
+		searchPageMaker.setSearchPagingVO(searchVO);
+		searchPageMaker.setTotalCount(F_P002Service.countProd(searchVO));
+		mav.addObject("searchPageMaker", searchPageMaker);
+		System.out.println("정보:" + mav);
+		return mav;
+		
+	}
+
+	
+	
+	private String getViewName(HttpServletRequest request) throws Exception {
+		String contextPath = request.getContextPath();
+		String uri = (String) request.getAttribute("javax.servlet.include.request_uri");
+		if (uri == null || uri.trim().equals("")) {
+			uri = request.getRequestURI();
+		}
+
+		int begin = 0;
+		if (!((contextPath == null) || ("".equals(contextPath)))) {
+			begin = contextPath.length();
+		}
+
+		int end;
+		if (uri.indexOf(";") != -1) {
+			end = uri.indexOf(";");
+		} else if (uri.indexOf("?") != -1) {
+			end = uri.indexOf("?");
+		} else {
+			end = uri.length();
+		}
+
+		String viewName = uri.substring(begin, end);
+		if (viewName.indexOf(".") != -1) {
+			viewName = viewName.substring(0, viewName.lastIndexOf("."));
+		}
+		if (viewName.lastIndexOf("/") != -1) {
+			viewName = viewName.substring(viewName.lastIndexOf("/",1), viewName.length());
+		}
+		return viewName;
 	}
 }

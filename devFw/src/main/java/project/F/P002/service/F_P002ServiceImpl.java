@@ -72,9 +72,15 @@ public class F_P002ServiceImpl implements F_P002Service {
 	public List<F_P002VO> searchList(SearchVO searchVO) throws Exception{
 		return f_P002DAO.searchList(searchVO);
 	}
+	
 	@Override
 	public int countSearch(SearchVO searchVO) throws Exception {
 		return f_P002DAO.countSearch(searchVO);
+	}
+	
+	@Override
+	public int countProd(SearchVO searchVO) throws Exception {
+		return f_P002DAO.countProd(searchVO);
 	}
 
 	@Override

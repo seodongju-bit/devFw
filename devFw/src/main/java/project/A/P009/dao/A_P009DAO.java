@@ -13,4 +13,5 @@ public interface A_P009DAO {
 	public void insertData(Map<String, String> row) throws DataAccessException;
 	public void updateData(Map<String, String> row) throws DataAccessException;
 	public void deleteData(Map<String, String> row) throws DataAccessException;
+	public List<A_P009VO> conditionDeclaration(Map<String, Object> searchMap) throws DataAccessException;
 }

@@ -6,6 +6,7 @@ public class MainPagingVO {
 	private int perPageNum;		//한 페이지당 보여줄 게시글의 갯수
 	private int rowStart;
 	private int rowEnd;
+	private String p_id;
 	
 	//처음 게시판 목록에 들어왔을때를 대비하여 반드시 기본 세팅을 해야함
 		//현재 페이지를 1페이지로, 페이지당 보여줄 게시글의 갯수를 10개로
@@ -59,5 +60,15 @@ public class MainPagingVO {
 		 rowEnd = rowStart + perPageNum - 1;
 		 return rowEnd;
 	 }
+
+	public String getP_id() {
+		return p_id;
+	}
+
+	public void setP_id(String p_id) {
+		this.p_id = p_id;
+	}
+	 
+	 
 	
 }
