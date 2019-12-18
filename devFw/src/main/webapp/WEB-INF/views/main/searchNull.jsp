@@ -13,9 +13,20 @@
 <meta charset="UTF-8">
 <style> 
 
+@font-face {
+   src: url("../devFw/resources/font/NanumSquare_acR.ttf");
+   font-family: "NanumSquare";
+}
+
+body, html{
+font-family:"NanumSquare";
+font-weight: 700;
+}
+
+
 	.container {
-		min-width:1140px;
-		height: 100%;
+		width:1120px;
+	max-width:none !important;
 		min-height:550px;
 	}
 
