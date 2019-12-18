@@ -198,8 +198,9 @@ font-weight: 700;
 	.dropdown-content {
 	  display: none;
 	  position: absolute;
+	  top:30px;
 	  background-color: black;
-	  width: 180px;
+	  width: 216.5px;
 	  z-index: 1;
 	  opacity: 0.9;  
 	} 
@@ -213,10 +214,10 @@ font-weight: 700;
 	  display: none;
 	  position: absolute;
 	  top:0px;
-	  left:180px;
+	  left:216px;
 	  background-color: white;
-	  width: 915px;
-	  height:400px;
+	  width: 880px;
+	  height:398px;
 	  color:white;
 	  z-index: 1;
 	  text-align:left;

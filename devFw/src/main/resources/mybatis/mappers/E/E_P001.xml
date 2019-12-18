@@ -205,17 +205,17 @@
 	   						point_content,
 	   						mem_id
 	   						)
-	   				values(
-	   						pointuse_number.nextval,
+	   				values( 
+	   						(select max(point_number)+1 from pointuse where mem_id = #{mem_id} ),
 	   						sysdate,
 	   						#{order_pointuse},
 	   						'사용',
 	   						#{mem_id}
 	   					  )
-	   ]]> 
+	   ]]>  
 	</insert>
 	<insert id="point_add" parameterType="E_P001VO">
-	   <![CDATA[
+	   <![CDATA[ 
 	   insert into pointuse(
 	   						point_number,
 	   						point_date,
@@ -224,7 +224,7 @@
 	   						mem_id
 	   						)
 	   				values(
-	   						pointuse_number.nextval+0,
+	   						(select max(point_number)+1 from pointuse where mem_id = #{mem_id} ),
 	   						sysdate,
 	   						TRUNC(#{point_save_total}),
 	   						'적립',

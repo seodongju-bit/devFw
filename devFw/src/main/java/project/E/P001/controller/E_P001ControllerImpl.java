@@ -38,7 +38,6 @@ public class E_P001ControllerImpl implements E_P001Controller {
 	
 	@RequestMapping(value = "/order.do", method = { RequestMethod.POST })
 	public ModelAndView order(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
 		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
 		session = request.getSession();
@@ -51,6 +50,7 @@ public class E_P001ControllerImpl implements E_P001Controller {
 			String viewName = (String)request.getAttribute("viewName");
 			ModelAndView mav = new ModelAndView(viewName);
 			List<Map<String, Object>> list = createModel(request);
+			System.out.println("ASDFSADFDSA"+list);
 			Map<String, Object> searchMap = new HashMap<String, Object>();
 			List<E_P001VO> result = new ArrayList<E_P001VO>();
 			

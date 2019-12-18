@@ -160,8 +160,10 @@ public class A_P004ServiceImpl implements A_P004Service {
 	}
 
 	@Override
-	public void confirm(Map<String, Object> dataMap) {
-		activeDAO.confirm(dataMap);
+	public Map<String, Object> confirm(Map<String, Object> dataMap) {
+		Map<String, Object> returnMap = activeDAO.confirm(dataMap);
+		return returnMap;
+		
 	}
 	
 	@Override
@@ -177,6 +179,30 @@ public class A_P004ServiceImpl implements A_P004Service {
 	@Override
 	public int canclecheck(Map<String, Object> check) {
 		return activeDAO.canclecheck(check);
+	}
+
+	@Override
+	public void confirm2(Map<String, Object> useMap) {
+		activeDAO.confirm2(useMap);
+		
+	}
+
+	@Override
+	public void confirm3(Map<String, Object> useMap) {
+		activeDAO.confirm3(useMap);
+		
+	}
+
+	@Override
+	public void confirm4(Map<String, Object> useMap) {
+		activeDAO.confirm4(useMap);
+		
+	}
+
+	@Override
+	public void confirm5(Map<String, Object> useMap) {
+		activeDAO.confirm5(useMap);
+		
 	}	
 	
 }
