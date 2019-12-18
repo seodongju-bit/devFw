@@ -169,6 +169,8 @@ public class A_P004ControllerImpl   implements A_P004Controller {
 		String sell_number = request.getParameter("sell_number");
 		String sell_price = request.getParameter("sell_price");
 		String choice_review= request.getParameter("choice_review");
+		String od_state = request.getParameter("od_state");
+		
 		check.put("order_number", order_number);
 		check.put("sell_number", sell_number);
 
@@ -184,11 +186,12 @@ public class A_P004ControllerImpl   implements A_P004Controller {
 		resultMap.put("check", count);
 		try {
 			Map<String, Object> useMap = activeService.confirm(dataMap);
-			activeService.confirm2(useMap);
-			activeService.confirm3(useMap);
-			activeService.confirm4(useMap);
-			activeService.confirm5(useMap);
-			
+			if(choice_review != null) {
+			activeService.reviewerGive(useMap);
+			activeService.reviewerGiveSave(useMap);
+			activeService.giveMe(useMap);
+			activeService.giveMeSave(useMap);
+			}
 			resultMap.put("error_yn", "N");	
 		} catch (Exception e) {
 			resultMap.put("error_yn", "Y");

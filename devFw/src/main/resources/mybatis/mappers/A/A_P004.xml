@@ -281,7 +281,7 @@
 	<![CDATA[
 		INSERT INTO pointuse (POINT_NUMBER, mem_id, point_date, point_usemoney, POINT_CONTENT) 
          VALUES (
-      	(select max(point_number)+1 from pointuse where mem_id = #{ReviewerId} ),
+      	(select NVL(max(point_number), 0)+1 from pointuse where mem_id = #{ReviewerId} ),
       	#{ReviewerId}, sysdate, #{sell_price}*0.01 , '리뷰포인트 적립' )
 	]]>
 	</insert>
@@ -296,9 +296,9 @@
 	
 	<insert id="giveMeSave" parameterType="java.util.Map">
 	<![CDATA[
-		INSERT INTO pointuse (POINT_NUMBER, mem_id, point_date, point_usemoney, POINT_CONTENT) 
+		INSERT INTO pointuse (POINT_NUMBER, mem_id, point_date, point_usemoney, POINT_CONTENT)
          VALUES (
-      	(select max(point_number)+1 from pointuse where mem_id = #{mem_id} ),
+      	(select NVL(max(point_number), 0)+1 from pointuse where mem_id = #{mem_id} ),
       	#{mem_id}, sysdate, 10 , '리뷰선정 보너스' )
 	]]>
 	</insert>

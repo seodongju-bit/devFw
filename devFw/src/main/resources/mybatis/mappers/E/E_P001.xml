@@ -206,7 +206,7 @@
 	   						mem_id
 	   						)
 	   				values( 
-	   						(select max(point_number)+1 from pointuse where mem_id = #{mem_id} ),
+	   						(select NVL(max(point_number),0)+1 from pointuse where mem_id = #{mem_id} ),
 	   						sysdate,
 	   						#{order_pointuse},
 	   						'사용',
@@ -224,7 +224,7 @@
 	   						mem_id
 	   						)
 	   				values(
-	   						(select max(point_number)+1 from pointuse where mem_id = #{mem_id} ),
+	   						(select NVL(max(point_number),0)+1 from pointuse where mem_id = #{mem_id} ),
 	   						sysdate,
 	   						TRUNC(#{point_save_total}),
 	   						'적립',
