@@ -301,7 +301,7 @@ ul.tabs li.active, html ul.tabs li.active a:hover {
 								width="80px" height="80px"> <a
 								href="sellItems.do?sell_no=${orderList2.SELL_NUMBER}">${orderList2.SELL_TITLE}</a>
 								<br> <fmt:formatNumber value="${orderList2.SELL_PRICE}" />원
-								
+								<br> 추천리뷰 : ${orderList2.od_recomreview}
 								</td>
 							<td><c:choose>
 									<c:when test="${orderList2.OD_STATE=='F_0001'}">
@@ -404,7 +404,7 @@ ul.tabs li.active, html ul.tabs li.active a:hover {
 		<script src="../devFw/resources/js/bootstrap.min.js"></script>
 
 		<br> <br> <br> <br> <br>
-
+  
 		<div id="caution-box">
 			<div id="all">
 				<div id="box">
