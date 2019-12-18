@@ -186,11 +186,13 @@ public class A_P004ControllerImpl   implements A_P004Controller {
 		resultMap.put("check", count);
 		try {
 			Map<String, Object> useMap = activeService.confirm(dataMap);
-			if(choice_review != null) {
+			if(!od_state.equals("F_0005")) {
+			if(choice_review != "") {
 			activeService.reviewerGive(useMap);
 			activeService.reviewerGiveSave(useMap);
 			activeService.giveMe(useMap);
 			activeService.giveMeSave(useMap);
+			}
 			}
 			resultMap.put("error_yn", "N");	
 		} catch (Exception e) {
