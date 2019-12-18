@@ -130,9 +130,6 @@ public class E_P001ControllerImpl implements E_P001Controller {
 	public ModelAndView payToOrder(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		response.setContentType("text/html; charset=UTF-8");
-		PrintWriter out = response.getWriter();
-		
-		
 		
 		String viewName = (String)request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);
@@ -235,7 +232,7 @@ public class E_P001ControllerImpl implements E_P001Controller {
 		String total_delivery_price = request.getParameter("total_delivery_price");
 		System.out.println("total_delivery_price:" + total_delivery_price);
 		
-		String choice_review = request.getParameter("od_recomReview");
+		String choice_review = request.getParameter("choice_review");
 		System.out.println("choice_review:" + choice_review);
 		
 		

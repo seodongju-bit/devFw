@@ -301,7 +301,7 @@ ul.tabs li.active, html ul.tabs li.active a:hover {
 								width="80px" height="80px"> <a
 								href="sellItems.do?sell_no=${orderList2.SELL_NUMBER}">${orderList2.SELL_TITLE}</a>
 								<br> <fmt:formatNumber value="${orderList2.SELL_PRICE}" />원
-								<br> 추천리뷰 : ${orderList2.od_recomreview}
+								<br> 추천리뷰 : <a style="cursor: pointer;"onclick="readReview(${orderList2.CHOICE_REVIEW})">${orderList2.CHOICE_REVIEW}</a>
 								</td>
 							<td><c:choose>
 									<c:when test="${orderList2.OD_STATE=='F_0001'}">
@@ -329,8 +329,7 @@ ul.tabs li.active, html ul.tabs li.active a:hover {
 								<c:choose>
 								<c:when test="${orderList2.REVIEW_NUMBER ==0}">
 								<p class="tdMenu"
-									onclick="reviewWrite('${orderList2.SELL_NUMBER}','${orderList2.SELL_TITLE}','${orderList2.REVIEW_NUMBER}')">리뷰작성</p>
-									<input type="hidden" id="order_number" name="order_number" value="${orderList2.ORDER_NUMBER}"/>
+									onclick="reviewWrite('${orderList2.SELL_NUMBER}','${orderList2.SELL_TITLE}','${orderList2.ORDER_NUMBER}')">리뷰작성</p>
 								</c:when>
 								<c:otherwise>	
 								<p class="tdMenu">리뷰 수정</p>
@@ -341,12 +340,13 @@ ul.tabs li.active, html ul.tabs li.active a:hover {
 								</c:when>
 								</c:choose>
 								<p class="tdMenu" onclick="questionwrite2()">문의하기</p>
+								<input type="hidden" id="order_number" name="order_number" value="${orderList2.ORDER_NUMBER}"/>
 								<c:choose>
 								<c:when test="${orderList2.OD_STATE =='F_0006'}">
 										
 								</c:when>
-								<c:when test="${orderList2.OD_STATE !='F_0006'}">
-										<p class="tdMenu" onclick="confirm('${orderList2.ORDER_NUMBER}', '${orderList2.SELL_NUMBER}','${orderList2.OD_RECOMREVIEW}','${orderList2.SELL_PRICE}')">구매확정</p>
+								<c:when test="${(orderList2.OD_STATE !='F_0006')}">
+										<p class="tdMenu" onclick="confirm('${orderList2.ORDER_NUMBER}', '${orderList2.SELL_NUMBER}','${orderList2.CHOICE_REVIEW}','${orderList2.SELL_PRICE}')">구매확정</p>
 								</c:when>
 								</c:choose>
 								<c:choose>
@@ -504,7 +504,8 @@ ul.tabs li.active, html ul.tabs li.active a:hover {
 		formObj.submit();
 	}
 	
-	function confirm(order_number, sell_number, od_recomreview, sell_price){
+
+	function confirm(order_number, sell_number, choice_review, sell_price){
 		
 		Swal.fire({
 			  title: '구매확정',
@@ -522,11 +523,10 @@ ul.tabs li.active, html ul.tabs li.active a:hover {
 				       async:false,  
 				       url:"../devFw/confirm.do",
 				       data: {
-				    	   
-				    	   "order_number":order_number,
+				    	   "order_number": order_number,
 				    	   "sell_number" : sell_number,
-				    	   "od_recomreview":od_recomreview,
-				    	   "sell_price":sell_price
+				    	   "sell_price":sell_price,
+				    	   "choice_review":choice_review
 				       },
 				       success: function (data) {
 				    	   if(data.check>0){
@@ -713,11 +713,9 @@ function cancle(order_number, sell_number){
 
 
 		function reviewWrite(sell_number, title, order_number) {
-	
 			window.open("reviewwrite.do?sell_number=" + sell_number
 					+ "&sell_title=" + title + "&order_number=" + order_number, "제품번호 검색",
 					"width=850, height=800, left=600, top400", "resizable=no");
-			
 		}
 		
 		function myquestion(qu_number) {
@@ -823,6 +821,12 @@ function cancle(order_number, sell_number){
 			if(tab=='2'){$('#tab2c').click();}
 			if(tab=='3'){$('#tab3c').click();}
 		});
+		
+		function readReview(reviewNum){
+			var popupX = (window.screen.width/2) - (400);
+			var popupY = (window.screen.height/2) - (500);
+			window.open("readReview.do?review="+reviewNum, "리뷰보기", "width=850, height=730, left="+popupX+", top="+popupY);
+		}
 	</script>
 
 </body>

@@ -27,6 +27,12 @@ public class A_P009ServiceImpl implements A_P009Service{
 	}
 	
 	@Override
+	public List<A_P009VO> conditionDeclaration(Map<String, Object> searchMap) throws DataAccessException {
+		List<A_P009VO> list = a_P009DAO.conditionDeclaration(searchMap);
+		return list;
+	}
+	
+	@Override
 	public void saveDeclarations(Map<String, String[]> dataMap) throws DataAccessException {
 		String[] status = dataMap.get("STATUS");
 		int length = status.length;

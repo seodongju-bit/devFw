@@ -26,7 +26,7 @@ public class MainPageMaker {
 		this.mainPagingVO = mainPagingVO;
 	 }
 
-	 public void setTotalCount(int totalCount) {
+	public void setTotalCount(int totalCount) {
 		 this.totalCount = totalCount;
 		 calcData();
 	 }

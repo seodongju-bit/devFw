@@ -35,6 +35,8 @@ public class F_P002VO {
 	private String no_title="";
 	private String pro_brand="";
 	
+	private String count_prod="";
+	
 	
 	
 	public F_P002VO() {
@@ -77,6 +79,7 @@ public class F_P002VO {
 		return sell_contents;
 	}
 
+	
 	public void setSell_contents(String sell_contents) {
 		this.sell_contents = sell_contents;
 	}
@@ -211,6 +214,13 @@ public class F_P002VO {
 		this.delivery_price = delivery_price;
 	}
 
+	public String getCount_prod() {
+		return count_prod;
+	}
+
+	public void setCount_prod(String count_prod) {
+		this.count_prod = count_prod;
+	}
 	public String getNo_number() {
 		return no_number;
 	}

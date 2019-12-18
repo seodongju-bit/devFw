@@ -88,14 +88,22 @@ public class MainController {
 	public ModelAndView searchProd(@RequestParam("searchWord") String searchWord,
 			                       HttpServletRequest request, HttpServletResponse response, SearchVO searchVO) throws Exception{
 		String viewName=(String)request.getAttribute("viewName");
-		ModelAndView mav = new ModelAndView();
-		List<F_P002VO> searchList = F_P002Service.searchList(searchVO);
-		mav.addObject("searchList", searchList);
+		ModelAndView mav = new ModelAndView(viewName);
 		
+		List<F_P002VO> searchList = F_P002Service.searchList(searchVO);
+		/*List<F_P002VO> searchListCnt = F_P002Service.searchListCnt(searchVO);*/
+		
+		/*String searchWord2 = F_P002VO.getSell_number();
+		if(searchWord2.equals("0") || searchWord2.equals("") || searchWord2 == null ) {
+			ModelAndView mav2 = new ModelAndView("searchNull");
+			mav2.addObject("searchWord", searchWord);
+			return mav2;
+		}*/
+		mav.addObject("searchList", searchList);
 		
 		SearchPageMaker searchPageMaker = new SearchPageMaker();
 		searchPageMaker.setSearchPagingVO(searchVO);
-		searchPageMaker.setTotalCount(F_P002Service.countList());
+		searchPageMaker.setTotalCount(F_P002Service.countProd(searchVO));
 		mav.addObject("searchPageMaker", searchPageMaker);
 		System.out.println("정보:" + mav);
 		return mav;

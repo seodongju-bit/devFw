@@ -96,7 +96,7 @@ body, html {
 <body>
     <c:forEach var="info" items="${ordererInfo}" varStatus = "list_num">
       <table class="table table-striped table-bordered">
-      <h4>주문정보</h4>
+<h4>&nbsp;&nbsp;&nbsp;&nbsp;주문정보</h4>
       <tr>
         <td>상품명</td>
         <td>${info.PRO_NAME}</td>
@@ -135,7 +135,7 @@ body, html {
   <br>
   <br>
       <table id = ordererInfo class="table table-striped table-bordered">
-      <h4>배송정보</h4>
+<h4>&nbsp;&nbsp;&nbsp;&nbsp;배송정보</h4>
 	  <tr>
 	    <td>주문번호</td>
 	    <td>${info.order_number}</td>

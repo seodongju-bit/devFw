@@ -11,7 +11,7 @@ public interface B_P001DAO {
 
 	void addProduct(B_P001VO b_P001VO) throws DataAccessException;
 
-
+	public List<B_P001VO> conditionSearch(Map<String, Object> searchMap) throws DataAccessException;
 	 
 	 
 }

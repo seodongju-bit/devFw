@@ -33,6 +33,10 @@ public class B_P001ServiceImpl implements B_P001Service {
 		b_P001DAO.addProduct(b_P001VO);
 	}
 
-
+	@Override
+	public List<B_P001VO> conditionSearch(Map<String, Object> searchMap) throws DataAccessException {
+		List<B_P001VO> list = b_P001DAO.conditionSearch(searchMap);
+		return list;
+	}
 
 }

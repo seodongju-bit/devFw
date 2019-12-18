@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.dao.DataAccessException;
 
 import project.B.P002.vo.B_P002VO;
+import project.main.paging.MainPagingVO;
 
 
 public interface B_P002DAO {
@@ -16,7 +17,8 @@ public interface B_P002DAO {
 
 	void addOption(Map<String, Object> optionMap);
 
-	public List orderRequestList(String p_id) throws DataAccessException;
+	public List orderRequestList(MainPagingVO mainPagingVO) throws DataAccessException;
+	public int countOrdererList(String p_id) throws Exception;
 
 	public List<Map<String,Object>> ordererInfoList(Map<String, Object> ordererInfoList) throws DataAccessException;
 	 

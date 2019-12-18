@@ -232,6 +232,19 @@
 		]]>
 	</select>
 	
+	<select id="countProd" resultType="Integer">
+		<![CDATA[
+			select count(sell_number) as totalCount
+			from productsell ps, product p
+			where ps.pro_number = p.pro_number
+	    		and (sell_title like '%' || #{searchWord} || '%'
+	    		or pro_name like '%' || #{searchWord} || '%'
+	    		or pro_brand like '%' || #{searchWord} || '%'
+	    		or PRO_VENDOR like '%' || #{searchWord} || '%'
+	    		)
+		]]>
+	</select>
+	
 	<!-- 검색어 자동완성 -->
 	<select id="searchKeyword"  resultType="String" parameterType="String">
 	  <![CDATA[
@@ -245,9 +258,9 @@
 	<!-- 상품 검색 결과 -->
 	<select id="searchWord" resultType="project.F.P002.vo.F_P002VO" parameterType="project.search.paging.SearchPagingVO">
 	
-	    select sell_number, sell_thumbnail, sell_title, sell_price, sell_date, mem_ID
+	    select sell_number, sell_thumbnail, sell_title, sell_price, sell_date, mem_ID, pro_price
 	    from (
-	    		select sell_number, sell_thumbnail, sell_title, sell_price, sell_date, ps.mem_id,
+	    		select sell_number, sell_thumbnail, sell_title, sell_price, sell_date, ps.mem_id, pro_price,
 	    		row_number() over (order by sell_number desc) as rNum
 	    		from productsell ps, product p
 	    		where ps.pro_number = p.pro_number

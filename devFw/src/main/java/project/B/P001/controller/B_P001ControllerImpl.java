@@ -22,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import oracle.jdbc.proxy.annotation.GetProxy;
+import project.A.P009.vo.A_P009VO;
 import project.B.P001.service.B_P001Service;
 import project.B.P001.vo.B_P001VO;
 
@@ -93,6 +94,24 @@ public class B_P001ControllerImpl   implements B_P001Controller {
 	      resultMap.put("Data", data);
 	      return resultMap;
 	   }
+	   
+	   @Override
+		@RequestMapping(value = "/itemManager/ConditionSearch.do", method = {RequestMethod.GET, RequestMethod.POST})
+		@ResponseBody
+		public Map ConditionSearch(HttpServletRequest request, HttpServletResponse response) throws Exception {
+			request.setCharacterEncoding("utf-8");
+			Map<String, Object> searchMap = new HashMap<String, Object>();
+			Map<String, Object> resultMap = new HashMap<String, Object>();
+			
+			String search = request.getParameter("search");
+			String condition = request.getParameter("condition");
+			searchMap.put("condition", condition);
+			searchMap.put("search", search);
+			List<B_P001VO> data = b_P001Service.conditionSearch(searchMap);
+			resultMap.put("Data", data);
+			
+			return resultMap;
+		}
 	   
 	   @RequestMapping(value = "/itemManager/selectList.do", method = { RequestMethod.GET, RequestMethod.POST })
 	   @ResponseBody

@@ -40,6 +40,25 @@
         </where>
 	</select>
 	
+	<select id="conditionMember"  resultMap = "A_P008Result01" parameterType="java.util.Map"> 
+      <![CDATA[
+         select mem_no, mem_id, mem_nick, mem_pw, mem_name, mem_email1, mem_email2, mem_tel, mem_zip, mem_address1, mem_address2, mem_point,
+                mem_division, mem_totalrc, mem_monthrc, mem_reviewgrade, mem_verify, mem_date
+         from members
+      ]]>
+        <where>
+          <if test="condition == 'mem_no'">
+            mem_no like '%' ||#{search} || '%'
+          </if>
+          <if test="condition == 'mem_id'">
+            mem_id like '%' ||#{search} || '%'
+          </if>
+          <if test="condition == 'mem_nick'">
+            mem_nick like '%' ||#{search} || '%'
+          </if>
+        </where>
+	</select>
+	
 	<update id="updateData" parameterType="java.util.Map">
 	 <![CDATA[
 	 		  update members 

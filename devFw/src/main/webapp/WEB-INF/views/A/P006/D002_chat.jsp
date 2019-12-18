@@ -698,11 +698,7 @@ font-weight: 700;
 <title>Insert title here</title>
 </head>   
 <body>
-<<<<<<< HEAD
-<div class="hole" id="main">
-=======
 <div class="hole">
->>>>>>> refs/remotes/origin/master
    <div class="msg-container">
       <div id="people">
          <div id="people-search">

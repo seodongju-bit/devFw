@@ -47,7 +47,7 @@ public class E_P001DAOImpl implements E_P001DAO {
 			sqlSession.insert("E.P001.insertNewOrder", e_P001VO);
 			sqlSession.insert("E.P001.insertNewOrderDetail", e_P001VO);
 			sqlSession.update("E.P001.saveMemPoint", e_P001VO);
-			if(e_P001VO.getOrder_pointuse() != "" || e_P001VO.getOrder_pointuse() != null || e_P001VO.getOrder_pointuse() != "0") {
+			if(!e_P001VO.getOrder_pointuse().equals("0")) {
 			sqlSession.insert("E.P001.point_use", e_P001VO);
 			}
 			sqlSession.insert("E.P001.point_add", e_P001VO);
