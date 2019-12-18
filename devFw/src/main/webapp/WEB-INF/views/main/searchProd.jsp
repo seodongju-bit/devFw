@@ -116,6 +116,30 @@ font-weight: 700;
 }
 
 </style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js" type="text/javascript"></script>
+<script>
+	/*function sort_date(sort, searchKeyword) {
+		$.ajax({
+			type:"post",
+			async:false,
+			url:"../devFw/searchSort.do",
+			data : {
+				"sort" : sort,
+				"searchKeyword" : searchKeyword
+			},
+			success: function(){
+				location.reload();
+			},
+			error:function() {
+				return false;
+			}
+		});
+	}*/
+	
+
+</script>
 <meta charset="UTF-8">
 <link href="../devFw/resources/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">     
 <title>검색 결과</title>
@@ -161,22 +185,22 @@ font-weight: 700;
 			</td>
 			<!-- 제품 가격 -->
 			<td class="prod_price" style="margin:0; padding:0;">
-				<strong>
-					<del><fmt:formatNumber value="${search.pro_price }"/></del>원<br>
+					<del><fmt:formatNumber value="${search.pro_price}"/></del>원<br>
+					<strong style="color:red;">
 					<fmt:formatNumber value="${search.sell_price}" type="number"/>원<br>
-					(<fmt:formatNumber value="${order_sale_price + (1-(search.sell_price / search.pro_price ))*100}" pattern="#"/>%)
-				</strong>
+					</strong>
+			  			<p>(<fmt:formatNumber value="${order_sale_price + (1-(search.sell_price / search.pro_price ))*100}" pattern="#"/>%)</p>
 			</td>
 			</tr>
 		</c:forEach>
 		<br>
-		<div id="sorting">
+		<!-- <div id="sorting">
 			<ul>
-				<li><a class="active" href="#">등록일 순</a></li>
+				<li><a class="active" href="javascript:sort_date('sell_date', '${searchKeyword}')">등록일 순</a></li>
 				<li><a href="#">인기 순</a></li>
 				<li><a style="border: currentColor; border-image: none;" href="#">상품평 순</a></li>
 			</ul>
-		</div>
+		</div>-->
 		<h4>총 ${searchPageMaker.totalCount}건의 상품이 검색되었습니다</h4>
 		</tbody>
 	</table>

@@ -271,6 +271,7 @@
 	    		)
 	    		) mb
 	    where rNum between #{rowStart} and #{rowEnd}
+	    order by #{sort}
 	   
 	</select>
 	
