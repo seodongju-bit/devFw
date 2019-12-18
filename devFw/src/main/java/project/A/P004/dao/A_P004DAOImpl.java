@@ -125,13 +125,22 @@ public class A_P004DAOImpl implements A_P004DAO {
 		sqlSession.insert("mapper.active.withdrawSave", withdrawMap);
 		sqlSession.update("mapper.active.pointDeduction", withdrawMap);
 		sqlSession.insert("mapper.active.pointUseRecord", withdrawMap);
-
 	}
 
 	@Override
-	public void confirm(Map<String, Object> dataMap) {
+	public Map<String, Object> confirm(Map<String, Object> dataMap) {
+		System.out.println("확정"+dataMap);
 		sqlSession.update("mapper.active.confirm", dataMap);
+		//String cReviewNum = (String)dataMap.get("choice_review");
+		String ReviewerId =  sqlSession.selectOne("mapper.active.reviewerId", dataMap);
+		dataMap.put("ReviewerId", ReviewerId);
+		return dataMap;
+//		sqlSession.insert("mapper.active.reviewerGiveSave", dataMap);
+//		sqlSession.update("mapper.active.giveMe", dataMap);
+//		sqlSession.insert("mapper.active.giveMeSave", dataMap);
 	}
+
+	
 	
 	@Override
 	public int confirmcheck(Map<String, Object> check) throws DataAccessException {
@@ -147,4 +156,29 @@ public class A_P004DAOImpl implements A_P004DAO {
 	public int canclecheck(Map<String, Object> check) throws DataAccessException {
 		return sqlSession.selectOne("mapper.active.canclecheck", check);
 	}
+
+	@Override
+	public void confirm2(Map<String, Object> useMap) {
+		sqlSession.update("mapper.active.reviewerGive", useMap);
+	}
+
+	@Override
+	public void confirm3(Map<String, Object> useMap) {
+		System.out.println("포인트 적립 기록");
+		sqlSession.insert("mapper.active.reviewerGiveSave", useMap);
+	}
+
+	@Override
+	public void confirm4(Map<String, Object> useMap) {
+		sqlSession.update("mapper.active.giveMe", useMap);
+	}
+
+	@Override
+	public void confirm5(Map<String, Object> useMap) {
+		sqlSession.insert("mapper.active.giveMeSave", useMap);
+		
+	}
+	
+
+	
 }

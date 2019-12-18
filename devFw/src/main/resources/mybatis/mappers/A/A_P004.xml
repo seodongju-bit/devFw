@@ -65,7 +65,6 @@
          FROM pointuse
          WHERE mem_id=#{mem_id}
          order by point_number desc
-         
        ]]>
           
         <choose>
@@ -74,6 +73,17 @@
        			AND  to_date('${end}', 'YYYY-MM-DD')+0.9999
     		</when>
 		</choose>
+	</select>
+	  
+
+	<select id="orderList" resultMap="orderListResult" parameterType="java.util.Map">
+      <![CDATA[
+         select (DENSE_RANK() OVER(order by order_date DESC, od.order_number DESC)) rownums, o.order_number, od.sell_number, order_date ,sell_price, sell_title, sell_thumbnail, od_state, od_recomreview
+         from orders o, orderdetail od, productsell ps
+         where od.sell_number = ps.sell_number
+         and o.order_number = od.order_number
+         and o.mem_id = #{mem_id}
+      ]]>
 	</select>
 	
 	<select id="orderList2" resultMap="orderListResult" parameterType="java.util.Map">
@@ -86,7 +96,7 @@
          and o.mem_id = #{mem_id} 
       ]]>
 	</select>
-	 
+	  
 	
 	
 	<select id="orderList3" resultMap="orderListResult" parameterType="java.util.Map">
@@ -242,7 +252,7 @@
 	]]>
 	</insert>
 
-<update id="confirm" parameterType="java.util.Map">
+	<update id="confirm" parameterType="java.util.Map">
 	<![CDATA[
 		update orderdetail
 		set od_state = 'F_0005'
@@ -250,6 +260,49 @@
 		and sell_number = #{sell_number}
 	]]>
 	</update>
+	
+	<select id="reviewerId" parameterType="java.util.Map" resultType="String">
+	<![CDATA[
+      SELECT mem_id
+      from review
+      where review_number = #{choice_review}
+    ]]> 
+	</select>
+
+	<update id="reviewerGive" parameterType="java.util.Map">
+	<![CDATA[
+		update members
+		set mem_point = mem_point + #{sell_price}* 0.01
+		where mem_id = #{ReviewerId}
+	]]>
+	</update>
+	 
+  	<insert id="reviewerGiveSave" parameterType="java.util.Map">
+	<![CDATA[
+		INSERT INTO pointuse (POINT_NUMBER, mem_id, point_date, point_usemoney, POINT_CONTENT) 
+         VALUES (
+      	(select max(point_number)+1 from pointuse where mem_id = #{ReviewerId} ),
+      	#{ReviewerId}, sysdate, #{sell_price}*0.01 , '리뷰포인트 적립' )
+	]]>
+	</insert>
+  	 
+	<update id="giveMe" parameterType="java.util.Map">
+	<![CDATA[
+		update members
+		set mem_point = mem_point + 10
+		where mem_id = #{mem_id}
+	]]>
+	</update>
+	
+	<insert id="giveMeSave" parameterType="java.util.Map">
+	<![CDATA[
+		INSERT INTO pointuse (POINT_NUMBER, mem_id, point_date, point_usemoney, POINT_CONTENT) 
+         VALUES (
+      	(select max(point_number)+1 from pointuse where mem_id = #{mem_id} ),
+      	#{mem_id}, sysdate, 10 , '리뷰선정 보너스' )
+	]]>
+	</insert>
+	
 
 <select id="confirmcheck" parameterType="String" resultType="Integer">
 	<![CDATA[

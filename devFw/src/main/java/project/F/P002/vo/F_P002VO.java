@@ -39,6 +39,7 @@ public class F_P002VO {
 	
 	
 	
+	
 	public F_P002VO() {
 		System.out.println("F_P002VO 호출");
 	}
@@ -260,7 +261,6 @@ public class F_P002VO {
 	public void setPro_brand(String pro_brand) {
 		this.pro_brand = pro_brand;
 	}
-	
 
 
 }

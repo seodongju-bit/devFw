@@ -198,8 +198,9 @@ font-weight: 700;
 	.dropdown-content {
 	  display: none;
 	  position: absolute;
+	  top:30px;
 	  background-color: black;
-	  width: 180px;
+	  width: 216.5px;
 	  z-index: 1;
 	  opacity: 0.9;  
 	} 
@@ -213,10 +214,10 @@ font-weight: 700;
 	  display: none;
 	  position: absolute;
 	  top:0px;
-	  left:180px;
+	  left:216px;
 	  background-color: white;
-	  width: 915px;
-	  height:400px;
+	  width: 880px;
+	  height:398px;
 	  color:white;
 	  z-index: 1;
 	  text-align:left;
@@ -488,7 +489,7 @@ $(document).ready(function(){
 	<a href="${contextPath}/main.do"><img id="toplogo" src="${contextPath}/resources/image/logo.png"/></a>
 	</div>
       <form class="form-inline" name="frmSearch" action="${contextPath}/searchProd.do" style="width:360px;">
-          <input class="form-control" type="text"    
+          <input class="form-control" type="text" id="searchWord" 
           placeholder="상품을 검색해보세요"aria-label="Search" style=width:300px name="searchWord" onKeyUp="keywordSearch()">
           <button class="btn btn-outline-secondary" type="submit" id="search">검색</button>
       </form>

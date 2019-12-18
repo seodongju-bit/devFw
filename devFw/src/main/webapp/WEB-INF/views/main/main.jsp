@@ -19,6 +19,15 @@
    src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <style>
 
+@font-face {
+   src: url("../devFw/resources/font/NanumSquare_acR.ttf");
+   font-family: "NanumSquare";
+}
+
+body, html{
+font-family:"NanumSquare";
+font-weight: 700;
+}
 
 #main_container{
 	width:1120px;
