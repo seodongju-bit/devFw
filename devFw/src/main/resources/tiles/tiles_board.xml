@@ -413,6 +413,12 @@
    </definition>
    
    
+     <definition name="question" extends="noticeLayout">
+      <put-attribute name="title" value="신고사항작성페이지" /> 
+      <put-attribute name="body" value="/WEB-INF/views/C/P003/D009.jsp" />
+   </definition>
+   
+   
     <definition name="questionwrite5" extends="noticeLayout">
       <put-attribute name="title" value="문의사항답변페이지" /> 
       <put-attribute name="body" value="/WEB-INF/views/C/P003/D006.jsp" />
