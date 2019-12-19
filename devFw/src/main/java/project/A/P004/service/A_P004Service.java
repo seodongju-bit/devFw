@@ -34,10 +34,10 @@ public interface A_P004Service {
 	public int confirmcheck(Map<String, Object> check) throws DataAccessException;
 	public void cancle(Map<String, Object> dataMap);
 	public int canclecheck(Map<String, Object> check) throws DataAccessException;
-	public void confirm2(Map<String, Object> useMap);
-	public void confirm3(Map<String, Object> useMap);
-	public void confirm4(Map<String, Object> useMap);
-	public void confirm5(Map<String, Object> useMap);
+	public void reviewerGive(Map<String, Object> useMap);
+	public void reviewerGiveSave(Map<String, Object> useMap);
+	public void giveMe(Map<String, Object> useMap);
+	public void giveMeSave(Map<String, Object> useMap);
 	
 
 }

@@ -189,11 +189,15 @@ public class A_P001ControllerImpl implements A_P001Controller {
 			if(A_P001VO!= null && A_P001VO.getMem_id()!=null){
 				
 				if(A_P001VO.getMem_verify().equals("n")) {
-					mav.setViewName("redirect:unauthorizedmember.do");
+					String message="이메일 미인증 회원입니다 이메일 확인후 인증해주세요.";
+					mav.addObject("message", message);
+					mav.setViewName("redirect:signinpage.do");
+					
 					return mav;
 				}else if(A_P001VO.getMem_division().equals("3")) {
-					mav.setViewName("redirect:secessionmember.do");
-					return mav;
+					String message="탈퇴 신청중인 회원입니다.";
+					mav.addObject("message", message);
+					mav.setViewName("redirect:signinpage.do");
 				}
 				HttpSession session=request.getSession();
 				session=request.getSession();

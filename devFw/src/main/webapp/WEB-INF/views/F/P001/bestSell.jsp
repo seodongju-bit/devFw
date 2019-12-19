@@ -49,7 +49,7 @@
 	.reviewBox{
 		position: relative;
 		width: 250px;
-		height: 300px;
+		height: 350px;
 		float: left;
 		display: inline-block;
 		background-color: white;;

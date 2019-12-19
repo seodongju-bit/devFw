@@ -191,8 +191,6 @@ function selectCheck(ele) {
 		showAndHide(1);
 	}
 	/////////
-	
-	
 
 	function addProduct(){
 		var popupX = (window.screen.width/2) - (400);
@@ -264,7 +262,6 @@ function selectCheck(ele) {
 </head>
 <body onload="LoadPage()">
      <div id="area">
-		
         <div class="main_content">
         	<br>
   			<h1>상품관리</h1><br>
@@ -282,8 +279,8 @@ function selectCheck(ele) {
                 	<a href="javascript:doAction('save')" class="btn">저장</a>
                 	<div class="ib_function">
                 	<a href="javascript:doAction('insert')" class="btn">차트 내 직접추가</a>
-                	<button class="btn btn-default" onclick="addProduct()">제품추가</button>
-  			<button class="btn btn-default" onclick="addSell()">판매등록</button>
+                	<button type="button" class="btn btn-default" onclick="addProduct()">제품추가</button>
+  					<button type="button" class="btn btn-default" onclick="addSell()">판매등록</button>
             	</div>
 			</form>
 			<br>

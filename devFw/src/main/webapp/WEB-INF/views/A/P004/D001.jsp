@@ -301,7 +301,11 @@ ul.tabs li.active, html ul.tabs li.active a:hover {
 								width="80px" height="80px"> <a
 								href="sellItems.do?sell_no=${orderList2.SELL_NUMBER}">${orderList2.SELL_TITLE}</a>
 								<br> <fmt:formatNumber value="${orderList2.SELL_PRICE}" />원
+								<c:choose>
+								<c:when test="${orderList2.CHOICE_REVIEW != null}">
 								<br> 추천리뷰 : <a style="cursor: pointer;"onclick="readReview(${orderList2.CHOICE_REVIEW})">${orderList2.CHOICE_REVIEW}</a>
+								</c:when>
+								</c:choose>
 								</td>
 							<td><c:choose>
 									<c:when test="${orderList2.OD_STATE=='F_0001'}">
@@ -346,7 +350,7 @@ ul.tabs li.active, html ul.tabs li.active a:hover {
 										
 								</c:when>
 								<c:when test="${(orderList2.OD_STATE !='F_0006')}">
-										<p class="tdMenu" onclick="confirm('${orderList2.ORDER_NUMBER}', '${orderList2.SELL_NUMBER}','${orderList2.CHOICE_REVIEW}','${orderList2.SELL_PRICE}')">구매확정</p>
+										<p class="tdMenu" onclick="confirm('${orderList2.ORDER_NUMBER}', '${orderList2.SELL_NUMBER}','${orderList2.CHOICE_REVIEW}','${orderList2.SELL_PRICE}','${orderList2.OD_STATE}')">구매확정</p>
 								</c:when>
 								</c:choose>
 								<c:choose>
@@ -505,7 +509,7 @@ ul.tabs li.active, html ul.tabs li.active a:hover {
 	}
 	
 
-	function confirm(order_number, sell_number, choice_review, sell_price){
+	function confirm(order_number, sell_number, choice_review, sell_price, od_state){
 		
 		Swal.fire({
 			  title: '구매확정',
@@ -526,7 +530,9 @@ ul.tabs li.active, html ul.tabs li.active a:hover {
 				    	   "order_number": order_number,
 				    	   "sell_number" : sell_number,
 				    	   "sell_price":sell_price,
-				    	   "choice_review":choice_review
+				    	   "choice_review":choice_review,
+				    	   "od_state" : od_state
+				    	   
 				       },
 				       success: function (data) {
 				    	   if(data.check>0){

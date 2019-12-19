@@ -49,7 +49,7 @@ body, html {
 		background-color: #ddd;
 		cursor: pointer;
 	}
-	
+	 
 </style>
 <meta charset="UTF-8">
 <title>검색 결과</title>

@@ -296,7 +296,7 @@
 	 
 	<insert id="giveMeSave" parameterType="java.util.Map">
 	<![CDATA[
-		INSERT INTO pointuse (POINT_NUMBER, mem_id, point_date, point_usemoney, POINT_CONTENT) 
+		INSERT INTO pointuse (POINT_NUMBER, mem_id, point_date, point_usemoney, POINT_CONTENT)
          VALUES (
       	(select NVL(max(point_number), 0)+1 from pointuse where mem_id = #{mem_id} ),
       	#{mem_id}, sysdate, 10 , '리뷰선정 보너스' )

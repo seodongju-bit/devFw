@@ -489,7 +489,7 @@ $(document).ready(function(){
 	<a href="${contextPath}/main.do"><img id="toplogo" src="${contextPath}/resources/image/logo.png"/></a>
 	</div>
       <form class="form-inline" name="frmSearch" action="${contextPath}/searchProd.do" style="width:360px;">
-          <input class="form-control" type="text"    
+          <input class="form-control" type="text" id="searchWord" 
           placeholder="상품을 검색해보세요"aria-label="Search" style=width:300px name="searchWord" onKeyUp="keywordSearch()">
           <button class="btn btn-outline-secondary" type="submit" id="search">검색</button>
       </form>

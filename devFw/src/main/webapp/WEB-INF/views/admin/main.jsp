@@ -39,6 +39,10 @@
         transform: translateY(4px);
  }
 
+ img {
+ 	width:200px;
+ 	height:200px;
+ }
 
 </style>
 <meta charset="UTF-8">
@@ -49,13 +53,16 @@
 <body>
 	<div class="main">
 	    <button class="btn" id="menu1" onclick="location.href='${contextPath}/memberManager.do'">
-	    	회원 관리
+	    <img src="../devFw/resources/image/admin/1041885.png"><br><br>
+	    	<strong>회원 관리</strong>
 	    </button>
 	    <button class="btn" id="menu2" onclick="location.href='${contextPath}/makecoupon.do'">
-	    	쿠폰 관리
+	    <img src="../devFw/resources/image/admin/1970023.png"><br><br>
+	    	<strong>쿠폰 관리</strong>
 	    </button>
 	    <button class="btn"id="menu3" onclick="location.href='${contextPath}/declarationsManager.do'">
-	    	신고회원 관리
+	    <img src="../devFw/resources/image/admin/2038814.png"><br><br>
+	    	<strong>신고회원 관리</strong>
 	    </button>
 	</div>
 </body>

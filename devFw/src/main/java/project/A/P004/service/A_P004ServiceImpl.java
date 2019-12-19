@@ -182,26 +182,26 @@ public class A_P004ServiceImpl implements A_P004Service {
 	}
 
 	@Override
-	public void confirm2(Map<String, Object> useMap) {
-		activeDAO.confirm2(useMap);
+	public void reviewerGive(Map<String, Object> useMap) {
+		activeDAO.reviewerGive(useMap);
 		
 	}
 
 	@Override
-	public void confirm3(Map<String, Object> useMap) {
-		activeDAO.confirm3(useMap);
+	public void reviewerGiveSave(Map<String, Object> useMap) {
+		activeDAO.reviewerGiveSave(useMap);
 		
 	}
 
 	@Override
-	public void confirm4(Map<String, Object> useMap) {
-		activeDAO.confirm4(useMap);
+	public void giveMe(Map<String, Object> useMap) {
+		activeDAO.giveMe(useMap);
 		
 	}
 
 	@Override
-	public void confirm5(Map<String, Object> useMap) {
-		activeDAO.confirm5(useMap);
+	public void giveMeSave(Map<String, Object> useMap) {
+		activeDAO.giveMeSave(useMap);
 		
 	}	
 	

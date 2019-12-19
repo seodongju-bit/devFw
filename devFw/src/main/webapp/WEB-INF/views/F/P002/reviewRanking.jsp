@@ -302,7 +302,7 @@ function moveReviewer(id){
 		<h2 style="font-weight: 600;">RECOM REVIEW</h2>
 		<div id="bestReview">
 			<h3 style="font-weight: 550;" data-toggle="tooltip" title="한달동안 가장 인기있던 리뷰들을 보여줍니다">Best Review</h3>
-			<a style="float: right;"href="bestReviewPlusMenu.do">< 더보기 ></a> 
+			<a style="float: right;"href="bestReviewPlusMenu.do">< 더보기 ></a><br>
 			<c:forEach var="bestReview" items="${bestReview}" varStatus="index">
 				<div class="reviewBox">
 					<span class="reviewNum">${index.count }</span>

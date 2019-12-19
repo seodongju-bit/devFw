@@ -47,6 +47,11 @@
     </script>
 <style>
 
+@font-face {
+   src: url("../devFw/resources/font/NanumSquare_acR.ttf");
+   font-family: "NanumSquare";
+}
+
 body, html {
 	font-family:"NanumSquare";
 	font-weight: 700;
@@ -78,6 +83,11 @@ body, html {
 
 		box-shadow:none;
         transform: translateY(4px);
+ }
+ 
+ img {
+ 	width:200px;
+ 	height:200px;
  }
  
 </style>
@@ -194,13 +204,16 @@ body, html {
     </section>-->
     <div class="main">
 	    <button class="btn" id="menu1" onclick="location.href='${contextPath}/itemManager.do'">
-	    	상품관리
+	    	<img src="../devFw/resources/image/seller/1290724.png"><br><br>
+	    	<strong>상품관리</strong>
 	    </button>
 	    <button class="btn" id="menu2" onclick="location.href='${contextPath}/orderRequestList.do'">
-	    	주문관리
+	    <img src="../devFw/resources/image/seller/1278580.png"><br><br>
+	    	<strong>주문관리</strong>
 	    </button>
 	    <button class="btn"id="menu3" onclick="location.href='${contextPath}/questions.do'">
-	    	구매자 문의사항 관리	    
+	    <img src="../devFw/resources/image/seller/1369232.png"><br><br>
+	    	<strong>구매자 문의사항 관리</strong>	    
 	    </button>
 	</div>
 </body>

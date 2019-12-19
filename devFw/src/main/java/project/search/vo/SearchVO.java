@@ -7,6 +7,7 @@ public class SearchVO extends SearchPagingVO{
 	private String searchType="";
 	private String searchWord = "";
 	private String count_prod;
+	private String sort="";
 	
 	
 	public String getSearchType() {
@@ -31,6 +32,16 @@ public class SearchVO extends SearchPagingVO{
 
 	public void setCount_prod(String count_prod) {
 		this.count_prod = count_prod;
+	}
+	
+	
+
+	public String getSort() {
+		return sort;
+	}
+
+	public void setSort(String sort) {
+		this.sort = sort;
 	}
 
 	@Override
