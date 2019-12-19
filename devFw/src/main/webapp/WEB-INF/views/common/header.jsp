@@ -142,7 +142,8 @@ font-weight: 700;
 	
 	/*검색어 자동완성창*/
 	#suggest {
-		display:none; position: absolute; left: 830px; top:80px; border: 0.1px  solid #87cb42; z-index:3;font-weight: bold;background-color:#ffffff; 	
+		display:none; position:absolute; left: 830px; top:80px; border: 0.1px  solid #87cb42; z-index:3;font-weight: bold;background-color:#ffffff; 	
+		width:300px; margin: 12px 0 0 -434px;
 	}
 	
 	
@@ -197,8 +198,9 @@ font-weight: 700;
 	.dropdown-content {
 	  display: none;
 	  position: absolute;
+	  top:30px;
 	  background-color: black;
-	  width: 180px;
+	  width: 216.5px;
 	  z-index: 1;
 	  opacity: 0.9;  
 	} 
@@ -212,10 +214,10 @@ font-weight: 700;
 	  display: none;
 	  position: absolute;
 	  top:0px;
-	  left:180px;
+	  left:216px;
 	  background-color: white;
-	  width: 915px;
-	  height:400px;
+	  width: 880px;
+	  height:398px;
 	  color:white;
 	  z-index: 1;
 	  text-align:left;
@@ -469,9 +471,8 @@ $(document).ready(function(){
 
        		 		</c:when>
        		 		<c:when test="${memberInfo.mem_division==2 }" >
+       		 			<a class="nav-item nav-link" id="siteManagerlink" href="${contextPath}/adminPage.do"><img src="../devFw/resources/image/icon/site_management.png"  alt="관리자 페이지" style="width: 18px;">&nbsp;관리자 페이지</a>
        		 			<a class="nav-item nav-link" href='${contextPath}/chatInit.do' ><img src="../devFw/resources/image/icon/chat.png"  alt="채팅" style="width: 16px;">&nbsp;문의 내용</a>
-       		 			<a class="nav-item nav-link" id="siteManagerlink" href="${contextPath}/adminPage.do"><img src="../devFw/resources/image/icon/site_management.png"  alt="사이트관리" style="width: 18px;">&nbsp;사이트관리</a>
-       		 			<a class="nav-item nav-link" id="siteManagerlink" href="${contextPath}/makecoupon.do"><img src="../devFw/resources/image/icon/coupon_management.png"  alt="쿠폰관리" style="width: 18px;">&nbsp;쿠폰관리</a>
        		 		</c:when>
        		 	</c:choose>
 			</c:when>
@@ -488,7 +489,7 @@ $(document).ready(function(){
 	<a href="${contextPath}/main.do"><img id="toplogo" src="${contextPath}/resources/image/logo.png"/></a>
 	</div>
       <form class="form-inline" name="frmSearch" action="${contextPath}/searchProd.do" style="width:360px;">
-          <input class="form-control" type="text"    
+          <input class="form-control" type="text" id="searchWord" 
           placeholder="상품을 검색해보세요"aria-label="Search" style=width:300px name="searchWord" onKeyUp="keywordSearch()">
           <button class="btn btn-outline-secondary" type="submit" id="search">검색</button>
       </form>

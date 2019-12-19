@@ -104,7 +104,6 @@
 								order_address1,
 								order_address2,
 								order_request,
-								choice_review,
 								point_save_total,
 								order_date
 								)
@@ -129,7 +128,6 @@
 							   #{order_address1, jdbcType=VARCHAR},
 							   #{order_address2, jdbcType=VARCHAR},
 							   #{order_request, jdbcType=VARCHAR},
-							   #{choice_review, jdbcType=VARCHAR},
 							   #{point_save_total, jdbcType=NUMERIC},
 							   sysdate
 							   )
@@ -150,7 +148,8 @@
 							  delivery_price,
 							  delivery_payment,
 							  od_state,
-							  od_number
+							  od_number,
+							  choice_review
 							  )
 						values(
 						      #{sell_number, jdbcType=VARCHAR},
@@ -161,7 +160,8 @@
 							  #{delivery_price, jdbcType=VARCHAR},
 							  #{delivery_payment, jdbcType=VARCHAR},
 							  #{od_state, jdbcType=VARCHAR},
-							  #{od_number, jdbcType=VARCHAR}
+							  #{od_number, jdbcType=VARCHAR},
+							  #{choice_review, jdbcType=VARCHAR}
 							)
 		]]>
 	</insert>
@@ -205,17 +205,17 @@
 	   						point_content,
 	   						mem_id
 	   						)
-	   				values(
-	   						pointuse_number.nextval,
+	   				values( 
+	   						(select NVL(max(point_number),0)+1 from pointuse where mem_id = #{mem_id} ),
 	   						sysdate,
 	   						#{order_pointuse},
 	   						'사용',
 	   						#{mem_id}
 	   					  )
-	   ]]> 
+	   ]]>  
 	</insert>
 	<insert id="point_add" parameterType="E_P001VO">
-	   <![CDATA[
+	   <![CDATA[ 
 	   insert into pointuse(
 	   						point_number,
 	   						point_date,
@@ -224,7 +224,7 @@
 	   						mem_id
 	   						)
 	   				values(
-	   						pointuse_number.nextval+0,
+	   						(select NVL(max(point_number),0)+1 from pointuse where mem_id = #{mem_id} ),
 	   						sysdate,
 	   						TRUNC(#{point_save_total}),
 	   						'적립',
@@ -235,7 +235,8 @@
 	<update id="useCoupon" parameterType="activeVO">
 	  	<![CDATA[
 	  	update mycoupon
-	  	set co_check = 'Y'
+	  	set co_check = 'Y',
+	  		co_usedate = sysdate
 	    where co_number = #{co_number}
 	    ]]>
 	</update>

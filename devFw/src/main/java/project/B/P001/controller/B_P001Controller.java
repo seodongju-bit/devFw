@@ -25,5 +25,5 @@ public interface B_P001Controller {
 
 	ModelAndView InsertProduct(B_P001VO b_P001VO ,HttpServletRequest request, HttpServletResponse response) throws Exception;	
 	 
-	
+	Map ConditionSearch(HttpServletRequest request, HttpServletResponse response) throws Exception;
 }

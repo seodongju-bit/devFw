@@ -55,7 +55,7 @@ margin-bottom: 100px;
 			</tr>
 			<tr>
 				<th scope="row">판매번호</th>
-				<td>${question.SELL_NUMBER}</td>
+				<td>${question.ORDER_NUMBER}</td>
 				<th scope="row">상품이름</th>
 				<td>${question.SELL_TITLE}</td>
 			</tr>

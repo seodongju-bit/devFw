@@ -24,29 +24,49 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script>
+function logout(){
+	var addr = window.location.href;
+	var form = document.createElement("form");
+	var input = document.createElement("input");
+	input.setAttribute("type", "hidden");
+	input.setAttribute("name", "referrer");
+	input.setAttribute("value", addr);
+	form.setAttribute("action","logout.do");
+	form.appendChild(input);
+	document.getElementById("header").append(form);
+	form.submit();
+}
+
+</script>
+<style>
+
+</style>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-      <a class="navbar-brand" href="${contextPath}/adminPage.do">관리자 페이지</a>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+      <a class="navbar-brand" href="${contextPath}/sellerPage.do">관리자 페이지</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar"
        aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse justify-content-between" id="navbar">
         <div class="navbar-nav">
-          <a class="nav-item nav-link active" href="./index.html">대시보드</a>
-          <a class="nav-item nav-link" href="./notice.html">공지사항</a>
-          <a class="nav-item nav-link" href="./event.html">이벤트</a>
-          <a class="nav-item nav-link" href="./user.html">회원관리</a>
+          <a class="nav-item nav-link" href="${contextPath}/memberManager.do">회원 관리</a>
+          <a class="nav-item nav-link" href="${contextPath}/makecoupon.do">쿠폰 관리</a>
+          <a class="nav-item nav-link" href="${contextPath}/declarationsManager.do">신고회원 관리</a>
         </div>
         <div class="navbar-nav mr-sm-2">
-          <a class="nav-item nav-link" href="./userLogout.html">로그아웃</a>
-          <a class="nav-item nav-link" href="./userEdit.html">관리자 정보 수정</a>
+          <c:choose>
+       	    <c:when test="${isLogOn==true and not empty memberInfo }" >
+       		  <a class="nav-item nav-link" href="" onclick="logout(); return false;">로그아웃</a>
+		    </c:when>
+       	  </c:choose>
+          <a class="nav-item nav-link" href="${contextPath}/main.do">메인페이지로</a>
         </div>
       </div>
     </nav>
-
 </body>
 </html>

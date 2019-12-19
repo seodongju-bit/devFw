@@ -49,7 +49,7 @@ public class A_P004ControllerImpl   implements A_P004Controller {
 		
 		
 		Map<String, Object> searchMap = new HashMap<String, Object>();
-		List<Map<String, Object>> resultList = new ArrayList<Map<String, Object>>();
+
 		List<Map<String, Object>> resultList2 = new ArrayList<Map<String, Object>>();
 		List<Map<String, Object>> resultList3 = new ArrayList<Map<String, Object>>();
 		List<Map<String, Object>> resultList4 = new ArrayList<Map<String, Object>>();
@@ -66,7 +66,7 @@ public class A_P004ControllerImpl   implements A_P004Controller {
 		basket_count = activeService.baslist(p_id);
 		coupon_count = activeService.coulist(p_id);
 		question_count = activeService.question(p_id);
-		resultList = activeService.orderList(searchMap);
+
 		resultList2 = activeService.orderList2(searchMap);
 		resultList3 = activeService.orderList3(searchMap);
 		resultList4 = activeService.quList(searchMap);
@@ -93,7 +93,7 @@ public class A_P004ControllerImpl   implements A_P004Controller {
 		mav.addObject("pageInfo2", resultList4.get(resultList4.size()-1));
 		resultList4.remove(resultList4.size()-1);
 		
-		mav.addObject("orderList", resultList);
+
 		mav.addObject("orderList2", resultList2);
 		mav.addObject("coupon_count",coupon_count);
 		mav.addObject("basket_count",basket_count);
@@ -158,27 +158,42 @@ public class A_P004ControllerImpl   implements A_P004Controller {
 	@ResponseBody
 	public Map<String, Object> confirm(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		request.setCharacterEncoding("utf-8");
+		HttpSession session = request.getSession();
+		String mem_id = (String)session.getAttribute("mem_id");
+		
 		Map<String, Object> dataMap = new HashMap<String, Object>(); // 검색조건
 		Map<String, Object> resultMap = new HashMap<String, Object>(); // 조회결과
 		Map<String, Object> check = new HashMap<String, Object>();// 구매확정 조회
 		
 		String order_number = request.getParameter("order_number");
 		String sell_number = request.getParameter("sell_number");
-		String od_recomreview = request.getParameter("od_recomreview");
+		String sell_price = request.getParameter("sell_price");
+		String choice_review= request.getParameter("choice_review");
+		String od_state = request.getParameter("od_state");
 		
 		check.put("order_number", order_number);
 		check.put("sell_number", sell_number);
-		
-		
+
 		int count = 0;
 		count = activeService.confirmcheck(check);
 		
+		dataMap.put("mem_id", mem_id);
 		dataMap.put("order_number", order_number);
 		dataMap.put("sell_number", sell_number);
+		dataMap.put("sell_price", sell_price);
+		dataMap.put("choice_review", choice_review);
 		// 검색조건설정
 		resultMap.put("check", count);
 		try {
-			activeService.confirm(dataMap);
+			Map<String, Object> useMap = activeService.confirm(dataMap);
+			if(!od_state.equals("F_0005")) {
+			if(choice_review != "") {
+			activeService.reviewerGive(useMap);
+			activeService.reviewerGiveSave(useMap);
+			activeService.giveMe(useMap);
+			activeService.giveMeSave(useMap);
+			}
+			}
 			resultMap.put("error_yn", "N");	
 		} catch (Exception e) {
 			resultMap.put("error_yn", "Y");

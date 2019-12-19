@@ -66,8 +66,6 @@ color: red;
 
 </style>
 
-<%-- <link rel="stylesheet" href="${contextPath}/resources/ibsheet/css/style.css"> --%> 
-
 
 <script language="javascript">
 	//시트 높이 계산용

@@ -62,13 +62,28 @@
 	
 	<select id="orderRequestList" resultMap="B_P002Result03">
 	 	<![CDATA[
-	 		select *
-	 		from orderdetail od, orders o, productsell ps, product p
-	 		where od.order_number = o.order_number
-	 		and od.sell_number = ps.sell_number
-	 		and ps.pro_number = p.pro_number 
-	 		and ps.mem_id = #{p_id}
+	 			select order_number, pro_name, order_date, od_state, mem_id, od_quantity, sell_price
+	 		from (
+	 			select o.order_number, p.pro_name, o.order_date, od.od_state, ps.mem_id, od.od_quantity, ps.sell_price, row_number() over (order by o.order_number desc) as rNum
+	 			from orderdetail od, orders o, productsell ps, product p
+		 		where od.order_number = o.order_number
+		 		and od.sell_number = ps.sell_number
+		 		and ps.pro_number = p.pro_number 
+		 		and ps.mem_id = #{p_id}
+		 		) mb
+		 	where rNum between #{rowStart} and #{rowEnd}
 	 	]]>
+	</select>
+	
+	<select id="countOrdererList" resultType="Integer">
+		<![CDATA[
+			select count(o.order_number) as totalCount
+			from orderdetail od, orders o, productsell ps, product p
+		 		where od.order_number = o.order_number
+		 		and od.sell_number = ps.sell_number
+		 		and ps.pro_number = p.pro_number 
+		 		and ps.mem_id = #{p_id}
+		]]>
 	</select>
 	
 	<select id="ordererInfoList" resultMap="B_P003Result04">

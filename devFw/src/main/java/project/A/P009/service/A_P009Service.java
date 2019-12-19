@@ -11,5 +11,5 @@ public interface A_P009Service {
 	
 	public List<A_P009VO> declarationsList(Map<String, Object> searchMap) throws DataAccessException;
 	public void saveDeclarations(Map<String, String[]> dataMap) throws DataAccessException;
-
+	public List<A_P009VO> conditionDeclaration(Map<String, Object> searchMap) throws DataAccessException;
 }

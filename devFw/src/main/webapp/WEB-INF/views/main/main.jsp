@@ -19,6 +19,15 @@
    src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <style>
 
+@font-face {
+   src: url("../devFw/resources/font/NanumSquare_acR.ttf");
+   font-family: "NanumSquare";
+}
+
+body, html{
+font-family:"NanumSquare";
+font-weight: 700;
+}
 
 #main_container{
 	width:1120px;
@@ -57,7 +66,7 @@
 
 #more {
 	float:right;
-	margin: 0 50px 0 0;
+	margin: 0px 50px 15px 0;
 }
 
 /* body, hmtl { */
@@ -72,6 +81,7 @@
    position: relative;
    color: #fff;
    text-shadow: rgba(0, 0, 0, 0.1) 2px 2px 0px;
+   
    
 }
 
@@ -257,6 +267,10 @@
 #itemsImg:hover{
 	border:10px solid lightgray;
 }
+
+#paging {
+	margin: 0 45%;
+}
 </style>
 
 <link
@@ -315,7 +329,9 @@
    <br>
    <br>
    <hr>
-   <span id="all_prod">&nbsp;&nbsp;&nbsp;&nbsp;전체 상품</span><button class="btn btn-outline-secondary" id="more" onclick="location.href='${contextPath}/category.do'">더보기</button>
+   <br>
+   <span id="all_prod">&nbsp;&nbsp;&nbsp;&nbsp;최근 등록된 상품</span><button class="btn btn-outline-secondary" id="more" onclick="location.href='${contextPath}/category.do'">더보기</button>
+   <br>
    <hr>
    <c:set var="i" value="0"/>
    <c:set var="j" value="4"/>
@@ -340,7 +356,7 @@
 	 	</c:forEach>
 	</table>
    </div>
-   		<div>
+   		<div id="paging" style="width:100%;">
 		 <ul class="btn-group pagination">
 		  <c:if test="${mainPageMaker.prev}">
 		   <li><a href='<c:url value="/main.do?page=${mainPageMaker.startPage - 1}"/>'><i class="fa fa-chevron-left"></i></a></li>

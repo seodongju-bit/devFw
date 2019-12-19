@@ -51,21 +51,6 @@ public class A_P004ServiceImpl implements A_P004Service {
 	}
 	
 	@Override
-	public List<Map<String, Object>> orderList(Map<String, Object> searchMap) {
-		List<Map<String, Object>> list= activeDAO.orderList(searchMap);	
-		List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
-		
-		for(int i=0; i<list.size();i++) {
-			BigDecimal big = (BigDecimal)list.get(i).get("ROWNUMS");
-			int val = big.intValue();
-			if(val > 2 ){ break;}
-			result.add(list.get(i));
-		}
-		return result;
-		
-	}
-	
-	@Override
 	public List<Map<String, Object>> orderList2(Map<String, Object> searchMap) {
 		List<Map<String, Object>> list= activeDAO.orderList2(searchMap);	
 		
@@ -175,8 +160,10 @@ public class A_P004ServiceImpl implements A_P004Service {
 	}
 
 	@Override
-	public void confirm(Map<String, Object> dataMap) {
-		activeDAO.confirm(dataMap);
+	public Map<String, Object> confirm(Map<String, Object> dataMap) {
+		Map<String, Object> returnMap = activeDAO.confirm(dataMap);
+		return returnMap;
+		
 	}
 	
 	@Override
@@ -192,6 +179,30 @@ public class A_P004ServiceImpl implements A_P004Service {
 	@Override
 	public int canclecheck(Map<String, Object> check) {
 		return activeDAO.canclecheck(check);
+	}
+
+	@Override
+	public void reviewerGive(Map<String, Object> useMap) {
+		activeDAO.reviewerGive(useMap);
+		
+	}
+
+	@Override
+	public void reviewerGiveSave(Map<String, Object> useMap) {
+		activeDAO.reviewerGiveSave(useMap);
+		
+	}
+
+	@Override
+	public void giveMe(Map<String, Object> useMap) {
+		activeDAO.giveMe(useMap);
+		
+	}
+
+	@Override
+	public void giveMeSave(Map<String, Object> useMap) {
+		activeDAO.giveMeSave(useMap);
+		
 	}	
 	
 }

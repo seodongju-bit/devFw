@@ -24,7 +24,8 @@ public class SearchPageMaker {
 	 public void setSearchPagingVO(SearchPagingVO searchPagingVO) {
 		this.searchPagingVO = searchPagingVO;
 	 }
-
+	 
+	 
 	 public void setTotalCount(int totalCount) {
 		 this.totalCount = totalCount;
 		 calcData();

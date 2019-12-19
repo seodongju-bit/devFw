@@ -31,6 +31,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import project.A.P008.service.A_P008Service;
 import project.A.P008.vo.A_P008VO;
+import project.B.P001.vo.B_P001VO;
 
 
 @Controller("A_P008Controller")
@@ -46,7 +47,11 @@ public class A_P008ControllerImpl implements A_P008Controller {
 	@Override
 	@RequestMapping(value="/memberManager.do", method = RequestMethod.GET)
 	public ModelAndView memberManager(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		request.setCharacterEncoding("utf-8");
+		if(!adminCheck(request)) {
+			ModelAndView mav = new ModelAndView("memberManager");
+			mav.setViewName("redirect:main.do");
+			return mav;
+		}
 		ModelAndView mav = new ModelAndView("memberManager");
 		return mav;
 	}
@@ -62,6 +67,24 @@ public class A_P008ControllerImpl implements A_P008Controller {
 		String mem_id = request.getParameter("mem_id");
 		searchMap.put("mem_id", mem_id);
 		List<A_P008VO> data = a_P008Service.searchMember(searchMap);
+		resultMap.put("Data", data);
+		
+		return resultMap;
+	}
+	
+	@Override
+	@RequestMapping(value = "/ConditionMember.do", method = {RequestMethod.GET, RequestMethod.POST})
+	@ResponseBody
+	public Map ConditionMember(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		request.setCharacterEncoding("utf-8");
+		Map<String, Object> searchMap = new HashMap<String, Object>();
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		
+		String search = request.getParameter("search");
+		String condition = request.getParameter("condition");
+		searchMap.put("condition", condition);
+		searchMap.put("search", search);
+		List<A_P008VO> data = a_P008Service.conditionMember(searchMap);
 		resultMap.put("Data", data);
 		
 		return resultMap;
@@ -106,4 +129,18 @@ public class A_P008ControllerImpl implements A_P008Controller {
 		resultMap.put("Result", result);
 		return resultMap;
 	}
+	
+	public boolean adminCheck(HttpServletRequest request) {
+		boolean result = false;
+		HttpSession session = request.getSession();
+		Boolean isLogOn = (Boolean)session.getAttribute("isLogOn");
+		String mem_division = (String)session.getAttribute("mem_division");
+		try {
+			if(isLogOn && mem_division.equals("2")) {
+				result = true;
+			}
+		}catch(Exception e) {}
+		return result;
+	}
+	
 }

@@ -58,10 +58,39 @@ body, html {
 
         transform: translateY(4px);
  }
+ 
+ .ib_function {
+	float:right;
+}
+
+#select_check {
+	display:inline;
+	width:110px;
+}
+#frm {
+	display:inline;
+}
+
+#search {
+	display:inline;
+	width:150px;
+}
+
 
 </style>
 <script language="javascript">
+function selectCheck(ele) {
+	var $ele = $(ele);
+	var $search = $('input[name=condition]');
 	
+	if($ele.val() == "0") {
+		$search.attr('readonly', false);
+		$search.val('');
+	}else {
+		$search.attr('readonly', true);
+		$search.val($ele.val());
+	}
+}
 	
 	//시트 초기 높이 결정
 	var pageheightoffset = 200;
@@ -118,20 +147,23 @@ body, html {
 	/*Sheet 각종 처리*/
 	function doAction(sAction) {
 		switch(sAction) {
-			case "searchID": //검색
+			case "searchMember":
 				var param = FormQueryStringEnc(document.frm);
-				var mem_id = document.getElementById("mem_id");
-				if(mem_id.value == "" || mem_id.value == null) {
-					alert("아이디를 입력해주세요");
+				var search = document.getElementById("search");
+				var condition = document.getElementById("condition");
+				if(search.value=="" || search.value == null) {
+					alert("검색어를 입력해주세요");
+					break;
+				}else if(condition.value == '' || condition.value == ("0") || condition.value == null) {
+					alert("검색 조건을 선택해주세요");
 					break;
 				}else {
-			    	mySheet.DoSearch("${contextPath}/searchMember.do", param);
-			    	break;
+					mySheet.DoSearch("/devFw/ConditionMember.do", param);
+					break;
 				}
 			case "search": //조회
-				document.getElementById("mem_id").value = "";
-			    var param = FormQueryStringEnc(document.frm);
-					mySheet.DoSearch("${contextPath}/searchMember.do", param);
+				var json = mySheet.GetSearchData("/devFw/searchMember.do");
+				mySheet.LoadSearchData(json);
 				//mySheet.DoSearch("transaction_data2.json");
 				break;
 			case "reload":  //조회 데이터 제거
@@ -177,11 +209,20 @@ body, html {
 <body onload="LoadPage()">
      <div id="area">
 		<br>
+		<br>
         <div class="main_content">
-  			<h1>회원관리</h1><br>
-		<form name='frm' method="post" action="${contextPath}/searchMember.do">
-		  아이디 : <input type="text" id="mem_id" name="mem_id"/>
-		  <a href="javascript:doAction('searchID')" class="btn btn-default">검색</a>
+  			<h1>회원관리</h1>
+  		<br>
+		<form id="frm" name='frm' method="post" action="${contextPath}/searchMember.do">
+		<select class="form-control" id="select_check" name="select_check" onChange="selectCheck(this)">
+	        	<option value="0" selected>선택</option>
+	        	<option value="mem_id">아이디</option>
+	        	<option value="mem_no">회원번호</option>
+	        	<option value="mem_nick">닉네임</option>
+	    </select>
+		  <input type="text" id="search" class="form-control"  name="search"/>
+		  <input type="hidden" id="condition" name="condition" value=""/>
+		  <a href="javascript:doAction('searchMember')" class="btn btn-default">검색</a>
 		  <div class="ib_function">
             <a href="javascript:doAction('search')" class="btn">전체조회</a>
             <a href="javascript:doAction('insert')" class="btn">추가</a>

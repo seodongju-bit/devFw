@@ -12,15 +12,25 @@
 <script type="text/javascript" src="/devFw/resources/maskedit/js/jquery-1.7.0.min.js"></script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
 <script language="javascript" src="/devFw/resources/sheet/sheet/ibsheetinfo.js"></script>
 <script language="javascript" src="/devFw/resources/sheet/sheet/ibsheet.js"></script>
 <script language="javascript" src="/devFw/resources/sheet/sheet/ibexcel.js"></script>
 
 <script language="javascript">
+function selectCheck(ele) {
+	var $ele = $(ele);
+	var $search = $('input[name=condition]');
+	
+	if($ele.val() == "0") {
+		$search.attr('readonly', false);
+		$search.val('');
+	}else {
+		$search.attr('readonly', true);
+		$search.val($ele.val());
+	}
+}
 	//시트 높이 계산용
 	var pageheightoffset = 200;
 	
@@ -50,20 +60,23 @@
 	/*Sheet 각종 처리*/
 	function doAction(sAction) {
 		switch(sAction) {
-			case "searchID": //검색
+			case "searchDeclarations":
 				var param = FormQueryStringEnc(document.frm);
-				var mem_id = document.getElementById("mem_id");
-				if(mem_id.value == "" || mem_id.value == null) {
-					alert("아이디를 입력해주세요");
+				var search = document.getElementById("search");
+				var condition = document.getElementById("condition");
+				if(search.value=="" || search.value == null) {
+					alert("검색어를 입력해주세요");
+					break;
+				}else if(condition.value == '' || condition.value == ("0") || condition.value == null) {
+					alert("검색 조건을 선택해주세요");
 					break;
 				}else {
-			    	mySheet.DoSearch("${contextPath}/declarationsList.do", param);
-			    	break;
+					mySheet.DoSearch("/devFw/ConditionDeclaration.do", param);
+					break;
 				}
 			case "search": //조회
-				document.getElementById("mem_id").value = "";
-			    var param = FormQueryStringEnc(document.frm);
-					mySheet.DoSearch("${contextPath}/declarationsList.do", param);
+			    var json = mySheet.GetSearchData("/devFw/declarationsList.do");
+					mySheet.LoadSearchData(json);
 				//mySheet.DoSearch("transaction_data2.json");
 				break;
 			case "reload": //초기화
@@ -138,16 +151,36 @@ body, html {
 	font-weight: 700;
 }
 
+.ib_function {
+	float:right;
+}
+
+#select_check {
+	display:inline;
+	width:120px;
+}
+
+#search {
+	display:inline;
+	width:150px;
+}
 
 </style>
 </head>
 <body onload="LoadPage()">
   <div id="area">
 	  <div class="main_content">
+	  		<br><br>
 	  		<h1>신고회원관리</h1><br>
 	      <form name='frm' method="post" action="${contextPath}/declarationsList.do">
-	        	아이디: <input type='text' id="mem_id" name="mem_id" />
-	      <a href="javascript:doAction('searchID')" class="btn btn-default">검색</a>
+	      <select class="form-control" id="select_check" name="select_check" onChange="selectCheck(this)">
+	        	<option value="0" selected>선택</option>
+	        	<option value="de_number">신고번호</option>
+	        	<option value="mem_id">회원아이디</option>
+	        	</select>
+	        	<input type='text' id="search" class="form-control" name="search" value=""/>
+	        	<input type="hidden" id="condition" name="condition" value=""/>
+	      <a href="javascript:doAction('searchDeclarations')" class="btn btn-default">검색</a>
 	      <div class="ib_function">
 	      <a href="javascript:doAction('search')" class="btn">전체조회</a>
 		  <a href="javascript:doAction('insert')" class="btn">추가</a>
