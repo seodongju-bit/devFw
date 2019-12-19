@@ -49,6 +49,12 @@ public ModelAndView questionwrite3(HttpServletRequest request, HttpServletRespon
 public ModelAndView questionwrite4(HttpServletRequest request, HttpServletResponse response) throws Exception;
 
 
+
+public ModelAndView question(HttpServletRequest request, HttpServletResponse response) throws Exception;
+public ModelAndView question2(HttpServletRequest request, HttpServletResponse response) throws Exception;
+
+
+
 //관리자로 로그인시 문의사항 답변 
 public ModelAndView questionwrite5(HttpServletRequest request, HttpServletResponse response) throws Exception;
 public ModelAndView questionwrite6(HttpServletRequest request, HttpServletResponse response) throws Exception;

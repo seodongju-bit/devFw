@@ -309,7 +309,7 @@ ul.tabs li.active, html ul.tabs li.active a:hover {
 								</td>
 							<td><c:choose>
 									<c:when test="${orderList2.OD_STATE=='F_0001'}">
-										<p>결제준비중</p>
+										<p>배송준비중</p>
 									</c:when>
 									<c:when test="${orderList2.OD_STATE=='F_0002'}">
 										<p>결제완료</p>

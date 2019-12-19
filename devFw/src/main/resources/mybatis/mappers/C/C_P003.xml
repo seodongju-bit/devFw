@@ -277,4 +277,22 @@
    
    
    
+   <select id="selectQuestion" resultMap="C_P003Result04" parameterType="C_P003VO">
+   		<![CDATA[
+       	SELECT de_division,de_contents,mem_id
+        FROM declarations   
+        
+   		]]>
+   </select>      
+   
+   
+   <insert id="insertde" parameterType="java.util.Map">
+		<![CDATA[
+			insert into questions (de_number,mem_id, de_contents, de_division) 
+			values
+			 (de_number.nextval,#{mem_id}, #{de_contents}, #{de_division})     
+		]]>                 
+	</insert>                       
+   
+   
   </mapper>
