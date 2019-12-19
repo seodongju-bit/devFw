@@ -259,7 +259,7 @@ public class A_P004ControllerImpl   implements A_P004Controller {
 		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("myquestionList", resultMap);
 		return mav;
-		
+		 
 	}
 	
 	@Override
