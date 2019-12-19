@@ -169,7 +169,18 @@ public class C_P003ServiceImpl implements C_P003Service {
 		C_P003DAO.responseInfo2(dataMap10);
 	}
 	
+	@Override
+	public List selectQuestion(String mem_id) throws DataAccessException {
+		List question = null;
+		question = C_P003DAO.selectQuestion(mem_id);
+		return question;
+	}
 	
+	@Override
+	public void dequestion(Map<String, Object> dataMap11) throws DataAccessException {
+		
+		C_P003DAO.dewrite(dataMap11);
+	}
 	
 
 }

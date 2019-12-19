@@ -41,4 +41,9 @@ public interface C_P003Service {
 	public List responseInfo(String qu_number) throws DataAccessException;
 	
 	public void responseInfo2(Map<String, Object> dataMap10);
+	
+	
+	public List selectQuestion(String mem_id) throws DataAccessException;
+
+	public void dequestion(Map<String, Object> dataMap11);
 }

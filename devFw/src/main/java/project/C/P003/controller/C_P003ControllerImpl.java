@@ -452,6 +452,65 @@ public class C_P003ControllerImpl implements C_P003Controller {
 		return mavw10;
 	}
 
+	
+	
+	@Override
+	@RequestMapping(value="/question.do" ,method = { RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView question(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = "question";
+		
+		HttpSession session10 = request.getSession();
+		String mem_id = request.getParameter("mem_id");
+		System.out.println("2222222222222222222222"+mem_id);
+		
+		List<C_P003VO> question = C_P003Service.selectQuestion(mem_id);
+		ModelAndView mavw11 = new ModelAndView(viewName);
+		mavw11.addObject("question", question);
+		return mavw11;
+	}
+	
+	@Override
+	@RequestMapping(value="/question2.do" ,method = { RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView question2(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String viewName = "redirect:/notice.do";
+		Map<String, Object> dataMap11 = new HashMap();
+		HttpSession session=request.getSession();
+		session=request.getSession(); 
+		String mem_id = (String) session.getAttribute("mem_id");
+		
+
+		String de_contents= request.getParameter("de_contents");
+		String de_division= request.getParameter("de_division");
+		
+		
+		System.out.println(mem_id);
+	    System.out.println(de_contents);
+		System.out.println(de_division);
+		
+		
+		
+		dataMap11.put("mem_id", mem_id);
+		dataMap11.put("de_contents", de_contents);
+		dataMap11.put("de_division", de_division);
+
+	
+		
+		System.out.println(dataMap11);
+		
+		C_P003Service.dequestion(dataMap11);
+		
+		ModelAndView mavw11 = new ModelAndView(viewName);
+		return mavw11;
+	}
+
+
+
+	
+	
+	
+	
+	
+	
 
 
 	

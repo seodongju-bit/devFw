@@ -52,6 +52,9 @@ public interface C_P003DAO {
 
 	public void responseInfo2(Map<String, Object> dataMap10);
 	
+	public List selectQuestion(String mem_id) throws DataAccessException;
+	
+	public void dewrite(Map<String, Object> dataMap11);
 	
   
 }

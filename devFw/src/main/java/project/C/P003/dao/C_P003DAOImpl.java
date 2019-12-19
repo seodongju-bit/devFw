@@ -158,6 +158,19 @@ public class C_P003DAOImpl implements C_P003DAO{
 	}
 
 	
+	@Override
+	public List selectQuestion(String mem_id) throws DataAccessException {
+		List<C_P003VO> question = null;
+		question = sqlSession.selectList("mapper.notice.selectQuestion", mem_id);
+		return question;
+	}
+	
+	@Override
+	public void dewrite(Map<String, Object> dataMap11) throws DataAccessException {
+	    System.out.println(dataMap11);
+		sqlSession.insert("mapper.notice.insertde", dataMap11);
+	}
+	
 	
 	
 	
