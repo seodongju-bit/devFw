@@ -206,7 +206,7 @@
 	   						mem_id
 	   						)
 	   				values( 
-	   						(select max(point_number)+1 from pointuse where mem_id = #{mem_id} ),
+	   						(select NVL(max(point_number), 0)+1 from pointuse where mem_id = #{mem_id} ),
 	   						sysdate,
 	   						#{order_pointuse},
 	   						'사용',
@@ -215,22 +215,22 @@
 	   ]]>  
 	</insert>
 	<insert id="point_add" parameterType="E_P001VO">
-	   <![CDATA[ 
+	   <![CDATA[  
 	   insert into pointuse(
 	   						point_number,
 	   						point_date,
-	   						point_usemoney,
+	   						point_usemoney, 
 	   						point_content,
 	   						mem_id
 	   						)
 	   				values(
-	   						(select max(point_number)+1 from pointuse where mem_id = #{mem_id} ),
+	   						(select NVL(max(point_number), 0)+1 from pointuse where mem_id = #{mem_id} ),
 	   						sysdate,
-	   						TRUNC(#{point_save_total}),
+	   						trunc(#{point_save_total}),
 	   						'적립',
 	   						#{mem_id}
-	   					  )
-	   ]]> 
+	   					  )  
+	   ]]>
 	</insert>
 	<update id="useCoupon" parameterType="activeVO">
 	  	<![CDATA[
