@@ -64,13 +64,14 @@
          SELECT * 
          FROM pointuse
          WHERE mem_id=#{mem_id}
-         order by point_number desc
+         
        ]]>
           
         <choose>
         	<when test="start != '' and end !='' and date != ''"> 
         		AND ${date} between to_date('${start}', 'YYYY-MM-DD') 
        			AND  to_date('${end}', 'YYYY-MM-DD')+0.9999
+       			order by point_number desc
     		</when>
 		</choose>
 	</select>
