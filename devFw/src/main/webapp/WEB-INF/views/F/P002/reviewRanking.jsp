@@ -298,7 +298,7 @@ function moveReviewer(id){
 <html>
 <body>
     <div id="contentsBody">
-    
+     
 		<h2 style="font-weight: 600;">RECOM REVIEW</h2>
 		<div id="bestReview">
 			<h3 style="font-weight: 550;" data-toggle="tooltip" title="한달동안 가장 인기있던 리뷰들을 보여줍니다">Best Review</h3>
