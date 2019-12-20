@@ -127,6 +127,8 @@ public class D_P001ControllerImpl   implements D_P001Controller {
 		resultMap.put("sell_number", request.getParameter("sell_number"));
 		resultMap.put("order_number", request.getParameter("order_number"));
 		//resultMap.put("pro_number", request.getParameter("pro_number"));
+		resultMap.put("review_url", request.getParameter("review_url"));
+		resultMap.put("review_youtube", request.getParameter("review_youtube"));
 		resultMap.put("review_pdscore", request.getParameter("review_pdscore"));
 		resultMap.put("review_sellscore", request.getParameter("review_sellscore"));
 		resultMap.put("review_content", request.getParameter("review_content"));

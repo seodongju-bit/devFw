@@ -198,6 +198,8 @@ public class A_P001ControllerImpl implements A_P001Controller {
 					String message="탈퇴 신청중인 회원입니다.";
 					mav.addObject("message", message);
 					mav.setViewName("redirect:signinpage.do");
+					
+					return mav;
 				}
 				HttpSession session=request.getSession();
 				session=request.getSession();

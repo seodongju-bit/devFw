@@ -156,7 +156,7 @@ $(".youtubeBox").mouseleave(function(){
 					<span class="reviewNum">${index.count }</span>
 					<div class="imgBox" onclick="readReview(${bestReview.REVIEW_NUMBER })">${bestReview.REVIEW_THUMNAIL }</div>
 					<a onclick="readReview(${bestReview.REVIEW_NUMBER })">${bestReview.REVIEW_TITLE }</a>
-					<p style="text-align: right">by ${bestReview.MEM_ID }<p>
+					<p style="text-align: right">${bestReview.MEM_NICK }<p>
 					<br>추천수 ${bestReview.REVIEW_MONTHPOINT }
 					<c:choose>
     					<c:when test='${bestReview.REVIEW_YOUTUBE!=null }' >

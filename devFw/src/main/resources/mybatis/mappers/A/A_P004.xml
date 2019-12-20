@@ -273,11 +273,22 @@
 	<update id="reviewerGive" parameterType="java.util.Map">
 	<![CDATA[
 		update members
-		set mem_point = mem_point + #{sell_price}* 0.01
+		set mem_point = mem_point + #{sell_price}* 0.01,
+		MEM_MONTHRC = MEM_MONTHRC + 1,
+		MEM_TOTALRC = MEM_TOTALRC + 1
 		where mem_id = #{ReviewerId}
-	]]>
+	]]> 
 	</update>
-	 
+	   
+	 <update id="giveReviewPoint" parameterType="java.util.Map">
+	<![CDATA[
+		update review
+		set REVIEW_MONTHPOINT = REVIEW_MONTHPOINT + 1,
+		REVIEW_TOTALPOINT = REVIEW_TOTALPOINT + 1
+		where review_number = #{choice_review}
+	]]> 
+	</update>
+	  
   	<insert id="reviewerGiveSave" parameterType="java.util.Map">
 	<![CDATA[
 		INSERT INTO pointuse (POINT_NUMBER, mem_id, point_date, point_usemoney, POINT_CONTENT) 
@@ -286,7 +297,7 @@
       	#{ReviewerId}, sysdate, #{sell_price}*0.01 , '리뷰포인트 적립' )
 	]]>
 	</insert>
-  	 
+  	  
 	<update id="giveMe" parameterType="java.util.Map">
 	<![CDATA[
 		update members

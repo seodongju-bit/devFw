@@ -132,7 +132,7 @@
 .reviewBox {
 	position: relative;
 	width: 250px;
-	height: 300px;
+	height: 320px;
 	float: left;
 	display: inline-block;
 	background-color: white;;
@@ -165,7 +165,7 @@
 
 .youtubeBox {
 	position: absolute;
-	top: 265px;
+	top: 285px;
 	right: 3px;
 	width: 50px;
 	height: 30px;
@@ -278,7 +278,7 @@ $(".youtubeBox").mouseleave(function(){
 <div id='contentsBody'>
 
 	<div class="profileBox">
-		<h2 style="text-align: center;">리뷰어</h2><div id="imgBox"><img src='' id="img"></div>
+		<h2 style="text-align: center;">리뷰어</h2><div id="imgBox"><img style="width:180px;height:180px;" src='' id="img"></div>
 		<div id="nickBox" ><span>닉네임</span>
 		<input type="text" id="nick"  class="form-control" disabled></div>
 		<div id="introduceBox"><br><span>소개</span>
@@ -301,6 +301,11 @@ $(".youtubeBox").mouseleave(function(){
 <%-- 				<p style="text-align: right">by ${reviewList.MEM_ID }<p> --%>
 				<br>추천수 ${reviewList.REVIEW_MONTHPOINT } 
 				<br>등록일: <fmt:formatDate value="${reviewList.REVIEW_STDATE }" pattern="yyyy/MM/dd HH:mm" />
+				<c:choose>
+    				<c:when test='${reviewList.REVIEW_URL!=null }' >
+    					<button class="btn btn-default"  onclick="reviewLink('${reviewList.REVIEW_URL}')" style="font-size:13px;height:28px;">link</button>
+    				</c:when>
+    			</c:choose> 
 				<c:choose>
     				<c:when test='${reviewList.REVIEW_YOUTUBE!=null }' >
     					<div class="youtubeBox" value='${reviewList.REVIEW_YOUTUBE}'><img src="resources/image/youtubeIcon.png" ></div>

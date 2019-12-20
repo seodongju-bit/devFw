@@ -11,7 +11,7 @@
 	
 	<select id="searchProfile" resultMap="A_P010Result01" parameterType="java.util.Map"> 
       <![CDATA[
-      	select *
+      	select mem_nick, mem_content, NVL(mem_profile, 'resources/image/nothing.jpg') as mem_profile
       	from members
       	where mem_id = #{mem_id}
       ]]>

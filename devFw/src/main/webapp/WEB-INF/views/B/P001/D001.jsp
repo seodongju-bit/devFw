@@ -195,7 +195,7 @@ function selectCheck(ele) {
 	function addProduct(){
 		var popupX = (window.screen.width/2) - (400);
 		var popupY = (window.screen.height/2) - (500);
-		window.open("itemManager/addProduct.do", "제품추가창", "width=600, height=700, left="+popupX+", top="+popupY,"resizable=no");
+		window.open("itemManager/addProduct.do", "제품추가창", "width=600, height=600, left="+popupX+", top="+popupY,"resizable=no");
 	}
 	
 	function addSell(){

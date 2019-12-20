@@ -39,16 +39,26 @@ font-weight: 700;
 
 #hiddenLine{
 	position: relative;
-	left: 211px;
+	left: 140px;
 	display: none;
 /* 	background-color: #f2f2f2; */
-	width: 881px;
-	min-height: 130px;
+	width: 890px;
+	min-height: 135px;
 	border: 1px solid lightgray;
 	padding: 10px;
+	margin-bottom: 15px;
+	margin-top: 10px;
 }
 #hiddenLine button{
 	float: right;
+}
+
+#hiddnTable{
+	position: relative;
+	display: none;
+	left: 140px;
+	padding-top: 10px;
+	border-top: 1px solid #f2f2f2;
 }
 </style>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
@@ -162,8 +172,10 @@ $(function() {
     $('#division').on('change',function(){
 		if($(this).val()=="이벤트"){
 			$('#hiddenLine').css("display", "block");
+			$('#hiddnTable').css("display", "block");
 		}else{
 			$('#hiddenLine').css("display",'none');
+			$('#hiddnTable').css("display", "none");
 		}
     });
     
@@ -210,12 +222,7 @@ $(function() {
 		</select>
 		</td>
 		</tr>
-		<tr>
-		<th>이벤트 기간</th>
-		<td>
-		<input type="date" name="stdate" id="stdate">&nbsp;~&nbsp;<input type="date" name="enddate" id="enddate">
-		</td>
-		</tr>
+		
 		<tr><th>제목</th>
 		<td>
 		<input type="text" name="title" id="title" style="width: 40%;" placeholder="제목을 입력하세요."/>
@@ -229,13 +236,15 @@ $(function() {
 		</tr>
 		
 </table>
+		<div id="hiddnTable">이벤트 기간
+			<input type="date" name="stdate" id="stdate">&nbsp;~&nbsp;<input type="date" name="enddate" id="enddate"><br>
+		</div>
 		<div id="hiddenLine" >
 			<button type="button" class="btn btn-default" onclick="searchSale()">이벤트 상품추가</button>
 			<div id="sellList"></div>
-			
 		</div>
 		
-		<input id="subBtn" type="button" class="btn btn-default" value="글 작성" style="float: left; margin-right: 15px;"/>
+		<input id="subBtn" type="button" class="btn btn-default" value="글 작성" style="float: left;margin-left: 135px; margin-right: 15px;"/>
 </div>
 
   </form>

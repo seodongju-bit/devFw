@@ -180,7 +180,7 @@ function formSubmit(){
 
 <div class="profileBox">
 	<form name="profileEnrollment" action="" method="post" accept-charset="UTF-8" >
-		<h2>profile</h2><div id="imgBox"><img src='' id="img"></div>
+		<h2>profile</h2><div id="imgBox"><img style="width:180px;height:180px;" src='' id="img"></div>
 		
 		<div id="nickBox" ><span>닉네임</span>
 		<input type="text" id="nick" name="mem_nick" class="form-control" ></div>

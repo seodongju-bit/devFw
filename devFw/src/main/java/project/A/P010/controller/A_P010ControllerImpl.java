@@ -49,6 +49,10 @@ public class A_P010ControllerImpl implements A_P010Controller{
 		List<Map<String, Object>> resultList = a_P010Service.searchProfile(searchMap);
 		
 		ModelAndView mav = new ModelAndView("profile");
+//		if(resultList.get(0).get("profile")==null) {
+//			
+//			
+//		}
 		mav.addObject("profile", resultList.get(0));
 		return mav;
 	}
@@ -69,7 +73,7 @@ public class A_P010ControllerImpl implements A_P010Controller{
 		List<Map<String, Object>> reviewList = a_P010Service.searchReview(searchMap);
 		profile.get(0).put("reviewCount", reviewList.size());
 		reviewList = f_P002Service.thumbnail(reviewList);
-
+		
 		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("profile", profile.get(0));
 		mav.addObject("reviewList", reviewList);

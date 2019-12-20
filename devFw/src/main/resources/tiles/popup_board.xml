@@ -4,7 +4,7 @@
 "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
 <tiles-definitions>
 
-	<definition name="baseLayout3"  template="/WEB-INF/views/common/layout2.jsp">
+	<definition name="popupLayout"  template="/WEB-INF/views/common/layout2.jsp">
       <put-attribute name="title" value="" />
       <put-attribute name="body" value="" />
       <put-attribute name="footer" value="" />
@@ -13,57 +13,57 @@
    
    <!-- 레이아웃 페이지 구분 -->
    
-   <definition name="addProduct" extends="baseLayout3">
+   <definition name="addProduct" extends="popupLayout">
       <put-attribute name="title" value="제품추가" />
       <put-attribute name="body" value="/WEB-INF/views/B/P001/D002.jsp" />
    </definition>  
    
-     <definition name="addSell" extends="baseLayout3">
+     <definition name="addSell" extends="popupLayout">
       <put-attribute name="title" value="판매등록 "/>
       <put-attribute name="body" value="/WEB-INF/views/B/P002/D001.jsp" />
    </definition> 
    
-   <definition name="proNumSearch" extends="baseLayout3">
+   <definition name="proNumSearch" extends="popupLayout">
       <put-attribute name="title" value="제품번호검색 "/>
       <put-attribute name="body" value="/WEB-INF/views/B/P002/proNumSearch.jsp" />
    </definition> 
    
-   <definition name="createcoupon" extends="baseLayout3">
+   <definition name="createcoupon" extends="popupLayout">
       <put-attribute name="title" value="쿠폰생성 "/>
       <put-attribute name="body" value="/WEB-INF/views/A/P007/D002.jsp" />
    </definition>
    
-   <definition name="myquestion" extends="baseLayout3">
+   <definition name="myquestion" extends="popupLayout">
       <put-attribute name="title" value="문의내역 "/>
       <put-attribute name="body" value="/WEB-INF/views/A/P004/D001_1.jsp" />
    </definition>
    
-   <definition name="readReview" extends="baseLayout3">
+   <definition name="readReview" extends="popupLayout">
       <put-attribute name="title" value="리뷰보기 "/>
       <put-attribute name="body" value="/WEB-INF/views/F/P002/readReview.jsp" />
    </definition> 
    
-   <definition name="initWithdraw" extends="baseLayout3">
+   <definition name="initWithdraw" extends="popupLayout">
       <put-attribute name="title" value="출금신청 확인" />
       <put-attribute name="body" value="/WEB-INF/views/A/P004/initWithdraw.jsp" />
    </definition>  
    
-   <definition name="withdraw" extends="baseLayout3">
+   <definition name="withdraw" extends="popupLayout">
       <put-attribute name="title" value="출금신청" />
       <put-attribute name="body" value="/WEB-INF/views/A/P004/withdraw.jsp" />
    </definition>  
    
-   <definition name="profile" extends="baseLayout3">
+   <definition name="profile" extends="popupLayout">
       <put-attribute name="title" value="" />
       <put-attribute name="body" value="/WEB-INF/views/A/P010/profile.jsp" />
    </definition>  
    
-   <definition name="searchSale" extends="baseLayout3">
+   <definition name="searchSale" extends="popupLayout">
       <put-attribute name="title" value="판매글검색" />
       <put-attribute name="body" value="/WEB-INF/views/C/P001/searchSale.jsp" />
    </definition>  
    
-   <definition name="close" extends="baseLayout3">
+   <definition name="close" extends="popupLayout">
       <put-attribute name="title" value="" />
       <put-attribute name="body" value="/WEB-INF/views/common/close.jsp" />
    </definition> 

@@ -19,6 +19,7 @@ public class A_P010DAOImpl implements A_P010DAO{
 	@Override
 	public List<Map<String, Object>> searchProfile(Map<String, Object> searchMap) {
 		List<Map<String, Object>> list = sqlSession.selectList("A.P010.searchProfile", searchMap);
+		System.out.println("프로필"+list);
 		return list;
 	}
 

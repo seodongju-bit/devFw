@@ -329,7 +329,7 @@ function itemDelete(id){
 </head>
 <body>
 <h1>제품판매</h1>
-제품번호 , 제목, 썸네일, 판매가격, (판매내용), 등록날짜, 상품재고수, 옵션(size, color)
+<br>
 <form name="addSellForm" id="addSellForm" method="post"  accept-charset="UTF-8" >
 	<input type="hidden" id="sell_thumbnail" name="sell_thumbnail" />
 	<div class="form-group">

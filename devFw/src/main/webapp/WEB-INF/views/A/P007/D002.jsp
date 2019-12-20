@@ -46,7 +46,7 @@ font-weight: 700;
 </style>
 
 <script>
-function make(){
+function create(){
 	
 	var name = $('#name').val();
 	var start = $('#start').val();
@@ -114,7 +114,7 @@ function make(){
 <input type="text" id="percent" placeholder="세일퍼센트" style="width: 195px;">
 </div>
 <br><br>
-<input type="button" id="make" class="btn btn-default" value="쿠폰생성" onclick="make()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="button" id="make" class="btn btn-default" value="쿠폰생성" onclick="create();">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <input type="reset" id="reset" class="btn btn-default" value="Reset"><br><br><br>
 <script src="../devFw/resources/js/bootstrap.min.js"></script>
 </div>

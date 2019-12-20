@@ -307,7 +307,7 @@ function moveReviewer(id){
 				<div class="reviewBox">
 					<span class="reviewNum">${index.count }</span>
 					<div class="imgBox" onclick="readReview(${bestReview.REVIEW_NUMBER })">${bestReview.REVIEW_THUMNAIL }</div>
-					<a onclick="readReview(${bestReview.REVIEW_NUMBER })">${bestReview.REVIEW_TITLE }</a><br>
+					<a style="cursor:pointer;" onclick="readReview(${bestReview.REVIEW_NUMBER })">${bestReview.REVIEW_TITLE }</a><br>
 					<p style='text-align: right;' class="reviewer" onclick="moveReviewer('${bestReview.MEM_ID }')">${bestReview.MEM_NICK } </p>
 					추천수 ${bestReview.REVIEW_MONTHPOINT }
 					<br>등록일 : <fmt:formatDate value="${bestReview.REVIEW_STDATE}" pattern="yyyy-MM-dd" /><br>
@@ -345,7 +345,7 @@ function moveReviewer(id){
 						</div>
 					</div>
 					${bestProduct.PRO_NAME }
-					<br><a onclick="movePurchase('${bestProduct.PRO_NAME }')">구매하러 가기</a>
+					<br><a style="cursor:pointer;" onclick="movePurchase('${bestProduct.PRO_NAME }')">구매하러 가기</a>
 				</div>
 			</c:forEach>
 		</div>

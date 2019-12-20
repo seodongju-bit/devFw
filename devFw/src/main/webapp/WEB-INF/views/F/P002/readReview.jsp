@@ -14,14 +14,14 @@ body{
 }
 .reviewId{
 	display: inline-block;
-	width: 200px;
+	width: 400px;
 	background-color: white;
 	float:right;
 }
 #reviewBox{
 	position: relative;
 	background-color: white;
-	width: 350px;
+	width: 550px;
 	height: 45px;
 	border-radius: 5px;
 	border:1px solid lightgray;
@@ -46,9 +46,9 @@ body{
 }
 #prodInfo{
 	position: relative;
-	width: 540px;
+	width: 740px;
 	height: 160px;
-	left:-120px;
+	left:0px;
 /* 	border:1px solid lightgray;  */
 	display: inline-block;
 	background-color: white;

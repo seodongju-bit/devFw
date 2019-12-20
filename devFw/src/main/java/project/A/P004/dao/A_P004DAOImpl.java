@@ -157,6 +157,7 @@ public class A_P004DAOImpl implements A_P004DAO {
 	@Override
 	public void reviewerGive(Map<String, Object> useMap) {
 		sqlSession.update("mapper.active.reviewerGive", useMap);
+		sqlSession.update("mapper.active.giveReviewPoint", useMap);
 	}
 
 	@Override

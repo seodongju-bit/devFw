@@ -29,39 +29,46 @@
     margin-right: 0; 
     
     }                               
-
-  div.gallery:hover {         
-  border: 1px solid #777;
-}   
-
-div.gallery{                       
-    border: 1px solid #ccc;     
+	div.gallery{                       
+    	min-height: 240px;
     }
-#imgBox{
-	width:1095px;
-	height: 160px;
-	overflow:hidden;
-	
-}
+	#imgBox{
+		width:1095px;
+		height: 200px;
+		overflow: hidden;
+	}
 
-#imgBox:hover{
-	overflow: visible;
-	height:400px;
-	animation-name: eventView;
-    animation-duration: 0.4s;
-}
-
+	#imgBox:hover{
+		overflow: visible;
+		height:400px;
+		animation-name: eventView;
+   		animation-duration: 0.4s;
+	}
 
 @keyframes eventView {
-  0%   {height:300px;}
-  100% {height:400px;}
+  0%   {width:1095;height:320px;}
+  100% {width:1095;height:400px;}
+}
+
+#img{
+	width:1095px;
+	height:400px;
+}
+#img:hover{
+	width:1095px;
+	height:400px;
+	animation-name: eventView;
+   	animation-duration: 0.4s;
 }
 
 #eventContent{
+	position: relative;
+	top: -80px;
 	width:100%;
 	height: 80px;
 	background-color: #2E2E2E;
 	color: white;
+	opacity: 0.9;
 }
 .eventState{
 /* 	background-color: lightgray; */
@@ -81,10 +88,10 @@ div.gallery{
 	<h2>RECOM 이벤트</h2>
 	<h3 class="eventState"> < 진행중인 이벤트 > </h3>
 	<c:forEach var="banner" items="${eventbanner}">
-		<div class="gallery" style=" margin-top: 35px;">
+		<div class="gallery" style=" margin-top: 20px;">
 			<div id="imgBox">
 				<a href="eventSell.do?event=${banner.no_number }" style="align: center;">
-    				<img src="${banner.NO_BANNER}" alt="" width="1095" height="400" >
+    				<img id="img" src="${banner.NO_BANNER}" >
     			</a>
 			</div>
 			<div id="eventContent">
@@ -96,7 +103,7 @@ div.gallery{
 	
 	<h3 class="eventState"> < 진행예정 이벤트 > </h3>
 	<c:forEach var="banner" items="${preEventbanner}">
-		<div class="gallery" style=" margin-top: 35px;">
+		<div class="gallery" style=" margin-top: 20px;">
 			<div id="imgBox">
 				<a href="eventSell.do?event=${banner.NO_NUMBER }" style="align: center;">
     				<img src="${banner.NO_BANNER}" alt="" width="1095" height="400" >
@@ -111,7 +118,7 @@ div.gallery{
 	
 	<h3 class="eventState"> < 종료 이벤트 > </h3>
 	<c:forEach var="banner" items="${endEventbanner}">
-		<div class="gallery" style=" margin-top: 35px;">
+		<div class="gallery" style=" margin-top: 20px;">
 			<div id="imgBox">
 <%-- 				<a href="eventSell.do?event=${banner.NO_NUMBER }" style="align: center;"> --%>
     				<img src="${banner.NO_BANNER}" alt="" width="1095" height="400" >

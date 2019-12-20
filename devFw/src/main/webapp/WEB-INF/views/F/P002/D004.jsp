@@ -32,7 +32,7 @@
 </head>
 <html>
 <body>
-    <div id="contentsBody"><h2>반품교환</h2>
+    <div id="contentsBody">
     	<table class="table" id="proInfoTable">
     	<tr>
     		<td class="tableTd">고객문의 대표번호</td>

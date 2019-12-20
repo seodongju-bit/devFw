@@ -62,7 +62,7 @@ font-weight: 700;
 				<td colspan="3">${detail.NO_TITLE}</td>
 			</tr>
 			<tr class="NO_CONTENTS1">
-				<td class="NO_CONTENTS" colspan="4"><div style="overflow-y:scroll; height: 500px;">${detail.NO_CONTENTS}</div></td>
+				<td class="NO_CONTENTS" colspan="4"><div style="overflow-x:scroll; width: 1200px;min-eight: 500px;">${detail.NO_CONTENTS}</div></td>
 			</tr>
 			
 			
